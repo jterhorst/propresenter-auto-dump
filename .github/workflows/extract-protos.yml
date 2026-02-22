@@ -84,15 +84,15 @@ jobs:
 
           echo "Latest version: $VERSION (build $BUILD_NUMBER)"
 
-      - name: Set up Go
+      - name: Set up Python
         if: steps.upgrade.outputs.has_version == 'true'
-        uses: actions/setup-go@v5
+        uses: actions/setup-python@v5
         with:
-          go-version: 'stable'
+          python-version: '3.12'
 
-      - name: Install protodump
+      - name: Install Python dependencies
         if: steps.upgrade.outputs.has_version == 'true'
-        run: go install github.com/arkadiyt/protodump/cmd/protodump@latest
+        run: pip install protobuf
 
       - name: Download ProPresenter
         if: steps.upgrade.outputs.has_version == 'true'
@@ -108,62 +108,28 @@ jobs:
           echo "Found app at: $APP_PATH"
           echo "app_path=$APP_PATH" >> "$GITHUB_ENV"
 
-      - name: Run protodump
+      - name: Extract protos from binary
         if: steps.upgrade.outputs.has_version == 'true'
         run: |
           BINARY_PATH="${app_path}/Contents/MacOS/ProPresenter"
-          echo "Original binary:"
+          echo "Binary info:"
           ls -la "$BINARY_PATH"
           file "$BINARY_PATH"
 
           # Extract arm64 slice from universal binary
           lipo "$BINARY_PATH" -thin arm64 -output ProPresenter_arm64
-          echo "Extracted arm64 slice:"
+          echo "ARM64 slice:"
           ls -la ProPresenter_arm64
           file ProPresenter_arm64
 
-          mkdir -p proto
-          protodump -file ProPresenter_arm64 -output ./proto 2>&1 || true
-          echo "--- protodump exit code: $? ---"
-          echo "--- Contents of proto/ ---"
-          find ./proto -type f | head -50
-          ls -laR ./proto
-
-      - name: Scan binary for proto content
-        if: steps.upgrade.outputs.has_version == 'true'
-        run: |
-          BINARY_PATH="${app_path}/Contents/MacOS/ProPresenter"
-
-          echo "=== Searching for .proto file references ==="
-          strings "$BINARY_PATH" | grep -i '\.proto' | head -50
+          # Extract proto definitions from serialized FileDescriptorProto blobs
+          python3 scripts/extract_protos.py ProPresenter_arm64 ./proto
 
           echo ""
-          echo "=== Searching for protobuf syntax declarations ==="
-          strings "$BINARY_PATH" | grep -E '^syntax\s*=\s*"proto[23]"' | head -20
-
+          echo "--- Extracted .proto files ---"
+          find ./proto -name '*.proto' -type f | sort
           echo ""
-          echo "=== Searching for protobuf package declarations ==="
-          strings "$BINARY_PATH" | grep -E '^package\s+[a-z]' | head -30
-
-          echo ""
-          echo "=== Searching for protobuf message keywords ==="
-          strings "$BINARY_PATH" | grep -E '^message\s+[A-Z]' | head -30
-
-          echo ""
-          echo "=== Searching for google.protobuf references ==="
-          strings "$BINARY_PATH" | grep 'google.protobuf' | head -20
-
-          echo ""
-          echo "=== Searching for proto-style field type patterns ==="
-          strings "$BINARY_PATH" | grep -E '(repeated|optional|required)\s+(string|int32|int64|bool|bytes|double|float|uint32|uint64)\s+' | head -20
-
-          echo ""
-          echo "=== Searching for FileDescriptorProto markers ==="
-          strings "$BINARY_PATH" | grep -i 'filedescriptor' | head -20
-
-          echo ""
-          echo "=== All unique .proto filenames found ==="
-          strings "$BINARY_PATH" | grep -oE '[a-zA-Z0-9_/]+\.proto' | sort -u
+          echo "Total: $(find ./proto -name '*.proto' -type f | wc -l | tr -d ' ') .proto files"
 
       - name: Update version marker
         if: steps.upgrade.outputs.has_version == 'true'
