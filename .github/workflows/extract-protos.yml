@@ -129,6 +129,42 @@ jobs:
           find ./proto -type f | head -50
           ls -laR ./proto
 
+      - name: Scan binary for proto content
+        if: steps.upgrade.outputs.has_version == 'true'
+        run: |
+          BINARY_PATH="${app_path}/Contents/MacOS/ProPresenter"
+
+          echo "=== Searching for .proto file references ==="
+          strings "$BINARY_PATH" | grep -i '\.proto' | head -50
+
+          echo ""
+          echo "=== Searching for protobuf syntax declarations ==="
+          strings "$BINARY_PATH" | grep -E '^syntax\s*=\s*"proto[23]"' | head -20
+
+          echo ""
+          echo "=== Searching for protobuf package declarations ==="
+          strings "$BINARY_PATH" | grep -E '^package\s+[a-z]' | head -30
+
+          echo ""
+          echo "=== Searching for protobuf message keywords ==="
+          strings "$BINARY_PATH" | grep -E '^message\s+[A-Z]' | head -30
+
+          echo ""
+          echo "=== Searching for google.protobuf references ==="
+          strings "$BINARY_PATH" | grep 'google.protobuf' | head -20
+
+          echo ""
+          echo "=== Searching for proto-style field type patterns ==="
+          strings "$BINARY_PATH" | grep -E '(repeated|optional|required)\s+(string|int32|int64|bool|bytes|double|float|uint32|uint64)\s+' | head -20
+
+          echo ""
+          echo "=== Searching for FileDescriptorProto markers ==="
+          strings "$BINARY_PATH" | grep -i 'filedescriptor' | head -20
+
+          echo ""
+          echo "=== All unique .proto filenames found ==="
+          strings "$BINARY_PATH" | grep -oE '[a-zA-Z0-9_/]+\.proto' | sort -u
+
       - name: Update version marker
         if: steps.upgrade.outputs.has_version == 'true'
         run: |
