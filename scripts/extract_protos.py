@@ -537,10 +537,41 @@ def fmt_service(svc, lvl=0):
     return lines
 
 
+def infer_syntax(fdp):
+    """Infer the correct syntax when the descriptor's syntax field is empty.
+
+    The syntax field defaults to empty (proto2) in FileDescriptorProto, but
+    some proto3 files in the binary may not have the field set. Detect this
+    by checking field labels: proto2 requires 'required'/'optional' on every
+    singular field, while proto3 does not use 'required' at all.
+    """
+    if fdp.syntax:
+        return fdp.syntax
+
+    all_msgs = list(fdp.message_type)
+    i = 0
+    while i < len(all_msgs):
+        all_msgs.extend(all_msgs[i].nested_type)
+        i += 1
+
+    for msg in all_msgs:
+        for f in msg.field:
+            if f.label == FDP.LABEL_REQUIRED:
+                return 'proto2'
+            if f.HasField('default_value'):
+                return 'proto2'
+
+    has_fields = any(f for msg in all_msgs for f in msg.field)
+    if has_fields:
+        return 'proto3'
+
+    return 'proto2'
+
+
 def fdp_to_proto(fdp):
     """Reconstruct a .proto source file from a FileDescriptorProto."""
     parts = []
-    syntax = fdp.syntax or 'proto2'
+    syntax = infer_syntax(fdp)
     parts.append(f'syntax = "{syntax}";\n')
 
     if fdp.package:

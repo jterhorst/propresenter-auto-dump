@@ -163,6 +163,39 @@ jobs:
             echo "No .proto files extracted."
           fi
 
+      - name: Install protoc and swift-protobuf
+        if: steps.upgrade.outputs.has_version == 'true'
+        run: brew install protobuf swift-protobuf
+
+      - name: Generate Swift, Ruby, and C++ code
+        if: steps.upgrade.outputs.has_version == 'true'
+        run: |
+          if [ -d ./proto ] && [ "$(find ./proto -name '*.proto' -type f | wc -l)" -gt 0 ]; then
+            mkdir -p swift ruby cpp
+            TOTAL=0
+            FAILED=0
+            for f in proto/*.proto; do
+              TOTAL=$((TOTAL + 1))
+              if ! protoc \
+                --proto_path=proto \
+                --swift_out=swift \
+                --swift_opt=Visibility=Public \
+                --ruby_out=ruby \
+                --cpp_out=cpp \
+                "$f" 2>/dev/null; then
+                FAILED=$((FAILED + 1))
+                echo "Skipped $(basename "$f") (compile error)"
+              fi
+            done
+            echo ""
+            echo "Compiled $((TOTAL - FAILED))/$TOTAL proto files ($FAILED skipped)"
+            echo "Generated Swift files: $(find swift -name '*.pb.swift' | wc -l | tr -d ' ')"
+            echo "Generated Ruby files: $(find ruby -name '*_pb.rb' | wc -l | tr -d ' ')"
+            echo "Generated C++ files: $(find cpp -name '*.pb.h' | wc -l | tr -d ' ') headers, $(find cpp -name '*.pb.cc' | wc -l | tr -d ' ') sources"
+          else
+            echo "No proto files found, skipping code generation."
+          fi
+
       - name: Update version marker
         if: steps.upgrade.outputs.has_version == 'true'
         run: |
@@ -183,6 +216,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           [ -d proto ] && git add proto/
+          [ -d swift ] && git add swift/
+          [ -d ruby ] && git add ruby/
+          [ -d cpp ] && git add cpp/
           git add latest_version.txt
           if git diff --cached --quiet; then
             echo "No changes to commit."
