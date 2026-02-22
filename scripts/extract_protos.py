@@ -85,7 +85,49 @@ def find_by_name_field(data):
         i += 1
 
     print(f"  Strategy 1 (name field): {len(offsets)} candidates")
-    return try_parse_at_offsets(data, offsets)
+
+    # Show sample of unique names found
+    unique_names = sorted(set(name for _, name in offsets))
+    print(f"  Unique .proto names: {len(unique_names)}")
+    for name in unique_names[:20]:
+        print(f"    {name}")
+    if len(unique_names) > 20:
+        print(f"    ... and {len(unique_names) - 20} more")
+
+    results = try_parse_at_offsets(data, offsets)
+
+    # If no results from standard parsing, try debug parsing on first few
+    if not results and offsets:
+        print(f"\n  Debug: examining first 5 candidates in detail...")
+        for idx, (offset, name) in enumerate(offsets[:5]):
+            next_off = offsets[idx + 1][0] if idx + 1 < len(offsets) else len(data)
+            gap = next_off - offset
+            print(f"\n    [{idx}] name='{name}' offset={offset} gap_to_next={gap}")
+
+            # Show raw bytes around the offset
+            preview = data[offset:offset + min(64, gap)]
+            print(f"    hex: {preview.hex()}")
+
+            # Try parsing with exact gap size
+            chunk = data[offset:next_off]
+            fdp = descriptor_pb2.FileDescriptorProto()
+            try:
+                fdp.ParseFromString(chunk)
+                print(f"    parsed: name='{fdp.name}' package='{fdp.package}' "
+                      f"syntax='{fdp.syntax}' "
+                      f"msgs={len(fdp.message_type)} enums={len(fdp.enum_type)} "
+                      f"svcs={len(fdp.service)} deps={list(fdp.dependency)}")
+                for msg in fdp.message_type[:3]:
+                    print(f"      message: name='{msg.name}' fields={len(msg.field)}")
+                    for f in msg.field[:3]:
+                        print(f"        field: name='{f.name}' number={f.number} "
+                              f"type={f.type} type_name='{f.type_name}'")
+                score = score_fdp(fdp)
+                print(f"    score: {score}")
+            except Exception as e:
+                print(f"    parse error: {e}")
+
+    return results
 
 
 # -- Strategy 2: Scan for syntax markers and backtrack -------------------------
