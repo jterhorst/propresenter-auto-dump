@@ -103,6 +103,74 @@ def scan_fdp_length(data, offset):
     return pos - offset
 
 
+def try_parse_fdp(data, offset, name, max_size):
+    """Try to parse a FileDescriptorProto at the given offset.
+
+    Uses multiple approaches:
+    1. Field-scanned length
+    2. Various fixed sizes
+    3. Binary search for optimal boundary (largest size where name still matches)
+
+    Returns (fdp, score) or (None, 0).
+    """
+    scanned_len = scan_fdp_length(data, offset)
+
+    # Generate candidate sizes to try
+    try_sizes = sorted(set([
+        scanned_len,
+        max_size,
+        max_size // 2, max_size // 4,
+        128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536,
+        131072, 262144,
+    ]))
+
+    best, best_score = None, 0
+    largest_name_match = 0
+
+    for size in try_sizes:
+        if size < 20 or size > max(max_size, scanned_len + 1024):
+            continue
+        chunk = data[offset:offset + size]
+        fdp = descriptor_pb2.FileDescriptorProto()
+        try:
+            fdp.ParseFromString(chunk)
+        except Exception:
+            continue
+        if fdp.name != name:
+            continue
+        largest_name_match = max(largest_name_match, size)
+        s = score_fdp(fdp)
+        if s > best_score:
+            best_score = s
+            best = descriptor_pb2.FileDescriptorProto()
+            best.CopyFrom(fdp)
+
+    # Binary search: find the largest chunk where name still matches
+    # This gives us the best possible parse before the next FDP's name
+    # field overwrites ours
+    if largest_name_match > 0:
+        lo, hi = largest_name_match, min(max_size, len(data) - offset)
+        while lo < hi - 64:
+            mid = (lo + hi) // 2
+            chunk = data[offset:offset + mid]
+            fdp = descriptor_pb2.FileDescriptorProto()
+            try:
+                fdp.ParseFromString(chunk)
+                if fdp.name == name:
+                    lo = mid
+                    s = score_fdp(fdp)
+                    if s > best_score:
+                        best_score = s
+                        best = descriptor_pb2.FileDescriptorProto()
+                        best.CopyFrom(fdp)
+                else:
+                    hi = mid
+            except Exception:
+                hi = mid
+
+    return best, best_score
+
+
 def find_by_name_field(data):
     """Find FileDescriptorProto by scanning for field 1 (name) with .proto suffix."""
     offsets = []
@@ -134,6 +202,7 @@ def find_by_name_field(data):
     all_positions = [o for o, _ in sorted_offsets]
 
     results = {}
+    failed = []
     for name in unique_names:
         name_positions = [o for o, n in sorted_offsets if n == name]
         best, best_score = None, 0
@@ -143,31 +212,29 @@ def find_by_name_field(data):
             next_off = all_positions[idx] if idx < len(all_positions) else len(data)
             gap = next_off - offset
 
-            scanned_len = scan_fdp_length(data, offset)
+            fdp, score = try_parse_fdp(data, offset, name, gap)
+            if score > best_score:
+                best_score = score
+                best = fdp
 
-            try_sizes = sorted(set([
-                scanned_len,
-                gap,
-                gap // 2, gap // 4,
-                256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536
-            ]))
-
-            for size in try_sizes:
-                if size < 20 or size > max(gap, scanned_len + 1024):
-                    continue
-                chunk = data[offset:offset + size]
-                fdp = descriptor_pb2.FileDescriptorProto()
-                try:
-                    fdp.ParseFromString(chunk)
-                except Exception:
-                    continue
-                if fdp.name != name:
-                    continue
-                s = score_fdp(fdp)
-                if s > best_score:
-                    best_score = s
-                    best = descriptor_pb2.FileDescriptorProto()
-                    best.CopyFrom(fdp)
+            # Also try: offset might be inside a FileDescriptorSet container.
+            # The real FDP may start a few bytes after a container length prefix.
+            # Check if bytes before offset look like a container tag + length.
+            if best_score == 0 and offset >= 6:
+                for back in range(1, 6):
+                    pre_off = offset - back
+                    tag_val, after_tag = read_varint(data, pre_off)
+                    if tag_val == 0x0a:  # FileDescriptorSet field 1 tag
+                        container_len, fdp_start = read_varint(data, after_tag)
+                        if (container_len and fdp_start == offset and
+                                container_len < 1048576):
+                            # This IS a container-wrapped FDP
+                            fdp2, score2 = try_parse_fdp(
+                                data, offset, name, container_len)
+                            if score2 > best_score:
+                                best_score = score2
+                                best = fdp2
+                            break
 
             if best_score > 0:
                 break
@@ -185,7 +252,7 @@ def find_by_name_field(data):
                         fdp.ParseFromString(chunk)
                     except Exception:
                         continue
-                    if fdp.name == name and fdp.syntax:
+                    if fdp.name == name and (fdp.syntax or fdp.package):
                         best = descriptor_pb2.FileDescriptorProto()
                         best.CopyFrom(fdp)
                         best_score = max(score_fdp(fdp), 1)
@@ -198,8 +265,43 @@ def find_by_name_field(data):
             print(f"    {name}: {len(best.message_type)} msgs, "
                   f"{len(best.enum_type)} enums, {len(best.service)} svcs "
                   f"(score {best_score})")
+        else:
+            failed.append((name, name_positions))
 
-    print(f"  Parsed {len(results)}/{len(unique_names)} unique protos successfully")
+    if failed:
+        print(f"\n  Failed to parse {len(failed)} protos:")
+        for name, positions in failed:
+            # Diagnostic: show what happens at each position
+            diag_parts = []
+            for offset in positions[:3]:
+                idx = bisect.bisect_right(all_positions, offset)
+                next_off = all_positions[idx] if idx < len(all_positions) else len(data)
+                gap = next_off - offset
+                scanned = scan_fdp_length(data, offset)
+                # Quick parse attempt to see what we get
+                for sz in [gap, scanned, 256, 4096]:
+                    if sz < 20:
+                        continue
+                    chunk = data[offset:offset + min(sz, len(data) - offset)]
+                    fdp = descriptor_pb2.FileDescriptorProto()
+                    try:
+                        fdp.ParseFromString(chunk)
+                        diag_parts.append(
+                            f"off={offset} gap={gap} scan={scanned} "
+                            f"sz={sz}->name='{fdp.name}' pkg='{fdp.package}' "
+                            f"syn='{fdp.syntax}' msgs={len(fdp.message_type)} "
+                            f"enums={len(fdp.enum_type)}")
+                        break
+                    except Exception as e:
+                        diag_parts.append(
+                            f"off={offset} gap={gap} scan={scanned} "
+                            f"sz={sz}->ERR:{e}")
+                        break
+            print(f"    {name} ({len(positions)} occurrences)")
+            for d in diag_parts:
+                print(f"      {d}")
+
+    print(f"\n  Parsed {len(results)}/{len(unique_names)} unique protos successfully")
     return {n: fdp for n, (fdp, _) in results.items()}
 
 
@@ -223,6 +325,7 @@ def find_by_syntax_marker(data):
 
     results = {}
     for syn_off in syntax_offsets:
+        # Look for .proto name candidates within 64KB before the syntax marker
         search_start = max(0, syn_off - 65536)
         candidate_starts = []
         for j in range(search_start, syn_off):
@@ -231,25 +334,35 @@ def find_by_syntax_marker(data):
                 if slen and 3 <= slen <= 300 and s + slen <= len(data):
                     try:
                         name = data[s:s + slen].decode('ascii')
-                        if re.match(r'^[a-zA-Z0-9_/.\-]+$', name):
+                        if VALID_PROTO_NAME.match(name):
                             candidate_starts.append((j, name))
                     except (UnicodeDecodeError, ValueError):
                         pass
 
+        # Try each .proto name candidate, closest to syntax marker first
         for start, name in reversed(candidate_starts[-50:]):
-            end = min(syn_off + 256, len(data))
-            chunk = data[start:end]
-            fdp = descriptor_pb2.FileDescriptorProto()
-            try:
-                fdp.ParseFromString(chunk)
-            except Exception:
-                continue
-            if fdp.syntax and fdp.name and score_fdp(fdp) > 0:
-                s = score_fdp(fdp)
-                if fdp.name not in results or s > results[fdp.name][1]:
-                    results[fdp.name] = (fdp, s)
-                    print(f"    Found via syntax marker: {fdp.name} "
-                          f"({len(fdp.message_type)} msgs, score {s})")
+            scanned_len = scan_fdp_length(data, start)
+            # The syntax marker should be within the FDP, so use at least
+            # enough to include it plus some trailing content
+            min_size = syn_off - start + 256
+            for size in sorted(set([scanned_len, min_size, min_size * 2])):
+                if size < 20:
+                    continue
+                end = min(start + size, len(data))
+                chunk = data[start:end]
+                fdp = descriptor_pb2.FileDescriptorProto()
+                try:
+                    fdp.ParseFromString(chunk)
+                except Exception:
+                    continue
+                if fdp.syntax and fdp.name and fdp.name == name:
+                    s = max(score_fdp(fdp), 1)
+                    if fdp.name not in results or s > results[fdp.name][1]:
+                        results[fdp.name] = (fdp, s)
+                        print(f"    Found via syntax marker: {fdp.name} "
+                              f"({len(fdp.message_type)} msgs, score {s})")
+                    break
+            if name in results:
                 break
 
     return {n: fdp for n, (fdp, _) in results.items()}
