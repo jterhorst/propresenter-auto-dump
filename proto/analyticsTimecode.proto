@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+
+package rv.analytics.timecode;
+
+
+message Startup {
+  bool is_input_configured = 1;
+  bool is_enabled = 2;
+  bool is_playlist_selected = 3;
+}
+
+message Activate {
+  int32 playlist_item_count = 1;
+  int32 cue_count = 2;
+  bool is_startup = 3;
+}

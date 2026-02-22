@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+
+package rv.data;
+
+
+import "uuid.proto";
+
+
+
+message Zone {
+  rv.data.UUID uuid = 1;
+  string name = 2;
+  string hex_color = 3;
+}

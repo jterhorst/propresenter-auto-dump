@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+
+package rv.analytics.multitracks;
+
+
+enum Status {
+  DISABLED = 0;
+  CANCELLED = 1;
+  ACTIVE = 2;
+}
+
+message Startup {
+  rv.analytics.multitracks.Status chart_pro = 1;
+  rv.analytics.multitracks.Status propresenter_addon = 2;
+}
+
+message Import {
+  rv.analytics.multitracks.Status chart_pro = 1;
+  rv.analytics.multitracks.Status propresenter_addon = 2;
+  bool charts_automation = 3;
+  int32 lines = 4;
+}

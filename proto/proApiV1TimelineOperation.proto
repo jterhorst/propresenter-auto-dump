@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+
+package rv.data;
+
+
+enum API_v1_TimelineOperation {
+  play = 0;
+  pause = 1;
+  rewind = 2;
+}

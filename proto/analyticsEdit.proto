@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+
+package rv.analytics.edit;
+
+
+message Presentation {
+  enum ChangeType {
+    EDIT = 0;
+    UNDO = 1;
+    REDO = 2;
+  }
+
+  rv.analytics.edit.Presentation.ChangeType changeType = 1;
+  string uuid = 3;
+}

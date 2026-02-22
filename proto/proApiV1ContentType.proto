@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+
+package rv.data;
+
+
+enum API_v1_ContentType {
+  PNG = 0;
+  JPEG = 1;
+}

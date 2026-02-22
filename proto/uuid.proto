@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+
+package rv.data;
+
+
+import "customOptions.proto";
+
+
+
+message UUID {
+  string string = 1;
+}

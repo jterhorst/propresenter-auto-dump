@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+
+package rv.analytics.logs;
+
+
+enum DiffApplicationResult {
+  SUCCESS = 0;
+  FAILURE = 1;
+  AWAITING_OTHER_CHANGES = 2;
+}
+
+enum LogSource {
+  CLIENT = 0;
+  CORE = 1;
+}
+
+message LogWorkspacesPublished {
+  rv.analytics.logs.LogMetadata metadata = 1;
+  repeated string workspace_identifiers = 2;
+}
+
+message LogCollaboratorsPublished {
+  rv.analytics.logs.LogMetadata metadata = 1;
+  repeated string collaborator_names = 2;
+}
+
+message LogDocumentUploaded {
+  rv.analytics.logs.LogMetadata metadata = 1;
+  string document_identifier = 2;
+  string document_name = 3;
+}
+
+message LogDocumentDownloaded {
+  rv.analytics.logs.LogMetadata metadata = 1;
+  string document_identifier = 2;
+  string document_name = 3;
+}
+
+message LogDiffPushed {
+  rv.analytics.logs.LogMetadata metadata = 1;
+  string document_identifier = 2;
+  string document_name = 3;
+  string target_version_vector = 4;
+}
+
+message LogDiffReceived {
+  rv.analytics.logs.LogMetadata metadata = 1;
+  string document_identifier = 2;
+  string document_name = 4;
+  string version_vector = 5;
+  rv.analytics.logs.DiffApplicationResult import_result = 6;
+}
+
+message LogMetadata {
+  string peer_id = 1;
+  string log_message = 2;
+  string workspace_identifier = 3;
+  rv.analytics.logs.LogSource log_source = 4;
+}

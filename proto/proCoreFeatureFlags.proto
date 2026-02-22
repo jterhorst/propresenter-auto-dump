@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+
+package rv.data;
+
+
+message ResolvedFeatureFlags {
+  bool content_store_staging_enabled = 1;
+  bool staging_api_endpoint_enabled = 8;
+  bool pro_content_staging_enabled = 10;
+  bool core_networkapi_playlist = 11;
+  bool core_networkapi_presentation = 12;
+  bool core_client_sync = 15;
+  bool hdr_rendering_enabled = 17;
+  bool server_driven_feature_flags = 18;
+}

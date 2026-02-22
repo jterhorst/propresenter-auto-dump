@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+
+package rv.analytics.procontent;
+
+
+message MediaBinView {
+}
+
+message Download {
+}
+
+message DownloadRetry {
+}
