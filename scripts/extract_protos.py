@@ -10,10 +10,10 @@ Tries multiple strategies:
 Usage: python3 extract_protos.py <binary_path> <output_dir>
 """
 
+import bisect
 import sys
 import os
 import re
-import struct
 from google.protobuf import descriptor_pb2
 
 FDP = descriptor_pb2.FieldDescriptorProto
@@ -71,19 +71,17 @@ def scan_fdp_length(data, offset):
 
     Walk through consecutive protobuf fields. Stop when we hit something
     that doesn't look like a valid FileDescriptorProto field.
-    Valid field numbers for FileDescriptorProto: 1-12 (plus some extensions).
+    Valid field numbers for FileDescriptorProto: 1-13.
     """
-    VALID_FDP_FIELDS = set(range(1, 14))  # fields 1-13
+    VALID_FDP_FIELDS = set(range(1, 14))
     pos = offset
     end = len(data)
     while pos < end:
-        # Read field tag
         tag, new_pos = read_varint(data, pos)
         if tag is None or tag == 0:
             break
         field_number = tag >> 3
         wire_type = tag & 0x07
-        # Check if this is a valid FDP field number
         if field_number not in VALID_FDP_FIELDS:
             break
         pos = new_pos
@@ -101,7 +99,7 @@ def scan_fdp_length(data, offset):
         elif wire_type == 1:  # 64-bit
             pos += 8
         else:
-            break  # Unknown wire type
+            break
     return pos - offset
 
 
@@ -125,7 +123,6 @@ def find_by_name_field(data):
 
     print(f"  Strategy 1 (name field): {len(offsets)} raw candidates")
 
-    # Show sample of unique names found
     unique_names = sorted(set(name for _, name in offsets))
     print(f"  Unique .proto names: {len(unique_names)}")
     for name in unique_names[:20]:
@@ -133,39 +130,27 @@ def find_by_name_field(data):
     if len(unique_names) > 20:
         print(f"    ... and {len(unique_names) - 20} more")
 
-    # Sort offsets by position for efficient boundary detection
-    import bisect
     sorted_offsets = sorted(offsets, key=lambda x: x[0])
     all_positions = [o for o, _ in sorted_offsets]
 
-    # For each unique name, try parsing at each occurrence
     results = {}
-    debug_count = 0
     for name in unique_names:
-        # Find all positions for this name
         name_positions = [o for o, n in sorted_offsets if n == name]
         best, best_score = None, 0
 
         for offset in name_positions:
-            # Find next candidate (any name) after this offset using binary search
             idx = bisect.bisect_right(all_positions, offset)
             next_off = all_positions[idx] if idx < len(all_positions) else len(data)
             gap = next_off - offset
 
-            # Method A: Use field-scanning to determine the actual FDP length
             scanned_len = scan_fdp_length(data, offset)
 
-            # Method B: Try various chunk sizes including the scanned length
             try_sizes = sorted(set([
                 scanned_len,
                 gap,
                 gap // 2, gap // 4,
                 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536
             ]))
-
-            # Debug: print details for first 10 unique names
-            if debug_count < 10 and offset == name_positions[0]:
-                print(f"\n  DEBUG [{name}] offset={offset}, gap={gap}, scanned_len={scanned_len}")
 
             for size in try_sizes:
                 if size < 20 or size > max(gap, scanned_len + 1024):
@@ -174,47 +159,20 @@ def find_by_name_field(data):
                 fdp = descriptor_pb2.FileDescriptorProto()
                 try:
                     fdp.ParseFromString(chunk)
-                except Exception as e:
-                    if debug_count < 10 and offset == name_positions[0] and size == scanned_len:
-                        print(f"    size={size}: PARSE ERROR: {e}")
+                except Exception:
                     continue
                 if fdp.name != name:
-                    if debug_count < 10 and offset == name_positions[0] and size == scanned_len:
-                        print(f"    size={size}: name mismatch: got '{fdp.name}' expected '{name}'")
                     continue
                 s = score_fdp(fdp)
-
-                if debug_count < 10 and offset == name_positions[0]:
-                    if size in (scanned_len, gap) or s > 0:
-                        msg_names = [m.name for m in fdp.message_type[:5]]
-                        enum_names = [e.name for e in fdp.enum_type[:5]]
-                        print(f"    size={size}: name='{fdp.name}' pkg='{fdp.package}' "
-                              f"syntax='{fdp.syntax}' msgs={len(fdp.message_type)} "
-                              f"enums={len(fdp.enum_type)} svcs={len(fdp.service)} "
-                              f"deps={len(fdp.dependency)} score={s}")
-                        if msg_names:
-                            print(f"      msg_names: {msg_names}")
-                            # Show validity of first message's fields
-                            if fdp.message_type:
-                                m0 = fdp.message_type[0]
-                                field_names = [(f.name, is_valid_ident(f.name)) for f in m0.field[:5]]
-                                print(f"      msg[0] '{m0.name}' valid={is_valid_ident(m0.name)} fields={field_names}")
-                        if enum_names:
-                            print(f"      enum_names: {enum_names}")
-
                 if s > best_score:
                     best_score = s
                     best = descriptor_pb2.FileDescriptorProto()
                     best.CopyFrom(fdp)
 
-            if debug_count < 10 and offset == name_positions[0]:
-                debug_count += 1
-
             if best_score > 0:
-                break  # Got a good parse, no need to try other occurrences
+                break
 
         # Accept protos with score 0 if they have valid structure
-        # (some proto files may only contain imports/options with no messages)
         if best is None:
             for offset in name_positions:
                 scanned_len = scan_fdp_length(data, offset)
@@ -237,12 +195,11 @@ def find_by_name_field(data):
 
         if best and best_score > 0:
             results[name] = (best, best_score)
-            if debug_count >= 10:  # Only print for non-debug ones
-                print(f"    {name}: {len(best.message_type)} msgs, "
-                      f"{len(best.enum_type)} enums, {len(best.service)} svcs "
-                      f"(score {best_score})")
+            print(f"    {name}: {len(best.message_type)} msgs, "
+                  f"{len(best.enum_type)} enums, {len(best.service)} svcs "
+                  f"(score {best_score})")
 
-    print(f"\n  Parsed {len(results)}/{len(unique_names)} unique protos successfully")
+    print(f"  Parsed {len(results)}/{len(unique_names)} unique protos successfully")
     return {n: fdp for n, (fdp, _) in results.items()}
 
 
@@ -250,7 +207,6 @@ def find_by_name_field(data):
 
 def find_by_syntax_marker(data):
     """Find FileDescriptorProto by locating syntax='proto3'/'proto2' markers."""
-    # Field 12 (syntax), wire type 2 = tag 0x62, then varint length, then string
     markers = [b'\x62\x06proto3', b'\x62\x06proto2']
     syntax_offsets = []
 
@@ -267,9 +223,6 @@ def find_by_syntax_marker(data):
 
     results = {}
     for syn_off in syntax_offsets:
-        # Backtrack: try parsing from offsets before the syntax field
-        # The name field (field 1) must come before syntax (field 12)
-        # Try at each 0x0a byte (potential field 1 tag) within 64KB before the marker
         search_start = max(0, syn_off - 65536)
         candidate_starts = []
         for j in range(search_start, syn_off):
@@ -278,13 +231,11 @@ def find_by_syntax_marker(data):
                 if slen and 3 <= slen <= 300 and s + slen <= len(data):
                     try:
                         name = data[s:s + slen].decode('ascii')
-                        # Accept any reasonable string, not just .proto
                         if re.match(r'^[a-zA-Z0-9_/.\-]+$', name):
                             candidate_starts.append((j, name))
                     except (UnicodeDecodeError, ValueError):
                         pass
 
-        # Try parsing the most promising candidates (those closest to the syntax marker)
         for start, name in reversed(candidate_starts[-50:]):
             end = min(syn_off + 256, len(data))
             chunk = data[start:end]
@@ -299,7 +250,7 @@ def find_by_syntax_marker(data):
                     results[fdp.name] = (fdp, s)
                     print(f"    Found via syntax marker: {fdp.name} "
                           f"({len(fdp.message_type)} msgs, score {s})")
-                break  # Found a valid parse for this marker
+                break
 
     return {n: fdp for n, (fdp, _) in results.items()}
 
@@ -308,10 +259,6 @@ def find_by_syntax_marker(data):
 
 def find_descriptor_set(data):
     """Try to find a serialized FileDescriptorSet blob."""
-    # A FileDescriptorSet has field 1 (repeated FileDescriptorProto)
-    # Each entry is: tag 0x0a + varint length + serialized FileDescriptorProto
-    # The inner FileDescriptorProto also starts with 0x0a (its name field)
-    # So we look for: 0x0a <outer_len> 0x0a <name_len> <ascii_string>
     results = {}
     i = 0
     tried = 0
@@ -342,11 +289,9 @@ def find_descriptor_set(data):
             i += 1
             continue
 
-        # This looks like a FileDescriptorSet entry - try parsing the whole set
         tried += 1
         if tried > 200:
             break
-        # Try parsing from offset i as a FileDescriptorSet
         for try_len in [outer_len + (after_outer - i) + 4096, 65536, 262144, 1048576]:
             end = min(i + try_len, len(data))
             chunk = data[i:end]
@@ -367,64 +312,6 @@ def find_descriptor_set(data):
         i += 1
 
     print(f"  Strategy 3 (FileDescriptorSet): {len(results)} files found")
-    return {n: fdp for n, (fdp, _) in results.items()}
-
-
-# -- Common parsing helper ----------------------------------------------------
-
-def try_parse_at_offsets(data, offsets):
-    """Try to parse FileDescriptorProto at given (offset, name) pairs."""
-    results = {}
-    for idx, (offset, name) in enumerate(offsets):
-        next_off = offsets[idx + 1][0] if idx + 1 < len(offsets) else len(data)
-        gap = next_off - offset
-
-        best, best_score = None, 0
-
-        # Try the exact gap first (most likely to be correct boundary),
-        # then try smaller sizes. Don't cap at 524KB since descriptors can be large.
-        try_sizes = sorted(set([gap, gap // 2, gap // 4,
-                                4096, 16384, 65536, 262144, 524288, 1048576]))
-        for size in try_sizes:
-            if size < 256 or size > gap:
-                continue
-            chunk = data[offset:offset + size]
-            fdp = descriptor_pb2.FileDescriptorProto()
-            try:
-                fdp.ParseFromString(chunk)
-            except Exception:
-                continue
-            if fdp.name != name:
-                continue
-            s = score_fdp(fdp)
-            if s > best_score:
-                best_score = s
-                best = descriptor_pb2.FileDescriptorProto()
-                best.CopyFrom(fdp)
-
-        # Also accept score 0 if the FDP has a valid name, package, and syntax
-        # (some proto files may only contain imports or options with no messages)
-        if best is None and gap > 0:
-            chunk = data[offset:offset + gap]
-            fdp = descriptor_pb2.FileDescriptorProto()
-            try:
-                fdp.ParseFromString(chunk)
-                if fdp.name == name and (fdp.message_type or fdp.enum_type or
-                                          fdp.service or fdp.syntax):
-                    best = descriptor_pb2.FileDescriptorProto()
-                    best.CopyFrom(fdp)
-                    best_score = max(score_fdp(fdp), 1)
-            except Exception:
-                pass
-
-        if best and best_score > 0:
-            prev = results.get(name)
-            if not prev or best_score > prev[1]:
-                results[name] = (best, best_score)
-                print(f"    {name}: {len(best.message_type)} msgs, "
-                      f"{len(best.enum_type)} enums, {len(best.service)} svcs "
-                      f"(score {best_score})")
-
     return {n: fdp for n, (fdp, _) in results.items()}
 
 

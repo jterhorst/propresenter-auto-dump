@@ -74,7 +74,9 @@ jobs:
           # Check if this version is already extracted
           LAST_BUILD="${{ steps.last_version.outputs.build_number }}"
           if [ "$BUILD_NUMBER" = "$LAST_BUILD" ]; then
-            echo "Version $VERSION (build $BUILD_NUMBER) already extracted, but proceeding anyway for debugging."
+            echo "Version $VERSION (build $BUILD_NUMBER) already extracted. Skipping."
+            echo "has_version=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
 
           echo "has_version=true" >> "$GITHUB_OUTPUT"
@@ -107,29 +109,6 @@ jobs:
           APP_PATH=$(find . -maxdepth 2 -name "ProPresenter.app" -type d | head -1)
           echo "Found app at: $APP_PATH"
           echo "app_path=$APP_PATH" >> "$GITHUB_ENV"
-
-      - name: Search app bundle for proto resources
-        if: steps.upgrade.outputs.has_version == 'true'
-        run: |
-          echo "=== Proto-related files in app bundle ==="
-          find "${app_path}" -type f \( -name '*.proto' -o -name '*.desc' -o -name '*.pb' -o -name '*.bin' -o -name '*descriptor*' -o -name '*protobuf*' \) 2>/dev/null || echo "  (none found)"
-
-          echo ""
-          echo "=== Mach-O binaries in app bundle ==="
-          find "${app_path}" -type f -perm +111 | while read f; do
-            if file "$f" | grep -q 'Mach-O'; then
-              echo "  $f"
-            fi
-          done
-
-          echo ""
-          echo "=== Proto message type names in binary ==="
-          BINARY="${app_path}/Contents/MacOS/ProPresenter"
-          strings "$BINARY" | grep -E '^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+\.[A-Z][A-Za-z0-9_]+$' | grep -v '^com\.\|^org\.\|^io\.\|^net\.\|^apple\.\|^swift\.' | sort -u | head -50
-
-          echo ""
-          echo "=== Strings containing 'proto' (unique, excluding google.protobuf type names) ==="
-          strings "$BINARY" | grep -i proto | grep -v '^google\.protobuf\.\|^Google_Protobuf_\|^swift\.protobuf\|SwiftProtobuf\|_protobuf_\|protoMessage\|PROTOBUF_' | sort -u | head -50
 
       - name: Extract protos from binary
         if: steps.upgrade.outputs.has_version == 'true'
