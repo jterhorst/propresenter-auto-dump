@@ -2,12 +2,18 @@
 """Extract serialized FileDescriptorProto blobs from a Mach-O binary
 and reconstruct .proto source files.
 
+Tries multiple strategies:
+1. Scan for field-1 (name) tags pointing to .proto filenames
+2. Scan for syntax field markers (proto3/proto2) and backtrack to find message start
+3. Try to parse entire __DATA segments as FileDescriptorSet
+
 Usage: python3 extract_protos.py <binary_path> <output_dir>
 """
 
 import sys
 import os
 import re
+import struct
 from google.protobuf import descriptor_pb2
 
 FDP = descriptor_pb2.FieldDescriptorProto
@@ -43,29 +49,6 @@ def read_varint(data, offset):
     return None, offset
 
 
-# -- Binary scanning -----------------------------------------------------------
-
-def find_proto_offsets(data):
-    """Find byte offsets that look like starts of FileDescriptorProto messages."""
-    offsets = []
-    i = 0
-    while i < len(data) - 10:
-        # Tag 0x0a = field 1 (name), wire type 2 (length-delimited)
-        if data[i] != 0x0a:
-            i += 1
-            continue
-        slen, start = read_varint(data, i + 1)
-        if slen and 5 <= slen <= 300 and start + slen <= len(data):
-            try:
-                name = data[start:start + slen].decode('ascii')
-                if VALID_PROTO_NAME.match(name):
-                    offsets.append((i, name))
-            except (UnicodeDecodeError, ValueError):
-                pass
-        i += 1
-    return offsets
-
-
 def score_fdp(fdp):
     """Score how much valid content a parsed FileDescriptorProto has."""
     score = 0
@@ -81,14 +64,160 @@ def score_fdp(fdp):
     return score
 
 
-def extract_descriptors(data):
-    """Extract FileDescriptorProto messages from binary data."""
-    offsets = find_proto_offsets(data)
-    print(f"  Found {len(offsets)} candidate offsets")
+# -- Strategy 1: Scan for .proto name fields -----------------------------------
+
+def find_by_name_field(data):
+    """Find FileDescriptorProto by scanning for field 1 (name) with .proto suffix."""
+    offsets = []
+    i = 0
+    while i < len(data) - 10:
+        if data[i] != 0x0a:
+            i += 1
+            continue
+        slen, start = read_varint(data, i + 1)
+        if slen and 5 <= slen <= 300 and start + slen <= len(data):
+            try:
+                name = data[start:start + slen].decode('ascii')
+                if VALID_PROTO_NAME.match(name):
+                    offsets.append((i, name))
+            except (UnicodeDecodeError, ValueError):
+                pass
+        i += 1
+
+    print(f"  Strategy 1 (name field): {len(offsets)} candidates")
+    return try_parse_at_offsets(data, offsets)
+
+
+# -- Strategy 2: Scan for syntax markers and backtrack -------------------------
+
+def find_by_syntax_marker(data):
+    """Find FileDescriptorProto by locating syntax='proto3'/'proto2' markers."""
+    # Field 12 (syntax), wire type 2 = tag 0x62, then varint length, then string
+    markers = [b'\x62\x06proto3', b'\x62\x06proto2']
+    syntax_offsets = []
+
+    for marker in markers:
+        pos = 0
+        while True:
+            idx = data.find(marker, pos)
+            if idx == -1:
+                break
+            syntax_offsets.append(idx)
+            pos = idx + 1
+
+    print(f"  Strategy 2 (syntax marker): {len(syntax_offsets)} syntax markers found")
 
     results = {}
+    for syn_off in syntax_offsets:
+        # Backtrack: try parsing from offsets before the syntax field
+        # The name field (field 1) must come before syntax (field 12)
+        # Try at each 0x0a byte (potential field 1 tag) within 64KB before the marker
+        search_start = max(0, syn_off - 65536)
+        candidate_starts = []
+        for j in range(search_start, syn_off):
+            if data[j] == 0x0a:
+                slen, s = read_varint(data, j + 1)
+                if slen and 3 <= slen <= 300 and s + slen <= len(data):
+                    try:
+                        name = data[s:s + slen].decode('ascii')
+                        # Accept any reasonable string, not just .proto
+                        if re.match(r'^[a-zA-Z0-9_/.\-]+$', name):
+                            candidate_starts.append((j, name))
+                    except (UnicodeDecodeError, ValueError):
+                        pass
+
+        # Try parsing the most promising candidates (those closest to the syntax marker)
+        for start, name in reversed(candidate_starts[-50:]):
+            end = min(syn_off + 256, len(data))
+            chunk = data[start:end]
+            fdp = descriptor_pb2.FileDescriptorProto()
+            try:
+                fdp.ParseFromString(chunk)
+            except Exception:
+                continue
+            if fdp.syntax and fdp.name and score_fdp(fdp) > 0:
+                s = score_fdp(fdp)
+                if fdp.name not in results or s > results[fdp.name][1]:
+                    results[fdp.name] = (fdp, s)
+                    print(f"    Found via syntax marker: {fdp.name} "
+                          f"({len(fdp.message_type)} msgs, score {s})")
+                break  # Found a valid parse for this marker
+
+    return {n: fdp for n, (fdp, _) in results.items()}
+
+
+# -- Strategy 3: Search for FileDescriptorSet ---------------------------------
+
+def find_descriptor_set(data):
+    """Try to find a serialized FileDescriptorSet blob."""
+    # A FileDescriptorSet has field 1 (repeated FileDescriptorProto)
+    # Each entry is: tag 0x0a + varint length + serialized FileDescriptorProto
+    # The inner FileDescriptorProto also starts with 0x0a (its name field)
+    # So we look for: 0x0a <outer_len> 0x0a <name_len> <ascii_string>
+    results = {}
+    i = 0
+    tried = 0
+    while i < len(data) - 20:
+        if data[i] != 0x0a:
+            i += 1
+            continue
+        outer_len, after_outer = read_varint(data, i + 1)
+        if not outer_len or outer_len < 20 or outer_len > 524288:
+            i += 1
+            continue
+        if after_outer >= len(data) or data[after_outer] != 0x0a:
+            i += 1
+            continue
+        inner_len, after_inner = read_varint(data, after_outer + 1)
+        if not inner_len or inner_len < 3 or inner_len > 300:
+            i += 1
+            continue
+        if after_inner + inner_len > len(data):
+            i += 1
+            continue
+        try:
+            name = data[after_inner:after_inner + inner_len].decode('ascii')
+        except (UnicodeDecodeError, ValueError):
+            i += 1
+            continue
+        if not re.match(r'^[a-zA-Z0-9_/.\-]+$', name):
+            i += 1
+            continue
+
+        # This looks like a FileDescriptorSet entry - try parsing the whole set
+        tried += 1
+        if tried > 200:
+            break
+        # Try parsing from offset i as a FileDescriptorSet
+        for try_len in [outer_len + (after_outer - i) + 4096, 65536, 262144, 1048576]:
+            end = min(i + try_len, len(data))
+            chunk = data[i:end]
+            fds = descriptor_pb2.FileDescriptorSet()
+            try:
+                fds.ParseFromString(chunk)
+            except Exception:
+                continue
+            valid_files = [f for f in fds.file if f.name and score_fdp(f) > 0]
+            if valid_files:
+                for f in valid_files:
+                    s = score_fdp(f)
+                    if f.name not in results or s > results[f.name][1]:
+                        results[f.name] = (f, s)
+                print(f"    Found FileDescriptorSet at offset {i} with "
+                      f"{len(valid_files)} valid file(s)")
+                break
+        i += 1
+
+    print(f"  Strategy 3 (FileDescriptorSet): {len(results)} files found")
+    return {n: fdp for n, (fdp, _) in results.items()}
+
+
+# -- Common parsing helper ----------------------------------------------------
+
+def try_parse_at_offsets(data, offsets):
+    """Try to parse FileDescriptorProto at given (offset, name) pairs."""
+    results = {}
     for idx, (offset, name) in enumerate(offsets):
-        # Bound chunk size: up to next candidate or 512KB max
         next_off = offsets[idx + 1][0] if idx + 1 < len(offsets) else len(data)
         max_chunk = min(next_off - offset, 524288)
 
@@ -115,7 +244,7 @@ def extract_descriptors(data):
             prev = results.get(name)
             if not prev or best_score > prev[1]:
                 results[name] = (best, best_score)
-                print(f"  {name}: {len(best.message_type)} msgs, "
+                print(f"    {name}: {len(best.message_type)} msgs, "
                       f"{len(best.enum_type)} enums, {len(best.service)} svcs "
                       f"(score {best_score})")
 
@@ -155,14 +284,12 @@ def fmt_message(msg, lvl=0):
         return []
     lines = [f'{ind(lvl)}message {msg.name} {{']
 
-    # Nested enums
     for e in msg.enum_type:
         el = fmt_enum(e, lvl + 1)
         if el:
             lines.extend(el)
             lines.append('')
 
-    # Nested messages (skip map entries)
     for n in msg.nested_type:
         if not is_map_entry(n):
             ml = fmt_message(n, lvl + 1)
@@ -170,10 +297,8 @@ def fmt_message(msg, lvl=0):
                 lines.extend(ml)
                 lines.append('')
 
-    # Map entry lookup for map field detection
     map_entries = {n.name: n for n in msg.nested_type if is_map_entry(n)}
 
-    # Collect real oneof fields (not proto3 optional synthetic oneofs)
     oneof_fields = {}
     for f in msg.field:
         if f.HasField('oneof_index') and not f.proto3_optional:
@@ -190,12 +315,10 @@ def fmt_message(msg, lvl=0):
             lines.append(f'{ind(lvl+1)}}}')
             lines.append('')
 
-    # Regular fields
     for f in msg.field:
         if f.number in written or not is_valid_ident(f.name):
             continue
 
-        # Map field detection
         if f.type == FDP.TYPE_MESSAGE and f.label == FDP.LABEL_REPEATED:
             entry_name = f.type_name.split('.')[-1]
             if entry_name in map_entries:
@@ -283,12 +406,41 @@ def main():
         data = f.read()
     print(f'Size: {len(data):,} bytes\n')
 
-    print('Scanning for FileDescriptorProto blobs...')
-    descriptors = extract_descriptors(data)
+    # Try all strategies and merge results
+    all_descriptors = {}
 
-    if not descriptors:
-        print('\nNo FileDescriptorProto blobs found.')
+    print('Strategy 1: Scanning for .proto name fields...')
+    d1 = find_by_name_field(data)
+    all_descriptors.update(d1)
+
+    print('\nStrategy 2: Scanning for syntax markers...')
+    d2 = find_by_syntax_marker(data)
+    for name, fdp in d2.items():
+        if name not in all_descriptors:
+            all_descriptors[name] = fdp
+
+    print('\nStrategy 3: Scanning for FileDescriptorSet...')
+    d3 = find_descriptor_set(data)
+    for name, fdp in d3.items():
+        if name not in all_descriptors:
+            all_descriptors[name] = fdp
+
+    # Filter out google/protobuf well-known types (keep app-specific ones)
+    app_descriptors = {n: f for n, f in all_descriptors.items()
+                       if not n.startswith('google/')}
+    google_descriptors = {n: f for n, f in all_descriptors.items()
+                          if n.startswith('google/')}
+
+    if google_descriptors:
+        print(f'\nSkipping {len(google_descriptors)} google/protobuf standard types:')
+        for name in sorted(google_descriptors):
+            print(f'  {name}')
+
+    if not all_descriptors:
+        print('\nNo FileDescriptorProto blobs found by any strategy.')
         sys.exit(0)
+
+    descriptors = app_descriptors if app_descriptors else all_descriptors
 
     print(f'\nReconstructing {len(descriptors)} .proto files...')
     os.makedirs(output_dir, exist_ok=True)

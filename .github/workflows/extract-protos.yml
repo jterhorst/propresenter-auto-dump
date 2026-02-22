@@ -108,6 +108,29 @@ jobs:
           echo "Found app at: $APP_PATH"
           echo "app_path=$APP_PATH" >> "$GITHUB_ENV"
 
+      - name: Search app bundle for proto resources
+        if: steps.upgrade.outputs.has_version == 'true'
+        run: |
+          echo "=== Proto-related files in app bundle ==="
+          find "${app_path}" -type f \( -name '*.proto' -o -name '*.desc' -o -name '*.pb' -o -name '*.bin' -o -name '*descriptor*' -o -name '*protobuf*' \) 2>/dev/null || echo "  (none found)"
+
+          echo ""
+          echo "=== Mach-O binaries in app bundle ==="
+          find "${app_path}" -type f -perm +111 | while read f; do
+            if file "$f" | grep -q 'Mach-O'; then
+              echo "  $f"
+            fi
+          done
+
+          echo ""
+          echo "=== Proto message type names in binary ==="
+          BINARY="${app_path}/Contents/MacOS/ProPresenter"
+          strings "$BINARY" | grep -E '^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+\.[A-Z][A-Za-z0-9_]+$' | grep -v '^com\.\|^org\.\|^io\.\|^net\.\|^apple\.\|^swift\.' | sort -u | head -50
+
+          echo ""
+          echo "=== Strings containing 'proto' (unique, excluding google.protobuf type names) ==="
+          strings "$BINARY" | grep -i proto | grep -v '^google\.protobuf\.\|^Google_Protobuf_\|^swift\.protobuf\|SwiftProtobuf\|_protobuf_\|protoMessage\|PROTOBUF_' | sort -u | head -50
+
       - name: Extract protos from binary
         if: steps.upgrade.outputs.has_version == 'true'
         run: |
@@ -122,14 +145,18 @@ jobs:
           ls -la ProPresenter_arm64
           file ProPresenter_arm64
 
-          # Extract proto definitions from serialized FileDescriptorProto blobs
+          # Run extraction script (tries multiple strategies)
           python3 scripts/extract_protos.py ProPresenter_arm64 ./proto
 
           echo ""
-          echo "--- Extracted .proto files ---"
-          find ./proto -name '*.proto' -type f | sort
-          echo ""
-          echo "Total: $(find ./proto -name '*.proto' -type f | wc -l | tr -d ' ') .proto files"
+          if [ -d ./proto ]; then
+            echo "--- Extracted .proto files ---"
+            find ./proto -name '*.proto' -type f | sort
+            echo ""
+            echo "Total: $(find ./proto -name '*.proto' -type f | wc -l | tr -d ' ') .proto files"
+          else
+            echo "No .proto files extracted."
+          fi
 
       - name: Update version marker
         if: steps.upgrade.outputs.has_version == 'true'
@@ -150,7 +177,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add proto/ latest_version.txt
+          [ -d proto ] && git add proto/
+          git add latest_version.txt
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
