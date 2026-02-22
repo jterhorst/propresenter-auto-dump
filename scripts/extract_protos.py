@@ -84,7 +84,7 @@ def find_by_name_field(data):
                 pass
         i += 1
 
-    print(f"  Strategy 1 (name field): {len(offsets)} candidates")
+    print(f"  Strategy 1 (name field): {len(offsets)} raw candidates")
 
     # Show sample of unique names found
     unique_names = sorted(set(name for _, name in offsets))
@@ -94,40 +94,61 @@ def find_by_name_field(data):
     if len(unique_names) > 20:
         print(f"    ... and {len(unique_names) - 20} more")
 
-    results = try_parse_at_offsets(data, offsets)
+    # For each unique name, collect all offsets. The serialized FDP likely
+    # starts at the first occurrence where the gap to the next candidate
+    # contains valid proto data.
+    from collections import defaultdict
+    name_offsets = defaultdict(list)
+    for offset, name in offsets:
+        name_offsets[name].append(offset)
 
-    # If no results from standard parsing, try debug parsing on first few
-    if not results and offsets:
-        print(f"\n  Debug: examining first 5 candidates in detail...")
-        for idx, (offset, name) in enumerate(offsets[:5]):
-            next_off = offsets[idx + 1][0] if idx + 1 < len(offsets) else len(data)
+    # Build deduped list: for each unique name, try each occurrence
+    results = {}
+    for name in unique_names:
+        offs = name_offsets[name]
+        best, best_score = None, 0
+
+        for oi, offset in enumerate(offs):
+            # Find the next candidate offset (any name) after this one
+            # Binary search in the full sorted offset list
+            next_off = None
+            for o, n in offsets:
+                if o > offset and n != name:
+                    next_off = o
+                    break
+            if next_off is None:
+                next_off = min(offset + 1048576, len(data))
+
             gap = next_off - offset
-            print(f"\n    [{idx}] name='{name}' offset={offset} gap_to_next={gap}")
+            # Try parsing with the gap as boundary
+            for size in sorted(set([gap, gap // 2, 4096, 16384, 65536])):
+                if size < 256 or size > gap:
+                    continue
+                chunk = data[offset:offset + size]
+                fdp = descriptor_pb2.FileDescriptorProto()
+                try:
+                    fdp.ParseFromString(chunk)
+                except Exception:
+                    continue
+                if fdp.name != name:
+                    continue
+                s = score_fdp(fdp)
+                if s > best_score:
+                    best_score = s
+                    best = descriptor_pb2.FileDescriptorProto()
+                    best.CopyFrom(fdp)
 
-            # Show raw bytes around the offset
-            preview = data[offset:offset + min(64, gap)]
-            print(f"    hex: {preview.hex()}")
+            if best_score > 0:
+                break  # Got a good parse, no need to try other occurrences
 
-            # Try parsing with exact gap size
-            chunk = data[offset:next_off]
-            fdp = descriptor_pb2.FileDescriptorProto()
-            try:
-                fdp.ParseFromString(chunk)
-                print(f"    parsed: name='{fdp.name}' package='{fdp.package}' "
-                      f"syntax='{fdp.syntax}' "
-                      f"msgs={len(fdp.message_type)} enums={len(fdp.enum_type)} "
-                      f"svcs={len(fdp.service)} deps={list(fdp.dependency)}")
-                for msg in fdp.message_type[:3]:
-                    print(f"      message: name='{msg.name}' fields={len(msg.field)}")
-                    for f in msg.field[:3]:
-                        print(f"        field: name='{f.name}' number={f.number} "
-                              f"type={f.type} type_name='{f.type_name}'")
-                score = score_fdp(fdp)
-                print(f"    score: {score}")
-            except Exception as e:
-                print(f"    parse error: {e}")
+        if best and best_score > 0:
+            results[name] = (best, best_score)
+            print(f"    {name}: {len(best.message_type)} msgs, "
+                  f"{len(best.enum_type)} enums, {len(best.service)} svcs "
+                  f"(score {best_score})")
 
-    return results
+    print(f"  Parsed {len(results)}/{len(unique_names)} unique protos successfully")
+    return {n: fdp for n, (fdp, _) in results.items()}
 
 
 # -- Strategy 2: Scan for syntax markers and backtrack -------------------------
@@ -261,12 +282,16 @@ def try_parse_at_offsets(data, offsets):
     results = {}
     for idx, (offset, name) in enumerate(offsets):
         next_off = offsets[idx + 1][0] if idx + 1 < len(offsets) else len(data)
-        max_chunk = min(next_off - offset, 524288)
+        gap = next_off - offset
 
         best, best_score = None, 0
-        try_sizes = sorted(set([max_chunk, max_chunk // 2, 4096, 16384, 65536, 262144]))
+
+        # Try the exact gap first (most likely to be correct boundary),
+        # then try smaller sizes. Don't cap at 524KB since descriptors can be large.
+        try_sizes = sorted(set([gap, gap // 2, gap // 4,
+                                4096, 16384, 65536, 262144, 524288, 1048576]))
         for size in try_sizes:
-            if size < 256 or size > max_chunk:
+            if size < 256 or size > gap:
                 continue
             chunk = data[offset:offset + size]
             fdp = descriptor_pb2.FileDescriptorProto()
@@ -281,6 +306,21 @@ def try_parse_at_offsets(data, offsets):
                 best_score = s
                 best = descriptor_pb2.FileDescriptorProto()
                 best.CopyFrom(fdp)
+
+        # Also accept score 0 if the FDP has a valid name, package, and syntax
+        # (some proto files may only contain imports or options with no messages)
+        if best is None and gap > 0:
+            chunk = data[offset:offset + gap]
+            fdp = descriptor_pb2.FileDescriptorProto()
+            try:
+                fdp.ParseFromString(chunk)
+                if fdp.name == name and (fdp.message_type or fdp.enum_type or
+                                          fdp.service or fdp.syntax):
+                    best = descriptor_pb2.FileDescriptorProto()
+                    best.CopyFrom(fdp)
+                    best_score = max(score_fdp(fdp), 1)
+            except Exception:
+                pass
 
         if best and best_score > 0:
             prev = results.get(name)
