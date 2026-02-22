@@ -39,17 +39,35 @@ jobs:
 
           if [ "$UPGRADE_COUNT" -gt 0 ]; then
             LATEST=$(echo "$RESPONSE" | jq '.upgrades[-1]')
+            echo "--- Latest upgrade entry ---"
+            echo "$LATEST" | jq .
             DOWNLOAD_URL=$(echo "$LATEST" | jq -r '.downloadUrl')
             VERSION=$(echo "$LATEST" | jq -r '.version')
             BUILD_NUMBER=$(echo "$LATEST" | jq -r '.buildNumber')
             APP_VERSION=$(echo "$LATEST" | jq -r '.appVersion')
+
+            # Validate no null values for version tracking fields
+            if [ "$APP_VERSION" = "null" ] || [ -z "$APP_VERSION" ]; then
+              echo "WARNING: appVersion is null/empty, falling back to version field"
+              APP_VERSION=$(echo "$LATEST" | jq -r '.version // empty' | cut -d. -f1)
+            fi
+            if [ "$BUILD_NUMBER" = "null" ] || [ -z "$BUILD_NUMBER" ]; then
+              echo "ERROR: buildNumber is null/empty. Aborting."
+              echo "upgrade_count=0" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$DOWNLOAD_URL" = "null" ] || [ -z "$DOWNLOAD_URL" ]; then
+              echo "ERROR: downloadUrl is null/empty. Aborting."
+              echo "upgrade_count=0" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
 
             echo "download_url=$DOWNLOAD_URL" >> "$GITHUB_OUTPUT"
             echo "version=$VERSION" >> "$GITHUB_OUTPUT"
             echo "build_number=$BUILD_NUMBER" >> "$GITHUB_OUTPUT"
             echo "app_version=$APP_VERSION" >> "$GITHUB_OUTPUT"
 
-            echo "New version found: $VERSION (build $BUILD_NUMBER)"
+            echo "New version found: $VERSION (appVersion=$APP_VERSION, build $BUILD_NUMBER)"
           else
             echo "No new versions available."
           fi
@@ -89,15 +107,28 @@ jobs:
         run: |
           BINARY_PATH="${app_path}/Contents/MacOS/ProPresenter"
           echo "Extracting protos from: $BINARY_PATH"
+          ls -la "$BINARY_PATH"
+          file "$BINARY_PATH"
           mkdir -p proto
-          protodump -file "$BINARY_PATH" -output ./proto
+          protodump -file "$BINARY_PATH" -output ./proto 2>&1 || true
+          echo "--- protodump exit code: $? ---"
+          echo "--- Contents of proto/ ---"
+          find ./proto -type f | head -50
+          ls -laR ./proto
 
       - name: Update version marker
         if: steps.upgrade.outputs.upgrade_count != '0'
         run: |
-          echo "${{ steps.upgrade.outputs.app_version }}" > latest_version.txt
-          echo "${{ steps.upgrade.outputs.build_number }}" >> latest_version.txt
-          echo "Updated version marker to appVersion=${{ steps.upgrade.outputs.app_version }}, buildNumber=${{ steps.upgrade.outputs.build_number }}"
+          NEW_APP_VERSION="${{ steps.upgrade.outputs.app_version }}"
+          NEW_BUILD_NUMBER="${{ steps.upgrade.outputs.build_number }}"
+          if [ "$NEW_APP_VERSION" = "null" ] || [ -z "$NEW_APP_VERSION" ] || [ "$NEW_BUILD_NUMBER" = "null" ] || [ -z "$NEW_BUILD_NUMBER" ]; then
+            echo "ERROR: Refusing to write null/empty values to latest_version.txt"
+            echo "  app_version='$NEW_APP_VERSION' build_number='$NEW_BUILD_NUMBER'"
+            exit 1
+          fi
+          echo "$NEW_APP_VERSION" > latest_version.txt
+          echo "$NEW_BUILD_NUMBER" >> latest_version.txt
+          echo "Updated version marker to appVersion=$NEW_APP_VERSION, buildNumber=$NEW_BUILD_NUMBER"
 
       - name: Commit and push
         if: steps.upgrade.outputs.upgrade_count != '0'
