@@ -94,34 +94,27 @@ def find_by_name_field(data):
     if len(unique_names) > 20:
         print(f"    ... and {len(unique_names) - 20} more")
 
-    # For each unique name, collect all offsets. The serialized FDP likely
-    # starts at the first occurrence where the gap to the next candidate
-    # contains valid proto data.
-    from collections import defaultdict
-    name_offsets = defaultdict(list)
-    for offset, name in offsets:
-        name_offsets[name].append(offset)
+    # Sort offsets by position for efficient boundary detection
+    import bisect
+    sorted_offsets = sorted(offsets, key=lambda x: x[0])
+    all_positions = [o for o, _ in sorted_offsets]
 
-    # Build deduped list: for each unique name, try each occurrence
+    # For each unique name, try parsing at each occurrence
     results = {}
     for name in unique_names:
-        offs = name_offsets[name]
+        # Find all positions for this name
+        name_positions = [o for o, n in sorted_offsets if n == name]
         best, best_score = None, 0
 
-        for oi, offset in enumerate(offs):
-            # Find the next candidate offset (any name) after this one
-            # Binary search in the full sorted offset list
-            next_off = None
-            for o, n in offsets:
-                if o > offset and n != name:
-                    next_off = o
-                    break
-            if next_off is None:
-                next_off = min(offset + 1048576, len(data))
-
+        for offset in name_positions:
+            # Find next candidate (any name) after this offset using binary search
+            idx = bisect.bisect_right(all_positions, offset)
+            next_off = all_positions[idx] if idx < len(all_positions) else len(data)
             gap = next_off - offset
-            # Try parsing with the gap as boundary
-            for size in sorted(set([gap, gap // 2, 4096, 16384, 65536])):
+
+            # Try parsing with the exact gap first, then smaller sizes
+            try_sizes = sorted(set([gap, gap // 2, gap // 4, 4096, 16384, 65536]))
+            for size in try_sizes:
                 if size < 256 or size > gap:
                     continue
                 chunk = data[offset:offset + size]
