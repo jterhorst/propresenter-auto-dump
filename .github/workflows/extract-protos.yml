@@ -112,11 +112,18 @@ jobs:
         if: steps.upgrade.outputs.has_version == 'true'
         run: |
           BINARY_PATH="${app_path}/Contents/MacOS/ProPresenter"
-          echo "Extracting protos from: $BINARY_PATH"
+          echo "Original binary:"
           ls -la "$BINARY_PATH"
           file "$BINARY_PATH"
+
+          # Extract arm64 slice from universal binary
+          lipo "$BINARY_PATH" -thin arm64 -output ProPresenter_arm64
+          echo "Extracted arm64 slice:"
+          ls -la ProPresenter_arm64
+          file ProPresenter_arm64
+
           mkdir -p proto
-          protodump -file "$BINARY_PATH" -output ./proto 2>&1 || true
+          protodump -file ProPresenter_arm64 -output ./proto 2>&1 || true
           echo "--- protodump exit code: $? ---"
           echo "--- Contents of proto/ ---"
           find ./proto -type f | head -50
