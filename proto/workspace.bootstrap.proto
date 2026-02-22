@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+
+package workspace;
+
+
+message CreationOption {
+  optional string min_pro_version = 1;
+}

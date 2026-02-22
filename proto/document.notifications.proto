@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+
+package document;
+
+
+message Notification {
+  message UnsubscribeComplete {
+  }
+
+  message Patch {
+    string uuid = 1;
+    bytes blob = 2;
+  }
+
+  message Required {
+    string uuid = 1;
+  }
+
+  message Available {
+    string uuid = 1;
+    bytes blob = 2;
+  }
+
+  oneof notification {
+    document.Notification.UnsubscribeComplete unsubscribe = 1;
+    document.Notification.Patch patch = 2;
+    document.Notification.Required required = 3;
+    document.Notification.Available available = 4;
+  }
+
+}

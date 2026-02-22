@@ -1,0 +1,204 @@
+syntax = "proto3";
+
+
+package collaboration_poc;
+
+
+message CreationOption {
+}
+
+message CollaborationPOC {
+  message Request {
+    message SwitchWorkspace {
+      string workspace_id = 1;
+      string device_id = 2;
+      string user_id = 3;
+    }
+
+    message GetWorkspace {
+    }
+
+    message GetUpdates {
+      string since_timestamp = 1;
+    }
+
+    message GetDiffs {
+      message DiffData {
+        string document_id = 1;
+        bytes version_vector = 2;
+      }
+
+      repeated collaboration_poc.CollaborationPOC.Request.GetDiffs.DiffData documents = 1;
+    }
+
+    message DownloadDocuments {
+      repeated string document_ids = 1;
+    }
+
+    message UploadDocuments {
+      message DocumentData {
+        string id = 1;
+        bytes data = 2;
+        bytes version_vector = 3;
+        map<string, string> metadata = 4;
+        string file_type = 5;
+        string file_name = 6;
+      }
+
+      repeated collaboration_poc.CollaborationPOC.Request.UploadDocuments.DocumentData documents = 1;
+    }
+
+    message DeleteDocuments {
+      repeated string document_ids = 1;
+    }
+
+    message UpdateDocuments {
+      message DocumentData {
+        string id = 1;
+        bytes data = 2;
+      }
+
+      repeated collaboration_poc.CollaborationPOC.Request.UpdateDocuments.DocumentData documents = 1;
+    }
+
+    oneof RequestType {
+      collaboration_poc.CollaborationPOC.Request.SwitchWorkspace switch_workspace = 1;
+      collaboration_poc.CollaborationPOC.Request.GetWorkspace get_workspace = 2;
+      collaboration_poc.CollaborationPOC.Request.GetUpdates get_updates = 3;
+      collaboration_poc.CollaborationPOC.Request.GetDiffs get_diffs = 4;
+      collaboration_poc.CollaborationPOC.Request.DownloadDocuments download_documents = 5;
+      collaboration_poc.CollaborationPOC.Request.UploadDocuments upload_documents = 6;
+      collaboration_poc.CollaborationPOC.Request.DeleteDocuments delete_documents = 7;
+      collaboration_poc.CollaborationPOC.Request.UpdateDocuments update_documents = 8;
+    }
+
+  }
+
+  message Response {
+    message Error {
+      string code = 1;
+      string message = 2;
+    }
+
+    message SwitchWorkspace {
+    }
+
+    message GetWorkspace {
+      message Document {
+        string created_at = 1;
+        string id = 2;
+        string file_name = 3;
+        map<string, string> metadata = 4;
+        string updated_at = 5;
+        bytes version_vector = 6;
+      }
+
+      repeated collaboration_poc.CollaborationPOC.Response.GetWorkspace.Document documents = 1;
+    }
+
+    message GetUpdates {
+      message Document {
+        string id = 1;
+        string file_name = 2;
+      }
+
+      string current_timestamp = 1;
+      repeated collaboration_poc.CollaborationPOC.Response.GetUpdates.Document added = 2;
+      repeated string deleted = 3;
+      repeated collaboration_poc.CollaborationPOC.Response.GetUpdates.Document updated = 4;
+    }
+
+    message GetDiffs {
+      message DocumentChange {
+        string id = 1;
+        bytes changes = 2;
+        bytes version_vector = 3;
+      }
+
+      repeated collaboration_poc.CollaborationPOC.Response.GetDiffs.DocumentChange documents = 1;
+    }
+
+    message DownloadDocuments {
+      message Document {
+        string id = 1;
+        string file_type = 2;
+        string file_name = 3;
+        string hash = 4;
+        string timestamp = 5;
+        bytes data = 6;
+      }
+
+      repeated collaboration_poc.CollaborationPOC.Response.DownloadDocuments.Document documents = 1;
+    }
+
+    message UploadDocuments {
+      map<string, bool> success = 1;
+    }
+
+    message DeleteDocuments {
+    }
+
+    message UpdateDocuments {
+    }
+
+    message ConnectionStatus {
+      string device_id = 1;
+      string status = 2;
+      repeated string document_ids = 3;
+    }
+
+    message NewMedia {
+    }
+
+    message UpdatedMedia {
+    }
+
+    message DeletedMedia {
+    }
+
+    message DocumentUpdated {
+      string id = 1;
+      bytes changes = 2;
+      bytes version_vector = 3;
+      string device_id = 4;
+    }
+
+    message NewDocument {
+      message Metadata {
+        string device_id = 1;
+        string document_id = 2;
+        string file_type = 3;
+        string filename = 4;
+        string inserted_at = 5;
+        map<string, string> metadata = 6;
+        string updated_at = 7;
+        bytes version_vector = 8;
+        string workspace_id = 9;
+      }
+
+      string id = 1;
+      collaboration_poc.CollaborationPOC.Response.NewDocument.Metadata metadata = 2;
+      string url = 3;
+    }
+
+    oneof ResponseType {
+      collaboration_poc.CollaborationPOC.Response.Error error = 1;
+      collaboration_poc.CollaborationPOC.Response.SwitchWorkspace switch_workspace = 2;
+      collaboration_poc.CollaborationPOC.Response.GetWorkspace get_workspace = 3;
+      collaboration_poc.CollaborationPOC.Response.GetUpdates get_updates = 4;
+      collaboration_poc.CollaborationPOC.Response.GetDiffs get_diffs = 5;
+      collaboration_poc.CollaborationPOC.Response.DownloadDocuments download_documents = 6;
+      collaboration_poc.CollaborationPOC.Response.UploadDocuments upload_documents = 7;
+      collaboration_poc.CollaborationPOC.Response.DeleteDocuments delete_documents = 8;
+      collaboration_poc.CollaborationPOC.Response.UpdateDocuments update_documents = 9;
+      collaboration_poc.CollaborationPOC.Response.ConnectionStatus connection_status = 100;
+      collaboration_poc.CollaborationPOC.Response.DocumentUpdated document_updated = 101;
+      collaboration_poc.CollaborationPOC.Response.NewDocument new_document = 102;
+      collaboration_poc.CollaborationPOC.Response.NewMedia new_media = 103;
+      collaboration_poc.CollaborationPOC.Response.UpdatedMedia updated_media = 104;
+      collaboration_poc.CollaborationPOC.Response.DeletedMedia deleted_media = 105;
+    }
+
+  }
+
+}

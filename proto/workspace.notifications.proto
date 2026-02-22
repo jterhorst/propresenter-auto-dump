@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+
+package workspace;
+
+
+import "workspace.entities.remote.proto";
+
+
+
+message Notification {
+  message UnsubscribeComplete {
+  }
+
+  message Workspaces {
+    repeated workspace.remote.Metadata workspaces = 1;
+  }
+
+  message Collaborators {
+    repeated string online = 1;
+  }
+
+  message Syncing {
+    message Paused {
+      uint64 until_time_utc = 1;
+      uint64 at_time_utc = 2;
+    }
+
+    optional workspace.Notification.Syncing.Paused paused = 1;
+  }
+
+  oneof notification {
+    workspace.Notification.UnsubscribeComplete unsubscribe = 1;
+    workspace.Notification.Workspaces workspaces = 2;
+    workspace.Notification.Collaborators collaborators = 3;
+    workspace.Notification.Syncing syncing = 4;
+  }
+
+}

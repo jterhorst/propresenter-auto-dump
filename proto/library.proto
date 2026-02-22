@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+
+package rv.data;
+
+
+import "url.proto";
+
+
+
+message Library {
+  message LibraryArray {
+    repeated rv.data.Library libraries = 1;
+  }
+
+  message LibraryItems {
+    repeated rv.data.LibraryItem items = 1;
+  }
+
+  oneof ChildType {
+    rv.data.Library.LibraryArray libraryChildren = 2;
+    rv.data.Library.LibraryItems libraryItems = 3;
+  }
+
+  rv.data.URL url = 1;
+}
+
+message LibraryItem {
+  rv.data.URL url = 1;
+}

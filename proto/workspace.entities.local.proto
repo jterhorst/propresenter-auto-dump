@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+
+package workspace.local;
+
+
+import "document.entities.proto";
+
+
+
+message Metadata {
+  optional string uuid = 1;
+  string pro_version = 2;
+  string name = 3;
+  string path = 4;
+}
+
+message Workspace {
+  workspace.local.Metadata metadata = 1;
+  document.DocumentSet documents = 2;
+}

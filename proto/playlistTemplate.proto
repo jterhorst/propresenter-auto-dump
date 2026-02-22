@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+
+package rv.data;
+
+
+import "playlist.proto";
+
+
+
+message PlaylistTemplate {
+  message Template {
+    string name = 1;
+    repeated rv.data.PlaylistItem playlist_items = 2;
+  }
+
+  repeated rv.data.PlaylistTemplate.Template templates = 1;
+}

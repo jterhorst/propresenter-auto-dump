@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+
+package document.call;
+
+
+message Error {
+  enum Code {
+    UNKNOWN = 0;
+  }
+
+  document.call.Error.Code code = 1;
+  string description = 2;
+}
+
+message Patch {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      document.call.Patch.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
+  string uuid = 1;
+  bytes patch = 2;
+}
+
+message Load {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      document.call.Load.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
+  string uuid = 1;
+  bytes blob = 2;
+}
