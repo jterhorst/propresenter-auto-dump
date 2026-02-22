@@ -1,0 +1,109 @@
+name: Extract ProPresenter Protos
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Every Sunday at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Read last known version
+        id: last_version
+        run: |
+          if [ -f latest_version.txt ]; then
+            APP_VERSION=$(sed -n '1p' latest_version.txt)
+            BUILD_NUMBER=$(sed -n '2p' latest_version.txt)
+          else
+            APP_VERSION=7
+            BUILD_NUMBER=117440539
+          fi
+          echo "app_version=$APP_VERSION" >> "$GITHUB_OUTPUT"
+          echo "build_number=$BUILD_NUMBER" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch upgrade info
+        id: upgrade
+        run: |
+          RESPONSE=$(curl -s "https://api.renewedvision.com/v1/pro/upgrade?platform=macos&osVersion=26&appVersion=${{ steps.last_version.outputs.app_version }}&buildNumber=${{ steps.last_version.outputs.build_number }}&includeNotes=false")
+
+          UPGRADE_COUNT=$(echo "$RESPONSE" | jq '.upgrades | length')
+          echo "upgrade_count=$UPGRADE_COUNT" >> "$GITHUB_OUTPUT"
+
+          if [ "$UPGRADE_COUNT" -gt 0 ]; then
+            LATEST=$(echo "$RESPONSE" | jq '.upgrades[-1]')
+            DOWNLOAD_URL=$(echo "$LATEST" | jq -r '.downloadUrl')
+            VERSION=$(echo "$LATEST" | jq -r '.version')
+            BUILD_NUMBER=$(echo "$LATEST" | jq -r '.buildNumber')
+            APP_VERSION=$(echo "$LATEST" | jq -r '.appVersion')
+
+            echo "download_url=$DOWNLOAD_URL" >> "$GITHUB_OUTPUT"
+            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+            echo "build_number=$BUILD_NUMBER" >> "$GITHUB_OUTPUT"
+            echo "app_version=$APP_VERSION" >> "$GITHUB_OUTPUT"
+
+            echo "New version found: $VERSION (build $BUILD_NUMBER)"
+          else
+            echo "No new versions available."
+          fi
+
+      - name: Check if new version exists
+        if: steps.upgrade.outputs.upgrade_count == '0'
+        run: |
+          echo "No new version found. Exiting."
+          exit 0
+
+      - name: Set up Go
+        if: steps.upgrade.outputs.upgrade_count != '0'
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install protodump
+        if: steps.upgrade.outputs.upgrade_count != '0'
+        run: go install github.com/arkadiyt/protodump/cmd/protodump@latest
+
+      - name: Download ProPresenter
+        if: steps.upgrade.outputs.upgrade_count != '0'
+        run: |
+          curl -L -o propresenter.zip "${{ steps.upgrade.outputs.download_url }}"
+          echo "Downloaded: ${{ steps.upgrade.outputs.download_url }}"
+
+      - name: Extract app bundle
+        if: steps.upgrade.outputs.upgrade_count != '0'
+        run: |
+          unzip -q propresenter.zip
+          APP_PATH=$(find . -maxdepth 2 -name "ProPresenter.app" -type d | head -1)
+          echo "Found app at: $APP_PATH"
+          echo "app_path=$APP_PATH" >> "$GITHUB_ENV"
+
+      - name: Run protodump
+        if: steps.upgrade.outputs.upgrade_count != '0'
+        run: |
+          BINARY_PATH="${app_path}/Contents/MacOS/ProPresenter"
+          echo "Extracting protos from: $BINARY_PATH"
+          mkdir -p proto
+          protodump -file "$BINARY_PATH" -output ./proto
+
+      - name: Update version marker
+        if: steps.upgrade.outputs.upgrade_count != '0'
+        run: |
+          echo "${{ steps.upgrade.outputs.app_version }}" > latest_version.txt
+          echo "${{ steps.upgrade.outputs.build_number }}" >> latest_version.txt
+          echo "Updated version marker to appVersion=${{ steps.upgrade.outputs.app_version }}, buildNumber=${{ steps.upgrade.outputs.build_number }}"
+
+      - name: Commit and push
+        if: steps.upgrade.outputs.upgrade_count != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add proto/ latest_version.txt
+          git commit -m "Extract protos from ProPresenter ${{ steps.upgrade.outputs.version }} (build ${{ steps.upgrade.outputs.build_number }})"
+          git push
