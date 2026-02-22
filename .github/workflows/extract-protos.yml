@@ -145,11 +145,31 @@ jobs:
           ls -la ProPresenter_arm64
           file ProPresenter_arm64
 
-          # Run extraction script (tries multiple strategies)
-          python3 scripts/extract_protos.py ProPresenter_arm64 ./proto
+          # Try extracting from all Mach-O binaries in the bundle
+          BINARIES_TO_SCAN="ProPresenter_arm64"
+
+          # Also extract arm64 from ProCore framework if present
+          PROCORE="${app_path}/Contents/Frameworks/ProCore.framework/Versions/A/ProCore"
+          if [ -f "$PROCORE" ]; then
+            echo ""
+            echo "ProCore framework:"
+            file "$PROCORE"
+            if file "$PROCORE" | grep -q 'universal'; then
+              lipo "$PROCORE" -thin arm64 -output ProCore_arm64
+            else
+              cp "$PROCORE" ProCore_arm64
+            fi
+            BINARIES_TO_SCAN="$BINARIES_TO_SCAN ProCore_arm64"
+          fi
+
+          for bin in $BINARIES_TO_SCAN; do
+            echo ""
+            echo "=== Scanning: $bin ==="
+            python3 scripts/extract_protos.py "$bin" ./proto
+          done
 
           echo ""
-          if [ -d ./proto ]; then
+          if [ -d ./proto ] && [ "$(find ./proto -name '*.proto' -type f | wc -l)" -gt 0 ]; then
             echo "--- Extracted .proto files ---"
             find ./proto -name '*.proto' -type f | sort
             echo ""
