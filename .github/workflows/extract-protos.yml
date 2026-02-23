@@ -196,6 +196,15 @@ jobs:
             echo "No proto files found, skipping code generation."
           fi
 
+      - name: Run Swift tests
+        if: steps.upgrade.outputs.has_version == 'true'
+        run: |
+          if [ -d ./swift ] && [ "$(find swift -name '*.pb.swift' | wc -l)" -gt 0 ]; then
+            swift test
+          else
+            echo "No Swift files found, skipping tests."
+          fi
+
       - name: Update version marker
         if: steps.upgrade.outputs.has_version == 'true'
         run: |
