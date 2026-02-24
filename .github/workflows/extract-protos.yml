@@ -221,6 +221,7 @@ jobs:
 
       - name: Commit and push
         if: steps.upgrade.outputs.has_version == 'true'
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -231,7 +232,37 @@ jobs:
           git add latest_version.txt
           if git diff --cached --quiet; then
             echo "No changes to commit."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Extract protos from ProPresenter ${{ steps.upgrade.outputs.version }} (build ${{ steps.upgrade.outputs.build_number }})"
             git push
+            echo "committed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Tag Swift package version
+        if: steps.commit.outputs.committed == 'true'
+        run: |
+          VERSION="${{ steps.upgrade.outputs.version }}"
+
+          # Pad to semver (e.g. "21" -> "21.0.0", "21.2" -> "21.2.0")
+          DOT_COUNT=$(echo "$VERSION" | tr -cd '.' | wc -c | tr -d ' ')
+          if [ "$DOT_COUNT" -eq 0 ]; then
+            SEMVER="${VERSION}.0.0"
+          elif [ "$DOT_COUNT" -eq 1 ]; then
+            SEMVER="${VERSION}.0"
+          else
+            SEMVER="$VERSION"
+          fi
+
+          echo "Tagging as $SEMVER (ProPresenter $VERSION)"
+
+          # Delete existing tag if force re-extracting the same version
+          if git rev-parse "$SEMVER" >/dev/null 2>&1; then
+            echo "Tag $SEMVER already exists, updating it."
+            git tag -d "$SEMVER"
+            git push origin ":refs/tags/$SEMVER"
+          fi
+
+          git tag "$SEMVER"
+          git push origin "$SEMVER"
+          echo "Published Swift package version $SEMVER"
