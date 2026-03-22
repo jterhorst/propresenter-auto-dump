@@ -1648,6 +1648,18 @@ public struct Rv_Analytics_Trackedevents_OnboardingFlowOutcome: Sendable {
   public init() {}
 }
 
+public struct Rv_Analytics_Trackedevents_SyncingUnpaused: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var duration: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "rv.analytics.trackedevents"
@@ -3174,4 +3186,34 @@ extension Rv_Analytics_Trackedevents_OnboardingFlowOutcome.OnboardingType: Swift
 
 extension Rv_Analytics_Trackedevents_OnboardingFlowOutcome.Result: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SKIP_FOR_NOW\0\u{1}CONTINUE_WITH_LOCAL\0\u{1}CREATE_CLOUD\0\u{1}JOIN_CLOUD\0")
+}
+
+extension Rv_Analytics_Trackedevents_SyncingUnpaused: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SyncingUnpaused"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}duration\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.duration) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.duration != 0 {
+      try visitor.visitSingularUInt64Field(value: self.duration, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Trackedevents_SyncingUnpaused, rhs: Rv_Analytics_Trackedevents_SyncingUnpaused) -> Bool {
+    if lhs.duration != rhs.duration {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
 }

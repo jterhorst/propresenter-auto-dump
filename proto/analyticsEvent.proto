@@ -118,6 +118,7 @@ message Event {
     rv.analytics.trackedevents.MediaCleanupSize media_cleanup_size = 81;
     rv.analytics.trackedevents.NetworkApp network_app = 82;
     rv.analytics.trackedevents.LocalWorkspaceStats local_workspace_stats = 83;
+    rv.analytics.trackedevents.SyncingUnpaused syncing_unpaused = 84;
     rv.analytics.trigger.ActionCaptureStart trigger_action_capture_start = 100;
     rv.analytics.trigger.ActionCaptureStop trigger_action_capture_stop = 101;
     rv.analytics.trigger.ActionClear trigger_action_clear = 102;
@@ -251,6 +252,15 @@ message Event {
     rv.analytics.trackedevents.OnboardingFlowOutcome onboarding_flow_outcome = 300;
     rv.analytics.logs.LogWorkspacesPublished log_workspaces_published = 301;
     rv.analytics.logs.LogCollaboratorsPublished log_collaborators_published = 302;
+    rv.analytics.logs.LogConvertToCloud log_convert_to_cloud = 303;
+    rv.analytics.logs.LogConvertToLocal log_convert_to_local = 304;
+    rv.analytics.logs.LogSyncingChange log_syncing_change = 305;
+    rv.analytics.logs.LogDocumentStored log_document_stored = 306;
+    rv.analytics.logs.LogDocumentCreated log_document_created = 307;
+    rv.analytics.logs.LogDocumentUpdated log_document_updated = 308;
+    rv.analytics.logs.LogDocumentDeleted log_document_deleted = 309;
+    rv.analytics.logs.LogDocumentConflict log_document_conflict = 310;
+    rv.analytics.logs.LogWorkspaceResynchronized log_workspace_resynchronized = 311;
   }
 
 }

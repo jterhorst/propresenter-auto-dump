@@ -200,8 +200,6 @@ public struct Document_Presentation: Sendable {
 
   public var path: String = String()
 
-  public var timestamp: UInt64 = 0
-
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_Body: Equatable, Sendable {
@@ -249,8 +247,6 @@ public struct Document_Theme: Sendable {
 
   public var path: String = String()
 
-  public var timestamp: UInt64 = 0
-
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_Body: Equatable, Sendable {
@@ -275,6 +271,89 @@ public struct Document_DocumentSet: Sendable {
   public var themes: [Document_Theme] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public struct Document_Document: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var body: Document_Document.OneOf_Body? = nil
+
+  public var ready: Document_Ready {
+    get {
+      if case .ready(let v)? = body {return v}
+      return Document_Ready()
+    }
+    set {body = .ready(newValue)}
+  }
+
+  public var local: Document_Local {
+    get {
+      if case .local(let v)? = body {return v}
+      return Document_Local()
+    }
+    set {body = .local(newValue)}
+  }
+
+  public var remote: Document_Remote {
+    get {
+      if case .remote(let v)? = body {return v}
+      return Document_Remote()
+    }
+    set {body = .remote(newValue)}
+  }
+
+  public var uuid: String = String()
+
+  public var kind: Document_Document.Kind = .presentation
+
+  public var path: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public enum OneOf_Body: Equatable, Sendable {
+    case ready(Document_Ready)
+    case local(Document_Local)
+    case remote(Document_Remote)
+
+  }
+
+  public enum Kind: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case presentation // = 0
+    case theme // = 1
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .presentation
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .presentation
+      case 1: self = .theme
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .presentation: return 0
+      case .theme: return 1
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Document_Document.Kind] = [
+      .presentation,
+      .theme,
+    ]
+
+  }
 
   public init() {}
 }
@@ -408,7 +487,7 @@ extension Document_Intrinsic.Kind: SwiftProtobuf._ProtoNameProviding {
 
 extension Document_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Presentation"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}path\0\u{1}timestamp\0\u{2}\u{7}ready\0\u{1}local\0\u{1}remote\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}path\0\u{2}\u{8}ready\0\u{1}local\0\u{1}remote\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -418,7 +497,6 @@ extension Document_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.path) }()
-      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.timestamp) }()
       case 10: try {
         var v: Document_Ready?
         var hadOneofValue = false
@@ -473,9 +551,6 @@ extension Document_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     }
     if !self.path.isEmpty {
       try visitor.visitSingularStringField(value: self.path, fieldNumber: 2)
-    }
-    if self.timestamp != 0 {
-      try visitor.visitSingularUInt64Field(value: self.timestamp, fieldNumber: 3)
     }
     switch self.body {
     case .ready?: try {
@@ -499,7 +574,6 @@ extension Document_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     if lhs.body != rhs.body {return false}
     if lhs.uuid != rhs.uuid {return false}
     if lhs.path != rhs.path {return false}
-    if lhs.timestamp != rhs.timestamp {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -507,7 +581,7 @@ extension Document_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
 
 extension Document_Theme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Theme"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}path\0\u{1}timestamp\0\u{2}\u{7}ready\0\u{1}local\0\u{1}remote\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}path\0\u{2}\u{8}ready\0\u{1}local\0\u{1}remote\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -517,7 +591,6 @@ extension Document_Theme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.path) }()
-      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.timestamp) }()
       case 10: try {
         var v: Document_Ready?
         var hadOneofValue = false
@@ -573,9 +646,6 @@ extension Document_Theme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     if !self.path.isEmpty {
       try visitor.visitSingularStringField(value: self.path, fieldNumber: 2)
     }
-    if self.timestamp != 0 {
-      try visitor.visitSingularUInt64Field(value: self.timestamp, fieldNumber: 3)
-    }
     switch self.body {
     case .ready?: try {
       guard case .ready(let v)? = self.body else { preconditionFailure() }
@@ -598,7 +668,6 @@ extension Document_Theme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     if lhs.body != rhs.body {return false}
     if lhs.uuid != rhs.uuid {return false}
     if lhs.path != rhs.path {return false}
-    if lhs.timestamp != rhs.timestamp {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -642,4 +711,107 @@ extension Document_DocumentSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+extension Document_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".Document"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0\u{2}\u{7}ready\0\u{1}local\0\u{1}remote\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 10: try {
+        var v: Document_Ready?
+        var hadOneofValue = false
+        if let current = self.body {
+          hadOneofValue = true
+          if case .ready(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.body = .ready(v)
+        }
+      }()
+      case 11: try {
+        var v: Document_Local?
+        var hadOneofValue = false
+        if let current = self.body {
+          hadOneofValue = true
+          if case .local(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.body = .local(v)
+        }
+      }()
+      case 12: try {
+        var v: Document_Remote?
+        var hadOneofValue = false
+        if let current = self.body {
+          hadOneofValue = true
+          if case .remote(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.body = .remote(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.uuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
+    }
+    if self.kind != .presentation {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 2)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
+    }
+    switch self.body {
+    case .ready?: try {
+      guard case .ready(let v)? = self.body else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
+    }()
+    case .local?: try {
+      guard case .local(let v)? = self.body else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
+    }()
+    case .remote?: try {
+      guard case .remote(let v)? = self.body else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Document, rhs: Document_Document) -> Bool {
+    if lhs.body != rhs.body {return false}
+    if lhs.uuid != rhs.uuid {return false}
+    if lhs.kind != rhs.kind {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Document_Document.Kind: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PRESENTATION\0\u{1}THEME\0")
 }

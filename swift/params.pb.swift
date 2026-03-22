@@ -65,95 +65,79 @@ public struct Application_ApplicationParams: Sendable {
   fileprivate var _productInfo: Application_ProductInformation? = nil
 }
 
-public struct Application_ApplicationStartParams: Sendable {
+public struct Application_ApplicationStartParams: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var application: Application_ApplicationParams {
-    get {_application ?? Application_ApplicationParams()}
-    set {_application = newValue}
+    get {_storage._application ?? Application_ApplicationParams()}
+    set {_uniqueStorage()._application = newValue}
   }
   /// Returns true if `application` has been explicitly set.
-  public var hasApplication: Bool {self._application != nil}
+  public var hasApplication: Bool {_storage._application != nil}
   /// Clears the value of `application`. Subsequent reads from it will return its default value.
-  public mutating func clearApplication() {self._application = nil}
+  public mutating func clearApplication() {_uniqueStorage()._application = nil}
 
   public var mediaV1: Helper_Common_V1_CreationOption {
-    get {_mediaV1 ?? Helper_Common_V1_CreationOption()}
-    set {_mediaV1 = newValue}
+    get {_storage._mediaV1 ?? Helper_Common_V1_CreationOption()}
+    set {_uniqueStorage()._mediaV1 = newValue}
   }
   /// Returns true if `mediaV1` has been explicitly set.
-  public var hasMediaV1: Bool {self._mediaV1 != nil}
+  public var hasMediaV1: Bool {_storage._mediaV1 != nil}
   /// Clears the value of `mediaV1`. Subsequent reads from it will return its default value.
-  public mutating func clearMediaV1() {self._mediaV1 = nil}
+  public mutating func clearMediaV1() {_uniqueStorage()._mediaV1 = nil}
 
   public var media: Helper_Common_V2_CreationOption {
-    get {_media ?? Helper_Common_V2_CreationOption()}
-    set {_media = newValue}
+    get {_storage._media ?? Helper_Common_V2_CreationOption()}
+    set {_uniqueStorage()._media = newValue}
   }
   /// Returns true if `media` has been explicitly set.
-  public var hasMedia: Bool {self._media != nil}
+  public var hasMedia: Bool {_storage._media != nil}
   /// Clears the value of `media`. Subsequent reads from it will return its default value.
-  public mutating func clearMedia() {self._media = nil}
+  public mutating func clearMedia() {_uniqueStorage()._media = nil}
 
   public var featureFlags: FeatureFlags_CreationOption {
-    get {_featureFlags ?? FeatureFlags_CreationOption()}
-    set {_featureFlags = newValue}
+    get {_storage._featureFlags ?? FeatureFlags_CreationOption()}
+    set {_uniqueStorage()._featureFlags = newValue}
   }
   /// Returns true if `featureFlags` has been explicitly set.
-  public var hasFeatureFlags: Bool {self._featureFlags != nil}
+  public var hasFeatureFlags: Bool {_storage._featureFlags != nil}
   /// Clears the value of `featureFlags`. Subsequent reads from it will return its default value.
-  public mutating func clearFeatureFlags() {self._featureFlags = nil}
-
-  public var collaborationPoc: CollaborationPoc_CreationOption {
-    get {_collaborationPoc ?? CollaborationPoc_CreationOption()}
-    set {_collaborationPoc = newValue}
-  }
-  /// Returns true if `collaborationPoc` has been explicitly set.
-  public var hasCollaborationPoc: Bool {self._collaborationPoc != nil}
-  /// Clears the value of `collaborationPoc`. Subsequent reads from it will return its default value.
-  public mutating func clearCollaborationPoc() {self._collaborationPoc = nil}
+  public mutating func clearFeatureFlags() {_uniqueStorage()._featureFlags = nil}
 
   public var registration: Application_RegistrationCreationOption {
-    get {_registration ?? Application_RegistrationCreationOption()}
-    set {_registration = newValue}
+    get {_storage._registration ?? Application_RegistrationCreationOption()}
+    set {_uniqueStorage()._registration = newValue}
   }
   /// Returns true if `registration` has been explicitly set.
-  public var hasRegistration: Bool {self._registration != nil}
+  public var hasRegistration: Bool {_storage._registration != nil}
   /// Clears the value of `registration`. Subsequent reads from it will return its default value.
-  public mutating func clearRegistration() {self._registration = nil}
+  public mutating func clearRegistration() {_uniqueStorage()._registration = nil}
 
   public var document: Document_CreationOption {
-    get {_document ?? Document_CreationOption()}
-    set {_document = newValue}
+    get {_storage._document ?? Document_CreationOption()}
+    set {_uniqueStorage()._document = newValue}
   }
   /// Returns true if `document` has been explicitly set.
-  public var hasDocument: Bool {self._document != nil}
+  public var hasDocument: Bool {_storage._document != nil}
   /// Clears the value of `document`. Subsequent reads from it will return its default value.
-  public mutating func clearDocument() {self._document = nil}
+  public mutating func clearDocument() {_uniqueStorage()._document = nil}
 
   public var workspace: Workspace_CreationOption {
-    get {_workspace ?? Workspace_CreationOption()}
-    set {_workspace = newValue}
+    get {_storage._workspace ?? Workspace_CreationOption()}
+    set {_uniqueStorage()._workspace = newValue}
   }
   /// Returns true if `workspace` has been explicitly set.
-  public var hasWorkspace: Bool {self._workspace != nil}
+  public var hasWorkspace: Bool {_storage._workspace != nil}
   /// Clears the value of `workspace`. Subsequent reads from it will return its default value.
-  public mutating func clearWorkspace() {self._workspace = nil}
+  public mutating func clearWorkspace() {_uniqueStorage()._workspace = nil}
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
-  fileprivate var _application: Application_ApplicationParams? = nil
-  fileprivate var _mediaV1: Helper_Common_V1_CreationOption? = nil
-  fileprivate var _media: Helper_Common_V2_CreationOption? = nil
-  fileprivate var _featureFlags: FeatureFlags_CreationOption? = nil
-  fileprivate var _collaborationPoc: CollaborationPoc_CreationOption? = nil
-  fileprivate var _registration: Application_RegistrationCreationOption? = nil
-  fileprivate var _document: Document_CreationOption? = nil
-  fileprivate var _workspace: Workspace_CreationOption? = nil
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 public struct Application_RegistrationCreationOption: Sendable {
@@ -300,68 +284,111 @@ extension Application_ApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._M
 
 extension Application_ApplicationStartParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplicationStartParams"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}application\0\u{3}media_v1\0\u{1}media\0\u{3}feature_flags\0\u{3}collaboration_poc\0\u{1}registration\0\u{1}document\0\u{1}workspace\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}application\0\u{3}media_v1\0\u{1}media\0\u{3}feature_flags\0\u{2}\u{2}registration\0\u{1}document\0\u{1}workspace\0")
+
+  fileprivate class _StorageClass {
+    var _application: Application_ApplicationParams? = nil
+    var _mediaV1: Helper_Common_V1_CreationOption? = nil
+    var _media: Helper_Common_V2_CreationOption? = nil
+    var _featureFlags: FeatureFlags_CreationOption? = nil
+    var _registration: Application_RegistrationCreationOption? = nil
+    var _document: Document_CreationOption? = nil
+    var _workspace: Workspace_CreationOption? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _application = source._application
+      _mediaV1 = source._mediaV1
+      _media = source._media
+      _featureFlags = source._featureFlags
+      _registration = source._registration
+      _document = source._document
+      _workspace = source._workspace
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._application) }()
-      case 2: try { try decoder.decodeSingularMessageField(value: &self._mediaV1) }()
-      case 3: try { try decoder.decodeSingularMessageField(value: &self._media) }()
-      case 4: try { try decoder.decodeSingularMessageField(value: &self._featureFlags) }()
-      case 5: try { try decoder.decodeSingularMessageField(value: &self._collaborationPoc) }()
-      case 6: try { try decoder.decodeSingularMessageField(value: &self._registration) }()
-      case 7: try { try decoder.decodeSingularMessageField(value: &self._document) }()
-      case 8: try { try decoder.decodeSingularMessageField(value: &self._workspace) }()
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._application) }()
+        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._mediaV1) }()
+        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._media) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._featureFlags) }()
+        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._registration) }()
+        case 7: try { try decoder.decodeSingularMessageField(value: &_storage._document) }()
+        case 8: try { try decoder.decodeSingularMessageField(value: &_storage._workspace) }()
+        default: break
+        }
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._application {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    } }()
-    try { if let v = self._mediaV1 {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-    } }()
-    try { if let v = self._media {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-    } }()
-    try { if let v = self._featureFlags {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
-    } }()
-    try { if let v = self._collaborationPoc {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
-    } }()
-    try { if let v = self._registration {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
-    } }()
-    try { if let v = self._document {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
-    } }()
-    try { if let v = self._workspace {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
-    } }()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      try { if let v = _storage._application {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      } }()
+      try { if let v = _storage._mediaV1 {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      } }()
+      try { if let v = _storage._media {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      } }()
+      try { if let v = _storage._featureFlags {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      } }()
+      try { if let v = _storage._registration {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      } }()
+      try { if let v = _storage._document {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+      } }()
+      try { if let v = _storage._workspace {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      } }()
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Application_ApplicationStartParams, rhs: Application_ApplicationStartParams) -> Bool {
-    if lhs._application != rhs._application {return false}
-    if lhs._mediaV1 != rhs._mediaV1 {return false}
-    if lhs._media != rhs._media {return false}
-    if lhs._featureFlags != rhs._featureFlags {return false}
-    if lhs._collaborationPoc != rhs._collaborationPoc {return false}
-    if lhs._registration != rhs._registration {return false}
-    if lhs._document != rhs._document {return false}
-    if lhs._workspace != rhs._workspace {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._application != rhs_storage._application {return false}
+        if _storage._mediaV1 != rhs_storage._mediaV1 {return false}
+        if _storage._media != rhs_storage._media {return false}
+        if _storage._featureFlags != rhs_storage._featureFlags {return false}
+        if _storage._registration != rhs_storage._registration {return false}
+        if _storage._document != rhs_storage._document {return false}
+        if _storage._workspace != rhs_storage._workspace {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

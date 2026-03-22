@@ -82,6 +82,7 @@ message AudioInput {
 message CloudVideoInput {
   rv.data.UUID uuid = 1;
   string user_description = 2;
+  rv.data.URL thumbnail_path = 3;
 }
 
 message CloudAudioInput {

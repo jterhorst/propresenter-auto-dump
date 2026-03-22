@@ -20,6 +20,128 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
+public enum Rv_Analytics_Logs_Field: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public typealias RawValue = Int
+  case id // = 0
+  case name // = 1
+  case path // = 2
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .id
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .id
+    case 1: self = .name
+    case 2: self = .path
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .id: return 0
+    case .name: return 1
+    case .path: return 2
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static let allCases: [Rv_Analytics_Logs_Field] = [
+    .id,
+    .name,
+    .path,
+  ]
+
+}
+
+public enum Rv_Analytics_Logs_ConflictType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public typealias RawValue = Int
+  case duplicateID // = 0
+  case duplicateName // = 1
+  case duplicatePath // = 2
+  case documentNotFound // = 3
+  case documentAlreadyDeleted // = 4
+  case concurrentModification // = 5
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .duplicateID
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .duplicateID
+    case 1: self = .duplicateName
+    case 2: self = .duplicatePath
+    case 3: self = .documentNotFound
+    case 4: self = .documentAlreadyDeleted
+    case 5: self = .concurrentModification
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .duplicateID: return 0
+    case .duplicateName: return 1
+    case .duplicatePath: return 2
+    case .documentNotFound: return 3
+    case .documentAlreadyDeleted: return 4
+    case .concurrentModification: return 5
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static let allCases: [Rv_Analytics_Logs_ConflictType] = [
+    .duplicateID,
+    .duplicateName,
+    .duplicatePath,
+    .documentNotFound,
+    .documentAlreadyDeleted,
+    .concurrentModification,
+  ]
+
+}
+
+public enum Rv_Analytics_Logs_ResyncCause: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public typealias RawValue = Int
+  case workspace // = 0
+  case sync // = 1
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .workspace
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .workspace
+    case 1: self = .sync
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .workspace: return 0
+    case .sync: return 1
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static let allCases: [Rv_Analytics_Logs_ResyncCause] = [
+    .workspace,
+    .sync,
+  ]
+
+}
+
 public enum Rv_Analytics_Logs_DiffApplicationResult: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case success // = 0
@@ -206,13 +328,23 @@ public struct Rv_Analytics_Logs_LogDiffPushed: Sendable {
 
   public var documentName: String = String()
 
-  public var targetVersionVector: String = String()
+  public var diffMetadata: Rv_Analytics_Logs_DiffMetadata {
+    get {_diffMetadata ?? Rv_Analytics_Logs_DiffMetadata()}
+    set {_diffMetadata = newValue}
+  }
+  /// Returns true if `diffMetadata` has been explicitly set.
+  public var hasDiffMetadata: Bool {self._diffMetadata != nil}
+  /// Clears the value of `diffMetadata`. Subsequent reads from it will return its default value.
+  public mutating func clearDiffMetadata() {self._diffMetadata = nil}
+
+  public var fromVersionVector: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+  fileprivate var _diffMetadata: Rv_Analytics_Logs_DiffMetadata? = nil
 }
 
 public struct Rv_Analytics_Logs_LogDiffReceived: Sendable {
@@ -237,11 +369,305 @@ public struct Rv_Analytics_Logs_LogDiffReceived: Sendable {
 
   public var importResult: Rv_Analytics_Logs_DiffApplicationResult = .success
 
+  public var diffMetadata: Rv_Analytics_Logs_DiffMetadata {
+    get {_diffMetadata ?? Rv_Analytics_Logs_DiffMetadata()}
+    set {_diffMetadata = newValue}
+  }
+  /// Returns true if `diffMetadata` has been explicitly set.
+  public var hasDiffMetadata: Bool {self._diffMetadata != nil}
+  /// Clears the value of `diffMetadata`. Subsequent reads from it will return its default value.
+  public mutating func clearDiffMetadata() {self._diffMetadata = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+  fileprivate var _diffMetadata: Rv_Analytics_Logs_DiffMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_LogConvertToCloud: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var workspaceIdentifier: String = String()
+
+  public var workspaceName: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_LogOpenedWorkspace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var workspaceIdentifier: String = String()
+
+  public var workspaceName: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_LogConvertToLocal: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var workspaceIdentifier: String = String()
+
+  public var workspaceName: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_LogSyncingChange: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var paused: Rv_Analytics_Logs_PauseState {
+    get {_paused ?? Rv_Analytics_Logs_PauseState()}
+    set {_paused = newValue}
+  }
+  /// Returns true if `paused` has been explicitly set.
+  public var hasPaused: Bool {self._paused != nil}
+  /// Clears the value of `paused`. Subsequent reads from it will return its default value.
+  public mutating func clearPaused() {self._paused = nil}
+
+  public var online: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _paused: Rv_Analytics_Logs_PauseState? = nil
+}
+
+public struct Rv_Analytics_Logs_PauseState: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var untilTimeUtc: UInt64 = 0
+
+  public var pausedAtUtc: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public struct Rv_Analytics_Logs_LogDocumentStored: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var documentIdentifier: String = String()
+
+  public var documentName: String = String()
+
+  public var versionVector: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_LogDocumentCreated: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var documentIdentifier: String = String()
+
+  public var documentName: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_LogDocumentUpdated: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var documentIdentifier: String = String()
+
+  public var previousDocumentName: String = String()
+
+  public var updatedDocumentName: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_LogDocumentDeleted: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var documentIdentifier: String = String()
+
+  public var documentName: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_LogDocumentConflict: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var documentIdentifier: String = String()
+
+  public var documentName: String = String()
+
+  public var field: Rv_Analytics_Logs_Field = .id
+
+  public var conflictType: Rv_Analytics_Logs_ConflictType = .duplicateID
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_LogWorkspaceResynchronized: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var cause: Rv_Analytics_Logs_ResyncCause = .workspace
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public struct Rv_Analytics_Logs_DiffMetadata: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var changeNum: UInt32 = 0
+
+  public var partialStartVv: String = String()
+
+  public var partialEndVv: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
 }
 
 public struct Rv_Analytics_Logs_LogMetadata: Sendable {
@@ -265,6 +691,18 @@ public struct Rv_Analytics_Logs_LogMetadata: Sendable {
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "rv.analytics.logs"
+
+extension Rv_Analytics_Logs_Field: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ID\0\u{1}NAME\0\u{1}PATH\0")
+}
+
+extension Rv_Analytics_Logs_ConflictType: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DUPLICATE_ID\0\u{1}DUPLICATE_NAME\0\u{1}DUPLICATE_PATH\0\u{1}DOCUMENT_NOT_FOUND\0\u{1}DOCUMENT_ALREADY_DELETED\0\u{1}CONCURRENT_MODIFICATION\0")
+}
+
+extension Rv_Analytics_Logs_ResyncCause: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0WORKSPACE\0\u{1}SYNC\0")
+}
 
 extension Rv_Analytics_Logs_DiffApplicationResult: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SUCCESS\0\u{1}FAILURE\0\u{1}AWAITING_OTHER_CHANGES\0")
@@ -442,7 +880,7 @@ extension Rv_Analytics_Logs_LogDocumentDownloaded: SwiftProtobuf.Message, SwiftP
 
 extension Rv_Analytics_Logs_LogDiffPushed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDiffPushed"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0\u{3}target_version_vector\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0\u{3}diff_metadata\0\u{3}from_version_vector\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -453,7 +891,8 @@ extension Rv_Analytics_Logs_LogDiffPushed: SwiftProtobuf.Message, SwiftProtobuf.
       case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.documentName) }()
-      case 4: try { try decoder.decodeSingularStringField(value: &self.targetVersionVector) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._diffMetadata) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.fromVersionVector) }()
       default: break
       }
     }
@@ -473,8 +912,11 @@ extension Rv_Analytics_Logs_LogDiffPushed: SwiftProtobuf.Message, SwiftProtobuf.
     if !self.documentName.isEmpty {
       try visitor.visitSingularStringField(value: self.documentName, fieldNumber: 3)
     }
-    if !self.targetVersionVector.isEmpty {
-      try visitor.visitSingularStringField(value: self.targetVersionVector, fieldNumber: 4)
+    try { if let v = self._diffMetadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    } }()
+    if !self.fromVersionVector.isEmpty {
+      try visitor.visitSingularStringField(value: self.fromVersionVector, fieldNumber: 5)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -483,7 +925,8 @@ extension Rv_Analytics_Logs_LogDiffPushed: SwiftProtobuf.Message, SwiftProtobuf.
     if lhs._metadata != rhs._metadata {return false}
     if lhs.documentIdentifier != rhs.documentIdentifier {return false}
     if lhs.documentName != rhs.documentName {return false}
-    if lhs.targetVersionVector != rhs.targetVersionVector {return false}
+    if lhs._diffMetadata != rhs._diffMetadata {return false}
+    if lhs.fromVersionVector != rhs.fromVersionVector {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -491,7 +934,7 @@ extension Rv_Analytics_Logs_LogDiffPushed: SwiftProtobuf.Message, SwiftProtobuf.
 
 extension Rv_Analytics_Logs_LogDiffReceived: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDiffReceived"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{4}\u{2}document_name\0\u{3}version_vector\0\u{3}import_result\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{4}\u{2}document_name\0\u{3}version_vector\0\u{3}import_result\0\u{3}diff_metadata\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -504,6 +947,7 @@ extension Rv_Analytics_Logs_LogDiffReceived: SwiftProtobuf.Message, SwiftProtobu
       case 4: try { try decoder.decodeSingularStringField(value: &self.documentName) }()
       case 5: try { try decoder.decodeSingularStringField(value: &self.versionVector) }()
       case 6: try { try decoder.decodeSingularEnumField(value: &self.importResult) }()
+      case 7: try { try decoder.decodeSingularMessageField(value: &self._diffMetadata) }()
       default: break
       }
     }
@@ -529,6 +973,9 @@ extension Rv_Analytics_Logs_LogDiffReceived: SwiftProtobuf.Message, SwiftProtobu
     if self.importResult != .success {
       try visitor.visitSingularEnumField(value: self.importResult, fieldNumber: 6)
     }
+    try { if let v = self._diffMetadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -538,6 +985,532 @@ extension Rv_Analytics_Logs_LogDiffReceived: SwiftProtobuf.Message, SwiftProtobu
     if lhs.documentName != rhs.documentName {return false}
     if lhs.versionVector != rhs.versionVector {return false}
     if lhs.importResult != rhs.importResult {return false}
+    if lhs._diffMetadata != rhs._diffMetadata {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogConvertToCloud: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogConvertToCloud"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}workspace_identifier\0\u{3}workspace_name\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.workspaceIdentifier) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.workspaceName) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.workspaceIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.workspaceIdentifier, fieldNumber: 2)
+    }
+    if !self.workspaceName.isEmpty {
+      try visitor.visitSingularStringField(value: self.workspaceName, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogConvertToCloud, rhs: Rv_Analytics_Logs_LogConvertToCloud) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.workspaceIdentifier != rhs.workspaceIdentifier {return false}
+    if lhs.workspaceName != rhs.workspaceName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogOpenedWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogOpenedWorkspace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}workspace_identifier\0\u{3}workspace_name\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.workspaceIdentifier) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.workspaceName) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.workspaceIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.workspaceIdentifier, fieldNumber: 2)
+    }
+    if !self.workspaceName.isEmpty {
+      try visitor.visitSingularStringField(value: self.workspaceName, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogOpenedWorkspace, rhs: Rv_Analytics_Logs_LogOpenedWorkspace) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.workspaceIdentifier != rhs.workspaceIdentifier {return false}
+    if lhs.workspaceName != rhs.workspaceName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogConvertToLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogConvertToLocal"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}workspace_identifier\0\u{3}workspace_name\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.workspaceIdentifier) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.workspaceName) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.workspaceIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.workspaceIdentifier, fieldNumber: 2)
+    }
+    if !self.workspaceName.isEmpty {
+      try visitor.visitSingularStringField(value: self.workspaceName, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogConvertToLocal, rhs: Rv_Analytics_Logs_LogConvertToLocal) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.workspaceIdentifier != rhs.workspaceIdentifier {return false}
+    if lhs.workspaceName != rhs.workspaceName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogSyncingChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogSyncingChange"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}paused\0\u{1}online\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._paused) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.online) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._paused {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if self.online != false {
+      try visitor.visitSingularBoolField(value: self.online, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogSyncingChange, rhs: Rv_Analytics_Logs_LogSyncingChange) -> Bool {
+    if lhs._paused != rhs._paused {return false}
+    if lhs.online != rhs.online {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_PauseState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".PauseState"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}until_time_utc\0\u{3}paused_at_utc\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.untilTimeUtc) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.pausedAtUtc) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.untilTimeUtc != 0 {
+      try visitor.visitSingularUInt64Field(value: self.untilTimeUtc, fieldNumber: 1)
+    }
+    if self.pausedAtUtc != 0 {
+      try visitor.visitSingularUInt64Field(value: self.pausedAtUtc, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_PauseState, rhs: Rv_Analytics_Logs_PauseState) -> Bool {
+    if lhs.untilTimeUtc != rhs.untilTimeUtc {return false}
+    if lhs.pausedAtUtc != rhs.pausedAtUtc {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogDocumentStored: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogDocumentStored"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0\u{3}version_vector\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.documentName) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.versionVector) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.documentIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentIdentifier, fieldNumber: 2)
+    }
+    if !self.documentName.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentName, fieldNumber: 3)
+    }
+    if !self.versionVector.isEmpty {
+      try visitor.visitSingularStringField(value: self.versionVector, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogDocumentStored, rhs: Rv_Analytics_Logs_LogDocumentStored) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.documentIdentifier != rhs.documentIdentifier {return false}
+    if lhs.documentName != rhs.documentName {return false}
+    if lhs.versionVector != rhs.versionVector {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogDocumentCreated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogDocumentCreated"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.documentName) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.documentIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentIdentifier, fieldNumber: 2)
+    }
+    if !self.documentName.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentName, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogDocumentCreated, rhs: Rv_Analytics_Logs_LogDocumentCreated) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.documentIdentifier != rhs.documentIdentifier {return false}
+    if lhs.documentName != rhs.documentName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogDocumentUpdated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogDocumentUpdated"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}previous_document_name\0\u{3}updated_document_name\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.previousDocumentName) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.updatedDocumentName) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.documentIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentIdentifier, fieldNumber: 2)
+    }
+    if !self.previousDocumentName.isEmpty {
+      try visitor.visitSingularStringField(value: self.previousDocumentName, fieldNumber: 3)
+    }
+    if !self.updatedDocumentName.isEmpty {
+      try visitor.visitSingularStringField(value: self.updatedDocumentName, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogDocumentUpdated, rhs: Rv_Analytics_Logs_LogDocumentUpdated) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.documentIdentifier != rhs.documentIdentifier {return false}
+    if lhs.previousDocumentName != rhs.previousDocumentName {return false}
+    if lhs.updatedDocumentName != rhs.updatedDocumentName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogDocumentDeleted: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogDocumentDeleted"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.documentName) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.documentIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentIdentifier, fieldNumber: 2)
+    }
+    if !self.documentName.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentName, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogDocumentDeleted, rhs: Rv_Analytics_Logs_LogDocumentDeleted) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.documentIdentifier != rhs.documentIdentifier {return false}
+    if lhs.documentName != rhs.documentName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogDocumentConflict: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogDocumentConflict"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0\u{1}field\0\u{3}conflict_type\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.documentName) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.field) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.conflictType) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.documentIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentIdentifier, fieldNumber: 2)
+    }
+    if !self.documentName.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentName, fieldNumber: 3)
+    }
+    if self.field != .id {
+      try visitor.visitSingularEnumField(value: self.field, fieldNumber: 4)
+    }
+    if self.conflictType != .duplicateID {
+      try visitor.visitSingularEnumField(value: self.conflictType, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogDocumentConflict, rhs: Rv_Analytics_Logs_LogDocumentConflict) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.documentIdentifier != rhs.documentIdentifier {return false}
+    if lhs.documentName != rhs.documentName {return false}
+    if lhs.field != rhs.field {return false}
+    if lhs.conflictType != rhs.conflictType {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_LogWorkspaceResynchronized: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogWorkspaceResynchronized"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{1}cause\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.cause) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if self.cause != .workspace {
+      try visitor.visitSingularEnumField(value: self.cause, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogWorkspaceResynchronized, rhs: Rv_Analytics_Logs_LogWorkspaceResynchronized) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.cause != rhs.cause {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Rv_Analytics_Logs_DiffMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".DiffMetadata"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}change_num\0\u{3}partial_start_vv\0\u{3}partial_end_vv\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.changeNum) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.partialStartVv) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.partialEndVv) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.changeNum != 0 {
+      try visitor.visitSingularUInt32Field(value: self.changeNum, fieldNumber: 1)
+    }
+    if !self.partialStartVv.isEmpty {
+      try visitor.visitSingularStringField(value: self.partialStartVv, fieldNumber: 2)
+    }
+    if !self.partialEndVv.isEmpty {
+      try visitor.visitSingularStringField(value: self.partialEndVv, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_DiffMetadata, rhs: Rv_Analytics_Logs_DiffMetadata) -> Bool {
+    if lhs.changeNum != rhs.changeNum {return false}
+    if lhs.partialStartVv != rhs.partialStartVv {return false}
+    if lhs.partialEndVv != rhs.partialEndVv {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

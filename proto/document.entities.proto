@@ -50,7 +50,6 @@ message Presentation {
 
   string uuid = 1;
   string path = 2;
-  uint64 timestamp = 3;
 }
 
 message Theme {
@@ -62,11 +61,27 @@ message Theme {
 
   string uuid = 1;
   string path = 2;
-  uint64 timestamp = 3;
 }
 
 message DocumentSet {
   repeated document.Intrinsic intrinsics = 1;
   repeated document.Presentation presentations = 2;
   repeated document.Theme themes = 3;
+}
+
+message Document {
+  enum Kind {
+    PRESENTATION = 0;
+    THEME = 1;
+  }
+
+  oneof body {
+    document.Ready ready = 10;
+    document.Local local = 11;
+    document.Remote remote = 12;
+  }
+
+  string uuid = 1;
+  document.Document.Kind kind = 2;
+  string path = 3;
 }

@@ -56,6 +56,10 @@ public struct Textdoc_Document: Sendable {
 
   public var paragraphs: [Textdoc_Document.Paragraph] = []
 
+  public var width: Double = 0
+
+  public var height: Double = 0
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum ParagraphAlignment: SwiftProtobuf.Enum, Swift.CaseIterable {
@@ -1364,7 +1368,7 @@ fileprivate let _protobuf_package = "textdoc"
 
 extension Textdoc_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Document"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_settings\0\u{3}document_attributes\0\u{3}list_settings\0\u{3}table_settings\0\u{1}paragraphs\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_settings\0\u{3}document_attributes\0\u{3}list_settings\0\u{3}table_settings\0\u{1}paragraphs\0\u{1}width\0\u{1}height\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1377,6 +1381,8 @@ extension Textdoc_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
       case 3: try { try decoder.decodeRepeatedMessageField(value: &self.listSettings) }()
       case 4: try { try decoder.decodeSingularMessageField(value: &self._tableSettings) }()
       case 5: try { try decoder.decodeRepeatedMessageField(value: &self.paragraphs) }()
+      case 6: try { try decoder.decodeSingularDoubleField(value: &self.width) }()
+      case 7: try { try decoder.decodeSingularDoubleField(value: &self.height) }()
       default: break
       }
     }
@@ -1402,6 +1408,12 @@ extension Textdoc_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     if !self.paragraphs.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.paragraphs, fieldNumber: 5)
     }
+    if self.width.bitPattern != 0 {
+      try visitor.visitSingularDoubleField(value: self.width, fieldNumber: 6)
+    }
+    if self.height.bitPattern != 0 {
+      try visitor.visitSingularDoubleField(value: self.height, fieldNumber: 7)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1411,6 +1423,8 @@ extension Textdoc_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     if lhs.listSettings != rhs.listSettings {return false}
     if lhs._tableSettings != rhs._tableSettings {return false}
     if lhs.paragraphs != rhs.paragraphs {return false}
+    if lhs.width != rhs.width {return false}
+    if lhs.height != rhs.height {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

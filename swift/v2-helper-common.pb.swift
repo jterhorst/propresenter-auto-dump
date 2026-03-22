@@ -125,6 +125,8 @@ public struct Helper_Common_V2_Preferences: Sendable {
 
   public var manageMedia: Bool = false
 
+  public var shareAnalytics: Bool = false
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -1293,6 +1295,16 @@ public struct Helper_Common_V2_RemoveContainer: Sendable {
   public init() {}
 }
 
+public struct Helper_Common_V2_ImportUnmanagedMedia: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 public struct Helper_Common_V2_Ping: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -1436,6 +1448,16 @@ public struct Helper_Common_V2_AddProContentReferenceResponse: Sendable {
 }
 
 public struct Helper_Common_V2_RemoveContainerResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public struct Helper_Common_V2_ImportUnmanagedMediaResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1627,7 +1649,7 @@ extension Helper_Common_V2_Version: SwiftProtobuf.Message, SwiftProtobuf._Messag
 
 extension Helper_Common_V2_Preferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Preferences"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}manage_media\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}manage_media\0\u{3}share_analytics\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1636,6 +1658,7 @@ extension Helper_Common_V2_Preferences: SwiftProtobuf.Message, SwiftProtobuf._Me
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularBoolField(value: &self.manageMedia) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.shareAnalytics) }()
       default: break
       }
     }
@@ -1645,11 +1668,15 @@ extension Helper_Common_V2_Preferences: SwiftProtobuf.Message, SwiftProtobuf._Me
     if self.manageMedia != false {
       try visitor.visitSingularBoolField(value: self.manageMedia, fieldNumber: 1)
     }
+    if self.shareAnalytics != false {
+      try visitor.visitSingularBoolField(value: self.shareAnalytics, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Helper_Common_V2_Preferences, rhs: Helper_Common_V2_Preferences) -> Bool {
     if lhs.manageMedia != rhs.manageMedia {return false}
+    if lhs.shareAnalytics != rhs.shareAnalytics {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3312,6 +3339,25 @@ extension Helper_Common_V2_RemoveContainer: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
+extension Helper_Common_V2_ImportUnmanagedMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ImportUnmanagedMedia"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ImportUnmanagedMedia, rhs: Helper_Common_V2_ImportUnmanagedMedia) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Helper_Common_V2_Ping: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Ping"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
@@ -3603,6 +3649,25 @@ extension Helper_Common_V2_RemoveContainerResponse: SwiftProtobuf.Message, Swift
   }
 
   public static func ==(lhs: Helper_Common_V2_RemoveContainerResponse, rhs: Helper_Common_V2_RemoveContainerResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Helper_Common_V2_ImportUnmanagedMediaResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ImportUnmanagedMediaResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ImportUnmanagedMediaResponse, rhs: Helper_Common_V2_ImportUnmanagedMediaResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

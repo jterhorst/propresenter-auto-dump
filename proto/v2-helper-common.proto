@@ -41,6 +41,7 @@ message Version {
 
 message Preferences {
   bool manage_media = 1;
+  bool share_analytics = 2;
 }
 
 message CreationOption {
@@ -316,6 +317,9 @@ message RemoveContainer {
   repeated string container_id = 1;
 }
 
+message ImportUnmanagedMedia {
+}
+
 message Ping {
   int32 id = 1;
 }
@@ -360,6 +364,9 @@ message AddProContentReferenceResponse {
 }
 
 message RemoveContainerResponse {
+}
+
+message ImportUnmanagedMediaResponse {
 }
 
 message Pong {

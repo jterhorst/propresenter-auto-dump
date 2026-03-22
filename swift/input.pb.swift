@@ -332,11 +332,21 @@ public struct Rv_Data_CloudVideoInput: Sendable {
 
   public var userDescription: String = String()
 
+  public var thumbnailPath: Rv_Data_URL {
+    get {_thumbnailPath ?? Rv_Data_URL()}
+    set {_thumbnailPath = newValue}
+  }
+  /// Returns true if `thumbnailPath` has been explicitly set.
+  public var hasThumbnailPath: Bool {self._thumbnailPath != nil}
+  /// Clears the value of `thumbnailPath`. Subsequent reads from it will return its default value.
+  public mutating func clearThumbnailPath() {self._thumbnailPath = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _uuid: Rv_Data_UUID? = nil
+  fileprivate var _thumbnailPath: Rv_Data_URL? = nil
 }
 
 public struct Rv_Data_CloudAudioInput: Sendable {
@@ -866,7 +876,7 @@ extension Rv_Data_AudioInput.BehaviorMode.AutoOn: SwiftProtobuf.Message, SwiftPr
 
 extension Rv_Data_CloudVideoInput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CloudVideoInput"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}user_description\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}user_description\0\u{3}thumbnail_path\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -876,6 +886,7 @@ extension Rv_Data_CloudVideoInput: SwiftProtobuf.Message, SwiftProtobuf._Message
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularMessageField(value: &self._uuid) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.userDescription) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._thumbnailPath) }()
       default: break
       }
     }
@@ -892,12 +903,16 @@ extension Rv_Data_CloudVideoInput: SwiftProtobuf.Message, SwiftProtobuf._Message
     if !self.userDescription.isEmpty {
       try visitor.visitSingularStringField(value: self.userDescription, fieldNumber: 2)
     }
+    try { if let v = self._thumbnailPath {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Rv_Data_CloudVideoInput, rhs: Rv_Data_CloudVideoInput) -> Bool {
     if lhs._uuid != rhs._uuid {return false}
     if lhs.userDescription != rhs.userDescription {return false}
+    if lhs._thumbnailPath != rhs._thumbnailPath {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -392,3 +392,7 @@ message OnboardingFlowOutcome {
   rv.analytics.trackedevents.OnboardingFlowOutcome.OnboardingType onboarding_type = 1;
   rv.analytics.trackedevents.OnboardingFlowOutcome.Result result = 2;
 }
+
+message SyncingUnpaused {
+  uint64 duration = 1;
+}

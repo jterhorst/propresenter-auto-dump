@@ -4,8 +4,10 @@
 
 require 'google/protobuf'
 
+require 'document.entities_pb'
 
-descriptor_data = "\n\x1c\x64ocument.notifications.proto\x12\x08\x64ocument\"\xfb\x02\n\x0cNotification\x12\x41\n\x0bunsubscribe\x18\x01 \x01(\x0b\x32*.document.Notification.UnsubscribeCompleteH\x00\x12-\n\x05patch\x18\x02 \x01(\x0b\x32\x1c.document.Notification.PatchH\x00\x12\x33\n\x08required\x18\x03 \x01(\x0b\x32\x1f.document.Notification.RequiredH\x00\x12\x35\n\tavailable\x18\x04 \x01(\x0b\x32 .document.Notification.AvailableH\x00\x1a\x15\n\x13UnsubscribeComplete\x1a#\n\x05Patch\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x1a\x18\n\x08Required\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x1a\'\n\tAvailable\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x42\x0e\n\x0cnotificationb\x06proto3"
+
+descriptor_data = "\n\x1c\x64ocument.notifications.proto\x12\x08\x64ocument\x1a\x17\x64ocument.entities.proto\"\xf2\x05\n\x0cNotification\x12\x41\n\x0bunsubscribe\x18\x01 \x01(\x0b\x32*.document.Notification.UnsubscribeCompleteH\x00\x12-\n\x05patch\x18\x02 \x01(\x0b\x32\x1c.document.Notification.PatchH\x00\x12\x33\n\x08required\x18\x03 \x01(\x0b\x32\x1f.document.Notification.RequiredH\x00\x12\x35\n\tavailable\x18\x04 \x01(\x0b\x32 .document.Notification.AvailableH\x00\x12-\n\x05\x61\x64\x64\x65\x64\x18\x05 \x01(\x0b\x32\x1c.document.Notification.AddedH\x00\x12-\n\x05moved\x18\x06 \x01(\x0b\x32\x1c.document.Notification.MovedH\x00\x12\x31\n\x07removed\x18\x07 \x01(\x0b\x32\x1e.document.Notification.RemovedH\x00\x1a\x15\n\x13UnsubscribeComplete\x1a#\n\x05Patch\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x1a\x18\n\x08Required\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x1a\'\n\tAvailable\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x1aJ\n\x05\x41\x64\x64\x65\x64\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12%\n\x04kind\x18\x02 \x01(\x0e\x32\x17.document.Document.Kind\x12\x0c\n\x04path\x18\x03 \x01(\t\x1aJ\n\x05Moved\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12%\n\x04kind\x18\x02 \x01(\x0e\x32\x17.document.Document.Kind\x12\x0c\n\x04path\x18\x03 \x01(\t\x1aL\n\x07Removed\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12%\n\x04kind\x18\x02 \x01(\x0e\x32\x17.document.Document.Kind\x12\x0c\n\x04path\x18\x03 \x01(\tB\x0e\n\x0cnotificationb\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
@@ -16,4 +18,7 @@ module Document
   Notification::Patch = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.Notification.Patch").msgclass
   Notification::Required = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.Notification.Required").msgclass
   Notification::Available = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.Notification.Available").msgclass
+  Notification::Added = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.Notification.Added").msgclass
+  Notification::Moved = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.Notification.Moved").msgclass
+  Notification::Removed = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.Notification.Removed").msgclass
 end

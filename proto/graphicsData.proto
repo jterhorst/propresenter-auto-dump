@@ -441,6 +441,12 @@ message Graphics {
     repeated rv.data.Graphics.Text.AlternateText alternate_texts = 13;
   }
 
+  message PowerPointImport {
+    rv.data.Graphics.Text text = 1;
+    double width = 2;
+    double height = 3;
+  }
+
 }
 
 message Media {
@@ -608,7 +614,7 @@ message Media {
 
     enum HardwareDecodingType {
       HARDWARE_DECODING_TYPE_AUTOMATIC = 0;
-      HARDWARE_DECODING_TYPE_DISABLED = 1;
+      HARDWARE_DECODING_TYPE_DISABLED = 2;
     }
 
     double frame_rate = 1;

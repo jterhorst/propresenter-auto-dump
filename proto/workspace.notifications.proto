@@ -13,7 +13,22 @@ message Notification {
   }
 
   message Workspaces {
-    repeated workspace.remote.Metadata workspaces = 1;
+    message WorkspaceList {
+      repeated workspace.remote.Metadata workspaces = 1;
+    }
+
+    message Uninitialized {
+    }
+
+    message Error {
+    }
+
+    oneof state {
+      workspace.Notification.Workspaces.WorkspaceList initialized = 1;
+      workspace.Notification.Workspaces.Uninitialized uninitialized = 2;
+      workspace.Notification.Workspaces.Error error = 3;
+    }
+
   }
 
   message Collaborators {

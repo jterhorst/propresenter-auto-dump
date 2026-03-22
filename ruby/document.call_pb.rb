@@ -4,8 +4,10 @@
 
 require 'google/protobuf'
 
+require 'document.entities_pb'
 
-descriptor_data = "\n\x13\x64ocument.call.proto\x12\rdocument.call\"Z\n\x05\x45rror\x12\'\n\x04\x63ode\x18\x01 \x01(\x0e\x32\x19.document.call.Error.Code\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\x13\n\x04\x43ode\x12\x0b\n\x07UNKNOWN\x10\x00\"\x93\x01\n\x05Patch\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\r\n\x05patch\x18\x02 \x01(\x0c\x1am\n\x06Result\x12,\n\x02ok\x18\x01 \x01(\x0b\x32\x1e.document.call.Patch.Result.OkH\x00\x12%\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x14.document.call.ErrorH\x00\x1a\x04\n\x02OkB\x08\n\x06result\"\x90\x01\n\x04Load\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x1al\n\x06Result\x12+\n\x02ok\x18\x01 \x01(\x0b\x32\x1d.document.call.Load.Result.OkH\x00\x12%\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x14.document.call.ErrorH\x00\x1a\x04\n\x02OkB\x08\n\x06resultb\x06proto3"
+
+descriptor_data = "\n\x13\x64ocument.call.proto\x12\rdocument.call\x1a\x17\x64ocument.entities.proto\"Z\n\x05\x45rror\x12\'\n\x04\x63ode\x18\x01 \x01(\x0e\x32\x19.document.call.Error.Code\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\x13\n\x04\x43ode\x12\x0b\n\x07UNKNOWN\x10\x00\"\x93\x01\n\x05Patch\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\r\n\x05patch\x18\x02 \x01(\x0c\x1am\n\x06Result\x12,\n\x02ok\x18\x01 \x01(\x0b\x32\x1e.document.call.Patch.Result.OkH\x00\x12%\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x14.document.call.ErrorH\x00\x1a\x04\n\x02OkB\x08\n\x06result\"\x90\x01\n\x04Load\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0c\n\x04\x62lob\x18\x02 \x01(\x0c\x1al\n\x06Result\x12+\n\x02ok\x18\x01 \x01(\x0b\x32\x1d.document.call.Load.Result.OkH\x00\x12%\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x14.document.call.ErrorH\x00\x1a\x04\n\x02OkB\x08\n\x06result\"\xc3\x01\n\x03\x41\x64\x64\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12%\n\x04kind\x18\x02 \x01(\x0e\x32\x17.document.Document.Kind\x12\x0c\n\x04path\x18\x03 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x0b \x01(\x0c\x1ak\n\x06Result\x12*\n\x02ok\x18\x01 \x01(\x0b\x32\x1c.document.call.Add.Result.OkH\x00\x12%\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x14.document.call.ErrorH\x00\x1a\x04\n\x02OkB\x08\n\x06result\"\xad\x01\n\x06Remove\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12%\n\x04kind\x18\x02 \x01(\x0e\x32\x17.document.Document.Kind\x1an\n\x06Result\x12-\n\x02ok\x18\x01 \x01(\x0b\x32\x1f.document.call.Remove.Result.OkH\x00\x12%\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x14.document.call.ErrorH\x00\x1a\x04\n\x02OkB\x08\n\x06result\"\xbf\x01\n\x08Relocate\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12%\n\x04kind\x18\x02 \x01(\x0e\x32\x17.document.Document.Kind\x12\x0c\n\x04path\x18\x03 \x01(\t\x1ap\n\x06Result\x12/\n\x02ok\x18\x01 \x01(\x0b\x32!.document.call.Relocate.Result.OkH\x00\x12%\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x14.document.call.ErrorH\x00\x1a\x04\n\x02OkB\x08\n\x06resultb\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
@@ -20,5 +22,14 @@ module Document
     Load = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Load").msgclass
     Load::Result = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Load.Result").msgclass
     Load::Result::Ok = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Load.Result.Ok").msgclass
+    Add = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Add").msgclass
+    Add::Result = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Add.Result").msgclass
+    Add::Result::Ok = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Add.Result.Ok").msgclass
+    Remove = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Remove").msgclass
+    Remove::Result = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Remove.Result").msgclass
+    Remove::Result::Ok = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Remove.Result.Ok").msgclass
+    Relocate = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Relocate").msgclass
+    Relocate::Result = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Relocate.Result").msgclass
+    Relocate::Result::Ok = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("document.call.Relocate.Result.Ok").msgclass
   end
 end

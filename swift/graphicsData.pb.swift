@@ -2097,6 +2097,31 @@ public struct Rv_Data_Graphics: Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
+  public struct PowerPointImport: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var text: Rv_Data_Graphics.Text {
+      get {_text ?? Rv_Data_Graphics.Text()}
+      set {_text = newValue}
+    }
+    /// Returns true if `text` has been explicitly set.
+    public var hasText: Bool {self._text != nil}
+    /// Clears the value of `text`. Subsequent reads from it will return its default value.
+    public mutating func clearText() {self._text = nil}
+
+    public var width: Double = 0
+
+    public var height: Double = 0
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _text: Rv_Data_Graphics.Text? = nil
+  }
+
   public init() {}
 }
 
@@ -2940,7 +2965,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     public enum HardwareDecodingType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case automatic // = 0
-      case disabled // = 1
+      case disabled // = 2
       case UNRECOGNIZED(Int)
 
       public init() {
@@ -2950,7 +2975,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
       public init?(rawValue: Int) {
         switch rawValue {
         case 0: self = .automatic
-        case 1: self = .disabled
+        case 2: self = .disabled
         default: self = .UNRECOGNIZED(rawValue)
         }
       }
@@ -2958,7 +2983,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
       public var rawValue: Int {
         switch self {
         case .automatic: return 0
-        case .disabled: return 1
+        case .disabled: return 2
         case .UNRECOGNIZED(let i): return i
         }
       }
@@ -5558,6 +5583,50 @@ extension Rv_Data_Graphics.Text.AlternateText: SwiftProtobuf.Message, SwiftProto
   }
 }
 
+extension Rv_Data_Graphics.PowerPointImport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".PowerPointImport"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}text\0\u{1}width\0\u{1}height\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._text) }()
+      case 2: try { try decoder.decodeSingularDoubleField(value: &self.width) }()
+      case 3: try { try decoder.decodeSingularDoubleField(value: &self.height) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._text {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if self.width.bitPattern != 0 {
+      try visitor.visitSingularDoubleField(value: self.width, fieldNumber: 2)
+    }
+    if self.height.bitPattern != 0 {
+      try visitor.visitSingularDoubleField(value: self.height, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Graphics.PowerPointImport, rhs: Rv_Data_Graphics.PowerPointImport) -> Bool {
+    if lhs._text != rhs._text {return false}
+    if lhs.width != rhs.width {return false}
+    if lhs.height != rhs.height {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Rv_Data_Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Media"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}url\0\u{1}metadata\0\u{1}audio\0\u{1}image\0\u{1}video\0\u{3}live_video\0\u{3}web_content\0")
@@ -6437,7 +6506,7 @@ extension Rv_Data_Media.VideoProperties.FieldType: SwiftProtobuf._ProtoNameProvi
 }
 
 extension Rv_Data_Media.VideoProperties.HardwareDecodingType: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0HARDWARE_DECODING_TYPE_AUTOMATIC\0\u{1}HARDWARE_DECODING_TYPE_DISABLED\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0HARDWARE_DECODING_TYPE_AUTOMATIC\0\u{2}\u{2}HARDWARE_DECODING_TYPE_DISABLED\0")
 }
 
 extension Rv_Data_Media.LiveVideoProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {

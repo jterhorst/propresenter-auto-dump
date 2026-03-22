@@ -60,6 +60,30 @@ public struct Document_Notification: Sendable {
     set {notification = .available(newValue)}
   }
 
+  public var added: Document_Notification.Added {
+    get {
+      if case .added(let v)? = notification {return v}
+      return Document_Notification.Added()
+    }
+    set {notification = .added(newValue)}
+  }
+
+  public var moved: Document_Notification.Moved {
+    get {
+      if case .moved(let v)? = notification {return v}
+      return Document_Notification.Moved()
+    }
+    set {notification = .moved(newValue)}
+  }
+
+  public var removed: Document_Notification.Removed {
+    get {
+      if case .removed(let v)? = notification {return v}
+      return Document_Notification.Removed()
+    }
+    set {notification = .removed(newValue)}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_Notification: Equatable, Sendable {
@@ -67,6 +91,9 @@ public struct Document_Notification: Sendable {
     case patch(Document_Notification.Patch)
     case required(Document_Notification.Required)
     case available(Document_Notification.Available)
+    case added(Document_Notification.Added)
+    case moved(Document_Notification.Moved)
+    case removed(Document_Notification.Removed)
 
   }
 
@@ -120,6 +147,54 @@ public struct Document_Notification: Sendable {
     public init() {}
   }
 
+  public struct Added: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var uuid: String = String()
+
+    public var kind: Document_Document.Kind = .presentation
+
+    public var path: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public struct Moved: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var uuid: String = String()
+
+    public var kind: Document_Document.Kind = .presentation
+
+    public var path: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public struct Removed: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var uuid: String = String()
+
+    public var kind: Document_Document.Kind = .presentation
+
+    public var path: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
   public init() {}
 }
 
@@ -129,7 +204,7 @@ fileprivate let _protobuf_package = "document"
 
 extension Document_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Notification"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}unsubscribe\0\u{1}patch\0\u{1}required\0\u{1}available\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}unsubscribe\0\u{1}patch\0\u{1}required\0\u{1}available\0\u{1}added\0\u{1}moved\0\u{1}removed\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -189,6 +264,45 @@ extension Document_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
           self.notification = .available(v)
         }
       }()
+      case 5: try {
+        var v: Document_Notification.Added?
+        var hadOneofValue = false
+        if let current = self.notification {
+          hadOneofValue = true
+          if case .added(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.notification = .added(v)
+        }
+      }()
+      case 6: try {
+        var v: Document_Notification.Moved?
+        var hadOneofValue = false
+        if let current = self.notification {
+          hadOneofValue = true
+          if case .moved(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.notification = .moved(v)
+        }
+      }()
+      case 7: try {
+        var v: Document_Notification.Removed?
+        var hadOneofValue = false
+        if let current = self.notification {
+          hadOneofValue = true
+          if case .removed(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.notification = .removed(v)
+        }
+      }()
       default: break
       }
     }
@@ -215,6 +329,18 @@ extension Document_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     case .available?: try {
       guard case .available(let v)? = self.notification else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    }()
+    case .added?: try {
+      guard case .added(let v)? = self.notification else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    }()
+    case .moved?: try {
+      guard case .moved(let v)? = self.notification else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    }()
+    case .removed?: try {
+      guard case .removed(let v)? = self.notification else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
     }()
     case nil: break
     }
@@ -342,6 +468,126 @@ extension Document_Notification.Available: SwiftProtobuf.Message, SwiftProtobuf.
   public static func ==(lhs: Document_Notification.Available, rhs: Document_Notification.Available) -> Bool {
     if lhs.uuid != rhs.uuid {return false}
     if lhs.blob != rhs.blob {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Document_Notification.Added: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.protoMessageName + ".Added"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.uuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
+    }
+    if self.kind != .presentation {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 2)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.Added, rhs: Document_Notification.Added) -> Bool {
+    if lhs.uuid != rhs.uuid {return false}
+    if lhs.kind != rhs.kind {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Document_Notification.Moved: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.protoMessageName + ".Moved"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.uuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
+    }
+    if self.kind != .presentation {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 2)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.Moved, rhs: Document_Notification.Moved) -> Bool {
+    if lhs.uuid != rhs.uuid {return false}
+    if lhs.kind != rhs.kind {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Document_Notification.Removed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.protoMessageName + ".Removed"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.uuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
+    }
+    if self.kind != .presentation {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 2)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.Removed, rhs: Document_Notification.Removed) -> Bool {
+    if lhs.uuid != rhs.uuid {return false}
+    if lhs.kind != rhs.kind {return false}
+    if lhs.path != rhs.path {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

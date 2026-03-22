@@ -285,4 +285,6 @@ message Document {
   repeated textdoc.Document.ListSettings list_settings = 3;
   textdoc.Document.TableSettings table_settings = 4;
   repeated textdoc.Document.Paragraph paragraphs = 5;
+  double width = 6;
+  double height = 7;
 }
