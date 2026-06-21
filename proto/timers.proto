@@ -90,3 +90,12 @@ message TimersDocument {
   rv.data.Clock clock = 2;
   repeated rv.data.Timer timers = 3;
 }
+
+message LocalTimer {
+  rv.data.UUID uuid = 1;
+  rv.data.Timer.Configuration configuration = 2;
+}
+
+message TimersLocalDocument {
+  repeated rv.data.LocalTimer timers = 1;
+}

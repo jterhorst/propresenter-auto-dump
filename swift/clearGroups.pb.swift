@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_ClearGroupsDocument: Sendable {
+public nonisolated struct Rv_Data_ClearGroupsDocument: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -39,7 +43,7 @@ public struct Rv_Data_ClearGroupsDocument: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct ClearGroup: Sendable {
+  public nonisolated struct ClearGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -80,7 +84,7 @@ public struct Rv_Data_ClearGroupsDocument: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum ImageType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ImageType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case custom // = 0
       case one // = 1
@@ -251,9 +255,9 @@ public struct Rv_Data_ClearGroupsDocument: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_ClearGroupsDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ClearGroupsDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ClearGroupsDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}groups\0")
 
@@ -292,7 +296,7 @@ extension Rv_Data_ClearGroupsDocument: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_ClearGroupsDocument.ClearGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ClearGroupsDocument.ClearGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ClearGroupsDocument.protoMessageName + ".ClearGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{3}layer_targets\0\u{3}is_hidden_in_preview\0\u{3}image_data\0\u{3}image_type\0\u{3}is_icon_tinted\0\u{3}icon_tint_color\0\u{3}timeline_targets\0\u{3}clear_presentation_next_slide\0")
 
@@ -371,6 +375,6 @@ extension Rv_Data_ClearGroupsDocument.ClearGroup: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_ClearGroupsDocument.ClearGroup.ImageType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ClearGroupsDocument.ClearGroup.ImageType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ImageTypeCustom\0\u{1}ImageTypeOne\0\u{1}ImageTypeTwo\0\u{1}ImageTypeThree\0\u{1}ImageTypeFour\0\u{1}ImageTypeFive\0\u{1}ImageTypeSix\0\u{1}ImageTypeSeven\0\u{1}ImageTypeEight\0\u{1}ImageTypeNine\0\u{1}ImageTypeZero\0\u{1}ImageTypeAll\0\u{1}ImageTypeMegahorn\0\u{1}ImageTypePlay\0\u{1}ImageTypeBulb\0\u{1}ImageTypeSunglasses\0\u{1}ImageTypeArrow\0\u{1}ImageTypeTarget\0\u{1}ImageTypeStar\0\u{1}ImageTypeSun\0\u{1}ImageTypeBell\0\u{1}ImageTypePaperclip\0\u{1}ImageTypeFlask\0\u{1}ImageTypeEyeglasses\0\u{1}ImageTypeCupcake\0\u{1}ImageTypeSlide\0\u{1}ImageTypeHat\0\u{1}ImageTypeFlower\0\u{1}ImageTypeHeart\0\u{1}ImageTypeMessage\0\u{1}ImageTypeAudio\0\u{1}ImageTypeCloud\0\u{1}ImageTypeExclamation\0")
 }

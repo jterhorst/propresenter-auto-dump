@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Document_Notification: Sendable {
+public nonisolated struct Document_Notification: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -86,7 +90,7 @@ public struct Document_Notification: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Notification: Equatable, Sendable {
+  public nonisolated enum OneOf_Notification: Equatable, Sendable {
     case unsubscribe(Document_Notification.UnsubscribeComplete)
     case patch(Document_Notification.Patch)
     case required(Document_Notification.Required)
@@ -97,7 +101,7 @@ public struct Document_Notification: Sendable {
 
   }
 
-  public struct UnsubscribeComplete: Sendable {
+  public nonisolated struct UnsubscribeComplete: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -107,33 +111,7 @@ public struct Document_Notification: Sendable {
     public init() {}
   }
 
-  public struct Patch: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var uuid: String = String()
-
-    public var blob: Data = Data()
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct Required: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var uuid: String = String()
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct Available: Sendable {
+  public nonisolated struct Patch: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -147,7 +125,33 @@ public struct Document_Notification: Sendable {
     public init() {}
   }
 
-  public struct Added: Sendable {
+  public nonisolated struct Required: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var uuid: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct Available: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var uuid: String = String()
+
+    public var blob: Data = Data()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct Added: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -163,7 +167,7 @@ public struct Document_Notification: Sendable {
     public init() {}
   }
 
-  public struct Moved: Sendable {
+  public nonisolated struct Moved: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -179,7 +183,7 @@ public struct Document_Notification: Sendable {
     public init() {}
   }
 
-  public struct Removed: Sendable {
+  public nonisolated struct Removed: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -200,9 +204,9 @@ public struct Document_Notification: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "document"
+fileprivate nonisolated let _protobuf_package = "document"
 
-extension Document_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Notification"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}unsubscribe\0\u{1}patch\0\u{1}required\0\u{1}available\0\u{1}added\0\u{1}moved\0\u{1}removed\0")
 
@@ -354,7 +358,7 @@ extension Document_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Document_Notification.UnsubscribeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Notification.UnsubscribeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".UnsubscribeComplete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -373,7 +377,7 @@ extension Document_Notification.UnsubscribeComplete: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Document_Notification.Patch: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Notification.Patch: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Patch"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}blob\0")
 
@@ -408,7 +412,7 @@ extension Document_Notification.Patch: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Document_Notification.Required: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Notification.Required: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Required"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0")
 
@@ -438,7 +442,7 @@ extension Document_Notification.Required: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Document_Notification.Available: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Notification.Available: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Available"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}blob\0")
 
@@ -473,7 +477,7 @@ extension Document_Notification.Available: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Document_Notification.Added: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Notification.Added: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Added"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
 
@@ -513,7 +517,7 @@ extension Document_Notification.Added: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Document_Notification.Moved: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Notification.Moved: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Moved"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
 
@@ -553,7 +557,7 @@ extension Document_Notification.Moved: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Document_Notification.Removed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Notification.Removed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Removed"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
 

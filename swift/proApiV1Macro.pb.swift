@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Macro: Sendable {
+public nonisolated struct Rv_Data_API_v1_Macro: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -56,7 +60,7 @@ public struct Rv_Data_API_v1_Macro: Sendable {
   fileprivate var _color: Rv_Data_API_v1_Color? = nil
 }
 
-public struct Rv_Data_API_v1_MacroAction: Sendable {
+public nonisolated struct Rv_Data_API_v1_MacroAction: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -68,7 +72,7 @@ public struct Rv_Data_API_v1_MacroAction: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Macro_Collection: Sendable {
+public nonisolated struct Rv_Data_API_v1_Macro_Collection: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -91,7 +95,7 @@ public struct Rv_Data_API_v1_Macro_Collection: Sendable {
   fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
 }
 
-public struct Rv_Data_API_v1_Macro_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Macro_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -196,7 +200,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case macros(Rv_Data_API_v1_Macro_Request.Macros)
     case getMacro(Rv_Data_API_v1_Macro_Request.GetMacro)
     case putMacro(Rv_Data_API_v1_Macro_Request.PutMacro)
@@ -212,7 +216,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
 
   }
 
-  public struct Macros: Sendable {
+  public nonisolated struct Macros: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -222,7 +226,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     public init() {}
   }
 
-  public struct GetMacro: Sendable {
+  public nonisolated struct GetMacro: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -234,7 +238,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     public init() {}
   }
 
-  public struct PutMacro: Sendable {
+  public nonisolated struct PutMacro: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -261,7 +265,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     fileprivate var _colorChange: Rv_Data_API_v1_Color? = nil
   }
 
-  public struct DeleteMacro: Sendable {
+  public nonisolated struct DeleteMacro: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -273,7 +277,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     public init() {}
   }
 
-  public struct TriggerMacro: Sendable {
+  public nonisolated struct TriggerMacro: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -285,7 +289,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     public init() {}
   }
 
-  public struct MacroCollections: Sendable {
+  public nonisolated struct MacroCollections: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -295,7 +299,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     public init() {}
   }
 
-  public struct GetMacroCollection: Sendable {
+  public nonisolated struct GetMacroCollection: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -307,7 +311,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     public init() {}
   }
 
-  public struct PostMacroCollections: Sendable {
+  public nonisolated struct PostMacroCollections: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -319,7 +323,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     public init() {}
   }
 
-  public struct PutMacroCollection: Sendable {
+  public nonisolated struct PutMacroCollection: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -342,7 +346,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     fileprivate var _changes: Rv_Data_API_v1_Macro_Collection? = nil
   }
 
-  public struct DeleteMacroCollection: Sendable {
+  public nonisolated struct DeleteMacroCollection: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -354,7 +358,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     public init() {}
   }
 
-  public struct MacroIcon: Sendable {
+  public nonisolated struct MacroIcon: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -368,7 +372,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
     public init() {}
   }
 
-  public struct PutMacroIcon: Sendable {
+  public nonisolated struct PutMacroIcon: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -387,7 +391,7 @@ public struct Rv_Data_API_v1_Macro_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Macro_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Macro_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -492,7 +496,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case macros(Rv_Data_API_v1_Macro_Response.Macros)
     case getMacro(Rv_Data_API_v1_Macro_Response.GetMacro)
     case putMacro(Rv_Data_API_v1_Macro_Response.PutMacro)
@@ -508,7 +512,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
 
   }
 
-  public struct Macros: Sendable {
+  public nonisolated struct Macros: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -520,7 +524,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     public init() {}
   }
 
-  public struct GetMacro: Sendable {
+  public nonisolated struct GetMacro: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -541,7 +545,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     fileprivate var _macro: Rv_Data_API_v1_Macro? = nil
   }
 
-  public struct PutMacro: Sendable {
+  public nonisolated struct PutMacro: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -562,7 +566,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     fileprivate var _macro: Rv_Data_API_v1_Macro? = nil
   }
 
-  public struct DeleteMacro: Sendable {
+  public nonisolated struct DeleteMacro: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -572,7 +576,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     public init() {}
   }
 
-  public struct TriggerMacro: Sendable {
+  public nonisolated struct TriggerMacro: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -582,7 +586,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     public init() {}
   }
 
-  public struct MacroCollections: Sendable {
+  public nonisolated struct MacroCollections: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -598,7 +602,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Collections: Sendable {
+    public nonisolated struct Collections: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -615,7 +619,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     fileprivate var _macroCollections: Rv_Data_API_v1_Macro_Response.MacroCollections.Collections? = nil
   }
 
-  public struct GetMacroCollection: Sendable {
+  public nonisolated struct GetMacroCollection: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -636,7 +640,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     fileprivate var _macroCollection: Rv_Data_API_v1_Macro_Collection? = nil
   }
 
-  public struct PostMacroCollections: Sendable {
+  public nonisolated struct PostMacroCollections: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -657,7 +661,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     fileprivate var _macroCollection: Rv_Data_API_v1_Macro_Collection? = nil
   }
 
-  public struct PutMacroCollection: Sendable {
+  public nonisolated struct PutMacroCollection: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -678,7 +682,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     fileprivate var _macroCollection: Rv_Data_API_v1_Macro_Collection? = nil
   }
 
-  public struct DeleteMacroCollection: Sendable {
+  public nonisolated struct DeleteMacroCollection: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -688,7 +692,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     public init() {}
   }
 
-  public struct MacroIcon: Sendable {
+  public nonisolated struct MacroIcon: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -702,7 +706,7 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
     public init() {}
   }
 
-  public struct PutMacroIcon: Sendable {
+  public nonisolated struct PutMacroIcon: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -717,9 +721,9 @@ public struct Rv_Data_API_v1_Macro_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Macro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Macro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}color\0\u{3}image_type\0\u{1}actions\0")
 
@@ -768,7 +772,7 @@ extension Rv_Data_API_v1_Macro: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_API_v1_MacroAction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_MacroAction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_MacroAction"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0")
 
@@ -798,7 +802,7 @@ extension Rv_Data_API_v1_MacroAction: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_API_v1_Macro_Collection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Collection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Macro_Collection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}macros\0")
 
@@ -837,7 +841,7 @@ extension Rv_Data_API_v1_Macro_Collection: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Macro_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}macros\0\u{3}get_macro\0\u{3}put_macro\0\u{3}delete_macro\0\u{3}trigger_macro\0\u{3}macro_collections\0\u{3}get_macro_collection\0\u{3}post_macro_collections\0\u{3}put_macro_collection\0\u{3}delete_macro_collection\0\u{3}macro_icon\0\u{3}put_macro_icon\0")
 
@@ -1074,7 +1078,7 @@ extension Rv_Data_API_v1_Macro_Request: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.Macros: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.Macros: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".Macros"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1093,7 +1097,7 @@ extension Rv_Data_API_v1_Macro_Request.Macros: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.GetMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.GetMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".GetMacro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1123,7 +1127,7 @@ extension Rv_Data_API_v1_Macro_Request.GetMacro: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.PutMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.PutMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".PutMacro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}name_change\0\u{3}color_change\0\u{3}image_type_change\0")
 
@@ -1172,7 +1176,7 @@ extension Rv_Data_API_v1_Macro_Request.PutMacro: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.DeleteMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.DeleteMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".DeleteMacro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1202,7 +1206,7 @@ extension Rv_Data_API_v1_Macro_Request.DeleteMacro: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.TriggerMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.TriggerMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".TriggerMacro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1232,7 +1236,7 @@ extension Rv_Data_API_v1_Macro_Request.TriggerMacro: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.MacroCollections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.MacroCollections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".MacroCollections"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1251,7 +1255,7 @@ extension Rv_Data_API_v1_Macro_Request.MacroCollections: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.GetMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.GetMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".GetMacroCollection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1281,7 +1285,7 @@ extension Rv_Data_API_v1_Macro_Request.GetMacroCollection: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.PostMacroCollections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.PostMacroCollections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".PostMacroCollections"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0")
 
@@ -1311,7 +1315,7 @@ extension Rv_Data_API_v1_Macro_Request.PostMacroCollections: SwiftProtobuf.Messa
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.PutMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.PutMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".PutMacroCollection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}changes\0")
 
@@ -1350,7 +1354,7 @@ extension Rv_Data_API_v1_Macro_Request.PutMacroCollection: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.DeleteMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.DeleteMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".DeleteMacroCollection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1380,7 +1384,7 @@ extension Rv_Data_API_v1_Macro_Request.DeleteMacroCollection: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.MacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.MacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".MacroIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}quality\0")
 
@@ -1415,7 +1419,7 @@ extension Rv_Data_API_v1_Macro_Request.MacroIcon: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Macro_Request.PutMacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Request.PutMacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".PutMacroIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}content_type\0\u{1}icon\0")
 
@@ -1455,7 +1459,7 @@ extension Rv_Data_API_v1_Macro_Request.PutMacroIcon: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Macro_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}macros\0\u{3}get_macro\0\u{3}put_macro\0\u{3}delete_macro\0\u{3}trigger_macro\0\u{3}macro_collections\0\u{3}get_macro_collection\0\u{3}post_macro_collections\0\u{3}put_macro_collection\0\u{3}delete_macro_collection\0\u{3}macro_icon\0\u{3}put_macro_icon\0")
 
@@ -1692,7 +1696,7 @@ extension Rv_Data_API_v1_Macro_Response: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.Macros: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.Macros: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".Macros"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}macros\0")
 
@@ -1722,7 +1726,7 @@ extension Rv_Data_API_v1_Macro_Response.Macros: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.GetMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.GetMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".GetMacro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}macro\0")
 
@@ -1756,7 +1760,7 @@ extension Rv_Data_API_v1_Macro_Response.GetMacro: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.PutMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.PutMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".PutMacro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}macro\0")
 
@@ -1790,7 +1794,7 @@ extension Rv_Data_API_v1_Macro_Response.PutMacro: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.DeleteMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.DeleteMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".DeleteMacro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1809,7 +1813,7 @@ extension Rv_Data_API_v1_Macro_Response.DeleteMacro: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.TriggerMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.TriggerMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".TriggerMacro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1828,7 +1832,7 @@ extension Rv_Data_API_v1_Macro_Response.TriggerMacro: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.MacroCollections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.MacroCollections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".MacroCollections"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}macro_collections\0")
 
@@ -1862,7 +1866,7 @@ extension Rv_Data_API_v1_Macro_Response.MacroCollections: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.MacroCollections.Collections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.MacroCollections.Collections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.MacroCollections.protoMessageName + ".Collections"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}collections\0")
 
@@ -1892,7 +1896,7 @@ extension Rv_Data_API_v1_Macro_Response.MacroCollections.Collections: SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.GetMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.GetMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".GetMacroCollection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}macro_collection\0")
 
@@ -1926,7 +1930,7 @@ extension Rv_Data_API_v1_Macro_Response.GetMacroCollection: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.PostMacroCollections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.PostMacroCollections: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".PostMacroCollections"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}macro_collection\0")
 
@@ -1960,7 +1964,7 @@ extension Rv_Data_API_v1_Macro_Response.PostMacroCollections: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.PutMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.PutMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".PutMacroCollection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}macro_collection\0")
 
@@ -1994,7 +1998,7 @@ extension Rv_Data_API_v1_Macro_Response.PutMacroCollection: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.DeleteMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.DeleteMacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".DeleteMacroCollection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2013,7 +2017,7 @@ extension Rv_Data_API_v1_Macro_Response.DeleteMacroCollection: SwiftProtobuf.Mes
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.MacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.MacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".MacroIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}content_type\0\u{1}icon\0")
 
@@ -2048,7 +2052,7 @@ extension Rv_Data_API_v1_Macro_Response.MacroIcon: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Macro_Response.PutMacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Macro_Response.PutMacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Response.protoMessageName + ".PutMacroIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

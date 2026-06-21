@@ -15,19 +15,19 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_UserFeedback: Sendable {
+public nonisolated struct Rv_Data_UserFeedback: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct ApplicationMetadata: Sendable {
+  public nonisolated struct ApplicationMetadata: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -48,9 +48,11 @@ public struct Rv_Data_UserFeedback: Sendable {
 
     public var enabledFeatureFlags: [String] = []
 
+    public var organizationID: String = String()
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct ApplicationInstance: Sendable {
+    public nonisolated struct ApplicationInstance: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -64,7 +66,7 @@ public struct Rv_Data_UserFeedback: Sendable {
       public init() {}
     }
 
-    public struct Screen: Sendable {
+    public nonisolated struct Screen: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -86,7 +88,7 @@ public struct Rv_Data_UserFeedback: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case unknown // = 0
         case audience // = 1
@@ -124,7 +126,7 @@ public struct Rv_Data_UserFeedback: Sendable {
 
       }
 
-      public struct Resolution: Sendable {
+      public nonisolated struct Resolution: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -151,9 +153,9 @@ public struct Rv_Data_UserFeedback: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_UserFeedback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_UserFeedback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UserFeedback"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -172,9 +174,9 @@ extension Rv_Data_UserFeedback: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_UserFeedback.ApplicationMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_UserFeedback.ApplicationMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_UserFeedback.protoMessageName + ".ApplicationMetadata"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_version\0\u{3}os_version\0\u{3}application_instances\0\u{3}blackmagic_desktop_video_instances\0\u{1}screens\0\u{3}crash_reporting_enabled\0\u{3}analytics_reporting_enabled\0\u{3}enabled_feature_flags\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_version\0\u{3}os_version\0\u{3}application_instances\0\u{3}blackmagic_desktop_video_instances\0\u{1}screens\0\u{3}crash_reporting_enabled\0\u{3}analytics_reporting_enabled\0\u{3}enabled_feature_flags\0\u{3}organization_id\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -190,6 +192,7 @@ extension Rv_Data_UserFeedback.ApplicationMetadata: SwiftProtobuf.Message, Swift
       case 6: try { try decoder.decodeSingularBoolField(value: &self.crashReportingEnabled) }()
       case 7: try { try decoder.decodeSingularBoolField(value: &self.analyticsReportingEnabled) }()
       case 8: try { try decoder.decodeRepeatedStringField(value: &self.enabledFeatureFlags) }()
+      case 9: try { try decoder.decodeSingularStringField(value: &self.organizationID) }()
       default: break
       }
     }
@@ -220,6 +223,9 @@ extension Rv_Data_UserFeedback.ApplicationMetadata: SwiftProtobuf.Message, Swift
     if !self.enabledFeatureFlags.isEmpty {
       try visitor.visitRepeatedStringField(value: self.enabledFeatureFlags, fieldNumber: 8)
     }
+    if !self.organizationID.isEmpty {
+      try visitor.visitSingularStringField(value: self.organizationID, fieldNumber: 9)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -232,12 +238,13 @@ extension Rv_Data_UserFeedback.ApplicationMetadata: SwiftProtobuf.Message, Swift
     if lhs.crashReportingEnabled != rhs.crashReportingEnabled {return false}
     if lhs.analyticsReportingEnabled != rhs.analyticsReportingEnabled {return false}
     if lhs.enabledFeatureFlags != rhs.enabledFeatureFlags {return false}
+    if lhs.organizationID != rhs.organizationID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Rv_Data_UserFeedback.ApplicationMetadata.ApplicationInstance: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_UserFeedback.ApplicationMetadata.ApplicationInstance: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_UserFeedback.ApplicationMetadata.protoMessageName + ".ApplicationInstance"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{1}version\0")
 
@@ -272,7 +279,7 @@ extension Rv_Data_UserFeedback.ApplicationMetadata.ApplicationInstance: SwiftPro
   }
 }
 
-extension Rv_Data_UserFeedback.ApplicationMetadata.Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_UserFeedback.ApplicationMetadata.Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_UserFeedback.ApplicationMetadata.protoMessageName + ".Screen"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}resolution\0\u{1}type\0\u{3}output_name\0")
 
@@ -321,11 +328,11 @@ extension Rv_Data_UserFeedback.ApplicationMetadata.Screen: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_UserFeedback.ApplicationMetadata.Screen.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_UserFeedback.ApplicationMetadata.Screen.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}AUDIENCE\0\u{1}STAGE\0")
 }
 
-extension Rv_Data_UserFeedback.ApplicationMetadata.Screen.Resolution: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_UserFeedback.ApplicationMetadata.Screen.Resolution: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_UserFeedback.ApplicationMetadata.Screen.protoMessageName + ".Resolution"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}width\0\u{1}height\0")
 

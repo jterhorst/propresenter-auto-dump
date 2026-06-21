@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Library_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Library_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -53,14 +53,14 @@ public struct Rv_Data_API_v1_Library_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case libraries(Rv_Data_API_v1_Library_Request.Libraries)
     case library(Rv_Data_API_v1_Library_Request.Library)
     case trigger(Rv_Data_API_v1_Library_Request.Trigger)
 
   }
 
-  public struct Libraries: Sendable {
+  public nonisolated struct Libraries: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -70,7 +70,7 @@ public struct Rv_Data_API_v1_Library_Request: Sendable {
     public init() {}
   }
 
-  public struct Library: Sendable {
+  public nonisolated struct Library: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -82,7 +82,7 @@ public struct Rv_Data_API_v1_Library_Request: Sendable {
     public init() {}
   }
 
-  public struct Trigger: Sendable {
+  public nonisolated struct Trigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -101,7 +101,7 @@ public struct Rv_Data_API_v1_Library_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Library_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Library_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -134,14 +134,14 @@ public struct Rv_Data_API_v1_Library_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case libraries(Rv_Data_API_v1_Library_Response.Libraries)
     case library(Rv_Data_API_v1_Library_Response.Library)
     case triggger(Rv_Data_API_v1_Library_Response.Trigger)
 
   }
 
-  public struct Libraries: Sendable {
+  public nonisolated struct Libraries: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -153,7 +153,7 @@ public struct Rv_Data_API_v1_Library_Response: Sendable {
     public init() {}
   }
 
-  public struct Library: Sendable {
+  public nonisolated struct Library: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -164,7 +164,7 @@ public struct Rv_Data_API_v1_Library_Response: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum UpdateType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum UpdateType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case all // = 0
       case add // = 1
@@ -205,7 +205,7 @@ public struct Rv_Data_API_v1_Library_Response: Sendable {
     public init() {}
   }
 
-  public struct Trigger: Sendable {
+  public nonisolated struct Trigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -220,9 +220,9 @@ public struct Rv_Data_API_v1_Library_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Library_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Library_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Library_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}libraries\0\u{1}library\0\u{1}trigger\0")
 
@@ -306,7 +306,7 @@ extension Rv_Data_API_v1_Library_Request: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_API_v1_Library_Request.Libraries: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Library_Request.Libraries: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Library_Request.protoMessageName + ".Libraries"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -325,7 +325,7 @@ extension Rv_Data_API_v1_Library_Request.Libraries: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Library_Request.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Library_Request.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Library_Request.protoMessageName + ".Library"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -355,7 +355,7 @@ extension Rv_Data_API_v1_Library_Request.Library: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Library_Request.Trigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Library_Request.Trigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Library_Request.protoMessageName + ".Trigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}library_id\0\u{3}presentation_id\0\u{1}index\0")
 
@@ -395,7 +395,7 @@ extension Rv_Data_API_v1_Library_Request.Trigger: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Library_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Library_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Library_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}libraries\0\u{1}library\0\u{1}triggger\0")
 
@@ -479,7 +479,7 @@ extension Rv_Data_API_v1_Library_Response: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_API_v1_Library_Response.Libraries: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Library_Response.Libraries: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Library_Response.protoMessageName + ".Libraries"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}libraries\0")
 
@@ -509,7 +509,7 @@ extension Rv_Data_API_v1_Library_Response.Libraries: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Library_Response.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Library_Response.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Library_Response.protoMessageName + ".Library"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}update_type\0\u{1}items\0")
 
@@ -544,11 +544,11 @@ extension Rv_Data_API_v1_Library_Response.Library: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Library_Response.Library.UpdateType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Library_Response.Library.UpdateType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0all\0\u{1}add\0\u{1}remove\0")
 }
 
-extension Rv_Data_API_v1_Library_Response.Trigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Library_Response.Trigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Library_Response.protoMessageName + ".Trigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

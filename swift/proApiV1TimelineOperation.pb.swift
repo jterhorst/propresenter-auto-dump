@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Data_API_v1_TimelineOperation: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Data_API_v1_TimelineOperation: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case play // = 0
   case pause // = 1
@@ -60,6 +60,6 @@ public enum Rv_Data_API_v1_TimelineOperation: SwiftProtobuf.Enum, Swift.CaseIter
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Rv_Data_API_v1_TimelineOperation: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_TimelineOperation: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0play\0\u{1}pause\0\u{1}rewind\0")
 }

@@ -35,6 +35,12 @@ enum LogSource {
   CORE = 1;
 }
 
+message LogError {
+  rv.analytics.logs.LogMetadata metadata = 1;
+  string document_identifier = 2;
+  string document_name = 3;
+}
+
 message LogWorkspacesPublished {
   rv.analytics.logs.LogMetadata metadata = 1;
   repeated string workspace_identifiers = 2;
@@ -84,6 +90,7 @@ message LogOpenedWorkspace {
   rv.analytics.logs.LogMetadata metadata = 1;
   string workspace_identifier = 2;
   string workspace_name = 3;
+  bool is_local = 4;
 }
 
 message LogConvertToLocal {
@@ -113,6 +120,11 @@ message LogDocumentCreated {
   rv.analytics.logs.LogMetadata metadata = 1;
   string document_identifier = 2;
   string document_name = 3;
+}
+
+message LogDocumentRequested {
+  rv.analytics.logs.LogMetadata metadata = 1;
+  string document_identifier = 2;
 }
 
 message LogDocumentUpdated {

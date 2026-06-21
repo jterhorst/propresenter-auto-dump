@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Analytics_Edit_Presentation: Sendable {
+public nonisolated struct Rv_Analytics_Edit_Presentation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -31,7 +31,7 @@ public struct Rv_Analytics_Edit_Presentation: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ChangeType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ChangeType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case edit // = 0
     case undo // = 1
@@ -74,9 +74,9 @@ public struct Rv_Analytics_Edit_Presentation: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.edit"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.edit"
 
-extension Rv_Analytics_Edit_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Edit_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Presentation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}changeType\0\u{2}\u{2}uuid\0")
 
@@ -111,6 +111,6 @@ extension Rv_Analytics_Edit_Presentation: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Analytics_Edit_Presentation.ChangeType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Edit_Presentation.ChangeType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EDIT\0\u{1}UNDO\0\u{1}REDO\0")
 }

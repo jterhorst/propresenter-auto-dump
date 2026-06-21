@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Registration_Core_Status: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_Status: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case success // = 0
   case expiredLicense // = 1
@@ -127,7 +131,7 @@ public enum Registration_Core_Status: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-public enum Registration_Core_SeatType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_SeatType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case inactive // = 0
   case basic // = 1
@@ -165,7 +169,7 @@ public enum Registration_Core_SeatType: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-public enum Registration_Core_LicenseType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_LicenseType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case trial // = 0
   case rental // = 1
@@ -207,7 +211,7 @@ public enum Registration_Core_LicenseType: SwiftProtobuf.Enum, Swift.CaseIterabl
 
 }
 
-public enum Registration_Core_UpdateChannel: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_UpdateChannel: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case beta // = 0
   case production // = 1
@@ -241,7 +245,7 @@ public enum Registration_Core_UpdateChannel: SwiftProtobuf.Enum, Swift.CaseItera
 
 }
 
-public enum Registration_Core_AlertType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_AlertType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case info // = 0
   case feature // = 1
@@ -279,7 +283,7 @@ public enum Registration_Core_AlertType: SwiftProtobuf.Enum, Swift.CaseIterable 
 
 }
 
-public enum Registration_Core_AlertContentType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_AlertContentType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case contentType // = 0
   case text // = 1
@@ -321,7 +325,7 @@ public enum Registration_Core_AlertContentType: SwiftProtobuf.Enum, Swift.CaseIt
 
 }
 
-public enum Registration_Core_ReadTokenStatus: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_ReadTokenStatus: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case readTokenSuccess // = 0
   case tokenNotPresent // = 1
@@ -355,7 +359,7 @@ public enum Registration_Core_ReadTokenStatus: SwiftProtobuf.Enum, Swift.CaseIte
 
 }
 
-public enum Registration_Core_ProContentLicenseType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_ProContentLicenseType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case free // = 0
   case premium // = 1
@@ -389,7 +393,7 @@ public enum Registration_Core_ProContentLicenseType: SwiftProtobuf.Enum, Swift.C
 
 }
 
-public enum Registration_Core_PopupAlertMessage: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_PopupAlertMessage: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case noPopupAlert // = 0
   case seatActivated // = 1
@@ -451,7 +455,7 @@ public enum Registration_Core_PopupAlertMessage: SwiftProtobuf.Enum, Swift.CaseI
 
 }
 
-public enum Registration_Core_BannerMessage: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_BannerMessage: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case noBanner // = 0
   case activateProPresenter // = 1
@@ -485,7 +489,7 @@ public enum Registration_Core_BannerMessage: SwiftProtobuf.Enum, Swift.CaseItera
 
 }
 
-public enum Registration_Core_ClientAlertMessage: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Registration_Core_ClientAlertMessage: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case noAlert // = 0
   case expiredLicenseLegacy // = 1
@@ -595,7 +599,7 @@ public enum Registration_Core_ClientAlertMessage: SwiftProtobuf.Enum, Swift.Case
 
 }
 
-public struct Registration_Core_Request: Sendable {
+public nonisolated struct Registration_Core_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -780,7 +784,7 @@ public struct Registration_Core_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case register(Registration_Core_Register)
     case unregister(Registration_Core_Unregister)
     case changeSeatType(Registration_Core_ChangeSeatType)
@@ -809,7 +813,7 @@ public struct Registration_Core_Request: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Callback: Sendable {
+public nonisolated struct Registration_Core_Callback: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -970,7 +974,7 @@ public struct Registration_Core_Callback: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Callback: Equatable, Sendable {
+  public nonisolated enum OneOf_Callback: Equatable, Sendable {
     case setWatermark(Registration_Core_SetWatermark)
     case bibleDownloadProgress(Registration_Core_BibleDownloadProgress)
     case hardExit(Registration_Core_HardExit)
@@ -996,7 +1000,7 @@ public struct Registration_Core_Callback: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Register: Sendable {
+public nonisolated struct Registration_Core_Register: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1016,7 +1020,7 @@ public struct Registration_Core_Register: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ActivateLink: Sendable {
+public nonisolated struct Registration_Core_ActivateLink: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1028,7 +1032,7 @@ public struct Registration_Core_ActivateLink: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Unregister: Sendable {
+public nonisolated struct Registration_Core_Unregister: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1038,7 +1042,7 @@ public struct Registration_Core_Unregister: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Signout: Sendable {
+public nonisolated struct Registration_Core_Signout: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1048,7 +1052,7 @@ public struct Registration_Core_Signout: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ChangeSeatType: Sendable {
+public nonisolated struct Registration_Core_ChangeSeatType: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1062,7 +1066,7 @@ public struct Registration_Core_ChangeSeatType: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_GetBibles: Sendable {
+public nonisolated struct Registration_Core_GetBibles: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1072,19 +1076,7 @@ public struct Registration_Core_GetBibles: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ActivateBible: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var bibleID: String = String()
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-}
-
-public struct Registration_Core_DeactivateBible: Sendable {
+public nonisolated struct Registration_Core_ActivateBible: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1096,7 +1088,19 @@ public struct Registration_Core_DeactivateBible: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_DownloadBible: Sendable {
+public nonisolated struct Registration_Core_DeactivateBible: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var bibleID: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Registration_Core_DownloadBible: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1110,7 +1114,7 @@ public struct Registration_Core_DownloadBible: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_RegistrationData: Sendable {
+public nonisolated struct Registration_Core_RegistrationData: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1124,7 +1128,7 @@ public struct Registration_Core_RegistrationData: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ProductInformation: Sendable {
+public nonisolated struct Registration_Core_ProductInformation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1146,7 +1150,7 @@ public struct Registration_Core_ProductInformation: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_GetAvailableVersion: Sendable {
+public nonisolated struct Registration_Core_GetAvailableVersion: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1164,7 +1168,7 @@ public struct Registration_Core_GetAvailableVersion: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_DownloadNewVersion: Sendable {
+public nonisolated struct Registration_Core_DownloadNewVersion: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1178,7 +1182,7 @@ public struct Registration_Core_DownloadNewVersion: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Refresh: Sendable {
+public nonisolated struct Registration_Core_Refresh: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1190,7 +1194,7 @@ public struct Registration_Core_Refresh: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_UpdateToken: Sendable {
+public nonisolated struct Registration_Core_UpdateToken: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1211,7 +1215,7 @@ public struct Registration_Core_UpdateToken: Sendable {
   fileprivate var _tokenMetadata: Registration_Core_TokenMetadata? = nil
 }
 
-public struct Registration_Core_OldTokenData: Sendable {
+public nonisolated struct Registration_Core_OldTokenData: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1234,7 +1238,7 @@ public struct Registration_Core_OldTokenData: Sendable {
   fileprivate var _token: Registration_Core_TokenMetadata? = nil
 }
 
-public struct Registration_Core_Token: Sendable {
+public nonisolated struct Registration_Core_Token: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1255,7 +1259,7 @@ public struct Registration_Core_Token: Sendable {
   fileprivate var _tokenMetadata: Registration_Core_TokenMetadata? = nil
 }
 
-public struct Registration_Core_GetActivateCode: Sendable {
+public nonisolated struct Registration_Core_GetActivateCode: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1269,7 +1273,7 @@ public struct Registration_Core_GetActivateCode: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_NotificationData: Sendable {
+public nonisolated struct Registration_Core_NotificationData: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1281,7 +1285,7 @@ public struct Registration_Core_NotificationData: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_MarkNotificationsRead: Sendable {
+public nonisolated struct Registration_Core_MarkNotificationsRead: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1293,7 +1297,7 @@ public struct Registration_Core_MarkNotificationsRead: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_GetLicenseState: Sendable {
+public nonisolated struct Registration_Core_GetLicenseState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1303,7 +1307,7 @@ public struct Registration_Core_GetLicenseState: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_RefreshUserAuthTokens: Sendable {
+public nonisolated struct Registration_Core_RefreshUserAuthTokens: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1313,7 +1317,7 @@ public struct Registration_Core_RefreshUserAuthTokens: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_RefreshAccessToken: Sendable {
+public nonisolated struct Registration_Core_RefreshAccessToken: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1323,7 +1327,7 @@ public struct Registration_Core_RefreshAccessToken: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_SetWatermark: Sendable {
+public nonisolated struct Registration_Core_SetWatermark: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1337,7 +1341,7 @@ public struct Registration_Core_SetWatermark: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ChangeSeatTypeComplete: Sendable {
+public nonisolated struct Registration_Core_ChangeSeatTypeComplete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1372,7 +1376,7 @@ public struct Registration_Core_ChangeSeatTypeComplete: Sendable {
   fileprivate var _totalSeats: Registration_Core_Seats? = nil
 }
 
-public struct Registration_Core_BibleDownloadProgress: Sendable {
+public nonisolated struct Registration_Core_BibleDownloadProgress: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1396,7 +1400,7 @@ public struct Registration_Core_BibleDownloadProgress: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_HardExit: Sendable {
+public nonisolated struct Registration_Core_HardExit: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1405,7 +1409,7 @@ public struct Registration_Core_HardExit: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Reason: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Reason: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case hostsFile // = 0
     case systemTime // = 1
@@ -1442,7 +1446,7 @@ public struct Registration_Core_HardExit: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ReadRegistrationData: Sendable {
+public nonisolated struct Registration_Core_ReadRegistrationData: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1456,7 +1460,7 @@ public struct Registration_Core_ReadRegistrationData: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ReadOldToken: Sendable {
+public nonisolated struct Registration_Core_ReadOldToken: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1466,7 +1470,7 @@ public struct Registration_Core_ReadOldToken: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_WriteRegistrationData: Sendable {
+public nonisolated struct Registration_Core_WriteRegistrationData: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1478,7 +1482,7 @@ public struct Registration_Core_WriteRegistrationData: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_GetProductInformation: Sendable {
+public nonisolated struct Registration_Core_GetProductInformation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1488,7 +1492,7 @@ public struct Registration_Core_GetProductInformation: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Log: Sendable {
+public nonisolated struct Registration_Core_Log: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1499,7 +1503,7 @@ public struct Registration_Core_Log: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Level: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Level: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case debug // = 0
     case info // = 1
@@ -1544,7 +1548,7 @@ public struct Registration_Core_Log: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_UpgradesAvailable: Sendable {
+public nonisolated struct Registration_Core_UpgradesAvailable: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1566,7 +1570,7 @@ public struct Registration_Core_UpgradesAvailable: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_DownloadProgress: Sendable {
+public nonisolated struct Registration_Core_DownloadProgress: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1584,7 +1588,7 @@ public struct Registration_Core_DownloadProgress: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Alerts: Sendable {
+public nonisolated struct Registration_Core_Alerts: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1596,7 +1600,7 @@ public struct Registration_Core_Alerts: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ShowExpirationDialog: Sendable {
+public nonisolated struct Registration_Core_ShowExpirationDialog: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1608,7 +1612,7 @@ public struct Registration_Core_ShowExpirationDialog: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_VerificationComplete: Sendable {
+public nonisolated struct Registration_Core_VerificationComplete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1669,7 +1673,7 @@ public struct Registration_Core_VerificationComplete: Sendable {
   fileprivate var _subscriptionInfo: Registration_Core_SubscriptionInfo? = nil
 }
 
-public struct Registration_Core_SetClientInfo: Sendable {
+public nonisolated struct Registration_Core_SetClientInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1683,7 +1687,7 @@ public struct Registration_Core_SetClientInfo: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ActivateCodeComplete: Sendable {
+public nonisolated struct Registration_Core_ActivateCodeComplete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1708,13 +1712,13 @@ public struct Registration_Core_ActivateCodeComplete: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Status: Equatable, Sendable {
+  public nonisolated enum OneOf_Status: Equatable, Sendable {
     case error(Registration_Core_ActivateCodeComplete.Error)
     case success(Registration_Core_ActivateCodeComplete.Success)
 
   }
 
-  public struct Error: Sendable {
+  public nonisolated struct Error: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1728,7 +1732,7 @@ public struct Registration_Core_ActivateCodeComplete: Sendable {
     public init() {}
   }
 
-  public struct Success: Sendable {
+  public nonisolated struct Success: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1745,7 +1749,7 @@ public struct Registration_Core_ActivateCodeComplete: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ReadNotificationData: Sendable {
+public nonisolated struct Registration_Core_ReadNotificationData: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1755,7 +1759,7 @@ public struct Registration_Core_ReadNotificationData: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_WriteNotificationData: Sendable {
+public nonisolated struct Registration_Core_WriteNotificationData: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1767,7 +1771,7 @@ public struct Registration_Core_WriteNotificationData: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_NotificationCallback: Sendable {
+public nonisolated struct Registration_Core_NotificationCallback: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1779,7 +1783,7 @@ public struct Registration_Core_NotificationCallback: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_LicenseState: Sendable {
+public nonisolated struct Registration_Core_LicenseState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1797,7 +1801,7 @@ public struct Registration_Core_LicenseState: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Seats: Sendable {
+public nonisolated struct Registration_Core_Seats: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1811,7 +1815,7 @@ public struct Registration_Core_Seats: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_SupplementalInformation: Sendable {
+public nonisolated struct Registration_Core_SupplementalInformation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1823,7 +1827,7 @@ public struct Registration_Core_SupplementalInformation: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Bible: Sendable {
+public nonisolated struct Registration_Core_Bible: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1856,7 +1860,7 @@ public struct Registration_Core_Bible: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Additional: Equatable, Sendable {
+  public nonisolated enum OneOf_Additional: Equatable, Sendable {
     case info(Registration_Core_SupplementalInformation)
 
   }
@@ -1864,7 +1868,7 @@ public struct Registration_Core_Bible: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_PurchasedBible: Sendable {
+public nonisolated struct Registration_Core_PurchasedBible: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1895,7 +1899,7 @@ public struct Registration_Core_PurchasedBible: Sendable {
   fileprivate var _licensingInfo: Registration_Core_LicensingInfo? = nil
 }
 
-public struct Registration_Core_LicenseInfo: @unchecked Sendable {
+public nonisolated struct Registration_Core_LicenseInfo: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1939,7 +1943,7 @@ public struct Registration_Core_LicenseInfo: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Registration_Core_LicensingInfo: Sendable {
+public nonisolated struct Registration_Core_LicensingInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1957,7 +1961,7 @@ public struct Registration_Core_LicensingInfo: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_ActiveCopy: Sendable {
+public nonisolated struct Registration_Core_ActiveCopy: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1971,7 +1975,7 @@ public struct Registration_Core_ActiveCopy: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_RegistrationInfo: Sendable {
+public nonisolated struct Registration_Core_RegistrationInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2009,7 +2013,7 @@ public struct Registration_Core_RegistrationInfo: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_BuildInformation: Sendable {
+public nonisolated struct Registration_Core_BuildInformation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2039,7 +2043,7 @@ public struct Registration_Core_BuildInformation: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Alert: Sendable {
+public nonisolated struct Registration_Core_Alert: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2057,7 +2061,7 @@ public struct Registration_Core_Alert: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_TokenMetadata: Sendable {
+public nonisolated struct Registration_Core_TokenMetadata: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2073,7 +2077,7 @@ public struct Registration_Core_TokenMetadata: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_SubscriptionInfo: Sendable {
+public nonisolated struct Registration_Core_SubscriptionInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2089,7 +2093,7 @@ public struct Registration_Core_SubscriptionInfo: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_DownloadLink: Sendable {
+public nonisolated struct Registration_Core_DownloadLink: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2103,7 +2107,7 @@ public struct Registration_Core_DownloadLink: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Bibles: Sendable {
+public nonisolated struct Registration_Core_Bibles: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2117,7 +2121,7 @@ public struct Registration_Core_Bibles: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Notification: Sendable {
+public nonisolated struct Registration_Core_Notification: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2143,7 +2147,7 @@ public struct Registration_Core_Notification: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_Notifications: Sendable {
+public nonisolated struct Registration_Core_Notifications: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2155,7 +2159,7 @@ public struct Registration_Core_Notifications: Sendable {
   public init() {}
 }
 
-public struct Registration_Core_NotificationDataStore: Sendable {
+public nonisolated struct Registration_Core_NotificationDataStore: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2171,53 +2175,53 @@ public struct Registration_Core_NotificationDataStore: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "registration.core"
+fileprivate nonisolated let _protobuf_package = "registration.core"
 
-extension Registration_Core_Status: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Status: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Success\0\u{1}ExpiredLicense\0\u{1}DeactivatedLicense\0\u{1}DisabledLicense\0\u{1}NoSeats\0\u{1}NoCopies\0\u{1}MissingLicense\0\u{1}TimeDiscrepancy\0\u{1}BibleMissing\0\u{1}BibleNotPurchased\0\u{1}BibleActivationMissing\0\u{1}BibleDeactivated\0\u{1}NetworkError\0\u{1}IOError\0\u{1}NotInitialized\0\u{1}TokenExpired\0\u{1}TokenInvalid\0\u{1}ActivationCodeExpired\0\u{1}ActivationCodeInvalid\0\u{1}UnknownError\0")
 }
 
-extension Registration_Core_SeatType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_SeatType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Inactive\0\u{1}Basic\0\u{1}Advanced\0")
 }
 
-extension Registration_Core_LicenseType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_LicenseType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Trial\0\u{1}Rental\0\u{1}Standard\0\u{1}Campus\0")
 }
 
-extension Registration_Core_UpdateChannel: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_UpdateChannel: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Beta\0\u{1}Production\0")
 }
 
-extension Registration_Core_AlertType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_AlertType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Info\0\u{1}Feature\0\u{1}Warning\0")
 }
 
-extension Registration_Core_AlertContentType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_AlertContentType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ContentType\0\u{1}Text\0\u{1}InternalLink\0\u{1}ExternalLink\0")
 }
 
-extension Registration_Core_ReadTokenStatus: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ReadTokenStatus: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ReadTokenSuccess\0\u{1}TokenNotPresent\0")
 }
 
-extension Registration_Core_ProContentLicenseType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ProContentLicenseType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Free\0\u{1}Premium\0")
 }
 
-extension Registration_Core_PopupAlertMessage: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_PopupAlertMessage: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NoPopupAlert\0\u{1}SeatActivated\0\u{1}NoSeatActivated\0\u{1}NoLicenseActivated\0\u{1}LegacyLicenseProContentActivated\0\u{1}FirstLaunchLegacyLicense\0\u{1}FullySignedOut\0\u{1}FirstLaunchSignedInNoSubscriptionNoLicense\0\u{1}FirstLaunchSignedInNoSubscriptionLegacyLicense\0")
 }
 
-extension Registration_Core_BannerMessage: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_BannerMessage: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NoBanner\0\u{1}ActivateProPresenter\0")
 }
 
-extension Registration_Core_ClientAlertMessage: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ClientAlertMessage: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NoAlert\0\u{1}ExpiredLicenseLegacy\0\u{1}ExpiredSubscription\0\u{1}InvalidLicense\0\u{1}NoSeatsLegacy\0\u{1}NoSeatsSubscription\0\u{1}SeatDeactivatedSubscription\0\u{1}TimeDiscrepancyAlert\0\u{1}NoNetwork\0\u{1}NoBibleCopies\0\u{1}BibleMissingAlert\0\u{1}BibleNotPurchasedLegacy\0\u{1}BibleNotPurchasedSubscription\0\u{1}UnsuccessfulBibleActivationLegacy\0\u{1}UnsuccessfulBibleActivationSubscription\0\u{1}IOErrorAlert\0\u{1}CodeExpiredAlert\0\u{1}CodeInvalidAlert\0\u{1}UnsuccessfulActivation\0\u{1}DeviceSignedOutSubscription\0\u{1}UnknownAlert\0")
 }
 
-extension Registration_Core_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}register\0\u{1}unregister\0\u{3}change_seat_type\0\u{3}get_bibles\0\u{3}activate_bible\0\u{3}deactivate_bible\0\u{3}download_bible\0\u{3}registration_data\0\u{3}product_information\0\u{3}get_upgrades_available\0\u{3}download_new_version\0\u{1}refresh\0\u{3}activate_link\0\u{3}update_token\0\u{3}old_token_data\0\u{1}signout\0\u{3}get_activate_code\0\u{3}notification_data\0\u{1}markNotificationsRead\0\u{3}get_license_state\0\u{3}refresh_user_auth_tokens\0\u{3}refresh_access_token\0")
 
@@ -2624,7 +2628,7 @@ extension Registration_Core_Request: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Registration_Core_Callback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Callback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Callback"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}set_watermark\0\u{3}bible_download_progress\0\u{3}hard_exit\0\u{3}read_registration_data\0\u{3}write_registration_data\0\u{3}get_product_information\0\u{1}log\0\u{3}upgrades_available\0\u{3}download_progress\0\u{1}alerts\0\u{3}show_expiration_dialog\0\u{3}read_old_token\0\u{3}verification_complete\0\u{3}set_client_info\0\u{3}get_activate_code_complete\0\u{3}read_notification_data\0\u{3}write_notification_data\0\u{3}notification_callback\0\u{3}license_state\0")
 
@@ -2980,7 +2984,7 @@ extension Registration_Core_Callback: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Registration_Core_Register: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Register: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Register"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}user_name\0\u{3}registration_key\0\u{3}display_name\0\u{3}seat_type\0\u{1}channel\0")
 
@@ -3030,7 +3034,7 @@ extension Registration_Core_Register: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Registration_Core_ActivateLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ActivateLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActivateLink"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}identifier\0")
 
@@ -3060,7 +3064,7 @@ extension Registration_Core_ActivateLink: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Registration_Core_Unregister: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Unregister: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Unregister"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3079,7 +3083,7 @@ extension Registration_Core_Unregister: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Registration_Core_Signout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Signout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Signout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3098,7 +3102,7 @@ extension Registration_Core_Signout: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Registration_Core_ChangeSeatType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ChangeSeatType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ChangeSeatType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}seat_type\0\u{1}channel\0")
 
@@ -3133,7 +3137,7 @@ extension Registration_Core_ChangeSeatType: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Registration_Core_GetBibles: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_GetBibles: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetBibles"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3152,7 +3156,7 @@ extension Registration_Core_GetBibles: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Registration_Core_ActivateBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ActivateBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActivateBible"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}bible_id\0")
 
@@ -3182,7 +3186,7 @@ extension Registration_Core_ActivateBible: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Registration_Core_DeactivateBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_DeactivateBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DeactivateBible"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}bible_id\0")
 
@@ -3212,7 +3216,7 @@ extension Registration_Core_DeactivateBible: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Registration_Core_DownloadBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_DownloadBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DownloadBible"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}bible_id\0\u{1}filename\0")
 
@@ -3247,7 +3251,7 @@ extension Registration_Core_DownloadBible: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Registration_Core_RegistrationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_RegistrationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RegistrationData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}data\0\u{1}channel\0")
 
@@ -3282,7 +3286,7 @@ extension Registration_Core_RegistrationData: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Registration_Core_ProductInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ProductInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProductInformation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}product_name\0\u{3}major_version\0\u{3}minor_version\0\u{3}patch_version\0\u{3}build_number\0\u{3}build_date\0")
 
@@ -3337,7 +3341,7 @@ extension Registration_Core_ProductInformation: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Registration_Core_GetAvailableVersion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_GetAvailableVersion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetAvailableVersion"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}include_notes\0\u{1}channel\0\u{1}format\0\u{3}user_initiated\0")
 
@@ -3382,7 +3386,7 @@ extension Registration_Core_GetAvailableVersion: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Registration_Core_DownloadNewVersion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_DownloadNewVersion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DownloadNewVersion"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}url\0\u{1}filename\0")
 
@@ -3417,7 +3421,7 @@ extension Registration_Core_DownloadNewVersion: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Registration_Core_Refresh: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Refresh: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Refresh"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}channel\0")
 
@@ -3447,7 +3451,7 @@ extension Registration_Core_Refresh: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Registration_Core_UpdateToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_UpdateToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UpdateToken"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}token_metadata\0")
 
@@ -3481,7 +3485,7 @@ extension Registration_Core_UpdateToken: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Registration_Core_OldTokenData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_OldTokenData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".OldTokenData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}status\0\u{1}token\0")
 
@@ -3520,7 +3524,7 @@ extension Registration_Core_OldTokenData: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Registration_Core_Token: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Token: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Token"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}token_metadata\0")
 
@@ -3554,7 +3558,7 @@ extension Registration_Core_Token: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Registration_Core_GetActivateCode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_GetActivateCode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetActivateCode"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}seat_bucket_id\0\u{3}organization_uuid\0")
 
@@ -3589,7 +3593,7 @@ extension Registration_Core_GetActivateCode: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Registration_Core_NotificationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_NotificationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NotificationData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}data\0")
 
@@ -3619,7 +3623,7 @@ extension Registration_Core_NotificationData: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Registration_Core_MarkNotificationsRead: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_MarkNotificationsRead: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MarkNotificationsRead"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -3649,7 +3653,7 @@ extension Registration_Core_MarkNotificationsRead: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Registration_Core_GetLicenseState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_GetLicenseState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetLicenseState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3668,7 +3672,7 @@ extension Registration_Core_GetLicenseState: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Registration_Core_RefreshUserAuthTokens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_RefreshUserAuthTokens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RefreshUserAuthTokens"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3687,7 +3691,7 @@ extension Registration_Core_RefreshUserAuthTokens: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Registration_Core_RefreshAccessToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_RefreshAccessToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RefreshAccessToken"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3706,7 +3710,7 @@ extension Registration_Core_RefreshAccessToken: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Registration_Core_SetWatermark: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_SetWatermark: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SetWatermark"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_registered\0\u{3}active_seat\0")
 
@@ -3741,7 +3745,7 @@ extension Registration_Core_SetWatermark: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Registration_Core_ChangeSeatTypeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ChangeSeatTypeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ChangeSeatTypeComplete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}result\0\u{3}available_seats\0\u{3}total_seats\0\u{3}seat_type\0")
 
@@ -3790,7 +3794,7 @@ extension Registration_Core_ChangeSeatTypeComplete: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Registration_Core_BibleDownloadProgress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_BibleDownloadProgress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleDownloadProgress"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}status\0\u{1}complete\0\u{1}progress\0\u{3}bible_id\0\u{3}file_name\0\u{3}download_link\0\u{3}client_alert\0")
 
@@ -3850,7 +3854,7 @@ extension Registration_Core_BibleDownloadProgress: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Registration_Core_HardExit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_HardExit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".HardExit"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}reason\0")
 
@@ -3880,11 +3884,11 @@ extension Registration_Core_HardExit: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Registration_Core_HardExit.Reason: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_HardExit.Reason: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0HostsFile\0\u{1}SystemTime\0")
 }
 
-extension Registration_Core_ReadRegistrationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ReadRegistrationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ReadRegistrationData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}fingerprint\0\u{1}identifier\0")
 
@@ -3919,7 +3923,7 @@ extension Registration_Core_ReadRegistrationData: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Registration_Core_ReadOldToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ReadOldToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ReadOldToken"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3938,7 +3942,7 @@ extension Registration_Core_ReadOldToken: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Registration_Core_WriteRegistrationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_WriteRegistrationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WriteRegistrationData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}data\0")
 
@@ -3968,7 +3972,7 @@ extension Registration_Core_WriteRegistrationData: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Registration_Core_GetProductInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_GetProductInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetProductInformation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3987,7 +3991,7 @@ extension Registration_Core_GetProductInformation: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Registration_Core_Log: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Log: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Log"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}level\0\u{1}message\0")
 
@@ -4022,11 +4026,11 @@ extension Registration_Core_Log: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Registration_Core_Log.Level: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Log.Level: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Debug\0\u{1}Info\0\u{1}Warning\0\u{1}Error\0")
 }
 
-extension Registration_Core_UpgradesAvailable: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_UpgradesAvailable: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UpgradesAvailable"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}status\0\u{3}is_non_production_active\0\u{3}active_channel\0\u{3}release_notes\0\u{1}upgrades\0\u{3}client_alert\0")
 
@@ -4081,7 +4085,7 @@ extension Registration_Core_UpgradesAvailable: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Registration_Core_DownloadProgress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_DownloadProgress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DownloadProgress"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}status\0\u{1}complete\0\u{1}progress\0\u{3}client_alert\0")
 
@@ -4126,7 +4130,7 @@ extension Registration_Core_DownloadProgress: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Registration_Core_Alerts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Alerts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Alerts"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}alerts\0")
 
@@ -4156,7 +4160,7 @@ extension Registration_Core_Alerts: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Registration_Core_ShowExpirationDialog: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ShowExpirationDialog: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ShowExpirationDialog"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}days\0")
 
@@ -4186,7 +4190,7 @@ extension Registration_Core_ShowExpirationDialog: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Registration_Core_VerificationComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_VerificationComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".VerificationComplete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}result\0\u{1}license\0\u{1}bibles\0\u{1}token\0\u{3}subscription_info\0\u{1}alert\0\u{1}banner\0\u{3}client_alert\0\u{3}fully_launched\0")
 
@@ -4260,7 +4264,7 @@ extension Registration_Core_VerificationComplete: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Registration_Core_SetClientInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_SetClientInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SetClientInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}client_id\0\u{3}client_secret\0")
 
@@ -4295,7 +4299,7 @@ extension Registration_Core_SetClientInfo: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Registration_Core_ActivateCodeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ActivateCodeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActivateCodeComplete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}error\0\u{1}success\0")
 
@@ -4362,7 +4366,7 @@ extension Registration_Core_ActivateCodeComplete: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Registration_Core_ActivateCodeComplete.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ActivateCodeComplete.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Registration_Core_ActivateCodeComplete.protoMessageName + ".Error"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}error\0\u{1}description\0")
 
@@ -4397,7 +4401,7 @@ extension Registration_Core_ActivateCodeComplete.Error: SwiftProtobuf.Message, S
   }
 }
 
-extension Registration_Core_ActivateCodeComplete.Success: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ActivateCodeComplete.Success: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Registration_Core_ActivateCodeComplete.protoMessageName + ".Success"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{4}\u{2}activation_code\0\u{1}expiration\0")
 
@@ -4432,7 +4436,7 @@ extension Registration_Core_ActivateCodeComplete.Success: SwiftProtobuf.Message,
   }
 }
 
-extension Registration_Core_ReadNotificationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ReadNotificationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ReadNotificationData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4451,7 +4455,7 @@ extension Registration_Core_ReadNotificationData: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Registration_Core_WriteNotificationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_WriteNotificationData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WriteNotificationData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}data\0")
 
@@ -4481,7 +4485,7 @@ extension Registration_Core_WriteNotificationData: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Registration_Core_NotificationCallback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_NotificationCallback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NotificationCallback"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\u{2}notifications\0")
 
@@ -4511,7 +4515,7 @@ extension Registration_Core_NotificationCallback: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Registration_Core_LicenseState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_LicenseState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LicenseState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}hardware_id\0\u{1}fingerprint\0\u{3}is_registered\0\u{3}active_seat\0")
 
@@ -4556,7 +4560,7 @@ extension Registration_Core_LicenseState: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Registration_Core_Seats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Seats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Seats"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}basic\0\u{1}advanced\0")
 
@@ -4591,7 +4595,7 @@ extension Registration_Core_Seats: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Registration_Core_SupplementalInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_SupplementalInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SupplementalInformation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}download_link\0")
 
@@ -4621,7 +4625,7 @@ extension Registration_Core_SupplementalInformation: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Registration_Core_Bible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Bible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Bible"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}name\0\u{1}language\0\u{1}publisher\0\u{1}copyright\0\u{3}display_abbreviation\0\u{3}internal_abbreviation\0\u{1}version\0\u{1}info\0")
 
@@ -4707,7 +4711,7 @@ extension Registration_Core_Bible: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Registration_Core_PurchasedBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_PurchasedBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PurchasedBible"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}licensing_info\0")
 
@@ -4746,7 +4750,7 @@ extension Registration_Core_PurchasedBible: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Registration_Core_LicenseInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_LicenseInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LicenseInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}registration_info\0\u{3}available_seats\0\u{3}total_seats\0\u{1}legacy\0")
 
@@ -4837,7 +4841,7 @@ extension Registration_Core_LicenseInfo: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Registration_Core_LicensingInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_LicensingInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LicensingInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}available_copies\0\u{3}total_copies\0\u{3}is_active_locally\0\u{3}other_active_copies\0")
 
@@ -4882,7 +4886,7 @@ extension Registration_Core_LicensingInfo: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Registration_Core_ActiveCopy: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_ActiveCopy: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActiveCopy"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}display_name\0\u{1}hostname\0")
 
@@ -4917,7 +4921,7 @@ extension Registration_Core_ActiveCopy: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Registration_Core_RegistrationInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_RegistrationInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RegistrationInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}user_name\0\u{3}display_key\0\u{3}display_name\0\u{3}expiration_date\0\u{3}activation_key\0\u{3}license_type\0\u{3}registration_date\0\u{3}seat_type\0\u{3}latest_available_build_number\0\u{3}latest_available_version\0\u{3}has_worship_house_media_subscription\0\u{3}maintenance_expiration_date\0\u{3}non_extended_maintenance_expiration_date\0\u{3}is_auto_renewal_active\0")
 
@@ -5012,7 +5016,7 @@ extension Registration_Core_RegistrationInfo: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Registration_Core_BuildInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_BuildInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BuildInformation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}build_number\0\u{1}version\0\u{3}min_os_version\0\u{3}release_date\0\u{3}registration_date\0\u{3}download_size\0\u{3}download_url\0\u{1}channel\0\u{3}is_beta\0\u{3}is_available\0")
 
@@ -5087,7 +5091,7 @@ extension Registration_Core_BuildInformation: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Registration_Core_Alert: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Alert: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Alert"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}alert_type\0\u{1}title\0\u{3}content_type\0\u{1}content\0")
 
@@ -5132,7 +5136,7 @@ extension Registration_Core_Alert: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Registration_Core_TokenMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_TokenMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TokenMetadata"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}access_token\0\u{3}refresh_token\0\u{3}expires_at\0")
 
@@ -5172,7 +5176,7 @@ extension Registration_Core_TokenMetadata: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Registration_Core_SubscriptionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_SubscriptionInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SubscriptionInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}organization_name\0\u{3}procontent_license_type\0\u{3}procontent_license_expiration\0")
 
@@ -5212,7 +5216,7 @@ extension Registration_Core_SubscriptionInfo: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Registration_Core_DownloadLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_DownloadLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DownloadLink"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}url\0")
 
@@ -5247,7 +5251,7 @@ extension Registration_Core_DownloadLink: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Registration_Core_Bibles: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Bibles: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Bibles"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}free_bibles\0\u{3}purchased_bibles\0")
 
@@ -5282,7 +5286,7 @@ extension Registration_Core_Bibles: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Registration_Core_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Notification"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}header\0\u{1}body\0\u{1}url\0\u{3}url_display_text\0\u{3}created_at\0\u{3}expires_at\0\u{3}is_read\0")
 
@@ -5347,7 +5351,7 @@ extension Registration_Core_Notification: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Registration_Core_Notifications: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_Notifications: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Notifications"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}notifications\0")
 
@@ -5377,7 +5381,7 @@ extension Registration_Core_Notifications: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Registration_Core_NotificationDataStore: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Registration_Core_NotificationDataStore: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NotificationDataStore"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}notifications\0\u{3}read_ids\0")
 

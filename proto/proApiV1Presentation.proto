@@ -23,6 +23,8 @@ import "uuid.proto";
 message API_v1_SlideIndex {
   uint32 index = 1;
   rv.data.API_v1_Identifier presentation_id = 2;
+  uint32 total_cues = 3;
+  uint32 remaining_cues = 4;
 }
 
 message API_v1_Presentation {
@@ -49,6 +51,7 @@ message API_v1_Presentation {
   message Arrangement {
     rv.data.API_v1_Identifier id = 1;
     repeated string groups = 2;
+    uint32 total_cues = 3;
   }
 
   rv.data.API_v1_Identifier id = 1;
@@ -60,6 +63,7 @@ message API_v1_Presentation {
   string current_arrangement = 7;
   string type = 8;
   bool is_authorized = 9;
+  uint32 total_cues = 10;
 }
 
 message API_v1_Presentation_Request {

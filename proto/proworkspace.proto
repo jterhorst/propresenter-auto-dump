@@ -40,6 +40,7 @@ message ProPresenterWorkspace {
   repeated rv.data.CloudProPresenterScreen cloud_output_screens = 13;
   repeated rv.data.CloudVideoInput cloud_video_inputs = 14;
   repeated rv.data.CloudAudioInput cloud_audio_inputs = 15;
+  uint32 audio_channel_count = 16;
 }
 
 message ProPresenterLocalWorkspace {
@@ -47,4 +48,6 @@ message ProPresenterLocalWorkspace {
   repeated rv.data.ProPresenterScreen pro_screens = 2;
   repeated rv.data.VideoInput video_inputs = 3;
   repeated rv.data.AudioInput audio_inputs = 4;
+  rv.data.ProAudienceLook live_audience_look = 5;
+  repeated rv.data.Stage.ScreenAssignment stage_layout_mappings = 6;
 }

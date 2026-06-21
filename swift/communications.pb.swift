@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_CommunicationDevice: Sendable {
+public nonisolated struct Rv_Data_CommunicationDevice: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -90,7 +90,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_HardwareType: Equatable, Sendable {
+  public nonisolated enum OneOf_HardwareType: Equatable, Sendable {
     case serial(Rv_Data_CommunicationDevice.SerialHardware)
     case tcpNetwork(Rv_Data_CommunicationDevice.TCPHardware)
     case udpNetwork(Rv_Data_CommunicationDevice.UDPHardware)
@@ -99,7 +99,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
   }
 
-  public enum DeviceType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum DeviceType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case dmx // = 0
     case midi // = 1
@@ -221,7 +221,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
   }
 
-  public enum Behavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Behavior: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case controller // = 0
     case device // = 1
@@ -255,7 +255,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
   }
 
-  public struct SerialHardware: Sendable {
+  public nonisolated struct SerialHardware: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -278,7 +278,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Speed: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Speed: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case speed1200 // = 0
       case speed1800 // = 1
@@ -364,7 +364,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
     }
 
-    public enum DataBits: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum DataBits: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case dataBits5 // = 0
       case dataBits6 // = 1
@@ -406,7 +406,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
     }
 
-    public enum Parity: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Parity: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case odd // = 1
@@ -444,7 +444,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
     }
 
-    public enum StopBits: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum StopBits: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case stopBits1 // = 0
       case stopBits2 // = 1
@@ -478,7 +478,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
     }
 
-    public enum HFCI: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum HFCI: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case rts // = 1
@@ -516,7 +516,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
     }
 
-    public enum HFCO: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum HFCO: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case cts // = 1
@@ -561,7 +561,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
     public init() {}
   }
 
-  public struct TCPHardware: Sendable {
+  public nonisolated struct TCPHardware: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -578,7 +578,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Mode: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Mode: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case connectTo // = 0
       case acceptOn // = 1
@@ -615,7 +615,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
     public init() {}
   }
 
-  public struct UDPHardware: Sendable {
+  public nonisolated struct UDPHardware: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -632,7 +632,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Mode: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Mode: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case connect // = 0
       case listen // = 1
@@ -677,7 +677,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
     public init() {}
   }
 
-  public struct ArtnetHardware: Sendable {
+  public nonisolated struct ArtnetHardware: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -687,7 +687,7 @@ public struct Rv_Data_CommunicationDevice: Sendable {
     public init() {}
   }
 
-  public struct MIDIHardware: Sendable {
+  public nonisolated struct MIDIHardware: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -702,7 +702,140 @@ public struct Rv_Data_CommunicationDevice: Sendable {
   fileprivate var _id: Rv_Data_UUID? = nil
 }
 
-public struct Rv_Data_CommunicationCommand: Sendable {
+public nonisolated struct Rv_Data_CommunicationDeviceCloud: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var id: Rv_Data_UUID {
+    get {_id ?? Rv_Data_UUID()}
+    set {_id = newValue}
+  }
+  /// Returns true if `id` has been explicitly set.
+  public var hasID: Bool {self._id != nil}
+  /// Clears the value of `id`. Subsequent reads from it will return its default value.
+  public mutating func clearID() {self._id = nil}
+
+  public var name: String = String()
+
+  public var deviceType: Rv_Data_CommunicationDevice.DeviceType = .dmx
+
+  public var behavior: Rv_Data_CommunicationDevice.Behavior = .controller
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _id: Rv_Data_UUID? = nil
+}
+
+public nonisolated struct Rv_Data_CommunicationDeviceLocal: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var hardwareType: Rv_Data_CommunicationDeviceLocal.OneOf_HardwareType? = nil
+
+  public var serial: Rv_Data_CommunicationDevice.SerialHardware {
+    get {
+      if case .serial(let v)? = hardwareType {return v}
+      return Rv_Data_CommunicationDevice.SerialHardware()
+    }
+    set {hardwareType = .serial(newValue)}
+  }
+
+  public var tcpNetwork: Rv_Data_CommunicationDevice.TCPHardware {
+    get {
+      if case .tcpNetwork(let v)? = hardwareType {return v}
+      return Rv_Data_CommunicationDevice.TCPHardware()
+    }
+    set {hardwareType = .tcpNetwork(newValue)}
+  }
+
+  public var udpNetwork: Rv_Data_CommunicationDevice.UDPHardware {
+    get {
+      if case .udpNetwork(let v)? = hardwareType {return v}
+      return Rv_Data_CommunicationDevice.UDPHardware()
+    }
+    set {hardwareType = .udpNetwork(newValue)}
+  }
+
+  public var artnet: Rv_Data_CommunicationDevice.ArtnetHardware {
+    get {
+      if case .artnet(let v)? = hardwareType {return v}
+      return Rv_Data_CommunicationDevice.ArtnetHardware()
+    }
+    set {hardwareType = .artnet(newValue)}
+  }
+
+  public var midi: Rv_Data_CommunicationDevice.MIDIHardware {
+    get {
+      if case .midi(let v)? = hardwareType {return v}
+      return Rv_Data_CommunicationDevice.MIDIHardware()
+    }
+    set {hardwareType = .midi(newValue)}
+  }
+
+  public var id: Rv_Data_UUID {
+    get {_id ?? Rv_Data_UUID()}
+    set {_id = newValue}
+  }
+  /// Returns true if `id` has been explicitly set.
+  public var hasID: Bool {self._id != nil}
+  /// Clears the value of `id`. Subsequent reads from it will return its default value.
+  public mutating func clearID() {self._id = nil}
+
+  public var connected: Bool = false
+
+  public var autoReconnect: Bool = false
+
+  public var bundleName: String = String()
+
+  public var bundleIdentifier: String = String()
+
+  public var options: [Rv_Data_CommunicationDeviceOption] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum OneOf_HardwareType: Equatable, Sendable {
+    case serial(Rv_Data_CommunicationDevice.SerialHardware)
+    case tcpNetwork(Rv_Data_CommunicationDevice.TCPHardware)
+    case udpNetwork(Rv_Data_CommunicationDevice.UDPHardware)
+    case artnet(Rv_Data_CommunicationDevice.ArtnetHardware)
+    case midi(Rv_Data_CommunicationDevice.MIDIHardware)
+
+  }
+
+  public init() {}
+
+  fileprivate var _id: Rv_Data_UUID? = nil
+}
+
+public nonisolated struct Rv_Data_ProPresenterCommunications: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var devices: [Rv_Data_CommunicationDeviceCloud] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Rv_Data_ProPresenterLocalCommunications: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var devices: [Rv_Data_CommunicationDeviceLocal] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Rv_Data_CommunicationCommand: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -717,7 +850,7 @@ public struct Rv_Data_CommunicationCommand: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Parameters: Sendable {
+  public nonisolated struct Parameters: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -747,7 +880,7 @@ public struct Rv_Data_CommunicationCommand: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_CommunicationDeviceOption: Sendable {
+public nonisolated struct Rv_Data_CommunicationDeviceOption: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -764,12 +897,12 @@ public struct Rv_Data_CommunicationDeviceOption: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_OptionType: Equatable, Sendable {
+  public nonisolated enum OneOf_OptionType: Equatable, Sendable {
     case oesProMode(Rv_Data_CommunicationDeviceOption.OESProMode)
 
   }
 
-  public struct OESProMode: Sendable {
+  public nonisolated struct OESProMode: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -786,9 +919,9 @@ public struct Rv_Data_CommunicationDeviceOption: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_CommunicationDevice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CommunicationDevice"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}name\0\u{3}device_type\0\u{1}behavior\0\u{1}connected\0\u{3}auto_reconnect\0\u{1}serial\0\u{3}tcp_network\0\u{3}udp_network\0\u{1}artnet\0\u{1}midi\0\u{1}options\0")
 
@@ -941,15 +1074,15 @@ extension Rv_Data_CommunicationDevice: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_CommunicationDevice.DeviceType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.DeviceType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DEVICE_TYPE_DMX\0\u{1}DEVICE_TYPE_MIDI\0\u{1}DEVICE_TYPE_AMP\0\u{1}DEVICE_TYPE_CITP\0\u{1}DEVICE_TYPE_GLOBAL_CACHE\0\u{1}DEVICE_TYPE_GVG100\0\u{1}DEVICE_TYPE_ROSSTALK\0\u{1}DEVICE_TYPE_SONY_BVS\0\u{1}DEVICE_TYPE_SONY_BVW\0\u{1}DEVICE_TYPE_VDCP\0\u{1}DEVICE_TYPE_ALL_AMERICAN_8000\0\u{1}DEVICE_TYPE_ALL_AMERICAN_9000\0\u{1}DEVICE_TYPE_DAKTRONICS\0\u{1}DEVICE_TYPE_DAKTRONICS_TV\0\u{1}DEVICE_TYPE_ELECTRO_MECH\0\u{1}DEVICE_TYPE_EVERSAN\0\u{1}DEVICE_TYPE_FAIR_PLAY_MP70\0\u{1}DEVICE_TYPE_HARRIS\0\u{1}DEVICE_TYPE_JUGS\0\u{1}DEVICE_TYPE_OES\0\u{1}DEVICE_TYPE_SCOREBIRD\0\u{1}DEVICE_TYPE_SCOREBOT\0\u{1}DEVICE_TYPE_STALKER\0\u{1}DEVICE_TYPE_STAT_CREW\0")
 }
 
-extension Rv_Data_CommunicationDevice.Behavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.Behavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0BEHAVIOR_CONTROLLER\0\u{1}BEHAVIOR_DEVICE\0")
 }
 
-extension Rv_Data_CommunicationDevice.SerialHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.SerialHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CommunicationDevice.protoMessageName + ".SerialHardware"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}interface_id\0\u{1}name\0\u{1}speed\0\u{3}data_bits\0\u{1}parity\0\u{3}stop_bits\0\u{1}hfci\0\u{1}hfco\0")
 
@@ -1014,31 +1147,31 @@ extension Rv_Data_CommunicationDevice.SerialHardware: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_CommunicationDevice.SerialHardware.Speed: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.SerialHardware.Speed: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SPEED_1200\0\u{1}SPEED_1800\0\u{1}SPEED_2400\0\u{1}SPEED_4800\0\u{1}SPEED_7200\0\u{1}SPEED_9600\0\u{2}\u{2}SPEED_14400\0\u{1}SPEED_19200\0\u{1}SPEED_28800\0\u{1}SPEED_38400\0\u{1}SPEED_57600\0\u{1}SPEED_62500\0\u{1}SPEED_76800\0\u{1}SPEED_115200\0\u{1}SPEED_230400\0")
 }
 
-extension Rv_Data_CommunicationDevice.SerialHardware.DataBits: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.SerialHardware.DataBits: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DATA_BITS_5\0\u{1}DATA_BITS_6\0\u{1}DATA_BITS_7\0\u{1}DATA_BITS_8\0")
 }
 
-extension Rv_Data_CommunicationDevice.SerialHardware.Parity: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.SerialHardware.Parity: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PARITY_NONE\0\u{1}PARITY_ODD\0\u{1}PARITY_EVEN\0")
 }
 
-extension Rv_Data_CommunicationDevice.SerialHardware.StopBits: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.SerialHardware.StopBits: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STOP_BITS_1\0\u{1}STOP_BITS_2\0")
 }
 
-extension Rv_Data_CommunicationDevice.SerialHardware.HFCI: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.SerialHardware.HFCI: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0HFCI_NONE\0\u{1}HFCI_RTS\0\u{1}HFCI_DTR\0")
 }
 
-extension Rv_Data_CommunicationDevice.SerialHardware.HFCO: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.SerialHardware.HFCO: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0HFCO_NONE\0\u{1}HFCO_CTS\0\u{1}HFCO_DSR\0\u{1}HFCO_CAR\0")
 }
 
-extension Rv_Data_CommunicationDevice.TCPHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.TCPHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CommunicationDevice.protoMessageName + ".TCPHardware"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}interface_id\0\u{1}name\0\u{1}address\0\u{1}port\0\u{1}mode\0")
 
@@ -1088,11 +1221,11 @@ extension Rv_Data_CommunicationDevice.TCPHardware: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_CommunicationDevice.TCPHardware.Mode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.TCPHardware.Mode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MODE_CONNECT_TO\0\u{1}MODE_ACCEPT_ON\0")
 }
 
-extension Rv_Data_CommunicationDevice.UDPHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.UDPHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CommunicationDevice.protoMessageName + ".UDPHardware"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}interface_id\0\u{1}name\0\u{1}address\0\u{1}port\0\u{1}mode\0")
 
@@ -1142,11 +1275,11 @@ extension Rv_Data_CommunicationDevice.UDPHardware: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_CommunicationDevice.UDPHardware.Mode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.UDPHardware.Mode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MODE_CONNECT\0\u{1}MODE_LISTEN\0\u{1}MODE_MULTICAST_LISTEN\0\u{1}MODE_BROADCAST\0")
 }
 
-extension Rv_Data_CommunicationDevice.ArtnetHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.ArtnetHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CommunicationDevice.protoMessageName + ".ArtnetHardware"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1165,7 +1298,7 @@ extension Rv_Data_CommunicationDevice.ArtnetHardware: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_CommunicationDevice.MIDIHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDevice.MIDIHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CommunicationDevice.protoMessageName + ".MIDIHardware"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1184,7 +1317,264 @@ extension Rv_Data_CommunicationDevice.MIDIHardware: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_CommunicationCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDeviceCloud: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CommunicationDeviceCloud"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}name\0\u{3}device_type\0\u{1}behavior\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._id) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.deviceType) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.behavior) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._id {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 2)
+    }
+    if self.deviceType != .dmx {
+      try visitor.visitSingularEnumField(value: self.deviceType, fieldNumber: 3)
+    }
+    if self.behavior != .controller {
+      try visitor.visitSingularEnumField(value: self.behavior, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_CommunicationDeviceCloud, rhs: Rv_Data_CommunicationDeviceCloud) -> Bool {
+    if lhs._id != rhs._id {return false}
+    if lhs.name != rhs.name {return false}
+    if lhs.deviceType != rhs.deviceType {return false}
+    if lhs.behavior != rhs.behavior {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_CommunicationDeviceLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CommunicationDeviceLocal"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}connected\0\u{3}auto_reconnect\0\u{3}bundle_name\0\u{3}bundle_identifier\0\u{1}serial\0\u{3}tcp_network\0\u{3}udp_network\0\u{1}artnet\0\u{1}midi\0\u{1}options\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._id) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.connected) }()
+      case 3: try { try decoder.decodeSingularBoolField(value: &self.autoReconnect) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.bundleName) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.bundleIdentifier) }()
+      case 6: try {
+        var v: Rv_Data_CommunicationDevice.SerialHardware?
+        var hadOneofValue = false
+        if let current = self.hardwareType {
+          hadOneofValue = true
+          if case .serial(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.hardwareType = .serial(v)
+        }
+      }()
+      case 7: try {
+        var v: Rv_Data_CommunicationDevice.TCPHardware?
+        var hadOneofValue = false
+        if let current = self.hardwareType {
+          hadOneofValue = true
+          if case .tcpNetwork(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.hardwareType = .tcpNetwork(v)
+        }
+      }()
+      case 8: try {
+        var v: Rv_Data_CommunicationDevice.UDPHardware?
+        var hadOneofValue = false
+        if let current = self.hardwareType {
+          hadOneofValue = true
+          if case .udpNetwork(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.hardwareType = .udpNetwork(v)
+        }
+      }()
+      case 9: try {
+        var v: Rv_Data_CommunicationDevice.ArtnetHardware?
+        var hadOneofValue = false
+        if let current = self.hardwareType {
+          hadOneofValue = true
+          if case .artnet(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.hardwareType = .artnet(v)
+        }
+      }()
+      case 10: try {
+        var v: Rv_Data_CommunicationDevice.MIDIHardware?
+        var hadOneofValue = false
+        if let current = self.hardwareType {
+          hadOneofValue = true
+          if case .midi(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.hardwareType = .midi(v)
+        }
+      }()
+      case 11: try { try decoder.decodeRepeatedMessageField(value: &self.options) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._id {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if self.connected != false {
+      try visitor.visitSingularBoolField(value: self.connected, fieldNumber: 2)
+    }
+    if self.autoReconnect != false {
+      try visitor.visitSingularBoolField(value: self.autoReconnect, fieldNumber: 3)
+    }
+    if !self.bundleName.isEmpty {
+      try visitor.visitSingularStringField(value: self.bundleName, fieldNumber: 4)
+    }
+    if !self.bundleIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.bundleIdentifier, fieldNumber: 5)
+    }
+    switch self.hardwareType {
+    case .serial?: try {
+      guard case .serial(let v)? = self.hardwareType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    }()
+    case .tcpNetwork?: try {
+      guard case .tcpNetwork(let v)? = self.hardwareType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+    }()
+    case .udpNetwork?: try {
+      guard case .udpNetwork(let v)? = self.hardwareType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+    }()
+    case .artnet?: try {
+      guard case .artnet(let v)? = self.hardwareType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+    }()
+    case .midi?: try {
+      guard case .midi(let v)? = self.hardwareType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
+    }()
+    case nil: break
+    }
+    if !self.options.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.options, fieldNumber: 11)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_CommunicationDeviceLocal, rhs: Rv_Data_CommunicationDeviceLocal) -> Bool {
+    if lhs.hardwareType != rhs.hardwareType {return false}
+    if lhs._id != rhs._id {return false}
+    if lhs.connected != rhs.connected {return false}
+    if lhs.autoReconnect != rhs.autoReconnect {return false}
+    if lhs.bundleName != rhs.bundleName {return false}
+    if lhs.bundleIdentifier != rhs.bundleIdentifier {return false}
+    if lhs.options != rhs.options {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_ProPresenterCommunications: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ProPresenterCommunications"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}devices\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.devices) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.devices.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.devices, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_ProPresenterCommunications, rhs: Rv_Data_ProPresenterCommunications) -> Bool {
+    if lhs.devices != rhs.devices {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_ProPresenterLocalCommunications: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ProPresenterLocalCommunications"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}devices\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.devices) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.devices.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.devices, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_ProPresenterLocalCommunications, rhs: Rv_Data_ProPresenterLocalCommunications) -> Bool {
+    if lhs.devices != rhs.devices {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_CommunicationCommand: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CommunicationCommand"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}description\0\u{1}format\0\u{1}parameters\0")
 
@@ -1229,7 +1619,7 @@ extension Rv_Data_CommunicationCommand: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_CommunicationCommand.Parameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationCommand.Parameters: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CommunicationCommand.protoMessageName + ".Parameters"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{3}replacement_range\0\u{3}possible_values\0\u{1}value\0")
 
@@ -1278,7 +1668,7 @@ extension Rv_Data_CommunicationCommand.Parameters: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_CommunicationDeviceOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDeviceOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CommunicationDeviceOption"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}oes_pro_mode\0")
 
@@ -1324,7 +1714,7 @@ extension Rv_Data_CommunicationDeviceOption: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_CommunicationDeviceOption.OESProMode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CommunicationDeviceOption.OESProMode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CommunicationDeviceOption.protoMessageName + ".OESProMode"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0")
 

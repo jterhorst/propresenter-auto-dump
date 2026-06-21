@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,19 +20,19 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Graphics: Sendable {
+public nonisolated struct Rv_Data_Graphics: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Element: @unchecked Sendable {
+  public nonisolated struct Element: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -155,12 +159,12 @@ public struct Rv_Data_Graphics: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Mask: Equatable, Sendable {
+    public nonisolated enum OneOf_Mask: Equatable, Sendable {
       case textLineMask(Rv_Data_Graphics.Text.LineFillMask)
 
     }
 
-    public enum FlipMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum FlipMode: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case vertical // = 1
@@ -207,7 +211,7 @@ public struct Rv_Data_Graphics: Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct Rect: Sendable {
+  public nonisolated struct Rect: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -238,7 +242,7 @@ public struct Rv_Data_Graphics: Sendable {
     fileprivate var _size: Rv_Data_Graphics.Size? = nil
   }
 
-  public struct Point: Sendable {
+  public nonisolated struct Point: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -252,7 +256,7 @@ public struct Rv_Data_Graphics: Sendable {
     public init() {}
   }
 
-  public struct Size: Sendable {
+  public nonisolated struct Size: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -266,7 +270,7 @@ public struct Rv_Data_Graphics: Sendable {
     public init() {}
   }
 
-  public struct EdgeInsets: Sendable {
+  public nonisolated struct EdgeInsets: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -284,7 +288,7 @@ public struct Rv_Data_Graphics: Sendable {
     public init() {}
   }
 
-  public struct Path: Sendable {
+  public nonisolated struct Path: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -304,7 +308,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct BezierPoint: Sendable {
+    public nonisolated struct BezierPoint: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -347,7 +351,7 @@ public struct Rv_Data_Graphics: Sendable {
       fileprivate var _q1: Rv_Data_Graphics.Point? = nil
     }
 
-    public struct Shape: Sendable {
+    public nonisolated struct Shape: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -390,7 +394,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_AdditionalData: Equatable, Sendable {
+      public nonisolated enum OneOf_AdditionalData: Equatable, Sendable {
         case roundedRectangle(Rv_Data_Graphics.Path.Shape.RoundedRectangle)
         case polygon(Rv_Data_Graphics.Path.Shape.Polygon)
         case star(Rv_Data_Graphics.Path.Shape.Star)
@@ -398,7 +402,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       }
 
-      public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case unknown // = 0
         case rectangle // = 1
@@ -472,7 +476,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       }
 
-      public struct RoundedRectangle: Sendable {
+      public nonisolated struct RoundedRectangle: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -484,7 +488,7 @@ public struct Rv_Data_Graphics: Sendable {
         public init() {}
       }
 
-      public struct Arrow: Sendable {
+      public nonisolated struct Arrow: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -505,7 +509,7 @@ public struct Rv_Data_Graphics: Sendable {
         fileprivate var _corner: Rv_Data_Graphics.Point? = nil
       }
 
-      public struct Polygon: Sendable {
+      public nonisolated struct Polygon: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -517,7 +521,7 @@ public struct Rv_Data_Graphics: Sendable {
         public init() {}
       }
 
-      public struct Star: Sendable {
+      public nonisolated struct Star: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -539,7 +543,7 @@ public struct Rv_Data_Graphics: Sendable {
     fileprivate var _shape: Rv_Data_Graphics.Path.Shape? = nil
   }
 
-  public struct Fill: Sendable {
+  public nonisolated struct Fill: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -582,7 +586,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_FillType: Equatable, Sendable {
+    public nonisolated enum OneOf_FillType: Equatable, Sendable {
       case color(Rv_Data_Color)
       case gradient(Rv_Data_Graphics.Gradient)
       case media(Rv_Data_Media)
@@ -593,7 +597,7 @@ public struct Rv_Data_Graphics: Sendable {
     public init() {}
   }
 
-  public struct BackgroundEffect: Sendable {
+  public nonisolated struct BackgroundEffect: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -618,13 +622,13 @@ public struct Rv_Data_Graphics: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_EffectType: Equatable, Sendable {
+    public nonisolated enum OneOf_EffectType: Equatable, Sendable {
       case backgroundBlur(Rv_Data_Graphics.BackgroundEffect.BackgroundEffectBlur)
       case backgroundInvert(Rv_Data_Graphics.BackgroundEffect.BackgroundEffectInvert)
 
     }
 
-    public struct BackgroundEffectBlur: Sendable {
+    public nonisolated struct BackgroundEffectBlur: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -638,7 +642,7 @@ public struct Rv_Data_Graphics: Sendable {
       public init() {}
     }
 
-    public struct BackgroundEffectInvert: Sendable {
+    public nonisolated struct BackgroundEffectInvert: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -651,7 +655,7 @@ public struct Rv_Data_Graphics: Sendable {
     public init() {}
   }
 
-  public struct Gradient: Sendable {
+  public nonisolated struct Gradient: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -666,7 +670,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case linear // = 0
       case radial // = 1
@@ -704,7 +708,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     }
 
-    public struct ColorStop: Sendable {
+    public nonisolated struct ColorStop: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -732,7 +736,7 @@ public struct Rv_Data_Graphics: Sendable {
     public init() {}
   }
 
-  public struct Shadow: Sendable {
+  public nonisolated struct Shadow: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -760,7 +764,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case drop // = 0
       case UNRECOGNIZED(Int)
@@ -795,7 +799,7 @@ public struct Rv_Data_Graphics: Sendable {
     fileprivate var _color: Rv_Data_Color? = nil
   }
 
-  public struct Stroke: Sendable {
+  public nonisolated struct Stroke: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -819,7 +823,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case solidLine // = 0
       case squareDash // = 1
@@ -866,7 +870,7 @@ public struct Rv_Data_Graphics: Sendable {
     fileprivate var _color: Rv_Data_Color? = nil
   }
 
-  public struct Feather: Sendable {
+  public nonisolated struct Feather: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -879,7 +883,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case inside // = 0
       case center // = 1
@@ -920,7 +924,7 @@ public struct Rv_Data_Graphics: Sendable {
     public init() {}
   }
 
-  public struct Text: @unchecked Sendable {
+  public nonisolated struct Text: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -998,7 +1002,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum VerticalAlignment: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum VerticalAlignment: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case top // = 0
       case middle // = 1
@@ -1036,7 +1040,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     }
 
-    public enum ScaleBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ScaleBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case adjustContainerHeight // = 1
@@ -1082,7 +1086,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     }
 
-    public enum Transform: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Transform: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case singleLine // = 1
@@ -1128,7 +1132,7 @@ public struct Rv_Data_Graphics: Sendable {
 
     }
 
-    public struct LineFillMask: Sendable {
+    public nonisolated struct LineFillMask: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -1147,7 +1151,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum LineMaskStyle: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum LineMaskStyle: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case fullWidth // = 0
         case lineWidth // = 1
@@ -1188,7 +1192,7 @@ public struct Rv_Data_Graphics: Sendable {
       public init() {}
     }
 
-    public struct GradientFill: Sendable {
+    public nonisolated struct GradientFill: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -1211,7 +1215,7 @@ public struct Rv_Data_Graphics: Sendable {
       fileprivate var _gradient: Rv_Data_Graphics.Gradient? = nil
     }
 
-    public struct CutOutFill: Sendable {
+    public nonisolated struct CutOutFill: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -1221,7 +1225,7 @@ public struct Rv_Data_Graphics: Sendable {
       public init() {}
     }
 
-    public struct MediaFill: Sendable {
+    public nonisolated struct MediaFill: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -1242,7 +1246,7 @@ public struct Rv_Data_Graphics: Sendable {
       fileprivate var _media: Rv_Data_Media? = nil
     }
 
-    public struct ChordPro: Sendable {
+    public nonisolated struct ChordPro: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -1262,7 +1266,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum Notation: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum Notation: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case chords // = 0
         case numbers // = 1
@@ -1309,7 +1313,7 @@ public struct Rv_Data_Graphics: Sendable {
       fileprivate var _color: Rv_Data_Color? = nil
     }
 
-    public struct Attributes: @unchecked Sendable {
+    public nonisolated struct Attributes: @unchecked Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -1463,7 +1467,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_Fill: Equatable, Sendable {
+      public nonisolated enum OneOf_Fill: Equatable, Sendable {
         case textSolidFill(Rv_Data_Color)
         case textGradientFill(Rv_Data_Graphics.Text.GradientFill)
         case cutOutFill(Rv_Data_Graphics.Text.CutOutFill)
@@ -1472,7 +1476,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       }
 
-      public enum Capitalization: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum Capitalization: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case none // = 0
         case allCaps // = 1
@@ -1518,7 +1522,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       }
 
-      public enum Alignment: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum Alignment: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case left // = 0
         case right // = 1
@@ -1564,7 +1568,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       }
 
-      public enum CharacterSizeMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum CharacterSizeMode: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case normal // = 0
         case scaledByDocumentHeight // = 1
@@ -1602,7 +1606,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       }
 
-      public enum LigatureStyle: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum LigatureStyle: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case `default` // = 0
         case none // = 1
@@ -1636,7 +1640,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       }
 
-      public struct Underline: Sendable {
+      public nonisolated struct Underline: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -1649,7 +1653,7 @@ public struct Rv_Data_Graphics: Sendable {
 
         public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-        public enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public nonisolated enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
           public typealias RawValue = Int
           case none // = 0
           case single // = 1
@@ -1691,7 +1695,7 @@ public struct Rv_Data_Graphics: Sendable {
 
         }
 
-        public enum Pattern: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public nonisolated enum Pattern: SwiftProtobuf.Enum, Swift.CaseIterable {
           public typealias RawValue = Int
           case solid // = 0
           case dot // = 1
@@ -1740,7 +1744,7 @@ public struct Rv_Data_Graphics: Sendable {
         public init() {}
       }
 
-      public struct Paragraph: @unchecked Sendable {
+      public nonisolated struct Paragraph: @unchecked Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -1821,7 +1825,7 @@ public struct Rv_Data_Graphics: Sendable {
 
         public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-        public struct TabStop: Sendable {
+        public nonisolated struct TabStop: Sendable {
           // SwiftProtobuf.Message conformance is added in an extension below. See the
           // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
           // methods supported on all messages.
@@ -1835,7 +1839,7 @@ public struct Rv_Data_Graphics: Sendable {
           public init() {}
         }
 
-        public struct TextList: Sendable {
+        public nonisolated struct TextList: Sendable {
           // SwiftProtobuf.Message conformance is added in an extension below. See the
           // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
           // methods supported on all messages.
@@ -1852,7 +1856,7 @@ public struct Rv_Data_Graphics: Sendable {
 
           public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-          public enum NumberType: SwiftProtobuf.Enum, Swift.CaseIterable {
+          public nonisolated enum NumberType: SwiftProtobuf.Enum, Swift.CaseIterable {
             public typealias RawValue = Int
             case box // = 0
             case check // = 1
@@ -1934,7 +1938,7 @@ public struct Rv_Data_Graphics: Sendable {
         fileprivate var _storage = _StorageClass.defaultInstance
       }
 
-      public struct CustomAttribute: Sendable {
+      public nonisolated struct CustomAttribute: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -2040,7 +2044,7 @@ public struct Rv_Data_Graphics: Sendable {
 
         public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-        public enum OneOf_Attribute: Equatable, Sendable {
+        public nonisolated enum OneOf_Attribute: Equatable, Sendable {
           case capitalization(Rv_Data_Graphics.Text.Attributes.Capitalization)
           case originalFontSize(Double)
           case fontScaleFactor(Double)
@@ -2065,7 +2069,7 @@ public struct Rv_Data_Graphics: Sendable {
       fileprivate var _storage = _StorageClass.defaultInstance
     }
 
-    public struct AlternateText: Sendable {
+    public nonisolated struct AlternateText: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -2084,7 +2088,7 @@ public struct Rv_Data_Graphics: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_ContentType: Equatable, Sendable {
+      public nonisolated enum OneOf_ContentType: Equatable, Sendable {
         case plainText(String)
 
       }
@@ -2097,7 +2101,7 @@ public struct Rv_Data_Graphics: Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct PowerPointImport: Sendable {
+  public nonisolated struct PowerPointImport: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2125,7 +2129,7 @@ public struct Rv_Data_Graphics: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_Media: @unchecked Sendable {
+public nonisolated struct Rv_Data_Media: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2204,7 +2208,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_TypeProperties: Equatable, Sendable {
+  public nonisolated enum OneOf_TypeProperties: Equatable, Sendable {
     case audio(Rv_Data_Media.AudioTypeProperties)
     case image(Rv_Data_Media.ImageTypeProperties)
     case video(Rv_Data_Media.VideoTypeProperties)
@@ -2213,7 +2217,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
   }
 
-  public enum ScaleBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ScaleBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case fit // = 0
     case fill // = 1
@@ -2255,7 +2259,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
   }
 
-  public enum ScaleAlignment: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ScaleAlignment: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case middleCenter // = 0
     case topLeft // = 1
@@ -2317,7 +2321,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
   }
 
-  public struct Metadata: Sendable {
+  public nonisolated struct Metadata: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2343,7 +2347,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum ColorFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ColorFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unknown // = 0
       case sdr // = 1
@@ -2390,7 +2394,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     fileprivate var _manufactureURL: Rv_Data_URL? = nil
   }
 
-  public struct VideoDevice: Sendable {
+  public nonisolated struct VideoDevice: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2425,7 +2429,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case generic // = 0
       case directshow // = 1
@@ -2487,7 +2491,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
     }
 
-    public struct AirCast: Sendable {
+    public nonisolated struct AirCast: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -2509,7 +2513,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     fileprivate var _aircast: Rv_Data_Media.VideoDevice.AirCast? = nil
   }
 
-  public struct AudioDevice: Sendable {
+  public nonisolated struct AudioDevice: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2527,14 +2531,14 @@ public struct Rv_Data_Media: @unchecked Sendable {
     public init() {}
   }
 
-  public struct Audio: Sendable {
+  public nonisolated struct Audio: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Channel: Sendable {
+    public nonisolated struct Channel: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -2551,7 +2555,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct Output: Sendable {
+      public nonisolated struct Output: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -2569,7 +2573,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     public init() {}
   }
 
-  public struct AudioProperties: Sendable {
+  public nonisolated struct AudioProperties: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2585,7 +2589,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     public init() {}
   }
 
-  public struct TransportProperties: Sendable {
+  public nonisolated struct TransportProperties: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2616,7 +2620,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum PlaybackBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum PlaybackBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case stop // = 0
       case loop // = 1
@@ -2658,7 +2662,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
     }
 
-    public enum RetriggerSetting: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum RetriggerSetting: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unset // = 0
       case always // = 1
@@ -2703,7 +2707,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     public init() {}
   }
 
-  public struct DrawingProperties: @unchecked Sendable {
+  public nonisolated struct DrawingProperties: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2806,7 +2810,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum NativeRotationType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum NativeRotationType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case rotateStandard // = 0
       case rotate90 // = 90
@@ -2853,7 +2857,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct VideoProperties: Sendable {
+  public nonisolated struct VideoProperties: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2874,7 +2878,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum EndBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum EndBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case stop // = 0
       case stopOnBlack // = 1
@@ -2920,7 +2924,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
     }
 
-    public enum FieldType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum FieldType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unknown // = 0
       case progressive // = 1
@@ -2962,7 +2966,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
     }
 
-    public enum HardwareDecodingType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum HardwareDecodingType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case automatic // = 0
       case disabled // = 2
@@ -2999,7 +3003,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     public init() {}
   }
 
-  public struct LiveVideoProperties: @unchecked Sendable {
+  public nonisolated struct LiveVideoProperties: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -3034,7 +3038,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct AudioTypeProperties: @unchecked Sendable {
+  public nonisolated struct AudioTypeProperties: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -3073,7 +3077,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct ImageTypeProperties: Sendable {
+  public nonisolated struct ImageTypeProperties: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -3104,7 +3108,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     fileprivate var _file: Rv_Data_FileProperties? = nil
   }
 
-  public struct VideoTypeProperties: @unchecked Sendable {
+  public nonisolated struct VideoTypeProperties: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -3161,7 +3165,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct LiveVideoTypeProperties: Sendable {
+  public nonisolated struct LiveVideoTypeProperties: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -3202,7 +3206,7 @@ public struct Rv_Data_Media: @unchecked Sendable {
     fileprivate var _liveVideo: Rv_Data_Media.LiveVideoProperties? = nil
   }
 
-  public struct WebContentTypeProperties: Sendable {
+  public nonisolated struct WebContentTypeProperties: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -3240,9 +3244,9 @@ public struct Rv_Data_Media: @unchecked Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Graphics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Graphics"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3261,7 +3265,7 @@ extension Rv_Data_Graphics: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension Rv_Data_Graphics.Element: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Element: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Element"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}bounds\0\u{1}rotation\0\u{1}opacity\0\u{1}locked\0\u{3}aspect_ratio_locked\0\u{1}path\0\u{1}fill\0\u{1}stroke\0\u{1}shadow\0\u{1}feather\0\u{1}text\0\u{3}text_line_mask\0\u{1}flipMode\0\u{1}hidden\0")
 
@@ -3448,11 +3452,11 @@ extension Rv_Data_Graphics.Element: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_Graphics.Element.FlipMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Element.FlipMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FLIP_MODE_NONE\0\u{1}FLIP_MODE_VERTICAL\0\u{1}FLIP_MODE_HORIZONTAL\0\u{1}FLIP_MODE_BOTH\0")
 }
 
-extension Rv_Data_Graphics.Rect: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Rect: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Rect"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}origin\0\u{1}size\0")
 
@@ -3491,7 +3495,7 @@ extension Rv_Data_Graphics.Rect: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_Graphics.Point: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Point: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Point"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}x\0\u{1}y\0")
 
@@ -3526,7 +3530,7 @@ extension Rv_Data_Graphics.Point: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Rv_Data_Graphics.Size: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Size: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Size"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}width\0\u{1}height\0")
 
@@ -3561,7 +3565,7 @@ extension Rv_Data_Graphics.Size: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_Graphics.EdgeInsets: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.EdgeInsets: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".EdgeInsets"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}left\0\u{1}right\0\u{1}top\0\u{1}bottom\0")
 
@@ -3606,7 +3610,7 @@ extension Rv_Data_Graphics.EdgeInsets: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_Graphics.Path: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Path: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Path"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}closed\0\u{1}points\0\u{1}shape\0")
 
@@ -3650,7 +3654,7 @@ extension Rv_Data_Graphics.Path: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_Graphics.Path.BezierPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Path.BezierPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Path.protoMessageName + ".BezierPoint"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}point\0\u{1}q0\0\u{1}q1\0\u{1}curved\0")
 
@@ -3699,7 +3703,7 @@ extension Rv_Data_Graphics.Path.BezierPoint: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Graphics.Path.Shape: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Path.Shape: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Path.protoMessageName + ".Shape"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0\u{3}rounded_rectangle\0\u{1}polygon\0\u{1}star\0\u{1}arrow\0")
 
@@ -3805,11 +3809,11 @@ extension Rv_Data_Graphics.Path.Shape: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_Graphics.Path.Shape.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Path.Shape.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_UNKNOWN\0\u{1}TYPE_RECTANGLE\0\u{1}TYPE_ELLIPSE\0\u{1}TYPE_ISOSCELES_TRIANGLE\0\u{1}TYPE_RIGHT_TRIANGLE\0\u{1}TYPE_RHOMBUS\0\u{1}TYPE_STAR\0\u{1}TYPE_POLYGON\0\u{1}TYPE_CUSTOM\0\u{1}TYPE_RIGHT_ARROW\0\u{1}TYPE_DOUBLE_ARROW\0\u{1}TYPE_ROUNDED_RECTANGLE\0")
 }
 
-extension Rv_Data_Graphics.Path.Shape.RoundedRectangle: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Path.Shape.RoundedRectangle: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Path.Shape.protoMessageName + ".RoundedRectangle"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}roundness\0")
 
@@ -3839,7 +3843,7 @@ extension Rv_Data_Graphics.Path.Shape.RoundedRectangle: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_Graphics.Path.Shape.Arrow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Path.Shape.Arrow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Path.Shape.protoMessageName + ".Arrow"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}corner\0")
 
@@ -3873,7 +3877,7 @@ extension Rv_Data_Graphics.Path.Shape.Arrow: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Graphics.Path.Shape.Polygon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Path.Shape.Polygon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Path.Shape.protoMessageName + ".Polygon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}number_sides\0")
 
@@ -3903,7 +3907,7 @@ extension Rv_Data_Graphics.Path.Shape.Polygon: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_Graphics.Path.Shape.Star: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Path.Shape.Star: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Path.Shape.protoMessageName + ".Star"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}inner_radius\0\u{3}number_points\0")
 
@@ -3938,7 +3942,7 @@ extension Rv_Data_Graphics.Path.Shape.Star: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Graphics.Fill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Fill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Fill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}color\0\u{1}gradient\0\u{1}media\0\u{1}enable\0\u{1}backgroundEffect\0")
 
@@ -4043,7 +4047,7 @@ extension Rv_Data_Graphics.Fill: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_Graphics.BackgroundEffect: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.BackgroundEffect: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".BackgroundEffect"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\u{2}backgroundBlur\0\u{1}backgroundInvert\0")
 
@@ -4110,7 +4114,7 @@ extension Rv_Data_Graphics.BackgroundEffect: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Graphics.BackgroundEffect.BackgroundEffectBlur: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.BackgroundEffect.BackgroundEffectBlur: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.BackgroundEffect.protoMessageName + ".BackgroundEffectBlur"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}saturation\0\u{3}blur_amount\0")
 
@@ -4145,7 +4149,7 @@ extension Rv_Data_Graphics.BackgroundEffect.BackgroundEffectBlur: SwiftProtobuf.
   }
 }
 
-extension Rv_Data_Graphics.BackgroundEffect.BackgroundEffectInvert: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.BackgroundEffect.BackgroundEffectInvert: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.BackgroundEffect.protoMessageName + ".BackgroundEffectInvert"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4164,7 +4168,7 @@ extension Rv_Data_Graphics.BackgroundEffect.BackgroundEffectInvert: SwiftProtobu
   }
 }
 
-extension Rv_Data_Graphics.Gradient: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Gradient: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Gradient"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0\u{1}angle\0\u{1}length\0\u{1}stops\0")
 
@@ -4209,11 +4213,11 @@ extension Rv_Data_Graphics.Gradient: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_Graphics.Gradient.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Gradient.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_LINEAR\0\u{1}TYPE_RADIAL\0\u{1}TYPE_ANGLE\0")
 }
 
-extension Rv_Data_Graphics.Gradient.ColorStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Gradient.ColorStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Gradient.protoMessageName + ".ColorStop"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}color\0\u{1}position\0\u{3}blend_point\0")
 
@@ -4257,7 +4261,7 @@ extension Rv_Data_Graphics.Gradient.ColorStop: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_Graphics.Shadow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Shadow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Shadow"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}style\0\u{1}angle\0\u{1}offset\0\u{1}radius\0\u{1}color\0\u{1}opacity\0\u{1}enable\0")
 
@@ -4321,11 +4325,11 @@ extension Rv_Data_Graphics.Shadow: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Rv_Data_Graphics.Shadow.Style: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Shadow.Style: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STYLE_DROP\0")
 }
 
-extension Rv_Data_Graphics.Stroke: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Stroke: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Stroke"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}style\0\u{1}width\0\u{1}color\0\u{1}pattern\0\u{1}enable\0")
 
@@ -4379,11 +4383,11 @@ extension Rv_Data_Graphics.Stroke: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Rv_Data_Graphics.Stroke.Style: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Stroke.Style: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STYLE_SOLID_LINE\0\u{1}STYLE_SQUARE_DASH\0\u{1}STYLE_SHORT_DASH\0\u{1}STYLE_LONG_DASH\0")
 }
 
-extension Rv_Data_Graphics.Feather: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Feather: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Feather"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}style\0\u{1}radius\0\u{1}enable\0")
 
@@ -4423,11 +4427,11 @@ extension Rv_Data_Graphics.Feather: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_Graphics.Feather.Style: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Feather.Style: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STYLE_INSIDE\0\u{1}STYLE_CENTER\0\u{1}STYLE_OUTSIDE\0")
 }
 
-extension Rv_Data_Graphics.Text: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".Text"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\u{3}attributes\0\u{1}shadow\0\u{3}rtf_data\0\u{3}vertical_alignment\0\u{3}scale_behavior\0\u{1}margins\0\u{3}is_superscript_standardized\0\u{1}transform\0\u{1}transformDelimiter\0\u{3}chord_pro\0\u{3}alternate_texts\0")
 
@@ -4567,19 +4571,19 @@ extension Rv_Data_Graphics.Text: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_Graphics.Text.VerticalAlignment: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.VerticalAlignment: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0VERTICAL_ALIGNMENT_TOP\0\u{1}VERTICAL_ALIGNMENT_MIDDLE\0\u{1}VERTICAL_ALIGNMENT_BOTTOM\0")
 }
 
-extension Rv_Data_Graphics.Text.ScaleBehavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.ScaleBehavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SCALE_BEHAVIOR_NONE\0\u{1}SCALE_BEHAVIOR_ADJUST_CONTAINER_HEIGHT\0\u{1}SCALE_BEHAVIOR_SCALE_FONT_DOWN\0\u{1}SCALE_BEHAVIOR_SCALE_FONT_UP\0\u{1}SCALE_BEHAVIOR_SCALE_FONT_UP_DOWN\0")
 }
 
-extension Rv_Data_Graphics.Text.Transform: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Transform: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TRANSFORM_NONE\0\u{1}TRANSFORM_SINGLE_LINE\0\u{1}TRANSFORM_ONE_WORD_PER_LINE\0\u{1}TRANSFORM_ONE_CHARACTER_PER_LINE\0\u{1}TRANSFORM_REPLACE_LINE_RETURNS\0")
 }
 
-extension Rv_Data_Graphics.Text.LineFillMask: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.LineFillMask: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.protoMessageName + ".LineFillMask"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enabled\0\u{3}height_offset\0\u{3}vertical_offset\0\u{3}mask_style\0\u{3}width_offset\0\u{3}horizontal_offset\0")
 
@@ -4634,11 +4638,11 @@ extension Rv_Data_Graphics.Text.LineFillMask: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_Graphics.Text.LineFillMask.LineMaskStyle: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.LineFillMask.LineMaskStyle: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LINE_MASK_STYLE_FULL_WIDTH\0\u{1}LINE_MASK_STYLE_LINE_WIDTH\0\u{1}LINE_MASK_STYLE_MAX_LINE_WIDTH\0")
 }
 
-extension Rv_Data_Graphics.Text.GradientFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.GradientFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.protoMessageName + ".GradientFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}gradient\0\u{3}stretch_to_document_bounds\0")
 
@@ -4677,7 +4681,7 @@ extension Rv_Data_Graphics.Text.GradientFill: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_Graphics.Text.CutOutFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.CutOutFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.protoMessageName + ".CutOutFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4696,7 +4700,7 @@ extension Rv_Data_Graphics.Text.CutOutFill: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Graphics.Text.MediaFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.MediaFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.protoMessageName + ".MediaFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}media\0")
 
@@ -4730,7 +4734,7 @@ extension Rv_Data_Graphics.Text.MediaFill: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_Graphics.Text.ChordPro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.ChordPro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.protoMessageName + ".ChordPro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enabled\0\u{1}notation\0\u{1}color\0")
 
@@ -4774,11 +4778,11 @@ extension Rv_Data_Graphics.Text.ChordPro: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_Graphics.Text.ChordPro.Notation: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.ChordPro.Notation: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NOTATION_CHORDS\0\u{1}NOTATION_NUMBERS\0\u{1}NOTATION_NUMERALS\0\u{1}NOTATION_DO_RE_MI\0")
 }
 
-extension Rv_Data_Graphics.Text.Attributes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.protoMessageName + ".Attributes"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}font\0\u{1}capitalization\0\u{3}text_solid_fill\0\u{3}underline_style\0\u{3}underline_color\0\u{3}paragraph_style\0\u{1}kerning\0\u{1}superscript\0\u{3}strikethrough_style\0\u{3}strikethrough_color\0\u{3}stroke_width\0\u{3}stroke_color\0\u{3}custom_attributes\0\u{3}text_gradient_fill\0\u{3}background_color\0\u{3}cut_out_fill\0\u{3}media_fill\0\u{3}background_effect\0\u{3}ligature_style\0")
 
@@ -5028,23 +5032,23 @@ extension Rv_Data_Graphics.Text.Attributes: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Graphics.Text.Attributes.Capitalization: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.Capitalization: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CAPITALIZATION_NONE\0\u{1}CAPITALIZATION_ALL_CAPS\0\u{1}CAPITALIZATION_SMALL_CAPS\0\u{1}CAPITALIZATION_TITLE_CASE\0\u{1}CAPITALIZATION_START_CASE\0")
 }
 
-extension Rv_Data_Graphics.Text.Attributes.Alignment: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.Alignment: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ALIGNMENT_LEFT\0\u{1}ALIGNMENT_RIGHT\0\u{1}ALIGNMENT_CENTER\0\u{1}ALIGNMENT_JUSTIFIED\0\u{1}ALIGNMENT_NATURAL\0")
 }
 
-extension Rv_Data_Graphics.Text.Attributes.CharacterSizeMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.CharacterSizeMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CHARACTER_SIZE_MODE_NORMAL\0\u{1}CHARACTER_SIZE_MODE_SCALED_BY_DOCUMENT_HEIGHT\0\u{1}CHARACTER_SIZE_MODE_SCALED_BY_DOCUMENT_WIDTH\0")
 }
 
-extension Rv_Data_Graphics.Text.Attributes.LigatureStyle: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.LigatureStyle: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LIGATURE_STYLE_DEFAULT\0\u{1}LIGATURE_STYLE_NONE\0")
 }
 
-extension Rv_Data_Graphics.Text.Attributes.Underline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.Underline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.Attributes.protoMessageName + ".Underline"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}style\0\u{1}pattern\0\u{3}by_word\0")
 
@@ -5084,15 +5088,15 @@ extension Rv_Data_Graphics.Text.Attributes.Underline: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_Graphics.Text.Attributes.Underline.Style: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.Underline.Style: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STYLE_NONE\0\u{1}STYLE_SINGLE\0\u{1}STYLE_THICK\0\u{1}STYLE_DOUBLE\0")
 }
 
-extension Rv_Data_Graphics.Text.Attributes.Underline.Pattern: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.Underline.Pattern: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PATTERN_SOLID\0\u{1}PATTERN_DOT\0\u{1}PATTERN_DASH\0\u{1}PATTERN_DASH_DOT\0\u{1}PATTERN_DASH_DOT_DOT\0")
 }
 
-extension Rv_Data_Graphics.Text.Attributes.Paragraph: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.Paragraph: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.Attributes.protoMessageName + ".Paragraph"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}alignment\0\u{3}first_line_head_indent\0\u{3}head_indent\0\u{3}tail_indent\0\u{3}line_height_multiple\0\u{3}maximum_line_height\0\u{3}minimum_line_height\0\u{3}line_spacing\0\u{3}paragraph_spacing\0\u{3}paragraph_spacing_before\0\u{3}tab_stops\0\u{3}default_tab_interval\0\u{3}text_list\0\u{3}text_lists\0")
 
@@ -5253,7 +5257,7 @@ extension Rv_Data_Graphics.Text.Attributes.Paragraph: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_Graphics.Text.Attributes.Paragraph.TabStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.Paragraph.TabStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.Attributes.Paragraph.protoMessageName + ".TabStop"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}location\0\u{1}alignment\0")
 
@@ -5288,7 +5292,7 @@ extension Rv_Data_Graphics.Text.Attributes.Paragraph.TabStop: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_Graphics.Text.Attributes.Paragraph.TextList: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.Paragraph.TextList: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.Attributes.Paragraph.protoMessageName + ".TextList"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_enabled\0\u{3}number_type\0\u{1}prefix\0\u{1}postfix\0\u{3}starting_number\0")
 
@@ -5338,11 +5342,11 @@ extension Rv_Data_Graphics.Text.Attributes.Paragraph.TextList: SwiftProtobuf.Mes
   }
 }
 
-extension Rv_Data_Graphics.Text.Attributes.Paragraph.TextList.NumberType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.Paragraph.TextList.NumberType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NUMBER_TYPE_BOX\0\u{1}NUMBER_TYPE_CHECK\0\u{1}NUMBER_TYPE_CIRCLE\0\u{1}NUMBER_TYPE_DIAMOND\0\u{1}NUMBER_TYPE_DISC\0\u{1}NUMBER_TYPE_HYPHEN\0\u{1}NUMBER_TYPE_SQUARE\0\u{1}NUMBER_TYPE_DECIMAL\0\u{1}NUMBER_TYPE_LOWERCASE_ALPHA\0\u{1}NUMBER_TYPE_UPPERCASE_ALPHA\0\u{1}NUMBER_TYPE_LOWERCASE_ROMAN\0\u{1}NUMBER_TYPE_UPPERCASE_ROMAN\0")
 }
 
-extension Rv_Data_Graphics.Text.Attributes.CustomAttribute: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.Attributes.CustomAttribute: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.Attributes.protoMessageName + ".CustomAttribute"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}range\0\u{1}capitalization\0\u{3}original_font_size\0\u{3}font_scale_factor\0\u{3}text_gradient_fill\0\u{3}should_preserve_foreground_color\0\u{1}chord\0\u{3}cut_out_fill\0\u{3}media_fill\0\u{3}background_effect\0\u{3}character_size_mode\0\u{3}original_font\0")
 
@@ -5537,7 +5541,7 @@ extension Rv_Data_Graphics.Text.Attributes.CustomAttribute: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_Graphics.Text.AlternateText: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.Text.AlternateText: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.Text.protoMessageName + ".AlternateText"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}key\0\u{3}plain_text\0")
 
@@ -5583,7 +5587,7 @@ extension Rv_Data_Graphics.Text.AlternateText: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_Graphics.PowerPointImport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Graphics.PowerPointImport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Graphics.protoMessageName + ".PowerPointImport"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}text\0\u{1}width\0\u{1}height\0")
 
@@ -5627,7 +5631,7 @@ extension Rv_Data_Graphics.PowerPointImport: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Media"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}url\0\u{1}metadata\0\u{1}audio\0\u{1}image\0\u{1}video\0\u{3}live_video\0\u{3}web_content\0")
 
@@ -5802,15 +5806,15 @@ extension Rv_Data_Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension Rv_Data_Media.ScaleBehavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.ScaleBehavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SCALE_BEHAVIOR_FIT\0\u{1}SCALE_BEHAVIOR_FILL\0\u{1}SCALE_BEHAVIOR_STRETCH\0\u{1}SCALE_BEHAVIOR_CUSTOM\0")
 }
 
-extension Rv_Data_Media.ScaleAlignment: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.ScaleAlignment: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SCALE_ALIGNMENT_MIDDLE_CENTER\0\u{1}SCALE_ALIGNMENT_TOP_LEFT\0\u{1}SCALE_ALIGNMENT_TOP_CENTER\0\u{1}SCALE_ALIGNMENT_TOP_RIGHT\0\u{1}SCALE_ALIGNMENT_MIDDLE_RIGHT\0\u{1}SCALE_ALIGNMENT_BOTTOM_RIGHT\0\u{1}SCALE_ALIGNMENT_BOTTOM_CENTER\0\u{1}SCALE_ALIGNMENT_BOTTOM_LEFT\0\u{1}SCALE_ALIGNMENT_MIDDLE_LEFT\0")
 }
 
-extension Rv_Data_Media.Metadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.Metadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".Metadata"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}manufacture_name\0\u{3}manufacture_url\0\u{1}information\0\u{1}artist\0\u{1}format\0\u{3}color_format\0")
 
@@ -5869,11 +5873,11 @@ extension Rv_Data_Media.Metadata: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Rv_Data_Media.Metadata.ColorFormat: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.Metadata.ColorFormat: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0COLOR_FORMAT_UNKNOWN\0\u{1}COLOR_FORMAT_SDR\0\u{1}COLOR_FORMAT_HDR_REC_2100_HLG\0\u{1}COLOR_FORMAT_HDR_REC_2100_PQ\0")
 }
 
-extension Rv_Data_Media.VideoDevice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.VideoDevice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".VideoDevice"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0\u{1}name\0\u{3}unique_id\0\u{3}model_id\0\u{3}format_index\0\u{3}audio_routing\0\u{1}aircast\0")
 
@@ -5937,11 +5941,11 @@ extension Rv_Data_Media.VideoDevice: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_Media.VideoDevice.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.VideoDevice.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_GENERIC\0\u{1}TYPE_DIRECTSHOW\0\u{1}TYPE_BLACKMAGIC\0\u{1}TYPE_AJA\0\u{1}TYPE_AV\0\u{1}TYPE_SYPHON\0\u{1}TYPE_NDI\0\u{1}TYPE_BLUEFISH\0\u{1}TYPE_AIRCAST\0")
 }
 
-extension Rv_Data_Media.VideoDevice.AirCast: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.VideoDevice.AirCast: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.VideoDevice.protoMessageName + ".AirCast"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}service_name\0\u{1}password\0\u{3}password_enabled\0")
 
@@ -5981,7 +5985,7 @@ extension Rv_Data_Media.VideoDevice.AirCast: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Media.AudioDevice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.AudioDevice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".AudioDevice"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{3}unique_id\0\u{3}model_id\0\u{3}channel_count\0")
 
@@ -6026,7 +6030,7 @@ extension Rv_Data_Media.AudioDevice: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_Media.Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".Audio"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -6045,7 +6049,7 @@ extension Rv_Data_Media.Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Rv_Data_Media.Audio.Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.Audio.Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.Audio.protoMessageName + ".Channel"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}index\0\u{1}muted\0\u{1}volume\0\u{3}compress_limit\0\u{1}outputs\0")
 
@@ -6095,7 +6099,7 @@ extension Rv_Data_Media.Audio.Channel: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_Media.Audio.Channel.Output: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.Audio.Channel.Output: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.Audio.Channel.protoMessageName + ".Output"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{4}\u{2}channel_index\0")
 
@@ -6125,7 +6129,7 @@ extension Rv_Data_Media.Audio.Channel.Output: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_Media.AudioProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.AudioProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".AudioProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}volume\0\u{3}audio_channels\0\u{3}is_custom_mapping\0")
 
@@ -6165,7 +6169,7 @@ extension Rv_Data_Media.AudioProperties: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_Media.TransportProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.TransportProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".TransportProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}play_rate\0\u{3}in_point\0\u{3}out_point\0\u{4}\u{4}fade_in_duration\0\u{3}fade_out_duration\0\u{3}should_fade_in\0\u{3}should_fade_out\0\u{3}end_point\0\u{3}playback_behavior\0\u{3}loop_time\0\u{3}times_to_loop\0\u{1}retrigger\0")
 
@@ -6250,15 +6254,15 @@ extension Rv_Data_Media.TransportProperties: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Media.TransportProperties.PlaybackBehavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.TransportProperties.PlaybackBehavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PLAYBACK_BEHAVIOR_STOP\0\u{1}PLAYBACK_BEHAVIOR_LOOP\0\u{1}PLAYBACK_BEHAVIOR_LOOP_FOR_COUNT\0\u{1}PLAYBACK_BEHAVIOR_LOOP_FOR_TIME\0")
 }
 
-extension Rv_Data_Media.TransportProperties.RetriggerSetting: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.TransportProperties.RetriggerSetting: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0RETRIGGER_SETTING_UNSET\0\u{1}RETRIGGER_SETTING_ALWAYS\0\u{1}RETRIGGER_SETTING_NEVER\0\u{1}RETRIGGER_SETTING_AUTOMATIC\0")
 }
 
-extension Rv_Data_Media.DrawingProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.DrawingProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".DrawingProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}scale_behavior\0\u{3}scale_alignment\0\u{3}flipped_horizontally\0\u{3}flipped_vertically\0\u{3}natural_size\0\u{3}custom_image_rotation\0\u{3}custom_image_bounds\0\u{3}custom_image_aspect_locked\0\u{3}alpha_inverted\0\u{3}native_rotation\0\u{3}selected_effect_preset_uuid\0\u{1}effects\0\u{3}crop_enable\0\u{3}crop_insets\0\u{3}alpha_type\0\u{3}is_blurred\0")
 
@@ -6433,11 +6437,11 @@ extension Rv_Data_Media.DrawingProperties: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_Media.DrawingProperties.NativeRotationType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.DrawingProperties.NativeRotationType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NATIVE_ROTATION_TYPE_ROTATE_STANDARD\0\u{2}Z\u{1}NATIVE_ROTATION_TYPE_ROTATE_90\0\u{2}Z\u{1}NATIVE_ROTATION_TYPE_ROTATE_180\0\u{2}Z\u{1}NATIVE_ROTATION_TYPE_ROTATE_270\0")
 }
 
-extension Rv_Data_Media.VideoProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.VideoProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".VideoProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}frame_rate\0\u{3}field_type\0\u{3}thumbnail_position\0\u{3}end_behavior\0\u{3}soft_loop\0\u{3}soft_loop_duration\0\u{3}hardware_decoding\0")
 
@@ -6497,19 +6501,19 @@ extension Rv_Data_Media.VideoProperties: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_Media.VideoProperties.EndBehavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.VideoProperties.EndBehavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0END_BEHAVIOR_STOP\0\u{1}END_BEHAVIOR_STOP_ON_BLACK\0\u{1}END_BEHAVIOR_STOP_ON_CLEAR\0\u{1}END_BEHAVIOR_FADE_TO_BLACK\0\u{1}END_BEHAVIOR_FADE_TO_CLEAR\0")
 }
 
-extension Rv_Data_Media.VideoProperties.FieldType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.VideoProperties.FieldType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FIELD_TYPE_UNKNOWN\0\u{1}FIELD_TYPE_PROGRESSIVE\0\u{1}FIELD_TYPE_INTERLACED_UPPER_FIRST\0\u{1}FIELD_TYPE_INTERLACED_LOWER_FIRST\0")
 }
 
-extension Rv_Data_Media.VideoProperties.HardwareDecodingType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.VideoProperties.HardwareDecodingType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0HARDWARE_DECODING_TYPE_AUTOMATIC\0\u{2}\u{2}HARDWARE_DECODING_TYPE_DISABLED\0")
 }
 
-extension Rv_Data_Media.LiveVideoProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.LiveVideoProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".LiveVideoProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}video_device\0\u{3}audio_device\0\u{3}live_video_index\0")
 
@@ -6593,7 +6597,7 @@ extension Rv_Data_Media.LiveVideoProperties: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Media.AudioTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.AudioTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".AudioTypeProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}audio\0\u{1}transport\0\u{1}file\0")
 
@@ -6677,7 +6681,7 @@ extension Rv_Data_Media.AudioTypeProperties: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Media.ImageTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.ImageTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".ImageTypeProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}drawing\0\u{1}file\0")
 
@@ -6716,7 +6720,7 @@ extension Rv_Data_Media.ImageTypeProperties: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Media.VideoTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.VideoTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".VideoTypeProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}drawing\0\u{1}audio\0\u{1}transport\0\u{1}video\0\u{1}file\0")
 
@@ -6814,7 +6818,7 @@ extension Rv_Data_Media.VideoTypeProperties: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Media.LiveVideoTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.LiveVideoTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".LiveVideoTypeProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}drawing\0\u{1}audio\0\u{3}live_video\0")
 
@@ -6858,7 +6862,7 @@ extension Rv_Data_Media.LiveVideoTypeProperties: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_Media.WebContentTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Media.WebContentTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".WebContentTypeProperties"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}drawing\0\u{1}url\0")
 

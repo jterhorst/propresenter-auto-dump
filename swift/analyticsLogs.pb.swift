@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Analytics_Logs_Field: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Logs_Field: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case id // = 0
   case name // = 1
@@ -58,7 +58,7 @@ public enum Rv_Analytics_Logs_Field: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-public enum Rv_Analytics_Logs_ConflictType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Logs_ConflictType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case duplicateID // = 0
   case duplicateName // = 1
@@ -108,7 +108,7 @@ public enum Rv_Analytics_Logs_ConflictType: SwiftProtobuf.Enum, Swift.CaseIterab
 
 }
 
-public enum Rv_Analytics_Logs_ResyncCause: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Logs_ResyncCause: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case workspace // = 0
   case sync // = 1
@@ -142,7 +142,7 @@ public enum Rv_Analytics_Logs_ResyncCause: SwiftProtobuf.Enum, Swift.CaseIterabl
 
 }
 
-public enum Rv_Analytics_Logs_DiffApplicationResult: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Logs_DiffApplicationResult: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case success // = 0
   case failure // = 1
@@ -180,7 +180,7 @@ public enum Rv_Analytics_Logs_DiffApplicationResult: SwiftProtobuf.Enum, Swift.C
 
 }
 
-public enum Rv_Analytics_Logs_LogSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Logs_LogSource: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case client // = 0
   case core // = 1
@@ -214,7 +214,32 @@ public enum Rv_Analytics_Logs_LogSource: SwiftProtobuf.Enum, Swift.CaseIterable 
 
 }
 
-public struct Rv_Analytics_Logs_LogWorkspacesPublished: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogError: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var documentIdentifier: String = String()
+
+  public var documentName: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public nonisolated struct Rv_Analytics_Logs_LogWorkspacesPublished: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -237,7 +262,7 @@ public struct Rv_Analytics_Logs_LogWorkspacesPublished: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogCollaboratorsPublished: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogCollaboratorsPublished: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -260,7 +285,7 @@ public struct Rv_Analytics_Logs_LogCollaboratorsPublished: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogDocumentUploaded: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogDocumentUploaded: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -285,7 +310,7 @@ public struct Rv_Analytics_Logs_LogDocumentUploaded: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogDocumentDownloaded: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogDocumentDownloaded: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -310,7 +335,7 @@ public struct Rv_Analytics_Logs_LogDocumentDownloaded: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogDiffPushed: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogDiffPushed: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -347,7 +372,7 @@ public struct Rv_Analytics_Logs_LogDiffPushed: Sendable {
   fileprivate var _diffMetadata: Rv_Analytics_Logs_DiffMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogDiffReceived: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogDiffReceived: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -386,7 +411,7 @@ public struct Rv_Analytics_Logs_LogDiffReceived: Sendable {
   fileprivate var _diffMetadata: Rv_Analytics_Logs_DiffMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogConvertToCloud: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogConvertToCloud: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -411,7 +436,34 @@ public struct Rv_Analytics_Logs_LogConvertToCloud: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogOpenedWorkspace: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogOpenedWorkspace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var workspaceIdentifier: String = String()
+
+  public var workspaceName: String = String()
+
+  public var isLocal: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public nonisolated struct Rv_Analytics_Logs_LogConvertToLocal: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -436,32 +488,7 @@ public struct Rv_Analytics_Logs_LogOpenedWorkspace: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogConvertToLocal: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var metadata: Rv_Analytics_Logs_LogMetadata {
-    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
-    set {_metadata = newValue}
-  }
-  /// Returns true if `metadata` has been explicitly set.
-  public var hasMetadata: Bool {self._metadata != nil}
-  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
-  public mutating func clearMetadata() {self._metadata = nil}
-
-  public var workspaceIdentifier: String = String()
-
-  public var workspaceName: String = String()
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
-}
-
-public struct Rv_Analytics_Logs_LogSyncingChange: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogSyncingChange: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -484,7 +511,7 @@ public struct Rv_Analytics_Logs_LogSyncingChange: Sendable {
   fileprivate var _paused: Rv_Analytics_Logs_PauseState? = nil
 }
 
-public struct Rv_Analytics_Logs_PauseState: Sendable {
+public nonisolated struct Rv_Analytics_Logs_PauseState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -498,7 +525,7 @@ public struct Rv_Analytics_Logs_PauseState: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Logs_LogDocumentStored: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogDocumentStored: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -525,7 +552,7 @@ public struct Rv_Analytics_Logs_LogDocumentStored: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogDocumentCreated: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogDocumentCreated: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -550,7 +577,30 @@ public struct Rv_Analytics_Logs_LogDocumentCreated: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogDocumentUpdated: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogDocumentRequested: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var documentIdentifier: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+}
+
+public nonisolated struct Rv_Analytics_Logs_LogDocumentUpdated: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -577,7 +627,7 @@ public struct Rv_Analytics_Logs_LogDocumentUpdated: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogDocumentDeleted: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogDocumentDeleted: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -602,7 +652,7 @@ public struct Rv_Analytics_Logs_LogDocumentDeleted: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogDocumentConflict: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogDocumentConflict: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -631,7 +681,7 @@ public struct Rv_Analytics_Logs_LogDocumentConflict: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_LogWorkspaceResynchronized: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogWorkspaceResynchronized: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -654,7 +704,7 @@ public struct Rv_Analytics_Logs_LogWorkspaceResynchronized: Sendable {
   fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
 }
 
-public struct Rv_Analytics_Logs_DiffMetadata: Sendable {
+public nonisolated struct Rv_Analytics_Logs_DiffMetadata: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -670,7 +720,7 @@ public struct Rv_Analytics_Logs_DiffMetadata: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Logs_LogMetadata: Sendable {
+public nonisolated struct Rv_Analytics_Logs_LogMetadata: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -690,29 +740,73 @@ public struct Rv_Analytics_Logs_LogMetadata: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.logs"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.logs"
 
-extension Rv_Analytics_Logs_Field: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_Field: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ID\0\u{1}NAME\0\u{1}PATH\0")
 }
 
-extension Rv_Analytics_Logs_ConflictType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_ConflictType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DUPLICATE_ID\0\u{1}DUPLICATE_NAME\0\u{1}DUPLICATE_PATH\0\u{1}DOCUMENT_NOT_FOUND\0\u{1}DOCUMENT_ALREADY_DELETED\0\u{1}CONCURRENT_MODIFICATION\0")
 }
 
-extension Rv_Analytics_Logs_ResyncCause: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_ResyncCause: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0WORKSPACE\0\u{1}SYNC\0")
 }
 
-extension Rv_Analytics_Logs_DiffApplicationResult: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_DiffApplicationResult: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SUCCESS\0\u{1}FAILURE\0\u{1}AWAITING_OTHER_CHANGES\0")
 }
 
-extension Rv_Analytics_Logs_LogSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CLIENT\0\u{1}CORE\0")
 }
 
-extension Rv_Analytics_Logs_LogWorkspacesPublished: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogError"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.documentName) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.documentIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentIdentifier, fieldNumber: 2)
+    }
+    if !self.documentName.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentName, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogError, rhs: Rv_Analytics_Logs_LogError) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.documentIdentifier != rhs.documentIdentifier {return false}
+    if lhs.documentName != rhs.documentName {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Logs_LogWorkspacesPublished: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogWorkspacesPublished"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}workspace_identifiers\0")
 
@@ -751,7 +845,7 @@ extension Rv_Analytics_Logs_LogWorkspacesPublished: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Analytics_Logs_LogCollaboratorsPublished: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogCollaboratorsPublished: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogCollaboratorsPublished"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}collaborator_names\0")
 
@@ -790,7 +884,7 @@ extension Rv_Analytics_Logs_LogCollaboratorsPublished: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Logs_LogDocumentUploaded: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogDocumentUploaded: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDocumentUploaded"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0")
 
@@ -834,7 +928,7 @@ extension Rv_Analytics_Logs_LogDocumentUploaded: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Logs_LogDocumentDownloaded: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogDocumentDownloaded: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDocumentDownloaded"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0")
 
@@ -878,7 +972,7 @@ extension Rv_Analytics_Logs_LogDocumentDownloaded: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Logs_LogDiffPushed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogDiffPushed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDiffPushed"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0\u{3}diff_metadata\0\u{3}from_version_vector\0")
 
@@ -932,7 +1026,7 @@ extension Rv_Analytics_Logs_LogDiffPushed: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Logs_LogDiffReceived: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogDiffReceived: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDiffReceived"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{4}\u{2}document_name\0\u{3}version_vector\0\u{3}import_result\0\u{3}diff_metadata\0")
 
@@ -991,7 +1085,7 @@ extension Rv_Analytics_Logs_LogDiffReceived: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Analytics_Logs_LogConvertToCloud: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogConvertToCloud: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogConvertToCloud"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}workspace_identifier\0\u{3}workspace_name\0")
 
@@ -1035,9 +1129,9 @@ extension Rv_Analytics_Logs_LogConvertToCloud: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Analytics_Logs_LogOpenedWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogOpenedWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogOpenedWorkspace"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}workspace_identifier\0\u{3}workspace_name\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}workspace_identifier\0\u{3}workspace_name\0\u{3}is_local\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1048,6 +1142,7 @@ extension Rv_Analytics_Logs_LogOpenedWorkspace: SwiftProtobuf.Message, SwiftProt
       case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.workspaceIdentifier) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.workspaceName) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.isLocal) }()
       default: break
       }
     }
@@ -1067,6 +1162,9 @@ extension Rv_Analytics_Logs_LogOpenedWorkspace: SwiftProtobuf.Message, SwiftProt
     if !self.workspaceName.isEmpty {
       try visitor.visitSingularStringField(value: self.workspaceName, fieldNumber: 3)
     }
+    if self.isLocal != false {
+      try visitor.visitSingularBoolField(value: self.isLocal, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1074,12 +1172,13 @@ extension Rv_Analytics_Logs_LogOpenedWorkspace: SwiftProtobuf.Message, SwiftProt
     if lhs._metadata != rhs._metadata {return false}
     if lhs.workspaceIdentifier != rhs.workspaceIdentifier {return false}
     if lhs.workspaceName != rhs.workspaceName {return false}
+    if lhs.isLocal != rhs.isLocal {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Rv_Analytics_Logs_LogConvertToLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogConvertToLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogConvertToLocal"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}workspace_identifier\0\u{3}workspace_name\0")
 
@@ -1123,7 +1222,7 @@ extension Rv_Analytics_Logs_LogConvertToLocal: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Analytics_Logs_LogSyncingChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogSyncingChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogSyncingChange"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}paused\0\u{1}online\0")
 
@@ -1162,7 +1261,7 @@ extension Rv_Analytics_Logs_LogSyncingChange: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Analytics_Logs_PauseState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_PauseState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PauseState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}until_time_utc\0\u{3}paused_at_utc\0")
 
@@ -1197,7 +1296,7 @@ extension Rv_Analytics_Logs_PauseState: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Analytics_Logs_LogDocumentStored: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogDocumentStored: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDocumentStored"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0\u{3}version_vector\0")
 
@@ -1246,7 +1345,7 @@ extension Rv_Analytics_Logs_LogDocumentStored: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Analytics_Logs_LogDocumentCreated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogDocumentCreated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDocumentCreated"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0")
 
@@ -1290,7 +1389,46 @@ extension Rv_Analytics_Logs_LogDocumentCreated: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Logs_LogDocumentUpdated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogDocumentRequested: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogDocumentRequested"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.documentIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentIdentifier, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogDocumentRequested, rhs: Rv_Analytics_Logs_LogDocumentRequested) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.documentIdentifier != rhs.documentIdentifier {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Logs_LogDocumentUpdated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDocumentUpdated"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}previous_document_name\0\u{3}updated_document_name\0")
 
@@ -1339,7 +1477,7 @@ extension Rv_Analytics_Logs_LogDocumentUpdated: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Logs_LogDocumentDeleted: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogDocumentDeleted: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDocumentDeleted"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0")
 
@@ -1383,7 +1521,7 @@ extension Rv_Analytics_Logs_LogDocumentDeleted: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Logs_LogDocumentConflict: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogDocumentConflict: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogDocumentConflict"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}document_name\0\u{1}field\0\u{3}conflict_type\0")
 
@@ -1437,7 +1575,7 @@ extension Rv_Analytics_Logs_LogDocumentConflict: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Logs_LogWorkspaceResynchronized: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogWorkspaceResynchronized: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogWorkspaceResynchronized"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{1}cause\0")
 
@@ -1476,7 +1614,7 @@ extension Rv_Analytics_Logs_LogWorkspaceResynchronized: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Logs_DiffMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_DiffMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DiffMetadata"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}change_num\0\u{3}partial_start_vv\0\u{3}partial_end_vv\0")
 
@@ -1516,7 +1654,7 @@ extension Rv_Analytics_Logs_DiffMetadata: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Analytics_Logs_LogMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Logs_LogMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LogMetadata"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}peer_id\0\u{3}log_message\0\u{3}workspace_identifier\0\u{3}log_source\0")
 

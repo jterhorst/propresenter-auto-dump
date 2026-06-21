@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Calendar: Sendable {
+public nonisolated struct Rv_Data_Calendar: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -31,7 +31,7 @@ public struct Rv_Data_Calendar: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Event: Sendable {
+  public nonisolated struct Event: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -84,7 +84,7 @@ public struct Rv_Data_Calendar: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum DayOfWeek: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum DayOfWeek: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unknown // = 0
       case sunday // = 1
@@ -142,7 +142,7 @@ public struct Rv_Data_Calendar: Sendable {
 
     }
 
-    public struct Action: Sendable {
+    public nonisolated struct Action: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -178,13 +178,13 @@ public struct Rv_Data_Calendar: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_ActionType: Equatable, Sendable {
+      public nonisolated enum OneOf_ActionType: Equatable, Sendable {
         case playlist(Rv_Data_Calendar.Event.Action.Playlist)
         case macro(Rv_Data_Calendar.Event.Action.Macro)
 
       }
 
-      public struct Playlist: Sendable {
+      public nonisolated struct Playlist: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -215,7 +215,7 @@ public struct Rv_Data_Calendar: Sendable {
         fileprivate var _playlistItemUuid: Rv_Data_UUID? = nil
       }
 
-      public struct Macro: Sendable {
+      public nonisolated struct Macro: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -254,9 +254,9 @@ public struct Rv_Data_Calendar: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Calendar: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Calendar: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Calendar"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}events\0\u{1}active\0")
 
@@ -291,7 +291,7 @@ extension Rv_Data_Calendar: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension Rv_Data_Calendar.Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Calendar.Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Calendar.protoMessageName + ".Event"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}description\0\u{1}date\0\u{3}recurrence_days\0\u{3}recurrence_limit_date\0\u{3}recurrence_excluded_dates\0\u{1}action\0\u{1}actions\0")
 
@@ -365,11 +365,11 @@ extension Rv_Data_Calendar.Event: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Rv_Data_Calendar.Event.DayOfWeek: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Calendar.Event.DayOfWeek: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DAY_OF_WEEK_UNKNOWN\0\u{1}DAY_OF_WEEK_SUNDAY\0\u{1}DAY_OF_WEEK_MONDAY\0\u{1}DAY_OF_WEEK_TUESDAY\0\u{1}DAY_OF_WEEK_WEDNESDAY\0\u{1}DAY_OF_WEEK_THURSDAY\0\u{1}DAY_OF_WEEK_FRIDAY\0\u{1}DAY_OF_WEEK_SATURDAY\0")
 }
 
-extension Rv_Data_Calendar.Event.Action: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Calendar.Event.Action: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Calendar.Event.protoMessageName + ".Action"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0\u{1}uuid\0\u{1}playlist\0\u{1}macro\0")
 
@@ -446,7 +446,7 @@ extension Rv_Data_Calendar.Event.Action: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_Calendar.Event.Action.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Calendar.Event.Action.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Calendar.Event.Action.protoMessageName + ".Playlist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}playlist_uuid\0\u{3}playlist_item_uuid\0")
 
@@ -485,7 +485,7 @@ extension Rv_Data_Calendar.Event.Action.Playlist: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_Calendar.Event.Action.Macro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Calendar.Event.Action.Macro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Calendar.Event.Action.protoMessageName + ".Macro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}identification\0")
 

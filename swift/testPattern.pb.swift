@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Data_LogoType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Data_LogoType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case none // = 0
   case propresenter // = 1
@@ -58,7 +58,7 @@ public enum Rv_Data_LogoType: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-public struct Rv_Data_TestPattern: Sendable {
+public nonisolated struct Rv_Data_TestPattern: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -93,14 +93,14 @@ public struct Rv_Data_TestPattern: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_PatternProperties: Equatable, Sendable {
+  public nonisolated enum OneOf_PatternProperties: Equatable, Sendable {
     case blendGrid(Rv_Data_TestPattern.BlendGrid)
     case customColor(Rv_Data_TestPattern.CustomColor)
     case intensity(Rv_Data_TestPattern.IntensityColor)
 
   }
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case blendGrid // = 1
@@ -166,7 +166,7 @@ public struct Rv_Data_TestPattern: Sendable {
 
   }
 
-  public struct BlendGrid: Sendable {
+  public nonisolated struct BlendGrid: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -186,7 +186,7 @@ public struct Rv_Data_TestPattern: Sendable {
     public init() {}
   }
 
-  public struct CustomColor: Sendable {
+  public nonisolated struct CustomColor: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -207,7 +207,7 @@ public struct Rv_Data_TestPattern: Sendable {
     fileprivate var _color: Rv_Data_Color? = nil
   }
 
-  public struct IntensityColor: Sendable {
+  public nonisolated struct IntensityColor: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -222,7 +222,7 @@ public struct Rv_Data_TestPattern: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_TestPatternDefinition: Sendable {
+public nonisolated struct Rv_Data_TestPatternDefinition: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -246,7 +246,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct ColorProperty: Sendable {
+  public nonisolated struct ColorProperty: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -271,7 +271,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
     fileprivate var _value: Rv_Data_Color? = nil
   }
 
-  public struct DoubleProperty: Sendable {
+  public nonisolated struct DoubleProperty: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -290,7 +290,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum ViewType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ViewType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case stepper // = 0
       case slider // = 1
@@ -331,7 +331,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
     public init() {}
   }
 
-  public struct IntProperty: Sendable {
+  public nonisolated struct IntProperty: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -349,7 +349,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
     public init() {}
   }
 
-  public struct BoolProperty: Sendable {
+  public nonisolated struct BoolProperty: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -363,7 +363,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
     public init() {}
   }
 
-  public struct StringProperty: Sendable {
+  public nonisolated struct StringProperty: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -379,7 +379,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
     public init() {}
   }
 
-  public struct FontProperty: Sendable {
+  public nonisolated struct FontProperty: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -400,7 +400,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
     fileprivate var _font: Rv_Data_Font? = nil
   }
 
-  public struct SelectorProperty: Sendable {
+  public nonisolated struct SelectorProperty: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -414,7 +414,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
     public init() {}
   }
 
-  public struct Property: Sendable {
+  public nonisolated struct Property: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -481,7 +481,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_PropertyType: Equatable, Sendable {
+    public nonisolated enum OneOf_PropertyType: Equatable, Sendable {
       case colorProperty(Rv_Data_TestPatternDefinition.ColorProperty)
       case doubleProperty(Rv_Data_TestPatternDefinition.DoubleProperty)
       case intProperty(Rv_Data_TestPatternDefinition.IntProperty)
@@ -500,7 +500,7 @@ public struct Rv_Data_TestPatternDefinition: Sendable {
   fileprivate var _uuid: Rv_Data_UUID? = nil
 }
 
-public struct Rv_Data_TestPatternRenderSettings: Sendable {
+public nonisolated struct Rv_Data_TestPatternRenderSettings: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -530,7 +530,7 @@ public struct Rv_Data_TestPatternRenderSettings: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Output: Sendable {
+  public nonisolated struct Output: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -557,7 +557,7 @@ public struct Rv_Data_TestPatternRenderSettings: Sendable {
   fileprivate var _pattern: Rv_Data_TestPatternDefinition? = nil
 }
 
-public struct Rv_Data_TestPatternState: @unchecked Sendable {
+public nonisolated struct Rv_Data_TestPatternState: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -611,7 +611,7 @@ public struct Rv_Data_TestPatternState: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum DisplayLocation: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum DisplayLocation: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case allScreens // = 0
     case audienceScreens // = 1
@@ -658,7 +658,7 @@ public struct Rv_Data_TestPatternState: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_TestPatternDocument: Sendable {
+public nonisolated struct Rv_Data_TestPatternDocument: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -676,7 +676,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct TestPatternStateData: Sendable {
+  public nonisolated struct TestPatternStateData: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -725,7 +725,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
     fileprivate var _userLogoLocation: Rv_Data_URL? = nil
   }
 
-  public struct TestPatternData: Sendable {
+  public nonisolated struct TestPatternData: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -745,7 +745,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct ColorProperty: Sendable {
+    public nonisolated struct ColorProperty: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -766,7 +766,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
       fileprivate var _value: Rv_Data_Color? = nil
     }
 
-    public struct DoubleProperty: Sendable {
+    public nonisolated struct DoubleProperty: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -778,7 +778,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
       public init() {}
     }
 
-    public struct IntProperty: Sendable {
+    public nonisolated struct IntProperty: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -790,7 +790,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
       public init() {}
     }
 
-    public struct BoolProperty: Sendable {
+    public nonisolated struct BoolProperty: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -804,7 +804,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
       public init() {}
     }
 
-    public struct StringProperty: Sendable {
+    public nonisolated struct StringProperty: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -816,7 +816,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
       public init() {}
     }
 
-    public struct FontProperty: Sendable {
+    public nonisolated struct FontProperty: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -837,7 +837,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
       fileprivate var _value: Rv_Data_Font? = nil
     }
 
-    public struct SelectorProperty: Sendable {
+    public nonisolated struct SelectorProperty: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -849,7 +849,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
       public init() {}
     }
 
-    public struct Property: Sendable {
+    public nonisolated struct Property: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -916,7 +916,7 @@ public struct Rv_Data_TestPatternDocument: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_PropertyType: Equatable, Sendable {
+      public nonisolated enum OneOf_PropertyType: Equatable, Sendable {
         case colorProperty(Rv_Data_TestPatternDocument.TestPatternData.ColorProperty)
         case doubleProperty(Rv_Data_TestPatternDocument.TestPatternData.DoubleProperty)
         case intProperty(Rv_Data_TestPatternDocument.TestPatternData.IntProperty)
@@ -942,13 +942,13 @@ public struct Rv_Data_TestPatternDocument: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_LogoType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_LogoType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LOGO_TYPE_NONE\0\u{1}LOGO_TYPE_PROPRESENTER\0\u{1}LOGO_TYPE_USER\0")
 }
 
-extension Rv_Data_TestPattern: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPattern: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TestPattern"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0\u{3}blend_grid\0\u{3}custom_color\0\u{1}intensity\0")
 
@@ -1037,11 +1037,11 @@ extension Rv_Data_TestPattern: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Rv_Data_TestPattern.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPattern.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_UNKNOWN\0\u{1}TYPE_BLEND_GRID\0\u{1}TYPE_COLOR_BARS\0\u{1}TYPE_FOCUS\0\u{1}TYPE_GRAY_SCALE\0\u{1}TYPE_BLACK_COLOR\0\u{1}TYPE_WHITE_COLOR\0\u{1}TYPE_CUSTOM_COLOR\0\u{1}TYPE_TEXT\0\u{1}TYPE_VIDEO_SYNC\0")
 }
 
-extension Rv_Data_TestPattern.BlendGrid: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPattern.BlendGrid: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPattern.protoMessageName + ".BlendGrid"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}draw_grid\0\u{3}draw_circles\0\u{3}draw_lines\0\u{3}invert_colors\0\u{3}grid_spacing\0")
 
@@ -1091,7 +1091,7 @@ extension Rv_Data_TestPattern.BlendGrid: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_TestPattern.CustomColor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPattern.CustomColor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPattern.protoMessageName + ".CustomColor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}color\0")
 
@@ -1125,7 +1125,7 @@ extension Rv_Data_TestPattern.CustomColor: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_TestPattern.IntensityColor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPattern.IntensityColor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPattern.protoMessageName + ".IntensityColor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}intensity\0")
 
@@ -1155,7 +1155,7 @@ extension Rv_Data_TestPattern.IntensityColor: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_TestPatternDefinition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TestPatternDefinition"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}name_localization_key\0\u{1}properties\0\u{3}show_delay_settings\0\u{3}is_default\0")
 
@@ -1209,7 +1209,7 @@ extension Rv_Data_TestPatternDefinition: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_TestPatternDefinition.ColorProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition.ColorProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDefinition.protoMessageName + ".ColorProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0\u{3}allow_alpha\0\u{3}default_colors\0")
 
@@ -1253,7 +1253,7 @@ extension Rv_Data_TestPatternDefinition.ColorProperty: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_TestPatternDefinition.DoubleProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition.DoubleProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDefinition.protoMessageName + ".DoubleProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0\u{1}min\0\u{1}max\0\u{1}step\0\u{1}units\0\u{1}viewType\0")
 
@@ -1308,11 +1308,11 @@ extension Rv_Data_TestPatternDefinition.DoubleProperty: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_TestPatternDefinition.DoubleProperty.ViewType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition.DoubleProperty.ViewType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0VIEW_TYPE_STEPPER\0\u{1}VIEW_TYPE_SLIDER\0\u{1}VIEW_TYPE_SPEED_SLIDER\0")
 }
 
-extension Rv_Data_TestPatternDefinition.IntProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition.IntProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDefinition.protoMessageName + ".IntProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0\u{1}min\0\u{1}max\0\u{2}\u{2}units\0")
 
@@ -1357,7 +1357,7 @@ extension Rv_Data_TestPatternDefinition.IntProperty: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_TestPatternDefinition.BoolProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition.BoolProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDefinition.protoMessageName + ".BoolProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0\u{3}dependent_properties\0")
 
@@ -1392,7 +1392,7 @@ extension Rv_Data_TestPatternDefinition.BoolProperty: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_TestPatternDefinition.StringProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition.StringProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDefinition.protoMessageName + ".StringProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0\u{3}min_chars\0\u{3}max_chars\0")
 
@@ -1432,7 +1432,7 @@ extension Rv_Data_TestPatternDefinition.StringProperty: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_TestPatternDefinition.FontProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition.FontProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDefinition.protoMessageName + ".FontProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}font\0")
 
@@ -1466,7 +1466,7 @@ extension Rv_Data_TestPatternDefinition.FontProperty: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_TestPatternDefinition.SelectorProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition.SelectorProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDefinition.protoMessageName + ".SelectorProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}selected_index\0\u{3}value_localization_keys\0")
 
@@ -1501,7 +1501,7 @@ extension Rv_Data_TestPatternDefinition.SelectorProperty: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_TestPatternDefinition.Property: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDefinition.Property: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDefinition.protoMessageName + ".Property"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}name_localization_key\0\u{4}\u{2}color_property\0\u{3}double_property\0\u{3}int_property\0\u{3}bool_property\0\u{3}string_property\0\u{3}font_property\0\u{3}selector_property\0")
 
@@ -1658,7 +1658,7 @@ extension Rv_Data_TestPatternDefinition.Property: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_TestPatternRenderSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternRenderSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TestPatternRenderSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pattern\0\u{4}\u{2}screen_name\0\u{1}outputs\0\u{3}logo_type\0\u{3}logo_file\0\u{3}render_width\0\u{3}render_height\0\u{3}enable_audio\0")
 
@@ -1727,7 +1727,7 @@ extension Rv_Data_TestPatternRenderSettings: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_TestPatternRenderSettings.Output: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternRenderSettings.Output: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternRenderSettings.protoMessageName + ".Output"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}x\0\u{1}y\0\u{1}width\0\u{1}height\0\u{1}name\0\u{3}frame_rate\0")
 
@@ -1782,7 +1782,7 @@ extension Rv_Data_TestPatternRenderSettings.Output: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_TestPatternState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TestPatternState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pattern\0\u{3}show_pattern\0\u{3}display_location\0\u{3}specific_screen\0\u{3}identify_screens\0\u{3}logo_type\0\u{3}user_logo_location\0")
 
@@ -1894,11 +1894,11 @@ extension Rv_Data_TestPatternState: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_TestPatternState.DisplayLocation: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternState.DisplayLocation: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DISPLAY_LOCATION_ALL_SCREENS\0\u{1}DISPLAY_LOCATION_AUDIENCE_SCREENS\0\u{1}DISPLAY_LOCATION_STAGE_SCREENS\0\u{1}DISPLAY_LOCATION_SPECIFIC_SCREEN\0")
 }
 
-extension Rv_Data_TestPatternDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TestPatternDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}state\0\u{1}patterns\0")
 
@@ -1937,7 +1937,7 @@ extension Rv_Data_TestPatternDocument: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternStateData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternStateData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.protoMessageName + ".TestPatternStateData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}test_pattern_id\0\u{3}test_pattern_name_localization_key\0\u{3}display_location\0\u{3}specific_screen\0\u{3}identify_screens\0\u{3}logo_type\0\u{3}user_logo_location\0")
 
@@ -2001,7 +2001,7 @@ extension Rv_Data_TestPatternDocument.TestPatternStateData: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.protoMessageName + ".TestPatternData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}name_localization_key\0\u{1}properties\0")
 
@@ -2045,7 +2045,7 @@ extension Rv_Data_TestPatternDocument.TestPatternData: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternData.ColorProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternData.ColorProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.TestPatternData.protoMessageName + ".ColorProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -2079,7 +2079,7 @@ extension Rv_Data_TestPatternDocument.TestPatternData.ColorProperty: SwiftProtob
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternData.DoubleProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternData.DoubleProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.TestPatternData.protoMessageName + ".DoubleProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -2109,7 +2109,7 @@ extension Rv_Data_TestPatternDocument.TestPatternData.DoubleProperty: SwiftProto
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternData.IntProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternData.IntProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.TestPatternData.protoMessageName + ".IntProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -2139,7 +2139,7 @@ extension Rv_Data_TestPatternDocument.TestPatternData.IntProperty: SwiftProtobuf
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternData.BoolProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternData.BoolProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.TestPatternData.protoMessageName + ".BoolProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0\u{3}dependent_properties\0")
 
@@ -2174,7 +2174,7 @@ extension Rv_Data_TestPatternDocument.TestPatternData.BoolProperty: SwiftProtobu
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternData.StringProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternData.StringProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.TestPatternData.protoMessageName + ".StringProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -2204,7 +2204,7 @@ extension Rv_Data_TestPatternDocument.TestPatternData.StringProperty: SwiftProto
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternData.FontProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternData.FontProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.TestPatternData.protoMessageName + ".FontProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -2238,7 +2238,7 @@ extension Rv_Data_TestPatternDocument.TestPatternData.FontProperty: SwiftProtobu
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternData.SelectorProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternData.SelectorProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.TestPatternData.protoMessageName + ".SelectorProperty"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -2268,7 +2268,7 @@ extension Rv_Data_TestPatternDocument.TestPatternData.SelectorProperty: SwiftPro
   }
 }
 
-extension Rv_Data_TestPatternDocument.TestPatternData.Property: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternDocument.TestPatternData.Property: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternDocument.TestPatternData.protoMessageName + ".Property"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}name_localization_key\0\u{3}color_property\0\u{3}double_property\0\u{3}int_property\0\u{3}bool_property\0\u{3}string_property\0\u{3}font_property\0\u{3}selector_property\0")
 

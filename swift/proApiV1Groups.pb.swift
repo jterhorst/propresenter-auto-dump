@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Groups_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Groups_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -45,13 +45,13 @@ public struct Rv_Data_API_v1_Groups_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case groupsRequest(Rv_Data_API_v1_Groups_Request.GroupsRequest)
     case triggerGroup(Rv_Data_API_v1_Groups_Request.TriggerGroup)
 
   }
 
-  public struct GroupsRequest: Sendable {
+  public nonisolated struct GroupsRequest: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -61,7 +61,7 @@ public struct Rv_Data_API_v1_Groups_Request: Sendable {
     public init() {}
   }
 
-  public struct TriggerGroup: Sendable {
+  public nonisolated struct TriggerGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -76,7 +76,7 @@ public struct Rv_Data_API_v1_Groups_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Groups_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Groups_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -101,13 +101,13 @@ public struct Rv_Data_API_v1_Groups_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case groups(Rv_Data_API_v1_Groups_Response.GroupsRequest)
     case triggerGroup(Rv_Data_API_v1_Groups_Response.TriggerGroup)
 
   }
 
-  public struct GroupsRequest: Sendable {
+  public nonisolated struct GroupsRequest: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -116,7 +116,7 @@ public struct Rv_Data_API_v1_Groups_Response: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Group: Sendable {
+    public nonisolated struct Group: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -150,7 +150,7 @@ public struct Rv_Data_API_v1_Groups_Response: Sendable {
     public init() {}
   }
 
-  public struct TriggerGroup: Sendable {
+  public nonisolated struct TriggerGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -165,9 +165,9 @@ public struct Rv_Data_API_v1_Groups_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Groups_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Groups_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Groups_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}groups_request\0\u{3}trigger_group\0")
 
@@ -234,7 +234,7 @@ extension Rv_Data_API_v1_Groups_Request: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_Groups_Request.GroupsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Groups_Request.GroupsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Groups_Request.protoMessageName + ".GroupsRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -253,7 +253,7 @@ extension Rv_Data_API_v1_Groups_Request.GroupsRequest: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Groups_Request.TriggerGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Groups_Request.TriggerGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Groups_Request.protoMessageName + ".TriggerGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -283,7 +283,7 @@ extension Rv_Data_API_v1_Groups_Request.TriggerGroup: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Groups_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Groups_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Groups_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}groups\0\u{3}trigger_group\0")
 
@@ -350,7 +350,7 @@ extension Rv_Data_API_v1_Groups_Response: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_API_v1_Groups_Response.GroupsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Groups_Response.GroupsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Groups_Response.protoMessageName + ".GroupsRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}groups\0")
 
@@ -380,7 +380,7 @@ extension Rv_Data_API_v1_Groups_Response.GroupsRequest: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Groups_Response.GroupsRequest.Group: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Groups_Response.GroupsRequest.Group: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Groups_Response.GroupsRequest.protoMessageName + ".Group"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}color\0")
 
@@ -419,7 +419,7 @@ extension Rv_Data_API_v1_Groups_Response.GroupsRequest.Group: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_API_v1_Groups_Response.TriggerGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Groups_Response.TriggerGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Groups_Response.protoMessageName + ".TriggerGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

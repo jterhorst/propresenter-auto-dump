@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_PlanningCenterPlan: Sendable {
+public nonisolated struct Rv_Data_PlanningCenterPlan: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -68,7 +68,7 @@ public struct Rv_Data_PlanningCenterPlan: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct PlanItem: Sendable {
+  public nonisolated struct PlanItem: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -111,7 +111,7 @@ public struct Rv_Data_PlanningCenterPlan: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum PlanItemType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum PlanItemType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case item // = 0
       case song // = 1
@@ -153,7 +153,7 @@ public struct Rv_Data_PlanningCenterPlan: Sendable {
 
     }
 
-    public struct Attachment: @unchecked Sendable {
+    public nonisolated struct Attachment: @unchecked Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -221,7 +221,7 @@ public struct Rv_Data_PlanningCenterPlan: Sendable {
       fileprivate var _storage = _StorageClass.defaultInstance
     }
 
-    public struct SongItem: @unchecked Sendable {
+    public nonisolated struct SongItem: @unchecked Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -266,7 +266,7 @@ public struct Rv_Data_PlanningCenterPlan: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct Sequence: Sendable {
+      public nonisolated struct Sequence: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -304,9 +304,9 @@ public struct Rv_Data_PlanningCenterPlan: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_PlanningCenterPlan: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PlanningCenterPlan: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PlanningCenterPlan"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}plan_id_num\0\u{3}parent_id_num\0\u{3}series_title\0\u{3}plan_title\0\u{3}date_list\0\u{3}created_date\0\u{3}update_date\0\u{3}last_update_check_date\0\u{3}plan_id_str\0\u{3}parent_id_str\0")
 
@@ -385,7 +385,7 @@ extension Rv_Data_PlanningCenterPlan: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_PlanningCenterPlan.PlanItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PlanningCenterPlan.PlanItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PlanningCenterPlan.protoMessageName + ".PlanItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}item_type\0\u{3}pco_id_num\0\u{3}service_id_num\0\u{3}parent_id_num\0\u{1}name\0\u{1}attachments\0\u{3}update_date\0\u{3}linked_song\0\u{3}pco_id_str\0\u{3}service_id_str\0\u{3}parent_id_str\0")
 
@@ -469,11 +469,11 @@ extension Rv_Data_PlanningCenterPlan.PlanItem: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_PlanningCenterPlan.PlanItem.PlanItemType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PlanningCenterPlan.PlanItem.PlanItemType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PLAN_ITEM_TYPE_ITEM\0\u{1}PLAN_ITEM_TYPE_SONG\0\u{1}PLAN_ITEM_TYPE_MEDIA\0\u{1}PLAN_ITEM_TYPE_HEADER\0")
 }
 
-extension Rv_Data_PlanningCenterPlan.PlanItem.Attachment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PlanningCenterPlan.PlanItem.Attachment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PlanningCenterPlan.PlanItem.protoMessageName + ".Attachment"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}url\0\u{3}created_date\0\u{3}linked_path\0\u{3}pco_id_num\0\u{3}needs_update\0\u{3}update_date\0\u{3}pco_id_str\0")
 
@@ -592,7 +592,7 @@ extension Rv_Data_PlanningCenterPlan.PlanItem.Attachment: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_PlanningCenterPlan.PlanItem.SongItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PlanningCenterPlan.PlanItem.SongItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PlanningCenterPlan.PlanItem.protoMessageName + ".SongItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pco_id_num\0\u{3}arrangement_id_num\0\u{1}ccli\0\u{1}sequence\0\u{3}pco_id_str\0\u{3}arrangement_id_str\0")
 
@@ -697,7 +697,7 @@ extension Rv_Data_PlanningCenterPlan.PlanItem.SongItem: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_PlanningCenterPlan.PlanItem.SongItem.Sequence: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PlanningCenterPlan.PlanItem.SongItem.Sequence: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PlanningCenterPlan.PlanItem.SongItem.protoMessageName + ".Sequence"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pco_id_num\0\u{1}name\0\u{3}group_names\0\u{3}pco_id_str\0")
 

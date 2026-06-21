@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_ApplicationInfo: Sendable {
+public nonisolated struct Rv_Data_ApplicationInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -49,7 +49,7 @@ public struct Rv_Data_ApplicationInfo: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Platform: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Platform: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case undefined // = 0
     case macos // = 1
@@ -87,7 +87,7 @@ public struct Rv_Data_ApplicationInfo: Sendable {
 
   }
 
-  public enum Application: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Application: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case undefined // = 0
     case propresenter // = 1
@@ -141,9 +141,9 @@ public struct Rv_Data_ApplicationInfo: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_ApplicationInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ApplicationInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplicationInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}platform\0\u{3}platform_version\0\u{1}application\0\u{3}application_version\0")
 
@@ -192,10 +192,10 @@ extension Rv_Data_ApplicationInfo: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Rv_Data_ApplicationInfo.Platform: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ApplicationInfo.Platform: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PLATFORM_UNDEFINED\0\u{1}PLATFORM_MACOS\0\u{1}PLATFORM_WINDOWS\0")
 }
 
-extension Rv_Data_ApplicationInfo.Application: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ApplicationInfo.Application: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0APPLICATION_UNDEFINED\0\u{1}APPLICATION_PROPRESENTER\0\u{1}APPLICATION_PVP\0\u{1}APPLICATION_PROVIDEOSERVER\0\u{1}APPLICATION_SCOREBOARD\0")
 }

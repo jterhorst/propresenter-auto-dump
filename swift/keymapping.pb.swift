@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_KeyMapping: Sendable {
+public nonisolated struct Rv_Data_KeyMapping: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -103,7 +103,7 @@ public struct Rv_Data_KeyMapping: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_TargetIdentifier: Equatable, Sendable {
+  public nonisolated enum OneOf_TargetIdentifier: Equatable, Sendable {
     case menuItem(String)
     case clearGroupIdentifier_p(Rv_Data_CollectionElementType)
     case cueIdentifier(Rv_Data_CollectionElementType)
@@ -114,7 +114,7 @@ public struct Rv_Data_KeyMapping: Sendable {
 
   }
 
-  public struct ComputerKeyboard: Sendable {
+  public nonisolated struct ComputerKeyboard: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -125,7 +125,7 @@ public struct Rv_Data_KeyMapping: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum ModifierFlags: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ModifierFlags: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case commandKey // = 0
       case shiftKey // = 1
@@ -174,7 +174,7 @@ public struct Rv_Data_KeyMapping: Sendable {
     public init() {}
   }
 
-  public struct MIDIKeyboard: Sendable {
+  public nonisolated struct MIDIKeyboard: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -196,7 +196,7 @@ public struct Rv_Data_KeyMapping: Sendable {
   fileprivate var _midi: Rv_Data_KeyMapping.MIDIKeyboard? = nil
 }
 
-public struct Rv_Data_KeyMappingDocument: Sendable {
+public nonisolated struct Rv_Data_KeyMappingDocument: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -225,9 +225,9 @@ public struct Rv_Data_KeyMappingDocument: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".KeyMapping"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}keyboard\0\u{1}midi\0\u{4}b\u{1}menu_item\0\u{3}clear_group_identifier\0\u{3}cue_identifier\0\u{3}group_identifier\0\u{3}macro_identifier\0\u{3}prop_identifier\0\u{3}timer_identifier\0")
 
@@ -384,7 +384,7 @@ extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension Rv_Data_KeyMapping.ComputerKeyboard: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_KeyMapping.ComputerKeyboard: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_KeyMapping.protoMessageName + ".ComputerKeyboard"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}key_equivalent\0\u{3}key_equivalent_modifier_flags\0")
 
@@ -419,11 +419,11 @@ extension Rv_Data_KeyMapping.ComputerKeyboard: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_KeyMapping.ComputerKeyboard.ModifierFlags: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_KeyMapping.ComputerKeyboard.ModifierFlags: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MODIFIERFLAGS_COMMAND_KEY\0\u{1}MODIFIERFLAGS_SHIFT_KEY\0\u{1}MODIFIERFLAGS_OPTION_KEY\0\u{1}MODIFIERFLAGS_CONTROL_KEY\0\u{1}MODIFIERFLAGS_FUNCTION_KEY\0")
 }
 
-extension Rv_Data_KeyMapping.MIDIKeyboard: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_KeyMapping.MIDIKeyboard: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_KeyMapping.protoMessageName + ".MIDIKeyboard"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}channel\0\u{1}pitch\0\u{1}velocity\0")
 
@@ -463,7 +463,7 @@ extension Rv_Data_KeyMapping.MIDIKeyboard: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_KeyMappingDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_KeyMappingDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".KeyMappingDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}keymappings\0\u{3}macos_keymappings\0\u{3}windows_keymappings\0")
 

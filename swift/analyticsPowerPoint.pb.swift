@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Analytics_Powerpoint_ImportType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Powerpoint_ImportType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case slidesAsImages // = 0
   case textOnly // = 1
@@ -62,7 +62,7 @@ public enum Rv_Analytics_Powerpoint_ImportType: SwiftProtobuf.Enum, Swift.CaseIt
 
 }
 
-public enum Rv_Analytics_Powerpoint_ImportFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Powerpoint_ImportFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case unkown // = 0
   case ppt // = 1
@@ -100,7 +100,7 @@ public enum Rv_Analytics_Powerpoint_ImportFormat: SwiftProtobuf.Enum, Swift.Case
 
 }
 
-public struct Rv_Analytics_Powerpoint_ImportPowerPoint: Sendable {
+public nonisolated struct Rv_Analytics_Powerpoint_ImportPowerPoint: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -116,17 +116,17 @@ public struct Rv_Analytics_Powerpoint_ImportPowerPoint: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.powerpoint"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.powerpoint"
 
-extension Rv_Analytics_Powerpoint_ImportType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Powerpoint_ImportType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SLIDES_AS_IMAGES\0\u{1}TEXT_ONLY\0\u{1}TEXT_AND_IMAGES\0\u{1}CORE_OPEN_XML\0")
 }
 
-extension Rv_Analytics_Powerpoint_ImportFormat: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Powerpoint_ImportFormat: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKOWN\0\u{1}PPT\0\u{1}PPTX\0")
 }
 
-extension Rv_Analytics_Powerpoint_ImportPowerPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Powerpoint_ImportPowerPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ImportPowerPoint"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0\u{1}format\0")
 

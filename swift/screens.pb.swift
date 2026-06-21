@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Screen: @unchecked Sendable {
+public nonisolated struct Rv_Data_Screen: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -153,7 +153,7 @@ public struct Rv_Data_Screen: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct ColorAdjustment: Sendable {
+  public nonisolated struct ColorAdjustment: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -177,7 +177,7 @@ public struct Rv_Data_Screen: @unchecked Sendable {
     public init() {}
   }
 
-  public struct BlendCompensation: Sendable {
+  public nonisolated struct BlendCompensation: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -189,7 +189,7 @@ public struct Rv_Data_Screen: @unchecked Sendable {
     public init() {}
   }
 
-  public struct AlphaSettings: Sendable {
+  public nonisolated struct AlphaSettings: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -207,7 +207,7 @@ public struct Rv_Data_Screen: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Mode: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Mode: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unknown // = 0
       case disabled // = 1
@@ -249,7 +249,7 @@ public struct Rv_Data_Screen: @unchecked Sendable {
 
     }
 
-    public struct AlphaDevice: Sendable {
+    public nonisolated struct AlphaDevice: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -290,7 +290,7 @@ public struct Rv_Data_Screen: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_CornerValues: Sendable {
+public nonisolated struct Rv_Data_CornerValues: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -341,7 +341,7 @@ public struct Rv_Data_CornerValues: Sendable {
   fileprivate var _bottomRight: Rv_Data_Graphics.Point? = nil
 }
 
-public struct Rv_Data_DisplayMode: Sendable {
+public nonisolated struct Rv_Data_DisplayMode: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -361,7 +361,7 @@ public struct Rv_Data_DisplayMode: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_OutputDisplay: @unchecked Sendable {
+public nonisolated struct Rv_Data_OutputDisplay: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -454,12 +454,12 @@ public struct Rv_Data_OutputDisplay: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_HardwareOptions: Equatable, Sendable {
+  public nonisolated enum OneOf_HardwareOptions: Equatable, Sendable {
     case blackmagic(Rv_Data_OutputDisplay.Blackmagic)
 
   }
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case screen // = 1
@@ -509,7 +509,7 @@ public struct Rv_Data_OutputDisplay: @unchecked Sendable {
 
   }
 
-  public enum RenderFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum RenderFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case sdr // = 0
     case rec2100Pq // = 1
@@ -547,7 +547,7 @@ public struct Rv_Data_OutputDisplay: @unchecked Sendable {
 
   }
 
-  public struct Blackmagic: Sendable {
+  public nonisolated struct Blackmagic: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -560,7 +560,7 @@ public struct Rv_Data_OutputDisplay: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum KeyMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum KeyMode: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case `internal` // = 0
       case external // = 1
@@ -602,7 +602,7 @@ public struct Rv_Data_OutputDisplay: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_EdgeBlend: @unchecked Sendable {
+public nonisolated struct Rv_Data_EdgeBlend: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -687,7 +687,7 @@ public struct Rv_Data_EdgeBlend: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Mode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Mode: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case linear // = 0
     case cubic // = 1
@@ -725,7 +725,7 @@ public struct Rv_Data_EdgeBlend: @unchecked Sendable {
 
   }
 
-  public struct Screen: Sendable {
+  public nonisolated struct Screen: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -753,7 +753,7 @@ public struct Rv_Data_EdgeBlend: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Edge: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Edge: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unknown // = 0
       case left // = 1
@@ -811,9 +811,9 @@ public struct Rv_Data_EdgeBlend: @unchecked Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Screen"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}color\0\u{1}bounds\0\u{3}aspect_ratio_locked\0\u{3}output_bounds_aspect_ratio_locked\0\u{3}corner_pinning_enabled\0\u{3}subscreen_unit_rect\0\u{1}rotation\0\u{1}gamma\0\u{3}black_level\0\u{3}blended_edges\0\u{3}corner_values\0\u{3}output_display\0\u{3}color_enabled\0\u{3}color_adjustment\0\u{3}blend_compensation\0\u{3}alpha_settings\0")
 
@@ -1002,7 +1002,7 @@ extension Rv_Data_Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension Rv_Data_Screen.ColorAdjustment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Screen.ColorAdjustment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Screen.protoMessageName + ".ColorAdjustment"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}gamma\0\u{3}black_level\0\u{3}red_level\0\u{3}green_level\0\u{3}blue_level\0\u{1}brightness\0\u{1}contrast\0")
 
@@ -1062,7 +1062,7 @@ extension Rv_Data_Screen.ColorAdjustment: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_Screen.BlendCompensation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Screen.BlendCompensation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Screen.protoMessageName + ".BlendCompensation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}black_level\0")
 
@@ -1092,7 +1092,7 @@ extension Rv_Data_Screen.BlendCompensation: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Screen.AlphaSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Screen.AlphaSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Screen.protoMessageName + ".AlphaSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}mode\0\u{3}alpha_device\0")
 
@@ -1131,11 +1131,11 @@ extension Rv_Data_Screen.AlphaSettings: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_Screen.AlphaSettings.Mode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Screen.AlphaSettings.Mode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MODE_UNKNOWN\0\u{1}MODE_DISABLED\0\u{1}MODE_PREMULTIPLIED\0\u{1}MODE_STRAIGHT\0")
 }
 
-extension Rv_Data_Screen.AlphaSettings.AlphaDevice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Screen.AlphaSettings.AlphaDevice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Screen.AlphaSettings.protoMessageName + ".AlphaDevice"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}display\0\u{3}subscreen_unit_rect\0")
 
@@ -1174,7 +1174,7 @@ extension Rv_Data_Screen.AlphaSettings.AlphaDevice: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_CornerValues: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CornerValues: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CornerValues"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}top_left\0\u{3}top_right\0\u{3}bottom_left\0\u{3}bottom_right\0")
 
@@ -1223,7 +1223,7 @@ extension Rv_Data_CornerValues: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_DisplayMode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DisplayMode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DisplayMode"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}width\0\u{1}height\0\u{3}refresh_rate\0\u{1}interlaced\0")
 
@@ -1273,7 +1273,7 @@ extension Rv_Data_DisplayMode: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Rv_Data_OutputDisplay: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_OutputDisplay: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".OutputDisplay"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}model\0\u{1}serial\0\u{1}deviceName\0\u{1}vendor\0\u{1}modeIndex\0\u{1}bounds\0\u{1}type\0\u{1}mode\0\u{3}render_id\0\u{1}blackmagic\0\u{3}video_delay\0\u{3}render_format\0\u{3}hdr_max_nits_offset\0")
 
@@ -1446,15 +1446,15 @@ extension Rv_Data_OutputDisplay: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_OutputDisplay.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_OutputDisplay.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_UNKNOWN\0\u{1}TYPE_SCREEN\0\u{1}TYPE_CARD\0\u{1}TYPE_NDI\0\u{1}TYPE_SYPHON\0\u{1}TYPE_CUSTOM\0")
 }
 
-extension Rv_Data_OutputDisplay.RenderFormat: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_OutputDisplay.RenderFormat: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0RENDERFORMAT_SDR\0\u{1}RENDERFORMAT_REC_2100_PQ\0\u{1}RENDERFORMAT_REC_2100_HLG\0")
 }
 
-extension Rv_Data_OutputDisplay.Blackmagic: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_OutputDisplay.Blackmagic: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_OutputDisplay.protoMessageName + ".Blackmagic"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enabled\0\u{3}key_mode\0\u{3}blend_value\0")
 
@@ -1494,11 +1494,11 @@ extension Rv_Data_OutputDisplay.Blackmagic: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_OutputDisplay.Blackmagic.KeyMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_OutputDisplay.Blackmagic.KeyMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0KEY_MODE_INTERNAL\0\u{1}KEY_MODE_EXTERNAL\0")
 }
 
-extension Rv_Data_EdgeBlend: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_EdgeBlend: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".EdgeBlend"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}radius\0\u{1}intensity\0\u{1}mode\0\u{3}first_screen\0\u{3}second_screen\0\u{3}left_screen\0\u{3}right_screen\0\u{3}top_screen\0\u{3}bottom_screen\0")
 
@@ -1631,11 +1631,11 @@ extension Rv_Data_EdgeBlend: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension Rv_Data_EdgeBlend.Mode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_EdgeBlend.Mode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MODE_LINEAR\0\u{1}MODE_CUBIC\0\u{1}MODE_QUADRATIC\0")
 }
 
-extension Rv_Data_EdgeBlend.Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_EdgeBlend.Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_EdgeBlend.protoMessageName + ".Screen"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}edge\0\u{1}gamma\0\u{3}black_level\0\u{1}mode\0\u{1}radius\0\u{1}intensity\0")
 
@@ -1699,6 +1699,6 @@ extension Rv_Data_EdgeBlend.Screen: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_EdgeBlend.Screen.Edge: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_EdgeBlend.Screen.Edge: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EDGE_UNKNOWN\0\u{1}EDGE_LEFT\0\u{1}EDGE_RIGHT\0\u{1}EDGE_TOP\0\u{1}EDGE_BOTTOM\0")
 }

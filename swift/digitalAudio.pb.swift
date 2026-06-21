@@ -15,19 +15,19 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_DigitalAudio: Sendable {
+public nonisolated struct Rv_Data_DigitalAudio: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Setup: @unchecked Sendable {
+  public nonisolated struct Setup: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -86,7 +86,7 @@ public struct Rv_Data_DigitalAudio: Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct Bus: Sendable {
+  public nonisolated struct Bus: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -106,7 +106,7 @@ public struct Rv_Data_DigitalAudio: Sendable {
     public init() {}
   }
 
-  public struct Device: Sendable {
+  public nonisolated struct Device: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -128,7 +128,7 @@ public struct Rv_Data_DigitalAudio: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Format: Sendable {
+    public nonisolated struct Format: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -141,7 +141,7 @@ public struct Rv_Data_DigitalAudio: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case int // = 0
         case float // = 1
@@ -178,7 +178,7 @@ public struct Rv_Data_DigitalAudio: Sendable {
       public init() {}
     }
 
-    public struct Map: Sendable {
+    public nonisolated struct Map: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -192,7 +192,7 @@ public struct Rv_Data_DigitalAudio: Sendable {
       public init() {}
     }
 
-    public struct Channel: Sendable {
+    public nonisolated struct Channel: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -212,7 +212,7 @@ public struct Rv_Data_DigitalAudio: Sendable {
       public init() {}
     }
 
-    public struct Routing: Sendable {
+    public nonisolated struct Routing: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -249,9 +249,9 @@ public struct Rv_Data_DigitalAudio: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_DigitalAudio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DigitalAudio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DigitalAudio"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -270,7 +270,7 @@ extension Rv_Data_DigitalAudio: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_DigitalAudio.Setup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DigitalAudio.Setup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DigitalAudio.protoMessageName + ".Setup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}buses\0\u{3}monitor_device\0\u{3}main_output_device\0\u{3}enable_sdi_ndi_device\0\u{3}sdi_ndi_device\0\u{3}monitor_on_mains\0\u{3}disable_main_output_device\0")
 
@@ -382,7 +382,7 @@ extension Rv_Data_DigitalAudio.Setup: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_DigitalAudio.Bus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DigitalAudio.Bus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DigitalAudio.protoMessageName + ".Bus"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}muted\0\u{1}solo\0\u{3}test_tone\0\u{3}master_level\0")
 
@@ -432,7 +432,7 @@ extension Rv_Data_DigitalAudio.Bus: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_DigitalAudio.Device: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DigitalAudio.Device: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DigitalAudio.protoMessageName + ".Device"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}renderID\0\u{1}formats\0\u{1}routing\0")
 
@@ -481,7 +481,7 @@ extension Rv_Data_DigitalAudio.Device: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_DigitalAudio.Device.Format: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DigitalAudio.Device.Format: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DigitalAudio.Device.protoMessageName + ".Format"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}sample_rate\0\u{3}bit_depth\0\u{1}type\0")
 
@@ -521,11 +521,11 @@ extension Rv_Data_DigitalAudio.Device.Format: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_DigitalAudio.Device.Format.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DigitalAudio.Device.Format.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_INT\0\u{1}TYPE_FLOAT\0")
 }
 
-extension Rv_Data_DigitalAudio.Device.Map: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DigitalAudio.Device.Map: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DigitalAudio.Device.protoMessageName + ".Map"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}channel_index\0\u{3}mapped_indices\0")
 
@@ -560,7 +560,7 @@ extension Rv_Data_DigitalAudio.Device.Map: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_DigitalAudio.Device.Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DigitalAudio.Device.Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DigitalAudio.Device.protoMessageName + ".Channel"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}mute_enable\0\u{3}solo_enable\0\u{3}tone_enable\0\u{3}audio_delay\0\u{1}level\0")
 
@@ -610,7 +610,7 @@ extension Rv_Data_DigitalAudio.Device.Channel: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_DigitalAudio.Device.Routing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DigitalAudio.Device.Routing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DigitalAudio.Device.protoMessageName + ".Routing"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}channels\0\u{1}map\0\u{3}is_custom_map\0\u{3}master_channel\0")
 

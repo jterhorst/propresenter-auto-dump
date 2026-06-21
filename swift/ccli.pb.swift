@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_CCLIDocument: @unchecked Sendable {
+public nonisolated struct Rv_Data_CCLIDocument: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -69,7 +69,7 @@ public struct Rv_Data_CCLIDocument: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum DisplayType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum DisplayType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case firstSlide // = 0
     case lastSlide // = 1
@@ -116,7 +116,7 @@ public struct Rv_Data_CCLIDocument: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_CopyrightLayout: Sendable {
+public nonisolated struct Rv_Data_CopyrightLayout: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -125,7 +125,7 @@ public struct Rv_Data_CopyrightLayout: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TokenType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TokenType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case text // = 0
     case artist // = 1
@@ -183,7 +183,7 @@ public struct Rv_Data_CopyrightLayout: Sendable {
 
   }
 
-  public struct Token: Sendable {
+  public nonisolated struct Token: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -202,9 +202,9 @@ public struct Rv_Data_CopyrightLayout: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_CCLIDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CCLIDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CCLIDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{3}enable_ccli_display\0\u{3}ccli_license\0\u{3}display_type\0\u{1}template\0\u{1}layout\0")
 
@@ -309,11 +309,11 @@ extension Rv_Data_CCLIDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_CCLIDocument.DisplayType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CCLIDocument.DisplayType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DISPLAY_TYPE_FIRST_SLIDE\0\u{1}DISPLAY_TYPE_LAST_SLIDE\0\u{1}DISPLAY_TYPE_FIRST_AND_LAST_SLIDE\0\u{1}DISPLAY_TYPE_ALL_SLIDES\0")
 }
 
-extension Rv_Data_CopyrightLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CopyrightLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CopyrightLayout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\u{2}tokens\0")
 
@@ -343,11 +343,11 @@ extension Rv_Data_CopyrightLayout: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Rv_Data_CopyrightLayout.TokenType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CopyrightLayout.TokenType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Text\0\u{1}Artist\0\u{1}Author\0\u{1}Publisher\0\u{1}Title\0\u{1}CopyrightYear\0\u{1}LicenseNumber\0\u{1}SongNumber\0")
 }
 
-extension Rv_Data_CopyrightLayout.Token: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CopyrightLayout.Token: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CopyrightLayout.protoMessageName + ".Token"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}token_type\0\u{1}text\0")
 

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Analytics_Trackedevents_Codec: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Trackedevents_Codec: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case h264 // = 0
   case h264Software // = 1
@@ -110,7 +110,7 @@ public enum Rv_Analytics_Trackedevents_Codec: SwiftProtobuf.Enum, Swift.CaseIter
 
 }
 
-public enum Rv_Analytics_Trackedevents_FrameRate: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Trackedevents_FrameRate: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case unspecified // = 0
   case _24Fps // = 1
@@ -168,7 +168,7 @@ public enum Rv_Analytics_Trackedevents_FrameRate: SwiftProtobuf.Enum, Swift.Case
 
 }
 
-public struct Rv_Analytics_Trackedevents_GenericEvent: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_GenericEvent: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -178,7 +178,7 @@ public struct Rv_Analytics_Trackedevents_GenericEvent: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_ApplicationLaunch: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_ApplicationLaunch: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -215,7 +215,7 @@ public struct Rv_Analytics_Trackedevents_ApplicationLaunch: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Channel: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Channel: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case beta // = 0
     case release // = 1
@@ -249,7 +249,7 @@ public struct Rv_Analytics_Trackedevents_ApplicationLaunch: Sendable {
 
   }
 
-  public enum Platform: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Platform: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case windows // = 0
     case macos // = 1
@@ -286,7 +286,7 @@ public struct Rv_Analytics_Trackedevents_ApplicationLaunch: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_VideoInputTriggered: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_VideoInputTriggered: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -295,7 +295,7 @@ public struct Rv_Analytics_Trackedevents_VideoInputTriggered: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum AudioSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum AudioSource: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case none // = 0
     case self_ // = 1
@@ -336,7 +336,7 @@ public struct Rv_Analytics_Trackedevents_VideoInputTriggered: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_VideoInputCustomMap: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_VideoInputCustomMap: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -348,7 +348,7 @@ public struct Rv_Analytics_Trackedevents_VideoInputCustomMap: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_VideoInputStartUp: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_VideoInputStartUp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -360,7 +360,7 @@ public struct Rv_Analytics_Trackedevents_VideoInputStartUp: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_VideoInputThumbnailUpdate: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_VideoInputThumbnailUpdate: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -369,7 +369,7 @@ public struct Rv_Analytics_Trackedevents_VideoInputThumbnailUpdate: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum UpdateType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum UpdateType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case capture // = 0
     case disk // = 1
@@ -410,7 +410,7 @@ public struct Rv_Analytics_Trackedevents_VideoInputThumbnailUpdate: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_AudioInputAutoOnChange: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_AudioInputAutoOnChange: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -422,7 +422,7 @@ public struct Rv_Analytics_Trackedevents_AudioInputAutoOnChange: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_AudioSettingsSdiNdiActive: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_AudioSettingsSdiNdiActive: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -434,7 +434,7 @@ public struct Rv_Analytics_Trackedevents_AudioSettingsSdiNdiActive: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_AudioSettingsCustomMap: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_AudioSettingsCustomMap: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -446,7 +446,7 @@ public struct Rv_Analytics_Trackedevents_AudioSettingsCustomMap: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_AudioInputModeSelection: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_AudioInputModeSelection: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -455,7 +455,7 @@ public struct Rv_Analytics_Trackedevents_AudioInputModeSelection: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ModeType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ModeType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case on // = 0
     case off // = 1
@@ -500,7 +500,7 @@ public struct Rv_Analytics_Trackedevents_AudioInputModeSelection: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_AudioInputAutoOnStartup: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_AudioInputAutoOnStartup: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -512,7 +512,7 @@ public struct Rv_Analytics_Trackedevents_AudioInputAutoOnStartup: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_AudioSettingsSdiNdiState: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_AudioSettingsSdiNdiState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -524,7 +524,7 @@ public struct Rv_Analytics_Trackedevents_AudioSettingsSdiNdiState: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_AudioInputStartUp: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_AudioInputStartUp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -544,7 +544,7 @@ public struct Rv_Analytics_Trackedevents_AudioInputStartUp: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_CueTriggered: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_CueTriggered: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -556,7 +556,7 @@ public struct Rv_Analytics_Trackedevents_CueTriggered: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_InputAudioMonitoring: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_InputAudioMonitoring: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -565,7 +565,7 @@ public struct Rv_Analytics_Trackedevents_InputAudioMonitoring: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum InputType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum InputType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case audio // = 0
     case video // = 1
@@ -602,7 +602,7 @@ public struct Rv_Analytics_Trackedevents_InputAudioMonitoring: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_ResiStartUp: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_ResiStartUp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -612,7 +612,7 @@ public struct Rv_Analytics_Trackedevents_ResiStartUp: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_ResiLoginChange: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_ResiLoginChange: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -621,7 +621,7 @@ public struct Rv_Analytics_Trackedevents_ResiLoginChange: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum LoginState: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum LoginState: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case loggedin // = 0
     case loggedout // = 1
@@ -658,7 +658,7 @@ public struct Rv_Analytics_Trackedevents_ResiLoginChange: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_RemoteStreamStart: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_RemoteStreamStart: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -667,7 +667,7 @@ public struct Rv_Analytics_Trackedevents_RemoteStreamStart: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum StartResult: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum StartResult: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case success // = 0
     case failed // = 1
@@ -708,7 +708,7 @@ public struct Rv_Analytics_Trackedevents_RemoteStreamStart: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_RemoteStreamStop: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_RemoteStreamStop: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -720,7 +720,7 @@ public struct Rv_Analytics_Trackedevents_RemoteStreamStop: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_StartCaptureDisk: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_StartCaptureDisk: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -742,7 +742,7 @@ public struct Rv_Analytics_Trackedevents_StartCaptureDisk: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_StartCaptureRtmp: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_StartCaptureRtmp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -764,7 +764,7 @@ public struct Rv_Analytics_Trackedevents_StartCaptureRtmp: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_StartCaptureResi: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_StartCaptureResi: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -786,7 +786,7 @@ public struct Rv_Analytics_Trackedevents_StartCaptureResi: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_StopCapture: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_StopCapture: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -802,7 +802,7 @@ public struct Rv_Analytics_Trackedevents_StopCapture: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_Print: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_Print: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -829,7 +829,7 @@ public struct Rv_Analytics_Trackedevents_Print: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum PrintMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum PrintMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case thumbnail // = 0
     case outline // = 1
@@ -866,7 +866,7 @@ public struct Rv_Analytics_Trackedevents_Print: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_Device: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_Device: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -882,7 +882,7 @@ public struct Rv_Analytics_Trackedevents_Device: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_Downgrade: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_Downgrade: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -891,7 +891,7 @@ public struct Rv_Analytics_Trackedevents_Downgrade: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum FromVersionType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum FromVersionType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case beta // = 1
@@ -932,7 +932,7 @@ public struct Rv_Analytics_Trackedevents_Downgrade: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_CCLIReport: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_CCLIReport: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -941,7 +941,7 @@ public struct Rv_Analytics_Trackedevents_CCLIReport: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Action: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Action: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case reportWindowOpened // = 0
     case reportCleared // = 1
@@ -982,7 +982,7 @@ public struct Rv_Analytics_Trackedevents_CCLIReport: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_TransitionWindow: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_TransitionWindow: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -994,7 +994,7 @@ public struct Rv_Analytics_Trackedevents_TransitionWindow: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_EditorObjectAdded: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_EditorObjectAdded: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1005,7 +1005,7 @@ public struct Rv_Analytics_Trackedevents_EditorObjectAdded: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum FromInsertionSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum FromInsertionSource: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case editorToolbar // = 0
     case editorMainMenu // = 1
@@ -1047,7 +1047,7 @@ public struct Rv_Analytics_Trackedevents_EditorObjectAdded: Sendable {
 
   }
 
-  public enum InsertedType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum InsertedType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case editorText // = 0
     case editorShape // = 1
@@ -1160,7 +1160,7 @@ public struct Rv_Analytics_Trackedevents_EditorObjectAdded: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_DataIdDuplicated: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_DataIdDuplicated: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1171,7 +1171,7 @@ public struct Rv_Analytics_Trackedevents_DataIdDuplicated: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum DataType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum DataType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case presentation // = 0
     case media // = 1
@@ -1208,7 +1208,7 @@ public struct Rv_Analytics_Trackedevents_DataIdDuplicated: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_ForceQuit: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_ForceQuit: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1217,7 +1217,7 @@ public struct Rv_Analytics_Trackedevents_ForceQuit: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Reason: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Reason: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case hostsFile // = 1
@@ -1278,7 +1278,7 @@ public struct Rv_Analytics_Trackedevents_ForceQuit: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_MediaCleanupSize: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_MediaCleanupSize: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1290,7 +1290,7 @@ public struct Rv_Analytics_Trackedevents_MediaCleanupSize: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_NetworkApp: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_NetworkApp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1301,7 +1301,7 @@ public struct Rv_Analytics_Trackedevents_NetworkApp: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum AppID: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum AppID: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case proremote // = 1
@@ -1342,7 +1342,7 @@ public struct Rv_Analytics_Trackedevents_NetworkApp: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_LocalWorkspaceStats: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_LocalWorkspaceStats: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1356,7 +1356,7 @@ public struct Rv_Analytics_Trackedevents_LocalWorkspaceStats: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_FontReplacement: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_FontReplacement: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1369,7 +1369,7 @@ public struct Rv_Analytics_Trackedevents_FontReplacement: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case `import` // = 0
     case banner // = 1
@@ -1406,7 +1406,7 @@ public struct Rv_Analytics_Trackedevents_FontReplacement: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_TriggerExternalPresentation: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_TriggerExternalPresentation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1415,7 +1415,7 @@ public struct Rv_Analytics_Trackedevents_TriggerExternalPresentation: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case powerpoint // = 0
     case keynote // = 1
@@ -1452,7 +1452,7 @@ public struct Rv_Analytics_Trackedevents_TriggerExternalPresentation: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_WorkspaceCreation: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_WorkspaceCreation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1463,7 +1463,7 @@ public struct Rv_Analytics_Trackedevents_WorkspaceCreation: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case cloudOnboarding // = 0
     case userOnboarding // = 1
@@ -1504,7 +1504,7 @@ public struct Rv_Analytics_Trackedevents_WorkspaceCreation: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_AvailableWorkspace: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_AvailableWorkspace: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1517,7 +1517,7 @@ public struct Rv_Analytics_Trackedevents_AvailableWorkspace: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum WorkspaceType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum WorkspaceType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case local // = 0
     case cloudUndownloaded // = 1
@@ -1558,7 +1558,7 @@ public struct Rv_Analytics_Trackedevents_AvailableWorkspace: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_OnboardingFlowOutcome: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_OnboardingFlowOutcome: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1569,7 +1569,7 @@ public struct Rv_Analytics_Trackedevents_OnboardingFlowOutcome: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OnboardingType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum OnboardingType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case newToCloud // = 0
     case newUser // = 1
@@ -1603,7 +1603,7 @@ public struct Rv_Analytics_Trackedevents_OnboardingFlowOutcome: Sendable {
 
   }
 
-  public enum Result: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Result: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case skipForNow // = 0
     case continueWithLocal // = 1
@@ -1648,7 +1648,7 @@ public struct Rv_Analytics_Trackedevents_OnboardingFlowOutcome: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trackedevents_SyncingUnpaused: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_SyncingUnpaused: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1660,19 +1660,137 @@ public struct Rv_Analytics_Trackedevents_SyncingUnpaused: Sendable {
   public init() {}
 }
 
+public nonisolated struct Rv_Analytics_Trackedevents_UserWorkspaceTreeModification: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var bucket: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Bucket = .other
+
+  public var operation: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Operation = .modified
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Bucket: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case other // = 0
+    case libraries // = 1
+    case themes // = 2
+    case playlists // = 3
+    case playlistTemplates // = 4
+    case configuration // = 5
+    case media // = 6
+    case presets // = 7
+    case downloads // = 8
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .other
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .other
+      case 1: self = .libraries
+      case 2: self = .themes
+      case 3: self = .playlists
+      case 4: self = .playlistTemplates
+      case 5: self = .configuration
+      case 6: self = .media
+      case 7: self = .presets
+      case 8: self = .downloads
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .other: return 0
+      case .libraries: return 1
+      case .themes: return 2
+      case .playlists: return 3
+      case .playlistTemplates: return 4
+      case .configuration: return 5
+      case .media: return 6
+      case .presets: return 7
+      case .downloads: return 8
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Bucket] = [
+      .other,
+      .libraries,
+      .themes,
+      .playlists,
+      .playlistTemplates,
+      .configuration,
+      .media,
+      .presets,
+      .downloads,
+    ]
+
+  }
+
+  public nonisolated enum Operation: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case modified // = 0
+    case created // = 1
+    case renamed // = 2
+    case removed // = 3
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .modified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .modified
+      case 1: self = .created
+      case 2: self = .renamed
+      case 3: self = .removed
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .modified: return 0
+      case .created: return 1
+      case .renamed: return 2
+      case .removed: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Operation] = [
+      .modified,
+      .created,
+      .renamed,
+      .removed,
+    ]
+
+  }
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.trackedevents"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.trackedevents"
 
-extension Rv_Analytics_Trackedevents_Codec: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_Codec: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0H264\0\u{1}H264SOFTWARE\0\u{1}H265\0\u{1}H265SOFTWARE\0\u{1}PRORES422PROXY\0\u{1}PRORES422LT\0\u{1}PRORES422\0\u{1}PRORES422HQ\0\u{1}PRORES4444\0\u{1}PRORES4444XQ\0\u{1}HAP\0\u{1}HAPALPHA\0\u{1}NOTCH\0\u{1}AUTOMATIC\0\u{1}HAPQ\0\u{1}HAPQALPHA\0")
 }
 
-extension Rv_Analytics_Trackedevents_FrameRate: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_FrameRate: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNSPECIFIED\0\u{1}_24FPS\0\u{1}_25FPS\0\u{1}_2997FPS\0\u{1}_30FPS\0\u{1}_50FPS\0\u{1}_5994FPS\0\u{1}_60FPS\0")
 }
 
-extension Rv_Analytics_Trackedevents_GenericEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_GenericEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GenericEvent"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1691,7 +1809,7 @@ extension Rv_Analytics_Trackedevents_GenericEvent: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Trackedevents_ApplicationLaunch: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_ApplicationLaunch: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplicationLaunch"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}hardware_id\0\u{1}channel\0\u{1}platform\0\u{3}app_version\0\u{3}os_version\0\u{3}build_number\0\u{1}location\0\u{1}language\0\u{3}hardware_model\0\u{3}physical_memory\0\u{3}video_controller\0\u{3}video_controller_ram\0\u{3}blackmagic_desktop_version\0\u{3}enabled_feature_flags\0\u{3}organization_id\0")
 
@@ -1791,15 +1909,15 @@ extension Rv_Analytics_Trackedevents_ApplicationLaunch: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Trackedevents_ApplicationLaunch.Channel: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_ApplicationLaunch.Channel: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0BETA\0\u{1}RELEASE\0")
 }
 
-extension Rv_Analytics_Trackedevents_ApplicationLaunch.Platform: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_ApplicationLaunch.Platform: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0WINDOWS\0\u{1}MACOS\0")
 }
 
-extension Rv_Analytics_Trackedevents_VideoInputTriggered: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_VideoInputTriggered: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".VideoInputTriggered"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}audio_source\0")
 
@@ -1829,11 +1947,11 @@ extension Rv_Analytics_Trackedevents_VideoInputTriggered: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Analytics_Trackedevents_VideoInputTriggered.AudioSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_VideoInputTriggered.AudioSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NONE\0\u{1}SELF\0\u{1}OTHER\0")
 }
 
-extension Rv_Analytics_Trackedevents_VideoInputCustomMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_VideoInputCustomMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".VideoInputCustomMap"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -1863,7 +1981,7 @@ extension Rv_Analytics_Trackedevents_VideoInputCustomMap: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Analytics_Trackedevents_VideoInputStartUp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_VideoInputStartUp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".VideoInputStartUp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}input_count\0")
 
@@ -1893,7 +2011,7 @@ extension Rv_Analytics_Trackedevents_VideoInputStartUp: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Trackedevents_VideoInputThumbnailUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_VideoInputThumbnailUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".VideoInputThumbnailUpdate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0")
 
@@ -1923,11 +2041,11 @@ extension Rv_Analytics_Trackedevents_VideoInputThumbnailUpdate: SwiftProtobuf.Me
   }
 }
 
-extension Rv_Analytics_Trackedevents_VideoInputThumbnailUpdate.UpdateType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_VideoInputThumbnailUpdate.UpdateType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CAPTURE\0\u{1}DISK\0\u{1}RESET\0")
 }
 
-extension Rv_Analytics_Trackedevents_AudioInputAutoOnChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AudioInputAutoOnChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AudioInputAutoOnChange"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}input_count\0")
 
@@ -1957,7 +2075,7 @@ extension Rv_Analytics_Trackedevents_AudioInputAutoOnChange: SwiftProtobuf.Messa
   }
 }
 
-extension Rv_Analytics_Trackedevents_AudioSettingsSdiNdiActive: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AudioSettingsSdiNdiActive: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AudioSettingsSdiNdiActive"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -1987,7 +2105,7 @@ extension Rv_Analytics_Trackedevents_AudioSettingsSdiNdiActive: SwiftProtobuf.Me
   }
 }
 
-extension Rv_Analytics_Trackedevents_AudioSettingsCustomMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AudioSettingsCustomMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AudioSettingsCustomMap"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -2017,7 +2135,7 @@ extension Rv_Analytics_Trackedevents_AudioSettingsCustomMap: SwiftProtobuf.Messa
   }
 }
 
-extension Rv_Analytics_Trackedevents_AudioInputModeSelection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AudioInputModeSelection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AudioInputModeSelection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}mode_type\0")
 
@@ -2047,11 +2165,11 @@ extension Rv_Analytics_Trackedevents_AudioInputModeSelection: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Analytics_Trackedevents_AudioInputModeSelection.ModeType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AudioInputModeSelection.ModeType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ON\0\u{1}OFF\0\u{1}AUTOOFF\0\u{1}AUTOON\0")
 }
 
-extension Rv_Analytics_Trackedevents_AudioInputAutoOnStartup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AudioInputAutoOnStartup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AudioInputAutoOnStartup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}input_count\0")
 
@@ -2081,7 +2199,7 @@ extension Rv_Analytics_Trackedevents_AudioInputAutoOnStartup: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Analytics_Trackedevents_AudioSettingsSdiNdiState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AudioSettingsSdiNdiState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AudioSettingsSdiNdiState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}bus_count\0")
 
@@ -2111,7 +2229,7 @@ extension Rv_Analytics_Trackedevents_AudioSettingsSdiNdiState: SwiftProtobuf.Mes
   }
 }
 
-extension Rv_Analytics_Trackedevents_AudioInputStartUp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AudioInputStartUp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AudioInputStartUp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}total_input_count\0\u{3}on_input_count\0\u{3}off_input_count\0\u{3}auto_on_input_count\0\u{3}auto_off_input_count\0")
 
@@ -2161,7 +2279,7 @@ extension Rv_Analytics_Trackedevents_AudioInputStartUp: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Trackedevents_CueTriggered: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_CueTriggered: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CueTriggered"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}trigger_delay\0")
 
@@ -2191,7 +2309,7 @@ extension Rv_Analytics_Trackedevents_CueTriggered: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Trackedevents_InputAudioMonitoring: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_InputAudioMonitoring: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".InputAudioMonitoring"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0")
 
@@ -2221,11 +2339,11 @@ extension Rv_Analytics_Trackedevents_InputAudioMonitoring: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Analytics_Trackedevents_InputAudioMonitoring.InputType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_InputAudioMonitoring.InputType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0AUDIO\0\u{1}VIDEO\0")
 }
 
-extension Rv_Analytics_Trackedevents_ResiStartUp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_ResiStartUp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ResiStartUp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2244,7 +2362,7 @@ extension Rv_Analytics_Trackedevents_ResiStartUp: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Analytics_Trackedevents_ResiLoginChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_ResiLoginChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ResiLoginChange"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}state\0")
 
@@ -2274,11 +2392,11 @@ extension Rv_Analytics_Trackedevents_ResiLoginChange: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Analytics_Trackedevents_ResiLoginChange.LoginState: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_ResiLoginChange.LoginState: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LOGGEDIN\0\u{1}LOGGEDOUT\0")
 }
 
-extension Rv_Analytics_Trackedevents_RemoteStreamStart: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_RemoteStreamStart: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RemoteStreamStart"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}result\0")
 
@@ -2308,11 +2426,11 @@ extension Rv_Analytics_Trackedevents_RemoteStreamStart: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Trackedevents_RemoteStreamStart.StartResult: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_RemoteStreamStart.StartResult: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SUCCESS\0\u{1}FAILED\0\u{1}USERCANCELED\0")
 }
 
-extension Rv_Analytics_Trackedevents_RemoteStreamStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_RemoteStreamStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RemoteStreamStop"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}success\0")
 
@@ -2342,7 +2460,7 @@ extension Rv_Analytics_Trackedevents_RemoteStreamStop: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Trackedevents_StartCaptureDisk: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_StartCaptureDisk: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".StartCaptureDisk"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}codec\0\u{3}resolution_width\0\u{3}resolution_height\0\u{3}frame_rate\0\u{3}stream_started\0\u{3}video_bitrate\0")
 
@@ -2397,7 +2515,7 @@ extension Rv_Analytics_Trackedevents_StartCaptureDisk: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Trackedevents_StartCaptureRtmp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_StartCaptureRtmp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".StartCaptureRtmp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}codec\0\u{3}resolution_width\0\u{3}resolution_height\0\u{3}frame_rate\0\u{3}stream_started\0\u{3}video_bitrate\0")
 
@@ -2452,7 +2570,7 @@ extension Rv_Analytics_Trackedevents_StartCaptureRtmp: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Trackedevents_StartCaptureResi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_StartCaptureResi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".StartCaptureResi"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}codec\0\u{3}resolution_width\0\u{3}resolution_height\0\u{3}frame_rate\0\u{3}stream_started\0\u{3}video_bitrate\0")
 
@@ -2507,7 +2625,7 @@ extension Rv_Analytics_Trackedevents_StartCaptureResi: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Trackedevents_StopCapture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_StopCapture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".StopCapture"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}duration\0\u{3}dropped_frames\0\u{3}percent_dropped_frames\0")
 
@@ -2547,7 +2665,7 @@ extension Rv_Analytics_Trackedevents_StopCapture: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Analytics_Trackedevents_Print: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_Print: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Print"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_count\0\u{1}mode\0\u{3}include_metadata\0\u{3}include_presentation_notes\0\u{3}include_currentDate\0\u{3}include_slide_labels\0\u{3}include_slide_notes\0\u{3}include_disabled_slides\0\u{3}number_columns\0\u{3}print_to_device\0")
 
@@ -2622,11 +2740,11 @@ extension Rv_Analytics_Trackedevents_Print: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Trackedevents_Print.PrintMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_Print.PrintMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0THUMBNAIL\0\u{1}OUTLINE\0")
 }
 
-extension Rv_Analytics_Trackedevents_Device: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_Device: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Device"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}protocol\0\u{3}device_name\0\u{3}device_protocol\0")
 
@@ -2666,7 +2784,7 @@ extension Rv_Analytics_Trackedevents_Device: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Analytics_Trackedevents_Downgrade: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_Downgrade: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Downgrade"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}from_version_type\0")
 
@@ -2696,11 +2814,11 @@ extension Rv_Analytics_Trackedevents_Downgrade: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Trackedevents_Downgrade.FromVersionType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_Downgrade.FromVersionType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FROM_VERSION_TYPE_UNKNOWN\0\u{1}FROM_VERSION_TYPE_BETA\0\u{1}FROM_VERSION_TYPE_RELEASE\0")
 }
 
-extension Rv_Analytics_Trackedevents_CCLIReport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_CCLIReport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CCLIReport"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}action\0")
 
@@ -2730,11 +2848,11 @@ extension Rv_Analytics_Trackedevents_CCLIReport: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Trackedevents_CCLIReport.Action: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_CCLIReport.Action: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0REPORT_WINDOW_OPENED\0\u{1}REPORT_CLEARED\0\u{1}REPORT_EXPORTED\0")
 }
 
-extension Rv_Analytics_Trackedevents_TransitionWindow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_TransitionWindow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TransitionWindow"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}duration_seconds\0")
 
@@ -2764,7 +2882,7 @@ extension Rv_Analytics_Trackedevents_TransitionWindow: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Trackedevents_EditorObjectAdded: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_EditorObjectAdded: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".EditorObjectAdded"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}from_insertion_source\0\u{3}inserted_type\0")
 
@@ -2799,15 +2917,15 @@ extension Rv_Analytics_Trackedevents_EditorObjectAdded: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Trackedevents_EditorObjectAdded.FromInsertionSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_EditorObjectAdded.FromInsertionSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EDITOR_TOOLBAR\0\u{1}EDITOR_MAIN_MENU\0\u{1}EDITOR_HOTKEY\0\u{1}EDITOR_COPY_PASTE\0")
 }
 
-extension Rv_Analytics_Trackedevents_EditorObjectAdded.InsertedType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_EditorObjectAdded.InsertedType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EDITOR_TEXT\0\u{1}EDITOR_SHAPE\0\u{1}EDITOR_CUSTOM_SHAPE\0\u{1}EDITOR_MEDIA\0\u{1}EDITOR_VIDEO_INPUT\0\u{1}EDITOR_WEB\0\u{1}EDITOR_CURRENT_SLIDE\0\u{1}EDITOR_NEXT_SLIDE\0\u{1}EDITOR_SCREEN_PREVIEW\0\u{1}EDITOR_TIMER\0\u{1}EDITOR_SYSTEM_CLOCK\0\u{1}EDITOR_VIDEO_COUNTDOWN\0\u{1}EDITOR_AUDIO_COUNTDOWN\0\u{1}EDITOR_PLAYBACK_MARKER\0\u{1}EDITOR_CHORD_CHART\0\u{1}EDITOR_STAGE_MESSAGE\0\u{1}EDITOR_PLANNING_CENTER_LIVE\0\u{1}EDITOR_TIMECODE\0\u{1}EDITOR_GROUP\0\u{1}EDITOR_LABEL\0\u{1}EDITOR_CAPTURE_STATUS\0")
 }
 
-extension Rv_Analytics_Trackedevents_DataIdDuplicated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_DataIdDuplicated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DataIdDuplicated"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}Type\0\u{3}number_duplicates\0")
 
@@ -2842,11 +2960,11 @@ extension Rv_Analytics_Trackedevents_DataIdDuplicated: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Trackedevents_DataIdDuplicated.DataType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_DataIdDuplicated.DataType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DATA_TYPE_PRESENTATION\0\u{1}DATA_TYPE_MEDIA\0")
 }
 
-extension Rv_Analytics_Trackedevents_ForceQuit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_ForceQuit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ForceQuit"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}reason\0")
 
@@ -2876,11 +2994,11 @@ extension Rv_Analytics_Trackedevents_ForceQuit: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Trackedevents_ForceQuit.Reason: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_ForceQuit.Reason: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}HOSTS_FILE\0\u{1}SYSTEM_TIME_SKEW\0\u{1}INVALID_WATERMARK\0\u{1}PIRATED_SOFTWARE\0\u{1}METAL_UNAVAILABLE\0\u{1}UBIQUITY_DOWNLOAD_ABORTED\0\u{1}CORE_RUST_CONTROLLER_FAILURE\0")
 }
 
-extension Rv_Analytics_Trackedevents_MediaCleanupSize: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_MediaCleanupSize: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaCleanupSize"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}bytes_of_media_files_cleaned_up\0")
 
@@ -2910,7 +3028,7 @@ extension Rv_Analytics_Trackedevents_MediaCleanupSize: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Trackedevents_NetworkApp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_NetworkApp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NetworkApp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}app_id\0\u{3}device_id\0")
 
@@ -2945,11 +3063,11 @@ extension Rv_Analytics_Trackedevents_NetworkApp: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Trackedevents_NetworkApp.AppID: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_NetworkApp.AppID: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}PROREMOTE\0\u{1}PROSTAGE\0")
 }
 
-extension Rv_Analytics_Trackedevents_LocalWorkspaceStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_LocalWorkspaceStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LocalWorkspaceStats"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}total_workspaces\0\u{3}number_of_workspace_switches\0")
 
@@ -2984,7 +3102,7 @@ extension Rv_Analytics_Trackedevents_LocalWorkspaceStats: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Analytics_Trackedevents_FontReplacement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_FontReplacement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".FontReplacement"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0\u{3}missing_font\0\u{3}replacement_font\0")
 
@@ -3024,11 +3142,11 @@ extension Rv_Analytics_Trackedevents_FontReplacement: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Analytics_Trackedevents_FontReplacement.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_FontReplacement.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0IMPORT\0\u{1}BANNER\0")
 }
 
-extension Rv_Analytics_Trackedevents_TriggerExternalPresentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_TriggerExternalPresentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TriggerExternalPresentation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0")
 
@@ -3058,11 +3176,11 @@ extension Rv_Analytics_Trackedevents_TriggerExternalPresentation: SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Trackedevents_TriggerExternalPresentation.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_TriggerExternalPresentation.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0POWERPOINT\0\u{1}KEYNOTE\0")
 }
 
-extension Rv_Analytics_Trackedevents_WorkspaceCreation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_WorkspaceCreation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WorkspaceCreation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0\u{3}duration_seconds\0")
 
@@ -3097,11 +3215,11 @@ extension Rv_Analytics_Trackedevents_WorkspaceCreation: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Trackedevents_WorkspaceCreation.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_WorkspaceCreation.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CLOUD_ONBOARDING\0\u{1}USER_ONBOARDING\0\u{1}SETTINGS\0")
 }
 
-extension Rv_Analytics_Trackedevents_AvailableWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AvailableWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AvailableWorkspace"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0\u{3}size_in_bytes\0\u{3}is_current\0")
 
@@ -3141,11 +3259,11 @@ extension Rv_Analytics_Trackedevents_AvailableWorkspace: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Analytics_Trackedevents_AvailableWorkspace.WorkspaceType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_AvailableWorkspace.WorkspaceType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LOCAL\0\u{1}CLOUD_UNDOWNLOADED\0\u{1}CLOUD_DOWNLOADED\0")
 }
 
-extension Rv_Analytics_Trackedevents_OnboardingFlowOutcome: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_OnboardingFlowOutcome: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".OnboardingFlowOutcome"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}onboarding_type\0\u{1}result\0")
 
@@ -3180,15 +3298,15 @@ extension Rv_Analytics_Trackedevents_OnboardingFlowOutcome: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Analytics_Trackedevents_OnboardingFlowOutcome.OnboardingType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_OnboardingFlowOutcome.OnboardingType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NEW_TO_CLOUD\0\u{1}NEW_USER\0")
 }
 
-extension Rv_Analytics_Trackedevents_OnboardingFlowOutcome.Result: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_OnboardingFlowOutcome.Result: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SKIP_FOR_NOW\0\u{1}CONTINUE_WITH_LOCAL\0\u{1}CREATE_CLOUD\0\u{1}JOIN_CLOUD\0")
 }
 
-extension Rv_Analytics_Trackedevents_SyncingUnpaused: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trackedevents_SyncingUnpaused: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SyncingUnpaused"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}duration\0")
 
@@ -3216,4 +3334,47 @@ extension Rv_Analytics_Trackedevents_SyncingUnpaused: SwiftProtobuf.Message, Swi
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+nonisolated extension Rv_Analytics_Trackedevents_UserWorkspaceTreeModification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UserWorkspaceTreeModification"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}bucket\0\u{1}operation\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.bucket) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.operation) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.bucket != .other {
+      try visitor.visitSingularEnumField(value: self.bucket, fieldNumber: 1)
+    }
+    if self.operation != .modified {
+      try visitor.visitSingularEnumField(value: self.operation, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification, rhs: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification) -> Bool {
+    if lhs.bucket != rhs.bucket {return false}
+    if lhs.operation != rhs.operation {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Bucket: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0OTHER\0\u{1}LIBRARIES\0\u{1}THEMES\0\u{1}PLAYLISTS\0\u{1}PLAYLIST_TEMPLATES\0\u{1}CONFIGURATION\0\u{1}MEDIA\0\u{1}PRESETS\0\u{1}DOWNLOADS\0")
+}
+
+nonisolated extension Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Operation: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MODIFIED\0\u{1}CREATED\0\u{1}RENAMED\0\u{1}REMOVED\0")
 }

@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_NetworkIdentifier: Sendable {
+public nonisolated struct Rv_Data_NetworkIdentifier: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -30,7 +34,7 @@ public struct Rv_Data_NetworkIdentifier: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct IndexOrName: Sendable {
+  public nonisolated struct IndexOrName: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -55,7 +59,7 @@ public struct Rv_Data_NetworkIdentifier: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Component: Equatable, Sendable {
+    public nonisolated enum OneOf_Component: Equatable, Sendable {
       case index(Int32)
       case name(String)
 
@@ -67,7 +71,7 @@ public struct Rv_Data_NetworkIdentifier: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_TriggerOptions: Sendable {
+public nonisolated struct Rv_Data_TriggerOptions: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -122,7 +126,7 @@ public struct Rv_Data_TriggerOptions: Sendable {
   fileprivate var _networkIdentifier: Rv_Data_NetworkIdentifier? = nil
 }
 
-public struct Rv_Data_ControlTransport: Sendable {
+public nonisolated struct Rv_Data_ControlTransport: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -355,7 +359,7 @@ public struct Rv_Data_ControlTransport: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_ControlType: Equatable, Sendable {
+  public nonisolated enum OneOf_ControlType: Equatable, Sendable {
     case play(Rv_Data_ControlTransport.PlayControlType)
     case pause(Rv_Data_ControlTransport.PauseControlType)
     case rewind(Rv_Data_ControlTransport.RewindControlType)
@@ -387,7 +391,7 @@ public struct Rv_Data_ControlTransport: Sendable {
 
   }
 
-  public struct PlayControlType: Sendable {
+  public nonisolated struct PlayControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -397,7 +401,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct PauseControlType: Sendable {
+  public nonisolated struct PauseControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -407,7 +411,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct RewindControlType: Sendable {
+  public nonisolated struct RewindControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -417,7 +421,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct FastForwardControlType: Sendable {
+  public nonisolated struct FastForwardControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -427,19 +431,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct SkipBackControlType: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var offset: Double = 0
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct SkipForwardControlType: Sendable {
+  public nonisolated struct SkipBackControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -451,27 +443,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct StepBackControlType: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct StepForwardControlType: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct GoToStartControlType: Sendable {
+  public nonisolated struct SkipForwardControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -483,7 +455,27 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct GoToEndControlType: Sendable {
+  public nonisolated struct StepBackControlType: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct StepForwardControlType: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct GoToStartControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -495,7 +487,19 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct JumpToTimeControlType: Sendable {
+  public nonisolated struct GoToEndControlType: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var offset: Double = 0
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct JumpToTimeControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -507,7 +511,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct JumpToPercentControlType: Sendable {
+  public nonisolated struct JumpToPercentControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -519,7 +523,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct MarkInPointControlType: Sendable {
+  public nonisolated struct MarkInPointControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -531,7 +535,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct MarkOutPointControlType: Sendable {
+  public nonisolated struct MarkOutPointControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -543,7 +547,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct SetScaleModeControlType: Sendable {
+  public nonisolated struct SetScaleModeControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -559,7 +563,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct SetFlippedModeControlType: Sendable {
+  public nonisolated struct SetFlippedModeControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -573,7 +577,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct SetPlayRateControlType: Sendable {
+  public nonisolated struct SetPlayRateControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -585,7 +589,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct SetNativeRotationControlType: Sendable {
+  public nonisolated struct SetNativeRotationControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -597,7 +601,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct SetAlphaTypeControlType: Sendable {
+  public nonisolated struct SetAlphaTypeControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -609,7 +613,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct TogglePlaybackControlType: Sendable {
+  public nonisolated struct TogglePlaybackControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -619,7 +623,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct SetEffectsControlType: Sendable {
+  public nonisolated struct SetEffectsControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -631,7 +635,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct UpdateEffectControlType: Sendable {
+  public nonisolated struct UpdateEffectControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -652,7 +656,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     fileprivate var _effect: Rv_Data_Effect? = nil
   }
 
-  public struct BeginScrubControlType: Sendable {
+  public nonisolated struct BeginScrubControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -664,7 +668,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct EndScrubControlType: Sendable {
+  public nonisolated struct EndScrubControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -676,7 +680,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct ScrubToTimeControlType: Sendable {
+  public nonisolated struct ScrubToTimeControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -688,7 +692,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct ScrubToPercentControlType: Sendable {
+  public nonisolated struct ScrubToPercentControlType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -700,7 +704,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct SetAudioFadeType: Sendable {
+  public nonisolated struct SetAudioFadeType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -718,7 +722,7 @@ public struct Rv_Data_ControlTransport: Sendable {
     public init() {}
   }
 
-  public struct SetAudioPropertiesType: Sendable {
+  public nonisolated struct SetAudioPropertiesType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -744,7 +748,7 @@ public struct Rv_Data_ControlTransport: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_AudioInputSettings: Sendable {
+public nonisolated struct Rv_Data_AudioInputSettings: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -758,7 +762,7 @@ public struct Rv_Data_AudioInputSettings: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_VideoInputSettings: Sendable {
+public nonisolated struct Rv_Data_VideoInputSettings: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -770,7 +774,7 @@ public struct Rv_Data_VideoInputSettings: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_RecordRequest: @unchecked Sendable {
+public nonisolated struct Rv_Data_RecordRequest: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -804,7 +808,7 @@ public struct Rv_Data_RecordRequest: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Resi: Sendable {
+  public nonisolated struct Resi: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -835,7 +839,7 @@ public struct Rv_Data_RecordRequest: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_TextSegmentRequest: Sendable {
+public nonisolated struct Rv_Data_TextSegmentRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -846,7 +850,7 @@ public struct Rv_Data_TextSegmentRequest: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Segment: Sendable {
+  public nonisolated struct Segment: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -863,7 +867,7 @@ public struct Rv_Data_TextSegmentRequest: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_TriggerCue: @unchecked Sendable {
+public nonisolated struct Rv_Data_TriggerCue: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -916,7 +920,7 @@ public struct Rv_Data_TriggerCue: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct PresentationCue: Sendable {
+  public nonisolated struct PresentationCue: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -954,7 +958,7 @@ public struct Rv_Data_TriggerCue: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_NetworkTriggerDataItem: @unchecked Sendable {
+public nonisolated struct Rv_Data_NetworkTriggerDataItem: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1000,7 +1004,7 @@ public struct Rv_Data_NetworkTriggerDataItem: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Type: Equatable, Sendable {
+  public nonisolated enum OneOf_Type: Equatable, Sendable {
     case action(Rv_Data_Action)
     case cue(Rv_Data_Cue)
 
@@ -1011,7 +1015,7 @@ public struct Rv_Data_NetworkTriggerDataItem: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_SlideElementTextRenderInfo: Sendable {
+public nonisolated struct Rv_Data_SlideElementTextRenderInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1020,7 +1024,7 @@ public struct Rv_Data_SlideElementTextRenderInfo: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum LayerType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum LayerType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case composite // = 0
     case mask // = 1
@@ -1062,7 +1066,7 @@ public struct Rv_Data_SlideElementTextRenderInfo: Sendable {
 
   }
 
-  public struct Layer: Sendable {
+  public nonisolated struct Layer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1099,7 +1103,7 @@ public struct Rv_Data_SlideElementTextRenderInfo: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_AdvancedFill: Equatable, Sendable {
+    public nonisolated enum OneOf_AdvancedFill: Equatable, Sendable {
       case cutOutFill(Rv_Data_Graphics.Text.CutOutFill)
       case mediaFill(Rv_Data_Graphics.Text.MediaFill)
       case backgroundEffect(Rv_Data_Graphics.BackgroundEffect)
@@ -1112,7 +1116,7 @@ public struct Rv_Data_SlideElementTextRenderInfo: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_ValidateEncoderRequest: Sendable {
+public nonisolated struct Rv_Data_ValidateEncoderRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1133,7 +1137,7 @@ public struct Rv_Data_ValidateEncoderRequest: Sendable {
   fileprivate var _encoder: Rv_Data_Recording.Stream.Encoder? = nil
 }
 
-public struct Rv_Data_ValidateEncoderResponse: Sendable {
+public nonisolated struct Rv_Data_ValidateEncoderResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1145,7 +1149,7 @@ public struct Rv_Data_ValidateEncoderResponse: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_CaptureActionRequest: Sendable {
+public nonisolated struct Rv_Data_CaptureActionRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1178,14 +1182,14 @@ public struct Rv_Data_CaptureActionRequest: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_RequestType: Equatable, Sendable {
+  public nonisolated enum OneOf_RequestType: Equatable, Sendable {
     case startResi(Rv_Data_CaptureActionRequest.StartResi)
     case stopCapture(Rv_Data_CaptureActionRequest.StopCapture)
     case error(Rv_Data_CaptureActionRequest.Error)
 
   }
 
-  public struct StartResi: Sendable {
+  public nonisolated struct StartResi: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1195,7 +1199,7 @@ public struct Rv_Data_CaptureActionRequest: Sendable {
     public init() {}
   }
 
-  public struct StopCapture: Sendable {
+  public nonisolated struct StopCapture: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1205,7 +1209,7 @@ public struct Rv_Data_CaptureActionRequest: Sendable {
     public init() {}
   }
 
-  public struct Error: Sendable {
+  public nonisolated struct Error: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1231,7 +1235,7 @@ public struct Rv_Data_CaptureActionRequest: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_CaptureActionResponse: Sendable {
+public nonisolated struct Rv_Data_CaptureActionResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1264,14 +1268,14 @@ public struct Rv_Data_CaptureActionResponse: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_ResponseType: Equatable, Sendable {
+  public nonisolated enum OneOf_ResponseType: Equatable, Sendable {
     case startResi(Rv_Data_CaptureActionResponse.StartResi)
     case stopCapture(Rv_Data_CaptureActionResponse.StopCapture)
     case cancelCaptureAction(Rv_Data_CaptureActionResponse.CancelCaptureAction)
 
   }
 
-  public struct CancelCaptureAction: Sendable {
+  public nonisolated struct CancelCaptureAction: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1281,7 +1285,7 @@ public struct Rv_Data_CaptureActionResponse: Sendable {
     public init() {}
   }
 
-  public struct StartResi: Sendable {
+  public nonisolated struct StartResi: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1295,7 +1299,7 @@ public struct Rv_Data_CaptureActionResponse: Sendable {
     public init() {}
   }
 
-  public struct StopCapture: Sendable {
+  public nonisolated struct StopCapture: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1310,7 +1314,7 @@ public struct Rv_Data_CaptureActionResponse: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_MacroIcons: Sendable {
+public nonisolated struct Rv_Data_MacroIcons: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1319,7 +1323,7 @@ public struct Rv_Data_MacroIcons: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct MacroIcon: Sendable {
+  public nonisolated struct MacroIcon: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1338,7 +1342,7 @@ public struct Rv_Data_MacroIcons: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_PropPauseRequest: Sendable {
+public nonisolated struct Rv_Data_PropPauseRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1380,14 +1384,14 @@ public struct Rv_Data_PropPauseRequest: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_RequestType: Equatable, Sendable {
+  public nonisolated enum OneOf_RequestType: Equatable, Sendable {
     case pause(Rv_Data_PropPauseRequest.Pause)
     case resume(Rv_Data_PropPauseRequest.Resume)
     case status(Rv_Data_PropPauseRequest.Status)
 
   }
 
-  public struct Pause: Sendable {
+  public nonisolated struct Pause: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1397,7 +1401,7 @@ public struct Rv_Data_PropPauseRequest: Sendable {
     public init() {}
   }
 
-  public struct Resume: Sendable {
+  public nonisolated struct Resume: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1407,7 +1411,7 @@ public struct Rv_Data_PropPauseRequest: Sendable {
     public init() {}
   }
 
-  public struct Status: Sendable {
+  public nonisolated struct Status: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1422,7 +1426,7 @@ public struct Rv_Data_PropPauseRequest: Sendable {
   fileprivate var _propID: Rv_Data_UUID? = nil
 }
 
-public struct Rv_Data_GenericEvent: Sendable {
+public nonisolated struct Rv_Data_GenericEvent: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1432,7 +1436,7 @@ public struct Rv_Data_GenericEvent: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_MediaThumbnail: Sendable {
+public nonisolated struct Rv_Data_MediaThumbnail: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1450,7 +1454,7 @@ public struct Rv_Data_MediaThumbnail: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_PCOData: Sendable {
+public nonisolated struct Rv_Data_PCOData: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1464,7 +1468,7 @@ public struct Rv_Data_PCOData: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_WebFillTokenAndCookies: Sendable {
+public nonisolated struct Rv_Data_WebFillTokenAndCookies: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1475,7 +1479,7 @@ public struct Rv_Data_WebFillTokenAndCookies: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Cookie: Sendable {
+  public nonisolated struct Cookie: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1496,7 +1500,7 @@ public struct Rv_Data_WebFillTokenAndCookies: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_InputStatusCallback: Sendable {
+public nonisolated struct Rv_Data_InputStatusCallback: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1508,7 +1512,7 @@ public struct Rv_Data_InputStatusCallback: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_SlideThumbnailRequest: @unchecked Sendable {
+public nonisolated struct Rv_Data_SlideThumbnailRequest: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1548,7 +1552,7 @@ public struct Rv_Data_SlideThumbnailRequest: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_SendData: Sendable {
+public nonisolated struct Rv_Data_SendData: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1887,7 +1891,7 @@ public struct Rv_Data_SendData: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_MessageType: Equatable, Sendable {
+  public nonisolated enum OneOf_MessageType: Equatable, Sendable {
     case workspace(Rv_Data_ProPresenterWorkspace)
     case stageDocument(Rv_Data_Stage.Document)
     case timersDocument(Rv_Data_TimersDocument)
@@ -1935,7 +1939,7 @@ public struct Rv_Data_SendData: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_TimerRuntimeState: Sendable {
+public nonisolated struct Rv_Data_TimerRuntimeState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1972,7 +1976,7 @@ public struct Rv_Data_TimerRuntimeState: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ResourceState: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ResourceState: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case prerolling // = 0
     case activated // = 1
@@ -2024,7 +2028,7 @@ public struct Rv_Data_TimerRuntimeState: Sendable {
   fileprivate var _actionType: Rv_Data_Action.TimerType? = nil
 }
 
-public struct Rv_Data_TimerStateUpdate: @unchecked Sendable {
+public nonisolated struct Rv_Data_TimerStateUpdate: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2054,7 +2058,7 @@ public struct Rv_Data_TimerStateUpdate: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_HandledException: Sendable {
+public nonisolated struct Rv_Data_HandledException: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2066,7 +2070,7 @@ public struct Rv_Data_HandledException: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_LeaveBreadcrumb: Sendable {
+public nonisolated struct Rv_Data_LeaveBreadcrumb: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2079,7 +2083,7 @@ public struct Rv_Data_LeaveBreadcrumb: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case navigation // = 0
     case request // = 1
@@ -2140,7 +2144,7 @@ public struct Rv_Data_LeaveBreadcrumb: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_PropPauseResponse: Sendable {
+public nonisolated struct Rv_Data_PropPauseResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2166,12 +2170,12 @@ public struct Rv_Data_PropPauseResponse: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_ResponseType: Equatable, Sendable {
+  public nonisolated enum OneOf_ResponseType: Equatable, Sendable {
     case status(Rv_Data_PropPauseResponse.Status)
 
   }
 
-  public struct Status: Sendable {
+  public nonisolated struct Status: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2194,7 +2198,7 @@ public struct Rv_Data_PropPauseResponse: Sendable {
   fileprivate var _propID: Rv_Data_UUID? = nil
 }
 
-public struct Rv_Data_ShowMessage: Sendable {
+public nonisolated struct Rv_Data_ShowMessage: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2206,7 +2210,7 @@ public struct Rv_Data_ShowMessage: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_GetMediaThumbnail: Sendable {
+public nonisolated struct Rv_Data_GetMediaThumbnail: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2235,7 +2239,7 @@ public struct Rv_Data_GetMediaThumbnail: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_MediaType: Equatable, Sendable {
+  public nonisolated enum OneOf_MediaType: Equatable, Sendable {
     case media(Rv_Data_Media)
     case action(Rv_Data_Action)
 
@@ -2244,7 +2248,7 @@ public struct Rv_Data_GetMediaThumbnail: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_RequestWebFillTokenAndCookies: Sendable {
+public nonisolated struct Rv_Data_RequestWebFillTokenAndCookies: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2258,7 +2262,7 @@ public struct Rv_Data_RequestWebFillTokenAndCookies: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_MediaAssetTriggered: Sendable {
+public nonisolated struct Rv_Data_MediaAssetTriggered: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2281,7 +2285,7 @@ public struct Rv_Data_MediaAssetTriggered: Sendable {
   fileprivate var _mediaUuid: Rv_Data_UUID? = nil
 }
 
-public struct Rv_Data_SlideThumbnailResponse: Sendable {
+public nonisolated struct Rv_Data_SlideThumbnailResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2293,7 +2297,7 @@ public struct Rv_Data_SlideThumbnailResponse: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_SendDataResponse: Sendable {
+public nonisolated struct Rv_Data_SendDataResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2440,7 +2444,7 @@ public struct Rv_Data_SendDataResponse: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_MessageType: Equatable, Sendable {
+  public nonisolated enum OneOf_MessageType: Equatable, Sendable {
     case validateEncoderResponse(Rv_Data_ValidateEncoderResponse)
     case timerState(Rv_Data_TimerStateUpdate)
     case captureActionRequest(Rv_Data_CaptureActionRequest)
@@ -2464,7 +2468,7 @@ public struct Rv_Data_SendDataResponse: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
+public nonisolated struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2567,7 +2571,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct TimerState: Sendable {
+  public nonisolated struct TimerState: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2594,7 +2598,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
     fileprivate var _timer: Rv_Data_Timer? = nil
   }
 
-  public struct MediaState: Sendable {
+  public nonisolated struct MediaState: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2637,7 +2641,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
     fileprivate var _playlistUuid: Rv_Data_UUID? = nil
   }
 
-  public struct CaptureState: Sendable {
+  public nonisolated struct CaptureState: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2648,7 +2652,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Status: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Status: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case stopped // = 0
       case active // = 1
@@ -2693,7 +2697,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
     public init() {}
   }
 
-  public struct AutoAdvanceState: Sendable {
+  public nonisolated struct AutoAdvanceState: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2707,7 +2711,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
     public init() {}
   }
 
-  public struct TimelineState: Sendable {
+  public nonisolated struct TimelineState: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2723,7 +2727,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
     public init() {}
   }
 
-  public struct SlideState: Sendable {
+  public nonisolated struct SlideState: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2792,7 +2796,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum TriggerSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum TriggerSource: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case normal // = 0
       case timeline // = 1
@@ -2840,7 +2844,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
     fileprivate var _timelineState: Rv_Data_TriggerTransferRenderState.TimelineState? = nil
   }
 
-  public struct TimecodeState: Sendable {
+  public nonisolated struct TimecodeState: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -2853,7 +2857,7 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Status: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Status: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case stopped // = 0
       case playing // = 1
@@ -2905,9 +2909,9 @@ public struct Rv_Data_TriggerTransferRenderState: @unchecked Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_NetworkIdentifier: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_NetworkIdentifier: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NetworkIdentifier"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}identifiers\0")
 
@@ -2937,7 +2941,7 @@ extension Rv_Data_NetworkIdentifier: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_NetworkIdentifier.IndexOrName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_NetworkIdentifier.IndexOrName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_NetworkIdentifier.protoMessageName + ".IndexOrName"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}index\0\u{1}name\0")
 
@@ -2994,7 +2998,7 @@ extension Rv_Data_NetworkIdentifier.IndexOrName: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_TriggerOptions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerOptions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TriggerOptions"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}content_destination\0\u{3}suppress_auto_start_video\0\u{3}suppress_media_background\0\u{3}force_retrigger\0\u{3}reset_chord_chart\0\u{3}from_playlist_library\0\u{3}from_timeline\0\u{3}ignore_analytics\0\u{3}start_position\0\u{3}trigger_source\0\u{3}network_identifier\0\u{3}request_client_context\0\u{3}follow_timecode\0\u{3}timecode_offset\0")
 
@@ -3093,7 +3097,7 @@ extension Rv_Data_TriggerOptions: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Rv_Data_ControlTransport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ControlTransport"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}play\0\u{1}pause\0\u{1}rewind\0\u{1}fastforward\0\u{3}skip_back\0\u{3}skip_forward\0\u{3}step_back\0\u{3}step_forward\0\u{3}go_to_start\0\u{3}go_to_end\0\u{3}jump_to_time\0\u{3}jump_to_percent\0\u{3}mark_in\0\u{3}mark_out\0\u{3}set_scale_mode\0\u{3}set_flipped_mode\0\u{3}set_play_rate\0\u{3}set_rotation\0\u{3}toggle_playback\0\u{3}set_effects\0\u{3}update_effect\0\u{3}begin_scrub\0\u{3}end_scrub\0\u{3}scrub_to_time\0\u{3}scrub_to_percent\0\u{3}set_audio_fade\0\u{3}set_audio_properties\0\u{3}set_alpha_type\0")
 
@@ -3602,7 +3606,7 @@ extension Rv_Data_ControlTransport: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_ControlTransport.PlayControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.PlayControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".PlayControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3621,7 +3625,7 @@ extension Rv_Data_ControlTransport.PlayControlType: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_ControlTransport.PauseControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.PauseControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".PauseControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3640,7 +3644,7 @@ extension Rv_Data_ControlTransport.PauseControlType: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_ControlTransport.RewindControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.RewindControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".RewindControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3659,7 +3663,7 @@ extension Rv_Data_ControlTransport.RewindControlType: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_ControlTransport.FastForwardControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.FastForwardControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".FastForwardControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3678,7 +3682,7 @@ extension Rv_Data_ControlTransport.FastForwardControlType: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_ControlTransport.SkipBackControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SkipBackControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SkipBackControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}offset\0")
 
@@ -3708,7 +3712,7 @@ extension Rv_Data_ControlTransport.SkipBackControlType: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_ControlTransport.SkipForwardControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SkipForwardControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SkipForwardControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}offset\0")
 
@@ -3738,7 +3742,7 @@ extension Rv_Data_ControlTransport.SkipForwardControlType: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_ControlTransport.StepBackControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.StepBackControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".StepBackControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3757,7 +3761,7 @@ extension Rv_Data_ControlTransport.StepBackControlType: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_ControlTransport.StepForwardControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.StepForwardControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".StepForwardControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3776,7 +3780,7 @@ extension Rv_Data_ControlTransport.StepForwardControlType: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_ControlTransport.GoToStartControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.GoToStartControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".GoToStartControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}offset\0")
 
@@ -3806,7 +3810,7 @@ extension Rv_Data_ControlTransport.GoToStartControlType: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_ControlTransport.GoToEndControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.GoToEndControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".GoToEndControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}offset\0")
 
@@ -3836,7 +3840,7 @@ extension Rv_Data_ControlTransport.GoToEndControlType: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_ControlTransport.JumpToTimeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.JumpToTimeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".JumpToTimeControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -3866,7 +3870,7 @@ extension Rv_Data_ControlTransport.JumpToTimeControlType: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_ControlTransport.JumpToPercentControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.JumpToPercentControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".JumpToPercentControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}percent\0")
 
@@ -3896,7 +3900,7 @@ extension Rv_Data_ControlTransport.JumpToPercentControlType: SwiftProtobuf.Messa
   }
 }
 
-extension Rv_Data_ControlTransport.MarkInPointControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.MarkInPointControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".MarkInPointControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -3926,7 +3930,7 @@ extension Rv_Data_ControlTransport.MarkInPointControlType: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_ControlTransport.MarkOutPointControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.MarkOutPointControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".MarkOutPointControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -3956,7 +3960,7 @@ extension Rv_Data_ControlTransport.MarkOutPointControlType: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_ControlTransport.SetScaleModeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SetScaleModeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SetScaleModeControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}mode\0\u{1}alignment\0\u{3}is_blurred\0")
 
@@ -3996,7 +4000,7 @@ extension Rv_Data_ControlTransport.SetScaleModeControlType: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_ControlTransport.SetFlippedModeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SetFlippedModeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SetFlippedModeControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}horizontal\0\u{1}vertical\0")
 
@@ -4031,7 +4035,7 @@ extension Rv_Data_ControlTransport.SetFlippedModeControlType: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_ControlTransport.SetPlayRateControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SetPlayRateControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SetPlayRateControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}play_rate\0")
 
@@ -4061,7 +4065,7 @@ extension Rv_Data_ControlTransport.SetPlayRateControlType: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_ControlTransport.SetNativeRotationControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SetNativeRotationControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SetNativeRotationControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}rotation\0")
 
@@ -4091,7 +4095,7 @@ extension Rv_Data_ControlTransport.SetNativeRotationControlType: SwiftProtobuf.M
   }
 }
 
-extension Rv_Data_ControlTransport.SetAlphaTypeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SetAlphaTypeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SetAlphaTypeControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}alpha_type\0")
 
@@ -4121,7 +4125,7 @@ extension Rv_Data_ControlTransport.SetAlphaTypeControlType: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_ControlTransport.TogglePlaybackControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.TogglePlaybackControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".TogglePlaybackControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4140,7 +4144,7 @@ extension Rv_Data_ControlTransport.TogglePlaybackControlType: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_ControlTransport.SetEffectsControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SetEffectsControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SetEffectsControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}effects\0")
 
@@ -4170,7 +4174,7 @@ extension Rv_Data_ControlTransport.SetEffectsControlType: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_ControlTransport.UpdateEffectControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.UpdateEffectControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".UpdateEffectControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}effect\0")
 
@@ -4204,7 +4208,7 @@ extension Rv_Data_ControlTransport.UpdateEffectControlType: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_ControlTransport.BeginScrubControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.BeginScrubControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".BeginScrubControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -4234,7 +4238,7 @@ extension Rv_Data_ControlTransport.BeginScrubControlType: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_ControlTransport.EndScrubControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.EndScrubControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".EndScrubControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -4264,7 +4268,7 @@ extension Rv_Data_ControlTransport.EndScrubControlType: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_ControlTransport.ScrubToTimeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.ScrubToTimeControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".ScrubToTimeControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -4294,7 +4298,7 @@ extension Rv_Data_ControlTransport.ScrubToTimeControlType: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_ControlTransport.ScrubToPercentControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.ScrubToPercentControlType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".ScrubToPercentControlType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}percent\0")
 
@@ -4324,7 +4328,7 @@ extension Rv_Data_ControlTransport.ScrubToPercentControlType: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_ControlTransport.SetAudioFadeType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SetAudioFadeType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SetAudioFadeType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}fade_in_duration\0\u{3}fade_out_duration\0\u{3}should_fade_in\0\u{3}should_fade_out\0")
 
@@ -4369,7 +4373,7 @@ extension Rv_Data_ControlTransport.SetAudioFadeType: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_ControlTransport.SetAudioPropertiesType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ControlTransport.SetAudioPropertiesType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ControlTransport.protoMessageName + ".SetAudioPropertiesType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}audio_properties\0\u{1}solo\0")
 
@@ -4408,7 +4412,7 @@ extension Rv_Data_ControlTransport.SetAudioPropertiesType: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_AudioInputSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_AudioInputSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AudioInputSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}inputs\0\u{1}transitionTime\0")
 
@@ -4443,7 +4447,7 @@ extension Rv_Data_AudioInputSettings: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_VideoInputSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_VideoInputSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".VideoInputSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}inputs\0")
 
@@ -4473,7 +4477,7 @@ extension Rv_Data_VideoInputSettings: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_RecordRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_RecordRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RecordRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}stream\0\u{3}working_directory\0\u{1}resi\0")
 
@@ -4557,7 +4561,7 @@ extension Rv_Data_RecordRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_RecordRequest.Resi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_RecordRequest.Resi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_RecordRequest.protoMessageName + ".Resi"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}gop\0\u{1}segmentSize\0\u{1}destinationGroupId\0\u{1}bufSize\0\u{1}minRate\0\u{1}maxRate\0\u{1}eventName\0\u{3}social_description\0")
 
@@ -4622,7 +4626,7 @@ extension Rv_Data_RecordRequest.Resi: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_TextSegmentRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TextSegmentRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TextSegmentRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}segments\0\u{3}start_position\0")
 
@@ -4657,7 +4661,7 @@ extension Rv_Data_TextSegmentRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_TextSegmentRequest.Segment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TextSegmentRequest.Segment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TextSegmentRequest.protoMessageName + ".Segment"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}index\0\u{1}size\0")
 
@@ -4692,7 +4696,7 @@ extension Rv_Data_TextSegmentRequest.Segment: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_TriggerCue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerCue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TriggerCue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}trigger_handle\0\u{3}trigger_options\0\u{1}cue\0\u{1}presentation\0\u{1}playlist\0\u{3}client_data\0")
 
@@ -4797,7 +4801,7 @@ extension Rv_Data_TriggerCue: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension Rv_Data_TriggerCue.PresentationCue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerCue.PresentationCue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerCue.protoMessageName + ".PresentationCue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}presentation\0\u{3}arrangement_id\0\u{3}cue_index\0")
 
@@ -4841,7 +4845,7 @@ extension Rv_Data_TriggerCue.PresentationCue: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_NetworkTriggerDataItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_NetworkTriggerDataItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NetworkTriggerDataItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}action\0\u{1}cue\0\u{3}trigger_options\0\u{3}trigger_cue\0")
 
@@ -4958,7 +4962,7 @@ extension Rv_Data_NetworkTriggerDataItem: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_SlideElementTextRenderInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_SlideElementTextRenderInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SlideElementTextRenderInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}layers\0")
 
@@ -4988,11 +4992,11 @@ extension Rv_Data_SlideElementTextRenderInfo: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_SlideElementTextRenderInfo.LayerType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_SlideElementTextRenderInfo.LayerType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LAYER_TYPE_COMPOSITE\0\u{1}LAYER_TYPE_MASK\0\u{1}LAYER_TYPE_OVER\0\u{1}LAYER_TYPE_UNDER\0")
 }
 
-extension Rv_Data_SlideElementTextRenderInfo.Layer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_SlideElementTextRenderInfo.Layer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_SlideElementTextRenderInfo.protoMessageName + ".Layer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}layer_type\0\u{3}cut_out_fill\0\u{3}media_fill\0\u{3}background_effect\0\u{3}text_build_index\0")
 
@@ -5086,7 +5090,7 @@ extension Rv_Data_SlideElementTextRenderInfo.Layer: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_ValidateEncoderRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ValidateEncoderRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ValidateEncoderRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}encoder\0")
 
@@ -5120,7 +5124,7 @@ extension Rv_Data_ValidateEncoderRequest: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_ValidateEncoderResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ValidateEncoderResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ValidateEncoderResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_valid\0")
 
@@ -5150,7 +5154,7 @@ extension Rv_Data_ValidateEncoderResponse: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_CaptureActionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CaptureActionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CaptureActionRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}start_resi\0\u{3}stop_capture\0\u{1}error\0")
 
@@ -5234,7 +5238,7 @@ extension Rv_Data_CaptureActionRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_CaptureActionRequest.StartResi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CaptureActionRequest.StartResi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CaptureActionRequest.protoMessageName + ".StartResi"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5253,7 +5257,7 @@ extension Rv_Data_CaptureActionRequest.StartResi: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_CaptureActionRequest.StopCapture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CaptureActionRequest.StopCapture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CaptureActionRequest.protoMessageName + ".StopCapture"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5272,7 +5276,7 @@ extension Rv_Data_CaptureActionRequest.StopCapture: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_CaptureActionRequest.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CaptureActionRequest.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CaptureActionRequest.protoMessageName + ".Error"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}error_code\0\u{3}capture_action\0")
 
@@ -5311,7 +5315,7 @@ extension Rv_Data_CaptureActionRequest.Error: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_CaptureActionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CaptureActionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CaptureActionResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}start_resi\0\u{3}stop_capture\0\u{3}cancel_capture_action\0")
 
@@ -5395,7 +5399,7 @@ extension Rv_Data_CaptureActionResponse: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_CaptureActionResponse.CancelCaptureAction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CaptureActionResponse.CancelCaptureAction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CaptureActionResponse.protoMessageName + ".CancelCaptureAction"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5414,7 +5418,7 @@ extension Rv_Data_CaptureActionResponse.CancelCaptureAction: SwiftProtobuf.Messa
   }
 }
 
-extension Rv_Data_CaptureActionResponse.StartResi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CaptureActionResponse.StartResi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CaptureActionResponse.protoMessageName + ".StartResi"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_name\0\u{3}event_description\0")
 
@@ -5449,7 +5453,7 @@ extension Rv_Data_CaptureActionResponse.StartResi: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_CaptureActionResponse.StopCapture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CaptureActionResponse.StopCapture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CaptureActionResponse.protoMessageName + ".StopCapture"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}stop_capture\0")
 
@@ -5479,7 +5483,7 @@ extension Rv_Data_CaptureActionResponse.StopCapture: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_MacroIcons: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MacroIcons: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MacroIcons"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}icons\0")
 
@@ -5509,7 +5513,7 @@ extension Rv_Data_MacroIcons: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension Rv_Data_MacroIcons.MacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MacroIcons.MacroIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_MacroIcons.protoMessageName + ".MacroIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}image_type\0\u{3}image_data\0\u{3}content_type\0")
 
@@ -5549,7 +5553,7 @@ extension Rv_Data_MacroIcons.MacroIcon: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_PropPauseRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PropPauseRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PropPauseRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}prop_id\0\u{1}pause\0\u{1}resume\0\u{1}status\0")
 
@@ -5638,7 +5642,7 @@ extension Rv_Data_PropPauseRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_PropPauseRequest.Pause: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PropPauseRequest.Pause: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PropPauseRequest.protoMessageName + ".Pause"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5657,7 +5661,7 @@ extension Rv_Data_PropPauseRequest.Pause: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_PropPauseRequest.Resume: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PropPauseRequest.Resume: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PropPauseRequest.protoMessageName + ".Resume"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5676,7 +5680,7 @@ extension Rv_Data_PropPauseRequest.Resume: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_PropPauseRequest.Status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PropPauseRequest.Status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PropPauseRequest.protoMessageName + ".Status"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5695,7 +5699,7 @@ extension Rv_Data_PropPauseRequest.Status: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_GenericEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_GenericEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GenericEvent"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5714,7 +5718,7 @@ extension Rv_Data_GenericEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_MediaThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MediaThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaThumbnail"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}width\0\u{1}height\0\u{1}data\0\u{1}stride\0")
 
@@ -5759,7 +5763,7 @@ extension Rv_Data_MediaThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Rv_Data_PCOData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PCOData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PCOData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{4}\u{2}service_type_id\0\u{3}plan_id\0")
 
@@ -5794,7 +5798,7 @@ extension Rv_Data_PCOData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   }
 }
 
-extension Rv_Data_WebFillTokenAndCookies: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_WebFillTokenAndCookies: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WebFillTokenAndCookies"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}cookies\0\u{1}token\0")
 
@@ -5829,7 +5833,7 @@ extension Rv_Data_WebFillTokenAndCookies: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_WebFillTokenAndCookies.Cookie: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_WebFillTokenAndCookies.Cookie: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_WebFillTokenAndCookies.protoMessageName + ".Cookie"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}value\0\u{1}domain\0\u{1}expiry\0")
 
@@ -5874,7 +5878,7 @@ extension Rv_Data_WebFillTokenAndCookies.Cookie: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_InputStatusCallback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_InputStatusCallback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".InputStatusCallback"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0")
 
@@ -5904,7 +5908,7 @@ extension Rv_Data_InputStatusCallback: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_SlideThumbnailRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_SlideThumbnailRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SlideThumbnailRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}cue\0\u{1}background\0\u{1}width\0\u{1}height\0")
 
@@ -5995,7 +5999,7 @@ extension Rv_Data_SlideThumbnailRequest: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_SendData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_SendData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SendData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}message_id\0\u{1}workspace\0\u{3}stage_document\0\u{3}timers_document\0\u{3}validate_encoder_request\0\u{3}trigger_cue\0\u{3}digital_audio_setup\0\u{3}macros_document\0\u{3}message_document\0\u{3}prop_document\0\u{3}ccli_document\0\u{3}audience_looks\0\u{3}live_audience_look\0\u{1}masks\0\u{3}recording_settings_document\0\u{3}capture_action_response\0\u{3}copyright_layout\0\u{3}global_background_transition\0\u{3}global_messages_transition\0\u{3}global_foreground_transition\0\u{3}global_props_transition\0\u{3}global_audio_transition\0\u{1}preferences\0\u{3}test_pattern\0\u{3}startup_complete\0\u{3}visual_playlist_doc\0\u{3}audio_playlist_doc\0\u{3}kill_watchdog\0\u{3}macro_icons\0\u{3}debug_trigger_data_dump\0\u{3}library_playlist_doc\0\u{3}audio_playlist_focus_uuid\0\u{3}media_playlist_focus_uuid\0\u{3}library_playlist_focus_uuid\0\u{3}library_playlist_item_focus_uuid\0\u{3}prop_pause\0\u{3}media_thumbnail\0\u{3}pco_data\0\u{3}webfill_token_and_cookies\0\u{3}psb_workspace\0\u{3}input_status_callback\0\u{3}slide_thumbnail\0")
 
@@ -6730,7 +6734,7 @@ extension Rv_Data_SendData: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension Rv_Data_TimerRuntimeState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimerRuntimeState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TimerRuntimeState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}timer_uuid\0\u{3}timer_name\0\u{3}action_type\0\u{3}is_running\0\u{3}has_overrun\0\u{1}state\0\u{3}current_time\0\u{3}has_started\0")
 
@@ -6799,11 +6803,11 @@ extension Rv_Data_TimerRuntimeState: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_TimerRuntimeState.ResourceState: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimerRuntimeState.ResourceState: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PREROLLING\0\u{1}ACTIVATED\0\u{1}UPDATED\0\u{1}DEACTIVATED\0\u{1}RELEASED\0")
 }
 
-extension Rv_Data_TimerStateUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimerStateUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TimerStateUpdate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timer\0\u{1}state\0")
 
@@ -6880,7 +6884,7 @@ extension Rv_Data_TimerStateUpdate: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_HandledException: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_HandledException: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".HandledException"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}description\0")
 
@@ -6910,7 +6914,7 @@ extension Rv_Data_HandledException: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_LeaveBreadcrumb: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_LeaveBreadcrumb: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LeaveBreadcrumb"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0\u{1}description\0\u{1}metadata\0")
 
@@ -6950,11 +6954,11 @@ extension Rv_Data_LeaveBreadcrumb: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Rv_Data_LeaveBreadcrumb.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_LeaveBreadcrumb.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Navigation\0\u{1}Request\0\u{1}Process\0\u{1}Log\0\u{1}User\0\u{1}State\0\u{1}Error\0\u{1}Manual\0")
 }
 
-extension Rv_Data_PropPauseResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PropPauseResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PropPauseResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}prop_id\0\u{1}status\0")
 
@@ -7005,7 +7009,7 @@ extension Rv_Data_PropPauseResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_PropPauseResponse.Status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PropPauseResponse.Status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PropPauseResponse.protoMessageName + ".Status"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}paused\0\u{3}time_remaining\0\u{3}percentage_complete\0\u{3}total_time\0")
 
@@ -7050,7 +7054,7 @@ extension Rv_Data_PropPauseResponse.Status: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_ShowMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ShowMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ShowMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}message\0")
 
@@ -7080,7 +7084,7 @@ extension Rv_Data_ShowMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Rv_Data_GetMediaThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_GetMediaThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetMediaThumbnail"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}media\0\u{1}action\0\u{3}width_hint\0\u{3}height_hint\0")
 
@@ -7157,7 +7161,7 @@ extension Rv_Data_GetMediaThumbnail: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_RequestWebFillTokenAndCookies: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_RequestWebFillTokenAndCookies: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RequestWebFillTokenAndCookies"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}refresh_first\0\u{1}link\0")
 
@@ -7192,7 +7196,7 @@ extension Rv_Data_RequestWebFillTokenAndCookies: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_MediaAssetTriggered: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MediaAssetTriggered: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaAssetTriggered"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}media_uuid\0\u{3}container_id\0")
 
@@ -7231,7 +7235,7 @@ extension Rv_Data_MediaAssetTriggered: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_SlideThumbnailResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_SlideThumbnailResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SlideThumbnailResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}data\0")
 
@@ -7261,7 +7265,7 @@ extension Rv_Data_SlideThumbnailResponse: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_SendDataResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_SendDataResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SendDataResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}message_id\0\u{3}validate_encoder_response\0\u{3}timer_state\0\u{3}capture_action_request\0\u{3}test_pattern\0\u{3}handled_exception\0\u{4}\u{2}audio_playlist_focus_uuid\0\u{3}media_playlist_focus_uuid\0\u{3}library_playlist_focus_uuid\0\u{3}library_playlist_item_focus_uuid\0\u{3}prop_pause\0\u{3}show_message\0\u{3}hide_message\0\u{3}get_media_thumbnail\0\u{3}request_webfill_token_and_cookies\0\u{3}media_asset_triggered\0\u{3}leave_breadcrumb\0\u{3}slide_thumbnail\0")
 
@@ -7588,7 +7592,7 @@ extension Rv_Data_SendDataResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_TriggerTransferRenderState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TriggerTransferRenderState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}slide\0\u{3}stage_message\0\u{3}presentation_media\0\u{3}announcement_media\0\u{3}audio_media\0\u{3}live_video_media\0\u{1}presentation\0\u{1}announcement\0\u{1}timers\0\u{1}capture\0\u{1}timecode\0\u{3}system_time\0")
 
@@ -7735,7 +7739,7 @@ extension Rv_Data_TriggerTransferRenderState: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_TriggerTransferRenderState.TimerState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.TimerState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerTransferRenderState.protoMessageName + ".TimerState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timer\0\u{3}is_running\0\u{3}has_overrun\0\u{1}value\0")
 
@@ -7784,7 +7788,7 @@ extension Rv_Data_TriggerTransferRenderState.TimerState: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_TriggerTransferRenderState.MediaState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.MediaState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerTransferRenderState.protoMessageName + ".MediaState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}current_media\0\u{3}is_playing\0\u{3}is_looping\0\u{3}current_time\0\u{3}time_remaining\0\u{3}playlist_uuid\0\u{3}playlist_name\0\u{1}markers\0")
 
@@ -7853,7 +7857,7 @@ extension Rv_Data_TriggerTransferRenderState.MediaState: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_TriggerTransferRenderState.CaptureState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.CaptureState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerTransferRenderState.protoMessageName + ".CaptureState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}status\0\u{1}time\0")
 
@@ -7888,11 +7892,11 @@ extension Rv_Data_TriggerTransferRenderState.CaptureState: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_TriggerTransferRenderState.CaptureState.Status: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.CaptureState.Status: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Stopped\0\u{1}Active\0\u{1}Caution\0\u{1}Error\0")
 }
 
-extension Rv_Data_TriggerTransferRenderState.AutoAdvanceState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.AutoAdvanceState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerTransferRenderState.protoMessageName + ".AutoAdvanceState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}active\0\u{3}remaining_time\0")
 
@@ -7927,7 +7931,7 @@ extension Rv_Data_TriggerTransferRenderState.AutoAdvanceState: SwiftProtobuf.Mes
   }
 }
 
-extension Rv_Data_TriggerTransferRenderState.TimelineState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.TimelineState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerTransferRenderState.protoMessageName + ".TimelineState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}active\0\u{3}current_time\0\u{3}last_slide_index\0")
 
@@ -7967,7 +7971,7 @@ extension Rv_Data_TriggerTransferRenderState.TimelineState: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_TriggerTransferRenderState.SlideState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.SlideState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerTransferRenderState.protoMessageName + ".SlideState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}presentation\0\u{1}playlist\0\u{3}current_cue\0\u{3}next_cue\0\u{3}auto_advance\0\u{3}timeline_state\0\u{3}current_cue_index\0\u{3}current_playlist_index\0\u{3}is_current_position\0\u{3}trigger_source\0")
 
@@ -8046,11 +8050,11 @@ extension Rv_Data_TriggerTransferRenderState.SlideState: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_TriggerTransferRenderState.SlideState.TriggerSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.SlideState.TriggerSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Normal\0\u{1}Timeline\0\u{1}Editor\0")
 }
 
-extension Rv_Data_TriggerTransferRenderState.TimecodeState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.TimecodeState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerTransferRenderState.protoMessageName + ".TimecodeState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}status\0\u{1}time\0\u{1}fps\0")
 
@@ -8090,6 +8094,6 @@ extension Rv_Data_TriggerTransferRenderState.TimecodeState: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_TriggerTransferRenderState.TimecodeState.Status: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerTransferRenderState.TimecodeState.Status: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Stopped\0\u{1}Playing\0\u{1}Error\0\u{1}Discontinuity\0")
 }

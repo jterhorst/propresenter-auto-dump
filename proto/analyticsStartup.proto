@@ -139,6 +139,7 @@ message Screens {
 
 message SongSelect {
   bool logged_in = 1;
+  bool auto_reporting_enabled = 2;
 }
 
 message Content {

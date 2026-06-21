@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Preferences: @unchecked Sendable {
+public nonisolated struct Rv_Data_Preferences: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -99,7 +99,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct General: Sendable {
+  public nonisolated struct General: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -119,7 +119,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
     public init() {}
   }
 
-  public struct Screens: Sendable {
+  public nonisolated struct Screens: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -152,7 +152,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
     fileprivate var _clockSource: Rv_Data_ProClockSource? = nil
   }
 
-  public struct Import: Sendable {
+  public nonisolated struct Import: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -194,7 +194,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Image: Sendable {
+    public nonisolated struct Image: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -214,7 +214,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct Duration: Sendable {
+      public nonisolated struct Duration: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -247,14 +247,14 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
         public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-        public enum OneOf_DurationType: Equatable, Sendable {
+        public nonisolated enum OneOf_DurationType: Equatable, Sendable {
           case none(Rv_Data_Preferences.Import.Image.Duration.None)
           case time(Rv_Data_Preferences.Import.Image.Duration.Time)
           case random(Rv_Data_Preferences.Import.Image.Duration.Random)
 
         }
 
-        public struct None: Sendable {
+        public nonisolated struct None: Sendable {
           // SwiftProtobuf.Message conformance is added in an extension below. See the
           // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
           // methods supported on all messages.
@@ -264,7 +264,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
           public init() {}
         }
 
-        public struct Time: Sendable {
+        public nonisolated struct Time: Sendable {
           // SwiftProtobuf.Message conformance is added in an extension below. See the
           // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
           // methods supported on all messages.
@@ -276,7 +276,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
           public init() {}
         }
 
-        public struct Random: Sendable {
+        public nonisolated struct Random: Sendable {
           // SwiftProtobuf.Message conformance is added in an extension below. See the
           // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
           // methods supported on all messages.
@@ -298,7 +298,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
       fileprivate var _duration: Rv_Data_Preferences.Import.Image.Duration? = nil
     }
 
-    public struct Video: Sendable {
+    public nonisolated struct Video: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -316,7 +316,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
       public init() {}
     }
 
-    public struct Audio: Sendable {
+    public nonisolated struct Audio: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -337,7 +337,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
     fileprivate var _audio: Rv_Data_Preferences.Import.Audio? = nil
   }
 
-  public struct Groups: Sendable {
+  public nonisolated struct Groups: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -368,7 +368,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
     fileprivate var _labels: Rv_Data_ProLabelsDocument? = nil
   }
 
-  public struct Network: Sendable {
+  public nonisolated struct Network: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -402,7 +402,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Network: Sendable {
+    public nonisolated struct Network: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -418,7 +418,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
       public init() {}
     }
 
-    public struct Remotes: Sendable {
+    public nonisolated struct Remotes: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -443,7 +443,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct ProRemote: Sendable {
+      public nonisolated struct ProRemote: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -463,7 +463,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
         public init() {}
       }
 
-      public struct StageApp: Sendable {
+      public nonisolated struct StageApp: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -483,7 +483,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
       fileprivate var _stageApp: Rv_Data_Preferences.Network.Remotes.StageApp? = nil
     }
 
-    public struct Link: Sendable {
+    public nonisolated struct Link: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -504,7 +504,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
     fileprivate var _link: Rv_Data_Preferences.Network.Link? = nil
   }
 
-  public struct Sync: Sendable {
+  public nonisolated struct Sync: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -527,7 +527,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum SyncDirection: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum SyncDirection: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case syncDown // = 0
       case syncUp // = 1
@@ -564,7 +564,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
     public init() {}
   }
 
-  public struct Advanced: Sendable {
+  public nonisolated struct Advanced: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -599,7 +599,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum AudioForegroundMediaBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum AudioForegroundMediaBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case ignoreForegroundMedia // = 0
       case clearForAllMedia // = 1
@@ -645,7 +645,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
     }
 
-    public struct NDIDiscovery: Sendable {
+    public nonisolated struct NDIDiscovery: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -661,7 +661,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
       public init() {}
     }
 
-    public struct SearchPaths: Sendable {
+    public nonisolated struct SearchPaths: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -672,7 +672,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct Path: Sendable {
+      public nonisolated struct Path: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -699,7 +699,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
     fileprivate var _searchPaths: Rv_Data_Preferences.Advanced.SearchPaths? = nil
   }
 
-  public struct Updates: Sendable {
+  public nonisolated struct Updates: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -710,7 +710,7 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Channel: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Channel: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case production // = 0
       case beta // = 1
@@ -754,9 +754,9 @@ public struct Rv_Data_Preferences: @unchecked Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Preferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Preferences"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}general\0\u{1}screens\0\u{1}import\0\u{1}groups\0\u{1}network\0\u{1}sync\0\u{1}advanced\0\u{1}updates\0")
 
@@ -875,7 +875,7 @@ extension Rv_Data_Preferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Rv_Data_Preferences.General: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.General: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.protoMessageName + ".General"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}house_of_worship_integrations\0\u{3}crash_reports\0\u{1}analytics\0\u{3}logo_path\0\u{1}language\0")
 
@@ -925,7 +925,7 @@ extension Rv_Data_Preferences.General: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_Preferences.Screens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Screens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.protoMessageName + ".Screens"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}enable_at_launch\0\u{3}show_performance_stats\0\u{3}ignore_background_colors\0\u{3}clock_source\0\u{3}show_keynote_and_powerpoint\0\u{3}disable_blackmagic_sync_groups\0\u{3}use_directx_rendering\0")
 
@@ -989,7 +989,7 @@ extension Rv_Data_Preferences.Screens: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_Preferences.Import: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Import: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.protoMessageName + ".Import"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}foreground_scaling\0\u{3}background_scaling\0\u{1}image\0\u{1}video\0\u{1}audio\0\u{3}foreground_is_blurred\0\u{3}background_is_blurred\0")
 
@@ -1053,7 +1053,7 @@ extension Rv_Data_Preferences.Import: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_Preferences.Import.Image: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Import.Image: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Import.protoMessageName + ".Image"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}layer_type\0\u{1}duration\0\u{3}next_behavior\0")
 
@@ -1097,7 +1097,7 @@ extension Rv_Data_Preferences.Import.Image: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Preferences.Import.Image.Duration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Import.Image.Duration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Import.Image.protoMessageName + ".Duration"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}none\0\u{1}time\0\u{1}random\0")
 
@@ -1181,7 +1181,7 @@ extension Rv_Data_Preferences.Import.Image.Duration: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_Preferences.Import.Image.Duration.None: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Import.Image.Duration.None: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Import.Image.Duration.protoMessageName + ".None"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1200,7 +1200,7 @@ extension Rv_Data_Preferences.Import.Image.Duration.None: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_Preferences.Import.Image.Duration.Time: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Import.Image.Duration.Time: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Import.Image.Duration.protoMessageName + ".Time"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -1230,7 +1230,7 @@ extension Rv_Data_Preferences.Import.Image.Duration.Time: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_Preferences.Import.Image.Duration.Random: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Import.Image.Duration.Random: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Import.Image.Duration.protoMessageName + ".Random"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}minimum_time\0\u{3}maximum_time\0")
 
@@ -1265,7 +1265,7 @@ extension Rv_Data_Preferences.Import.Image.Duration.Random: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_Preferences.Import.Video: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Import.Video: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Import.protoMessageName + ".Video"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}layer_type\0\u{3}playback_behavior\0\u{3}end_behavior\0\u{3}next_behavior\0")
 
@@ -1310,7 +1310,7 @@ extension Rv_Data_Preferences.Import.Video: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Preferences.Import.Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Import.Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Import.protoMessageName + ".Audio"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}playback_behavior\0\u{3}next_behavior\0")
 
@@ -1345,7 +1345,7 @@ extension Rv_Data_Preferences.Import.Audio: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Preferences.Groups: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Groups: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.protoMessageName + ".Groups"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}groups\0\u{1}labels\0")
 
@@ -1384,7 +1384,7 @@ extension Rv_Data_Preferences.Groups: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_Preferences.Network: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Network: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.protoMessageName + ".Network"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}network\0\u{1}remotes\0\u{1}link\0")
 
@@ -1428,7 +1428,7 @@ extension Rv_Data_Preferences.Network: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_Preferences.Network.Network: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Network.Network: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Network.protoMessageName + ".Network"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0\u{1}name\0\u{1}port\0")
 
@@ -1468,7 +1468,7 @@ extension Rv_Data_Preferences.Network.Network: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_Preferences.Network.Remotes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Network.Remotes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Network.protoMessageName + ".Remotes"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pro_remote\0\u{3}stage_app\0")
 
@@ -1507,7 +1507,7 @@ extension Rv_Data_Preferences.Network.Remotes: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_Preferences.Network.Remotes.ProRemote: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Network.Remotes.ProRemote: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Network.Remotes.protoMessageName + ".ProRemote"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0\u{3}enable_controller\0\u{3}controller_password\0\u{3}enable_observer\0\u{3}observer_password\0")
 
@@ -1557,7 +1557,7 @@ extension Rv_Data_Preferences.Network.Remotes.ProRemote: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_Preferences.Network.Remotes.StageApp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Network.Remotes.StageApp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Network.Remotes.protoMessageName + ".StageApp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0\u{1}password\0")
 
@@ -1592,7 +1592,7 @@ extension Rv_Data_Preferences.Network.Remotes.StageApp: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_Preferences.Network.Link: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Network.Link: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Network.protoMessageName + ".Link"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0\u{3}link_group\0")
 
@@ -1627,7 +1627,7 @@ extension Rv_Data_Preferences.Network.Link: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Preferences.Sync: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Sync: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.protoMessageName + ".Sync"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}repository\0\u{3}include_libraries\0\u{3}include_media\0\u{3}include_playlists\0\u{3}include_themes\0\u{3}include_support_files\0\u{1}direction\0\u{3}replace_destination_files\0")
 
@@ -1692,11 +1692,11 @@ extension Rv_Data_Preferences.Sync: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_Preferences.Sync.SyncDirection: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Sync.SyncDirection: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SYNC_DOWN\0\u{1}SYNC_UP\0")
 }
 
-extension Rv_Data_Preferences.Advanced: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Advanced: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.protoMessageName + ".Advanced"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}suppress_auto_start\0\u{3}presentation_audio_behavior\0\u{3}announcements_audio_behavior\0\u{3}ndi_discovery\0\u{3}support_files_path\0\u{3}manage_media_automatically\0\u{3}search_paths\0")
 
@@ -1760,11 +1760,11 @@ extension Rv_Data_Preferences.Advanced: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_Preferences.Advanced.AudioForegroundMediaBehavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Advanced.AudioForegroundMediaBehavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0IGNORE_FOREGROUND_MEDIA\0\u{1}CLEAR_FOR_ALL_MEDIA\0\u{1}CLEAR_IF_AUDIO\0\u{1}PAUSE_FOR_ALL_MEDIA\0\u{1}PAUSE_IF_AUDIO\0")
 }
 
-extension Rv_Data_Preferences.Advanced.NDIDiscovery: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Advanced.NDIDiscovery: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Advanced.protoMessageName + ".NDIDiscovery"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}show_local_sources\0\u{3}receive_groups\0\u{3}additional_search_ips\0")
 
@@ -1804,7 +1804,7 @@ extension Rv_Data_Preferences.Advanced.NDIDiscovery: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_Preferences.Advanced.SearchPaths: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Advanced.SearchPaths: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Advanced.protoMessageName + ".SearchPaths"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}automatically_relink\0\u{1}paths\0")
 
@@ -1839,7 +1839,7 @@ extension Rv_Data_Preferences.Advanced.SearchPaths: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_Preferences.Advanced.SearchPaths.Path: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Advanced.SearchPaths.Path: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.Advanced.SearchPaths.protoMessageName + ".Path"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0\u{1}name\0\u{1}path\0\u{3}url_root\0")
 
@@ -1884,7 +1884,7 @@ extension Rv_Data_Preferences.Advanced.SearchPaths.Path: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_Preferences.Updates: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Updates: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Preferences.protoMessageName + ".Updates"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}notify_when_available\0\u{3}update_channel\0")
 
@@ -1919,6 +1919,6 @@ extension Rv_Data_Preferences.Updates: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_Preferences.Updates.Channel: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Preferences.Updates.Channel: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0production\0\u{1}beta\0")
 }

@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_ThemeGroup: Sendable {
+public nonisolated struct Rv_Data_API_v1_ThemeGroup: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -46,7 +50,7 @@ public struct Rv_Data_API_v1_ThemeGroup: Sendable {
   fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
 }
 
-public struct Rv_Data_API_v1_Theme: Sendable {
+public nonisolated struct Rv_Data_API_v1_Theme: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -69,7 +73,7 @@ public struct Rv_Data_API_v1_Theme: Sendable {
   fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
 }
 
-public struct Rv_Data_API_v1_ThemeSlide: Sendable {
+public nonisolated struct Rv_Data_API_v1_ThemeSlide: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -110,7 +114,7 @@ public struct Rv_Data_API_v1_ThemeSlide: Sendable {
   fileprivate var _background: Rv_Data_API_v1_Color? = nil
 }
 
-public struct Rv_Data_API_v1_Theme_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Theme_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -191,7 +195,7 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case getAll(Rv_Data_API_v1_Theme_Request.GetAll)
     case getTheme(Rv_Data_API_v1_Theme_Request.GetTheme)
     case deleteTheme(Rv_Data_API_v1_Theme_Request.DeleteTheme)
@@ -204,7 +208,7 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
 
   }
 
-  public struct GetAll: Sendable {
+  public nonisolated struct GetAll: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -214,19 +218,7 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
     public init() {}
   }
 
-  public struct GetTheme: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var id: String = String()
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct DeleteTheme: Sendable {
+  public nonisolated struct GetTheme: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -238,7 +230,7 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
     public init() {}
   }
 
-  public struct GetThemeName: Sendable {
+  public nonisolated struct DeleteTheme: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -250,7 +242,19 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
     public init() {}
   }
 
-  public struct PutThemeName: Sendable {
+  public nonisolated struct GetThemeName: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var id: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct PutThemeName: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -264,7 +268,7 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
     public init() {}
   }
 
-  public struct GetThemeSlide: Sendable {
+  public nonisolated struct GetThemeSlide: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -278,7 +282,7 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
     public init() {}
   }
 
-  public struct PutThemeSlide: Sendable {
+  public nonisolated struct PutThemeSlide: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -303,7 +307,7 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
     fileprivate var _slide: Rv_Data_API_v1_ThemeSlide? = nil
   }
 
-  public struct DeleteThemeSlide: Sendable {
+  public nonisolated struct DeleteThemeSlide: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -317,7 +321,7 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
     public init() {}
   }
 
-  public struct GetThemeSlideThumbnail: Sendable {
+  public nonisolated struct GetThemeSlideThumbnail: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -336,7 +340,7 @@ public struct Rv_Data_API_v1_Theme_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Theme_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Theme_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -417,7 +421,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case getAll(Rv_Data_API_v1_Theme_Response.GetAll)
     case getTheme(Rv_Data_API_v1_Theme_Response.GetTheme)
     case deleteTheme(Rv_Data_API_v1_Theme_Response.DeleteTheme)
@@ -430,7 +434,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
 
   }
 
-  public struct GetAll: Sendable {
+  public nonisolated struct GetAll: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -444,7 +448,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
     public init() {}
   }
 
-  public struct GetTheme: Sendable {
+  public nonisolated struct GetTheme: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -469,7 +473,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Value: Equatable, Sendable {
+    public nonisolated enum OneOf_Value: Equatable, Sendable {
       case theme(Rv_Data_API_v1_Theme)
       case group(Rv_Data_API_v1_ThemeGroup)
 
@@ -478,7 +482,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
     public init() {}
   }
 
-  public struct DeleteTheme: Sendable {
+  public nonisolated struct DeleteTheme: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -488,7 +492,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
     public init() {}
   }
 
-  public struct GetThemeName: Sendable {
+  public nonisolated struct GetThemeName: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -500,7 +504,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
     public init() {}
   }
 
-  public struct PutThemeName: Sendable {
+  public nonisolated struct PutThemeName: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -510,7 +514,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
     public init() {}
   }
 
-  public struct GetThemeSlide: Sendable {
+  public nonisolated struct GetThemeSlide: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -531,7 +535,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
     fileprivate var _themeSlide: Rv_Data_API_v1_ThemeSlide? = nil
   }
 
-  public struct PutThemeSlide: Sendable {
+  public nonisolated struct PutThemeSlide: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -541,7 +545,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
     public init() {}
   }
 
-  public struct DeleteThemeSlide: Sendable {
+  public nonisolated struct DeleteThemeSlide: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -551,7 +555,7 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
     public init() {}
   }
 
-  public struct GetThemeSlideThumbnail: Sendable {
+  public nonisolated struct GetThemeSlideThumbnail: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -568,9 +572,9 @@ public struct Rv_Data_API_v1_Theme_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_ThemeGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_ThemeGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_ThemeGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}groups\0\u{1}themes\0")
 
@@ -614,7 +618,7 @@ extension Rv_Data_API_v1_ThemeGroup: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_API_v1_Theme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Theme"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}slides\0")
 
@@ -653,7 +657,7 @@ extension Rv_Data_API_v1_Theme: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_API_v1_ThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_ThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_ThemeSlide"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}size\0\u{1}background\0")
 
@@ -697,7 +701,7 @@ extension Rv_Data_API_v1_ThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Theme_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}get_all\0\u{3}get_theme\0\u{3}delete_theme\0\u{3}get_theme_name\0\u{3}put_theme_name\0\u{3}get_theme_slide\0\u{3}put_theme_slide\0\u{3}delete_theme_slide\0\u{3}get_theme_slide_thumbnail\0")
 
@@ -883,7 +887,7 @@ extension Rv_Data_API_v1_Theme_Request: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request.GetAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request.GetAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Request.protoMessageName + ".GetAll"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -902,7 +906,7 @@ extension Rv_Data_API_v1_Theme_Request.GetAll: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request.GetTheme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request.GetTheme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Request.protoMessageName + ".GetTheme"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -932,7 +936,7 @@ extension Rv_Data_API_v1_Theme_Request.GetTheme: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request.DeleteTheme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request.DeleteTheme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Request.protoMessageName + ".DeleteTheme"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -962,7 +966,7 @@ extension Rv_Data_API_v1_Theme_Request.DeleteTheme: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request.GetThemeName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request.GetThemeName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Request.protoMessageName + ".GetThemeName"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -992,7 +996,7 @@ extension Rv_Data_API_v1_Theme_Request.GetThemeName: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request.PutThemeName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request.PutThemeName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Request.protoMessageName + ".PutThemeName"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}name\0")
 
@@ -1027,7 +1031,7 @@ extension Rv_Data_API_v1_Theme_Request.PutThemeName: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request.GetThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request.GetThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Request.protoMessageName + ".GetThemeSlide"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}theme_slide\0")
 
@@ -1062,7 +1066,7 @@ extension Rv_Data_API_v1_Theme_Request.GetThemeSlide: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request.PutThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request.PutThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Request.protoMessageName + ".PutThemeSlide"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}theme_slide\0\u{1}slide\0")
 
@@ -1106,7 +1110,7 @@ extension Rv_Data_API_v1_Theme_Request.PutThemeSlide: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request.DeleteThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request.DeleteThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Request.protoMessageName + ".DeleteThemeSlide"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}theme_slide\0")
 
@@ -1141,7 +1145,7 @@ extension Rv_Data_API_v1_Theme_Request.DeleteThemeSlide: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Theme_Request.GetThemeSlideThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Request.GetThemeSlideThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Request.protoMessageName + ".GetThemeSlideThumbnail"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}theme_slide\0\u{1}quality\0")
 
@@ -1181,7 +1185,7 @@ extension Rv_Data_API_v1_Theme_Request.GetThemeSlideThumbnail: SwiftProtobuf.Mes
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Theme_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}get_all\0\u{3}get_theme\0\u{3}delete_theme\0\u{3}get_theme_name\0\u{3}put_theme_name\0\u{3}get_theme_slide\0\u{3}put_theme_slide\0\u{3}delete_theme_slide\0\u{3}get_theme_slide_thumbnail\0")
 
@@ -1367,7 +1371,7 @@ extension Rv_Data_API_v1_Theme_Response: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response.GetAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response.GetAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Response.protoMessageName + ".GetAll"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}groups\0\u{1}themes\0")
 
@@ -1402,7 +1406,7 @@ extension Rv_Data_API_v1_Theme_Response.GetAll: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response.GetTheme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response.GetTheme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Response.protoMessageName + ".GetTheme"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}theme\0\u{1}group\0")
 
@@ -1469,7 +1473,7 @@ extension Rv_Data_API_v1_Theme_Response.GetTheme: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response.DeleteTheme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response.DeleteTheme: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Response.protoMessageName + ".DeleteTheme"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1488,7 +1492,7 @@ extension Rv_Data_API_v1_Theme_Response.DeleteTheme: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response.GetThemeName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response.GetThemeName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Response.protoMessageName + ".GetThemeName"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0")
 
@@ -1518,7 +1522,7 @@ extension Rv_Data_API_v1_Theme_Response.GetThemeName: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response.PutThemeName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response.PutThemeName: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Response.protoMessageName + ".PutThemeName"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1537,7 +1541,7 @@ extension Rv_Data_API_v1_Theme_Response.PutThemeName: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response.GetThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response.GetThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Response.protoMessageName + ".GetThemeSlide"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}theme_slide\0")
 
@@ -1571,7 +1575,7 @@ extension Rv_Data_API_v1_Theme_Response.GetThemeSlide: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response.PutThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response.PutThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Response.protoMessageName + ".PutThemeSlide"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1590,7 +1594,7 @@ extension Rv_Data_API_v1_Theme_Response.PutThemeSlide: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response.DeleteThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response.DeleteThemeSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Response.protoMessageName + ".DeleteThemeSlide"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1609,7 +1613,7 @@ extension Rv_Data_API_v1_Theme_Response.DeleteThemeSlide: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_API_v1_Theme_Response.GetThemeSlideThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Theme_Response.GetThemeSlideThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Theme_Response.protoMessageName + ".GetThemeSlideThumbnail"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}data\0")
 

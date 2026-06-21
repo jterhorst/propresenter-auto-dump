@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_ProPresenterWorkspace: @unchecked Sendable {
+public nonisolated struct Rv_Data_ProPresenterWorkspace: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -116,6 +116,11 @@ public struct Rv_Data_ProPresenterWorkspace: @unchecked Sendable {
     set {_uniqueStorage()._cloudAudioInputs = newValue}
   }
 
+  public var audioChannelCount: UInt32 {
+    get {_storage._audioChannelCount}
+    set {_uniqueStorage()._audioChannelCount = newValue}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -123,7 +128,7 @@ public struct Rv_Data_ProPresenterWorkspace: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_ProPresenterLocalWorkspace: Sendable {
+public nonisolated struct Rv_Data_ProPresenterLocalWorkspace: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -143,20 +148,32 @@ public struct Rv_Data_ProPresenterLocalWorkspace: Sendable {
 
   public var audioInputs: [Rv_Data_AudioInput] = []
 
+  public var liveAudienceLook: Rv_Data_ProAudienceLook {
+    get {_liveAudienceLook ?? Rv_Data_ProAudienceLook()}
+    set {_liveAudienceLook = newValue}
+  }
+  /// Returns true if `liveAudienceLook` has been explicitly set.
+  public var hasLiveAudienceLook: Bool {self._liveAudienceLook != nil}
+  /// Clears the value of `liveAudienceLook`. Subsequent reads from it will return its default value.
+  public mutating func clearLiveAudienceLook() {self._liveAudienceLook = nil}
+
+  public var stageLayoutMappings: [Rv_Data_Stage.ScreenAssignment] = []
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _digitalAudioSetup: Rv_Data_DigitalAudio.Setup? = nil
+  fileprivate var _liveAudienceLook: Rv_Data_ProAudienceLook? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProPresenterWorkspace"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pro_screens\0\u{3}audience_looks\0\u{3}live_audience_look\0\u{1}masks\0\u{1}videoInputs\0\u{3}stage_layout_mappings\0\u{3}audio_settings\0\u{3}selected_library_name\0\u{3}record_settings\0\u{3}digital_audio_setup\0\u{3}audio_inputs\0\u{3}audio_input_transition_time\0\u{3}cloud_output_screens\0\u{3}cloud_video_inputs\0\u{3}cloud_audio_inputs\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pro_screens\0\u{3}audience_looks\0\u{3}live_audience_look\0\u{1}masks\0\u{1}videoInputs\0\u{3}stage_layout_mappings\0\u{3}audio_settings\0\u{3}selected_library_name\0\u{3}record_settings\0\u{3}digital_audio_setup\0\u{3}audio_inputs\0\u{3}audio_input_transition_time\0\u{3}cloud_output_screens\0\u{3}cloud_video_inputs\0\u{3}cloud_audio_inputs\0\u{3}audio_channel_count\0")
 
   fileprivate class _StorageClass {
     var _proScreens: [Rv_Data_ProPresenterScreen] = []
@@ -174,6 +191,7 @@ extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, SwiftProtobuf._M
     var _cloudOutputScreens: [Rv_Data_CloudProPresenterScreen] = []
     var _cloudVideoInputs: [Rv_Data_CloudVideoInput] = []
     var _cloudAudioInputs: [Rv_Data_CloudAudioInput] = []
+    var _audioChannelCount: UInt32 = 0
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -199,6 +217,7 @@ extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, SwiftProtobuf._M
       _cloudOutputScreens = source._cloudOutputScreens
       _cloudVideoInputs = source._cloudVideoInputs
       _cloudAudioInputs = source._cloudAudioInputs
+      _audioChannelCount = source._audioChannelCount
     }
   }
 
@@ -232,6 +251,7 @@ extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, SwiftProtobuf._M
         case 13: try { try decoder.decodeRepeatedMessageField(value: &_storage._cloudOutputScreens) }()
         case 14: try { try decoder.decodeRepeatedMessageField(value: &_storage._cloudVideoInputs) }()
         case 15: try { try decoder.decodeRepeatedMessageField(value: &_storage._cloudAudioInputs) }()
+        case 16: try { try decoder.decodeSingularUInt32Field(value: &_storage._audioChannelCount) }()
         default: break
         }
       }
@@ -289,6 +309,9 @@ extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, SwiftProtobuf._M
       if !_storage._cloudAudioInputs.isEmpty {
         try visitor.visitRepeatedMessageField(value: _storage._cloudAudioInputs, fieldNumber: 15)
       }
+      if _storage._audioChannelCount != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._audioChannelCount, fieldNumber: 16)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -313,6 +336,7 @@ extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, SwiftProtobuf._M
         if _storage._cloudOutputScreens != rhs_storage._cloudOutputScreens {return false}
         if _storage._cloudVideoInputs != rhs_storage._cloudVideoInputs {return false}
         if _storage._cloudAudioInputs != rhs_storage._cloudAudioInputs {return false}
+        if _storage._audioChannelCount != rhs_storage._audioChannelCount {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -322,9 +346,9 @@ extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_ProPresenterLocalWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ProPresenterLocalWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProPresenterLocalWorkspace"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}digital_audio_setup\0\u{3}pro_screens\0\u{3}video_inputs\0\u{3}audio_inputs\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}digital_audio_setup\0\u{3}pro_screens\0\u{3}video_inputs\0\u{3}audio_inputs\0\u{3}live_audience_look\0\u{3}stage_layout_mappings\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -336,6 +360,8 @@ extension Rv_Data_ProPresenterLocalWorkspace: SwiftProtobuf.Message, SwiftProtob
       case 2: try { try decoder.decodeRepeatedMessageField(value: &self.proScreens) }()
       case 3: try { try decoder.decodeRepeatedMessageField(value: &self.videoInputs) }()
       case 4: try { try decoder.decodeRepeatedMessageField(value: &self.audioInputs) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._liveAudienceLook) }()
+      case 6: try { try decoder.decodeRepeatedMessageField(value: &self.stageLayoutMappings) }()
       default: break
       }
     }
@@ -358,6 +384,12 @@ extension Rv_Data_ProPresenterLocalWorkspace: SwiftProtobuf.Message, SwiftProtob
     if !self.audioInputs.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.audioInputs, fieldNumber: 4)
     }
+    try { if let v = self._liveAudienceLook {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    } }()
+    if !self.stageLayoutMappings.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.stageLayoutMappings, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -366,6 +398,8 @@ extension Rv_Data_ProPresenterLocalWorkspace: SwiftProtobuf.Message, SwiftProtob
     if lhs.proScreens != rhs.proScreens {return false}
     if lhs.videoInputs != rhs.videoInputs {return false}
     if lhs.audioInputs != rhs.audioInputs {return false}
+    if lhs._liveAudienceLook != rhs._liveAudienceLook {return false}
+    if lhs.stageLayoutMappings != rhs.stageLayoutMappings {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

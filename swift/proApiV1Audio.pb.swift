@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Audio_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Audio_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -189,7 +189,7 @@ public struct Rv_Data_API_v1_Audio_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case playlists(Rv_Data_API_v1_Audio_Request.Playlists)
     case playlist(Rv_Data_API_v1_Audio_Request.Playlist)
     case playlistUpdates(Rv_Data_API_v1_Audio_Request.PlaylistUpdates)
@@ -213,7 +213,7 @@ public struct Rv_Data_API_v1_Audio_Request: Sendable {
 
   }
 
-  public struct Playlists: Sendable {
+  public nonisolated struct Playlists: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -223,7 +223,7 @@ public struct Rv_Data_API_v1_Audio_Request: Sendable {
     public init() {}
   }
 
-  public struct Playlist: Sendable {
+  public nonisolated struct Playlist: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -237,7 +237,7 @@ public struct Rv_Data_API_v1_Audio_Request: Sendable {
     public init() {}
   }
 
-  public struct PlaylistUpdates: Sendable {
+  public nonisolated struct PlaylistUpdates: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -249,7 +249,7 @@ public struct Rv_Data_API_v1_Audio_Request: Sendable {
     public init() {}
   }
 
-  public struct EmptyMessage: Sendable {
+  public nonisolated struct EmptyMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -259,7 +259,7 @@ public struct Rv_Data_API_v1_Audio_Request: Sendable {
     public init() {}
   }
 
-  public struct IdentifierMessage: Sendable {
+  public nonisolated struct IdentifierMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -274,7 +274,7 @@ public struct Rv_Data_API_v1_Audio_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Audio_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Audio_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -443,7 +443,7 @@ public struct Rv_Data_API_v1_Audio_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case playlists(Rv_Data_API_v1_Audio_Response.Playlists)
     case playlist(Rv_Data_API_v1_Audio_Response.Playlist)
     case update(Rv_Data_API_v1_Audio_Response.PlaylistUpdate)
@@ -467,7 +467,7 @@ public struct Rv_Data_API_v1_Audio_Response: Sendable {
 
   }
 
-  public struct Playlists: Sendable {
+  public nonisolated struct Playlists: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -479,7 +479,7 @@ public struct Rv_Data_API_v1_Audio_Response: Sendable {
     public init() {}
   }
 
-  public struct Playlist: Sendable {
+  public nonisolated struct Playlist: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -502,7 +502,7 @@ public struct Rv_Data_API_v1_Audio_Response: Sendable {
     fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
   }
 
-  public struct PlaylistUpdate: Sendable {
+  public nonisolated struct PlaylistUpdate: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -523,7 +523,7 @@ public struct Rv_Data_API_v1_Audio_Response: Sendable {
     fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
   }
 
-  public struct EmptyMessage: Sendable {
+  public nonisolated struct EmptyMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -533,7 +533,7 @@ public struct Rv_Data_API_v1_Audio_Response: Sendable {
     public init() {}
   }
 
-  public struct FocusedPlaylist: Sendable {
+  public nonisolated struct FocusedPlaylist: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -554,7 +554,7 @@ public struct Rv_Data_API_v1_Audio_Response: Sendable {
     fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
   }
 
-  public struct ActivePlaylist: Sendable {
+  public nonisolated struct ActivePlaylist: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -590,9 +590,9 @@ public struct Rv_Data_API_v1_Audio_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Audio_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Audio_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}playlists\0\u{1}playlist\0\u{3}playlist_updates\0\u{3}playlist_focused\0\u{3}playlist_active\0\u{3}playlist_next_focus\0\u{3}playlist_previous_focus\0\u{3}playlist_active_focus\0\u{3}playlist_id_focus\0\u{3}playlist_focused_trigger\0\u{3}playlist_active_trigger\0\u{3}playlist_id_trigger\0\u{3}playlist_focused_next_trigger\0\u{3}playlist_focused_previous_trigger\0\u{3}playlist_focused_id_trigger\0\u{3}playlist_active_next_trigger\0\u{3}playlist_active_previous_trigger\0\u{3}playlist_active_id_trigger\0\u{3}playlist_id_next_trigger\0\u{3}playlist_id_previous_trigger\0")
 
@@ -965,7 +965,7 @@ extension Rv_Data_API_v1_Audio_Request: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_API_v1_Audio_Request.Playlists: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Request.Playlists: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Request.protoMessageName + ".Playlists"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -984,7 +984,7 @@ extension Rv_Data_API_v1_Audio_Request.Playlists: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Audio_Request.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Request.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Request.protoMessageName + ".Playlist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}start\0")
 
@@ -1019,7 +1019,7 @@ extension Rv_Data_API_v1_Audio_Request.Playlist: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Audio_Request.PlaylistUpdates: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Request.PlaylistUpdates: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Request.protoMessageName + ".PlaylistUpdates"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1049,7 +1049,7 @@ extension Rv_Data_API_v1_Audio_Request.PlaylistUpdates: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Audio_Request.EmptyMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Request.EmptyMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Request.protoMessageName + ".EmptyMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1068,7 +1068,7 @@ extension Rv_Data_API_v1_Audio_Request.EmptyMessage: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Audio_Request.IdentifierMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Request.IdentifierMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Request.protoMessageName + ".IdentifierMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1098,7 +1098,7 @@ extension Rv_Data_API_v1_Audio_Request.IdentifierMessage: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_API_v1_Audio_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Audio_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}playlists\0\u{1}playlist\0\u{1}update\0\u{3}playlist_focused\0\u{3}playlist_active\0\u{3}playlist_next_focus\0\u{3}playlist_previous_focus\0\u{3}playlist_active_focus\0\u{3}playlist_id_focus\0\u{3}playlist_focused_trigger\0\u{3}playlist_active_trigger\0\u{3}playlist_id_trigger\0\u{3}playlist_focused_next_trigger\0\u{3}playlist_focused_previous_trigger\0\u{3}playlist_focused_id_trigger\0\u{3}playlist_active_next_trigger\0\u{3}playlist_active_previous_trigger\0\u{3}playlist_active_id_trigger\0\u{3}playlist_id_next_trigger\0\u{3}playlist_id_previous_trigger\0")
 
@@ -1471,7 +1471,7 @@ extension Rv_Data_API_v1_Audio_Response: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_Audio_Response.Playlists: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Response.Playlists: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Response.protoMessageName + ".Playlists"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}playlists\0")
 
@@ -1501,7 +1501,7 @@ extension Rv_Data_API_v1_Audio_Response.Playlists: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Audio_Response.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Response.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Response.protoMessageName + ".Playlist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}items\0")
 
@@ -1540,7 +1540,7 @@ extension Rv_Data_API_v1_Audio_Response.Playlist: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Audio_Response.PlaylistUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Response.PlaylistUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Response.protoMessageName + ".PlaylistUpdate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1574,7 +1574,7 @@ extension Rv_Data_API_v1_Audio_Response.PlaylistUpdate: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Audio_Response.EmptyMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Response.EmptyMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Response.protoMessageName + ".EmptyMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1593,7 +1593,7 @@ extension Rv_Data_API_v1_Audio_Response.EmptyMessage: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Audio_Response.FocusedPlaylist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Response.FocusedPlaylist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Response.protoMessageName + ".FocusedPlaylist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1627,7 +1627,7 @@ extension Rv_Data_API_v1_Audio_Response.FocusedPlaylist: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Audio_Response.ActivePlaylist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Audio_Response.ActivePlaylist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Audio_Response.protoMessageName + ".ActivePlaylist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}playlist\0\u{1}item\0")
 

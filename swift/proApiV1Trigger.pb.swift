@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Trigger_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Trigger_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -125,7 +125,7 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case cue(Rv_Data_API_v1_Trigger_Request.Cue)
     case playlist(Rv_Data_API_v1_Trigger_Request.Playlist)
     case media(Rv_Data_API_v1_Trigger_Request.Media)
@@ -141,7 +141,7 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
 
   }
 
-  public struct Cue: Sendable {
+  public nonisolated struct Cue: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -153,7 +153,7 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
     public init() {}
   }
 
-  public struct Playlist: Sendable {
+  public nonisolated struct Playlist: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -165,7 +165,7 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
     public init() {}
   }
 
-  public struct Media: Sendable {
+  public nonisolated struct Media: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -177,7 +177,7 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
     public init() {}
   }
 
-  public struct MediaNext: Sendable {
+  public nonisolated struct MediaNext: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -187,7 +187,7 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
     public init() {}
   }
 
-  public struct MediaPrevious: Sendable {
+  public nonisolated struct MediaPrevious: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -197,39 +197,7 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
     public init() {}
   }
 
-  public struct Audio: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var id: String = String()
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct AudioNext: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct AudioPrevious: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct VideoInput: Sendable {
+  public nonisolated struct Audio: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -241,7 +209,27 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
     public init() {}
   }
 
-  public struct Library: Sendable {
+  public nonisolated struct AudioNext: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct AudioPrevious: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct VideoInput: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -253,7 +241,19 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
     public init() {}
   }
 
-  public struct Next: Sendable {
+  public nonisolated struct Library: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var id: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct Next: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -263,7 +263,7 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
     public init() {}
   }
 
-  public struct Previous: Sendable {
+  public nonisolated struct Previous: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -276,7 +276,7 @@ public struct Rv_Data_API_v1_Trigger_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Trigger_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Trigger_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -381,7 +381,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case cue(Rv_Data_API_v1_Trigger_Response.Cue)
     case playlist(Rv_Data_API_v1_Trigger_Response.Playlist)
     case media(Rv_Data_API_v1_Trigger_Response.Media)
@@ -397,7 +397,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
 
   }
 
-  public struct Cue: Sendable {
+  public nonisolated struct Cue: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -407,7 +407,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct Playlist: Sendable {
+  public nonisolated struct Playlist: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -417,7 +417,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct Media: Sendable {
+  public nonisolated struct Media: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -427,7 +427,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct MediaNext: Sendable {
+  public nonisolated struct MediaNext: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -437,7 +437,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct MediaPrevious: Sendable {
+  public nonisolated struct MediaPrevious: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -447,7 +447,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct Audio: Sendable {
+  public nonisolated struct Audio: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -457,7 +457,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct AudioNext: Sendable {
+  public nonisolated struct AudioNext: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -467,7 +467,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct AudioPrevious: Sendable {
+  public nonisolated struct AudioPrevious: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -477,7 +477,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct VideoInput: Sendable {
+  public nonisolated struct VideoInput: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -487,7 +487,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct Library: Sendable {
+  public nonisolated struct Library: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -497,7 +497,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct Next: Sendable {
+  public nonisolated struct Next: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -507,7 +507,7 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
     public init() {}
   }
 
-  public struct Previous: Sendable {
+  public nonisolated struct Previous: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -522,9 +522,9 @@ public struct Rv_Data_API_v1_Trigger_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Trigger_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Trigger_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}cue\0\u{1}playlist\0\u{1}media\0\u{1}audio\0\u{3}video_input\0\u{1}library\0\u{1}next\0\u{1}previous\0\u{3}media_next\0\u{3}media_previous\0\u{3}audio_next\0\u{3}audio_previous\0")
 
@@ -761,7 +761,7 @@ extension Rv_Data_API_v1_Trigger_Request: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.Cue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.Cue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".Cue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}index\0")
 
@@ -791,7 +791,7 @@ extension Rv_Data_API_v1_Trigger_Request.Cue: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".Playlist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -821,7 +821,7 @@ extension Rv_Data_API_v1_Trigger_Request.Playlist: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".Media"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -851,7 +851,7 @@ extension Rv_Data_API_v1_Trigger_Request.Media: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.MediaNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.MediaNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".MediaNext"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -870,7 +870,7 @@ extension Rv_Data_API_v1_Trigger_Request.MediaNext: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.MediaPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.MediaPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".MediaPrevious"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -889,7 +889,7 @@ extension Rv_Data_API_v1_Trigger_Request.MediaPrevious: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".Audio"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -919,7 +919,7 @@ extension Rv_Data_API_v1_Trigger_Request.Audio: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.AudioNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.AudioNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".AudioNext"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -938,7 +938,7 @@ extension Rv_Data_API_v1_Trigger_Request.AudioNext: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.AudioPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.AudioPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".AudioPrevious"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -957,7 +957,7 @@ extension Rv_Data_API_v1_Trigger_Request.AudioPrevious: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.VideoInput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.VideoInput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".VideoInput"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -987,7 +987,7 @@ extension Rv_Data_API_v1_Trigger_Request.VideoInput: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".Library"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1017,7 +1017,7 @@ extension Rv_Data_API_v1_Trigger_Request.Library: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.Next: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.Next: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".Next"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1036,7 +1036,7 @@ extension Rv_Data_API_v1_Trigger_Request.Next: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Request.Previous: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Request.Previous: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Request.protoMessageName + ".Previous"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1055,7 +1055,7 @@ extension Rv_Data_API_v1_Trigger_Request.Previous: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Trigger_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}cue\0\u{1}playlist\0\u{1}media\0\u{1}audio\0\u{3}video_input\0\u{1}library\0\u{1}next\0\u{1}previous\0\u{3}media_next\0\u{3}media_previous\0\u{3}audio_next\0\u{3}audio_previous\0")
 
@@ -1292,7 +1292,7 @@ extension Rv_Data_API_v1_Trigger_Response: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.Cue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.Cue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".Cue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1311,7 +1311,7 @@ extension Rv_Data_API_v1_Trigger_Response.Cue: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".Playlist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1330,7 +1330,7 @@ extension Rv_Data_API_v1_Trigger_Response.Playlist: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".Media"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1349,7 +1349,7 @@ extension Rv_Data_API_v1_Trigger_Response.Media: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.MediaNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.MediaNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".MediaNext"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1368,7 +1368,7 @@ extension Rv_Data_API_v1_Trigger_Response.MediaNext: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.MediaPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.MediaPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".MediaPrevious"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1387,7 +1387,7 @@ extension Rv_Data_API_v1_Trigger_Response.MediaPrevious: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".Audio"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1406,7 +1406,7 @@ extension Rv_Data_API_v1_Trigger_Response.Audio: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.AudioNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.AudioNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".AudioNext"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1425,7 +1425,7 @@ extension Rv_Data_API_v1_Trigger_Response.AudioNext: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.AudioPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.AudioPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".AudioPrevious"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1444,7 +1444,7 @@ extension Rv_Data_API_v1_Trigger_Response.AudioPrevious: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.VideoInput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.VideoInput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".VideoInput"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1463,7 +1463,7 @@ extension Rv_Data_API_v1_Trigger_Response.VideoInput: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".Library"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1482,7 +1482,7 @@ extension Rv_Data_API_v1_Trigger_Response.Library: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.Next: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.Next: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".Next"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1501,7 +1501,7 @@ extension Rv_Data_API_v1_Trigger_Response.Next: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Trigger_Response.Previous: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Trigger_Response.Previous: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Trigger_Response.protoMessageName + ".Previous"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

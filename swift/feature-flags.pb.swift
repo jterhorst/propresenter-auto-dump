@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct FeatureFlags_CreationOption: Sendable {
+public nonisolated struct FeatureFlags_CreationOption: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -30,7 +30,7 @@ public struct FeatureFlags_CreationOption: Sendable {
   public init() {}
 }
 
-public struct FeatureFlags_Flag: Sendable {
+public nonisolated struct FeatureFlags_Flag: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -44,7 +44,7 @@ public struct FeatureFlags_Flag: Sendable {
   public init() {}
 }
 
-public struct FeatureFlags_AllFlags: Sendable {
+public nonisolated struct FeatureFlags_AllFlags: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -56,7 +56,7 @@ public struct FeatureFlags_AllFlags: Sendable {
   public init() {}
 }
 
-public struct FeatureFlags_Notification: Sendable {
+public nonisolated struct FeatureFlags_Notification: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -81,13 +81,13 @@ public struct FeatureFlags_Notification: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Notification: Equatable, Sendable {
+  public nonisolated enum OneOf_Notification: Equatable, Sendable {
     case allFlags(FeatureFlags_AllFlags)
     case unsubscribeComplete(FeatureFlags_Notification.UnsubscribeComplete)
 
   }
 
-  public struct UnsubscribeComplete: Sendable {
+  public nonisolated struct UnsubscribeComplete: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -102,9 +102,9 @@ public struct FeatureFlags_Notification: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "feature_flags"
+fileprivate nonisolated let _protobuf_package = "feature_flags"
 
-extension FeatureFlags_CreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension FeatureFlags_CreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CreationOption"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -123,7 +123,7 @@ extension FeatureFlags_CreationOption: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension FeatureFlags_Flag: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension FeatureFlags_Flag: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Flag"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}enabled\0")
 
@@ -158,7 +158,7 @@ extension FeatureFlags_Flag: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension FeatureFlags_AllFlags: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension FeatureFlags_AllFlags: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AllFlags"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}flags\0")
 
@@ -188,7 +188,7 @@ extension FeatureFlags_AllFlags: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension FeatureFlags_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension FeatureFlags_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Notification"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}all_flags\0\u{3}unsubscribe_complete\0")
 
@@ -255,7 +255,7 @@ extension FeatureFlags_Notification: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension FeatureFlags_Notification.UnsubscribeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension FeatureFlags_Notification.UnsubscribeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = FeatureFlags_Notification.protoMessageName + ".UnsubscribeComplete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

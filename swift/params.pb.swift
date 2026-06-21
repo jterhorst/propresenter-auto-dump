@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Application_ProductInformation: Sendable {
+public nonisolated struct Application_ProductInformation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -42,7 +42,7 @@ public struct Application_ProductInformation: Sendable {
   public init() {}
 }
 
-public struct Application_ApplicationParams: Sendable {
+public nonisolated struct Application_ApplicationParams: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -58,14 +58,24 @@ public struct Application_ApplicationParams: Sendable {
 
   public var enabledFeatures: [String] = []
 
+  public var peerID: UInt64 {
+    get {_peerID ?? 0}
+    set {_peerID = newValue}
+  }
+  /// Returns true if `peerID` has been explicitly set.
+  public var hasPeerID: Bool {self._peerID != nil}
+  /// Clears the value of `peerID`. Subsequent reads from it will return its default value.
+  public mutating func clearPeerID() {self._peerID = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _productInfo: Application_ProductInformation? = nil
+  fileprivate var _peerID: UInt64? = nil
 }
 
-public struct Application_ApplicationStartParams: @unchecked Sendable {
+public nonisolated struct Application_ApplicationStartParams: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -140,7 +150,7 @@ public struct Application_ApplicationStartParams: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Application_RegistrationCreationOption: Sendable {
+public nonisolated struct Application_RegistrationCreationOption: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -150,7 +160,7 @@ public struct Application_RegistrationCreationOption: Sendable {
   public init() {}
 }
 
-public struct Application_Shutdown: Sendable {
+public nonisolated struct Application_Shutdown: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -175,7 +185,7 @@ public struct Application_Shutdown: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Result: Equatable, Sendable {
+  public nonisolated enum OneOf_Result: Equatable, Sendable {
     case ok(String)
     case error(String)
 
@@ -186,9 +196,9 @@ public struct Application_Shutdown: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "application"
+fileprivate nonisolated let _protobuf_package = "application"
 
-extension Application_ProductInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_ProductInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProductInformation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}product_name\0\u{3}major_version\0\u{3}minor_version\0\u{3}patch_version\0\u{3}build_number\0\u{3}build_date\0")
 
@@ -243,9 +253,9 @@ extension Application_ProductInformation: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Application_ApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_ApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplicationParams"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}product_info\0\u{3}enabled_features\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}product_info\0\u{3}enabled_features\0\u{3}peer_id\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -255,6 +265,7 @@ extension Application_ApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._M
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularMessageField(value: &self._productInfo) }()
       case 2: try { try decoder.decodeRepeatedStringField(value: &self.enabledFeatures) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self._peerID) }()
       default: break
       }
     }
@@ -271,18 +282,22 @@ extension Application_ApplicationParams: SwiftProtobuf.Message, SwiftProtobuf._M
     if !self.enabledFeatures.isEmpty {
       try visitor.visitRepeatedStringField(value: self.enabledFeatures, fieldNumber: 2)
     }
+    try { if let v = self._peerID {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 3)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Application_ApplicationParams, rhs: Application_ApplicationParams) -> Bool {
     if lhs._productInfo != rhs._productInfo {return false}
     if lhs.enabledFeatures != rhs.enabledFeatures {return false}
+    if lhs._peerID != rhs._peerID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Application_ApplicationStartParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_ApplicationStartParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplicationStartParams"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}application\0\u{3}media_v1\0\u{1}media\0\u{3}feature_flags\0\u{2}\u{2}registration\0\u{1}document\0\u{1}workspace\0")
 
@@ -394,7 +409,7 @@ extension Application_ApplicationStartParams: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Application_RegistrationCreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_RegistrationCreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RegistrationCreationOption"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -413,7 +428,7 @@ extension Application_RegistrationCreationOption: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Application_Shutdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_Shutdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Shutdown"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 

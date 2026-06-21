@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_StageLayoutMap: Sendable {
+public nonisolated struct Rv_Data_API_v1_StageLayoutMap: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -30,7 +34,7 @@ public struct Rv_Data_API_v1_StageLayoutMap: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Entry: Sendable {
+  public nonisolated struct Entry: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -64,7 +68,7 @@ public struct Rv_Data_API_v1_StageLayoutMap: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Stage_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Stage_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -161,7 +165,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case getLayoutMap(Rv_Data_API_v1_Stage_Request.GetLayoutMap)
     case setLayoutMap(Rv_Data_API_v1_Stage_Request.SetLayoutMap)
     case getMessage(Rv_Data_API_v1_Stage_Request.GetMessage)
@@ -176,7 +180,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
 
   }
 
-  public struct GetLayoutMap: Sendable {
+  public nonisolated struct GetLayoutMap: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -186,7 +190,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     public init() {}
   }
 
-  public struct SetLayoutMap: Sendable {
+  public nonisolated struct SetLayoutMap: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -207,7 +211,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     fileprivate var _map: Rv_Data_API_v1_StageLayoutMap? = nil
   }
 
-  public struct GetMessage: Sendable {
+  public nonisolated struct GetMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -217,7 +221,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     public init() {}
   }
 
-  public struct PutMessage: Sendable {
+  public nonisolated struct PutMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -229,7 +233,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     public init() {}
   }
 
-  public struct DeleteMessage: Sendable {
+  public nonisolated struct DeleteMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -239,7 +243,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     public init() {}
   }
 
-  public struct GetScreens: Sendable {
+  public nonisolated struct GetScreens: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -249,7 +253,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     public init() {}
   }
 
-  public struct GetScreenLayout: Sendable {
+  public nonisolated struct GetScreenLayout: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -261,7 +265,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     public init() {}
   }
 
-  public struct SetScreenLayout: Sendable {
+  public nonisolated struct SetScreenLayout: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -275,7 +279,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     public init() {}
   }
 
-  public struct GetLayouts: Sendable {
+  public nonisolated struct GetLayouts: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -285,7 +289,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     public init() {}
   }
 
-  public struct DeleteLayout: Sendable {
+  public nonisolated struct DeleteLayout: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -297,7 +301,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
     public init() {}
   }
 
-  public struct GetLayoutThumbnail: Sendable {
+  public nonisolated struct GetLayoutThumbnail: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -314,7 +318,7 @@ public struct Rv_Data_API_v1_Stage_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Stage_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Stage_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -411,7 +415,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case getLayoutMap(Rv_Data_API_v1_Stage_Response.GetLayoutMap)
     case setLayoutMap(Rv_Data_API_v1_Stage_Response.SetLayoutMap)
     case getMessage(Rv_Data_API_v1_Stage_Response.GetMessage)
@@ -426,7 +430,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
 
   }
 
-  public struct GetLayoutMap: Sendable {
+  public nonisolated struct GetLayoutMap: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -447,7 +451,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     fileprivate var _map: Rv_Data_API_v1_StageLayoutMap? = nil
   }
 
-  public struct SetLayoutMap: Sendable {
+  public nonisolated struct SetLayoutMap: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -457,7 +461,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     public init() {}
   }
 
-  public struct GetMessage: Sendable {
+  public nonisolated struct GetMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -469,7 +473,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     public init() {}
   }
 
-  public struct PutMessage: Sendable {
+  public nonisolated struct PutMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -479,7 +483,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     public init() {}
   }
 
-  public struct DeleteMessage: Sendable {
+  public nonisolated struct DeleteMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -489,7 +493,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     public init() {}
   }
 
-  public struct GetScreens: Sendable {
+  public nonisolated struct GetScreens: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -501,7 +505,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     public init() {}
   }
 
-  public struct GetScreenLayout: Sendable {
+  public nonisolated struct GetScreenLayout: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -522,7 +526,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
   }
 
-  public struct SetScreenLayout: Sendable {
+  public nonisolated struct SetScreenLayout: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -532,7 +536,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     public init() {}
   }
 
-  public struct GetLayouts: Sendable {
+  public nonisolated struct GetLayouts: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -541,7 +545,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Layout: Sendable {
+    public nonisolated struct Layout: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -565,7 +569,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     public init() {}
   }
 
-  public struct DeleteLayout: Sendable {
+  public nonisolated struct DeleteLayout: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -575,7 +579,7 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
     public init() {}
   }
 
-  public struct GetLayoutThumbnail: Sendable {
+  public nonisolated struct GetLayoutThumbnail: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -592,9 +596,9 @@ public struct Rv_Data_API_v1_Stage_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_StageLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_StageLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_StageLayoutMap"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}entries\0")
 
@@ -624,7 +628,7 @@ extension Rv_Data_API_v1_StageLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_StageLayoutMap.Entry: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_StageLayoutMap.Entry: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_StageLayoutMap.protoMessageName + ".Entry"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}screen\0\u{1}layout\0")
 
@@ -663,7 +667,7 @@ extension Rv_Data_API_v1_StageLayoutMap.Entry: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Stage_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}get_layout_map\0\u{3}set_layout_map\0\u{3}get_message\0\u{3}put_message\0\u{3}delete_message\0\u{3}get_screens\0\u{3}get_screen_layout\0\u{3}set_screen_layout\0\u{3}get_layouts\0\u{3}delete_layout\0\u{3}get_layout_thumbnail\0")
 
@@ -883,7 +887,7 @@ extension Rv_Data_API_v1_Stage_Request: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.GetLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.GetLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".GetLayoutMap"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -902,7 +906,7 @@ extension Rv_Data_API_v1_Stage_Request.GetLayoutMap: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.SetLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.SetLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".SetLayoutMap"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}map\0")
 
@@ -936,7 +940,7 @@ extension Rv_Data_API_v1_Stage_Request.SetLayoutMap: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.GetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.GetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".GetMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -955,7 +959,7 @@ extension Rv_Data_API_v1_Stage_Request.GetMessage: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.PutMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.PutMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".PutMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}message\0")
 
@@ -985,7 +989,7 @@ extension Rv_Data_API_v1_Stage_Request.PutMessage: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.DeleteMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.DeleteMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".DeleteMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1004,7 +1008,7 @@ extension Rv_Data_API_v1_Stage_Request.DeleteMessage: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.GetScreens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.GetScreens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".GetScreens"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1023,7 +1027,7 @@ extension Rv_Data_API_v1_Stage_Request.GetScreens: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.GetScreenLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.GetScreenLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".GetScreenLayout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1053,7 +1057,7 @@ extension Rv_Data_API_v1_Stage_Request.GetScreenLayout: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.SetScreenLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.SetScreenLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".SetScreenLayout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}layout\0")
 
@@ -1088,7 +1092,7 @@ extension Rv_Data_API_v1_Stage_Request.SetScreenLayout: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.GetLayouts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.GetLayouts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".GetLayouts"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1107,7 +1111,7 @@ extension Rv_Data_API_v1_Stage_Request.GetLayouts: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.DeleteLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.DeleteLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".DeleteLayout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1137,7 +1141,7 @@ extension Rv_Data_API_v1_Stage_Request.DeleteLayout: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Stage_Request.GetLayoutThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Request.GetLayoutThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Request.protoMessageName + ".GetLayoutThumbnail"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}quality\0")
 
@@ -1172,7 +1176,7 @@ extension Rv_Data_API_v1_Stage_Request.GetLayoutThumbnail: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Stage_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}get_layout_map\0\u{3}set_layout_map\0\u{3}get_message\0\u{3}put_message\0\u{3}delete_message\0\u{3}get_screens\0\u{3}get_screen_layout\0\u{3}set_screen_layout\0\u{3}get_layouts\0\u{3}delete_layout\0\u{3}get_layout_thumbnail\0")
 
@@ -1392,7 +1396,7 @@ extension Rv_Data_API_v1_Stage_Response: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.GetLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.GetLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".GetLayoutMap"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}map\0")
 
@@ -1426,7 +1430,7 @@ extension Rv_Data_API_v1_Stage_Response.GetLayoutMap: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.SetLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.SetLayoutMap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".SetLayoutMap"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1445,7 +1449,7 @@ extension Rv_Data_API_v1_Stage_Response.SetLayoutMap: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.GetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.GetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".GetMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}message\0")
 
@@ -1475,7 +1479,7 @@ extension Rv_Data_API_v1_Stage_Response.GetMessage: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.PutMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.PutMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".PutMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1494,7 +1498,7 @@ extension Rv_Data_API_v1_Stage_Response.PutMessage: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.DeleteMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.DeleteMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".DeleteMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1513,7 +1517,7 @@ extension Rv_Data_API_v1_Stage_Response.DeleteMessage: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.GetScreens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.GetScreens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".GetScreens"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}screens\0")
 
@@ -1543,7 +1547,7 @@ extension Rv_Data_API_v1_Stage_Response.GetScreens: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.GetScreenLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.GetScreenLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".GetScreenLayout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1577,7 +1581,7 @@ extension Rv_Data_API_v1_Stage_Response.GetScreenLayout: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.SetScreenLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.SetScreenLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".SetScreenLayout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1596,7 +1600,7 @@ extension Rv_Data_API_v1_Stage_Response.SetScreenLayout: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.GetLayouts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.GetLayouts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".GetLayouts"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}layouts\0")
 
@@ -1626,7 +1630,7 @@ extension Rv_Data_API_v1_Stage_Response.GetLayouts: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.GetLayouts.Layout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.GetLayouts.Layout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.GetLayouts.protoMessageName + ".Layout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1660,7 +1664,7 @@ extension Rv_Data_API_v1_Stage_Response.GetLayouts.Layout: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.DeleteLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.DeleteLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".DeleteLayout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1679,7 +1683,7 @@ extension Rv_Data_API_v1_Stage_Response.DeleteLayout: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Stage_Response.GetLayoutThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Stage_Response.GetLayoutThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Stage_Response.protoMessageName + ".GetLayoutThumbnail"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}data\0")
 

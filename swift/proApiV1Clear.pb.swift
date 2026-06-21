@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_ClearGroup: Sendable {
+public nonisolated struct Rv_Data_API_v1_ClearGroup: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -56,7 +60,7 @@ public struct Rv_Data_API_v1_ClearGroup: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum API_v1_ClearGroupLayerType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum API_v1_ClearGroupLayerType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case music // = 0
     case audioEffects // = 1
@@ -120,7 +124,7 @@ public struct Rv_Data_API_v1_ClearGroup: Sendable {
   fileprivate var _tint: Rv_Data_API_v1_Color? = nil
 }
 
-public struct Rv_Data_API_v1_Clear_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Clear_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -201,7 +205,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case clearLayer_p(Rv_Data_API_v1_Clear_Request.ClearLayer)
     case createGroup(Rv_Data_API_v1_Clear_Request.CreateGroup)
     case getGroup(Rv_Data_API_v1_Clear_Request.GetGroup)
@@ -214,7 +218,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
 
   }
 
-  public struct ClearLayer: Sendable {
+  public nonisolated struct ClearLayer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -226,7 +230,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
     public init() {}
   }
 
-  public struct CreateGroup: Sendable {
+  public nonisolated struct CreateGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -247,7 +251,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
     fileprivate var _group: Rv_Data_API_v1_ClearGroup? = nil
   }
 
-  public struct GetGroup: Sendable {
+  public nonisolated struct GetGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -259,7 +263,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
     public init() {}
   }
 
-  public struct PutGroup: Sendable {
+  public nonisolated struct PutGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -282,7 +286,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
     fileprivate var _group: Rv_Data_API_v1_ClearGroup? = nil
   }
 
-  public struct GetGroupIcon: Sendable {
+  public nonisolated struct GetGroupIcon: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -294,7 +298,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
     public init() {}
   }
 
-  public struct PutGroupIcon: Sendable {
+  public nonisolated struct PutGroupIcon: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -310,7 +314,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
     public init() {}
   }
 
-  public struct DeleteGroup: Sendable {
+  public nonisolated struct DeleteGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -322,7 +326,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
     public init() {}
   }
 
-  public struct TriggerGroup: Sendable {
+  public nonisolated struct TriggerGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -334,7 +338,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
     public init() {}
   }
 
-  public struct GetGroups: Sendable {
+  public nonisolated struct GetGroups: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -347,7 +351,7 @@ public struct Rv_Data_API_v1_Clear_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Clear_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Clear_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -428,7 +432,7 @@ public struct Rv_Data_API_v1_Clear_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case clearLayer_p(Rv_Data_API_v1_Clear_Response.ClearLayer)
     case createGroup(Rv_Data_API_v1_Clear_Response.CreateGroup)
     case getGroup(Rv_Data_API_v1_Clear_Response.GetGroup)
@@ -441,7 +445,7 @@ public struct Rv_Data_API_v1_Clear_Response: Sendable {
 
   }
 
-  public struct ClearLayer: Sendable {
+  public nonisolated struct ClearLayer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -451,48 +455,7 @@ public struct Rv_Data_API_v1_Clear_Response: Sendable {
     public init() {}
   }
 
-  public struct PutGroup: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var group: Rv_Data_API_v1_ClearGroup {
-      get {_group ?? Rv_Data_API_v1_ClearGroup()}
-      set {_group = newValue}
-    }
-    /// Returns true if `group` has been explicitly set.
-    public var hasGroup: Bool {self._group != nil}
-    /// Clears the value of `group`. Subsequent reads from it will return its default value.
-    public mutating func clearGroup() {self._group = nil}
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-
-    fileprivate var _group: Rv_Data_API_v1_ClearGroup? = nil
-  }
-
-  public struct DeleteGroup: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct TriggerGroup: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct CreateGroup: Sendable {
+  public nonisolated struct PutGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -513,7 +476,27 @@ public struct Rv_Data_API_v1_Clear_Response: Sendable {
     fileprivate var _group: Rv_Data_API_v1_ClearGroup? = nil
   }
 
-  public struct GetGroup: Sendable {
+  public nonisolated struct DeleteGroup: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct TriggerGroup: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct CreateGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -534,7 +517,28 @@ public struct Rv_Data_API_v1_Clear_Response: Sendable {
     fileprivate var _group: Rv_Data_API_v1_ClearGroup? = nil
   }
 
-  public struct GetGroups: Sendable {
+  public nonisolated struct GetGroup: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var group: Rv_Data_API_v1_ClearGroup {
+      get {_group ?? Rv_Data_API_v1_ClearGroup()}
+      set {_group = newValue}
+    }
+    /// Returns true if `group` has been explicitly set.
+    public var hasGroup: Bool {self._group != nil}
+    /// Clears the value of `group`. Subsequent reads from it will return its default value.
+    public mutating func clearGroup() {self._group = nil}
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _group: Rv_Data_API_v1_ClearGroup? = nil
+  }
+
+  public nonisolated struct GetGroups: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -546,7 +550,7 @@ public struct Rv_Data_API_v1_Clear_Response: Sendable {
     public init() {}
   }
 
-  public struct GetGroupIcon: Sendable {
+  public nonisolated struct GetGroupIcon: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -560,7 +564,7 @@ public struct Rv_Data_API_v1_Clear_Response: Sendable {
     public init() {}
   }
 
-  public struct PutGroupIcon: Sendable {
+  public nonisolated struct PutGroupIcon: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -575,9 +579,9 @@ public struct Rv_Data_API_v1_Clear_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_ClearGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_ClearGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_ClearGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}icon\0\u{1}tint\0\u{1}layers\0\u{3}stop_timeline_announcements\0\u{3}stop_timeline_presentation\0\u{3}clear_next_presentation\0")
 
@@ -641,11 +645,11 @@ extension Rv_Data_API_v1_ClearGroup: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_API_v1_ClearGroup.API_v1_ClearGroupLayerType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_ClearGroup.API_v1_ClearGroupLayerType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0music\0\u{1}audio_effects\0\u{1}props\0\u{1}messages\0\u{1}announcements\0\u{1}presentation\0\u{1}presentation_media\0\u{1}video_input\0")
 }
 
-extension Rv_Data_API_v1_Clear_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Clear_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}clear_layer\0\u{3}create_group\0\u{3}get_group\0\u{3}put_group\0\u{3}get_group_icon\0\u{3}put_group_icon\0\u{3}delete_group\0\u{3}trigger_group\0\u{3}get_groups\0")
 
@@ -831,7 +835,7 @@ extension Rv_Data_API_v1_Clear_Request: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_API_v1_Clear_Request.ClearLayer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request.ClearLayer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Request.protoMessageName + ".ClearLayer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}layer\0")
 
@@ -861,7 +865,7 @@ extension Rv_Data_API_v1_Clear_Request.ClearLayer: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Clear_Request.CreateGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request.CreateGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Request.protoMessageName + ".CreateGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}group\0")
 
@@ -895,7 +899,7 @@ extension Rv_Data_API_v1_Clear_Request.CreateGroup: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Clear_Request.GetGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request.GetGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Request.protoMessageName + ".GetGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -925,7 +929,7 @@ extension Rv_Data_API_v1_Clear_Request.GetGroup: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Clear_Request.PutGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request.PutGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Request.protoMessageName + ".PutGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}group\0")
 
@@ -964,7 +968,7 @@ extension Rv_Data_API_v1_Clear_Request.PutGroup: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Clear_Request.GetGroupIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request.GetGroupIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Request.protoMessageName + ".GetGroupIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -994,7 +998,7 @@ extension Rv_Data_API_v1_Clear_Request.GetGroupIcon: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Clear_Request.PutGroupIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request.PutGroupIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Request.protoMessageName + ".PutGroupIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}content_type\0\u{1}icon\0")
 
@@ -1034,7 +1038,7 @@ extension Rv_Data_API_v1_Clear_Request.PutGroupIcon: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Clear_Request.DeleteGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request.DeleteGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Request.protoMessageName + ".DeleteGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1064,7 +1068,7 @@ extension Rv_Data_API_v1_Clear_Request.DeleteGroup: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Clear_Request.TriggerGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request.TriggerGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Request.protoMessageName + ".TriggerGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1094,7 +1098,7 @@ extension Rv_Data_API_v1_Clear_Request.TriggerGroup: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Clear_Request.GetGroups: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Request.GetGroups: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Request.protoMessageName + ".GetGroups"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1113,7 +1117,7 @@ extension Rv_Data_API_v1_Clear_Request.GetGroups: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Clear_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}clear_layer\0\u{3}create_group\0\u{3}get_group\0\u{3}put_group\0\u{3}delete_group\0\u{3}trigger_group\0\u{3}get_groups\0\u{3}get_group_icon\0\u{3}put_group_icon\0")
 
@@ -1299,7 +1303,7 @@ extension Rv_Data_API_v1_Clear_Response: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response.ClearLayer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response.ClearLayer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Response.protoMessageName + ".ClearLayer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1318,7 +1322,7 @@ extension Rv_Data_API_v1_Clear_Response.ClearLayer: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response.PutGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response.PutGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Response.protoMessageName + ".PutGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}group\0")
 
@@ -1352,7 +1356,7 @@ extension Rv_Data_API_v1_Clear_Response.PutGroup: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response.DeleteGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response.DeleteGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Response.protoMessageName + ".DeleteGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1371,7 +1375,7 @@ extension Rv_Data_API_v1_Clear_Response.DeleteGroup: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response.TriggerGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response.TriggerGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Response.protoMessageName + ".TriggerGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1390,7 +1394,7 @@ extension Rv_Data_API_v1_Clear_Response.TriggerGroup: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response.CreateGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response.CreateGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Response.protoMessageName + ".CreateGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}group\0")
 
@@ -1424,7 +1428,7 @@ extension Rv_Data_API_v1_Clear_Response.CreateGroup: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response.GetGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response.GetGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Response.protoMessageName + ".GetGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}group\0")
 
@@ -1458,7 +1462,7 @@ extension Rv_Data_API_v1_Clear_Response.GetGroup: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response.GetGroups: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response.GetGroups: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Response.protoMessageName + ".GetGroups"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}groups\0")
 
@@ -1488,7 +1492,7 @@ extension Rv_Data_API_v1_Clear_Response.GetGroups: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response.GetGroupIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response.GetGroupIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Response.protoMessageName + ".GetGroupIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}content_type\0\u{1}icon\0")
 
@@ -1523,7 +1527,7 @@ extension Rv_Data_API_v1_Clear_Response.GetGroupIcon: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Clear_Response.PutGroupIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Clear_Response.PutGroupIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Clear_Response.protoMessageName + ".PutGroupIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

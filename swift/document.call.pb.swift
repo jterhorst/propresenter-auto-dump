@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Document_Call_Error: Sendable {
+public nonisolated struct Document_Call_Error: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -32,7 +36,7 @@ public struct Document_Call_Error: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Code: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Code: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case UNRECOGNIZED(Int)
@@ -65,7 +69,7 @@ public struct Document_Call_Error: Sendable {
   public init() {}
 }
 
-public struct Document_Call_Patch: Sendable {
+public nonisolated struct Document_Call_Patch: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -76,7 +80,7 @@ public struct Document_Call_Patch: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -101,13 +105,13 @@ public struct Document_Call_Patch: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Document_Call_Patch.Result.Ok)
       case error(Document_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -123,7 +127,7 @@ public struct Document_Call_Patch: Sendable {
   public init() {}
 }
 
-public struct Document_Call_Load: Sendable {
+public nonisolated struct Document_Call_Load: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -134,7 +138,7 @@ public struct Document_Call_Load: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -159,13 +163,13 @@ public struct Document_Call_Load: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Document_Call_Load.Result.Ok)
       case error(Document_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -181,7 +185,7 @@ public struct Document_Call_Load: Sendable {
   public init() {}
 }
 
-public struct Document_Call_Add: Sendable {
+public nonisolated struct Document_Call_Add: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -196,7 +200,7 @@ public struct Document_Call_Add: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -221,13 +225,13 @@ public struct Document_Call_Add: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Document_Call_Add.Result.Ok)
       case error(Document_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -243,7 +247,7 @@ public struct Document_Call_Add: Sendable {
   public init() {}
 }
 
-public struct Document_Call_Remove: Sendable {
+public nonisolated struct Document_Call_Remove: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -254,7 +258,7 @@ public struct Document_Call_Remove: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -279,13 +283,13 @@ public struct Document_Call_Remove: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Document_Call_Remove.Result.Ok)
       case error(Document_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -301,7 +305,7 @@ public struct Document_Call_Remove: Sendable {
   public init() {}
 }
 
-public struct Document_Call_Relocate: Sendable {
+public nonisolated struct Document_Call_Relocate: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -314,7 +318,7 @@ public struct Document_Call_Relocate: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -339,13 +343,13 @@ public struct Document_Call_Relocate: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Document_Call_Relocate.Result.Ok)
       case error(Document_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -363,9 +367,9 @@ public struct Document_Call_Relocate: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "document.call"
+fileprivate nonisolated let _protobuf_package = "document.call"
 
-extension Document_Call_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Error"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}code\0\u{1}description\0")
 
@@ -400,11 +404,11 @@ extension Document_Call_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Document_Call_Error.Code: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Error.Code: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0")
 }
 
-extension Document_Call_Patch: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Patch: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Patch"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}patch\0")
 
@@ -439,7 +443,7 @@ extension Document_Call_Patch: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Document_Call_Patch.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Patch.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Patch.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -506,7 +510,7 @@ extension Document_Call_Patch.Result: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Document_Call_Patch.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Patch.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Patch.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -525,7 +529,7 @@ extension Document_Call_Patch.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Document_Call_Load: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Load: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Load"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}blob\0")
 
@@ -560,7 +564,7 @@ extension Document_Call_Load: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension Document_Call_Load.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Load.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Load.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -627,7 +631,7 @@ extension Document_Call_Load.Result: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Document_Call_Load.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Load.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Load.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -646,7 +650,7 @@ extension Document_Call_Load.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Document_Call_Add: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Add: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Add"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0\u{2}\u{8}data\0")
 
@@ -691,7 +695,7 @@ extension Document_Call_Add: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension Document_Call_Add.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Add.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Add.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -758,7 +762,7 @@ extension Document_Call_Add.Result: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Document_Call_Add.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Add.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Add.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -777,7 +781,7 @@ extension Document_Call_Add.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Document_Call_Remove: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Remove: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Remove"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0")
 
@@ -812,7 +816,7 @@ extension Document_Call_Remove: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Document_Call_Remove.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Remove.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Remove.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -879,7 +883,7 @@ extension Document_Call_Remove.Result: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Document_Call_Remove.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Remove.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Remove.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -898,7 +902,7 @@ extension Document_Call_Remove.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Document_Call_Relocate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Relocate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Relocate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
 
@@ -938,7 +942,7 @@ extension Document_Call_Relocate: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Document_Call_Relocate.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Relocate.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Relocate.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -1005,7 +1009,7 @@ extension Document_Call_Relocate.Result: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Document_Call_Relocate.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Document_Call_Relocate.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Call_Relocate.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_IdentificationOverlay: Sendable {
+public nonisolated struct Rv_Data_IdentificationOverlay: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -31,7 +31,7 @@ public struct Rv_Data_IdentificationOverlay: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Output: Sendable {
+  public nonisolated struct Output: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -56,7 +56,7 @@ public struct Rv_Data_IdentificationOverlay: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_LayerIdentificationOverlay: Sendable {
+public nonisolated struct Rv_Data_LayerIdentificationOverlay: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -67,7 +67,7 @@ public struct Rv_Data_LayerIdentificationOverlay: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Layer: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Layer: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case videoInput // = 0
     case media // = 1
@@ -120,7 +120,7 @@ public struct Rv_Data_LayerIdentificationOverlay: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_RenderLayer: Sendable {
+public nonisolated struct Rv_Data_RenderLayer: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -212,7 +212,7 @@ public struct Rv_Data_RenderLayer: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_LayerType: Equatable, Sendable {
+  public nonisolated enum OneOf_LayerType: Equatable, Sendable {
     case composite(Rv_Data_RenderLayer.Composite)
     case media(Rv_Data_Media)
     case cutOut(Rv_Data_Graphics.Text.CutOutFill)
@@ -224,7 +224,7 @@ public struct Rv_Data_RenderLayer: Sendable {
 
   }
 
-  public struct Composite: Sendable {
+  public nonisolated struct Composite: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -234,7 +234,7 @@ public struct Rv_Data_RenderLayer: Sendable {
     public init() {}
   }
 
-  public struct Scrolling: Sendable {
+  public nonisolated struct Scrolling: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -251,7 +251,7 @@ public struct Rv_Data_RenderLayer: Sendable {
   fileprivate var _bounds: Rv_Data_Graphics.Rect? = nil
 }
 
-public struct Rv_Data_SlideElement: Sendable {
+public nonisolated struct Rv_Data_SlideElement: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -287,6 +287,8 @@ public struct Rv_Data_SlideElement: Sendable {
 
   public var cookies: [Rv_Data_WebFillTokenAndCookies.Cookie] = []
 
+  public var forStageLayout: Bool = false
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -296,7 +298,7 @@ public struct Rv_Data_SlideElement: Sendable {
   fileprivate var _targetKey: Rv_Data_MusicKeyScale? = nil
 }
 
-public struct Rv_Data_SlidePreview: @unchecked Sendable {
+public nonisolated struct Rv_Data_SlidePreview: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -335,7 +337,7 @@ public struct Rv_Data_SlidePreview: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Data_MediaPreview: Sendable {
+public nonisolated struct Rv_Data_MediaPreview: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -368,9 +370,9 @@ public struct Rv_Data_MediaPreview: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_IdentificationOverlay: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_IdentificationOverlay: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".IdentificationOverlay"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}outputs\0\u{4}\u{2}screen_name\0")
 
@@ -405,7 +407,7 @@ extension Rv_Data_IdentificationOverlay: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_IdentificationOverlay.Output: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_IdentificationOverlay.Output: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_IdentificationOverlay.protoMessageName + ".Output"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}x\0\u{1}y\0\u{1}width\0\u{1}height\0\u{1}name\0\u{3}frame_rate\0")
 
@@ -460,7 +462,7 @@ extension Rv_Data_IdentificationOverlay.Output: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_LayerIdentificationOverlay: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_LayerIdentificationOverlay: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LayerIdentificationOverlay"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}layer\0\u{3}layer_name\0")
 
@@ -495,11 +497,11 @@ extension Rv_Data_LayerIdentificationOverlay: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_LayerIdentificationOverlay.Layer: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_LayerIdentificationOverlay.Layer: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LAYER_VIDEO_INPUT\0\u{1}LAYER_MEDIA\0\u{1}LAYER_PRESENTATION\0\u{1}LAYER_ANNOUNCEMENTS\0\u{1}LAYER_PROPS\0\u{1}LAYER_MESSAGES\0")
 }
 
-extension Rv_Data_RenderLayer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_RenderLayer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RenderLayer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}composite\0\u{1}media\0\u{3}cut_out\0\u{3}background_effect\0\u{3}output_screen\0\u{1}scrolling\0\u{3}slide_image\0\u{1}zone\0\u{1}bounds\0\u{3}flip_mode\0\u{1}rotation\0\u{3}build_index\0\u{3}build_out\0\u{3}build_out_index\0")
 
@@ -698,7 +700,7 @@ extension Rv_Data_RenderLayer: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Rv_Data_RenderLayer.Composite: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_RenderLayer.Composite: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_RenderLayer.protoMessageName + ".Composite"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -717,7 +719,7 @@ extension Rv_Data_RenderLayer.Composite: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_RenderLayer.Scrolling: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_RenderLayer.Scrolling: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_RenderLayer.protoMessageName + ".Scrolling"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}segment_size\0")
 
@@ -747,9 +749,9 @@ extension Rv_Data_RenderLayer.Scrolling: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_SlideElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_SlideElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SlideElement"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}element\0\u{3}build_index\0\u{3}base_key\0\u{3}target_key\0\u{1}cookies\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}element\0\u{3}build_index\0\u{3}base_key\0\u{3}target_key\0\u{1}cookies\0\u{3}for_stage_layout\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -762,6 +764,7 @@ extension Rv_Data_SlideElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
       case 3: try { try decoder.decodeSingularMessageField(value: &self._baseKey) }()
       case 4: try { try decoder.decodeSingularMessageField(value: &self._targetKey) }()
       case 5: try { try decoder.decodeRepeatedMessageField(value: &self.cookies) }()
+      case 6: try { try decoder.decodeSingularBoolField(value: &self.forStageLayout) }()
       default: break
       }
     }
@@ -787,6 +790,9 @@ extension Rv_Data_SlideElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     if !self.cookies.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.cookies, fieldNumber: 5)
     }
+    if self.forStageLayout != false {
+      try visitor.visitSingularBoolField(value: self.forStageLayout, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -796,12 +802,13 @@ extension Rv_Data_SlideElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     if lhs._baseKey != rhs._baseKey {return false}
     if lhs._targetKey != rhs._targetKey {return false}
     if lhs.cookies != rhs.cookies {return false}
+    if lhs.forStageLayout != rhs.forStageLayout {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Rv_Data_SlidePreview: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_SlidePreview: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SlidePreview"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}cue\0\u{1}element\0\u{1}background\0")
 
@@ -885,7 +892,7 @@ extension Rv_Data_SlidePreview: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_MediaPreview: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MediaPreview: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaPreview"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}action\0\u{1}media\0")
 

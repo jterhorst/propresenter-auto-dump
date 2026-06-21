@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Analytics_Event: Sendable {
+public nonisolated struct Rv_Analytics_Event: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1747,9 +1747,49 @@ public struct Rv_Analytics_Event: Sendable {
     set {interaction = .logWorkspaceResynchronized(newValue)}
   }
 
+  public var logWsConnectionFailed: Rv_Analytics_Sync_WebSocketConnectionFailed {
+    get {
+      if case .logWsConnectionFailed(let v)? = interaction {return v}
+      return Rv_Analytics_Sync_WebSocketConnectionFailed()
+    }
+    set {interaction = .logWsConnectionFailed(newValue)}
+  }
+
+  public var logError: Rv_Analytics_Logs_LogError {
+    get {
+      if case .logError(let v)? = interaction {return v}
+      return Rv_Analytics_Logs_LogError()
+    }
+    set {interaction = .logError(newValue)}
+  }
+
+  public var userWorkspaceTreeModification: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification {
+    get {
+      if case .userWorkspaceTreeModification(let v)? = interaction {return v}
+      return Rv_Analytics_Trackedevents_UserWorkspaceTreeModification()
+    }
+    set {interaction = .userWorkspaceTreeModification(newValue)}
+  }
+
+  public var uiActivationFlowOpened: Rv_Analytics_Ui_ActivationFlowOpened {
+    get {
+      if case .uiActivationFlowOpened(let v)? = interaction {return v}
+      return Rv_Analytics_Ui_ActivationFlowOpened()
+    }
+    set {interaction = .uiActivationFlowOpened(newValue)}
+  }
+
+  public var logOpenedWorkspace: Rv_Analytics_Logs_LogOpenedWorkspace {
+    get {
+      if case .logOpenedWorkspace(let v)? = interaction {return v}
+      return Rv_Analytics_Logs_LogOpenedWorkspace()
+    }
+    set {interaction = .logOpenedWorkspace(newValue)}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Interaction: Equatable, Sendable {
+  public nonisolated enum OneOf_Interaction: Equatable, Sendable {
     case apiMessageReceived(Rv_Analytics_Api_MessageReceived)
     case createLibrary(Rv_Analytics_Create_Library)
     case createPlaylist(Rv_Analytics_Create_Playlist)
@@ -1965,6 +2005,11 @@ public struct Rv_Analytics_Event: Sendable {
     case logDocumentDeleted(Rv_Analytics_Logs_LogDocumentDeleted)
     case logDocumentConflict(Rv_Analytics_Logs_LogDocumentConflict)
     case logWorkspaceResynchronized(Rv_Analytics_Logs_LogWorkspaceResynchronized)
+    case logWsConnectionFailed(Rv_Analytics_Sync_WebSocketConnectionFailed)
+    case logError(Rv_Analytics_Logs_LogError)
+    case userWorkspaceTreeModification(Rv_Analytics_Trackedevents_UserWorkspaceTreeModification)
+    case uiActivationFlowOpened(Rv_Analytics_Ui_ActivationFlowOpened)
+    case logOpenedWorkspace(Rv_Analytics_Logs_LogOpenedWorkspace)
 
   }
 
@@ -1973,11 +2018,11 @@ public struct Rv_Analytics_Event: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics"
+fileprivate nonisolated let _protobuf_package = "rv.analytics"
 
-extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Event"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}api_message_received\0\u{3}create_library\0\u{3}create_playlist\0\u{3}create_presentation\0\u{3}create_from_template_playlist\0\u{3}edit_presentation\0\u{3}import_songselect\0\u{3}import_multitracks\0\u{3}procontent_mediabin_view\0\u{3}procontent_download\0\u{3}procontent_download_retry\0\u{3}playback_marker\0\u{3}startup_looks\0\u{3}startup_screen_configuration\0\u{3}startup_screen_configuration_screen\0\u{3}startup_screen_configuration_single_screen\0\u{3}startup_screen_configuration_mirrored_screen\0\u{3}startup_screen_configuration_edge_blend_screen\0\u{3}startup_screen_configuration_grouped_screen\0\u{3}startup_preferences\0\u{3}startup_songselect\0\u{3}startup_content\0\u{3}startup_themes\0\u{3}startup_macro\0\u{3}startup_clear_group\0\u{3}startup_key_mapping\0\u{3}startup_multitracks\0\u{3}startup_network_link\0\u{3}startup_capture\0\u{3}startup_versioning\0\u{3}startup_disk_usage\0\u{3}startup_interface\0\u{3}sync_local\0\u{3}timecode_activate\0\u{3}timecode_startup\0\u{3}timeline_action\0\u{3}timeline_record_cue\0\u{3}timeline_cue_trigger\0\u{4}\u{c}application_launch\0\u{3}video_input_triggered\0\u{3}video_input_custom_map\0\u{3}video_input_start_up\0\u{3}video_input_thumbnail_update\0\u{3}audio_input_auto_on_change\0\u{3}audio_settings_sdi_ndi_active\0\u{3}audio_settings_custom_map\0\u{3}audio_input_mode_selection\0\u{3}audio_input_auto_on_startup\0\u{3}audio_settings_sdi_ndi_state\0\u{3}audio_input_start_up\0\u{3}cue_triggered\0\u{3}input_audio_monitoring\0\u{3}resi_start_up\0\u{3}resi_login_change\0\u{3}remote_stream_start\0\u{3}remote_stream_stop\0\u{3}start_capture_disk\0\u{3}start_capture_rtmp\0\u{3}start_capture_resi\0\u{3}stop_capture\0\u{3}analytic_reset\0\u{1}print\0\u{1}device\0\u{1}downgrade\0\u{3}ccli_report\0\u{3}transition_window\0\u{3}editor_object_added\0\u{3}data_id_duplicated\0\u{3}force_quit\0\u{3}media_cleanup_size\0\u{3}network_app\0\u{3}local_workspace_stats\0\u{3}syncing_unpaused\0\u{4}\u{10}trigger_action_capture_start\0\u{3}trigger_action_capture_stop\0\u{3}trigger_action_clear\0\u{3}trigger_action_clear_group\0\u{3}trigger_action_communications\0\u{3}trigger_action_look\0\u{3}trigger_action_macro\0\u{3}trigger_action_message\0\u{3}trigger_action_prop\0\u{3}trigger_action_slide_destination\0\u{3}trigger_action_stage\0\u{3}trigger_action_timer\0\u{3}trigger_media_audio\0\u{3}trigger_media_image\0\u{3}trigger_media_video_input\0\u{3}trigger_media_video\0\u{3}trigger_cue_slide\0\u{3}trigger_cue_slide_file_feed_element\0\u{3}trigger_cue_slide_rss_feed_element\0\u{3}trigger_cue_slide_scrolling_text_element\0\u{3}trigger_test_pattern\0\u{3}trigger_media_aircast_video\0\u{3}trigger_media_aircast_audio\0\u{3}aircast_video_input_configured\0\u{3}aircast_audio_input_configured\0\u{4}\u{10}media_management_installation_complete\0\u{3}media_management_bootstrapping_complete\0\u{3}media_management_message_failure\0\u{3}media_management_unexpectedly_not_running\0\u{3}media_management_connection_changed\0\u{3}media_management_added_media_reference\0\u{3}media_management_not_responding\0\u{4}6ui_quicksearch\0\u{3}ui_quicksearch_search\0\u{3}ui_quicksearch_openitems\0\u{3}ui_toolbar_theme\0\u{3}ui_toolbar_theme_application\0\u{3}ui_mainview_show\0\u{3}ui_mainview_presentation_editor\0\u{3}ui_mainview_reflow\0\u{3}ui_mainview_bible\0\u{3}bible_trigger\0\u{3}bible_generate_slides\0\u{3}bible_generate_next\0\u{3}bible_generate_previous\0\u{3}bible_save_slides\0\u{3}bible_lookup\0\u{3}bible_startup\0\u{3}bible_remove\0\u{3}bible_install\0\u{3}ui_mainview_mask_editor\0\u{3}ui_mainview_stage_editor\0\u{3}ui_mainview_theme_editor\0\u{3}ui_mainview_copyright_editor\0\u{3}ui_mainview_props_editor\0\u{3}ui_lowerright_timers\0\u{3}ui_lowerright_timers_collapse\0\u{3}ui_lowerright_timers_edit\0\u{3}ui_lowerright_timers_state\0\u{3}ui_lowerright_timers_create\0\u{3}ui_lowerright_timers_delete\0\u{3}ui_lowerright_messages\0\u{3}ui_lowerright_messages_edit\0\u{3}ui_lowerright_messages_state\0\u{3}ui_lowerright_messages_create\0\u{3}ui_lowerright_messages_delete\0\u{3}ui_lowerright_props\0\u{3}ui_lowerright_props_transition\0\u{3}ui_lowerright_props_create\0\u{3}ui_lowerright_props_delete\0\u{3}ui_lowerright_props_state\0\u{3}ui_lowerright_stage\0\u{3}ui_lowerright_stage_changelayout\0\u{3}ui_lowerright_stage_messagestate\0\u{3}ui_lowerright_stage_configurescreens\0\u{3}ui_lowerright_stage_editlayouts\0\u{3}ui_lowerright_macros\0\u{3}ui_lowerright_macros_trigger\0\u{3}ui_lowerright_macros_create\0\u{3}ui_lowerright_macros_delete\0\u{3}ui_textinspector\0\u{3}ui_textinspector_scrolling_text\0\u{3}ui_textinspector_foreground\0\u{3}ui_textinspector_underline_color\0\u{3}ui_textinspector_background_color\0\u{3}ui_textinspector_line_transform\0\u{3}ui_show_slide_label\0\u{3}ui_show_slide_label_change\0\u{4}\u{3}ui_editor_overlay_shown\0\u{3}ui_editor_overlay_closed\0\u{3}ui_whats_new_viewed\0\u{3}ui_clear_groups\0\u{3}ui_clear_groups_create\0\u{3}ui_clear_groups_delete\0\u{3}ui_clear_groups_change_visibility\0\u{3}ui_clear_groups_change_icon\0\u{3}ui_preview_area_clear_groups_trigger\0\u{3}ui_preview_area_clear_groups_changed\0\u{3}ui_placeholder_link\0\u{3}ui_placeholder_unlink\0\u{3}ui_planningCenterLive\0\u{3}ui_networkgroup_add\0\u{3}ui_networkgroup_remove\0\u{3}ui_ccli_report_reset\0\u{3}ui_ccli_report_shown\0\u{3}ui_capture_shown\0\u{3}ui_welcome\0\u{3}ui_welcome_screen_configuration_help\0\u{3}ui_welcome_download_sample_content\0\u{3}ui_welcome_user_group\0\u{3}ui_welcome_tutorials\0\u{3}ui_testPatterns\0\u{3}ui_settings_customLogo\0\u{3}ui_networkgroup_leave\0\u{3}ui_welcome_knowlegdeBase\0\u{3}ui_welcome_blog\0\u{3}ui_welcome_facebook\0\u{3}ui_welcome_instagram\0\u{3}ui_welcome_migration\0\u{3}ui_windowed_output_created\0\u{3}import_powerpoint\0\u{3}library_usage\0\u{3}font_replacement\0\u{3}log_document_uploaded\0\u{3}log_document_downloaded\0\u{3}log_diff_pushed\0\u{3}log_diff_received\0\u{3}trigger_external_presentation\0\u{3}workspace_creation\0\u{3}available_workspace\0\u{3}onboarding_flow_outcome\0\u{3}log_workspaces_published\0\u{3}log_collaborators_published\0\u{3}log_convert_to_cloud\0\u{3}log_convert_to_local\0\u{3}log_syncing_change\0\u{3}log_document_stored\0\u{3}log_document_created\0\u{3}log_document_updated\0\u{3}log_document_deleted\0\u{3}log_document_conflict\0\u{3}log_workspace_resynchronized\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}api_message_received\0\u{3}create_library\0\u{3}create_playlist\0\u{3}create_presentation\0\u{3}create_from_template_playlist\0\u{3}edit_presentation\0\u{3}import_songselect\0\u{3}import_multitracks\0\u{3}procontent_mediabin_view\0\u{3}procontent_download\0\u{3}procontent_download_retry\0\u{3}playback_marker\0\u{3}startup_looks\0\u{3}startup_screen_configuration\0\u{3}startup_screen_configuration_screen\0\u{3}startup_screen_configuration_single_screen\0\u{3}startup_screen_configuration_mirrored_screen\0\u{3}startup_screen_configuration_edge_blend_screen\0\u{3}startup_screen_configuration_grouped_screen\0\u{3}startup_preferences\0\u{3}startup_songselect\0\u{3}startup_content\0\u{3}startup_themes\0\u{3}startup_macro\0\u{3}startup_clear_group\0\u{3}startup_key_mapping\0\u{3}startup_multitracks\0\u{3}startup_network_link\0\u{3}startup_capture\0\u{3}startup_versioning\0\u{3}startup_disk_usage\0\u{3}startup_interface\0\u{3}sync_local\0\u{3}timecode_activate\0\u{3}timecode_startup\0\u{3}timeline_action\0\u{3}timeline_record_cue\0\u{3}timeline_cue_trigger\0\u{4}\u{c}application_launch\0\u{3}video_input_triggered\0\u{3}video_input_custom_map\0\u{3}video_input_start_up\0\u{3}video_input_thumbnail_update\0\u{3}audio_input_auto_on_change\0\u{3}audio_settings_sdi_ndi_active\0\u{3}audio_settings_custom_map\0\u{3}audio_input_mode_selection\0\u{3}audio_input_auto_on_startup\0\u{3}audio_settings_sdi_ndi_state\0\u{3}audio_input_start_up\0\u{3}cue_triggered\0\u{3}input_audio_monitoring\0\u{3}resi_start_up\0\u{3}resi_login_change\0\u{3}remote_stream_start\0\u{3}remote_stream_stop\0\u{3}start_capture_disk\0\u{3}start_capture_rtmp\0\u{3}start_capture_resi\0\u{3}stop_capture\0\u{3}analytic_reset\0\u{1}print\0\u{1}device\0\u{1}downgrade\0\u{3}ccli_report\0\u{3}transition_window\0\u{3}editor_object_added\0\u{3}data_id_duplicated\0\u{3}force_quit\0\u{3}media_cleanup_size\0\u{3}network_app\0\u{3}local_workspace_stats\0\u{3}syncing_unpaused\0\u{4}\u{10}trigger_action_capture_start\0\u{3}trigger_action_capture_stop\0\u{3}trigger_action_clear\0\u{3}trigger_action_clear_group\0\u{3}trigger_action_communications\0\u{3}trigger_action_look\0\u{3}trigger_action_macro\0\u{3}trigger_action_message\0\u{3}trigger_action_prop\0\u{3}trigger_action_slide_destination\0\u{3}trigger_action_stage\0\u{3}trigger_action_timer\0\u{3}trigger_media_audio\0\u{3}trigger_media_image\0\u{3}trigger_media_video_input\0\u{3}trigger_media_video\0\u{3}trigger_cue_slide\0\u{3}trigger_cue_slide_file_feed_element\0\u{3}trigger_cue_slide_rss_feed_element\0\u{3}trigger_cue_slide_scrolling_text_element\0\u{3}trigger_test_pattern\0\u{3}trigger_media_aircast_video\0\u{3}trigger_media_aircast_audio\0\u{3}aircast_video_input_configured\0\u{3}aircast_audio_input_configured\0\u{4}\u{10}media_management_installation_complete\0\u{3}media_management_bootstrapping_complete\0\u{3}media_management_message_failure\0\u{3}media_management_unexpectedly_not_running\0\u{3}media_management_connection_changed\0\u{3}media_management_added_media_reference\0\u{3}media_management_not_responding\0\u{4}6ui_quicksearch\0\u{3}ui_quicksearch_search\0\u{3}ui_quicksearch_openitems\0\u{3}ui_toolbar_theme\0\u{3}ui_toolbar_theme_application\0\u{3}ui_mainview_show\0\u{3}ui_mainview_presentation_editor\0\u{3}ui_mainview_reflow\0\u{3}ui_mainview_bible\0\u{3}bible_trigger\0\u{3}bible_generate_slides\0\u{3}bible_generate_next\0\u{3}bible_generate_previous\0\u{3}bible_save_slides\0\u{3}bible_lookup\0\u{3}bible_startup\0\u{3}bible_remove\0\u{3}bible_install\0\u{3}ui_mainview_mask_editor\0\u{3}ui_mainview_stage_editor\0\u{3}ui_mainview_theme_editor\0\u{3}ui_mainview_copyright_editor\0\u{3}ui_mainview_props_editor\0\u{3}ui_lowerright_timers\0\u{3}ui_lowerright_timers_collapse\0\u{3}ui_lowerright_timers_edit\0\u{3}ui_lowerright_timers_state\0\u{3}ui_lowerright_timers_create\0\u{3}ui_lowerright_timers_delete\0\u{3}ui_lowerright_messages\0\u{3}ui_lowerright_messages_edit\0\u{3}ui_lowerright_messages_state\0\u{3}ui_lowerright_messages_create\0\u{3}ui_lowerright_messages_delete\0\u{3}ui_lowerright_props\0\u{3}ui_lowerright_props_transition\0\u{3}ui_lowerright_props_create\0\u{3}ui_lowerright_props_delete\0\u{3}ui_lowerright_props_state\0\u{3}ui_lowerright_stage\0\u{3}ui_lowerright_stage_changelayout\0\u{3}ui_lowerright_stage_messagestate\0\u{3}ui_lowerright_stage_configurescreens\0\u{3}ui_lowerright_stage_editlayouts\0\u{3}ui_lowerright_macros\0\u{3}ui_lowerright_macros_trigger\0\u{3}ui_lowerright_macros_create\0\u{3}ui_lowerright_macros_delete\0\u{3}ui_textinspector\0\u{3}ui_textinspector_scrolling_text\0\u{3}ui_textinspector_foreground\0\u{3}ui_textinspector_underline_color\0\u{3}ui_textinspector_background_color\0\u{3}ui_textinspector_line_transform\0\u{3}ui_show_slide_label\0\u{3}ui_show_slide_label_change\0\u{4}\u{3}ui_editor_overlay_shown\0\u{3}ui_editor_overlay_closed\0\u{3}ui_whats_new_viewed\0\u{3}ui_clear_groups\0\u{3}ui_clear_groups_create\0\u{3}ui_clear_groups_delete\0\u{3}ui_clear_groups_change_visibility\0\u{3}ui_clear_groups_change_icon\0\u{3}ui_preview_area_clear_groups_trigger\0\u{3}ui_preview_area_clear_groups_changed\0\u{3}ui_placeholder_link\0\u{3}ui_placeholder_unlink\0\u{3}ui_planningCenterLive\0\u{3}ui_networkgroup_add\0\u{3}ui_networkgroup_remove\0\u{3}ui_ccli_report_reset\0\u{3}ui_ccli_report_shown\0\u{3}ui_capture_shown\0\u{3}ui_welcome\0\u{3}ui_welcome_screen_configuration_help\0\u{3}ui_welcome_download_sample_content\0\u{3}ui_welcome_user_group\0\u{3}ui_welcome_tutorials\0\u{3}ui_testPatterns\0\u{3}ui_settings_customLogo\0\u{3}ui_networkgroup_leave\0\u{3}ui_welcome_knowlegdeBase\0\u{3}ui_welcome_blog\0\u{3}ui_welcome_facebook\0\u{3}ui_welcome_instagram\0\u{3}ui_welcome_migration\0\u{3}ui_windowed_output_created\0\u{3}import_powerpoint\0\u{3}library_usage\0\u{3}font_replacement\0\u{3}log_document_uploaded\0\u{3}log_document_downloaded\0\u{3}log_diff_pushed\0\u{3}log_diff_received\0\u{3}trigger_external_presentation\0\u{3}workspace_creation\0\u{3}available_workspace\0\u{3}onboarding_flow_outcome\0\u{3}log_workspaces_published\0\u{3}log_collaborators_published\0\u{3}log_convert_to_cloud\0\u{3}log_convert_to_local\0\u{3}log_syncing_change\0\u{3}log_document_stored\0\u{3}log_document_created\0\u{3}log_document_updated\0\u{3}log_document_deleted\0\u{3}log_document_conflict\0\u{3}log_workspace_resynchronized\0\u{3}log_ws_connection_failed\0\u{3}log_error\0\u{3}user_workspace_tree_modification\0\u{3}ui_activation_flow_opened\0\u{3}log_opened_workspace\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -4780,6 +4825,71 @@ extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
           self.interaction = .logWorkspaceResynchronized(v)
         }
       }()
+      case 312: try {
+        var v: Rv_Analytics_Sync_WebSocketConnectionFailed?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .logWsConnectionFailed(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .logWsConnectionFailed(v)
+        }
+      }()
+      case 313: try {
+        var v: Rv_Analytics_Logs_LogError?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .logError(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .logError(v)
+        }
+      }()
+      case 314: try {
+        var v: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .userWorkspaceTreeModification(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .userWorkspaceTreeModification(v)
+        }
+      }()
+      case 315: try {
+        var v: Rv_Analytics_Ui_ActivationFlowOpened?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .uiActivationFlowOpened(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .uiActivationFlowOpened(v)
+        }
+      }()
+      case 316: try {
+        var v: Rv_Analytics_Logs_LogOpenedWorkspace?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .logOpenedWorkspace(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .logOpenedWorkspace(v)
+        }
+      }()
       default: break
       }
     }
@@ -5650,6 +5760,26 @@ extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     case .logWorkspaceResynchronized?: try {
       guard case .logWorkspaceResynchronized(let v)? = self.interaction else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 311)
+    }()
+    case .logWsConnectionFailed?: try {
+      guard case .logWsConnectionFailed(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 312)
+    }()
+    case .logError?: try {
+      guard case .logError(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 313)
+    }()
+    case .userWorkspaceTreeModification?: try {
+      guard case .userWorkspaceTreeModification(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 314)
+    }()
+    case .uiActivationFlowOpened?: try {
+      guard case .uiActivationFlowOpened(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 315)
+    }()
+    case .logOpenedWorkspace?: try {
+      guard case .logOpenedWorkspace(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 316)
     }()
     case nil: break
     }

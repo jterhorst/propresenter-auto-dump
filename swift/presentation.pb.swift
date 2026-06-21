@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Presentation: @unchecked Sendable {
+public nonisolated struct Rv_Data_Presentation: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -198,12 +202,12 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_SlideShow: Equatable, Sendable {
+  public nonisolated enum OneOf_SlideShow: Equatable, Sendable {
     case slideShowDuration(Double)
 
   }
 
-  public struct CCLI: Sendable {
+  public nonisolated struct CCLI: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -231,7 +235,7 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
     public init() {}
   }
 
-  public struct BibleReference: Sendable {
+  public nonisolated struct BibleReference: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -274,7 +278,7 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
     fileprivate var _verseRange: Rv_Data_IntRange? = nil
   }
 
-  public struct Timeline: Sendable {
+  public nonisolated struct Timeline: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -302,7 +306,7 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Cue: Sendable {
+    public nonisolated struct Cue: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -331,7 +335,7 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_TriggerInfo: Equatable, Sendable {
+      public nonisolated enum OneOf_TriggerInfo: Equatable, Sendable {
         case cueID(Rv_Data_UUID)
         case action(Rv_Data_Action)
 
@@ -345,7 +349,7 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
     fileprivate var _audioAction: Rv_Data_Action? = nil
   }
 
-  public struct Arrangement: Sendable {
+  public nonisolated struct Arrangement: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -370,7 +374,7 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
     fileprivate var _uuid: Rv_Data_UUID? = nil
   }
 
-  public struct CueGroup: Sendable {
+  public nonisolated struct CueGroup: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -393,7 +397,7 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
     fileprivate var _group: Rv_Data_Group? = nil
   }
 
-  public struct MultiTracksLicensing: Sendable {
+  public nonisolated struct MultiTracksLicensing: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -424,7 +428,7 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Subscription: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Subscription: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case chartPro // = 0
       case slidePro // = 1
@@ -464,7 +468,7 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
     fileprivate var _licenseExpiration: Rv_Data_Timestamp? = nil
   }
 
-  public struct Music: Sendable {
+  public nonisolated struct Music: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -506,9 +510,9 @@ public struct Rv_Data_Presentation: @unchecked Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Presentation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}uuid\0\u{1}name\0\u{3}last_date_used\0\u{3}last_modified_date\0\u{1}category\0\u{1}notes\0\u{1}background\0\u{3}chord_chart\0\u{3}selected_arrangement\0\u{1}arrangements\0\u{3}cue_groups\0\u{1}cues\0\u{1}ccli\0\u{3}bible_reference\0\u{2}\u{2}timeline\0\u{1}transition\0\u{3}content_destination\0\u{3}slide_show_duration\0\u{3}multi_tracks_licensing\0\u{3}music_key\0\u{1}music\0")
 
@@ -732,7 +736,7 @@ extension Rv_Data_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_Presentation.CCLI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation.CCLI: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".CCLI"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}author\0\u{3}artist_credits\0\u{3}song_title\0\u{1}publisher\0\u{3}copyright_year\0\u{3}song_number\0\u{1}display\0\u{1}album\0\u{1}artwork\0")
 
@@ -802,7 +806,7 @@ extension Rv_Data_Presentation.CCLI: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_Presentation.BibleReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation.BibleReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".BibleReference"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}book_index\0\u{3}book_name\0\u{3}chapter_range\0\u{3}verse_range\0\u{3}translation_name\0\u{3}translation_display_abbreviation\0\u{3}translation_internal_abbreviation\0\u{3}book_key\0")
 
@@ -871,7 +875,7 @@ extension Rv_Data_Presentation.BibleReference: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_Presentation.Timeline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation.Timeline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".Timeline"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}cues\0\u{2}\u{4}duration\0\u{1}loop\0\u{4}\u{2}audio_action\0\u{3}timecode_enable\0\u{3}timecode_offset\0\u{3}cues_v2\0")
 
@@ -935,7 +939,7 @@ extension Rv_Data_Presentation.Timeline: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_Presentation.Timeline.Cue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation.Timeline.Cue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.Timeline.protoMessageName + ".Cue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}trigger_time\0\u{3}cue_id\0\u{1}name\0\u{1}action\0")
 
@@ -1007,7 +1011,7 @@ extension Rv_Data_Presentation.Timeline.Cue: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Presentation.Arrangement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation.Arrangement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".Arrangement"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{3}group_identifiers\0")
 
@@ -1051,7 +1055,7 @@ extension Rv_Data_Presentation.Arrangement: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Presentation.CueGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation.CueGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".CueGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}group\0\u{3}cue_identifiers\0")
 
@@ -1090,7 +1094,7 @@ extension Rv_Data_Presentation.CueGroup: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_Presentation.MultiTracksLicensing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation.MultiTracksLicensing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".MultiTracksLicensing"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}song_identifier\0\u{3}customer_identifier\0\u{3}expiration_date\0\u{3}license_expiration\0\u{1}subscription\0")
 
@@ -1144,11 +1148,11 @@ extension Rv_Data_Presentation.MultiTracksLicensing: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_Presentation.MultiTracksLicensing.Subscription: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation.MultiTracksLicensing.Subscription: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SUBSCRIPTION_CHART_PRO\0\u{1}SUBSCRIPTION_SLIDE_PRO\0")
 }
 
-extension Rv_Data_Presentation.Music: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Presentation.Music: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".Music"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}original_music_key\0\u{3}user_music_key\0\u{1}original\0\u{1}user\0")
 

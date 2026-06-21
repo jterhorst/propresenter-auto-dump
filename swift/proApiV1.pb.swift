@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_NetworkAPI_v1: Sendable {
+public nonisolated struct Rv_Data_NetworkAPI_v1: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -37,12 +37,12 @@ public struct Rv_Data_NetworkAPI_v1: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Command: Equatable, Sendable {
+  public nonisolated enum OneOf_Command: Equatable, Sendable {
     case action(Rv_Data_NetworkAPI_v1.Action)
 
   }
 
-  public struct Action: @unchecked Sendable {
+  public nonisolated struct Action: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -464,7 +464,7 @@ public struct Rv_Data_NetworkAPI_v1: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Request: Equatable, Sendable {
+    public nonisolated enum OneOf_Request: Equatable, Sendable {
       case audioRequest(Rv_Data_API_v1_Audio_Request)
       case captureRequest(Rv_Data_API_v1_Capture_Request)
       case clearingRequest(Rv_Data_API_v1_Clear_Request)
@@ -492,7 +492,7 @@ public struct Rv_Data_NetworkAPI_v1: Sendable {
 
     }
 
-    public enum OneOf_Response: Equatable, Sendable {
+    public nonisolated enum OneOf_Response: Equatable, Sendable {
       case audioResponse(Rv_Data_API_v1_Audio_Response)
       case captureResponse(Rv_Data_API_v1_Capture_Response)
       case clearingResponse(Rv_Data_API_v1_Clear_Response)
@@ -521,7 +521,7 @@ public struct Rv_Data_NetworkAPI_v1: Sendable {
 
     }
 
-    public enum OneOf_StreamingUpdateIdentifier: Equatable, Sendable {
+    public nonisolated enum OneOf_StreamingUpdateIdentifier: Equatable, Sendable {
       case updateIdentifier(String)
 
     }
@@ -536,9 +536,9 @@ public struct Rv_Data_NetworkAPI_v1: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_NetworkAPI_v1: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_NetworkAPI_v1: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NetworkAPI_v1"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}action\0")
 
@@ -584,7 +584,7 @@ extension Rv_Data_NetworkAPI_v1: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_NetworkAPI_v1.Action: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_NetworkAPI_v1.Action: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_NetworkAPI_v1.protoMessageName + ".Action"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}audio_request\0\u{3}capture_request\0\u{3}clearing_request\0\u{3}groups_request\0\u{3}link_request\0\u{3}library_request\0\u{3}looks_request\0\u{3}macro_request\0\u{3}masks_request\0\u{3}media_request\0\u{3}message_request\0\u{3}miscellaneous_request\0\u{3}playlist_request\0\u{3}preroll_request\0\u{3}presentation_request\0\u{3}prop_request\0\u{3}stage_request\0\u{3}status_request\0\u{3}theme_request\0\u{3}timer_request\0\u{3}transport_request\0\u{3}trigger_request\0\u{3}video_inputs_request\0\u{3}announcement_request\0\u{4}M\u{1}audio_response\0\u{3}capture_response\0\u{3}clearing_response\0\u{3}groups_response\0\u{3}link_response\0\u{3}library_response\0\u{3}looks_response\0\u{3}macro_response\0\u{3}masks_response\0\u{3}media_response\0\u{3}message_response\0\u{3}miscellaneous_response\0\u{3}playlist_response\0\u{3}preroll_response\0\u{3}presentation_response\0\u{3}prop_response\0\u{3}stage_response\0\u{3}status_response\0\u{3}theme_response\0\u{3}timer_response\0\u{3}transport_response\0\u{3}trigger_response\0\u{3}video_inputs_response\0\u{3}announcement_response\0\u{4}L\u{1}error_response\0\u{3}update_identifier\0")
 

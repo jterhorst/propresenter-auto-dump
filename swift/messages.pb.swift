@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Message: Sendable {
+public nonisolated struct Rv_Data_Message: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -59,7 +59,7 @@ public struct Rv_Data_Message: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ClearType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ClearType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case manual // = 0
     case afterTime // = 1
@@ -97,7 +97,7 @@ public struct Rv_Data_Message: Sendable {
 
   }
 
-  public struct Token: Sendable {
+  public nonisolated struct Token: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -139,14 +139,14 @@ public struct Rv_Data_Message: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_TokenType: Equatable, Sendable {
+    public nonisolated enum OneOf_TokenType: Equatable, Sendable {
       case text(Rv_Data_Message.Token.TokenTypeText)
       case timer(Rv_Data_Message.Token.TokenTypeTimer)
       case clock(Rv_Data_Message.Token.TokenTypeClock)
 
     }
 
-    public struct TokenTypeText: Sendable {
+    public nonisolated struct TokenTypeText: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -158,7 +158,7 @@ public struct Rv_Data_Message: Sendable {
       public init() {}
     }
 
-    public struct TokenTypeTimer: Sendable {
+    public nonisolated struct TokenTypeTimer: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -181,7 +181,7 @@ public struct Rv_Data_Message: Sendable {
       fileprivate var _timerUuid: Rv_Data_UUID? = nil
     }
 
-    public struct TokenTypeClock: Sendable {
+    public nonisolated struct TokenTypeClock: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -196,7 +196,7 @@ public struct Rv_Data_Message: Sendable {
     fileprivate var _uuid: Rv_Data_UUID? = nil
   }
 
-  public struct TokenValue: Sendable {
+  public nonisolated struct TokenValue: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -240,14 +240,14 @@ public struct Rv_Data_Message: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_TokenValueType: Equatable, Sendable {
+    public nonisolated enum OneOf_TokenValueType: Equatable, Sendable {
       case text(Rv_Data_Message.TokenValue.TokenValueText)
       case timer(Rv_Data_Message.TokenValue.TokenValueTimer)
       case clock(Rv_Data_Message.TokenValue.TokenValueClock)
 
     }
 
-    public struct TokenValueText: Sendable {
+    public nonisolated struct TokenValueText: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -259,7 +259,7 @@ public struct Rv_Data_Message: Sendable {
       public init() {}
     }
 
-    public struct TokenValueTimer: Sendable {
+    public nonisolated struct TokenValueTimer: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -290,7 +290,7 @@ public struct Rv_Data_Message: Sendable {
       fileprivate var _format: Rv_Data_Timer.Format? = nil
     }
 
-    public struct TokenValueClock: Sendable {
+    public nonisolated struct TokenValueClock: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -322,7 +322,7 @@ public struct Rv_Data_Message: Sendable {
   fileprivate var _template: Rv_Data_TemplateIdentification? = nil
 }
 
-public struct Rv_Data_MessageDocument: Sendable {
+public nonisolated struct Rv_Data_MessageDocument: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -345,11 +345,46 @@ public struct Rv_Data_MessageDocument: Sendable {
   fileprivate var _applicationInfo: Rv_Data_ApplicationInfo? = nil
 }
 
+public nonisolated struct Rv_Data_LocalMessage: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var uuid: Rv_Data_UUID {
+    get {_uuid ?? Rv_Data_UUID()}
+    set {_uuid = newValue}
+  }
+  /// Returns true if `uuid` has been explicitly set.
+  public var hasUuid: Bool {self._uuid != nil}
+  /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
+  public mutating func clearUuid() {self._uuid = nil}
+
+  public var tokenValues: [Rv_Data_Message.TokenValue] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _uuid: Rv_Data_UUID? = nil
+}
+
+public nonisolated struct Rv_Data_MessageLocalDocument: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var messages: [Rv_Data_LocalMessage] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Message"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}title\0\u{3}time_to_remove\0\u{3}visible_on_network\0\u{2}\u{2}template\0\u{4}\u{3}clear_type\0\u{3}message_text\0\u{1}tokens\0\u{3}token_values\0")
 
@@ -423,11 +458,11 @@ extension Rv_Data_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   }
 }
 
-extension Rv_Data_Message.ClearType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message.ClearType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CLEAR_TYPE_MANUAL\0\u{1}CLEAR_TYPE_AFTER_TIME\0\u{1}CLEAR_TYPE_AFTER_TIMERS\0")
 }
 
-extension Rv_Data_Message.Token: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message.Token: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Message.protoMessageName + ".Token"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}text\0\u{1}timer\0\u{1}clock\0")
 
@@ -516,7 +551,7 @@ extension Rv_Data_Message.Token: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_Message.Token.TokenTypeText: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message.Token.TokenTypeText: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Message.Token.protoMessageName + ".TokenTypeText"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0")
 
@@ -546,7 +581,7 @@ extension Rv_Data_Message.Token.TokenTypeText: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_Message.Token.TokenTypeTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message.Token.TokenTypeTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Message.Token.protoMessageName + ".TokenTypeTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{3}timer_uuid\0")
 
@@ -585,7 +620,7 @@ extension Rv_Data_Message.Token.TokenTypeTimer: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_Message.Token.TokenTypeClock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message.Token.TokenTypeClock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Message.Token.protoMessageName + ".TokenTypeClock"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -604,7 +639,7 @@ extension Rv_Data_Message.Token.TokenTypeClock: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_Message.TokenValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message.TokenValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Message.protoMessageName + ".TokenValue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}token_id\0\u{1}text\0\u{1}timer\0\u{1}clock\0\u{3}token_name\0")
 
@@ -698,7 +733,7 @@ extension Rv_Data_Message.TokenValue: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_Message.TokenValue.TokenValueText: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message.TokenValue.TokenValueText: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Message.TokenValue.protoMessageName + ".TokenValueText"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}value\0")
 
@@ -728,7 +763,7 @@ extension Rv_Data_Message.TokenValue.TokenValueText: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_Message.TokenValue.TokenValueTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message.TokenValue.TokenValueTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Message.TokenValue.protoMessageName + ".TokenValueTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}configuration\0\u{1}format\0")
 
@@ -767,7 +802,7 @@ extension Rv_Data_Message.TokenValue.TokenValueTimer: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_Message.TokenValue.TokenValueClock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Message.TokenValue.TokenValueClock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Message.TokenValue.protoMessageName + ".TokenValueClock"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}format\0")
 
@@ -801,7 +836,7 @@ extension Rv_Data_Message.TokenValue.TokenValueClock: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_MessageDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MessageDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MessageDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}messages\0")
 
@@ -834,6 +869,75 @@ extension Rv_Data_MessageDocument: SwiftProtobuf.Message, SwiftProtobuf._Message
 
   public static func ==(lhs: Rv_Data_MessageDocument, rhs: Rv_Data_MessageDocument) -> Bool {
     if lhs._applicationInfo != rhs._applicationInfo {return false}
+    if lhs.messages != rhs.messages {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_LocalMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LocalMessage"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}token_values\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._uuid) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.tokenValues) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._uuid {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.tokenValues.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.tokenValues, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_LocalMessage, rhs: Rv_Data_LocalMessage) -> Bool {
+    if lhs._uuid != rhs._uuid {return false}
+    if lhs.tokenValues != rhs.tokenValues {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_MessageLocalDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MessageLocalDocument"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}messages\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.messages) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.messages.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.messages, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_MessageLocalDocument, rhs: Rv_Data_MessageLocalDocument) -> Bool {
     if lhs.messages != rhs.messages {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

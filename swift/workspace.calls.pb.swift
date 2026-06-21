@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Workspace_Call_Error: Sendable {
+public nonisolated struct Workspace_Call_Error: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -31,7 +31,7 @@ public struct Workspace_Call_Error: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Code: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Code: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case UNRECOGNIZED(Int)
@@ -64,7 +64,7 @@ public struct Workspace_Call_Error: Sendable {
   public init() {}
 }
 
-public struct Workspace_Call_OpenLocal: Sendable {
+public nonisolated struct Workspace_Call_OpenLocal: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -80,7 +80,7 @@ public struct Workspace_Call_OpenLocal: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -105,13 +105,13 @@ public struct Workspace_Call_OpenLocal: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Workspace_Call_OpenLocal.Result.Ok)
       case error(Workspace_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -129,7 +129,7 @@ public struct Workspace_Call_OpenLocal: Sendable {
   fileprivate var _workspace: Workspace_Local_Workspace? = nil
 }
 
-public struct Workspace_Call_OpenRemote: Sendable {
+public nonisolated struct Workspace_Call_OpenRemote: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -140,7 +140,7 @@ public struct Workspace_Call_OpenRemote: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -165,13 +165,13 @@ public struct Workspace_Call_OpenRemote: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Workspace_Call_OpenRemote.Result.Ok)
       case error(Workspace_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -198,14 +198,14 @@ public struct Workspace_Call_OpenRemote: Sendable {
   public init() {}
 }
 
-public struct Workspace_Call_Publish: Sendable {
+public nonisolated struct Workspace_Call_Publish: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -230,13 +230,13 @@ public struct Workspace_Call_Publish: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Workspace_Call_Publish.Result.Ok)
       case error(Workspace_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -254,14 +254,14 @@ public struct Workspace_Call_Publish: Sendable {
   public init() {}
 }
 
-public struct Workspace_Call_ConvertToLocal: Sendable {
+public nonisolated struct Workspace_Call_ConvertToLocal: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -286,13 +286,13 @@ public struct Workspace_Call_ConvertToLocal: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Workspace_Call_ConvertToLocal.Result.Ok)
       case error(Workspace_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -308,18 +308,25 @@ public struct Workspace_Call_ConvertToLocal: Sendable {
   public init() {}
 }
 
-public struct Workspace_Call_Rename: Sendable {
+public nonisolated struct Workspace_Call_Rename: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var uuid: String = String()
+  public var uuid: String {
+    get {_uuid ?? String()}
+    set {_uuid = newValue}
+  }
+  /// Returns true if `uuid` has been explicitly set.
+  public var hasUuid: Bool {self._uuid != nil}
+  /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
+  public mutating func clearUuid() {self._uuid = nil}
 
   public var name: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -344,13 +351,13 @@ public struct Workspace_Call_Rename: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Workspace_Call_Rename.Result.Ok)
       case error(Workspace_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -364,9 +371,11 @@ public struct Workspace_Call_Rename: Sendable {
   }
 
   public init() {}
+
+  fileprivate var _uuid: String? = nil
 }
 
-public struct Workspace_Call_PauseSync: Sendable {
+public nonisolated struct Workspace_Call_PauseSync: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -375,7 +384,7 @@ public struct Workspace_Call_PauseSync: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -400,13 +409,13 @@ public struct Workspace_Call_PauseSync: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Workspace_Call_PauseSync.Result.Ok)
       case error(Workspace_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -422,14 +431,14 @@ public struct Workspace_Call_PauseSync: Sendable {
   public init() {}
 }
 
-public struct Workspace_Call_ResumeSync: Sendable {
+public nonisolated struct Workspace_Call_ResumeSync: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Result: Sendable {
+  public nonisolated struct Result: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -454,13 +463,13 @@ public struct Workspace_Call_ResumeSync: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case ok(Workspace_Call_ResumeSync.Result.Ok)
       case error(Workspace_Call_Error)
 
     }
 
-    public struct Ok: Sendable {
+    public nonisolated struct Ok: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -478,9 +487,9 @@ public struct Workspace_Call_ResumeSync: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "workspace.call"
+fileprivate nonisolated let _protobuf_package = "workspace.call"
 
-extension Workspace_Call_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Error"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}code\0\u{1}description\0")
 
@@ -515,11 +524,11 @@ extension Workspace_Call_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Workspace_Call_Error.Code: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_Error.Code: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0")
 }
 
-extension Workspace_Call_OpenLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_OpenLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".OpenLocal"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspace\0")
 
@@ -553,7 +562,7 @@ extension Workspace_Call_OpenLocal: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Workspace_Call_OpenLocal.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_OpenLocal.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_OpenLocal.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -620,7 +629,7 @@ extension Workspace_Call_OpenLocal.Result: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Workspace_Call_OpenLocal.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_OpenLocal.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_OpenLocal.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -639,7 +648,7 @@ extension Workspace_Call_OpenLocal.Result.Ok: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Workspace_Call_OpenRemote: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_OpenRemote: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".OpenRemote"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}path\0")
 
@@ -674,7 +683,7 @@ extension Workspace_Call_OpenRemote: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Workspace_Call_OpenRemote.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_OpenRemote.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_OpenRemote.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -741,7 +750,7 @@ extension Workspace_Call_OpenRemote.Result: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Workspace_Call_OpenRemote.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_OpenRemote.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_OpenRemote.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspace\0")
 
@@ -775,7 +784,7 @@ extension Workspace_Call_OpenRemote.Result.Ok: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Workspace_Call_Publish: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_Publish: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Publish"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -794,7 +803,7 @@ extension Workspace_Call_Publish: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Workspace_Call_Publish.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_Publish.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_Publish.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -861,7 +870,7 @@ extension Workspace_Call_Publish.Result: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Workspace_Call_Publish.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_Publish.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_Publish.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0")
 
@@ -891,7 +900,7 @@ extension Workspace_Call_Publish.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Workspace_Call_ConvertToLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_ConvertToLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ConvertToLocal"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -910,7 +919,7 @@ extension Workspace_Call_ConvertToLocal: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Workspace_Call_ConvertToLocal.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_ConvertToLocal.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_ConvertToLocal.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -977,7 +986,7 @@ extension Workspace_Call_ConvertToLocal.Result: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Workspace_Call_ConvertToLocal.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_ConvertToLocal.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_ConvertToLocal.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -996,7 +1005,7 @@ extension Workspace_Call_ConvertToLocal.Result.Ok: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Workspace_Call_Rename: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_Rename: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Rename"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0")
 
@@ -1006,7 +1015,7 @@ extension Workspace_Call_Rename: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 1: try { try decoder.decodeSingularStringField(value: &self._uuid) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.name) }()
       default: break
       }
@@ -1014,9 +1023,13 @@ extension Workspace_Call_Rename: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.uuid.isEmpty {
-      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
-    }
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._uuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    } }()
     if !self.name.isEmpty {
       try visitor.visitSingularStringField(value: self.name, fieldNumber: 2)
     }
@@ -1024,14 +1037,14 @@ extension Workspace_Call_Rename: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 
   public static func ==(lhs: Workspace_Call_Rename, rhs: Workspace_Call_Rename) -> Bool {
-    if lhs.uuid != rhs.uuid {return false}
+    if lhs._uuid != rhs._uuid {return false}
     if lhs.name != rhs.name {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Workspace_Call_Rename.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_Rename.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_Rename.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -1098,7 +1111,7 @@ extension Workspace_Call_Rename.Result: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Workspace_Call_Rename.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_Rename.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_Rename.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1117,7 +1130,7 @@ extension Workspace_Call_Rename.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Workspace_Call_PauseSync: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_PauseSync: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PauseSync"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}until_time_utc\0")
 
@@ -1147,7 +1160,7 @@ extension Workspace_Call_PauseSync: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Workspace_Call_PauseSync.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_PauseSync.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_PauseSync.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -1214,7 +1227,7 @@ extension Workspace_Call_PauseSync.Result: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Workspace_Call_PauseSync.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_PauseSync.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_PauseSync.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1233,7 +1246,7 @@ extension Workspace_Call_PauseSync.Result.Ok: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Workspace_Call_ResumeSync: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_ResumeSync: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ResumeSync"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1252,7 +1265,7 @@ extension Workspace_Call_ResumeSync: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Workspace_Call_ResumeSync.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_ResumeSync.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_ResumeSync.protoMessageName + ".Result"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -1319,7 +1332,7 @@ extension Workspace_Call_ResumeSync.Result: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Workspace_Call_ResumeSync.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Call_ResumeSync.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_ResumeSync.Result.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Miscellaneous_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Miscellaneous_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -37,12 +37,12 @@ public struct Rv_Data_API_v1_Miscellaneous_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case findMyMouse(Rv_Data_API_v1_Miscellaneous_Request.FindMyMouse)
 
   }
 
-  public struct FindMyMouse: Sendable {
+  public nonisolated struct FindMyMouse: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -55,7 +55,7 @@ public struct Rv_Data_API_v1_Miscellaneous_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Miscellaneous_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Miscellaneous_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -72,12 +72,12 @@ public struct Rv_Data_API_v1_Miscellaneous_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case findMyMouse(Rv_Data_API_v1_Miscellaneous_Response.FindMyMouse)
 
   }
 
-  public struct FindMyMouse: Sendable {
+  public nonisolated struct FindMyMouse: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -92,9 +92,9 @@ public struct Rv_Data_API_v1_Miscellaneous_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Miscellaneous_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Miscellaneous_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Miscellaneous_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}find_my_mouse\0")
 
@@ -140,7 +140,7 @@ extension Rv_Data_API_v1_Miscellaneous_Request: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Miscellaneous_Request.FindMyMouse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Miscellaneous_Request.FindMyMouse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Miscellaneous_Request.protoMessageName + ".FindMyMouse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -159,7 +159,7 @@ extension Rv_Data_API_v1_Miscellaneous_Request.FindMyMouse: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_API_v1_Miscellaneous_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Miscellaneous_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Miscellaneous_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}find_my_mouse\0")
 
@@ -205,7 +205,7 @@ extension Rv_Data_API_v1_Miscellaneous_Response: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Miscellaneous_Response.FindMyMouse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Miscellaneous_Response.FindMyMouse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Miscellaneous_Response.protoMessageName + ".FindMyMouse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

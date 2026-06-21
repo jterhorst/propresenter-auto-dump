@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Analytics_Trigger_Cue_DestinationLayer: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Trigger_Cue_DestinationLayer: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case unknown // = 0
   case announcement // = 1
@@ -74,7 +74,7 @@ public enum Rv_Analytics_Trigger_Cue_DestinationLayer: SwiftProtobuf.Enum, Swift
 
 }
 
-public struct Rv_Analytics_Trigger_Cue_Slide: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Cue_Slide: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -102,7 +102,7 @@ public struct Rv_Analytics_Trigger_Cue_Slide: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_Cue_SlideFileFeedElement: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Cue_SlideFileFeedElement: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -114,7 +114,7 @@ public struct Rv_Analytics_Trigger_Cue_SlideFileFeedElement: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_Cue_SlideRssFeedElement: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Cue_SlideRssFeedElement: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -127,7 +127,7 @@ public struct Rv_Analytics_Trigger_Cue_SlideRssFeedElement: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Content: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Content: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case title // = 1
@@ -168,7 +168,7 @@ public struct Rv_Analytics_Trigger_Cue_SlideRssFeedElement: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_Cue_SlideScrollingTextElement: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Cue_SlideScrollingTextElement: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -185,7 +185,7 @@ public struct Rv_Analytics_Trigger_Cue_SlideScrollingTextElement: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Direction: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Direction: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case left // = 1
@@ -231,7 +231,7 @@ public struct Rv_Analytics_Trigger_Cue_SlideScrollingTextElement: Sendable {
 
   }
 
-  public enum StartPosition: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum StartPosition: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case automatic // = 1
@@ -269,7 +269,7 @@ public struct Rv_Analytics_Trigger_Cue_SlideScrollingTextElement: Sendable {
 
   }
 
-  public enum Speed: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Speed: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case verySlow // = 1
@@ -324,13 +324,13 @@ public struct Rv_Analytics_Trigger_Cue_SlideScrollingTextElement: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.trigger.cue"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.trigger.cue"
 
-extension Rv_Analytics_Trigger_Cue_DestinationLayer: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Cue_DestinationLayer: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DESTINATION_LAYER_UNKNOWN\0\u{1}ANNOUNCEMENT\0\u{1}PRESENTATION\0\u{1}STAGE\0\u{1}PROPS\0\u{1}MESSAGES\0\u{1}MASK\0")
 }
 
-extension Rv_Analytics_Trigger_Cue_Slide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Cue_Slide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Slide"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}object_count\0\u{3}scrolling_object_count\0\u{3}background_fx_object_count\0\u{3}action_count\0\u{3}has_text_fx\0\u{3}media_text_fill_object_count\0\u{3}cut_out_text_fill_object_count\0\u{3}background_blur_text_fill_object_count\0\u{3}background_invert_text_fill_object_count\0")
 
@@ -400,7 +400,7 @@ extension Rv_Analytics_Trigger_Cue_Slide: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Analytics_Trigger_Cue_SlideFileFeedElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Cue_SlideFileFeedElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SlideFileFeedElement"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}destination_layer\0")
 
@@ -430,7 +430,7 @@ extension Rv_Analytics_Trigger_Cue_SlideFileFeedElement: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Analytics_Trigger_Cue_SlideRssFeedElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Cue_SlideRssFeedElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SlideRssFeedElement"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}content\0\u{3}is_delimiter_enabled\0\u{3}destination_layer\0")
 
@@ -470,11 +470,11 @@ extension Rv_Analytics_Trigger_Cue_SlideRssFeedElement: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Trigger_Cue_SlideRssFeedElement.Content: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Cue_SlideRssFeedElement.Content: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CONTENT_UNKNOWN\0\u{1}TITLE\0\u{1}TITLE_AND_DESCRIPTION\0")
 }
 
-extension Rv_Analytics_Trigger_Cue_SlideScrollingTextElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Cue_SlideScrollingTextElement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SlideScrollingTextElement"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}direction\0\u{3}start_position\0\u{3}is_repeat_enabled\0\u{1}speed\0\u{3}destination_layer\0")
 
@@ -524,14 +524,14 @@ extension Rv_Analytics_Trigger_Cue_SlideScrollingTextElement: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Analytics_Trigger_Cue_SlideScrollingTextElement.Direction: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Cue_SlideScrollingTextElement.Direction: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DIRECTION_UNKNOWN\0\u{1}LEFT\0\u{1}RIGHT\0\u{1}UP\0\u{1}DOWN\0")
 }
 
-extension Rv_Analytics_Trigger_Cue_SlideScrollingTextElement.StartPosition: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Cue_SlideScrollingTextElement.StartPosition: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0START_POSITION_UNKNOWN\0\u{1}AUTOMATIC\0\u{1}OFF_SCREEN\0")
 }
 
-extension Rv_Analytics_Trigger_Cue_SlideScrollingTextElement.Speed: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Cue_SlideScrollingTextElement.Speed: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SPEED_UNKNOWN\0\u{1}VERY_SLOW\0\u{1}SLOW\0\u{1}MEDIUM\0\u{1}FAST\0\u{1}VERY_FAST\0")
 }

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Analytics_Timecode_Startup: Sendable {
+public nonisolated struct Rv_Analytics_Timecode_Startup: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -36,7 +36,7 @@ public struct Rv_Analytics_Timecode_Startup: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Timecode_Activate: Sendable {
+public nonisolated struct Rv_Analytics_Timecode_Activate: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -54,9 +54,9 @@ public struct Rv_Analytics_Timecode_Activate: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.timecode"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.timecode"
 
-extension Rv_Analytics_Timecode_Startup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Timecode_Startup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Startup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_input_configured\0\u{3}is_enabled\0\u{3}is_playlist_selected\0")
 
@@ -96,7 +96,7 @@ extension Rv_Analytics_Timecode_Startup: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Analytics_Timecode_Activate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Timecode_Activate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Activate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}playlist_item_count\0\u{3}cue_count\0\u{3}is_startup\0")
 

@@ -4,6 +4,8 @@ syntax = "proto3";
 package rv.data;
 
 
+import "customOptions.proto";
+
 import "intRange.proto";
 
 import "uuid.proto";
@@ -152,6 +154,38 @@ message CommunicationDevice {
   bool connected = 5;
   bool auto_reconnect = 6;
   repeated rv.data.CommunicationDeviceOption options = 12;
+}
+
+message CommunicationDeviceCloud {
+  rv.data.UUID id = 1;
+  string name = 2;
+  rv.data.CommunicationDevice.DeviceType device_type = 3;
+  rv.data.CommunicationDevice.Behavior behavior = 4;
+}
+
+message CommunicationDeviceLocal {
+  oneof HardwareType {
+    rv.data.CommunicationDevice.SerialHardware serial = 6;
+    rv.data.CommunicationDevice.TCPHardware tcp_network = 7;
+    rv.data.CommunicationDevice.UDPHardware udp_network = 8;
+    rv.data.CommunicationDevice.ArtnetHardware artnet = 9;
+    rv.data.CommunicationDevice.MIDIHardware midi = 10;
+  }
+
+  rv.data.UUID id = 1;
+  bool connected = 2;
+  bool auto_reconnect = 3;
+  string bundle_name = 4;
+  string bundle_identifier = 5;
+  repeated rv.data.CommunicationDeviceOption options = 11;
+}
+
+message ProPresenterCommunications {
+  repeated rv.data.CommunicationDeviceCloud devices = 1;
+}
+
+message ProPresenterLocalCommunications {
+  repeated rv.data.CommunicationDeviceLocal devices = 1;
 }
 
 message CommunicationCommand {

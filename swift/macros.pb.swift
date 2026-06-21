@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_MacrosDocument: Sendable {
+public nonisolated struct Rv_Data_MacrosDocument: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -41,7 +45,7 @@ public struct Rv_Data_MacrosDocument: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Macro: Sendable {
+  public nonisolated struct Macro: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -76,7 +80,7 @@ public struct Rv_Data_MacrosDocument: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum ImageType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ImageType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case `default` // = 0
       case one // = 1
@@ -360,7 +364,7 @@ public struct Rv_Data_MacrosDocument: Sendable {
     fileprivate var _color: Rv_Data_Color? = nil
   }
 
-  public struct MacroCollection: Sendable {
+  public nonisolated struct MacroCollection: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -382,7 +386,7 @@ public struct Rv_Data_MacrosDocument: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Item: Sendable {
+    public nonisolated struct Item: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -399,7 +403,7 @@ public struct Rv_Data_MacrosDocument: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_ItemType: Equatable, Sendable {
+      public nonisolated enum OneOf_ItemType: Equatable, Sendable {
         case macroID(Rv_Data_UUID)
 
       }
@@ -419,9 +423,9 @@ public struct Rv_Data_MacrosDocument: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_MacrosDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MacrosDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MacrosDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}macros\0\u{3}macro_collections\0")
 
@@ -465,7 +469,7 @@ extension Rv_Data_MacrosDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Rv_Data_MacrosDocument.Macro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MacrosDocument.Macro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_MacrosDocument.protoMessageName + ".Macro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}color\0\u{1}actions\0\u{3}trigger_on_startup\0\u{3}image_type\0\u{3}image_data\0")
 
@@ -529,11 +533,11 @@ extension Rv_Data_MacrosDocument.Macro: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_MacrosDocument.Macro.ImageType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MacrosDocument.Macro.ImageType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ImageTypeDefault\0\u{1}ImageTypeOne\0\u{1}ImageTypeTwo\0\u{1}ImageTypeThree\0\u{1}ImageTypeFour\0\u{1}ImageTypeFive\0\u{1}ImageTypeSix\0\u{1}ImageTypeSeven\0\u{1}ImageTypeEight\0\u{1}ImageTypeNine\0\u{1}ImageTypeZero\0\u{1}ImageTypeArrow\0\u{1}ImageTypeAudio\0\u{1}ImageTypeBell\0\u{1}ImageTypeBulb\0\u{1}ImageTypeCloud\0\u{1}ImageTypeCupcake\0\u{1}ImageTypeExclamation\0\u{1}ImageTypeFlask\0\u{1}ImageTypeFlower\0\u{1}ImageTypeGlasses\0\u{1}ImageTypeHashtag\0\u{1}ImageTypeHat\0\u{1}ImageTypeHeart\0\u{1}ImageTypeMegaphone\0\u{1}ImageTypeMessage\0\u{1}ImageTypePaperclip\0\u{1}ImageTypePlay\0\u{1}ImageTypeSlide\0\u{1}ImageTypeStar\0\u{1}ImageTypeSun\0\u{1}ImageTypeSunglasses\0\u{1}ImageTypeTarget\0\u{1}ImageTypeTimer\0\u{1}ImageTypeVideoInput\0\u{1}ImageTypeXClear\0\u{1}ImageTypeLetterA\0\u{1}ImageTypeLetterB\0\u{1}ImageTypeLetterC\0\u{1}ImageTypeLetterD\0\u{1}ImageTypeLetterE\0\u{1}ImageTypeLetterF\0\u{1}ImageTypeLetterG\0\u{1}ImageTypeLetterH\0\u{1}ImageTypeLetterI\0\u{1}ImageTypeLetterJ\0\u{1}ImageTypeLetterK\0\u{1}ImageTypeLetterL\0\u{1}ImageTypeLetterM\0\u{1}ImageTypeLetterN\0\u{1}ImageTypeLetterO\0\u{1}ImageTypeLetterP\0\u{1}ImageTypeLetterQ\0\u{1}ImageTypeLetterR\0\u{1}ImageTypeLetterS\0\u{1}ImageTypeLetterT\0\u{1}ImageTypeLetterU\0\u{1}ImageTypeLetterV\0\u{1}ImageTypeLetterW\0\u{1}ImageTypeLetterX\0\u{1}ImageTypeLetterY\0\u{1}ImageTypeLetterZ\0\u{1}ImageTypeCustom\0")
 }
 
-extension Rv_Data_MacrosDocument.MacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MacrosDocument.MacroCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_MacrosDocument.protoMessageName + ".MacroCollection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}items\0\u{1}macros\0")
 
@@ -582,7 +586,7 @@ extension Rv_Data_MacrosDocument.MacroCollection: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_MacrosDocument.MacroCollection.Item: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MacrosDocument.MacroCollection.Item: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_MacrosDocument.MacroCollection.protoMessageName + ".Item"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}macro_id\0")
 

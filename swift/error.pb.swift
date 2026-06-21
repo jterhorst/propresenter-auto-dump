@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Application_ServiceID: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Application_ServiceID: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case application // = 0
   case media // = 1
@@ -70,7 +70,7 @@ public enum Application_ServiceID: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-public enum Application_ErrorCode: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Application_ErrorCode: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case runtime // = 0
   case call // = 1
@@ -136,7 +136,7 @@ public enum Application_ErrorCode: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-public struct Application_Error: Sendable {
+public nonisolated struct Application_Error: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -152,7 +152,7 @@ public struct Application_Error: Sendable {
   public init() {}
 }
 
-public struct Application_ResultEnvelope: Sendable {
+public nonisolated struct Application_ResultEnvelope: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -177,13 +177,13 @@ public struct Application_ResultEnvelope: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Result: Equatable, Sendable {
+  public nonisolated enum OneOf_Result: Equatable, Sendable {
     case ok(Application_ResultEnvelope.Ok)
     case error(Application_Error)
 
   }
 
-  public struct Ok: Sendable {
+  public nonisolated struct Ok: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -198,17 +198,17 @@ public struct Application_ResultEnvelope: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "application"
+fileprivate nonisolated let _protobuf_package = "application"
 
-extension Application_ServiceID: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_ServiceID: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0APPLICATION\0\u{1}MEDIA\0\u{1}FEATURE_FLAGS\0\u{1}REGISTRATION\0\u{1}DOCUMENT\0\u{1}WORKSPACE\0")
 }
 
-extension Application_ErrorCode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_ErrorCode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0RUNTIME\0\u{1}CALL\0\u{1}PARAMS\0\u{1}DATA\0\u{1}PANIC\0\u{1}JOIN\0\u{1}HID\0\u{1}REMOTE\0\u{1}DEPENDENCY\0\u{1}MEDIA_VERSION\0")
 }
 
-extension Application_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Error"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}service\0\u{1}code\0\u{1}description\0")
 
@@ -248,7 +248,7 @@ extension Application_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension Application_ResultEnvelope: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_ResultEnvelope: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ResultEnvelope"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
 
@@ -315,7 +315,7 @@ extension Application_ResultEnvelope: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Application_ResultEnvelope.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Application_ResultEnvelope.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Application_ResultEnvelope.protoMessageName + ".Ok"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct CollaborationPoc_CreationOption: Sendable {
+public nonisolated struct CollaborationPoc_CreationOption: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -31,14 +35,14 @@ public struct CollaborationPoc_CreationOption: Sendable {
   public init() {}
 }
 
-public struct CollaborationPoc_CollaborationPOC: Sendable {
+public nonisolated struct CollaborationPoc_CollaborationPOC: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Request: Sendable {
+  public nonisolated struct Request: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -111,7 +115,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_RequestType: Equatable, Sendable {
+    public nonisolated enum OneOf_RequestType: Equatable, Sendable {
       case switchWorkspace(CollaborationPoc_CollaborationPOC.Request.SwitchWorkspace)
       case getWorkspace(CollaborationPoc_CollaborationPOC.Request.GetWorkspace)
       case getUpdates(CollaborationPoc_CollaborationPOC.Request.GetUpdates)
@@ -123,7 +127,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
     }
 
-    public struct SwitchWorkspace: Sendable {
+    public nonisolated struct SwitchWorkspace: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -139,7 +143,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct GetWorkspace: Sendable {
+    public nonisolated struct GetWorkspace: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -149,7 +153,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct GetUpdates: Sendable {
+    public nonisolated struct GetUpdates: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -161,7 +165,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct GetDiffs: Sendable {
+    public nonisolated struct GetDiffs: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -170,7 +174,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct DiffData: Sendable {
+      public nonisolated struct DiffData: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -187,7 +191,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct DownloadDocuments: Sendable {
+    public nonisolated struct DownloadDocuments: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -199,7 +203,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct UploadDocuments: Sendable {
+    public nonisolated struct UploadDocuments: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -208,7 +212,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct DocumentData: Sendable {
+      public nonisolated struct DocumentData: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -233,7 +237,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct DeleteDocuments: Sendable {
+    public nonisolated struct DeleteDocuments: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -245,7 +249,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct UpdateDocuments: Sendable {
+    public nonisolated struct UpdateDocuments: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -254,7 +258,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct DocumentData: Sendable {
+      public nonisolated struct DocumentData: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -274,7 +278,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
     public init() {}
   }
 
-  public struct Response: Sendable {
+  public nonisolated struct Response: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -403,7 +407,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_ResponseType: Equatable, Sendable {
+    public nonisolated enum OneOf_ResponseType: Equatable, Sendable {
       case error(CollaborationPoc_CollaborationPOC.Response.Error)
       case switchWorkspace(CollaborationPoc_CollaborationPOC.Response.SwitchWorkspace)
       case getWorkspace(CollaborationPoc_CollaborationPOC.Response.GetWorkspace)
@@ -422,7 +426,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
     }
 
-    public struct Error: Sendable {
+    public nonisolated struct Error: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -436,7 +440,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct SwitchWorkspace: Sendable {
+    public nonisolated struct SwitchWorkspace: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -446,7 +450,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct GetWorkspace: Sendable {
+    public nonisolated struct GetWorkspace: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -455,7 +459,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct Document: Sendable {
+      public nonisolated struct Document: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -480,7 +484,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct GetUpdates: Sendable {
+    public nonisolated struct GetUpdates: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -495,7 +499,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct Document: Sendable {
+      public nonisolated struct Document: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -512,7 +516,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct GetDiffs: Sendable {
+    public nonisolated struct GetDiffs: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -521,7 +525,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct DocumentChange: Sendable {
+      public nonisolated struct DocumentChange: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -540,7 +544,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct DownloadDocuments: Sendable {
+    public nonisolated struct DownloadDocuments: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -549,7 +553,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct Document: Sendable {
+      public nonisolated struct Document: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -574,7 +578,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct UploadDocuments: Sendable {
+    public nonisolated struct UploadDocuments: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -586,7 +590,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct DeleteDocuments: Sendable {
+    public nonisolated struct DeleteDocuments: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -596,7 +600,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct UpdateDocuments: Sendable {
+    public nonisolated struct UpdateDocuments: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -606,7 +610,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct ConnectionStatus: Sendable {
+    public nonisolated struct ConnectionStatus: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -622,7 +626,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct NewMedia: Sendable {
+    public nonisolated struct NewMedia: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -632,7 +636,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct UpdatedMedia: Sendable {
+    public nonisolated struct UpdatedMedia: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -642,7 +646,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct DeletedMedia: Sendable {
+    public nonisolated struct DeletedMedia: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -652,7 +656,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct DocumentUpdated: Sendable {
+    public nonisolated struct DocumentUpdated: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -670,7 +674,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
       public init() {}
     }
 
-    public struct NewDocument: Sendable {
+    public nonisolated struct NewDocument: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -690,7 +694,7 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public struct Metadata: Sendable {
+      public nonisolated struct Metadata: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -731,9 +735,9 @@ public struct CollaborationPoc_CollaborationPOC: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "collaboration_poc"
+fileprivate nonisolated let _protobuf_package = "collaboration_poc"
 
-extension CollaborationPoc_CreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CreationOption"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -752,7 +756,7 @@ extension CollaborationPoc_CreationOption: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension CollaborationPoc_CollaborationPOC: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CollaborationPOC"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -771,7 +775,7 @@ extension CollaborationPoc_CollaborationPOC: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.protoMessageName + ".Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}switch_workspace\0\u{3}get_workspace\0\u{3}get_updates\0\u{3}get_diffs\0\u{3}download_documents\0\u{3}upload_documents\0\u{3}delete_documents\0\u{3}update_documents\0")
 
@@ -940,7 +944,7 @@ extension CollaborationPoc_CollaborationPOC.Request: SwiftProtobuf.Message, Swif
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.SwitchWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.SwitchWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.protoMessageName + ".SwitchWorkspace"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}workspace_id\0\u{3}device_id\0\u{3}user_id\0")
 
@@ -980,7 +984,7 @@ extension CollaborationPoc_CollaborationPOC.Request.SwitchWorkspace: SwiftProtob
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.GetWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.GetWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.protoMessageName + ".GetWorkspace"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -999,7 +1003,7 @@ extension CollaborationPoc_CollaborationPOC.Request.GetWorkspace: SwiftProtobuf.
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.GetUpdates: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.GetUpdates: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.protoMessageName + ".GetUpdates"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}since_timestamp\0")
 
@@ -1029,7 +1033,7 @@ extension CollaborationPoc_CollaborationPOC.Request.GetUpdates: SwiftProtobuf.Me
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.GetDiffs: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.GetDiffs: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.protoMessageName + ".GetDiffs"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}documents\0")
 
@@ -1059,7 +1063,7 @@ extension CollaborationPoc_CollaborationPOC.Request.GetDiffs: SwiftProtobuf.Mess
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.GetDiffs.DiffData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.GetDiffs.DiffData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.GetDiffs.protoMessageName + ".DiffData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_id\0\u{3}version_vector\0")
 
@@ -1094,7 +1098,7 @@ extension CollaborationPoc_CollaborationPOC.Request.GetDiffs.DiffData: SwiftProt
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.DownloadDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.DownloadDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.protoMessageName + ".DownloadDocuments"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_ids\0")
 
@@ -1124,7 +1128,7 @@ extension CollaborationPoc_CollaborationPOC.Request.DownloadDocuments: SwiftProt
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.UploadDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.UploadDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.protoMessageName + ".UploadDocuments"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}documents\0")
 
@@ -1154,7 +1158,7 @@ extension CollaborationPoc_CollaborationPOC.Request.UploadDocuments: SwiftProtob
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.UploadDocuments.DocumentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.UploadDocuments.DocumentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.UploadDocuments.protoMessageName + ".DocumentData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}data\0\u{3}version_vector\0\u{1}metadata\0\u{3}file_type\0\u{3}file_name\0")
 
@@ -1209,7 +1213,7 @@ extension CollaborationPoc_CollaborationPOC.Request.UploadDocuments.DocumentData
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.DeleteDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.DeleteDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.protoMessageName + ".DeleteDocuments"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_ids\0")
 
@@ -1239,7 +1243,7 @@ extension CollaborationPoc_CollaborationPOC.Request.DeleteDocuments: SwiftProtob
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.UpdateDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.UpdateDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.protoMessageName + ".UpdateDocuments"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}documents\0")
 
@@ -1269,7 +1273,7 @@ extension CollaborationPoc_CollaborationPOC.Request.UpdateDocuments: SwiftProtob
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Request.UpdateDocuments.DocumentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Request.UpdateDocuments.DocumentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Request.UpdateDocuments.protoMessageName + ".DocumentData"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}data\0")
 
@@ -1304,7 +1308,7 @@ extension CollaborationPoc_CollaborationPOC.Request.UpdateDocuments.DocumentData
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.protoMessageName + ".Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}error\0\u{3}switch_workspace\0\u{3}get_workspace\0\u{3}get_updates\0\u{3}get_diffs\0\u{3}download_documents\0\u{3}upload_documents\0\u{3}delete_documents\0\u{3}update_documents\0\u{4}[\u{1}connection_status\0\u{3}document_updated\0\u{3}new_document\0\u{3}new_media\0\u{3}updated_media\0\u{3}deleted_media\0")
 
@@ -1592,7 +1596,7 @@ extension CollaborationPoc_CollaborationPOC.Response: SwiftProtobuf.Message, Swi
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".Error"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}code\0\u{1}message\0")
 
@@ -1627,7 +1631,7 @@ extension CollaborationPoc_CollaborationPOC.Response.Error: SwiftProtobuf.Messag
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.SwitchWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.SwitchWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".SwitchWorkspace"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1646,7 +1650,7 @@ extension CollaborationPoc_CollaborationPOC.Response.SwitchWorkspace: SwiftProto
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.GetWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.GetWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".GetWorkspace"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}documents\0")
 
@@ -1676,7 +1680,7 @@ extension CollaborationPoc_CollaborationPOC.Response.GetWorkspace: SwiftProtobuf
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.GetWorkspace.Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.GetWorkspace.Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.GetWorkspace.protoMessageName + ".Document"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}created_at\0\u{1}id\0\u{3}file_name\0\u{1}metadata\0\u{3}updated_at\0\u{3}version_vector\0")
 
@@ -1731,7 +1735,7 @@ extension CollaborationPoc_CollaborationPOC.Response.GetWorkspace.Document: Swif
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.GetUpdates: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.GetUpdates: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".GetUpdates"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}current_timestamp\0\u{1}added\0\u{1}deleted\0\u{1}updated\0")
 
@@ -1776,7 +1780,7 @@ extension CollaborationPoc_CollaborationPOC.Response.GetUpdates: SwiftProtobuf.M
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.GetUpdates.Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.GetUpdates.Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.GetUpdates.protoMessageName + ".Document"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}file_name\0")
 
@@ -1811,7 +1815,7 @@ extension CollaborationPoc_CollaborationPOC.Response.GetUpdates.Document: SwiftP
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.GetDiffs: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.GetDiffs: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".GetDiffs"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}documents\0")
 
@@ -1841,7 +1845,7 @@ extension CollaborationPoc_CollaborationPOC.Response.GetDiffs: SwiftProtobuf.Mes
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.GetDiffs.DocumentChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.GetDiffs.DocumentChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.GetDiffs.protoMessageName + ".DocumentChange"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}changes\0\u{3}version_vector\0")
 
@@ -1881,7 +1885,7 @@ extension CollaborationPoc_CollaborationPOC.Response.GetDiffs.DocumentChange: Sw
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.DownloadDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.DownloadDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".DownloadDocuments"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}documents\0")
 
@@ -1911,7 +1915,7 @@ extension CollaborationPoc_CollaborationPOC.Response.DownloadDocuments: SwiftPro
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.DownloadDocuments.Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.DownloadDocuments.Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.DownloadDocuments.protoMessageName + ".Document"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}file_type\0\u{3}file_name\0\u{1}hash\0\u{1}timestamp\0\u{1}data\0")
 
@@ -1966,7 +1970,7 @@ extension CollaborationPoc_CollaborationPOC.Response.DownloadDocuments.Document:
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.UploadDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.UploadDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".UploadDocuments"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}success\0")
 
@@ -1996,7 +2000,7 @@ extension CollaborationPoc_CollaborationPOC.Response.UploadDocuments: SwiftProto
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.DeleteDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.DeleteDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".DeleteDocuments"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2015,7 +2019,7 @@ extension CollaborationPoc_CollaborationPOC.Response.DeleteDocuments: SwiftProto
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.UpdateDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.UpdateDocuments: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".UpdateDocuments"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2034,7 +2038,7 @@ extension CollaborationPoc_CollaborationPOC.Response.UpdateDocuments: SwiftProto
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.ConnectionStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.ConnectionStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".ConnectionStatus"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}device_id\0\u{1}status\0\u{3}document_ids\0")
 
@@ -2074,7 +2078,7 @@ extension CollaborationPoc_CollaborationPOC.Response.ConnectionStatus: SwiftProt
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.NewMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.NewMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".NewMedia"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2093,7 +2097,7 @@ extension CollaborationPoc_CollaborationPOC.Response.NewMedia: SwiftProtobuf.Mes
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.UpdatedMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.UpdatedMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".UpdatedMedia"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2112,7 +2116,7 @@ extension CollaborationPoc_CollaborationPOC.Response.UpdatedMedia: SwiftProtobuf
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.DeletedMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.DeletedMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".DeletedMedia"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2131,7 +2135,7 @@ extension CollaborationPoc_CollaborationPOC.Response.DeletedMedia: SwiftProtobuf
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.DocumentUpdated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.DocumentUpdated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".DocumentUpdated"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}changes\0\u{3}version_vector\0\u{3}device_id\0")
 
@@ -2176,7 +2180,7 @@ extension CollaborationPoc_CollaborationPOC.Response.DocumentUpdated: SwiftProto
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.NewDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.NewDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.protoMessageName + ".NewDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}metadata\0\u{1}url\0")
 
@@ -2220,7 +2224,7 @@ extension CollaborationPoc_CollaborationPOC.Response.NewDocument: SwiftProtobuf.
   }
 }
 
-extension CollaborationPoc_CollaborationPOC.Response.NewDocument.Metadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension CollaborationPoc_CollaborationPOC.Response.NewDocument.Metadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = CollaborationPoc_CollaborationPOC.Response.NewDocument.protoMessageName + ".Metadata"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}device_id\0\u{3}document_id\0\u{3}file_type\0\u{1}filename\0\u{3}inserted_at\0\u{1}metadata\0\u{3}updated_at\0\u{3}version_vector\0\u{3}workspace_id\0")
 

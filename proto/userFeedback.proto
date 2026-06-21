@@ -37,6 +37,7 @@ message UserFeedback {
     bool crash_reporting_enabled = 6;
     bool analytics_reporting_enabled = 7;
     repeated string enabled_feature_flags = 8;
+    string organization_id = 9;
   }
 
 }

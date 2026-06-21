@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Video_Inputs_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Video_Inputs_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -45,13 +45,13 @@ public struct Rv_Data_API_v1_Video_Inputs_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case getAll(Rv_Data_API_v1_Video_Inputs_Request.GetAll)
     case trigger(Rv_Data_API_v1_Video_Inputs_Request.Trigger)
 
   }
 
-  public struct GetAll: Sendable {
+  public nonisolated struct GetAll: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -61,7 +61,7 @@ public struct Rv_Data_API_v1_Video_Inputs_Request: Sendable {
     public init() {}
   }
 
-  public struct Trigger: Sendable {
+  public nonisolated struct Trigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -76,7 +76,7 @@ public struct Rv_Data_API_v1_Video_Inputs_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Video_Inputs_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Video_Inputs_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -101,13 +101,13 @@ public struct Rv_Data_API_v1_Video_Inputs_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case getAll(Rv_Data_API_v1_Video_Inputs_Response.GetAll)
     case trigger(Rv_Data_API_v1_Video_Inputs_Response.Trigger)
 
   }
 
-  public struct GetAll: Sendable {
+  public nonisolated struct GetAll: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -119,7 +119,7 @@ public struct Rv_Data_API_v1_Video_Inputs_Response: Sendable {
     public init() {}
   }
 
-  public struct Trigger: Sendable {
+  public nonisolated struct Trigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -134,9 +134,9 @@ public struct Rv_Data_API_v1_Video_Inputs_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Video_Inputs_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Video_Inputs_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Video_Inputs_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}get_all\0\u{1}trigger\0")
 
@@ -203,7 +203,7 @@ extension Rv_Data_API_v1_Video_Inputs_Request: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Video_Inputs_Request.GetAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Video_Inputs_Request.GetAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Video_Inputs_Request.protoMessageName + ".GetAll"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -222,7 +222,7 @@ extension Rv_Data_API_v1_Video_Inputs_Request.GetAll: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Video_Inputs_Request.Trigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Video_Inputs_Request.Trigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Video_Inputs_Request.protoMessageName + ".Trigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -252,7 +252,7 @@ extension Rv_Data_API_v1_Video_Inputs_Request.Trigger: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Video_Inputs_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Video_Inputs_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Video_Inputs_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}get_all\0\u{1}trigger\0")
 
@@ -319,7 +319,7 @@ extension Rv_Data_API_v1_Video_Inputs_Response: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Video_Inputs_Response.GetAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Video_Inputs_Response.GetAll: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Video_Inputs_Response.protoMessageName + ".GetAll"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}inputs\0")
 
@@ -349,7 +349,7 @@ extension Rv_Data_API_v1_Video_Inputs_Response.GetAll: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Video_Inputs_Response.Trigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Video_Inputs_Response.Trigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Video_Inputs_Response.protoMessageName + ".Trigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

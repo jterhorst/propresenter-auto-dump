@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Cue: Sendable {
+public nonisolated struct Rv_Data_Cue: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -86,7 +86,7 @@ public struct Rv_Data_Cue: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum CompletionTargetType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum CompletionTargetType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case none // = 0
     case next // = 1
@@ -132,7 +132,7 @@ public struct Rv_Data_Cue: Sendable {
 
   }
 
-  public enum CompletionActionType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum CompletionActionType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case first // = 0
     case last // = 1
@@ -174,7 +174,7 @@ public struct Rv_Data_Cue: Sendable {
 
   }
 
-  public struct TimecodeTime: Sendable {
+  public nonisolated struct TimecodeTime: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -197,9 +197,9 @@ public struct Rv_Data_Cue: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Cue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Cue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Cue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{3}completion_target_type\0\u{3}completion_target_uuid\0\u{3}completion_action_type\0\u{3}completion_action_uuid\0\u{3}trigger_time\0\u{3}hot_key\0\u{2}\u{2}actions\0\u{3}pending_imports\0\u{1}isEnabled\0\u{3}completion_time\0")
 
@@ -288,15 +288,15 @@ extension Rv_Data_Cue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   }
 }
 
-extension Rv_Data_Cue.CompletionTargetType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Cue.CompletionTargetType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0COMPLETION_TARGET_TYPE_NONE\0\u{1}COMPLETION_TARGET_TYPE_NEXT\0\u{1}COMPLETION_TARGET_TYPE_RANDOM\0\u{1}COMPLETION_TARGET_TYPE_CUE\0\u{1}COMPLETION_TARGET_TYPE_FIRST\0")
 }
 
-extension Rv_Data_Cue.CompletionActionType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Cue.CompletionActionType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0COMPLETION_ACTION_TYPE_FIRST\0\u{1}COMPLETION_ACTION_TYPE_LAST\0\u{1}COMPLETION_ACTION_TYPE_AFTER_ACTION\0\u{1}COMPLETION_ACTION_TYPE_AFTER_TIME\0")
 }
 
-extension Rv_Data_Cue.TimecodeTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Cue.TimecodeTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Cue.protoMessageName + ".TimecodeTime"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 

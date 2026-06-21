@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_DMXProfiles: Sendable {
+public nonisolated struct Rv_Data_DMXProfiles: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -38,7 +38,7 @@ public struct Rv_Data_DMXProfiles: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct DMXProfile: Sendable {
+  public nonisolated struct DMXProfile: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -67,7 +67,7 @@ public struct Rv_Data_DMXProfiles: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum ProfileType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ProfileType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case basic // = 0
       case advanced // = 1
@@ -105,7 +105,7 @@ public struct Rv_Data_DMXProfiles: Sendable {
 
     }
 
-    public enum FixtureType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum FixtureType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case workspace // = 0
       case layer // = 1
@@ -139,7 +139,7 @@ public struct Rv_Data_DMXProfiles: Sendable {
 
     }
 
-    public enum CommandType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum CommandType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case opacity // = 0
       case blendMode // = 1
@@ -197,7 +197,7 @@ public struct Rv_Data_DMXProfiles: Sendable {
 
     }
 
-    public struct Profile: Sendable {
+    public nonisolated struct Profile: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -216,7 +216,7 @@ public struct Rv_Data_DMXProfiles: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_StartingChannelOneof: Equatable, Sendable {
+      public nonisolated enum OneOf_StartingChannelOneof: Equatable, Sendable {
         case startingChannel(UInt32)
 
       }
@@ -224,7 +224,7 @@ public struct Rv_Data_DMXProfiles: Sendable {
       public init() {}
     }
 
-    public struct ChannelMapping: Sendable {
+    public nonisolated struct ChannelMapping: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -238,7 +238,7 @@ public struct Rv_Data_DMXProfiles: Sendable {
       public init() {}
     }
 
-    public struct Fixture: Sendable {
+    public nonisolated struct Fixture: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -257,7 +257,7 @@ public struct Rv_Data_DMXProfiles: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_LayerIndexOneof: Equatable, Sendable {
+      public nonisolated enum OneOf_LayerIndexOneof: Equatable, Sendable {
         case layerIndex(UInt32)
 
       }
@@ -278,9 +278,9 @@ public struct Rv_Data_DMXProfiles: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_DMXProfiles: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DMXProfiles: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DMXProfiles"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspaceProfile\0\u{1}layerProfiles\0")
 
@@ -319,7 +319,7 @@ extension Rv_Data_DMXProfiles: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Rv_Data_DMXProfiles.DMXProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DMXProfiles.DMXProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DMXProfiles.protoMessageName + ".DMXProfile"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}profile\0\u{1}fixture\0\u{1}isEnabled\0\u{1}customMappings\0")
 
@@ -368,19 +368,19 @@ extension Rv_Data_DMXProfiles.DMXProfile: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_DMXProfiles.DMXProfile.ProfileType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DMXProfiles.DMXProfile.ProfileType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0BASIC\0\u{1}ADVANCED\0\u{1}CUSTOM\0")
 }
 
-extension Rv_Data_DMXProfiles.DMXProfile.FixtureType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DMXProfiles.DMXProfile.FixtureType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0WORKSPACE\0\u{1}LAYER\0")
 }
 
-extension Rv_Data_DMXProfiles.DMXProfile.CommandType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DMXProfiles.DMXProfile.CommandType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0OPACITY\0\u{1}BLEND_MODE\0\u{1}SELECT_CUE\0\u{1}CONTROL_TYPE\0\u{1}CONTROL_VALUE\0\u{1}TRANSITION_DURATION\0\u{1}SELECT_PLAYLIST\0\u{1}TARGETED_LAYER\0")
 }
 
-extension Rv_Data_DMXProfiles.DMXProfile.Profile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DMXProfiles.DMXProfile.Profile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DMXProfiles.DMXProfile.protoMessageName + ".Profile"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}profileType\0\u{1}startingChannel\0")
 
@@ -426,7 +426,7 @@ extension Rv_Data_DMXProfiles.DMXProfile.Profile: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_DMXProfiles.DMXProfile.ChannelMapping: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DMXProfiles.DMXProfile.ChannelMapping: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DMXProfiles.DMXProfile.protoMessageName + ".ChannelMapping"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}channelIndex\0\u{1}command\0")
 
@@ -461,7 +461,7 @@ extension Rv_Data_DMXProfiles.DMXProfile.ChannelMapping: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_DMXProfiles.DMXProfile.Fixture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_DMXProfiles.DMXProfile.Fixture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_DMXProfiles.DMXProfile.protoMessageName + ".Fixture"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}fixtureType\0\u{1}layerIndex\0")
 

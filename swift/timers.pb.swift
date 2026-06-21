@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Clock: Sendable {
+public nonisolated struct Rv_Data_Clock: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -29,7 +29,7 @@ public struct Rv_Data_Clock: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Format: Sendable {
+  public nonisolated struct Format: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -42,7 +42,7 @@ public struct Rv_Data_Clock: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum DateFormatterStyle: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum DateFormatterStyle: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case short // = 1
@@ -94,7 +94,7 @@ public struct Rv_Data_Clock: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_Timer: Sendable {
+public nonisolated struct Rv_Data_Timer: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -121,7 +121,7 @@ public struct Rv_Data_Timer: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Format: Sendable {
+  public nonisolated struct Format: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -142,7 +142,7 @@ public struct Rv_Data_Timer: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case short // = 1
@@ -191,7 +191,7 @@ public struct Rv_Data_Timer: Sendable {
     public init() {}
   }
 
-  public struct Configuration: Sendable {
+  public nonisolated struct Configuration: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -226,14 +226,14 @@ public struct Rv_Data_Timer: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_TimerType: Equatable, Sendable {
+    public nonisolated enum OneOf_TimerType: Equatable, Sendable {
       case countdown(Rv_Data_Timer.Configuration.TimerTypeCountdown)
       case countdownToTime(Rv_Data_Timer.Configuration.TimerTypeCountdownToTime)
       case elapsedTime(Rv_Data_Timer.Configuration.TimerTypeElapsedTime)
 
     }
 
-    public struct TimerTypeCountdown: Sendable {
+    public nonisolated struct TimerTypeCountdown: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -245,7 +245,7 @@ public struct Rv_Data_Timer: Sendable {
       public init() {}
     }
 
-    public struct TimerTypeCountdownToTime: Sendable {
+    public nonisolated struct TimerTypeCountdownToTime: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -256,7 +256,7 @@ public struct Rv_Data_Timer: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum TimePeriod: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum TimePeriod: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case am // = 0
         case pm // = 1
@@ -297,7 +297,7 @@ public struct Rv_Data_Timer: Sendable {
       public init() {}
     }
 
-    public struct TimerTypeElapsedTime: Sendable {
+    public nonisolated struct TimerTypeElapsedTime: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -322,7 +322,7 @@ public struct Rv_Data_Timer: Sendable {
   fileprivate var _configuration: Rv_Data_Timer.Configuration? = nil
 }
 
-public struct Rv_Data_TimersDocument: Sendable {
+public nonisolated struct Rv_Data_TimersDocument: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -355,11 +355,54 @@ public struct Rv_Data_TimersDocument: Sendable {
   fileprivate var _clock: Rv_Data_Clock? = nil
 }
 
+public nonisolated struct Rv_Data_LocalTimer: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var uuid: Rv_Data_UUID {
+    get {_uuid ?? Rv_Data_UUID()}
+    set {_uuid = newValue}
+  }
+  /// Returns true if `uuid` has been explicitly set.
+  public var hasUuid: Bool {self._uuid != nil}
+  /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
+  public mutating func clearUuid() {self._uuid = nil}
+
+  public var configuration: Rv_Data_Timer.Configuration {
+    get {_configuration ?? Rv_Data_Timer.Configuration()}
+    set {_configuration = newValue}
+  }
+  /// Returns true if `configuration` has been explicitly set.
+  public var hasConfiguration: Bool {self._configuration != nil}
+  /// Clears the value of `configuration`. Subsequent reads from it will return its default value.
+  public mutating func clearConfiguration() {self._configuration = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _uuid: Rv_Data_UUID? = nil
+  fileprivate var _configuration: Rv_Data_Timer.Configuration? = nil
+}
+
+public nonisolated struct Rv_Data_TimersLocalDocument: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var timers: [Rv_Data_LocalTimer] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Clock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Clock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Clock"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}format\0")
 
@@ -389,7 +432,7 @@ extension Rv_Data_Clock: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension Rv_Data_Clock.Format: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Clock.Format: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Clock.protoMessageName + ".Format"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{4}\u{2}date_type\0\u{3}time_format\0\u{3}military_time_enabled\0")
 
@@ -429,11 +472,11 @@ extension Rv_Data_Clock.Format: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_Clock.Format.DateFormatterStyle: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Clock.Format.DateFormatterStyle: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DATE_FORMATTER_STYLE_NONE\0\u{1}DATE_FORMATTER_STYLE_SHORT\0\u{1}DATE_FORMATTER_STYLE_MEDIUM\0\u{1}DATE_FORMATTER_STYLE_LONG\0\u{1}DATE_FORMATTER_STYLE_FULL\0")
 }
 
-extension Rv_Data_Timer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Timer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Timer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{2}\u{8}configuration\0")
 
@@ -477,7 +520,7 @@ extension Rv_Data_Timer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension Rv_Data_Timer.Format: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Timer.Format: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Timer.protoMessageName + ".Format"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}hour\0\u{1}minute\0\u{1}second\0\u{1}millisecond\0\u{3}is_wall_clock_time\0\u{3}is_24_hour_time\0\u{3}show_milliseconds_under_minute_only\0")
 
@@ -537,11 +580,11 @@ extension Rv_Data_Timer.Format: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_Timer.Format.Style: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Timer.Format.Style: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STYLE_NONE\0\u{1}STYLE_SHORT\0\u{1}STYLE_LONG\0\u{1}STYLE_REMOVE_SHORT\0\u{1}STYLE_REMOVE_LONG\0")
 }
 
-extension Rv_Data_Timer.Configuration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Timer.Configuration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Timer.protoMessageName + ".Configuration"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}countdown\0\u{3}countdown_to_time\0\u{3}elapsed_time\0\u{3}allows_overrun\0")
 
@@ -630,7 +673,7 @@ extension Rv_Data_Timer.Configuration: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_Timer.Configuration.TimerTypeCountdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Timer.Configuration.TimerTypeCountdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Timer.Configuration.protoMessageName + ".TimerTypeCountdown"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}duration\0")
 
@@ -660,7 +703,7 @@ extension Rv_Data_Timer.Configuration.TimerTypeCountdown: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_Timer.Configuration.TimerTypeCountdownToTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Timer.Configuration.TimerTypeCountdownToTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Timer.Configuration.protoMessageName + ".TimerTypeCountdownToTime"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}time_of_day\0\u{1}period\0")
 
@@ -695,11 +738,11 @@ extension Rv_Data_Timer.Configuration.TimerTypeCountdownToTime: SwiftProtobuf.Me
   }
 }
 
-extension Rv_Data_Timer.Configuration.TimerTypeCountdownToTime.TimePeriod: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Timer.Configuration.TimerTypeCountdownToTime.TimePeriod: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TIME_PERIOD_AM\0\u{1}TIME_PERIOD_PM\0\u{1}TIME_PERIOD_24\0")
 }
 
-extension Rv_Data_Timer.Configuration.TimerTypeElapsedTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Timer.Configuration.TimerTypeElapsedTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Timer.Configuration.protoMessageName + ".TimerTypeElapsedTime"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}start_time\0\u{3}end_time\0\u{3}has_end_time\0")
 
@@ -739,7 +782,7 @@ extension Rv_Data_Timer.Configuration.TimerTypeElapsedTime: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_TimersDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimersDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TimersDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}clock\0\u{1}timers\0")
 
@@ -777,6 +820,75 @@ extension Rv_Data_TimersDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   public static func ==(lhs: Rv_Data_TimersDocument, rhs: Rv_Data_TimersDocument) -> Bool {
     if lhs._applicationInfo != rhs._applicationInfo {return false}
     if lhs._clock != rhs._clock {return false}
+    if lhs.timers != rhs.timers {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_LocalTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LocalTimer"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}configuration\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._uuid) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._configuration) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._uuid {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try { if let v = self._configuration {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_LocalTimer, rhs: Rv_Data_LocalTimer) -> Bool {
+    if lhs._uuid != rhs._uuid {return false}
+    if lhs._configuration != rhs._configuration {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_TimersLocalDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".TimersLocalDocument"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timers\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.timers) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.timers.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.timers, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_TimersLocalDocument, rhs: Rv_Data_TimersLocalDocument) -> Bool {
     if lhs.timers != rhs.timers {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

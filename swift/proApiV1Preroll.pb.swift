@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Preroll_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Preroll_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -109,7 +109,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case prerollCue(Rv_Data_API_v1_Preroll_Request.PrerollCue)
     case prerollPlaylistItem(Rv_Data_API_v1_Preroll_Request.PrerollPlaylistItem)
     case prerollMediaItem(Rv_Data_API_v1_Preroll_Request.PrerollMediaItem)
@@ -123,7 +123,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
 
   }
 
-  public struct PrerollCue: Sendable {
+  public nonisolated struct PrerollCue: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -137,7 +137,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
     public init() {}
   }
 
-  public struct PrerollPlaylistItem: Sendable {
+  public nonisolated struct PrerollPlaylistItem: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -151,7 +151,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
     public init() {}
   }
 
-  public struct PrerollMediaItem: Sendable {
+  public nonisolated struct PrerollMediaItem: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -165,7 +165,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
     public init() {}
   }
 
-  public struct PrerollAudioItem: Sendable {
+  public nonisolated struct PrerollAudioItem: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -179,7 +179,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
     public init() {}
   }
 
-  public struct PrerollVideoInput: Sendable {
+  public nonisolated struct PrerollVideoInput: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -193,7 +193,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
     public init() {}
   }
 
-  public struct PrerollLibraryItem: Sendable {
+  public nonisolated struct PrerollLibraryItem: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -207,7 +207,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
     public init() {}
   }
 
-  public struct PrerollNext: Sendable {
+  public nonisolated struct PrerollNext: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -219,7 +219,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
     public init() {}
   }
 
-  public struct PrerollPrevious: Sendable {
+  public nonisolated struct PrerollPrevious: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -231,7 +231,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
     public init() {}
   }
 
-  public struct ActivatePrerollItem: Sendable {
+  public nonisolated struct ActivatePrerollItem: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -245,7 +245,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
     public init() {}
   }
 
-  public struct CancelPrerollItem: Sendable {
+  public nonisolated struct CancelPrerollItem: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -260,7 +260,7 @@ public struct Rv_Data_API_v1_Preroll_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Preroll_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Preroll_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -293,14 +293,14 @@ public struct Rv_Data_API_v1_Preroll_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case prerollReady(Rv_Data_API_v1_Preroll_Response.PrerollReady)
     case activatePrerollItem(Rv_Data_API_v1_Preroll_Response.ActivatePrerollItem)
     case cancelPrerollItem(Rv_Data_API_v1_Preroll_Response.CancelPrerollItem)
 
   }
 
-  public struct PrerollReady: Sendable {
+  public nonisolated struct PrerollReady: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -316,7 +316,7 @@ public struct Rv_Data_API_v1_Preroll_Response: Sendable {
     public init() {}
   }
 
-  public struct ActivatePrerollItem: Sendable {
+  public nonisolated struct ActivatePrerollItem: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -328,7 +328,7 @@ public struct Rv_Data_API_v1_Preroll_Response: Sendable {
     public init() {}
   }
 
-  public struct CancelPrerollItem: Sendable {
+  public nonisolated struct CancelPrerollItem: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -345,9 +345,9 @@ public struct Rv_Data_API_v1_Preroll_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Preroll_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Preroll_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}preroll_cue\0\u{3}preroll_playlist_item\0\u{3}preroll_media_item\0\u{3}preroll_audio_item\0\u{3}preroll_video_input\0\u{3}preroll_library_item\0\u{3}preroll_next\0\u{3}preroll_previous\0\u{3}activate_preroll_item\0\u{3}cancel_preroll_item\0")
 
@@ -550,7 +550,7 @@ extension Rv_Data_API_v1_Preroll_Request: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.PrerollCue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.PrerollCue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".PrerollCue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}index\0\u{3}preroll_id\0")
 
@@ -585,7 +585,7 @@ extension Rv_Data_API_v1_Preroll_Request.PrerollCue: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.PrerollPlaylistItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.PrerollPlaylistItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".PrerollPlaylistItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}preroll_id\0")
 
@@ -620,7 +620,7 @@ extension Rv_Data_API_v1_Preroll_Request.PrerollPlaylistItem: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.PrerollMediaItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.PrerollMediaItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".PrerollMediaItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}preroll_id\0")
 
@@ -655,7 +655,7 @@ extension Rv_Data_API_v1_Preroll_Request.PrerollMediaItem: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.PrerollAudioItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.PrerollAudioItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".PrerollAudioItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}preroll_id\0")
 
@@ -690,7 +690,7 @@ extension Rv_Data_API_v1_Preroll_Request.PrerollAudioItem: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.PrerollVideoInput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.PrerollVideoInput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".PrerollVideoInput"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}preroll_id\0")
 
@@ -725,7 +725,7 @@ extension Rv_Data_API_v1_Preroll_Request.PrerollVideoInput: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.PrerollLibraryItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.PrerollLibraryItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".PrerollLibraryItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}preroll_id\0")
 
@@ -760,7 +760,7 @@ extension Rv_Data_API_v1_Preroll_Request.PrerollLibraryItem: SwiftProtobuf.Messa
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.PrerollNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.PrerollNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".PrerollNext"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}preroll_id\0")
 
@@ -790,7 +790,7 @@ extension Rv_Data_API_v1_Preroll_Request.PrerollNext: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.PrerollPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.PrerollPrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".PrerollPrevious"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}preroll_id\0")
 
@@ -820,7 +820,7 @@ extension Rv_Data_API_v1_Preroll_Request.PrerollPrevious: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.ActivatePrerollItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.ActivatePrerollItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".ActivatePrerollItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}time\0")
 
@@ -855,7 +855,7 @@ extension Rv_Data_API_v1_Preroll_Request.ActivatePrerollItem: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Request.CancelPrerollItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Request.CancelPrerollItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Request.protoMessageName + ".CancelPrerollItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -885,7 +885,7 @@ extension Rv_Data_API_v1_Preroll_Request.CancelPrerollItem: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Preroll_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}preroll_ready\0\u{4}\u{2}activate_preroll_item\0\u{3}cancel_preroll_item\0")
 
@@ -969,7 +969,7 @@ extension Rv_Data_API_v1_Preroll_Response: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Response.PrerollReady: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Response.PrerollReady: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Response.protoMessageName + ".PrerollReady"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}latency\0\u{1}time\0")
 
@@ -1009,7 +1009,7 @@ extension Rv_Data_API_v1_Preroll_Response.PrerollReady: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Response.ActivatePrerollItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Response.ActivatePrerollItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Response.protoMessageName + ".ActivatePrerollItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}success\0")
 
@@ -1039,7 +1039,7 @@ extension Rv_Data_API_v1_Preroll_Response.ActivatePrerollItem: SwiftProtobuf.Mes
   }
 }
 
-extension Rv_Data_API_v1_Preroll_Response.CancelPrerollItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Preroll_Response.CancelPrerollItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Preroll_Response.protoMessageName + ".CancelPrerollItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}success\0")
 

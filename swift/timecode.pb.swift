@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_TimecodeSettings: Sendable {
+public nonisolated struct Rv_Data_TimecodeSettings: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -46,7 +46,7 @@ public struct Rv_Data_TimecodeSettings: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Format: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Format: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case format24Fps // = 0
     case format25Fps // = 1
@@ -95,9 +95,9 @@ public struct Rv_Data_TimecodeSettings: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_TimecodeSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimecodeSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TimecodeSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}device_identifier\0\u{1}channel\0\u{1}format\0\u{1}offset\0\u{3}playlist_identifier\0\u{3}is_active\0")
 
@@ -156,6 +156,6 @@ extension Rv_Data_TimecodeSettings: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_TimecodeSettings.Format: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimecodeSettings.Format: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FORMAT_24_FPS\0\u{1}FORMAT_25_FPS\0\u{1}FORMAT_29_97_FPS\0\u{1}FORMAT_30_FPS\0")
 }

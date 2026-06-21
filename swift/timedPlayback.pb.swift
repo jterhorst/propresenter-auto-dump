@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_TriggerSource: Sendable {
+public nonisolated struct Rv_Data_TriggerSource: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -61,7 +61,7 @@ public struct Rv_Data_TriggerSource: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Location: Equatable, Sendable {
+  public nonisolated enum OneOf_Location: Equatable, Sendable {
     case libraryLocation(Rv_Data_TriggerSource.Library)
     case playlistLocation(Rv_Data_TriggerSource.Playlist)
     case mediaPlaylistLocation(Rv_Data_TriggerSource.Playlist)
@@ -69,7 +69,7 @@ public struct Rv_Data_TriggerSource: Sendable {
 
   }
 
-  public struct Library: Sendable {
+  public nonisolated struct Library: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -83,7 +83,7 @@ public struct Rv_Data_TriggerSource: Sendable {
     public init() {}
   }
 
-  public struct Playlist: Sendable {
+  public nonisolated struct Playlist: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -117,7 +117,7 @@ public struct Rv_Data_TriggerSource: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_TimedPlayback: Sendable {
+public nonisolated struct Rv_Data_TimedPlayback: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -142,7 +142,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Sequence: Sendable {
+  public nonisolated struct Sequence: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -171,7 +171,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct SequenceItem: @unchecked Sendable {
+    public nonisolated struct SequenceItem: @unchecked Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -232,7 +232,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_Item: Equatable, Sendable {
+      public nonisolated enum OneOf_Item: Equatable, Sendable {
         case cue(Rv_Data_Cue)
         case action(Rv_Data_Action)
 
@@ -249,7 +249,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
     fileprivate var _playlist: Rv_Data_Playlist? = nil
   }
 
-  public struct Timing: Sendable {
+  public nonisolated struct Timing: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -282,14 +282,14 @@ public struct Rv_Data_TimedPlayback: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Source: Equatable, Sendable {
+    public nonisolated enum OneOf_Source: Equatable, Sendable {
       case layerTransport(Rv_Data_TimedPlayback.Timing.LayerTransport)
       case smpteTimecode(Rv_Data_TimedPlayback.Timing.SMPTETimecode)
       case `internal`(Rv_Data_TimedPlayback.Timing.Internal)
 
     }
 
-    public struct LayerTransport: Sendable {
+    public nonisolated struct LayerTransport: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -301,7 +301,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct SMPTETimecode: Sendable {
+    public nonisolated struct SMPTETimecode: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -316,7 +316,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum Format: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum Format: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case format24Fps // = 0
         case format25Fps // = 1
@@ -361,7 +361,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct Internal: Sendable {
+    public nonisolated struct Internal: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -378,7 +378,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
     public init() {}
   }
 
-  public struct Update: Sendable {
+  public nonisolated struct Update: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -475,7 +475,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_ActionType: Equatable, Sendable {
+    public nonisolated enum OneOf_ActionType: Equatable, Sendable {
       case play(Rv_Data_TimedPlayback.Update.Play)
       case record(Rv_Data_TimedPlayback.Update.Record)
       case pause(Rv_Data_TimedPlayback.Update.Pause)
@@ -490,7 +490,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
 
     }
 
-    public struct Play: Sendable {
+    public nonisolated struct Play: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -500,7 +500,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct Record: Sendable {
+    public nonisolated struct Record: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -512,7 +512,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct Pause: Sendable {
+    public nonisolated struct Pause: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -522,7 +522,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct Reset: Sendable {
+    public nonisolated struct Reset: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -532,19 +532,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct JumpToTime: Sendable {
-      // SwiftProtobuf.Message conformance is added in an extension below. See the
-      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-      // methods supported on all messages.
-
-      public var time: Double = 0
-
-      public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-      public init() {}
-    }
-
-    public struct StartScrub: Sendable {
+    public nonisolated struct JumpToTime: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -556,7 +544,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct EndScrub: Sendable {
+    public nonisolated struct StartScrub: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -568,7 +556,19 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct Duration: Sendable {
+    public nonisolated struct EndScrub: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var time: Double = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public nonisolated struct Duration: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -580,7 +580,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct Loop: Sendable {
+    public nonisolated struct Loop: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -592,7 +592,7 @@ public struct Rv_Data_TimedPlayback: Sendable {
       public init() {}
     }
 
-    public struct MonitorSource: Sendable {
+    public nonisolated struct MonitorSource: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -615,9 +615,9 @@ public struct Rv_Data_TimedPlayback: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_TriggerSource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerSource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TriggerSource"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}library_location\0\u{3}playlist_location\0\u{3}media_playlist_location\0\u{3}audio_playlist_location\0")
 
@@ -718,7 +718,7 @@ extension Rv_Data_TriggerSource: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_TriggerSource.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerSource.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerSource.protoMessageName + ".Library"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}presentation_name\0")
 
@@ -753,7 +753,7 @@ extension Rv_Data_TriggerSource.Library: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_TriggerSource.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TriggerSource.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TriggerSource.protoMessageName + ".Playlist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}identifier\0\u{3}item_identifier\0")
 
@@ -792,7 +792,7 @@ extension Rv_Data_TriggerSource.Playlist: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_TimedPlayback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TimedPlayback"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}sequence\0\u{1}timing\0")
 
@@ -831,7 +831,7 @@ extension Rv_Data_TimedPlayback: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_TimedPlayback.Sequence: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Sequence: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.protoMessageName + ".Sequence"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}sequence\0\u{3}content_destination\0\u{1}presentation\0\u{1}playlist\0")
 
@@ -880,7 +880,7 @@ extension Rv_Data_TimedPlayback.Sequence: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_TimedPlayback.Sequence.SequenceItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Sequence.SequenceItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Sequence.protoMessageName + ".SequenceItem"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}identifier\0\u{1}time\0\u{3}trigger_source\0\u{3}content_destination\0\u{1}cue\0\u{1}action\0\u{3}end_time\0")
 
@@ -1018,7 +1018,7 @@ extension Rv_Data_TimedPlayback.Sequence.SequenceItem: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_TimedPlayback.Timing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Timing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.protoMessageName + ".Timing"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}layer_transport\0\u{3}smpte_timecode\0\u{1}internal\0")
 
@@ -1102,7 +1102,7 @@ extension Rv_Data_TimedPlayback.Timing: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_TimedPlayback.Timing.LayerTransport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Timing.LayerTransport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Timing.protoMessageName + ".LayerTransport"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}layer\0")
 
@@ -1132,7 +1132,7 @@ extension Rv_Data_TimedPlayback.Timing.LayerTransport: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_TimedPlayback.Timing.SMPTETimecode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Timing.SMPTETimecode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Timing.protoMessageName + ".SMPTETimecode"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}device_identifier\0\u{1}channel\0\u{1}format\0\u{1}offset\0")
 
@@ -1177,11 +1177,11 @@ extension Rv_Data_TimedPlayback.Timing.SMPTETimecode: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_TimedPlayback.Timing.SMPTETimecode.Format: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Timing.SMPTETimecode.Format: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FORMAT_24_FPS\0\u{1}FORMAT_25_FPS\0\u{1}FORMAT_29_97_FPS\0\u{1}FORMAT_30_FPS\0")
 }
 
-extension Rv_Data_TimedPlayback.Timing.Internal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Timing.Internal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Timing.protoMessageName + ".Internal"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}duration\0\u{3}should_loop\0")
 
@@ -1216,7 +1216,7 @@ extension Rv_Data_TimedPlayback.Timing.Internal: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_TimedPlayback.Update: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.protoMessageName + ".Update"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}play\0\u{1}record\0\u{1}pause\0\u{1}reset\0\u{3}jump_to_time\0\u{3}start_scrub\0\u{3}end_scrub\0\u{1}duration\0\u{1}loop\0\u{3}update_sequence\0\u{3}monitor_source\0")
 
@@ -1436,7 +1436,7 @@ extension Rv_Data_TimedPlayback.Update: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.Play: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.Play: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".Play"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1455,7 +1455,7 @@ extension Rv_Data_TimedPlayback.Update.Play: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.Record: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.Record: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".Record"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_recording\0")
 
@@ -1485,7 +1485,7 @@ extension Rv_Data_TimedPlayback.Update.Record: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.Pause: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.Pause: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".Pause"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1504,7 +1504,7 @@ extension Rv_Data_TimedPlayback.Update.Pause: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.Reset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.Reset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".Reset"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1523,7 +1523,7 @@ extension Rv_Data_TimedPlayback.Update.Reset: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.JumpToTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.JumpToTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".JumpToTime"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -1553,7 +1553,7 @@ extension Rv_Data_TimedPlayback.Update.JumpToTime: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.StartScrub: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.StartScrub: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".StartScrub"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -1583,7 +1583,7 @@ extension Rv_Data_TimedPlayback.Update.StartScrub: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.EndScrub: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.EndScrub: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".EndScrub"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\u{2}time\0")
 
@@ -1613,7 +1613,7 @@ extension Rv_Data_TimedPlayback.Update.EndScrub: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.Duration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.Duration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".Duration"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}duration\0")
 
@@ -1643,7 +1643,7 @@ extension Rv_Data_TimedPlayback.Update.Duration: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.Loop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.Loop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".Loop"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}loop\0")
 
@@ -1673,7 +1673,7 @@ extension Rv_Data_TimedPlayback.Update.Loop: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_TimedPlayback.Update.MonitorSource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TimedPlayback.Update.MonitorSource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Update.protoMessageName + ".MonitorSource"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enable\0")
 

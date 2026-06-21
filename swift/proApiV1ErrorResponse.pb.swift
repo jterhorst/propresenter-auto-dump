@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Error_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Error_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -29,7 +29,7 @@ public struct Rv_Data_API_v1_Error_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum API_v1_Error_Type: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum API_v1_Error_Type: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case notFound // = 0
     case badRequest // = 1
@@ -76,9 +76,9 @@ public struct Rv_Data_API_v1_Error_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Error_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Error_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Error_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}error\0")
 
@@ -108,6 +108,6 @@ extension Rv_Data_API_v1_Error_Response: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_Error_Response.API_v1_Error_Type: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Error_Response.API_v1_Error_Type: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NOT_FOUND\0\u{1}BAD_REQUEST\0\u{1}INTERNAL_ERROR\0\u{1}UNAUTHORIZED\0")
 }

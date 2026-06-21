@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Analytics_Create_Library: Sendable {
+public nonisolated struct Rv_Analytics_Create_Library: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -29,7 +29,7 @@ public struct Rv_Analytics_Create_Library: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case applicationMenu // = 1
@@ -70,7 +70,7 @@ public struct Rv_Analytics_Create_Library: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Create_Playlist: Sendable {
+public nonisolated struct Rv_Analytics_Create_Playlist: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -81,7 +81,7 @@ public struct Rv_Analytics_Create_Playlist: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case applicationMenu // = 1
@@ -119,7 +119,7 @@ public struct Rv_Analytics_Create_Playlist: Sendable {
 
   }
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case presentation // = 1
@@ -168,7 +168,7 @@ public struct Rv_Analytics_Create_Playlist: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Create_Presentation: Sendable {
+public nonisolated struct Rv_Analytics_Create_Presentation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -177,7 +177,7 @@ public struct Rv_Analytics_Create_Presentation: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case applicationMenu // = 1
@@ -226,7 +226,7 @@ public struct Rv_Analytics_Create_Presentation: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Create_TemplatePlaylist: Sendable {
+public nonisolated struct Rv_Analytics_Create_TemplatePlaylist: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -248,9 +248,9 @@ public struct Rv_Analytics_Create_TemplatePlaylist: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.create"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.create"
 
-extension Rv_Analytics_Create_Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Create_Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Library"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -280,11 +280,11 @@ extension Rv_Analytics_Create_Library: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Analytics_Create_Library.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Create_Library.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}APPLICATION_MENU\0\u{1}LIBRARY_OUTLINE_ADD_BUTTON\0")
 }
 
-extension Rv_Analytics_Create_Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Create_Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Playlist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0\u{1}type\0")
 
@@ -319,15 +319,15 @@ extension Rv_Analytics_Create_Playlist: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Analytics_Create_Playlist.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Create_Playlist.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}APPLICATION_MENU\0\u{1}LIBRARY_OUTLINE_ADD_BUTTON\0")
 }
 
-extension Rv_Analytics_Create_Playlist.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Create_Playlist.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_UNKNOWN\0\u{1}PRESENTATION\0\u{1}PLANNING_CENTER\0\u{1}FOLDER\0\u{1}TEMPLATE_PLAYLIST\0")
 }
 
-extension Rv_Analytics_Create_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Create_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Presentation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -357,11 +357,11 @@ extension Rv_Analytics_Create_Presentation: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Create_Presentation.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Create_Presentation.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}APPLICATION_MENU\0\u{1}LIBRARY_OUTLINE_ADD_BUTTON\0\u{1}DETAIL_ADD_BUTTON\0\u{1}UNLINKED_HEADER\0")
 }
 
-extension Rv_Analytics_Create_TemplatePlaylist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Create_TemplatePlaylist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TemplatePlaylist"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}total_item_count\0\u{3}header_count\0\u{3}placeholder_count\0\u{3}presentation_count\0\u{3}media_count\0")
 

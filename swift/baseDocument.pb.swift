@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Document: Sendable {
+public nonisolated struct Rv_Data_Document: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -63,7 +63,7 @@ public struct Rv_Data_Document: Sendable {
   fileprivate var _workspace: Rv_Data_Workspace? = nil
 }
 
-public struct Rv_Data_CacheInfo: Sendable {
+public nonisolated struct Rv_Data_CacheInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -106,7 +106,7 @@ public struct Rv_Data_CacheInfo: Sendable {
   fileprivate var _url: Rv_Data_URL? = nil
 }
 
-public struct Rv_Data_PVPDocumentState: Sendable {
+public nonisolated struct Rv_Data_PVPDocumentState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -164,7 +164,7 @@ public struct Rv_Data_PVPDocumentState: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct PlaylistState: Sendable {
+  public nonisolated struct PlaylistState: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -184,7 +184,7 @@ public struct Rv_Data_PVPDocumentState: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum LayoutType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum LayoutType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case cue // = 0
       case action // = 1
@@ -238,9 +238,9 @@ public struct Rv_Data_PVPDocumentState: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Document"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}uuid\0\u{3}uses_relative_urls\0\u{2}\u{7}workspace\0")
 
@@ -289,7 +289,7 @@ extension Rv_Data_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension Rv_Data_CacheInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_CacheInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CacheInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}application_version\0\u{1}url\0\u{3}last_modified_date\0")
 
@@ -338,7 +338,7 @@ extension Rv_Data_CacheInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension Rv_Data_PVPDocumentState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PVPDocumentState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PVPDocumentState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}primary_playlist\0\u{3}alternate_playlist\0\u{3}playlist_split_is_vertical\0\u{3}targeted_layer\0\u{3}selected_layer\0\u{3}locked_layer\0\u{3}live_video_playlist_scale\0\u{3}split_view_divider_position\0")
 
@@ -407,7 +407,7 @@ extension Rv_Data_PVPDocumentState: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_PVPDocumentState.PlaylistState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PVPDocumentState.PlaylistState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PVPDocumentState.protoMessageName + ".PlaylistState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\u{2}uuid\0\u{1}layout\0\u{3}item_scale\0")
 
@@ -451,6 +451,6 @@ extension Rv_Data_PVPDocumentState.PlaylistState: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_PVPDocumentState.PlaylistState.LayoutType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_PVPDocumentState.PlaylistState.LayoutType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LAYOUT_TYPE_CUE\0\u{1}LAYOUT_TYPE_ACTION\0\u{1}LAYOUT_TYPE_LIVE_VIDEO\0")
 }

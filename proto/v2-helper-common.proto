@@ -56,6 +56,7 @@ message CreationOption {
   string show_directory = 1;
   helper.common.v2.Preferences preferences = 4;
   optional string workspace_id = 5;
+  optional uint64 peer_id = 6;
 }
 
 message MediaReferenceInfo {
@@ -228,6 +229,7 @@ message AddMediaReference {
   helper.common.v2.Priority priority = 3;
   helper.common.v2.Transformation transformation = 4;
   optional bool manage_media = 5;
+  optional bool user_initiated = 6;
 }
 
 message ProContentDownloadDetails {
@@ -254,12 +256,14 @@ message AddProContentReference {
   helper.common.v2.ProContentDownloadDetails download_details = 2;
   helper.common.v2.Transformation transformation = 3;
   helper.common.v2.Priority priority = 4;
+  optional bool user_initiated = 5;
 }
 
 message DuplicateMediaReference {
   helper.common.v2.ReferenceIdentifier src_id = 1;
   helper.common.v2.ReferenceIdentifier dest_id = 2;
   helper.common.v2.Priority priority = 3;
+  optional bool user_initiated = 4;
 }
 
 message Transformation {
@@ -282,12 +286,14 @@ message ApplyTransformation {
   helper.common.v2.ReferenceIdentifier id = 1;
   helper.common.v2.Transformation transformation = 2;
   helper.common.v2.Priority priority = 3;
+  optional bool user_initiated = 4;
 }
 
 message RemoveMediaReferences {
   repeated helper.common.v2.ReferenceIdentifier id = 1;
   bool purge_asset = 2;
   bool delete_asset = 3;
+  optional bool user_initiated = 4;
 }
 
 message TriggerMediaReference {
@@ -315,6 +321,7 @@ message MarkWorkspaceAsLocal {
 
 message RemoveContainer {
   repeated string container_id = 1;
+  optional bool user_initiated = 2;
 }
 
 message ImportUnmanagedMedia {

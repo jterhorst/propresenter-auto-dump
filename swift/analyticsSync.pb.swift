@@ -15,12 +15,58 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Analytics_Sync_Local: Sendable {
+public nonisolated enum Rv_Analytics_Sync_WebSocketFailureReason: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public typealias RawValue = Int
+  case unknown // = 0
+  case authentication // = 1
+  case timeout // = 2
+  case noInternet // = 3
+  case serverError // = 4
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .unknown
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .unknown
+    case 1: self = .authentication
+    case 2: self = .timeout
+    case 3: self = .noInternet
+    case 4: self = .serverError
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .unknown: return 0
+    case .authentication: return 1
+    case .timeout: return 2
+    case .noInternet: return 3
+    case .serverError: return 4
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static let allCases: [Rv_Analytics_Sync_WebSocketFailureReason] = [
+    .unknown,
+    .authentication,
+    .timeout,
+    .noInternet,
+    .serverError,
+  ]
+
+}
+
+public nonisolated struct Rv_Analytics_Sync_Local: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -41,7 +87,7 @@ public struct Rv_Analytics_Sync_Local: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case up // = 0
     case down // = 1
@@ -78,11 +124,31 @@ public struct Rv_Analytics_Sync_Local: Sendable {
   public init() {}
 }
 
+public nonisolated struct Rv_Analytics_Sync_WebSocketConnectionFailed: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var reason: Rv_Analytics_Sync_WebSocketFailureReason = .unknown
+
+  public var url: String = String()
+
+  public var errorDescription: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.sync"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.sync"
 
-extension Rv_Analytics_Sync_Local: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Sync_WebSocketFailureReason: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}AUTHENTICATION\0\u{1}TIMEOUT\0\u{1}NO_INTERNET\0\u{1}SERVER_ERROR\0")
+}
+
+nonisolated extension Rv_Analytics_Sync_Local: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Local"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}sync_type\0\u{3}include_library\0\u{3}include_media\0\u{3}include_playlists\0\u{3}include_themes\0\u{3}include_support_files\0\u{3}replace_files\0")
 
@@ -142,6 +208,46 @@ extension Rv_Analytics_Sync_Local: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Rv_Analytics_Sync_Local.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Sync_Local.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UP\0\u{1}DOWN\0")
+}
+
+nonisolated extension Rv_Analytics_Sync_WebSocketConnectionFailed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".WebSocketConnectionFailed"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}reason\0\u{1}url\0\u{3}error_description\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.reason) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.url) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.errorDescription) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.reason != .unknown {
+      try visitor.visitSingularEnumField(value: self.reason, fieldNumber: 1)
+    }
+    if !self.url.isEmpty {
+      try visitor.visitSingularStringField(value: self.url, fieldNumber: 2)
+    }
+    if !self.errorDescription.isEmpty {
+      try visitor.visitSingularStringField(value: self.errorDescription, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Sync_WebSocketConnectionFailed, rhs: Rv_Analytics_Sync_WebSocketConnectionFailed) -> Bool {
+    if lhs.reason != rhs.reason {return false}
+    if lhs.url != rhs.url {return false}
+    if lhs.errorDescription != rhs.errorDescription {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
 }

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Workspace_Notification: Sendable {
+public nonisolated struct Workspace_Notification: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -61,7 +61,7 @@ public struct Workspace_Notification: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Notification: Equatable, Sendable {
+  public nonisolated enum OneOf_Notification: Equatable, Sendable {
     case unsubscribe(Workspace_Notification.UnsubscribeComplete)
     case workspaces(Workspace_Notification.Workspaces)
     case collaborators(Workspace_Notification.Collaborators)
@@ -69,7 +69,7 @@ public struct Workspace_Notification: Sendable {
 
   }
 
-  public struct UnsubscribeComplete: Sendable {
+  public nonisolated struct UnsubscribeComplete: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -79,7 +79,7 @@ public struct Workspace_Notification: Sendable {
     public init() {}
   }
 
-  public struct Workspaces: Sendable {
+  public nonisolated struct Workspaces: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -112,14 +112,14 @@ public struct Workspace_Notification: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_State: Equatable, Sendable {
+    public nonisolated enum OneOf_State: Equatable, Sendable {
       case initialized(Workspace_Notification.Workspaces.WorkspaceList)
       case uninitialized(Workspace_Notification.Workspaces.Uninitialized)
       case error(Workspace_Notification.Workspaces.Error)
 
     }
 
-    public struct WorkspaceList: Sendable {
+    public nonisolated struct WorkspaceList: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -131,7 +131,7 @@ public struct Workspace_Notification: Sendable {
       public init() {}
     }
 
-    public struct Uninitialized: Sendable {
+    public nonisolated struct Uninitialized: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -141,7 +141,7 @@ public struct Workspace_Notification: Sendable {
       public init() {}
     }
 
-    public struct Error: Sendable {
+    public nonisolated struct Error: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -154,7 +154,7 @@ public struct Workspace_Notification: Sendable {
     public init() {}
   }
 
-  public struct Collaborators: Sendable {
+  public nonisolated struct Collaborators: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -166,7 +166,7 @@ public struct Workspace_Notification: Sendable {
     public init() {}
   }
 
-  public struct Syncing: Sendable {
+  public nonisolated struct Syncing: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -182,7 +182,7 @@ public struct Workspace_Notification: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public struct Paused: Sendable {
+    public nonisolated struct Paused: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -206,9 +206,9 @@ public struct Workspace_Notification: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "workspace"
+fileprivate nonisolated let _protobuf_package = "workspace"
 
-extension Workspace_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Notification"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}unsubscribe\0\u{1}workspaces\0\u{1}collaborators\0\u{1}syncing\0")
 
@@ -309,7 +309,7 @@ extension Workspace_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Workspace_Notification.UnsubscribeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Notification.UnsubscribeComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Notification.protoMessageName + ".UnsubscribeComplete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -328,7 +328,7 @@ extension Workspace_Notification.UnsubscribeComplete: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Workspace_Notification.Workspaces: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Notification.Workspaces: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Notification.protoMessageName + ".Workspaces"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}initialized\0\u{1}uninitialized\0\u{1}error\0")
 
@@ -412,7 +412,7 @@ extension Workspace_Notification.Workspaces: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Workspace_Notification.Workspaces.WorkspaceList: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Notification.Workspaces.WorkspaceList: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Notification.Workspaces.protoMessageName + ".WorkspaceList"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspaces\0")
 
@@ -442,7 +442,7 @@ extension Workspace_Notification.Workspaces.WorkspaceList: SwiftProtobuf.Message
   }
 }
 
-extension Workspace_Notification.Workspaces.Uninitialized: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Notification.Workspaces.Uninitialized: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Notification.Workspaces.protoMessageName + ".Uninitialized"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -461,7 +461,7 @@ extension Workspace_Notification.Workspaces.Uninitialized: SwiftProtobuf.Message
   }
 }
 
-extension Workspace_Notification.Workspaces.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Notification.Workspaces.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Notification.Workspaces.protoMessageName + ".Error"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -480,7 +480,7 @@ extension Workspace_Notification.Workspaces.Error: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Workspace_Notification.Collaborators: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Notification.Collaborators: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Notification.protoMessageName + ".Collaborators"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}online\0")
 
@@ -510,7 +510,7 @@ extension Workspace_Notification.Collaborators: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Workspace_Notification.Syncing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Notification.Syncing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Notification.protoMessageName + ".Syncing"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}paused\0")
 
@@ -544,7 +544,7 @@ extension Workspace_Notification.Syncing: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Workspace_Notification.Syncing.Paused: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Workspace_Notification.Syncing.Paused: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Notification.Syncing.protoMessageName + ".Paused"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}until_time_utc\0\u{3}at_time_utc\0")
 

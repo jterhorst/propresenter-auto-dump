@@ -81,6 +81,7 @@ message SlideElement {
   rv.data.MusicKeyScale base_key = 3;
   rv.data.MusicKeyScale target_key = 4;
   repeated rv.data.WebFillTokenAndCookies.Cookie cookies = 5;
+  bool for_stage_layout = 6;
 }
 
 message SlidePreview {

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Textdoc_Document: Sendable {
+public nonisolated struct Textdoc_Document: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -62,7 +62,7 @@ public struct Textdoc_Document: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ParagraphAlignment: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ParagraphAlignment: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case left // = 0
     case center // = 1
@@ -104,7 +104,7 @@ public struct Textdoc_Document: Sendable {
 
   }
 
-  public enum LineSpacingMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum LineSpacingMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case absolute // = 0
     case relative // = 1
@@ -142,7 +142,7 @@ public struct Textdoc_Document: Sendable {
 
   }
 
-  public enum RightIndentMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum RightIndentMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case fromRight // = 0
     case fromLeft // = 1
@@ -176,7 +176,7 @@ public struct Textdoc_Document: Sendable {
 
   }
 
-  public enum TabStopType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TabStopType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case left // = 0
     case right // = 1
@@ -218,7 +218,7 @@ public struct Textdoc_Document: Sendable {
 
   }
 
-  public struct Color: Sendable {
+  public nonisolated struct Color: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -236,7 +236,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct DocumentSettings: @unchecked Sendable {
+  public nonisolated struct DocumentSettings: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -291,7 +291,7 @@ public struct Textdoc_Document: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum DocumentAlignment: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum DocumentAlignment: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case top // = 0
       case middle // = 1
@@ -329,7 +329,7 @@ public struct Textdoc_Document: Sendable {
 
     }
 
-    public enum TextTransform: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum TextTransform: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case removeLineReturns // = 1
@@ -375,7 +375,7 @@ public struct Textdoc_Document: Sendable {
 
     }
 
-    public enum ScaleMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ScaleMode: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case adjustContainerHeight // = 1
@@ -421,7 +421,7 @@ public struct Textdoc_Document: Sendable {
 
     }
 
-    public struct Margins: Sendable {
+    public nonisolated struct Margins: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -439,7 +439,7 @@ public struct Textdoc_Document: Sendable {
       public init() {}
     }
 
-    public struct Shadow: Sendable {
+    public nonisolated struct Shadow: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -475,7 +475,7 @@ public struct Textdoc_Document: Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct LevelSettings: Sendable {
+  public nonisolated struct LevelSettings: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -500,7 +500,7 @@ public struct Textdoc_Document: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum FollowType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum FollowType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case nothing // = 0
       case space // = 1
@@ -538,7 +538,7 @@ public struct Textdoc_Document: Sendable {
 
     }
 
-    public enum NumberingScheme: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum NumberingScheme: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case arabic // = 0
       case arabicWithLeadingZero // = 1
@@ -608,7 +608,7 @@ public struct Textdoc_Document: Sendable {
 
     }
 
-    public enum BulletType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum BulletType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case dash // = 0
       case hyphenDash // = 1
@@ -693,7 +693,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct ListSettings: Sendable {
+  public nonisolated struct ListSettings: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -705,7 +705,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct TableSettings: Sendable {
+  public nonisolated struct TableSettings: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -715,7 +715,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct TabStop: Sendable {
+  public nonisolated struct TabStop: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -729,7 +729,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct ParagraphSettings: @unchecked Sendable {
+  public nonisolated struct ParagraphSettings: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -830,7 +830,7 @@ public struct Textdoc_Document: Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct FontInfo: Sendable {
+  public nonisolated struct FontInfo: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -864,7 +864,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct SolidFill: Sendable {
+  public nonisolated struct SolidFill: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -885,7 +885,7 @@ public struct Textdoc_Document: Sendable {
     fileprivate var _color: Textdoc_Document.Color? = nil
   }
 
-  public struct GradientFill: Sendable {
+  public nonisolated struct GradientFill: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -901,7 +901,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct CutOutFill: Sendable {
+  public nonisolated struct CutOutFill: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -911,7 +911,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct Media: Sendable {
+  public nonisolated struct Media: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -921,7 +921,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct MediaFill: Sendable {
+  public nonisolated struct MediaFill: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -946,7 +946,7 @@ public struct Textdoc_Document: Sendable {
     fileprivate var _media: Textdoc_Document.Media? = nil
   }
 
-  public struct BackgroundBlurFill: Sendable {
+  public nonisolated struct BackgroundBlurFill: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -960,7 +960,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct BackgroundInvertFill: Sendable {
+  public nonisolated struct BackgroundInvertFill: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -970,7 +970,7 @@ public struct Textdoc_Document: Sendable {
     public init() {}
   }
 
-  public struct RunSettings: @unchecked Sendable {
+  public nonisolated struct RunSettings: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1082,7 +1082,7 @@ public struct Textdoc_Document: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum CharacterSizeMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum CharacterSizeMode: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case normal // = 0
       case scaledByDocumentHeight // = 1
@@ -1120,7 +1120,7 @@ public struct Textdoc_Document: Sendable {
 
     }
 
-    public enum CapitalizationType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum CapitalizationType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case none // = 0
       case allCaps // = 1
@@ -1170,7 +1170,7 @@ public struct Textdoc_Document: Sendable {
 
     }
 
-    public struct TextFill: Sendable {
+    public nonisolated struct TextFill: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -1227,7 +1227,7 @@ public struct Textdoc_Document: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_Fill: Equatable, Sendable {
+      public nonisolated enum OneOf_Fill: Equatable, Sendable {
         case solidFill(Textdoc_Document.SolidFill)
         case gradientFill(Textdoc_Document.GradientFill)
         case cutOutFill(Textdoc_Document.CutOutFill)
@@ -1240,7 +1240,7 @@ public struct Textdoc_Document: Sendable {
       public init() {}
     }
 
-    public struct Stroke: Sendable {
+    public nonisolated struct Stroke: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -1268,7 +1268,7 @@ public struct Textdoc_Document: Sendable {
     fileprivate var _storage = _StorageClass.defaultInstance
   }
 
-  public struct Run: Sendable {
+  public nonisolated struct Run: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1291,7 +1291,7 @@ public struct Textdoc_Document: Sendable {
     fileprivate var _runSettings: Textdoc_Document.RunSettings? = nil
   }
 
-  public struct Paragraph: Sendable {
+  public nonisolated struct Paragraph: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1324,7 +1324,7 @@ public struct Textdoc_Document: Sendable {
     fileprivate var _defaultRunSettings: Textdoc_Document.RunSettings? = nil
   }
 
-  public struct DocumentAttributes: Sendable {
+  public nonisolated struct DocumentAttributes: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -1364,9 +1364,9 @@ public struct Textdoc_Document: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "textdoc"
+fileprivate nonisolated let _protobuf_package = "textdoc"
 
-extension Textdoc_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Document"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_settings\0\u{3}document_attributes\0\u{3}list_settings\0\u{3}table_settings\0\u{1}paragraphs\0\u{1}width\0\u{1}height\0")
 
@@ -1430,23 +1430,23 @@ extension Textdoc_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension Textdoc_Document.ParagraphAlignment: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.ParagraphAlignment: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ParagraphAlignment_Left\0\u{1}ParagraphAlignment_Center\0\u{1}ParagraphAlignment_Right\0\u{1}ParagraphAlignment_Justified\0")
 }
 
-extension Textdoc_Document.LineSpacingMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.LineSpacingMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LineSpacingMode_Absolute\0\u{1}LineSpacingMode_Relative\0\u{1}LineSpacingMode_Multiple\0")
 }
 
-extension Textdoc_Document.RightIndentMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.RightIndentMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0RightIndentMode_FromRight\0\u{1}RightIndentMode_FromLeft\0")
 }
 
-extension Textdoc_Document.TabStopType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.TabStopType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TabStopType_Left\0\u{1}TabStopType_Right\0\u{1}TabStopType_Center\0\u{1}TabStopType_Decimal\0")
 }
 
-extension Textdoc_Document.Color: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.Color: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".Color"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}red\0\u{1}green\0\u{1}blue\0\u{1}alpha\0")
 
@@ -1491,7 +1491,7 @@ extension Textdoc_Document.Color: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Textdoc_Document.DocumentSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.DocumentSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".DocumentSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}alignment\0\u{1}transform\0\u{1}delimiter\0\u{3}scale_mode\0\u{3}layout_width\0\u{1}margins\0\u{1}shadow\0\u{3}has_explicit_margins\0")
 
@@ -1610,19 +1610,19 @@ extension Textdoc_Document.DocumentSettings: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Textdoc_Document.DocumentSettings.DocumentAlignment: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.DocumentSettings.DocumentAlignment: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DocumentAlignment_Top\0\u{1}DocumentAlignment_Middle\0\u{1}DocumentAlignment_Bottom\0")
 }
 
-extension Textdoc_Document.DocumentSettings.TextTransform: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.DocumentSettings.TextTransform: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TextTransform_None\0\u{1}TextTransform_RemoveLineReturns\0\u{1}TextTransform_ReplaceLineReturns\0\u{1}TextTransform_SingleWordPerLine\0\u{1}TextTransform_SingleCharacterPerLine\0")
 }
 
-extension Textdoc_Document.DocumentSettings.ScaleMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.DocumentSettings.ScaleMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ScaleMode_None\0\u{1}ScaleMode_AdjustContainerHeight\0\u{1}ScaleMode_Up\0\u{1}ScaleMode_Down\0\u{1}ScaleMode_UpOrDown\0")
 }
 
-extension Textdoc_Document.DocumentSettings.Margins: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.DocumentSettings.Margins: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.DocumentSettings.protoMessageName + ".Margins"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}left\0\u{1}top\0\u{1}right\0\u{1}bottom\0")
 
@@ -1667,7 +1667,7 @@ extension Textdoc_Document.DocumentSettings.Margins: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Textdoc_Document.DocumentSettings.Shadow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.DocumentSettings.Shadow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.DocumentSettings.protoMessageName + ".Shadow"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enabled\0\u{3}blur_radius\0\u{1}opacity\0\u{1}color\0\u{1}angle\0\u{1}offset\0")
 
@@ -1726,7 +1726,7 @@ extension Textdoc_Document.DocumentSettings.Shadow: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Textdoc_Document.LevelSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.LevelSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".LevelSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}follow_type\0\u{3}numbering_scheme\0\u{3}bullet_type\0\u{3}is_bullet\0\u{1}prefix\0\u{1}suffix\0\u{3}numbering_format\0\u{3}start_number\0\u{3}level_index\0")
 
@@ -1796,19 +1796,19 @@ extension Textdoc_Document.LevelSettings: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Textdoc_Document.LevelSettings.FollowType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.LevelSettings.FollowType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FollowType_Nothing\0\u{1}FollowType_Space\0\u{1}FollowType_Tab\0")
 }
 
-extension Textdoc_Document.LevelSettings.NumberingScheme: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.LevelSettings.NumberingScheme: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NumberingScheme_Arabic\0\u{1}NumberingScheme_ArabicWithLeadingZero\0\u{1}NumberingScheme_OrdinalNumber\0\u{1}NumberingScheme_UppercaseRomanNumeral\0\u{1}NumberingScheme_LowercaseRomanNumeral\0\u{1}NumberingScheme_UppercaseLetter\0\u{1}NumberingScheme_LowercaseLetter\0\u{1}NumberingScheme_LowercaseRussianAlphabet\0\u{1}NumberingScheme_UppercaseRussianAlphabet\0\u{1}NumberingScheme_LowercaseGreekNumerals\0\u{1}NumberingScheme_UppercaseGreekNumerals\0")
 }
 
-extension Textdoc_Document.LevelSettings.BulletType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.LevelSettings.BulletType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0BulletType_Dash\0\u{1}BulletType_HyphenDash\0\u{1}BulletType_SmallCircle\0\u{1}BulletType_Circle\0\u{1}BulletType_SmallOpenCircle\0\u{1}BulletType_OpenCircle\0\u{1}BulletType_SmallSquare\0\u{1}BulletType_Square\0\u{1}BulletType_SmallOpenSquare\0\u{1}BulletType_OpenSquare\0\u{1}BulletType_Checkmark\0\u{1}BulletType_HeavyCheckmark\0\u{1}BulletType_Diamond\0\u{1}BulletType_OpenDiamond\0")
 }
 
-extension Textdoc_Document.ListSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.ListSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".ListSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}level_settings\0")
 
@@ -1838,7 +1838,7 @@ extension Textdoc_Document.ListSettings: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Textdoc_Document.TableSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.TableSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".TableSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1857,7 +1857,7 @@ extension Textdoc_Document.TableSettings: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Textdoc_Document.TabStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.TabStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".TabStop"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}position\0\u{1}type\0")
 
@@ -1892,7 +1892,7 @@ extension Textdoc_Document.TabStop: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Textdoc_Document.ParagraphSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.ParagraphSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".ParagraphSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}alignment\0\u{3}spacing_mode\0\u{3}line_spacing\0\u{3}additional_line_spacing\0\u{3}before_paragraph\0\u{3}after_paragraph\0\u{3}left_indent\0\u{3}right_indent\0\u{3}right_indent_mode\0\u{3}first_line_indent\0\u{3}list_index\0\u{3}level_index\0\u{3}bullet_color\0\u{3}bullet_scale\0\u{3}tab_stops\0\u{3}list_override_text\0\u{3}default_tab_stop\0")
 
@@ -2074,7 +2074,7 @@ extension Textdoc_Document.ParagraphSettings: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Textdoc_Document.FontInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.FontInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".FontInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}system_family_name\0\u{3}system_face_name\0\u{3}display_family_name\0\u{3}display_face_name\0\u{3}full_name\0\u{3}postscript_name\0\u{3}alternate_postscript_names\0\u{1}weight\0\u{1}width\0\u{3}is_italic\0\u{3}variant_index\0\u{3}other_properties\0")
 
@@ -2159,7 +2159,7 @@ extension Textdoc_Document.FontInfo: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Textdoc_Document.SolidFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.SolidFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".SolidFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}color\0")
 
@@ -2193,7 +2193,7 @@ extension Textdoc_Document.SolidFill: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Textdoc_Document.GradientFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.GradientFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".GradientFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}angle\0\u{3}stretch_to_document_bounds\0\u{1}colors\0")
 
@@ -2233,7 +2233,7 @@ extension Textdoc_Document.GradientFill: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Textdoc_Document.CutOutFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.CutOutFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".CutOutFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2252,7 +2252,7 @@ extension Textdoc_Document.CutOutFill: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Textdoc_Document.Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".Media"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2271,7 +2271,7 @@ extension Textdoc_Document.Media: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Textdoc_Document.MediaFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.MediaFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".MediaFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}stretch_to_document_bounds\0\u{1}media\0")
 
@@ -2315,7 +2315,7 @@ extension Textdoc_Document.MediaFill: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Textdoc_Document.BackgroundBlurFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.BackgroundBlurFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".BackgroundBlurFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}blur\0\u{1}saturation\0")
 
@@ -2350,7 +2350,7 @@ extension Textdoc_Document.BackgroundBlurFill: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Textdoc_Document.BackgroundInvertFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.BackgroundInvertFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".BackgroundInvertFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2369,7 +2369,7 @@ extension Textdoc_Document.BackgroundInvertFill: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Textdoc_Document.RunSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.RunSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".RunSettings"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}font\0\u{3}character_size\0\u{3}character_size_mode\0\u{3}character_spacing\0\u{3}script_level\0\u{3}text_fill\0\u{3}highlight_color\0\u{1}stroke\0\u{1}underline\0\u{3}underline_color\0\u{3}strike_through\0\u{3}capitalization_type\0\u{3}tabular_numbers\0\u{3}preserve_fill_color\0\u{1}kerning\0\u{1}ligatures\0\u{3}font_scale_factor\0")
 
@@ -2551,15 +2551,15 @@ extension Textdoc_Document.RunSettings: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Textdoc_Document.RunSettings.CharacterSizeMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.RunSettings.CharacterSizeMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CharacterSizeMode_Normal\0\u{1}CharacterSizeMode_ScaledByDocumentHeight\0\u{1}CharacterSizeMode_ScaledByDocumentWidth\0")
 }
 
-extension Textdoc_Document.RunSettings.CapitalizationType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.RunSettings.CapitalizationType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CapitalizationType_None\0\u{1}CapitalizationType_AllCaps\0\u{1}CapitalizationType_LowerCase\0\u{1}CapitalizationType_SmallCaps\0\u{1}CapitalizationType_TitleCase\0\u{1}CapitalizationType_StartCase\0")
 }
 
-extension Textdoc_Document.RunSettings.TextFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.RunSettings.TextFill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.RunSettings.protoMessageName + ".TextFill"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}solid_fill\0\u{3}gradient_fill\0\u{3}cut_out_fill\0\u{3}media_fill\0\u{3}background_blur_fill\0\u{3}background_invert_fill\0")
 
@@ -2694,7 +2694,7 @@ extension Textdoc_Document.RunSettings.TextFill: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Textdoc_Document.RunSettings.Stroke: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.RunSettings.Stroke: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.RunSettings.protoMessageName + ".Stroke"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}thickness\0\u{1}color\0")
 
@@ -2733,7 +2733,7 @@ extension Textdoc_Document.RunSettings.Stroke: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Textdoc_Document.Run: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.Run: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".Run"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}run_settings\0\u{1}text\0")
 
@@ -2772,7 +2772,7 @@ extension Textdoc_Document.Run: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Textdoc_Document.Paragraph: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.Paragraph: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".Paragraph"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}paragraph_settings\0\u{1}runs\0\u{3}default_run_settings\0")
 
@@ -2816,7 +2816,7 @@ extension Textdoc_Document.Paragraph: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Textdoc_Document.DocumentAttributes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Textdoc_Document.DocumentAttributes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Textdoc_Document.protoMessageName + ".DocumentAttributes"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}paragraph_settings\0\u{3}run_settings\0")
 

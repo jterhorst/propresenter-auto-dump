@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Workspace: @unchecked Sendable {
+public nonisolated struct Rv_Data_Workspace: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -172,7 +172,7 @@ public struct Rv_Data_Workspace: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct EditorBackground: Sendable {
+  public nonisolated struct EditorBackground: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -207,7 +207,7 @@ public struct Rv_Data_Workspace: @unchecked Sendable {
     fileprivate var _url: Rv_Data_URL? = nil
   }
 
-  public struct UnitScaling: Sendable {
+  public nonisolated struct UnitScaling: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -220,7 +220,7 @@ public struct Rv_Data_Workspace: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum UnitType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum UnitType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case points // = 0
       case millimeters // = 1
@@ -280,9 +280,9 @@ public struct Rv_Data_Workspace: @unchecked Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Workspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Workspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Workspace"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}muted\0\u{1}hidden\0\u{3}editor_background\0\u{3}effect_preset_uuid\0\u{3}effect_build_duration\0\u{1}transition\0\u{3}active_mask_uuid\0\u{1}playlist\0\u{3}unit_scaling\0\u{2}\u{6}effects\0\u{1}masks\0\u{1}screens\0\u{3}edge_blends\0\u{1}layers\0\u{3}target_sets\0\u{3}hot_keys\0\u{1}calendar\0\u{3}alignment_guides\0\u{3}live_video_playlist\0\u{3}output_preview_display\0")
 
@@ -492,7 +492,7 @@ extension Rv_Data_Workspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension Rv_Data_Workspace.EditorBackground: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Workspace.EditorBackground: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Workspace.protoMessageName + ".EditorBackground"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enabled\0\u{1}frame\0\u{1}url\0\u{1}opacity\0")
 
@@ -541,7 +541,7 @@ extension Rv_Data_Workspace.EditorBackground: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_Workspace.UnitScaling: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Workspace.UnitScaling: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Workspace.protoMessageName + ".UnitScaling"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}length\0\u{1}unit\0\u{1}points\0")
 
@@ -581,6 +581,6 @@ extension Rv_Data_Workspace.UnitScaling: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_Workspace.UnitScaling.UnitType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Workspace.UnitScaling.UnitType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNIT_TYPE_POINTS\0\u{1}UNIT_TYPE_MILLIMETERS\0\u{1}UNIT_TYPE_CENTIMETERS\0\u{1}UNIT_TYPE_METERS\0\u{1}UNIT_TYPE_INCHES\0\u{1}UNIT_TYPE_FEET\0")
 }

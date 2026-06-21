@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Layer: @unchecked Sendable {
+public nonisolated struct Rv_Data_Layer: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -134,7 +134,7 @@ public struct Rv_Data_Layer: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum BlendMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum BlendMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case normal // = 0
     case dissolve // = 1
@@ -268,7 +268,7 @@ public struct Rv_Data_Layer: @unchecked Sendable {
 
   }
 
-  public struct Preset: Sendable {
+  public nonisolated struct Preset: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -301,7 +301,7 @@ public struct Rv_Data_Layer: @unchecked Sendable {
     fileprivate var _layer: Rv_Data_Layer? = nil
   }
 
-  public struct Blending: Sendable {
+  public nonisolated struct Blending: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -326,13 +326,13 @@ public struct Rv_Data_Layer: @unchecked Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_BlendingType: Equatable, Sendable {
+    public nonisolated enum OneOf_BlendingType: Equatable, Sendable {
       case standard(Rv_Data_Layer.Blending.Standard)
       case matte(Rv_Data_Layer.Blending.Matte)
 
     }
 
-    public struct Standard: Sendable {
+    public nonisolated struct Standard: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -346,7 +346,7 @@ public struct Rv_Data_Layer: @unchecked Sendable {
       public init() {}
     }
 
-    public struct Matte: Sendable {
+    public nonisolated struct Matte: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -379,14 +379,14 @@ public struct Rv_Data_Layer: @unchecked Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_MatteType: Equatable, Sendable {
+      public nonisolated enum OneOf_MatteType: Equatable, Sendable {
         case alpha(Rv_Data_Layer.Blending.Matte.Alpha)
         case luma(Rv_Data_Layer.Blending.Matte.Luma)
         case white(Rv_Data_Layer.Blending.Matte.White)
 
       }
 
-      public struct Alpha: Sendable {
+      public nonisolated struct Alpha: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -398,7 +398,7 @@ public struct Rv_Data_Layer: @unchecked Sendable {
         public init() {}
       }
 
-      public struct Luma: Sendable {
+      public nonisolated struct Luma: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -410,7 +410,7 @@ public struct Rv_Data_Layer: @unchecked Sendable {
         public init() {}
       }
 
-      public struct White: Sendable {
+      public nonisolated struct White: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -433,9 +433,9 @@ public struct Rv_Data_Layer: @unchecked Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Layer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Layer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Layer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}color\0\u{1}muted\0\u{1}hidden\0\u{3}blend_mode\0\u{1}opacity\0\u{3}selected_target_set_uuid\0\u{3}effects_preset_uuid\0\u{3}effects_build_duration\0\u{3}layer_preset_uuid\0\u{3}hot_key\0\u{1}transition\0\u{1}effects\0\u{1}blend\0")
 
@@ -603,11 +603,11 @@ extension Rv_Data_Layer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension Rv_Data_Layer.BlendMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Layer.BlendMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0BLEND_MODE_NORMAL\0\u{1}BLEND_MODE_DISSOLVE\0\u{1}BLEND_MODE_DARKEN\0\u{1}BLEND_MODE_MULTIPLY\0\u{1}BLEND_MODE_COLOR_BURN\0\u{1}BLEND_MODE_LINEAR_BURN\0\u{1}BLEND_MODE_DARKER_COLOR\0\u{1}BLEND_MODE_LIGHTEN\0\u{1}BLEND_MODE_SCREEN\0\u{1}BLEND_MODE_COLOR_DODGE\0\u{1}BLEND_MODE_LINEAR_DODGE\0\u{1}BLEND_MODE_LIGHTER_COLOR\0\u{1}BLEND_MODE_OVERLAY\0\u{1}BLEND_MODE_SOFT_LIGHT\0\u{1}BLEND_MODE_HARD_LIGHT\0\u{1}BLEND_MODE_VIVID_LIGHT\0\u{1}BLEND_MODE_LINEAR_LIGHT\0\u{1}BLEND_MODE_PIN_LIGHT\0\u{1}BLEND_MODE_HARD_MIX\0\u{1}BLEND_MODE_DIFFERENCE\0\u{1}BLEND_MODE_EXCLUSION\0\u{1}BLEND_MODE_SUBTRACT\0\u{1}BLEND_MODE_DIVIDE\0\u{1}BLEND_MODE_HUE\0\u{1}BLEND_MODE_SATURATION\0\u{1}BLEND_MODE_COLOR\0\u{1}BLEND_MODE_LUMINOSITY\0")
 }
 
-extension Rv_Data_Layer.Preset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Layer.Preset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Layer.protoMessageName + ".Preset"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}layer\0")
 
@@ -651,7 +651,7 @@ extension Rv_Data_Layer.Preset: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_Layer.Blending: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Layer.Blending: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Layer.protoMessageName + ".Blending"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}standard\0\u{1}matte\0")
 
@@ -718,7 +718,7 @@ extension Rv_Data_Layer.Blending: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Rv_Data_Layer.Blending.Standard: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Layer.Blending.Standard: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Layer.Blending.protoMessageName + ".Standard"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}mode\0\u{1}opacity\0")
 
@@ -753,7 +753,7 @@ extension Rv_Data_Layer.Blending.Standard: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_Layer.Blending.Matte: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Layer.Blending.Matte: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Layer.Blending.protoMessageName + ".Matte"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}alpha\0\u{1}luma\0\u{2}\u{2}white\0")
 
@@ -837,7 +837,7 @@ extension Rv_Data_Layer.Blending.Matte: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_Layer.Blending.Matte.Alpha: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Layer.Blending.Matte.Alpha: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Layer.Blending.Matte.protoMessageName + ".Alpha"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}inverted\0")
 
@@ -867,7 +867,7 @@ extension Rv_Data_Layer.Blending.Matte.Alpha: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_Layer.Blending.Matte.Luma: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Layer.Blending.Matte.Luma: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Layer.Blending.Matte.protoMessageName + ".Luma"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}inverted\0")
 
@@ -897,7 +897,7 @@ extension Rv_Data_Layer.Blending.Matte.Luma: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Data_Layer.Blending.Matte.White: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Layer.Blending.Matte.White: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Layer.Blending.Matte.protoMessageName + ".White"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

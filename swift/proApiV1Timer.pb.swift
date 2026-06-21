@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Data_API_v1_TimerState: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Data_API_v1_TimerState: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case stopped // = 0
   case running // = 1
@@ -66,7 +66,7 @@ public enum Rv_Data_API_v1_TimerState: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-public enum Rv_Data_API_v1_TimerOperation: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Data_API_v1_TimerOperation: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case start // = 0
   case stop // = 1
@@ -104,7 +104,7 @@ public enum Rv_Data_API_v1_TimerOperation: SwiftProtobuf.Enum, Swift.CaseIterabl
 
 }
 
-public struct Rv_Data_API_v1_TimerFormat: Sendable {
+public nonisolated struct Rv_Data_API_v1_TimerFormat: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -119,7 +119,7 @@ public struct Rv_Data_API_v1_TimerFormat: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum API_v1_TimerUnitDisplayFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum API_v1_TimerUnitDisplayFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case none // = 0
     case short // = 1
@@ -168,7 +168,7 @@ public struct Rv_Data_API_v1_TimerFormat: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_TimerValue: Sendable {
+public nonisolated struct Rv_Data_API_v1_TimerValue: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -193,7 +193,7 @@ public struct Rv_Data_API_v1_TimerValue: Sendable {
   fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
 }
 
-public struct Rv_Data_API_v1_Timer: Sendable {
+public nonisolated struct Rv_Data_API_v1_Timer: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -237,14 +237,14 @@ public struct Rv_Data_API_v1_Timer: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_TimerConfiguration: Equatable, Sendable {
+  public nonisolated enum OneOf_TimerConfiguration: Equatable, Sendable {
     case countdown(Rv_Data_API_v1_Timer.API_v1_Timer_Countdown)
     case countDownToTime(Rv_Data_API_v1_Timer.API_v1_Timer_CountdownToTime)
     case elapsed(Rv_Data_API_v1_Timer.API_v1_Timer_Elapsed)
 
   }
 
-  public enum API_v1_TimePeriod: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum API_v1_TimePeriod: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case am // = 0
     case pm // = 1
@@ -282,7 +282,7 @@ public struct Rv_Data_API_v1_Timer: Sendable {
 
   }
 
-  public struct API_v1_Timer_Countdown: Sendable {
+  public nonisolated struct API_v1_Timer_Countdown: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -294,7 +294,7 @@ public struct Rv_Data_API_v1_Timer: Sendable {
     public init() {}
   }
 
-  public struct API_v1_Timer_CountdownToTime: Sendable {
+  public nonisolated struct API_v1_Timer_CountdownToTime: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -308,7 +308,7 @@ public struct Rv_Data_API_v1_Timer: Sendable {
     public init() {}
   }
 
-  public struct API_v1_Timer_Elapsed: Sendable {
+  public nonisolated struct API_v1_Timer_Elapsed: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -329,7 +329,7 @@ public struct Rv_Data_API_v1_Timer: Sendable {
   fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
 }
 
-public struct Rv_Data_API_v1_Timer_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Timer_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -434,7 +434,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case timers(Rv_Data_API_v1_Timer_Request.Timers)
     case createTimer(Rv_Data_API_v1_Timer_Request.CreateTimer)
     case currentTimes(Rv_Data_API_v1_Timer_Request.CurrentTimes)
@@ -450,7 +450,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
 
   }
 
-  public struct Timers: Sendable {
+  public nonisolated struct Timers: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -460,7 +460,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     public init() {}
   }
 
-  public struct CreateTimer: Sendable {
+  public nonisolated struct CreateTimer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -505,7 +505,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     fileprivate var _elapsed: Rv_Data_API_v1_Timer.API_v1_Timer_Elapsed? = nil
   }
 
-  public struct CurrentTimes: Sendable {
+  public nonisolated struct CurrentTimes: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -515,7 +515,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     public init() {}
   }
 
-  public struct AllTimersOperation: Sendable {
+  public nonisolated struct AllTimersOperation: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -527,7 +527,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     public init() {}
   }
 
-  public struct GetTimer: Sendable {
+  public nonisolated struct GetTimer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -539,7 +539,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     public init() {}
   }
 
-  public struct PutTimer: Sendable {
+  public nonisolated struct PutTimer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -562,7 +562,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     fileprivate var _timer: Rv_Data_API_v1_Timer? = nil
   }
 
-  public struct DeleteTimer: Sendable {
+  public nonisolated struct DeleteTimer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -574,7 +574,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     public init() {}
   }
 
-  public struct TimerOperation: Sendable {
+  public nonisolated struct TimerOperation: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -588,7 +588,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     public init() {}
   }
 
-  public struct PutTimerOperation: Sendable {
+  public nonisolated struct PutTimerOperation: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -613,7 +613,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     fileprivate var _timer: Rv_Data_API_v1_Timer? = nil
   }
 
-  public struct TimerIncrement: Sendable {
+  public nonisolated struct TimerIncrement: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -627,7 +627,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     public init() {}
   }
 
-  public struct SystemTime: Sendable {
+  public nonisolated struct SystemTime: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -637,7 +637,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
     public init() {}
   }
 
-  public struct VideoCountdown: Sendable {
+  public nonisolated struct VideoCountdown: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -650,7 +650,7 @@ public struct Rv_Data_API_v1_Timer_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Timer_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Timer_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -755,7 +755,7 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case timers(Rv_Data_API_v1_Timer_Response.Timers)
     case createTimer(Rv_Data_API_v1_Timer_Response.CreateTimer)
     case currentTimes(Rv_Data_API_v1_Timer_Response.CurrentTimes)
@@ -771,7 +771,7 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
 
   }
 
-  public struct Timers: Sendable {
+  public nonisolated struct Timers: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -783,7 +783,7 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
     public init() {}
   }
 
-  public struct CreateTimer: Sendable {
+  public nonisolated struct CreateTimer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -804,7 +804,7 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
     fileprivate var _timer: Rv_Data_API_v1_Timer? = nil
   }
 
-  public struct CurrentTimes: Sendable {
+  public nonisolated struct CurrentTimes: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -816,7 +816,7 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
     public init() {}
   }
 
-  public struct AllTimersOperation: Sendable {
+  public nonisolated struct AllTimersOperation: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -826,28 +826,7 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
     public init() {}
   }
 
-  public struct GetTimer: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var timer: Rv_Data_API_v1_Timer {
-      get {_timer ?? Rv_Data_API_v1_Timer()}
-      set {_timer = newValue}
-    }
-    /// Returns true if `timer` has been explicitly set.
-    public var hasTimer: Bool {self._timer != nil}
-    /// Clears the value of `timer`. Subsequent reads from it will return its default value.
-    public mutating func clearTimer() {self._timer = nil}
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-
-    fileprivate var _timer: Rv_Data_API_v1_Timer? = nil
-  }
-
-  public struct PutTimer: Sendable {
+  public nonisolated struct GetTimer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -868,27 +847,7 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
     fileprivate var _timer: Rv_Data_API_v1_Timer? = nil
   }
 
-  public struct DeleteTimer: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct TimerOperation: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct PutTimerOperation: Sendable {
+  public nonisolated struct PutTimer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -909,7 +868,7 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
     fileprivate var _timer: Rv_Data_API_v1_Timer? = nil
   }
 
-  public struct TimerIncrement: Sendable {
+  public nonisolated struct DeleteTimer: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -919,7 +878,48 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
     public init() {}
   }
 
-  public struct SystemTime: Sendable {
+  public nonisolated struct TimerOperation: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct PutTimerOperation: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var timer: Rv_Data_API_v1_Timer {
+      get {_timer ?? Rv_Data_API_v1_Timer()}
+      set {_timer = newValue}
+    }
+    /// Returns true if `timer` has been explicitly set.
+    public var hasTimer: Bool {self._timer != nil}
+    /// Clears the value of `timer`. Subsequent reads from it will return its default value.
+    public mutating func clearTimer() {self._timer = nil}
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _timer: Rv_Data_API_v1_Timer? = nil
+  }
+
+  public nonisolated struct TimerIncrement: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct SystemTime: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -931,7 +931,7 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
     public init() {}
   }
 
-  public struct VideoCountdown: Sendable {
+  public nonisolated struct VideoCountdown: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -948,17 +948,17 @@ public struct Rv_Data_API_v1_Timer_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_TimerState: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_TimerState: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0stopped\0\u{1}running\0\u{1}complete\0\u{1}overrunning\0\u{1}overran\0")
 }
 
-extension Rv_Data_API_v1_TimerOperation: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_TimerOperation: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0start\0\u{1}stop\0\u{1}reset\0")
 }
 
-extension Rv_Data_API_v1_TimerFormat: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_TimerFormat: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_TimerFormat"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\u{6}hour\0\u{1}minute\0\u{1}second\0\u{1}millisecond\0")
 
@@ -1003,11 +1003,11 @@ extension Rv_Data_API_v1_TimerFormat: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_API_v1_TimerFormat.API_v1_TimerUnitDisplayFormat: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_TimerFormat.API_v1_TimerUnitDisplayFormat: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0none\0\u{1}short\0\u{1}long\0\u{1}remove_short\0\u{1}remove_long\0")
 }
 
-extension Rv_Data_API_v1_TimerValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_TimerValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_TimerValue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}time\0\u{1}state\0")
 
@@ -1051,7 +1051,7 @@ extension Rv_Data_API_v1_TimerValue: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension Rv_Data_API_v1_Timer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Timer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}allows_overrun\0\u{1}countdown\0\u{3}count_down_to_time\0\u{1}elapsed\0")
 
@@ -1145,11 +1145,11 @@ extension Rv_Data_API_v1_Timer: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Rv_Data_API_v1_Timer.API_v1_TimePeriod: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer.API_v1_TimePeriod: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0am\0\u{1}pm\0\u{1}is_24_hour\0")
 }
 
-extension Rv_Data_API_v1_Timer.API_v1_Timer_Countdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer.API_v1_Timer_Countdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer.protoMessageName + ".API_v1_Timer_Countdown"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}duration\0")
 
@@ -1179,7 +1179,7 @@ extension Rv_Data_API_v1_Timer.API_v1_Timer_Countdown: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Timer.API_v1_Timer_CountdownToTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer.API_v1_Timer_CountdownToTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer.protoMessageName + ".API_v1_Timer_CountdownToTime"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}time_of_day\0\u{1}period\0")
 
@@ -1214,7 +1214,7 @@ extension Rv_Data_API_v1_Timer.API_v1_Timer_CountdownToTime: SwiftProtobuf.Messa
   }
 }
 
-extension Rv_Data_API_v1_Timer.API_v1_Timer_Elapsed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer.API_v1_Timer_Elapsed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer.protoMessageName + ".API_v1_Timer_Elapsed"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}start_time\0\u{3}end_time\0\u{3}has_end_time\0")
 
@@ -1254,7 +1254,7 @@ extension Rv_Data_API_v1_Timer.API_v1_Timer_Elapsed: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Timer_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timers\0\u{3}create_timer\0\u{3}current_times\0\u{3}all_timers_operation\0\u{3}get_timer\0\u{3}put_timer\0\u{3}delete_timer\0\u{3}timer_operation\0\u{3}put_timer_operation\0\u{3}timer_increment\0\u{3}system_time\0\u{3}video_countdown\0")
 
@@ -1491,7 +1491,7 @@ extension Rv_Data_API_v1_Timer_Request: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.Timers: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.Timers: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".Timers"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1510,7 +1510,7 @@ extension Rv_Data_API_v1_Timer_Request.Timers: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.CreateTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.CreateTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".CreateTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{3}allows_overrun\0\u{1}countdown\0\u{3}count_down_to_time\0\u{1}elapsed\0")
 
@@ -1564,7 +1564,7 @@ extension Rv_Data_API_v1_Timer_Request.CreateTimer: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.CurrentTimes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.CurrentTimes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".CurrentTimes"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1583,7 +1583,7 @@ extension Rv_Data_API_v1_Timer_Request.CurrentTimes: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.AllTimersOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.AllTimersOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".AllTimersOperation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}operation\0")
 
@@ -1613,7 +1613,7 @@ extension Rv_Data_API_v1_Timer_Request.AllTimersOperation: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.GetTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.GetTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".GetTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1643,7 +1643,7 @@ extension Rv_Data_API_v1_Timer_Request.GetTimer: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.PutTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.PutTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".PutTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}timer\0")
 
@@ -1682,7 +1682,7 @@ extension Rv_Data_API_v1_Timer_Request.PutTimer: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.DeleteTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.DeleteTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".DeleteTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1712,7 +1712,7 @@ extension Rv_Data_API_v1_Timer_Request.DeleteTimer: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.TimerOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.TimerOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".TimerOperation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}operation\0")
 
@@ -1747,7 +1747,7 @@ extension Rv_Data_API_v1_Timer_Request.TimerOperation: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.PutTimerOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.PutTimerOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".PutTimerOperation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}operation\0\u{1}timer\0")
 
@@ -1791,7 +1791,7 @@ extension Rv_Data_API_v1_Timer_Request.PutTimerOperation: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.TimerIncrement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.TimerIncrement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".TimerIncrement"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}amount\0")
 
@@ -1826,7 +1826,7 @@ extension Rv_Data_API_v1_Timer_Request.TimerIncrement: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.SystemTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.SystemTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".SystemTime"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1845,7 +1845,7 @@ extension Rv_Data_API_v1_Timer_Request.SystemTime: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Timer_Request.VideoCountdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Request.VideoCountdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Request.protoMessageName + ".VideoCountdown"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1864,7 +1864,7 @@ extension Rv_Data_API_v1_Timer_Request.VideoCountdown: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Timer_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timers\0\u{3}create_timer\0\u{3}current_times\0\u{3}all_timers_operation\0\u{3}get_timer\0\u{3}put_timer\0\u{3}delete_timer\0\u{3}timer_operation\0\u{3}put_timer_operation\0\u{3}timer_increment\0\u{3}system_time\0\u{3}video_countdown\0")
 
@@ -2101,7 +2101,7 @@ extension Rv_Data_API_v1_Timer_Response: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.Timers: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.Timers: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".Timers"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timers\0")
 
@@ -2131,7 +2131,7 @@ extension Rv_Data_API_v1_Timer_Response.Timers: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.CreateTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.CreateTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".CreateTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timer\0")
 
@@ -2165,7 +2165,7 @@ extension Rv_Data_API_v1_Timer_Response.CreateTimer: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.CurrentTimes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.CurrentTimes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".CurrentTimes"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timers\0")
 
@@ -2195,7 +2195,7 @@ extension Rv_Data_API_v1_Timer_Response.CurrentTimes: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.AllTimersOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.AllTimersOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".AllTimersOperation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2214,7 +2214,7 @@ extension Rv_Data_API_v1_Timer_Response.AllTimersOperation: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.GetTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.GetTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".GetTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timer\0")
 
@@ -2248,7 +2248,7 @@ extension Rv_Data_API_v1_Timer_Response.GetTimer: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.PutTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.PutTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".PutTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timer\0")
 
@@ -2282,7 +2282,7 @@ extension Rv_Data_API_v1_Timer_Response.PutTimer: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.DeleteTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.DeleteTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".DeleteTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2301,7 +2301,7 @@ extension Rv_Data_API_v1_Timer_Response.DeleteTimer: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.TimerOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.TimerOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".TimerOperation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2320,7 +2320,7 @@ extension Rv_Data_API_v1_Timer_Response.TimerOperation: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.PutTimerOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.PutTimerOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".PutTimerOperation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timer\0")
 
@@ -2354,7 +2354,7 @@ extension Rv_Data_API_v1_Timer_Response.PutTimerOperation: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.TimerIncrement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.TimerIncrement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".TimerIncrement"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2373,7 +2373,7 @@ extension Rv_Data_API_v1_Timer_Response.TimerIncrement: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.SystemTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.SystemTime: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".SystemTime"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 
@@ -2403,7 +2403,7 @@ extension Rv_Data_API_v1_Timer_Response.SystemTime: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Timer_Response.VideoCountdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Timer_Response.VideoCountdown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Timer_Response.protoMessageName + ".VideoCountdown"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}time\0")
 

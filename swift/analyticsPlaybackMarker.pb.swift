@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Analytics_Playbackmarker_CreateMarker: Sendable {
+public nonisolated struct Rv_Analytics_Playbackmarker_CreateMarker: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -29,7 +29,7 @@ public struct Rv_Analytics_Playbackmarker_CreateMarker: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Location: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Location: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case inspector // = 0
     case sidebar // = 1
@@ -72,9 +72,9 @@ public struct Rv_Analytics_Playbackmarker_CreateMarker: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.playbackmarker"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.playbackmarker"
 
-extension Rv_Analytics_Playbackmarker_CreateMarker: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Playbackmarker_CreateMarker: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CreateMarker"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}location\0")
 
@@ -104,6 +104,6 @@ extension Rv_Analytics_Playbackmarker_CreateMarker: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Analytics_Playbackmarker_CreateMarker.Location: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Playbackmarker_CreateMarker.Location: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0INSPECTOR\0\u{1}SIDEBAR\0\u{1}UNKNOWN\0")
 }

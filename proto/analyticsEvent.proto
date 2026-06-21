@@ -261,6 +261,11 @@ message Event {
     rv.analytics.logs.LogDocumentDeleted log_document_deleted = 309;
     rv.analytics.logs.LogDocumentConflict log_document_conflict = 310;
     rv.analytics.logs.LogWorkspaceResynchronized log_workspace_resynchronized = 311;
+    rv.analytics.sync.WebSocketConnectionFailed log_ws_connection_failed = 312;
+    rv.analytics.logs.LogError log_error = 313;
+    rv.analytics.trackedevents.UserWorkspaceTreeModification user_workspace_tree_modification = 314;
+    rv.analytics.ui.ActivationFlowOpened ui_activation_flow_opened = 315;
+    rv.analytics.logs.LogOpenedWorkspace log_opened_workspace = 316;
   }
 
 }

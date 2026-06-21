@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\x13\x61nalyticsSync.proto\x12\x11rv.analytics.sync\"\xec\x01\n\x05Local\x12\x30\n\tsync_type\x18\x01 \x01(\x0e\x32\x1d.rv.analytics.sync.Local.Type\x12\x17\n\x0finclude_library\x18\x02 \x01(\x08\x12\x15\n\rinclude_media\x18\x03 \x01(\x08\x12\x19\n\x11include_playlists\x18\x04 \x01(\x08\x12\x16\n\x0einclude_themes\x18\x05 \x01(\x08\x12\x1d\n\x15include_support_files\x18\x06 \x01(\x08\x12\x15\n\rreplace_files\x18\x07 \x01(\x08\"\x18\n\x04Type\x12\x06\n\x02UP\x10\x00\x12\x08\n\x04\x44OWN\x10\x01\x62\x06proto3"
+descriptor_data = "\n\x13\x61nalyticsSync.proto\x12\x11rv.analytics.sync\"\xec\x01\n\x05Local\x12\x30\n\tsync_type\x18\x01 \x01(\x0e\x32\x1d.rv.analytics.sync.Local.Type\x12\x17\n\x0finclude_library\x18\x02 \x01(\x08\x12\x15\n\rinclude_media\x18\x03 \x01(\x08\x12\x19\n\x11include_playlists\x18\x04 \x01(\x08\x12\x16\n\x0einclude_themes\x18\x05 \x01(\x08\x12\x1d\n\x15include_support_files\x18\x06 \x01(\x08\x12\x15\n\rreplace_files\x18\x07 \x01(\x08\"\x18\n\x04Type\x12\x06\n\x02UP\x10\x00\x12\x08\n\x04\x44OWN\x10\x01\"~\n\x19WebSocketConnectionFailed\x12\x39\n\x06reason\x18\x01 \x01(\x0e\x32).rv.analytics.sync.WebSocketFailureReason\x12\x0b\n\x03url\x18\x02 \x01(\t\x12\x19\n\x11\x65rror_description\x18\x03 \x01(\t*i\n\x16WebSocketFailureReason\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x12\n\x0e\x41UTHENTICATION\x10\x01\x12\x0b\n\x07TIMEOUT\x10\x02\x12\x0f\n\x0bNO_INTERNET\x10\x03\x12\x10\n\x0cSERVER_ERROR\x10\x04\x62\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
@@ -15,6 +15,8 @@ module Rv
     module Sync
       Local = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.sync.Local").msgclass
       Local::Type = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.sync.Local.Type").enummodule
+      WebSocketConnectionFailed = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.sync.WebSocketConnectionFailed").msgclass
+      WebSocketFailureReason = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.sync.WebSocketFailureReason").enummodule
     end
   end
 end

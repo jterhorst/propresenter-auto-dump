@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Helper_Common_V1_Priority: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Helper_Common_V1_Priority: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case background // = 0
   case userInitiated // = 1
@@ -54,7 +54,7 @@ public enum Helper_Common_V1_Priority: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-public struct Helper_Common_V1_ProductInformation: Sendable {
+public nonisolated struct Helper_Common_V1_ProductInformation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -76,7 +76,7 @@ public struct Helper_Common_V1_ProductInformation: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_Version: Sendable {
+public nonisolated struct Helper_Common_V1_Version: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -92,7 +92,7 @@ public struct Helper_Common_V1_Version: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_CreationOption: Sendable {
+public nonisolated struct Helper_Common_V1_CreationOption: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -121,12 +121,12 @@ public struct Helper_Common_V1_CreationOption: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Socket: Equatable, Sendable {
+  public nonisolated enum OneOf_Socket: Equatable, Sendable {
     case name(String)
 
   }
 
-  public enum OneOf_Timeout: Equatable, Sendable {
+  public nonisolated enum OneOf_Timeout: Equatable, Sendable {
     case seconds(UInt32)
 
   }
@@ -134,7 +134,7 @@ public struct Helper_Common_V1_CreationOption: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_MediaReferenceInfo: Sendable {
+public nonisolated struct Helper_Common_V1_MediaReferenceInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -159,7 +159,7 @@ public struct Helper_Common_V1_MediaReferenceInfo: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct MediaInfo: Sendable {
+  public nonisolated struct MediaInfo: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -194,7 +194,7 @@ public struct Helper_Common_V1_MediaReferenceInfo: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum ContentType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ContentType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unknown // = 0
       case audio // = 1
@@ -236,7 +236,7 @@ public struct Helper_Common_V1_MediaReferenceInfo: Sendable {
 
     }
 
-    public enum ColorFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ColorFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case sdr // = 0
       case hdrRec2100Hlg // = 1
@@ -277,7 +277,7 @@ public struct Helper_Common_V1_MediaReferenceInfo: Sendable {
     public init() {}
   }
 
-  public struct ThumbnailInfo: Sendable {
+  public nonisolated struct ThumbnailInfo: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -295,7 +295,7 @@ public struct Helper_Common_V1_MediaReferenceInfo: Sendable {
   fileprivate var _thumbnailInfo: Helper_Common_V1_MediaReferenceInfo.ThumbnailInfo? = nil
 }
 
-public struct Helper_Common_V1_RequestError: Sendable {
+public nonisolated struct Helper_Common_V1_RequestError: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -306,7 +306,7 @@ public struct Helper_Common_V1_RequestError: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ErrorCode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ErrorCode: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case cantCreateMediaFolder // = 201
@@ -407,7 +407,7 @@ public struct Helper_Common_V1_RequestError: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_MediaReference: Sendable {
+public nonisolated struct Helper_Common_V1_MediaReference: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -450,7 +450,7 @@ public struct Helper_Common_V1_MediaReference: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_State: Equatable, Sendable {
+  public nonisolated enum OneOf_State: Equatable, Sendable {
     case success(Helper_Common_V1_MediaReferenceInfo)
     case error(Helper_Common_V1_MediaReference.Error)
     case progress(Helper_Common_V1_MediaReference.Progress)
@@ -458,7 +458,7 @@ public struct Helper_Common_V1_MediaReference: Sendable {
 
   }
 
-  public struct Progress: Sendable {
+  public nonisolated struct Progress: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -468,7 +468,7 @@ public struct Helper_Common_V1_MediaReference: Sendable {
     public init() {}
   }
 
-  public struct Deleted: Sendable {
+  public nonisolated struct Deleted: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -478,7 +478,7 @@ public struct Helper_Common_V1_MediaReference: Sendable {
     public init() {}
   }
 
-  public struct Error: Sendable {
+  public nonisolated struct Error: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -489,7 +489,7 @@ public struct Helper_Common_V1_MediaReference: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum ErrorCode: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ErrorCode: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case internalError // = 0
       case snapshotFailedError // = 1
@@ -529,7 +529,7 @@ public struct Helper_Common_V1_MediaReference: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_GenerationStatus: Sendable {
+public nonisolated struct Helper_Common_V1_GenerationStatus: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -562,14 +562,14 @@ public struct Helper_Common_V1_GenerationStatus: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Status: Equatable, Sendable {
+  public nonisolated enum OneOf_Status: Equatable, Sendable {
     case idle(Helper_Common_V1_GenerationStatus.Idle)
     case processing(Helper_Common_V1_GenerationStatus.Processing)
     case paused(Helper_Common_V1_GenerationStatus.Paused)
 
   }
 
-  public struct Idle: Sendable {
+  public nonisolated struct Idle: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -579,7 +579,7 @@ public struct Helper_Common_V1_GenerationStatus: Sendable {
     public init() {}
   }
 
-  public struct Processing: Sendable {
+  public nonisolated struct Processing: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -593,7 +593,7 @@ public struct Helper_Common_V1_GenerationStatus: Sendable {
     public init() {}
   }
 
-  public struct Paused: Sendable {
+  public nonisolated struct Paused: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -608,7 +608,7 @@ public struct Helper_Common_V1_GenerationStatus: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_ChangeShowDirectory: Sendable {
+public nonisolated struct Helper_Common_V1_ChangeShowDirectory: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -620,7 +620,7 @@ public struct Helper_Common_V1_ChangeShowDirectory: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_Workspace: Sendable {
+public nonisolated struct Helper_Common_V1_Workspace: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -632,7 +632,7 @@ public struct Helper_Common_V1_Workspace: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_UpdateWorkspaces: Sendable {
+public nonisolated struct Helper_Common_V1_UpdateWorkspaces: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -644,7 +644,7 @@ public struct Helper_Common_V1_UpdateWorkspaces: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_PauseGeneration: Sendable {
+public nonisolated struct Helper_Common_V1_PauseGeneration: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -656,7 +656,7 @@ public struct Helper_Common_V1_PauseGeneration: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_ResumeGeneration: Sendable {
+public nonisolated struct Helper_Common_V1_ResumeGeneration: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -666,7 +666,7 @@ public struct Helper_Common_V1_ResumeGeneration: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_AddMediaReference: Sendable {
+public nonisolated struct Helper_Common_V1_AddMediaReference: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -693,7 +693,7 @@ public struct Helper_Common_V1_AddMediaReference: Sendable {
   fileprivate var _transformation: Helper_Common_V1_Transformation? = nil
 }
 
-public struct Helper_Common_V1_DuplicateMediaReference: Sendable {
+public nonisolated struct Helper_Common_V1_DuplicateMediaReference: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -709,7 +709,7 @@ public struct Helper_Common_V1_DuplicateMediaReference: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_Transformation: Sendable {
+public nonisolated struct Helper_Common_V1_Transformation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -745,7 +745,7 @@ public struct Helper_Common_V1_Transformation: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_ApplyTransformation: Sendable {
+public nonisolated struct Helper_Common_V1_ApplyTransformation: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -770,7 +770,7 @@ public struct Helper_Common_V1_ApplyTransformation: Sendable {
   fileprivate var _transformation: Helper_Common_V1_Transformation? = nil
 }
 
-public struct Helper_Common_V1_RemoveMediaReferences: Sendable {
+public nonisolated struct Helper_Common_V1_RemoveMediaReferences: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -784,7 +784,7 @@ public struct Helper_Common_V1_RemoveMediaReferences: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_TriggerMediaReference: Sendable {
+public nonisolated struct Helper_Common_V1_TriggerMediaReference: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -796,7 +796,7 @@ public struct Helper_Common_V1_TriggerMediaReference: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_Ping: Sendable {
+public nonisolated struct Helper_Common_V1_Ping: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -808,7 +808,7 @@ public struct Helper_Common_V1_Ping: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_AddMediaReferenceResponse: Sendable {
+public nonisolated struct Helper_Common_V1_AddMediaReferenceResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -818,7 +818,7 @@ public struct Helper_Common_V1_AddMediaReferenceResponse: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_DuplicateMediaReferenceResponse: Sendable {
+public nonisolated struct Helper_Common_V1_DuplicateMediaReferenceResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -828,7 +828,7 @@ public struct Helper_Common_V1_DuplicateMediaReferenceResponse: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_ApplyTransformationResponse: Sendable {
+public nonisolated struct Helper_Common_V1_ApplyTransformationResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -838,7 +838,7 @@ public struct Helper_Common_V1_ApplyTransformationResponse: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_RemoveMediaReferenceResponse: Sendable {
+public nonisolated struct Helper_Common_V1_RemoveMediaReferenceResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -848,7 +848,7 @@ public struct Helper_Common_V1_RemoveMediaReferenceResponse: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_TriggerMediaReferenceResponse: Sendable {
+public nonisolated struct Helper_Common_V1_TriggerMediaReferenceResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -858,7 +858,7 @@ public struct Helper_Common_V1_TriggerMediaReferenceResponse: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_UpdateWorkspacesResponse: Sendable {
+public nonisolated struct Helper_Common_V1_UpdateWorkspacesResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -868,7 +868,7 @@ public struct Helper_Common_V1_UpdateWorkspacesResponse: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_PauseGenerationResponse: Sendable {
+public nonisolated struct Helper_Common_V1_PauseGenerationResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -878,7 +878,7 @@ public struct Helper_Common_V1_PauseGenerationResponse: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_ResumeGenerationResponse: Sendable {
+public nonisolated struct Helper_Common_V1_ResumeGenerationResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -888,7 +888,7 @@ public struct Helper_Common_V1_ResumeGenerationResponse: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_UpdatePrefsResponse: Sendable {
+public nonisolated struct Helper_Common_V1_UpdatePrefsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -898,7 +898,7 @@ public struct Helper_Common_V1_UpdatePrefsResponse: Sendable {
   public init() {}
 }
 
-public struct Helper_Common_V1_Pong: Sendable {
+public nonisolated struct Helper_Common_V1_Pong: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -912,13 +912,13 @@ public struct Helper_Common_V1_Pong: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "helper.common.v1"
+fileprivate nonisolated let _protobuf_package = "helper.common.v1"
 
-extension Helper_Common_V1_Priority: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_Priority: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Background\0\u{1}UserInitiated\0")
 }
 
-extension Helper_Common_V1_ProductInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_ProductInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProductInformation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}product_name\0\u{3}major_version\0\u{3}minor_version\0\u{3}patch_version\0\u{3}build_number\0\u{3}build_date\0")
 
@@ -973,7 +973,7 @@ extension Helper_Common_V1_ProductInformation: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Helper_Common_V1_Version: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_Version: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Version"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}major\0\u{1}minor\0\u{1}patch\0")
 
@@ -1013,7 +1013,7 @@ extension Helper_Common_V1_Version: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Helper_Common_V1_CreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_CreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CreationOption"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}show_directory\0\u{1}name\0\u{1}seconds\0")
 
@@ -1071,7 +1071,7 @@ extension Helper_Common_V1_CreationOption: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Helper_Common_V1_MediaReferenceInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReferenceInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaReferenceInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}media_info\0\u{3}thumbnail_info\0")
 
@@ -1110,7 +1110,7 @@ extension Helper_Common_V1_MediaReferenceInfo: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Helper_Common_V1_MediaReferenceInfo.MediaInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReferenceInfo.MediaInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Helper_Common_V1_MediaReferenceInfo.protoMessageName + ".MediaInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}url\0\u{1}width\0\u{1}height\0\u{1}fps\0\u{1}duration\0\u{3}num_audio_channels\0\u{1}codec\0\u{1}artist\0\u{1}title\0\u{1}rotation\0\u{3}content_type\0\u{3}has_alpha_channel\0\u{3}supports_hw_decode\0\u{3}color_format\0")
 
@@ -1205,15 +1205,15 @@ extension Helper_Common_V1_MediaReferenceInfo.MediaInfo: SwiftProtobuf.Message, 
   }
 }
 
-extension Helper_Common_V1_MediaReferenceInfo.MediaInfo.ContentType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReferenceInfo.MediaInfo.ContentType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CONTENT_TYPE_UNKNOWN\0\u{1}CONTENT_TYPE_AUDIO\0\u{1}CONTENT_TYPE_IMAGE\0\u{1}CONTENT_TYPE_VIDEO\0")
 }
 
-extension Helper_Common_V1_MediaReferenceInfo.MediaInfo.ColorFormat: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReferenceInfo.MediaInfo.ColorFormat: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SDR\0\u{1}HDR_REC2100_HLG\0\u{1}HDR_REC2100_PQ\0")
 }
 
-extension Helper_Common_V1_MediaReferenceInfo.ThumbnailInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReferenceInfo.ThumbnailInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Helper_Common_V1_MediaReferenceInfo.protoMessageName + ".ThumbnailInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}url\0")
 
@@ -1243,7 +1243,7 @@ extension Helper_Common_V1_MediaReferenceInfo.ThumbnailInfo: SwiftProtobuf.Messa
   }
 }
 
-extension Helper_Common_V1_RequestError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_RequestError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RequestError"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}code\0\u{1}description\0")
 
@@ -1278,11 +1278,11 @@ extension Helper_Common_V1_RequestError: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Helper_Common_V1_RequestError.ErrorCode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_RequestError.ErrorCode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{2}I\u{3}CANT_CREATE_MEDIA_FOLDER\0\u{1}CANT_CREATE_META_FOLDER\0\u{1}CANT_CREATE_THUMBNAILS_FOLDER\0\u{1}CANT_DELETE_ACTIVE_WORKSPACE\0\u{2}`\u{1}SERVICE_INTERNAL_ERROR\0\u{1}SERVICE_HANDSHAKE_ERROR\0\u{1}SERVICE_VERSION_MISMATCH\0\u{1}SERVICE_CANT_SEND_REQUEST\0\u{1}SERVICE_MISSING_RESPONSE\0\u{2}`\u{1}BAD_REQUEST\0\u{1}INVALID_UUID\0\u{1}INVALID_REQUEST\0\u{2}\u{2}NOT_FOUND\0\u{2}\u{5}CONFLICT\0\u{2}[\u{1}INTERNAL_ERROR\0\u{1}NOT_IMPLEMENTED\0\u{1}GENERATOR_ERROR\0")
 }
 
-extension Helper_Common_V1_MediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaReference"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}success\0\u{1}error\0\u{1}progress\0\u{1}deleted\0")
 
@@ -1388,7 +1388,7 @@ extension Helper_Common_V1_MediaReference: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Helper_Common_V1_MediaReference.Progress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReference.Progress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Helper_Common_V1_MediaReference.protoMessageName + ".Progress"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1407,7 +1407,7 @@ extension Helper_Common_V1_MediaReference.Progress: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Helper_Common_V1_MediaReference.Deleted: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReference.Deleted: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Helper_Common_V1_MediaReference.protoMessageName + ".Deleted"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1426,7 +1426,7 @@ extension Helper_Common_V1_MediaReference.Deleted: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Helper_Common_V1_MediaReference.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReference.Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Helper_Common_V1_MediaReference.protoMessageName + ".Error"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}code\0\u{1}description\0")
 
@@ -1461,11 +1461,11 @@ extension Helper_Common_V1_MediaReference.Error: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Helper_Common_V1_MediaReference.Error.ErrorCode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_MediaReference.Error.ErrorCode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0INTERNAL_ERROR\0\u{1}SNAPSHOT_FAILED_ERROR\0")
 }
 
-extension Helper_Common_V1_GenerationStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_GenerationStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GenerationStatus"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}idle\0\u{1}processing\0\u{1}paused\0")
 
@@ -1549,7 +1549,7 @@ extension Helper_Common_V1_GenerationStatus: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Helper_Common_V1_GenerationStatus.Idle: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_GenerationStatus.Idle: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Helper_Common_V1_GenerationStatus.protoMessageName + ".Idle"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1568,7 +1568,7 @@ extension Helper_Common_V1_GenerationStatus.Idle: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Helper_Common_V1_GenerationStatus.Processing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_GenerationStatus.Processing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Helper_Common_V1_GenerationStatus.protoMessageName + ".Processing"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}count\0\u{1}total\0")
 
@@ -1603,7 +1603,7 @@ extension Helper_Common_V1_GenerationStatus.Processing: SwiftProtobuf.Message, S
   }
 }
 
-extension Helper_Common_V1_GenerationStatus.Paused: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_GenerationStatus.Paused: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Helper_Common_V1_GenerationStatus.protoMessageName + ".Paused"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}until_time_utc\0")
 
@@ -1633,7 +1633,7 @@ extension Helper_Common_V1_GenerationStatus.Paused: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Helper_Common_V1_ChangeShowDirectory: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_ChangeShowDirectory: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ChangeShowDirectory"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0")
 
@@ -1663,7 +1663,7 @@ extension Helper_Common_V1_ChangeShowDirectory: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Helper_Common_V1_Workspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_Workspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Workspace"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0")
 
@@ -1693,7 +1693,7 @@ extension Helper_Common_V1_Workspace: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Helper_Common_V1_UpdateWorkspaces: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_UpdateWorkspaces: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UpdateWorkspaces"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspaces\0")
 
@@ -1723,7 +1723,7 @@ extension Helper_Common_V1_UpdateWorkspaces: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Helper_Common_V1_PauseGeneration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_PauseGeneration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PauseGeneration"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}until_time_utc\0")
 
@@ -1753,7 +1753,7 @@ extension Helper_Common_V1_PauseGeneration: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Helper_Common_V1_ResumeGeneration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_ResumeGeneration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ResumeGeneration"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1772,7 +1772,7 @@ extension Helper_Common_V1_ResumeGeneration: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Helper_Common_V1_AddMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_AddMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AddMediaReference"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}url\0\u{1}priority\0\u{1}transformation\0")
 
@@ -1821,7 +1821,7 @@ extension Helper_Common_V1_AddMediaReference: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Helper_Common_V1_DuplicateMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_DuplicateMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DuplicateMediaReference"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}source_uuid\0\u{3}dest_uuid\0\u{1}priority\0")
 
@@ -1861,7 +1861,7 @@ extension Helper_Common_V1_DuplicateMediaReference: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Helper_Common_V1_Transformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_Transformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Transformation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}effects\0\u{1}position\0\u{1}rotation\0\u{1}width\0\u{1}height\0\u{3}insets_top\0\u{3}insets_left\0\u{3}insets_right\0\u{3}insets_bottom\0\u{3}flip_horizontally\0\u{3}flip_vertically\0\u{3}alpha_type\0\u{3}use_default_native_rotation\0")
 
@@ -1951,7 +1951,7 @@ extension Helper_Common_V1_Transformation: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Helper_Common_V1_ApplyTransformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_ApplyTransformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplyTransformation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}transformation\0\u{1}priority\0")
 
@@ -1995,7 +1995,7 @@ extension Helper_Common_V1_ApplyTransformation: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Helper_Common_V1_RemoveMediaReferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_RemoveMediaReferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RemoveMediaReferences"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}purge_asset\0")
 
@@ -2030,7 +2030,7 @@ extension Helper_Common_V1_RemoveMediaReferences: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Helper_Common_V1_TriggerMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_TriggerMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TriggerMediaReference"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0")
 
@@ -2060,7 +2060,7 @@ extension Helper_Common_V1_TriggerMediaReference: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Helper_Common_V1_Ping: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_Ping: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Ping"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -2090,7 +2090,7 @@ extension Helper_Common_V1_Ping: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Helper_Common_V1_AddMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_AddMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AddMediaReferenceResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2109,7 +2109,7 @@ extension Helper_Common_V1_AddMediaReferenceResponse: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Helper_Common_V1_DuplicateMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_DuplicateMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DuplicateMediaReferenceResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2128,7 +2128,7 @@ extension Helper_Common_V1_DuplicateMediaReferenceResponse: SwiftProtobuf.Messag
   }
 }
 
-extension Helper_Common_V1_ApplyTransformationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_ApplyTransformationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ApplyTransformationResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2147,7 +2147,7 @@ extension Helper_Common_V1_ApplyTransformationResponse: SwiftProtobuf.Message, S
   }
 }
 
-extension Helper_Common_V1_RemoveMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_RemoveMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RemoveMediaReferenceResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2166,7 +2166,7 @@ extension Helper_Common_V1_RemoveMediaReferenceResponse: SwiftProtobuf.Message, 
   }
 }
 
-extension Helper_Common_V1_TriggerMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_TriggerMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TriggerMediaReferenceResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2185,7 +2185,7 @@ extension Helper_Common_V1_TriggerMediaReferenceResponse: SwiftProtobuf.Message,
   }
 }
 
-extension Helper_Common_V1_UpdateWorkspacesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_UpdateWorkspacesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UpdateWorkspacesResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2204,7 +2204,7 @@ extension Helper_Common_V1_UpdateWorkspacesResponse: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Helper_Common_V1_PauseGenerationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_PauseGenerationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PauseGenerationResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2223,7 +2223,7 @@ extension Helper_Common_V1_PauseGenerationResponse: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Helper_Common_V1_ResumeGenerationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_ResumeGenerationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ResumeGenerationResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2242,7 +2242,7 @@ extension Helper_Common_V1_ResumeGenerationResponse: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Helper_Common_V1_UpdatePrefsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_UpdatePrefsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UpdatePrefsResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2261,7 +2261,7 @@ extension Helper_Common_V1_UpdatePrefsResponse: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Helper_Common_V1_Pong: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Helper_Common_V1_Pong: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Pong"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 

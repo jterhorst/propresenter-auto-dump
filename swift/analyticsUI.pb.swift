@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Analytics_Ui_Location: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Ui_Location: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case unknown // = 0
   case presentation // = 1
@@ -58,7 +58,7 @@ public enum Rv_Analytics_Ui_Location: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 }
 
-public enum Rv_Analytics_Ui_SelectionMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Ui_SelectionMode: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case unknown // = 0
   case object // = 1
@@ -96,7 +96,7 @@ public enum Rv_Analytics_Ui_SelectionMode: SwiftProtobuf.Enum, Swift.CaseIterabl
 
 }
 
-public struct Rv_Analytics_Ui_QuickSearchShown: Sendable {
+public nonisolated struct Rv_Analytics_Ui_QuickSearchShown: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -105,7 +105,7 @@ public struct Rv_Analytics_Ui_QuickSearchShown: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case applicationMenu // = 1
@@ -150,7 +150,7 @@ public struct Rv_Analytics_Ui_QuickSearchShown: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_QuickSearchSearch: Sendable {
+public nonisolated struct Rv_Analytics_Ui_QuickSearchSearch: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -159,7 +159,7 @@ public struct Rv_Analytics_Ui_QuickSearchSearch: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case library // = 1
@@ -204,7 +204,7 @@ public struct Rv_Analytics_Ui_QuickSearchSearch: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_QuickSearchOpenItems: Sendable {
+public nonisolated struct Rv_Analytics_Ui_QuickSearchOpenItems: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -217,7 +217,7 @@ public struct Rv_Analytics_Ui_QuickSearchOpenItems: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case library // = 1
@@ -259,7 +259,7 @@ public struct Rv_Analytics_Ui_QuickSearchOpenItems: Sendable {
 
   }
 
-  public enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Style: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case returnKey // = 1
@@ -304,7 +304,7 @@ public struct Rv_Analytics_Ui_QuickSearchOpenItems: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_ToolbarThemeShown: Sendable {
+public nonisolated struct Rv_Analytics_Ui_ToolbarThemeShown: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -314,7 +314,7 @@ public struct Rv_Analytics_Ui_ToolbarThemeShown: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_ToolbarThemeApplication: Sendable {
+public nonisolated struct Rv_Analytics_Ui_ToolbarThemeApplication: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -323,7 +323,7 @@ public struct Rv_Analytics_Ui_ToolbarThemeApplication: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Target: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Target: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case slideSelection // = 1
@@ -364,7 +364,7 @@ public struct Rv_Analytics_Ui_ToolbarThemeApplication: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_MainViewShow: Sendable {
+public nonisolated struct Rv_Analytics_Ui_MainViewShow: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -373,7 +373,7 @@ public struct Rv_Analytics_Ui_MainViewShow: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case toolbar // = 1
@@ -414,7 +414,7 @@ public struct Rv_Analytics_Ui_MainViewShow: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_MainViewPresentationEditor: Sendable {
+public nonisolated struct Rv_Analytics_Ui_MainViewPresentationEditor: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -423,7 +423,7 @@ public struct Rv_Analytics_Ui_MainViewPresentationEditor: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case toolbar // = 1
@@ -468,7 +468,7 @@ public struct Rv_Analytics_Ui_MainViewPresentationEditor: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_MainViewReflowEditor: Sendable {
+public nonisolated struct Rv_Analytics_Ui_MainViewReflowEditor: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -477,7 +477,7 @@ public struct Rv_Analytics_Ui_MainViewReflowEditor: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case toolbar // = 1
@@ -522,7 +522,7 @@ public struct Rv_Analytics_Ui_MainViewReflowEditor: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_MainViewBible: Sendable {
+public nonisolated struct Rv_Analytics_Ui_MainViewBible: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -531,7 +531,7 @@ public struct Rv_Analytics_Ui_MainViewBible: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case toolbar // = 1
@@ -572,7 +572,7 @@ public struct Rv_Analytics_Ui_MainViewBible: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_BibleTrigger: Sendable {
+public nonisolated struct Rv_Analytics_Ui_BibleTrigger: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -584,7 +584,7 @@ public struct Rv_Analytics_Ui_BibleTrigger: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_BibleGenerateSlides: Sendable {
+public nonisolated struct Rv_Analytics_Ui_BibleGenerateSlides: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -609,7 +609,7 @@ public struct Rv_Analytics_Ui_BibleGenerateSlides: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TextBoxLocation: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TextBoxLocation: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case locationNone // = 1
@@ -651,7 +651,7 @@ public struct Rv_Analytics_Ui_BibleGenerateSlides: Sendable {
 
   }
 
-  public enum ReferenceType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ReferenceType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case passageNone // = 1
@@ -700,7 +700,7 @@ public struct Rv_Analytics_Ui_BibleGenerateSlides: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_BibleGenerateNext: Sendable {
+public nonisolated struct Rv_Analytics_Ui_BibleGenerateNext: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -712,7 +712,7 @@ public struct Rv_Analytics_Ui_BibleGenerateNext: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_BibleGeneratePrevious: Sendable {
+public nonisolated struct Rv_Analytics_Ui_BibleGeneratePrevious: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -724,7 +724,7 @@ public struct Rv_Analytics_Ui_BibleGeneratePrevious: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_BibleSaveSlides: Sendable {
+public nonisolated struct Rv_Analytics_Ui_BibleSaveSlides: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -733,7 +733,7 @@ public struct Rv_Analytics_Ui_BibleSaveSlides: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum SlideDestination: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum SlideDestination: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case saveToLibrary // = 1
@@ -778,7 +778,7 @@ public struct Rv_Analytics_Ui_BibleSaveSlides: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_BibleLookup: Sendable {
+public nonisolated struct Rv_Analytics_Ui_BibleLookup: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -787,7 +787,7 @@ public struct Rv_Analytics_Ui_BibleLookup: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Location: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Location: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case textReference // = 1
@@ -844,7 +844,7 @@ public struct Rv_Analytics_Ui_BibleLookup: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_BibleInstall: Sendable {
+public nonisolated struct Rv_Analytics_Ui_BibleInstall: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -858,7 +858,7 @@ public struct Rv_Analytics_Ui_BibleInstall: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_BibleRemove: Sendable {
+public nonisolated struct Rv_Analytics_Ui_BibleRemove: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -872,7 +872,7 @@ public struct Rv_Analytics_Ui_BibleRemove: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_BibleStartup: Sendable {
+public nonisolated struct Rv_Analytics_Ui_BibleStartup: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -886,7 +886,7 @@ public struct Rv_Analytics_Ui_BibleStartup: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_MainViewMaskEditor: Sendable {
+public nonisolated struct Rv_Analytics_Ui_MainViewMaskEditor: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -895,7 +895,7 @@ public struct Rv_Analytics_Ui_MainViewMaskEditor: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum MaskSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum MaskSource: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case toolbar // = 1
@@ -936,7 +936,7 @@ public struct Rv_Analytics_Ui_MainViewMaskEditor: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_MainViewStageEditor: Sendable {
+public nonisolated struct Rv_Analytics_Ui_MainViewStageEditor: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -945,7 +945,7 @@ public struct Rv_Analytics_Ui_MainViewStageEditor: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum StageSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum StageSource: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case toolbar // = 1
@@ -990,7 +990,7 @@ public struct Rv_Analytics_Ui_MainViewStageEditor: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_MainViewThemeEditor: Sendable {
+public nonisolated struct Rv_Analytics_Ui_MainViewThemeEditor: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -999,7 +999,7 @@ public struct Rv_Analytics_Ui_MainViewThemeEditor: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ThemeSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ThemeSource: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case stageSourceUnknown // = 0
     case toolbar // = 1
@@ -1040,7 +1040,7 @@ public struct Rv_Analytics_Ui_MainViewThemeEditor: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_MainViewCopyrightEditor: Sendable {
+public nonisolated struct Rv_Analytics_Ui_MainViewCopyrightEditor: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1049,7 +1049,7 @@ public struct Rv_Analytics_Ui_MainViewCopyrightEditor: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum CopyrightSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum CopyrightSource: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case toolbar // = 1
@@ -1090,7 +1090,7 @@ public struct Rv_Analytics_Ui_MainViewCopyrightEditor: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_MainViewPropsEditor: Sendable {
+public nonisolated struct Rv_Analytics_Ui_MainViewPropsEditor: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1099,7 +1099,7 @@ public struct Rv_Analytics_Ui_MainViewPropsEditor: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum PropsSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum PropsSource: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case toolbar // = 1
@@ -1140,7 +1140,7 @@ public struct Rv_Analytics_Ui_MainViewPropsEditor: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightTimers: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightTimers: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1150,7 +1150,7 @@ public struct Rv_Analytics_Ui_LowerRightTimers: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightTimersCollapse: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightTimersCollapse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1159,7 +1159,7 @@ public struct Rv_Analytics_Ui_LowerRightTimersCollapse: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case collapsed // = 1
@@ -1200,7 +1200,7 @@ public struct Rv_Analytics_Ui_LowerRightTimersCollapse: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightTimersEdit: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightTimersEdit: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1209,7 +1209,7 @@ public struct Rv_Analytics_Ui_LowerRightTimersEdit: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Field: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Field: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case type // = 1
@@ -1258,7 +1258,7 @@ public struct Rv_Analytics_Ui_LowerRightTimersEdit: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightTimersState: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightTimersState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1267,7 +1267,7 @@ public struct Rv_Analytics_Ui_LowerRightTimersState: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case start // = 1
@@ -1312,7 +1312,7 @@ public struct Rv_Analytics_Ui_LowerRightTimersState: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightTimersCreate: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightTimersCreate: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1322,7 +1322,7 @@ public struct Rv_Analytics_Ui_LowerRightTimersCreate: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightTimersDelete: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightTimersDelete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1332,7 +1332,7 @@ public struct Rv_Analytics_Ui_LowerRightTimersDelete: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightMessages: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightMessages: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1342,7 +1342,7 @@ public struct Rv_Analytics_Ui_LowerRightMessages: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightMessagesEdit: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightMessagesEdit: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1351,7 +1351,7 @@ public struct Rv_Analytics_Ui_LowerRightMessagesEdit: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Action: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Action: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case addTextToken // = 1
@@ -1412,7 +1412,7 @@ public struct Rv_Analytics_Ui_LowerRightMessagesEdit: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightMessagesState: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightMessagesState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1421,7 +1421,7 @@ public struct Rv_Analytics_Ui_LowerRightMessagesState: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case show // = 1
@@ -1462,7 +1462,7 @@ public struct Rv_Analytics_Ui_LowerRightMessagesState: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightMessagesCreate: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightMessagesCreate: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1472,7 +1472,7 @@ public struct Rv_Analytics_Ui_LowerRightMessagesCreate: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightMessagesDelete: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightMessagesDelete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1482,7 +1482,7 @@ public struct Rv_Analytics_Ui_LowerRightMessagesDelete: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightProps: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightProps: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1492,7 +1492,7 @@ public struct Rv_Analytics_Ui_LowerRightProps: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightPropsTransition: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightPropsTransition: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1502,7 +1502,7 @@ public struct Rv_Analytics_Ui_LowerRightPropsTransition: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightPropsCreate: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightPropsCreate: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1512,7 +1512,7 @@ public struct Rv_Analytics_Ui_LowerRightPropsCreate: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightPropsDelete: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightPropsDelete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1522,7 +1522,7 @@ public struct Rv_Analytics_Ui_LowerRightPropsDelete: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightPropsState: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightPropsState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1531,7 +1531,7 @@ public struct Rv_Analytics_Ui_LowerRightPropsState: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case show // = 1
@@ -1572,7 +1572,7 @@ public struct Rv_Analytics_Ui_LowerRightPropsState: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightStage: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightStage: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1582,7 +1582,7 @@ public struct Rv_Analytics_Ui_LowerRightStage: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightStageChangeLayout: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightStageChangeLayout: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1592,7 +1592,7 @@ public struct Rv_Analytics_Ui_LowerRightStageChangeLayout: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightStageConfigureScreens: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightStageConfigureScreens: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1602,7 +1602,7 @@ public struct Rv_Analytics_Ui_LowerRightStageConfigureScreens: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightStageEditLayouts: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightStageEditLayouts: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1612,7 +1612,7 @@ public struct Rv_Analytics_Ui_LowerRightStageEditLayouts: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightStageMessageState: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightStageMessageState: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1621,7 +1621,7 @@ public struct Rv_Analytics_Ui_LowerRightStageMessageState: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case show // = 1
@@ -1662,7 +1662,7 @@ public struct Rv_Analytics_Ui_LowerRightStageMessageState: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightMacros: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightMacros: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1672,7 +1672,7 @@ public struct Rv_Analytics_Ui_LowerRightMacros: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightMacrosTrigger: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightMacrosTrigger: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1682,7 +1682,7 @@ public struct Rv_Analytics_Ui_LowerRightMacrosTrigger: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightMacrosCreate: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightMacrosCreate: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1692,7 +1692,7 @@ public struct Rv_Analytics_Ui_LowerRightMacrosCreate: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_LowerRightMacrosDelete: Sendable {
+public nonisolated struct Rv_Analytics_Ui_LowerRightMacrosDelete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1702,7 +1702,7 @@ public struct Rv_Analytics_Ui_LowerRightMacrosDelete: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_TextInspector: Sendable {
+public nonisolated struct Rv_Analytics_Ui_TextInspector: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1712,7 +1712,7 @@ public struct Rv_Analytics_Ui_TextInspector: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_TextInspectorScrollingText: Sendable {
+public nonisolated struct Rv_Analytics_Ui_TextInspectorScrollingText: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1724,7 +1724,7 @@ public struct Rv_Analytics_Ui_TextInspectorScrollingText: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_TextInspectorForeground: Sendable {
+public nonisolated struct Rv_Analytics_Ui_TextInspectorForeground: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1735,7 +1735,7 @@ public struct Rv_Analytics_Ui_TextInspectorForeground: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum FillType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum FillType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case solid // = 1
@@ -1776,7 +1776,7 @@ public struct Rv_Analytics_Ui_TextInspectorForeground: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_TextInspectorUnderlineColor: Sendable {
+public nonisolated struct Rv_Analytics_Ui_TextInspectorUnderlineColor: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1790,7 +1790,7 @@ public struct Rv_Analytics_Ui_TextInspectorUnderlineColor: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_TextInspectorBackgroundColor: Sendable {
+public nonisolated struct Rv_Analytics_Ui_TextInspectorBackgroundColor: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1801,7 +1801,7 @@ public struct Rv_Analytics_Ui_TextInspectorBackgroundColor: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ColorType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ColorType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case clear // = 1
@@ -1842,7 +1842,7 @@ public struct Rv_Analytics_Ui_TextInspectorBackgroundColor: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_TextInspectorLineTransform: Sendable {
+public nonisolated struct Rv_Analytics_Ui_TextInspectorLineTransform: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1851,7 +1851,7 @@ public struct Rv_Analytics_Ui_TextInspectorLineTransform: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TransformType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TransformType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case none // = 1
@@ -1904,7 +1904,7 @@ public struct Rv_Analytics_Ui_TextInspectorLineTransform: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_ShowSlideLabel: Sendable {
+public nonisolated struct Rv_Analytics_Ui_ShowSlideLabel: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1914,7 +1914,7 @@ public struct Rv_Analytics_Ui_ShowSlideLabel: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_ShowSlideLabelChange: Sendable {
+public nonisolated struct Rv_Analytics_Ui_ShowSlideLabelChange: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1925,7 +1925,7 @@ public struct Rv_Analytics_Ui_ShowSlideLabelChange: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case contextMenu // = 1
@@ -1966,7 +1966,7 @@ public struct Rv_Analytics_Ui_ShowSlideLabelChange: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_EditorOverlayShown: Sendable {
+public nonisolated struct Rv_Analytics_Ui_EditorOverlayShown: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1975,7 +1975,7 @@ public struct Rv_Analytics_Ui_EditorOverlayShown: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case doubleClick // = 1
@@ -2020,7 +2020,7 @@ public struct Rv_Analytics_Ui_EditorOverlayShown: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_EditorOverlayClosed: Sendable {
+public nonisolated struct Rv_Analytics_Ui_EditorOverlayClosed: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2029,7 +2029,7 @@ public struct Rv_Analytics_Ui_EditorOverlayClosed: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case clickOffElement // = 1
@@ -2074,7 +2074,7 @@ public struct Rv_Analytics_Ui_EditorOverlayClosed: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WhatsNewViewed: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WhatsNewViewed: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2088,7 +2088,7 @@ public struct Rv_Analytics_Ui_WhatsNewViewed: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_ClearGroups: Sendable {
+public nonisolated struct Rv_Analytics_Ui_ClearGroups: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2097,7 +2097,7 @@ public struct Rv_Analytics_Ui_ClearGroups: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case applicationMenu // = 1
@@ -2142,7 +2142,7 @@ public struct Rv_Analytics_Ui_ClearGroups: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_ClearGroupsCreate: Sendable {
+public nonisolated struct Rv_Analytics_Ui_ClearGroupsCreate: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2152,7 +2152,7 @@ public struct Rv_Analytics_Ui_ClearGroupsCreate: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_ClearGroupsDelete: Sendable {
+public nonisolated struct Rv_Analytics_Ui_ClearGroupsDelete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2162,7 +2162,7 @@ public struct Rv_Analytics_Ui_ClearGroupsDelete: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_ClearGroupsChangeVisibility: Sendable {
+public nonisolated struct Rv_Analytics_Ui_ClearGroupsChangeVisibility: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2171,7 +2171,7 @@ public struct Rv_Analytics_Ui_ClearGroupsChangeVisibility: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Visibility: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Visibility: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case shown // = 1
@@ -2212,7 +2212,7 @@ public struct Rv_Analytics_Ui_ClearGroupsChangeVisibility: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_ClearGroupsChangeIcon: Sendable {
+public nonisolated struct Rv_Analytics_Ui_ClearGroupsChangeIcon: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2223,7 +2223,7 @@ public struct Rv_Analytics_Ui_ClearGroupsChangeIcon: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum IconType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum IconType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case `default` // = 1
@@ -2264,7 +2264,7 @@ public struct Rv_Analytics_Ui_ClearGroupsChangeIcon: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_PreviewAreaClearGroupsTrigger: Sendable {
+public nonisolated struct Rv_Analytics_Ui_PreviewAreaClearGroupsTrigger: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2274,7 +2274,7 @@ public struct Rv_Analytics_Ui_PreviewAreaClearGroupsTrigger: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_PreviewAreaClearGroupsChanged: Sendable {
+public nonisolated struct Rv_Analytics_Ui_PreviewAreaClearGroupsChanged: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2286,7 +2286,7 @@ public struct Rv_Analytics_Ui_PreviewAreaClearGroupsChanged: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_PlaceholderLink: Sendable {
+public nonisolated struct Rv_Analytics_Ui_PlaceholderLink: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2297,7 +2297,7 @@ public struct Rv_Analytics_Ui_PlaceholderLink: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case presentation // = 1
@@ -2339,7 +2339,7 @@ public struct Rv_Analytics_Ui_PlaceholderLink: Sendable {
 
   }
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case quickSearch // = 1
@@ -2392,7 +2392,7 @@ public struct Rv_Analytics_Ui_PlaceholderLink: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_PlaceholderUnlink: Sendable {
+public nonisolated struct Rv_Analytics_Ui_PlaceholderUnlink: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2402,7 +2402,7 @@ public struct Rv_Analytics_Ui_PlaceholderUnlink: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_PlanningCenterLive: Sendable {
+public nonisolated struct Rv_Analytics_Ui_PlanningCenterLive: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2411,7 +2411,7 @@ public struct Rv_Analytics_Ui_PlanningCenterLive: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum WindowType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum WindowType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case docked // = 1
@@ -2452,7 +2452,7 @@ public struct Rv_Analytics_Ui_PlanningCenterLive: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_NetworkGroupAdd: Sendable {
+public nonisolated struct Rv_Analytics_Ui_NetworkGroupAdd: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2462,7 +2462,7 @@ public struct Rv_Analytics_Ui_NetworkGroupAdd: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_NetworkGroupRemove: Sendable {
+public nonisolated struct Rv_Analytics_Ui_NetworkGroupRemove: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2472,7 +2472,7 @@ public struct Rv_Analytics_Ui_NetworkGroupRemove: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_NetworkGroupLeave: Sendable {
+public nonisolated struct Rv_Analytics_Ui_NetworkGroupLeave: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2482,7 +2482,7 @@ public struct Rv_Analytics_Ui_NetworkGroupLeave: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_CcliReportReset: Sendable {
+public nonisolated struct Rv_Analytics_Ui_CcliReportReset: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2492,7 +2492,7 @@ public struct Rv_Analytics_Ui_CcliReportReset: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_CcliReportShown: Sendable {
+public nonisolated struct Rv_Analytics_Ui_CcliReportShown: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2502,7 +2502,7 @@ public struct Rv_Analytics_Ui_CcliReportShown: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_Capture: Sendable {
+public nonisolated struct Rv_Analytics_Ui_Capture: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2511,7 +2511,7 @@ public struct Rv_Analytics_Ui_Capture: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case toolbar // = 1
@@ -2568,7 +2568,7 @@ public struct Rv_Analytics_Ui_Capture: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_Welcome: Sendable {
+public nonisolated struct Rv_Analytics_Ui_Welcome: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2577,7 +2577,7 @@ public struct Rv_Analytics_Ui_Welcome: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case firstLaunch // = 0
     case applicationMenu // = 1
@@ -2614,7 +2614,7 @@ public struct Rv_Analytics_Ui_Welcome: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WelcomeScreenConfigurationHelp: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WelcomeScreenConfigurationHelp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2624,7 +2624,7 @@ public struct Rv_Analytics_Ui_WelcomeScreenConfigurationHelp: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WelcomeDownloadSampleContent: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WelcomeDownloadSampleContent: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2634,7 +2634,7 @@ public struct Rv_Analytics_Ui_WelcomeDownloadSampleContent: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WelcomeUserGroup: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WelcomeUserGroup: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2644,7 +2644,7 @@ public struct Rv_Analytics_Ui_WelcomeUserGroup: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WelcomeTutorials: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WelcomeTutorials: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2654,7 +2654,7 @@ public struct Rv_Analytics_Ui_WelcomeTutorials: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WelcomeKnowledgeBase: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WelcomeKnowledgeBase: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2664,7 +2664,7 @@ public struct Rv_Analytics_Ui_WelcomeKnowledgeBase: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WelcomeBlog: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WelcomeBlog: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2674,7 +2674,7 @@ public struct Rv_Analytics_Ui_WelcomeBlog: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WelcomeInstagram: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WelcomeInstagram: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2684,7 +2684,7 @@ public struct Rv_Analytics_Ui_WelcomeInstagram: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WelcomeFacebook: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WelcomeFacebook: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2694,7 +2694,7 @@ public struct Rv_Analytics_Ui_WelcomeFacebook: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WelcomeMigration: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WelcomeMigration: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2704,7 +2704,7 @@ public struct Rv_Analytics_Ui_WelcomeMigration: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_TestPatterns: Sendable {
+public nonisolated struct Rv_Analytics_Ui_TestPatterns: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2713,7 +2713,7 @@ public struct Rv_Analytics_Ui_TestPatterns: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case applicationMenu // = 0
     case screenConfiguration // = 1
@@ -2750,7 +2750,7 @@ public struct Rv_Analytics_Ui_TestPatterns: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_SettingsCustomLogo: Sendable {
+public nonisolated struct Rv_Analytics_Ui_SettingsCustomLogo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2762,7 +2762,7 @@ public struct Rv_Analytics_Ui_SettingsCustomLogo: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Ui_WindowedOutputCreated: Sendable {
+public nonisolated struct Rv_Analytics_Ui_WindowedOutputCreated: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2773,7 +2773,7 @@ public struct Rv_Analytics_Ui_WindowedOutputCreated: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ScreenType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ScreenType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case audience // = 0
     case stage // = 1
@@ -2810,19 +2810,77 @@ public struct Rv_Analytics_Ui_WindowedOutputCreated: Sendable {
   public init() {}
 }
 
+public nonisolated struct Rv_Analytics_Ui_ActivationFlowOpened: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var source: Rv_Analytics_Ui_ActivationFlowOpened.Source = .unknown
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case launchAlert // = 1
+    case statusToolbarPopover // = 2
+    case preferences // = 3
+    case cloudOnboarding // = 4
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .launchAlert
+      case 2: self = .statusToolbarPopover
+      case 3: self = .preferences
+      case 4: self = .cloudOnboarding
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .launchAlert: return 1
+      case .statusToolbarPopover: return 2
+      case .preferences: return 3
+      case .cloudOnboarding: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Ui_ActivationFlowOpened.Source] = [
+      .unknown,
+      .launchAlert,
+      .statusToolbarPopover,
+      .preferences,
+      .cloudOnboarding,
+    ]
+
+  }
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.ui"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.ui"
 
-extension Rv_Analytics_Ui_Location: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_Location: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LOCATION_UNKNOWN\0\u{1}PRESENTATION\0\u{1}BIBLE_MODULE\0")
 }
 
-extension Rv_Analytics_Ui_SelectionMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_SelectionMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SELECTION_MODE_UNKNOWN\0\u{1}OBJECT\0\u{1}RANGE\0")
 }
 
-extension Rv_Analytics_Ui_QuickSearchShown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_QuickSearchShown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".QuickSearchShown"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -2852,11 +2910,11 @@ extension Rv_Analytics_Ui_QuickSearchShown: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Ui_QuickSearchShown.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_QuickSearchShown.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}APPLICATION_MENU\0\u{1}TOOLBAR\0\u{1}UNLINKED_HEADER\0")
 }
 
-extension Rv_Analytics_Ui_QuickSearchSearch: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_QuickSearchSearch: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".QuickSearchSearch"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -2886,11 +2944,11 @@ extension Rv_Analytics_Ui_QuickSearchSearch: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Analytics_Ui_QuickSearchSearch.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_QuickSearchSearch.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}LIBRARY\0\u{1}SONG_SELECT\0\u{1}MULTI_TRACKS\0")
 }
 
-extension Rv_Analytics_Ui_QuickSearchOpenItems: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_QuickSearchOpenItems: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".QuickSearchOpenItems"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0\u{1}style\0\u{1}count\0")
 
@@ -2930,15 +2988,15 @@ extension Rv_Analytics_Ui_QuickSearchOpenItems: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Ui_QuickSearchOpenItems.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_QuickSearchOpenItems.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}LIBRARY\0\u{1}SONG_SELECT\0\u{1}MULTI_TRACKS\0")
 }
 
-extension Rv_Analytics_Ui_QuickSearchOpenItems.Style: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_QuickSearchOpenItems.Style: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STYLE_UNKNOWN\0\u{1}STYLE_RETURN_KEY\0\u{1}COMMAND_RETURN_KEY\0\u{1}DRAG_DROP\0")
 }
 
-extension Rv_Analytics_Ui_ToolbarThemeShown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ToolbarThemeShown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ToolbarThemeShown"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -2957,7 +3015,7 @@ extension Rv_Analytics_Ui_ToolbarThemeShown: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Analytics_Ui_ToolbarThemeApplication: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ToolbarThemeApplication: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ToolbarThemeApplication"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}target\0")
 
@@ -2987,11 +3045,11 @@ extension Rv_Analytics_Ui_ToolbarThemeApplication: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Ui_ToolbarThemeApplication.Target: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ToolbarThemeApplication.Target: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TARGET_UNKNOWN\0\u{1}SLIDE_SELECTION\0\u{1}PRESENTATION_SELECTION\0")
 }
 
-extension Rv_Analytics_Ui_MainViewShow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewShow: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MainViewShow"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -3021,11 +3079,11 @@ extension Rv_Analytics_Ui_MainViewShow: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Analytics_Ui_MainViewShow.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewShow.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}APPLICATION_MENU\0")
 }
 
-extension Rv_Analytics_Ui_MainViewPresentationEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewPresentationEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MainViewPresentationEditor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -3055,11 +3113,11 @@ extension Rv_Analytics_Ui_MainViewPresentationEditor: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Analytics_Ui_MainViewPresentationEditor.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewPresentationEditor.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}APPLICATION_MENU\0\u{1}CONTEXT_MENU\0")
 }
 
-extension Rv_Analytics_Ui_MainViewReflowEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewReflowEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MainViewReflowEditor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -3089,11 +3147,11 @@ extension Rv_Analytics_Ui_MainViewReflowEditor: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Ui_MainViewReflowEditor.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewReflowEditor.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}APPLICATION_MENU\0\u{1}LIBRARY_CONTEXT_MENU\0")
 }
 
-extension Rv_Analytics_Ui_MainViewBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewBible: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MainViewBible"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -3123,11 +3181,11 @@ extension Rv_Analytics_Ui_MainViewBible: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Analytics_Ui_MainViewBible.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewBible.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}APPLICATION_MENU\0")
 }
 
-extension Rv_Analytics_Ui_BibleTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}location\0")
 
@@ -3157,7 +3215,7 @@ extension Rv_Analytics_Ui_BibleTrigger: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Analytics_Ui_BibleGenerateSlides: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleGenerateSlides: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleGenerateSlides"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}translation_count\0\u{3}slide_count\0\u{3}verse_location\0\u{3}reference_location\0\u{3}show_verse_numbers\0\u{3}break_new_verse\0\u{3}display_translation\0\u{3}preserve_font_color\0\u{3}reference_style\0")
 
@@ -3227,15 +3285,15 @@ extension Rv_Analytics_Ui_BibleGenerateSlides: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Analytics_Ui_BibleGenerateSlides.TextBoxLocation: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleGenerateSlides.TextBoxLocation: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TEXT_BOX_LOCATION_UNKNOWN\0\u{1}LOCATION_NONE\0\u{1}LOCATION_TEXT_BOX\0\u{1}LOCATION_WITH_VERSE\0")
 }
 
-extension Rv_Analytics_Ui_BibleGenerateSlides.ReferenceType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleGenerateSlides.ReferenceType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0REFERENCE_TYPE_UNKNOWN\0\u{1}PASSAGE_NONE\0\u{1}PASSAGE_EACH\0\u{1}PASSAGE_LAST\0\u{1}VERSE\0")
 }
 
-extension Rv_Analytics_Ui_BibleGenerateNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleGenerateNext: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleGenerateNext"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}location\0")
 
@@ -3265,7 +3323,7 @@ extension Rv_Analytics_Ui_BibleGenerateNext: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Analytics_Ui_BibleGeneratePrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleGeneratePrevious: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleGeneratePrevious"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}location\0")
 
@@ -3295,7 +3353,7 @@ extension Rv_Analytics_Ui_BibleGeneratePrevious: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Ui_BibleSaveSlides: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleSaveSlides: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleSaveSlides"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}destination\0")
 
@@ -3325,11 +3383,11 @@ extension Rv_Analytics_Ui_BibleSaveSlides: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Ui_BibleSaveSlides.SlideDestination: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleSaveSlides.SlideDestination: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SLIDE_DESTINATION_UNKNOWN\0\u{1}SAVE_TO_LIBRARY\0\u{1}SAVE_TO_PLAYLIST\0\u{1}COPY_TO_PRESENTATION\0")
 }
 
-extension Rv_Analytics_Ui_BibleLookup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleLookup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleLookup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}location\0")
 
@@ -3359,11 +3417,11 @@ extension Rv_Analytics_Ui_BibleLookup: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Analytics_Ui_BibleLookup.Location: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleLookup.Location: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LOCATION_UNKNOWN\0\u{1}TEXT_REFERENCE\0\u{1}MENU_BOOK\0\u{1}MENU_CHAPTER\0\u{1}MENU_VERSE\0\u{1}TEXT_SEARCH_CHAPTER\0\u{1}TEXT_SEARCH_VERSE\0")
 }
 
-extension Rv_Analytics_Ui_BibleInstall: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleInstall: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleInstall"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}free_installed_count\0\u{3}purchased_installed_count\0")
 
@@ -3398,7 +3456,7 @@ extension Rv_Analytics_Ui_BibleInstall: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Analytics_Ui_BibleRemove: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleRemove: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleRemove"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}free_installed_count\0\u{3}purchased_installed_count\0")
 
@@ -3433,7 +3491,7 @@ extension Rv_Analytics_Ui_BibleRemove: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Analytics_Ui_BibleStartup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_BibleStartup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BibleStartup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}free_installed_count\0\u{3}purchased_installed_count\0")
 
@@ -3468,7 +3526,7 @@ extension Rv_Analytics_Ui_BibleStartup: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Analytics_Ui_MainViewMaskEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewMaskEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MainViewMaskEditor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -3498,11 +3556,11 @@ extension Rv_Analytics_Ui_MainViewMaskEditor: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Analytics_Ui_MainViewMaskEditor.MaskSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewMaskEditor.MaskSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MASK_SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}LOOKS_WINDOW\0")
 }
 
-extension Rv_Analytics_Ui_MainViewStageEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewStageEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MainViewStageEditor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -3532,11 +3590,11 @@ extension Rv_Analytics_Ui_MainViewStageEditor: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Analytics_Ui_MainViewStageEditor.StageSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewStageEditor.StageSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STAGE_SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}APPLICATION_MENU\0\u{1}LOWER_RIGHT\0")
 }
 
-extension Rv_Analytics_Ui_MainViewThemeEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewThemeEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MainViewThemeEditor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -3566,11 +3624,11 @@ extension Rv_Analytics_Ui_MainViewThemeEditor: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Analytics_Ui_MainViewThemeEditor.ThemeSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewThemeEditor.ThemeSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STAGE_SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}THEME_CONTEXT_MENU\0")
 }
 
-extension Rv_Analytics_Ui_MainViewCopyrightEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewCopyrightEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MainViewCopyrightEditor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -3600,11 +3658,11 @@ extension Rv_Analytics_Ui_MainViewCopyrightEditor: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Ui_MainViewCopyrightEditor.CopyrightSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewCopyrightEditor.CopyrightSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0COPYRIGHT_SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}PREFERENCE\0")
 }
 
-extension Rv_Analytics_Ui_MainViewPropsEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewPropsEditor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MainViewPropsEditor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -3634,11 +3692,11 @@ extension Rv_Analytics_Ui_MainViewPropsEditor: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Analytics_Ui_MainViewPropsEditor.PropsSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_MainViewPropsEditor.PropsSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PROPS_SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}LOWER_RIGHT\0")
 }
 
-extension Rv_Analytics_Ui_LowerRightTimers: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightTimers: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightTimers"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3657,7 +3715,7 @@ extension Rv_Analytics_Ui_LowerRightTimers: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightTimersCollapse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightTimersCollapse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightTimersCollapse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}state\0")
 
@@ -3687,11 +3745,11 @@ extension Rv_Analytics_Ui_LowerRightTimersCollapse: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightTimersCollapse.State: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightTimersCollapse.State: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STATE_UNKNOWN\0\u{1}COLLAPSED\0\u{1}EXPANDED\0")
 }
 
-extension Rv_Analytics_Ui_LowerRightTimersEdit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightTimersEdit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightTimersEdit"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}field\0")
 
@@ -3721,11 +3779,11 @@ extension Rv_Analytics_Ui_LowerRightTimersEdit: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightTimersEdit.Field: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightTimersEdit.Field: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FIELD_UNKNOWN\0\u{1}TYPE\0\u{1}VALUE\0\u{1}OVERRUN\0\u{1}NAME\0")
 }
 
-extension Rv_Analytics_Ui_LowerRightTimersState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightTimersState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightTimersState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}state\0")
 
@@ -3755,11 +3813,11 @@ extension Rv_Analytics_Ui_LowerRightTimersState: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightTimersState.State: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightTimersState.State: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STATE_UNKNOWN\0\u{1}START\0\u{1}STOP\0\u{1}RESET\0")
 }
 
-extension Rv_Analytics_Ui_LowerRightTimersCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightTimersCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightTimersCreate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3778,7 +3836,7 @@ extension Rv_Analytics_Ui_LowerRightTimersCreate: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightTimersDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightTimersDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightTimersDelete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3797,7 +3855,7 @@ extension Rv_Analytics_Ui_LowerRightTimersDelete: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightMessages: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMessages: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightMessages"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3816,7 +3874,7 @@ extension Rv_Analytics_Ui_LowerRightMessages: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightMessagesEdit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMessagesEdit: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightMessagesEdit"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}action\0")
 
@@ -3846,11 +3904,11 @@ extension Rv_Analytics_Ui_LowerRightMessagesEdit: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightMessagesEdit.Action: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMessagesEdit.Action: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ACTION_UNKNOWN\0\u{1}ADD_TEXT_TOKEN\0\u{1}ADD_TIMER_TOKEN\0\u{1}ADD_CUSTOM_TOKEN\0\u{1}SET_THEME\0\u{1}SET_TEXT\0\u{1}SET_WEB_NOTIFICATION\0\u{1}SET_DISMISS_BEHAVIOR\0")
 }
 
-extension Rv_Analytics_Ui_LowerRightMessagesState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMessagesState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightMessagesState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}state\0")
 
@@ -3880,11 +3938,11 @@ extension Rv_Analytics_Ui_LowerRightMessagesState: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightMessagesState.State: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMessagesState.State: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STATE_UNKNOWN\0\u{1}SHOW\0\u{1}CLEAR\0")
 }
 
-extension Rv_Analytics_Ui_LowerRightMessagesCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMessagesCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightMessagesCreate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3903,7 +3961,7 @@ extension Rv_Analytics_Ui_LowerRightMessagesCreate: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightMessagesDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMessagesDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightMessagesDelete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3922,7 +3980,7 @@ extension Rv_Analytics_Ui_LowerRightMessagesDelete: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightProps: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightProps: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightProps"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3941,7 +3999,7 @@ extension Rv_Analytics_Ui_LowerRightProps: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightPropsTransition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightPropsTransition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightPropsTransition"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3960,7 +4018,7 @@ extension Rv_Analytics_Ui_LowerRightPropsTransition: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightPropsCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightPropsCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightPropsCreate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3979,7 +4037,7 @@ extension Rv_Analytics_Ui_LowerRightPropsCreate: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightPropsDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightPropsDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightPropsDelete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -3998,7 +4056,7 @@ extension Rv_Analytics_Ui_LowerRightPropsDelete: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightPropsState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightPropsState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightPropsState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}state\0")
 
@@ -4028,11 +4086,11 @@ extension Rv_Analytics_Ui_LowerRightPropsState: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightPropsState.State: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightPropsState.State: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STATE_UNKNOWN\0\u{1}SHOW\0\u{1}CLEAR\0")
 }
 
-extension Rv_Analytics_Ui_LowerRightStage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightStage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightStage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4051,7 +4109,7 @@ extension Rv_Analytics_Ui_LowerRightStage: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightStageChangeLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightStageChangeLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightStageChangeLayout"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4070,7 +4128,7 @@ extension Rv_Analytics_Ui_LowerRightStageChangeLayout: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightStageConfigureScreens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightStageConfigureScreens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightStageConfigureScreens"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4089,7 +4147,7 @@ extension Rv_Analytics_Ui_LowerRightStageConfigureScreens: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightStageEditLayouts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightStageEditLayouts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightStageEditLayouts"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4108,7 +4166,7 @@ extension Rv_Analytics_Ui_LowerRightStageEditLayouts: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightStageMessageState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightStageMessageState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightStageMessageState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}state\0")
 
@@ -4138,11 +4196,11 @@ extension Rv_Analytics_Ui_LowerRightStageMessageState: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightStageMessageState.State: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightStageMessageState.State: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STATE_UNKNOWN\0\u{1}SHOW\0\u{1}CLEAR\0")
 }
 
-extension Rv_Analytics_Ui_LowerRightMacros: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMacros: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightMacros"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4161,7 +4219,7 @@ extension Rv_Analytics_Ui_LowerRightMacros: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightMacrosTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMacrosTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightMacrosTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4180,7 +4238,7 @@ extension Rv_Analytics_Ui_LowerRightMacrosTrigger: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightMacrosCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMacrosCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightMacrosCreate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4199,7 +4257,7 @@ extension Rv_Analytics_Ui_LowerRightMacrosCreate: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Analytics_Ui_LowerRightMacrosDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_LowerRightMacrosDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LowerRightMacrosDelete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4218,7 +4276,7 @@ extension Rv_Analytics_Ui_LowerRightMacrosDelete: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Analytics_Ui_TextInspector: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TextInspector: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TextInspector"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4237,7 +4295,7 @@ extension Rv_Analytics_Ui_TextInspector: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Analytics_Ui_TextInspectorScrollingText: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TextInspectorScrollingText: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TextInspectorScrollingText"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}enabled\0")
 
@@ -4267,7 +4325,7 @@ extension Rv_Analytics_Ui_TextInspectorScrollingText: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Analytics_Ui_TextInspectorForeground: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TextInspectorForeground: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TextInspectorForeground"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}fill_type\0\u{3}selection_mode\0")
 
@@ -4302,11 +4360,11 @@ extension Rv_Analytics_Ui_TextInspectorForeground: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Ui_TextInspectorForeground.FillType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TextInspectorForeground.FillType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FILL_TYPE_UNKNOWN\0\u{1}SOLID\0\u{1}GRADIENT\0")
 }
 
-extension Rv_Analytics_Ui_TextInspectorUnderlineColor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TextInspectorUnderlineColor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TextInspectorUnderlineColor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_enabled\0\u{3}selection_mode\0")
 
@@ -4341,7 +4399,7 @@ extension Rv_Analytics_Ui_TextInspectorUnderlineColor: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Ui_TextInspectorBackgroundColor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TextInspectorBackgroundColor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TextInspectorBackgroundColor"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}color_type\0\u{3}selection_mode\0")
 
@@ -4376,11 +4434,11 @@ extension Rv_Analytics_Ui_TextInspectorBackgroundColor: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Ui_TextInspectorBackgroundColor.ColorType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TextInspectorBackgroundColor.ColorType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0COLOR_TYPE_UNKNOWN\0\u{1}CLEAR\0\u{1}OTHER\0")
 }
 
-extension Rv_Analytics_Ui_TextInspectorLineTransform: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TextInspectorLineTransform: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TextInspectorLineTransform"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}transform_type\0")
 
@@ -4410,11 +4468,11 @@ extension Rv_Analytics_Ui_TextInspectorLineTransform: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Analytics_Ui_TextInspectorLineTransform.TransformType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TextInspectorLineTransform.TransformType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TRANSFORM_TYPE_UNKNOWN\0\u{1}NONE\0\u{1}REMOVE_LINE_RETURNS\0\u{1}REPLACE_LINE_RETURNS\0\u{1}ONE_WORD_PER_LINE\0\u{1}ONE_CHARACTER_PER_LINE\0")
 }
 
-extension Rv_Analytics_Ui_ShowSlideLabel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ShowSlideLabel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ShowSlideLabel"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4433,7 +4491,7 @@ extension Rv_Analytics_Ui_ShowSlideLabel: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Analytics_Ui_ShowSlideLabelChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ShowSlideLabelChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ShowSlideLabelChange"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}number_of_slides\0\u{1}source\0")
 
@@ -4468,11 +4526,11 @@ extension Rv_Analytics_Ui_ShowSlideLabelChange: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Ui_ShowSlideLabelChange.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ShowSlideLabelChange.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}CONTEXT_MENU\0\u{1}POPOVER\0")
 }
 
-extension Rv_Analytics_Ui_EditorOverlayShown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_EditorOverlayShown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".EditorOverlayShown"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -4502,11 +4560,11 @@ extension Rv_Analytics_Ui_EditorOverlayShown: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Analytics_Ui_EditorOverlayShown.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_EditorOverlayShown.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}DOUBLE_CLICK\0\u{1}CONTEXTUAL_MENU\0\u{1}PLUS_BUTTON_MENU\0")
 }
 
-extension Rv_Analytics_Ui_EditorOverlayClosed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_EditorOverlayClosed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".EditorOverlayClosed"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -4536,11 +4594,11 @@ extension Rv_Analytics_Ui_EditorOverlayClosed: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Analytics_Ui_EditorOverlayClosed.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_EditorOverlayClosed.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}CLICK_OFF_ELEMENT\0\u{1}ESCAPE_KEY\0\u{1}CLOSE_BUTTON\0")
 }
 
-extension Rv_Analytics_Ui_WhatsNewViewed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WhatsNewViewed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WhatsNewViewed"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}version\0\u{3}view_time\0")
 
@@ -4575,7 +4633,7 @@ extension Rv_Analytics_Ui_WhatsNewViewed: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Analytics_Ui_ClearGroups: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ClearGroups: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ClearGroups"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -4605,11 +4663,11 @@ extension Rv_Analytics_Ui_ClearGroups: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Analytics_Ui_ClearGroups.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ClearGroups.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}APPLICATION_MENU\0\u{1}PREVIEW_MENU\0\u{1}ACTION_MENU\0")
 }
 
-extension Rv_Analytics_Ui_ClearGroupsCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ClearGroupsCreate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ClearGroupsCreate"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4628,7 +4686,7 @@ extension Rv_Analytics_Ui_ClearGroupsCreate: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Analytics_Ui_ClearGroupsDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ClearGroupsDelete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ClearGroupsDelete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4647,7 +4705,7 @@ extension Rv_Analytics_Ui_ClearGroupsDelete: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Analytics_Ui_ClearGroupsChangeVisibility: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ClearGroupsChangeVisibility: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ClearGroupsChangeVisibility"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}visibility\0")
 
@@ -4677,11 +4735,11 @@ extension Rv_Analytics_Ui_ClearGroupsChangeVisibility: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Ui_ClearGroupsChangeVisibility.Visibility: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ClearGroupsChangeVisibility.Visibility: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0VISIBILITY_UNKNOWN\0\u{1}SHOWN\0\u{1}HIDDEN\0")
 }
 
-extension Rv_Analytics_Ui_ClearGroupsChangeIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ClearGroupsChangeIcon: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ClearGroupsChangeIcon"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}icon_type\0\u{3}is_tinted\0")
 
@@ -4716,11 +4774,11 @@ extension Rv_Analytics_Ui_ClearGroupsChangeIcon: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Ui_ClearGroupsChangeIcon.IconType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_ClearGroupsChangeIcon.IconType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ICON_TYPE_UNKNOWN\0\u{1}DEFAULT\0\u{1}CUSTOM\0")
 }
 
-extension Rv_Analytics_Ui_PreviewAreaClearGroupsTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_PreviewAreaClearGroupsTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PreviewAreaClearGroupsTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4739,7 +4797,7 @@ extension Rv_Analytics_Ui_PreviewAreaClearGroupsTrigger: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Analytics_Ui_PreviewAreaClearGroupsChanged: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_PreviewAreaClearGroupsChanged: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PreviewAreaClearGroupsChanged"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}count\0")
 
@@ -4769,7 +4827,7 @@ extension Rv_Analytics_Ui_PreviewAreaClearGroupsChanged: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Analytics_Ui_PlaceholderLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_PlaceholderLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PlaceholderLink"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}link_type\0\u{3}link_source\0")
 
@@ -4804,15 +4862,15 @@ extension Rv_Analytics_Ui_PlaceholderLink: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Ui_PlaceholderLink.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_PlaceholderLink.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_UNKNOWN\0\u{1}PRESENTATION\0\u{1}MEDIA\0\u{1}EXTERNAL_PRESENTATION\0")
 }
 
-extension Rv_Analytics_Ui_PlaceholderLink.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_PlaceholderLink.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}QUICK_SEARCH\0\u{1}IMPORT_BUTTON\0\u{1}CREATE_BUTTON\0\u{1}DRAG_DROP\0\u{1}AUTOMATIC\0")
 }
 
-extension Rv_Analytics_Ui_PlaceholderUnlink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_PlaceholderUnlink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PlaceholderUnlink"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4831,7 +4889,7 @@ extension Rv_Analytics_Ui_PlaceholderUnlink: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Analytics_Ui_PlanningCenterLive: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_PlanningCenterLive: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PlanningCenterLive"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}window_type\0")
 
@@ -4861,11 +4919,11 @@ extension Rv_Analytics_Ui_PlanningCenterLive: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Analytics_Ui_PlanningCenterLive.WindowType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_PlanningCenterLive.WindowType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0WINDOW_TYPE_UNKNOWN\0\u{1}DOCKED\0\u{1}FLOATING\0")
 }
 
-extension Rv_Analytics_Ui_NetworkGroupAdd: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_NetworkGroupAdd: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NetworkGroupAdd"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4884,7 +4942,7 @@ extension Rv_Analytics_Ui_NetworkGroupAdd: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Ui_NetworkGroupRemove: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_NetworkGroupRemove: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NetworkGroupRemove"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4903,7 +4961,7 @@ extension Rv_Analytics_Ui_NetworkGroupRemove: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Analytics_Ui_NetworkGroupLeave: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_NetworkGroupLeave: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NetworkGroupLeave"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4922,7 +4980,7 @@ extension Rv_Analytics_Ui_NetworkGroupLeave: SwiftProtobuf.Message, SwiftProtobu
   }
 }
 
-extension Rv_Analytics_Ui_CcliReportReset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_CcliReportReset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CcliReportReset"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4941,7 +4999,7 @@ extension Rv_Analytics_Ui_CcliReportReset: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Ui_CcliReportShown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_CcliReportShown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CcliReportShown"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4960,7 +5018,7 @@ extension Rv_Analytics_Ui_CcliReportShown: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Ui_Capture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_Capture: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Capture"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -4990,11 +5048,11 @@ extension Rv_Analytics_Ui_Capture: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Rv_Analytics_Ui_Capture.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_Capture.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}TOOLBAR\0\u{1}ACTION_POPOVER\0\u{1}ACTION_CONTEXTUAL_MENU\0\u{1}CALENDAR\0\u{1}PREFERENCES_RESI\0\u{1}MAIN_MENU\0")
 }
 
-extension Rv_Analytics_Ui_Welcome: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_Welcome: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Welcome"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -5024,11 +5082,11 @@ extension Rv_Analytics_Ui_Welcome: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Rv_Analytics_Ui_Welcome.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_Welcome.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FIRST_LAUNCH\0\u{1}APPLICATION_MENU\0")
 }
 
-extension Rv_Analytics_Ui_WelcomeScreenConfigurationHelp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WelcomeScreenConfigurationHelp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WelcomeScreenConfigurationHelp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5047,7 +5105,7 @@ extension Rv_Analytics_Ui_WelcomeScreenConfigurationHelp: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Analytics_Ui_WelcomeDownloadSampleContent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WelcomeDownloadSampleContent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WelcomeDownloadSampleContent"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5066,7 +5124,7 @@ extension Rv_Analytics_Ui_WelcomeDownloadSampleContent: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Analytics_Ui_WelcomeUserGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WelcomeUserGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WelcomeUserGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5085,7 +5143,7 @@ extension Rv_Analytics_Ui_WelcomeUserGroup: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Ui_WelcomeTutorials: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WelcomeTutorials: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WelcomeTutorials"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5104,7 +5162,7 @@ extension Rv_Analytics_Ui_WelcomeTutorials: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Ui_WelcomeKnowledgeBase: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WelcomeKnowledgeBase: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WelcomeKnowledgeBase"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5123,7 +5181,7 @@ extension Rv_Analytics_Ui_WelcomeKnowledgeBase: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Ui_WelcomeBlog: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WelcomeBlog: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WelcomeBlog"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5142,7 +5200,7 @@ extension Rv_Analytics_Ui_WelcomeBlog: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Analytics_Ui_WelcomeInstagram: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WelcomeInstagram: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WelcomeInstagram"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5161,7 +5219,7 @@ extension Rv_Analytics_Ui_WelcomeInstagram: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Ui_WelcomeFacebook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WelcomeFacebook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WelcomeFacebook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5180,7 +5238,7 @@ extension Rv_Analytics_Ui_WelcomeFacebook: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Ui_WelcomeMigration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WelcomeMigration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WelcomeMigration"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -5199,7 +5257,7 @@ extension Rv_Analytics_Ui_WelcomeMigration: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Ui_TestPatterns: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TestPatterns: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TestPatterns"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
 
@@ -5229,11 +5287,11 @@ extension Rv_Analytics_Ui_TestPatterns: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Analytics_Ui_TestPatterns.Source: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_TestPatterns.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0APPLICATION_MENU\0\u{1}SCREEN_CONFIGURATION\0")
 }
 
-extension Rv_Analytics_Ui_SettingsCustomLogo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_SettingsCustomLogo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SettingsCustomLogo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}has_logo\0")
 
@@ -5263,7 +5321,7 @@ extension Rv_Analytics_Ui_SettingsCustomLogo: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Analytics_Ui_WindowedOutputCreated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WindowedOutputCreated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WindowedOutputCreated"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}screen_type\0\u{3}num_active_windowed_outputs\0")
 
@@ -5298,6 +5356,40 @@ extension Rv_Analytics_Ui_WindowedOutputCreated: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Ui_WindowedOutputCreated.ScreenType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Ui_WindowedOutputCreated.ScreenType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0AUDIENCE\0\u{1}STAGE\0")
+}
+
+nonisolated extension Rv_Analytics_Ui_ActivationFlowOpened: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ActivationFlowOpened"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.source) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.source != .unknown {
+      try visitor.visitSingularEnumField(value: self.source, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Ui_ActivationFlowOpened, rhs: Rv_Analytics_Ui_ActivationFlowOpened) -> Bool {
+    if lhs.source != rhs.source {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Ui_ActivationFlowOpened.Source: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}LAUNCH_ALERT\0\u{1}STATUS_TOOLBAR_POPOVER\0\u{1}PREFERENCES\0\u{1}CLOUD_ONBOARDING\0")
 }

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Analytics_Trigger_ActionCaptureStart: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionCaptureStart: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -29,7 +29,7 @@ public struct Rv_Analytics_Trigger_ActionCaptureStart: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum PresetType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum PresetType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case activeSettings // = 1
@@ -70,7 +70,7 @@ public struct Rv_Analytics_Trigger_ActionCaptureStart: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionCaptureStop: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionCaptureStop: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -82,7 +82,7 @@ public struct Rv_Analytics_Trigger_ActionCaptureStop: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionClear: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionClear: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -91,7 +91,7 @@ public struct Rv_Analytics_Trigger_ActionClear: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case audio // = 1
@@ -160,7 +160,7 @@ public struct Rv_Analytics_Trigger_ActionClear: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionClearGroup: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionClearGroup: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -184,7 +184,7 @@ public struct Rv_Analytics_Trigger_ActionClearGroup: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionCommunications: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionCommunications: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -194,7 +194,7 @@ public struct Rv_Analytics_Trigger_ActionCommunications: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionLook: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionLook: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -219,7 +219,7 @@ public struct Rv_Analytics_Trigger_ActionLook: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Setting: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Setting: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case none // = 0
     case some // = 1
@@ -260,7 +260,7 @@ public struct Rv_Analytics_Trigger_ActionLook: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionMacro: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionMacro: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -276,7 +276,7 @@ public struct Rv_Analytics_Trigger_ActionMacro: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionMessage: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionMessage: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -296,7 +296,7 @@ public struct Rv_Analytics_Trigger_ActionMessage: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionProp: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionProp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -309,7 +309,7 @@ public struct Rv_Analytics_Trigger_ActionProp: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case trigger // = 1
@@ -351,7 +351,7 @@ public struct Rv_Analytics_Trigger_ActionProp: Sendable {
 
   }
 
-  public enum AutoClear: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum AutoClear: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case defaultDisabled // = 1
@@ -412,7 +412,7 @@ public struct Rv_Analytics_Trigger_ActionProp: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionSlideDestination: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionSlideDestination: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -421,7 +421,7 @@ public struct Rv_Analytics_Trigger_ActionSlideDestination: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ChangeSlideDestination: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ChangeSlideDestination: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case noChange // = 1
@@ -466,7 +466,7 @@ public struct Rv_Analytics_Trigger_ActionSlideDestination: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionStage: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionStage: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -480,7 +480,7 @@ public struct Rv_Analytics_Trigger_ActionStage: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_ActionTimer: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_ActionTimer: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -489,7 +489,7 @@ public struct Rv_Analytics_Trigger_ActionTimer: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TypeEnum: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
     case startSetConfiguration // = 1
@@ -546,7 +546,7 @@ public struct Rv_Analytics_Trigger_ActionTimer: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_TestPattern: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_TestPattern: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -557,7 +557,7 @@ public struct Rv_Analytics_Trigger_TestPattern: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Pattern: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Pattern: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case audioVideoSync // = 0
     case blendGrid // = 1
@@ -623,7 +623,7 @@ public struct Rv_Analytics_Trigger_TestPattern: Sendable {
 
   }
 
-  public enum Logo: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Logo: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case none // = 0
     case propresenter // = 1
@@ -666,9 +666,9 @@ public struct Rv_Analytics_Trigger_TestPattern: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.trigger"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.trigger"
 
-extension Rv_Analytics_Trigger_ActionCaptureStart: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionCaptureStart: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionCaptureStart"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}preset_type\0")
 
@@ -698,11 +698,11 @@ extension Rv_Analytics_Trigger_ActionCaptureStart: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Trigger_ActionCaptureStart.PresetType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionCaptureStart.PresetType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}ACTIVE_SETTINGS\0\u{1}CAPTURE_PRESET\0")
 }
 
-extension Rv_Analytics_Trigger_ActionCaptureStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionCaptureStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionCaptureStop"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}confirm_before_stopping\0")
 
@@ -732,7 +732,7 @@ extension Rv_Analytics_Trigger_ActionCaptureStop: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Analytics_Trigger_ActionClear: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionClear: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionClear"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0")
 
@@ -762,11 +762,11 @@ extension Rv_Analytics_Trigger_ActionClear: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Trigger_ActionClear.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionClear.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}AUDIO\0\u{1}MESSAGES\0\u{1}PROPS\0\u{1}ANNOUNCEMENTS\0\u{1}SLIDE\0\u{1}MEDIA\0\u{1}VIDEO_INPUT\0\u{1}CLEAR_TO_LOGO\0\u{1}CLEAR_GROUP\0")
 }
 
-extension Rv_Analytics_Trigger_ActionClearGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionClearGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionClearGroup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}layer_audio\0\u{3}layer_messages\0\u{3}layer_props\0\u{3}layer_announcement\0\u{3}layer_slide\0\u{3}layer_media\0\u{3}layer_video_input\0")
 
@@ -826,7 +826,7 @@ extension Rv_Analytics_Trigger_ActionClearGroup: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Trigger_ActionCommunications: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionCommunications: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionCommunications"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -845,7 +845,7 @@ extension Rv_Analytics_Trigger_ActionCommunications: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Analytics_Trigger_ActionLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}total_screen_count\0\u{1}mask\0\u{1}messages\0\u{1}props\0\u{1}announcements\0\u{3}presentation_theme\0\u{1}slide\0\u{1}media\0\u{3}video_input\0")
 
@@ -915,11 +915,11 @@ extension Rv_Analytics_Trigger_ActionLook: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Trigger_ActionLook.Setting: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionLook.Setting: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NONE\0\u{1}SOME\0\u{1}ALL\0")
 }
 
-extension Rv_Analytics_Trigger_ActionMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionMacro"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}action_count\0\u{3}cue_action_count\0\u{3}total_action_count\0")
 
@@ -959,7 +959,7 @@ extension Rv_Analytics_Trigger_ActionMacro: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Trigger_ActionMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}token_count\0\u{3}text_token_count\0\u{3}timer_token_count\0\u{3}clock_token_count\0\u{3}showing_count\0")
 
@@ -1009,7 +1009,7 @@ extension Rv_Analytics_Trigger_ActionMessage: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Analytics_Trigger_ActionProp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionProp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionProp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}transition\0\u{1}type\0\u{3}auto_clear\0")
 
@@ -1049,15 +1049,15 @@ extension Rv_Analytics_Trigger_ActionProp: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Trigger_ActionProp.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionProp.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_UNKNOWN\0\u{1}TRIGGER\0\u{1}CLEAR\0\u{1}TRIGGER_FROM_PROP_BIN\0")
 }
 
-extension Rv_Analytics_Trigger_ActionProp.AutoClear: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionProp.AutoClear: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}DEFAULT_DISABLED\0\u{1}DEFAULT_ENABLED\0\u{1}DISABLED\0\u{1}ENABLED\0\u{1}DISABLED_OVERRIDE\0\u{1}ENABLED_OVERRIDE\0\u{1}CLEAR_ACTION\0")
 }
 
-extension Rv_Analytics_Trigger_ActionSlideDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionSlideDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionSlideDestination"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}change_slide_destination\0")
 
@@ -1087,11 +1087,11 @@ extension Rv_Analytics_Trigger_ActionSlideDestination: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Trigger_ActionSlideDestination.ChangeSlideDestination: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionSlideDestination.ChangeSlideDestination: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}NO_CHANGE\0\u{1}STAGE_ONLY\0\u{1}STAGE_AUDIENCE\0")
 }
 
-extension Rv_Analytics_Trigger_ActionStage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionStage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionStage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}layouts\0\u{3}total_stage_screens\0")
 
@@ -1126,7 +1126,7 @@ extension Rv_Analytics_Trigger_ActionStage: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Trigger_ActionTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionTimer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ActionTimer"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0")
 
@@ -1156,11 +1156,11 @@ extension Rv_Analytics_Trigger_ActionTimer: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Trigger_ActionTimer.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_ActionTimer.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}START_SET_CONFIGURATION\0\u{1}START\0\u{1}STOP\0\u{1}RESET\0\u{1}STOP_SET_CONFIGURATION\0\u{1}INCREMENT\0")
 }
 
-extension Rv_Analytics_Trigger_TestPattern: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_TestPattern: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TestPattern"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pattern\0\u{1}logo\0")
 
@@ -1195,10 +1195,10 @@ extension Rv_Analytics_Trigger_TestPattern: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Trigger_TestPattern.Pattern: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_TestPattern.Pattern: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0AUDIO_VIDEO_SYNC\0\u{1}BLEND_GRID\0\u{1}COLOR_BARS\0\u{1}CUSTOM_COLORS\0\u{1}FOCUS\0\u{1}GRAY_SCALE\0\u{1}LINES\0\u{1}LOGO_BOUNCE\0\u{1}RADAR\0\u{1}TEXT\0")
 }
 
-extension Rv_Analytics_Trigger_TestPattern.Logo: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_TestPattern.Logo: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NONE\0\u{1}PROPRESENTER\0\u{1}CUSTOM\0")
 }

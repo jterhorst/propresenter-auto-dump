@@ -629,3 +629,15 @@ message WindowedOutputCreated {
   rv.analytics.ui.WindowedOutputCreated.ScreenType screen_type = 1;
   int32 num_active_windowed_outputs = 2;
 }
+
+message ActivationFlowOpened {
+  enum Source {
+    SOURCE_UNKNOWN = 0;
+    LAUNCH_ALERT = 1;
+    STATUS_TOOLBAR_POPOVER = 2;
+    PREFERENCES = 3;
+    CLOUD_ONBOARDING = 4;
+  }
+
+  rv.analytics.ui.ActivationFlowOpened.Source source = 1;
+}

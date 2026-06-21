@@ -4,6 +4,14 @@ syntax = "proto3";
 package rv.analytics.sync;
 
 
+enum WebSocketFailureReason {
+  UNKNOWN = 0;
+  AUTHENTICATION = 1;
+  TIMEOUT = 2;
+  NO_INTERNET = 3;
+  SERVER_ERROR = 4;
+}
+
 message Local {
   enum Type {
     UP = 0;
@@ -17,4 +25,10 @@ message Local {
   bool include_themes = 5;
   bool include_support_files = 6;
   bool replace_files = 7;
+}
+
+message WebSocketConnectionFailed {
+  rv.analytics.sync.WebSocketFailureReason reason = 1;
+  string url = 2;
+  string error_description = 3;
 }

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Analytics_Trigger_Media_CompletionTarget: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Trigger_Media_CompletionTarget: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case none // = 0
   case next // = 1
@@ -66,7 +66,7 @@ public enum Rv_Analytics_Trigger_Media_CompletionTarget: SwiftProtobuf.Enum, Swi
 
 }
 
-public enum Rv_Analytics_Trigger_Media_SourceType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Trigger_Media_SourceType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case local // = 0
   case procontent // = 1
@@ -100,7 +100,7 @@ public enum Rv_Analytics_Trigger_Media_SourceType: SwiftProtobuf.Enum, Swift.Cas
 
 }
 
-public struct Rv_Analytics_Trigger_Media_Transition: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Media_Transition: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -114,7 +114,7 @@ public struct Rv_Analytics_Trigger_Media_Transition: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_Media_VisualMedia: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Media_VisualMedia: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -151,7 +151,7 @@ public struct Rv_Analytics_Trigger_Media_VisualMedia: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Behavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Behavior: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case background // = 0
     case foreground // = 1
@@ -189,7 +189,7 @@ public struct Rv_Analytics_Trigger_Media_VisualMedia: Sendable {
 
   }
 
-  public enum ScaleMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ScaleMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case fit // = 0
     case fill // = 1
@@ -231,7 +231,7 @@ public struct Rv_Analytics_Trigger_Media_VisualMedia: Sendable {
 
   }
 
-  public enum FlipMode: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum FlipMode: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case none // = 0
     case horizontal // = 1
@@ -273,7 +273,7 @@ public struct Rv_Analytics_Trigger_Media_VisualMedia: Sendable {
 
   }
 
-  public enum NativeRotation: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum NativeRotation: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case standard // = 0
     case _90 // = 90
@@ -315,7 +315,7 @@ public struct Rv_Analytics_Trigger_Media_VisualMedia: Sendable {
 
   }
 
-  public struct Size: Sendable {
+  public nonisolated struct Size: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -335,7 +335,7 @@ public struct Rv_Analytics_Trigger_Media_VisualMedia: Sendable {
   fileprivate var _transition: Rv_Analytics_Trigger_Media_Transition? = nil
 }
 
-public struct Rv_Analytics_Trigger_Media_Transport: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Media_Transport: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -356,7 +356,7 @@ public struct Rv_Analytics_Trigger_Media_Transport: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum DurationRange: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum DurationRange: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case under10S // = 0
     case _10STo30S // = 1
@@ -421,7 +421,7 @@ public struct Rv_Analytics_Trigger_Media_Transport: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_Media_Video: @unchecked Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Media_Video: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -486,7 +486,7 @@ public struct Rv_Analytics_Trigger_Media_Video: @unchecked Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum PlaybackBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum PlaybackBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case stop // = 0
     case loop // = 1
@@ -528,7 +528,7 @@ public struct Rv_Analytics_Trigger_Media_Video: @unchecked Sendable {
 
   }
 
-  public enum HardwareDecodingType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum HardwareDecodingType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case automatic // = 0
     case disabled // = 1
@@ -567,7 +567,7 @@ public struct Rv_Analytics_Trigger_Media_Video: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Rv_Analytics_Trigger_Media_Audio: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Media_Audio: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -600,7 +600,7 @@ public struct Rv_Analytics_Trigger_Media_Audio: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum Behavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Behavior: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case tune // = 0
     case sound // = 1
@@ -634,7 +634,7 @@ public struct Rv_Analytics_Trigger_Media_Audio: Sendable {
 
   }
 
-  public enum PlaybackBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum PlaybackBehavior: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case stop // = 0
     case loop // = 1
@@ -678,7 +678,7 @@ public struct Rv_Analytics_Trigger_Media_Audio: Sendable {
   fileprivate var _transport: Rv_Analytics_Trigger_Media_Transport? = nil
 }
 
-public struct Rv_Analytics_Trigger_Media_Image: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Media_Image: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -703,7 +703,7 @@ public struct Rv_Analytics_Trigger_Media_Image: Sendable {
   fileprivate var _visualMedia: Rv_Analytics_Trigger_Media_VisualMedia? = nil
 }
 
-public struct Rv_Analytics_Trigger_Media_VideoInput: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Media_VideoInput: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -730,7 +730,7 @@ public struct Rv_Analytics_Trigger_Media_VideoInput: Sendable {
   fileprivate var _visualMedia: Rv_Analytics_Trigger_Media_VisualMedia? = nil
 }
 
-public struct Rv_Analytics_Trigger_Media_AirCastVideo: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Media_AirCastVideo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -742,7 +742,7 @@ public struct Rv_Analytics_Trigger_Media_AirCastVideo: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Trigger_Media_AirCastAudio: Sendable {
+public nonisolated struct Rv_Analytics_Trigger_Media_AirCastAudio: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -756,17 +756,17 @@ public struct Rv_Analytics_Trigger_Media_AirCastAudio: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.trigger.media"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.trigger.media"
 
-extension Rv_Analytics_Trigger_Media_CompletionTarget: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_CompletionTarget: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NONE\0\u{1}NEXT\0\u{1}RANDOM\0\u{1}CUE\0\u{1}FIRST\0")
 }
 
-extension Rv_Analytics_Trigger_Media_SourceType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_SourceType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LOCAL\0\u{1}PROCONTENT\0")
 }
 
-extension Rv_Analytics_Trigger_Media_Transition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Transition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Transition"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_default\0\u{1}name\0")
 
@@ -801,7 +801,7 @@ extension Rv_Analytics_Trigger_Media_Transition: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Trigger_Media_VisualMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_VisualMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".VisualMedia"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}behavior\0\u{3}scale_mode\0\u{3}flip_mode\0\u{3}native_rotation\0\u{1}resolution\0\u{3}enabled_effects_count\0\u{3}has_effect_preset\0\u{1}transition\0")
 
@@ -870,23 +870,23 @@ extension Rv_Analytics_Trigger_Media_VisualMedia: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Analytics_Trigger_Media_VisualMedia.Behavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_VisualMedia.Behavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0BACKGROUND\0\u{1}FOREGROUND\0\u{1}VIDEO_INPUT\0")
 }
 
-extension Rv_Analytics_Trigger_Media_VisualMedia.ScaleMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_VisualMedia.ScaleMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FIT\0\u{1}FILL\0\u{1}STRETCH\0\u{1}BLUR\0")
 }
 
-extension Rv_Analytics_Trigger_Media_VisualMedia.FlipMode: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_VisualMedia.FlipMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NONE\0\u{1}HORIZONTAL\0\u{1}VERTICAL\0\u{1}BOTH\0")
 }
 
-extension Rv_Analytics_Trigger_Media_VisualMedia.NativeRotation: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_VisualMedia.NativeRotation: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STANDARD\0\u{2}Z\u{1}_90\0\u{2}Z\u{1}_180\0\u{2}Z\u{1}_270\0")
 }
 
-extension Rv_Analytics_Trigger_Media_VisualMedia.Size: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_VisualMedia.Size: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Analytics_Trigger_Media_VisualMedia.protoMessageName + ".Size"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}width\0\u{1}height\0")
 
@@ -921,7 +921,7 @@ extension Rv_Analytics_Trigger_Media_VisualMedia.Size: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Trigger_Media_Transport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Transport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Transport"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}source_duration_range\0\u{3}has_audio_ramp_in\0\u{3}has_audio_ramp_out\0\u{3}has_in_point\0\u{3}has_out_point\0\u{3}play_rate\0\u{3}playback_marker_count\0")
 
@@ -981,11 +981,11 @@ extension Rv_Analytics_Trigger_Media_Transport: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Analytics_Trigger_Media_Transport.DurationRange: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Transport.DurationRange: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNDER_10S\0\u{1}_10S_TO_30S\0\u{1}_30S_TO_60S\0\u{1}_1M_TO_5M\0\u{1}_5M_TO_10M\0\u{1}_10M_TO_30M\0\u{1}_30M_TO_60M\0\u{1}_1H_TO_2H\0\u{1}OVER_2H\0")
 }
 
-extension Rv_Analytics_Trigger_Media_Video: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Video: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Video"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{4}\u{7}visual_media\0\u{3}playback_behavior\0\u{3}completion_target\0\u{3}soft_loop_enabled\0\u{3}soft_loop_duration\0\u{3}frame_rate\0\u{3}audio_channel_count\0\u{1}transport\0\u{3}source_type\0\u{3}hardware_decoding\0")
 
@@ -1118,15 +1118,15 @@ extension Rv_Analytics_Trigger_Media_Video: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Trigger_Media_Video.PlaybackBehavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Video.PlaybackBehavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STOP\0\u{1}LOOP\0\u{1}LOOP_FOR_PLAY_COUNT\0\u{1}LOOP_FOR_TIME\0")
 }
 
-extension Rv_Analytics_Trigger_Media_Video.HardwareDecodingType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Video.HardwareDecodingType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0AUTOMATIC\0\u{1}DISABLED\0")
 }
 
-extension Rv_Analytics_Trigger_Media_Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Audio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Audio"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}behavior\0\u{3}playback_behavior\0\u{1}transition\0\u{3}audio_channel_count\0\u{1}transport\0\u{3}source_type\0")
 
@@ -1185,15 +1185,15 @@ extension Rv_Analytics_Trigger_Media_Audio: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Trigger_Media_Audio.Behavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Audio.Behavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TUNE\0\u{1}SOUND\0")
 }
 
-extension Rv_Analytics_Trigger_Media_Audio.PlaybackBehavior: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Audio.PlaybackBehavior: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STOP\0\u{1}LOOP\0\u{1}NEXT\0")
 }
 
-extension Rv_Analytics_Trigger_Media_Image: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_Image: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Image"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}visual_media\0\u{3}completion_target\0\u{3}source_type\0")
 
@@ -1237,7 +1237,7 @@ extension Rv_Analytics_Trigger_Media_Image: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Trigger_Media_VideoInput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_VideoInput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".VideoInput"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}visual_media\0\u{3}frame_rate\0\u{3}audio_channel_count\0\u{3}source_type\0")
 
@@ -1286,7 +1286,7 @@ extension Rv_Analytics_Trigger_Media_VideoInput: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Analytics_Trigger_Media_AirCastVideo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_AirCastVideo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AirCastVideo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}password_enabled\0")
 
@@ -1316,7 +1316,7 @@ extension Rv_Analytics_Trigger_Media_AirCastVideo: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Analytics_Trigger_Media_AirCastAudio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Trigger_Media_AirCastAudio: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AirCastAudio"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}password_enabled\0")
 

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Message: Sendable {
+public nonisolated struct Rv_Data_API_v1_Message: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -53,7 +53,7 @@ public struct Rv_Data_API_v1_Message: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct API_v1_MessageToken: Sendable {
+  public nonisolated struct API_v1_MessageToken: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -90,14 +90,14 @@ public struct Rv_Data_API_v1_Message: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_TokenType: Equatable, Sendable {
+    public nonisolated enum OneOf_TokenType: Equatable, Sendable {
       case text(Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_TextToken)
       case timer(Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_TimerToken)
       case clock(Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_ClockToken)
 
     }
 
-    public struct API_v1_TextToken: Sendable {
+    public nonisolated struct API_v1_TextToken: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -109,7 +109,7 @@ public struct Rv_Data_API_v1_Message: Sendable {
       public init() {}
     }
 
-    public struct API_v1_TimerToken: Sendable {
+    public nonisolated struct API_v1_TimerToken: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -162,7 +162,7 @@ public struct Rv_Data_API_v1_Message: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_TimerConfiguration: Equatable, Sendable {
+      public nonisolated enum OneOf_TimerConfiguration: Equatable, Sendable {
         case countdown(Rv_Data_API_v1_Timer.API_v1_Timer_Countdown)
         case countDownToTime(Rv_Data_API_v1_Timer.API_v1_Timer_CountdownToTime)
         case elapsed(Rv_Data_API_v1_Timer.API_v1_Timer_Elapsed)
@@ -175,7 +175,7 @@ public struct Rv_Data_API_v1_Message: Sendable {
       fileprivate var _format: Rv_Data_API_v1_TimerFormat? = nil
     }
 
-    public struct API_v1_ClockToken: Sendable {
+    public nonisolated struct API_v1_ClockToken: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -188,7 +188,7 @@ public struct Rv_Data_API_v1_Message: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum API_v1_ClockTokenFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum API_v1_ClockTokenFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case none // = 0
         case short // = 1
@@ -246,7 +246,7 @@ public struct Rv_Data_API_v1_Message: Sendable {
   fileprivate var _theme: Rv_Data_API_v1_Identifier? = nil
 }
 
-public struct Rv_Data_API_v1_Message_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Message_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -311,7 +311,7 @@ public struct Rv_Data_API_v1_Message_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case messages(Rv_Data_API_v1_Message_Request.Messages)
     case createMessage(Rv_Data_API_v1_Message_Request.CreateMessage)
     case getMessage(Rv_Data_API_v1_Message_Request.GetMessage)
@@ -322,7 +322,7 @@ public struct Rv_Data_API_v1_Message_Request: Sendable {
 
   }
 
-  public struct Messages: Sendable {
+  public nonisolated struct Messages: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -332,7 +332,7 @@ public struct Rv_Data_API_v1_Message_Request: Sendable {
     public init() {}
   }
 
-  public struct CreateMessage: Sendable {
+  public nonisolated struct CreateMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -353,7 +353,7 @@ public struct Rv_Data_API_v1_Message_Request: Sendable {
     fileprivate var _message: Rv_Data_API_v1_Message? = nil
   }
 
-  public struct GetMessage: Sendable {
+  public nonisolated struct GetMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -365,7 +365,7 @@ public struct Rv_Data_API_v1_Message_Request: Sendable {
     public init() {}
   }
 
-  public struct PutMessage: Sendable {
+  public nonisolated struct PutMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -388,7 +388,7 @@ public struct Rv_Data_API_v1_Message_Request: Sendable {
     fileprivate var _message: Rv_Data_API_v1_Message? = nil
   }
 
-  public struct DeleteMessage: Sendable {
+  public nonisolated struct DeleteMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -400,7 +400,7 @@ public struct Rv_Data_API_v1_Message_Request: Sendable {
     public init() {}
   }
 
-  public struct TriggerMessage: Sendable {
+  public nonisolated struct TriggerMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -416,7 +416,7 @@ public struct Rv_Data_API_v1_Message_Request: Sendable {
     public init() {}
   }
 
-  public struct ClearMessage: Sendable {
+  public nonisolated struct ClearMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -431,7 +431,7 @@ public struct Rv_Data_API_v1_Message_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Message_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Message_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -496,7 +496,7 @@ public struct Rv_Data_API_v1_Message_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case messages(Rv_Data_API_v1_Message_Response.Messages)
     case createMessage(Rv_Data_API_v1_Message_Response.CreateMessage)
     case getMessage(Rv_Data_API_v1_Message_Response.GetMessage)
@@ -507,7 +507,7 @@ public struct Rv_Data_API_v1_Message_Response: Sendable {
 
   }
 
-  public struct Messages: Sendable {
+  public nonisolated struct Messages: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -519,7 +519,7 @@ public struct Rv_Data_API_v1_Message_Response: Sendable {
     public init() {}
   }
 
-  public struct CreateMessage: Sendable {
+  public nonisolated struct CreateMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -540,7 +540,7 @@ public struct Rv_Data_API_v1_Message_Response: Sendable {
     fileprivate var _message: Rv_Data_API_v1_Message? = nil
   }
 
-  public struct GetMessage: Sendable {
+  public nonisolated struct GetMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -561,7 +561,7 @@ public struct Rv_Data_API_v1_Message_Response: Sendable {
     fileprivate var _message: Rv_Data_API_v1_Message? = nil
   }
 
-  public struct PutMessage: Sendable {
+  public nonisolated struct PutMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -582,7 +582,7 @@ public struct Rv_Data_API_v1_Message_Response: Sendable {
     fileprivate var _message: Rv_Data_API_v1_Message? = nil
   }
 
-  public struct DeleteMessage: Sendable {
+  public nonisolated struct DeleteMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -592,7 +592,7 @@ public struct Rv_Data_API_v1_Message_Response: Sendable {
     public init() {}
   }
 
-  public struct TriggerMessage: Sendable {
+  public nonisolated struct TriggerMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -602,7 +602,7 @@ public struct Rv_Data_API_v1_Message_Response: Sendable {
     public init() {}
   }
 
-  public struct ClearMessage: Sendable {
+  public nonisolated struct ClearMessage: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -617,9 +617,9 @@ public struct Rv_Data_API_v1_Message_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Message"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}message\0\u{1}tokens\0\u{1}theme\0\u{3}visible_on_network\0\u{3}is_active\0")
 
@@ -678,7 +678,7 @@ extension Rv_Data_API_v1_Message: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Rv_Data_API_v1_Message.API_v1_MessageToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message.API_v1_MessageToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message.protoMessageName + ".API_v1_MessageToken"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}text\0\u{1}timer\0\u{1}clock\0")
 
@@ -772,7 +772,7 @@ extension Rv_Data_API_v1_Message.API_v1_MessageToken: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_TextToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_TextToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message.API_v1_MessageToken.protoMessageName + ".API_v1_TextToken"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}text\0")
 
@@ -802,7 +802,7 @@ extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_TextToken: SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_TimerToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_TimerToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message.API_v1_MessageToken.protoMessageName + ".API_v1_TimerToken"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}allows_overrun\0\u{1}countdown\0\u{3}count_down_to_time\0\u{1}elapsed\0\u{1}format\0")
 
@@ -901,7 +901,7 @@ extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_TimerToken: SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_ClockToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_ClockToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message.API_v1_MessageToken.protoMessageName + ".API_v1_ClockToken"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}date\0\u{1}time\0\u{3}is_24_hours\0")
 
@@ -941,11 +941,11 @@ extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_ClockToken: SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_ClockToken.API_v1_ClockTokenFormat: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message.API_v1_MessageToken.API_v1_ClockToken.API_v1_ClockTokenFormat: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0none\0\u{1}short\0\u{1}medium\0\u{1}long\0\u{1}full\0")
 }
 
-extension Rv_Data_API_v1_Message_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Message_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}messages\0\u{3}create_message\0\u{3}get_message\0\u{3}put_message\0\u{3}delete_message\0\u{3}trigger_message\0\u{3}clear_message\0")
 
@@ -1097,7 +1097,7 @@ extension Rv_Data_API_v1_Message_Request: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_API_v1_Message_Request.Messages: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Request.Messages: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Request.protoMessageName + ".Messages"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1116,7 +1116,7 @@ extension Rv_Data_API_v1_Message_Request.Messages: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Message_Request.CreateMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Request.CreateMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Request.protoMessageName + ".CreateMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}message\0")
 
@@ -1150,7 +1150,7 @@ extension Rv_Data_API_v1_Message_Request.CreateMessage: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Message_Request.GetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Request.GetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Request.protoMessageName + ".GetMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1180,7 +1180,7 @@ extension Rv_Data_API_v1_Message_Request.GetMessage: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Message_Request.PutMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Request.PutMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Request.protoMessageName + ".PutMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}message\0")
 
@@ -1219,7 +1219,7 @@ extension Rv_Data_API_v1_Message_Request.PutMessage: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_API_v1_Message_Request.DeleteMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Request.DeleteMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Request.protoMessageName + ".DeleteMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1249,7 +1249,7 @@ extension Rv_Data_API_v1_Message_Request.DeleteMessage: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Message_Request.TriggerMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Request.TriggerMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Request.protoMessageName + ".TriggerMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}tokens\0\u{3}requires_confirmation\0")
 
@@ -1289,7 +1289,7 @@ extension Rv_Data_API_v1_Message_Request.TriggerMessage: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Message_Request.ClearMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Request.ClearMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Request.protoMessageName + ".ClearMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1319,7 +1319,7 @@ extension Rv_Data_API_v1_Message_Request.ClearMessage: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Message_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Message_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}messages\0\u{3}create_message\0\u{3}get_message\0\u{3}put_message\0\u{3}delete_message\0\u{3}trigger_message\0\u{3}clear_message\0")
 
@@ -1471,7 +1471,7 @@ extension Rv_Data_API_v1_Message_Response: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Data_API_v1_Message_Response.Messages: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Response.Messages: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Response.protoMessageName + ".Messages"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}messages\0")
 
@@ -1501,7 +1501,7 @@ extension Rv_Data_API_v1_Message_Response.Messages: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Message_Response.CreateMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Response.CreateMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Response.protoMessageName + ".CreateMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}message\0")
 
@@ -1535,7 +1535,7 @@ extension Rv_Data_API_v1_Message_Response.CreateMessage: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Message_Response.GetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Response.GetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Response.protoMessageName + ".GetMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}message\0")
 
@@ -1569,7 +1569,7 @@ extension Rv_Data_API_v1_Message_Response.GetMessage: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Message_Response.PutMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Response.PutMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Response.protoMessageName + ".PutMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}message\0")
 
@@ -1603,7 +1603,7 @@ extension Rv_Data_API_v1_Message_Response.PutMessage: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Message_Response.DeleteMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Response.DeleteMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Response.protoMessageName + ".DeleteMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1622,7 +1622,7 @@ extension Rv_Data_API_v1_Message_Response.DeleteMessage: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_API_v1_Message_Response.TriggerMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Response.TriggerMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Response.protoMessageName + ".TriggerMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1641,7 +1641,7 @@ extension Rv_Data_API_v1_Message_Response.TriggerMessage: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Data_API_v1_Message_Response.ClearMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Message_Response.ClearMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Message_Response.protoMessageName + ".ClearMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

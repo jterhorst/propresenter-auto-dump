@@ -396,3 +396,27 @@ message OnboardingFlowOutcome {
 message SyncingUnpaused {
   uint64 duration = 1;
 }
+
+message UserWorkspaceTreeModification {
+  enum Bucket {
+    OTHER = 0;
+    LIBRARIES = 1;
+    THEMES = 2;
+    PLAYLISTS = 3;
+    PLAYLIST_TEMPLATES = 4;
+    CONFIGURATION = 5;
+    MEDIA = 6;
+    PRESETS = 7;
+    DOWNLOADS = 8;
+  }
+
+  enum Operation {
+    MODIFIED = 0;
+    CREATED = 1;
+    RENAMED = 2;
+    REMOVED = 3;
+  }
+
+  rv.analytics.trackedevents.UserWorkspaceTreeModification.Bucket bucket = 1;
+  rv.analytics.trackedevents.UserWorkspaceTreeModification.Operation operation = 2;
+}

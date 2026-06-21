@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Analytics_Mediamanagement_InstallationComplete: Sendable {
+public nonisolated struct Rv_Analytics_Mediamanagement_InstallationComplete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -45,13 +45,13 @@ public struct Rv_Analytics_Mediamanagement_InstallationComplete: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_State: Equatable, Sendable {
+  public nonisolated enum OneOf_State: Equatable, Sendable {
     case success(Rv_Analytics_Mediamanagement_InstallationComplete.Success)
     case failure(Rv_Analytics_Mediamanagement_InstallationComplete.Failure)
 
   }
 
-  public struct Success: Sendable {
+  public nonisolated struct Success: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -61,7 +61,7 @@ public struct Rv_Analytics_Mediamanagement_InstallationComplete: Sendable {
     public init() {}
   }
 
-  public struct Failure: Sendable {
+  public nonisolated struct Failure: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -76,7 +76,7 @@ public struct Rv_Analytics_Mediamanagement_InstallationComplete: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Mediamanagement_BootstrappingComplete: Sendable {
+public nonisolated struct Rv_Analytics_Mediamanagement_BootstrappingComplete: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -101,13 +101,13 @@ public struct Rv_Analytics_Mediamanagement_BootstrappingComplete: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_State: Equatable, Sendable {
+  public nonisolated enum OneOf_State: Equatable, Sendable {
     case success(Rv_Analytics_Mediamanagement_BootstrappingComplete.Success)
     case failure(Rv_Analytics_Mediamanagement_BootstrappingComplete.Failure)
 
   }
 
-  public struct Success: Sendable {
+  public nonisolated struct Success: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -117,7 +117,7 @@ public struct Rv_Analytics_Mediamanagement_BootstrappingComplete: Sendable {
     public init() {}
   }
 
-  public struct Failure: Sendable {
+  public nonisolated struct Failure: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -132,7 +132,7 @@ public struct Rv_Analytics_Mediamanagement_BootstrappingComplete: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Mediamanagement_MessageFailure: Sendable {
+public nonisolated struct Rv_Analytics_Mediamanagement_MessageFailure: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -144,7 +144,7 @@ public struct Rv_Analytics_Mediamanagement_MessageFailure: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Mediamanagement_UnexpectedlyNotRunning: Sendable {
+public nonisolated struct Rv_Analytics_Mediamanagement_UnexpectedlyNotRunning: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -154,7 +154,7 @@ public struct Rv_Analytics_Mediamanagement_UnexpectedlyNotRunning: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Mediamanagement_ConnectionChanged: Sendable {
+public nonisolated struct Rv_Analytics_Mediamanagement_ConnectionChanged: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -163,7 +163,7 @@ public struct Rv_Analytics_Mediamanagement_ConnectionChanged: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case connected // = 0
     case disconnected // = 1
@@ -200,7 +200,7 @@ public struct Rv_Analytics_Mediamanagement_ConnectionChanged: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Mediamanagement_AddedMediaReference: Sendable {
+public nonisolated struct Rv_Analytics_Mediamanagement_AddedMediaReference: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -214,7 +214,7 @@ public struct Rv_Analytics_Mediamanagement_AddedMediaReference: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Mediamanagement_NotResponding: Sendable {
+public nonisolated struct Rv_Analytics_Mediamanagement_NotResponding: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -226,9 +226,9 @@ public struct Rv_Analytics_Mediamanagement_NotResponding: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.mediamanagement"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.mediamanagement"
 
-extension Rv_Analytics_Mediamanagement_InstallationComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_InstallationComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".InstallationComplete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}success\0\u{1}failure\0")
 
@@ -295,7 +295,7 @@ extension Rv_Analytics_Mediamanagement_InstallationComplete: SwiftProtobuf.Messa
   }
 }
 
-extension Rv_Analytics_Mediamanagement_InstallationComplete.Success: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_InstallationComplete.Success: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Analytics_Mediamanagement_InstallationComplete.protoMessageName + ".Success"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -314,7 +314,7 @@ extension Rv_Analytics_Mediamanagement_InstallationComplete.Success: SwiftProtob
   }
 }
 
-extension Rv_Analytics_Mediamanagement_InstallationComplete.Failure: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_InstallationComplete.Failure: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Analytics_Mediamanagement_InstallationComplete.protoMessageName + ".Failure"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}error\0")
 
@@ -344,7 +344,7 @@ extension Rv_Analytics_Mediamanagement_InstallationComplete.Failure: SwiftProtob
   }
 }
 
-extension Rv_Analytics_Mediamanagement_BootstrappingComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_BootstrappingComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".BootstrappingComplete"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}success\0\u{1}failure\0")
 
@@ -411,7 +411,7 @@ extension Rv_Analytics_Mediamanagement_BootstrappingComplete: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Analytics_Mediamanagement_BootstrappingComplete.Success: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_BootstrappingComplete.Success: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Analytics_Mediamanagement_BootstrappingComplete.protoMessageName + ".Success"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -430,7 +430,7 @@ extension Rv_Analytics_Mediamanagement_BootstrappingComplete.Success: SwiftProto
   }
 }
 
-extension Rv_Analytics_Mediamanagement_BootstrappingComplete.Failure: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_BootstrappingComplete.Failure: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Analytics_Mediamanagement_BootstrappingComplete.protoMessageName + ".Failure"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}error\0")
 
@@ -460,7 +460,7 @@ extension Rv_Analytics_Mediamanagement_BootstrappingComplete.Failure: SwiftProto
   }
 }
 
-extension Rv_Analytics_Mediamanagement_MessageFailure: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_MessageFailure: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MessageFailure"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}error\0")
 
@@ -490,7 +490,7 @@ extension Rv_Analytics_Mediamanagement_MessageFailure: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Analytics_Mediamanagement_UnexpectedlyNotRunning: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_UnexpectedlyNotRunning: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UnexpectedlyNotRunning"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -509,7 +509,7 @@ extension Rv_Analytics_Mediamanagement_UnexpectedlyNotRunning: SwiftProtobuf.Mes
   }
 }
 
-extension Rv_Analytics_Mediamanagement_ConnectionChanged: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_ConnectionChanged: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ConnectionChanged"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}state\0")
 
@@ -539,11 +539,11 @@ extension Rv_Analytics_Mediamanagement_ConnectionChanged: SwiftProtobuf.Message,
   }
 }
 
-extension Rv_Analytics_Mediamanagement_ConnectionChanged.State: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_ConnectionChanged.State: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STATE_CONNECTED\0\u{1}STATE_DISCONNECTED\0")
 }
 
-extension Rv_Analytics_Mediamanagement_AddedMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_AddedMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AddedMediaReference"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}width\0\u{1}height\0")
 
@@ -578,7 +578,7 @@ extension Rv_Analytics_Mediamanagement_AddedMediaReference: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Analytics_Mediamanagement_NotResponding: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Mediamanagement_NotResponding: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".NotResponding"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

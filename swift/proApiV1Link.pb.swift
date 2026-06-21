@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_GroupMember: Sendable {
+public nonisolated struct Rv_Data_API_v1_GroupMember: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -34,7 +34,7 @@ public struct Rv_Data_API_v1_GroupMember: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_GroupMemberStatus: Sendable {
+public nonisolated struct Rv_Data_API_v1_GroupMemberStatus: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -57,7 +57,7 @@ public struct Rv_Data_API_v1_GroupMemberStatus: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum API_v1_GroupMemberStatus_ConnectionStatus: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum API_v1_GroupMemberStatus_ConnectionStatus: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case connectionStatusUnknown // = 0
     case connectionStatusConnected // = 1
@@ -95,7 +95,7 @@ public struct Rv_Data_API_v1_GroupMemberStatus: Sendable {
 
   }
 
-  public enum API_v1_GroupMemberStatus_Platform: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum API_v1_GroupMemberStatus_Platform: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case platformUnknown // = 0
     case platformMacos // = 1
@@ -140,7 +140,7 @@ public struct Rv_Data_API_v1_GroupMemberStatus: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_GroupDefinition: Sendable {
+public nonisolated struct Rv_Data_API_v1_GroupDefinition: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -177,7 +177,7 @@ public struct Rv_Data_API_v1_GroupDefinition: Sendable {
   fileprivate var _groupIdentifier: Rv_Data_UUID? = nil
 }
 
-public struct Rv_Data_API_v1_Link_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Link_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -218,7 +218,7 @@ public struct Rv_Data_API_v1_Link_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case heartbeat(Rv_Data_API_v1_Link_Request.Heartbeat)
     case status(Rv_Data_API_v1_Link_Request.Status)
     case addMember(Rv_Data_API_v1_Link_Request.AddMember)
@@ -226,7 +226,7 @@ public struct Rv_Data_API_v1_Link_Request: Sendable {
 
   }
 
-  public struct Heartbeat: Sendable {
+  public nonisolated struct Heartbeat: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -240,7 +240,7 @@ public struct Rv_Data_API_v1_Link_Request: Sendable {
     public init() {}
   }
 
-  public struct Status: Sendable {
+  public nonisolated struct Status: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -250,7 +250,7 @@ public struct Rv_Data_API_v1_Link_Request: Sendable {
     public init() {}
   }
 
-  public struct AddMember: Sendable {
+  public nonisolated struct AddMember: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -275,7 +275,7 @@ public struct Rv_Data_API_v1_Link_Request: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_AddType: Equatable, Sendable {
+    public nonisolated enum OneOf_AddType: Equatable, Sendable {
       case groupDefinition(Rv_Data_API_v1_GroupDefinition)
       case memberDetails(Rv_Data_API_v1_GroupMember)
 
@@ -284,7 +284,7 @@ public struct Rv_Data_API_v1_Link_Request: Sendable {
     public init() {}
   }
 
-  public struct RemoveMember: Sendable {
+  public nonisolated struct RemoveMember: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -308,7 +308,7 @@ public struct Rv_Data_API_v1_Link_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Link_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Link_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -349,7 +349,7 @@ public struct Rv_Data_API_v1_Link_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case heartbeat(Rv_Data_API_v1_Link_Response.Heartbeat)
     case status(Rv_Data_API_v1_Link_Response.Status)
     case addMember(Rv_Data_API_v1_Link_Response.AddMember)
@@ -357,7 +357,7 @@ public struct Rv_Data_API_v1_Link_Response: Sendable {
 
   }
 
-  public struct Heartbeat: Sendable {
+  public nonisolated struct Heartbeat: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -388,7 +388,7 @@ public struct Rv_Data_API_v1_Link_Response: Sendable {
     fileprivate var _status: Rv_Data_API_v1_GroupMemberStatus? = nil
   }
 
-  public struct Status: Sendable {
+  public nonisolated struct Status: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -411,7 +411,7 @@ public struct Rv_Data_API_v1_Link_Response: Sendable {
     fileprivate var _groupDefinition: Rv_Data_API_v1_GroupDefinition? = nil
   }
 
-  public struct AddMember: Sendable {
+  public nonisolated struct AddMember: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -444,14 +444,14 @@ public struct Rv_Data_API_v1_Link_Response: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Result: Equatable, Sendable {
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
       case groupDefinition(Rv_Data_API_v1_GroupDefinition)
       case accept(Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineAccepts)
       case decline(Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineDecline)
 
     }
 
-    public struct RemoteMachineAccepts: Sendable {
+    public nonisolated struct RemoteMachineAccepts: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -461,7 +461,7 @@ public struct Rv_Data_API_v1_Link_Response: Sendable {
       public init() {}
     }
 
-    public struct RemoteMachineDecline: Sendable {
+    public nonisolated struct RemoteMachineDecline: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -470,7 +470,7 @@ public struct Rv_Data_API_v1_Link_Response: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum DeclineReason: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public nonisolated enum DeclineReason: SwiftProtobuf.Enum, Swift.CaseIterable {
         public typealias RawValue = Int
         case alreadyInGroup // = 0
         case userDeclined // = 1
@@ -510,7 +510,7 @@ public struct Rv_Data_API_v1_Link_Response: Sendable {
     public init() {}
   }
 
-  public struct RemoveMember: Sendable {
+  public nonisolated struct RemoveMember: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -525,9 +525,9 @@ public struct Rv_Data_API_v1_Link_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_GroupMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_GroupMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_GroupMember"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ip\0\u{1}port\0")
 
@@ -562,7 +562,7 @@ extension Rv_Data_API_v1_GroupMember: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_API_v1_GroupMemberStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_GroupMemberStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_GroupMemberStatus"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ip\0\u{1}port\0\u{1}name\0\u{1}platform\0\u{3}os_version\0\u{3}host_description\0\u{3}api_version\0\u{3}connection_status\0")
 
@@ -627,15 +627,15 @@ extension Rv_Data_API_v1_GroupMemberStatus: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_API_v1_GroupMemberStatus.API_v1_GroupMemberStatus_ConnectionStatus: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_GroupMemberStatus.API_v1_GroupMemberStatus_ConnectionStatus: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CONNECTION_STATUS_UNKNOWN\0\u{1}CONNECTION_STATUS_CONNECTED\0\u{1}CONNECTION_STATUS_DISCONNECTED\0")
 }
 
-extension Rv_Data_API_v1_GroupMemberStatus.API_v1_GroupMemberStatus_Platform: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_GroupMemberStatus.API_v1_GroupMemberStatus_Platform: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PLATFORM_UNKNOWN\0\u{1}PLATFORM_MACOS\0\u{1}PLATFORM_WIN32\0\u{1}PLATFORM_WEB\0")
 }
 
-extension Rv_Data_API_v1_GroupDefinition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_GroupDefinition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_GroupDefinition"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}timestamp\0\u{1}secret\0\u{1}name\0\u{1}members\0\u{3}group_identifier\0")
 
@@ -689,7 +689,7 @@ extension Rv_Data_API_v1_GroupDefinition: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension Rv_Data_API_v1_Link_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Link_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}heartbeat\0\u{1}status\0\u{3}add_member\0\u{3}remove_member\0")
 
@@ -790,7 +790,7 @@ extension Rv_Data_API_v1_Link_Request: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_API_v1_Link_Request.Heartbeat: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Request.Heartbeat: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Request.protoMessageName + ".Heartbeat"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}port\0\u{3}if_modified_since\0")
 
@@ -825,7 +825,7 @@ extension Rv_Data_API_v1_Link_Request.Heartbeat: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Link_Request.Status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Request.Status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Request.protoMessageName + ".Status"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -844,7 +844,7 @@ extension Rv_Data_API_v1_Link_Request.Status: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_API_v1_Link_Request.AddMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Request.AddMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Request.protoMessageName + ".AddMember"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}group_definition\0\u{3}member_details\0")
 
@@ -911,7 +911,7 @@ extension Rv_Data_API_v1_Link_Request.AddMember: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Link_Request.RemoveMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Request.RemoveMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Request.protoMessageName + ".RemoveMember"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}member_details\0")
 
@@ -945,7 +945,7 @@ extension Rv_Data_API_v1_Link_Request.RemoveMember: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Link_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Link_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}heartbeat\0\u{1}status\0\u{3}add_member\0\u{3}remove_member\0")
 
@@ -1046,7 +1046,7 @@ extension Rv_Data_API_v1_Link_Response: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_API_v1_Link_Response.Heartbeat: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Response.Heartbeat: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Response.protoMessageName + ".Heartbeat"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}group_definition\0\u{1}status\0")
 
@@ -1085,7 +1085,7 @@ extension Rv_Data_API_v1_Link_Response.Heartbeat: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Link_Response.Status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Response.Status: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Response.protoMessageName + ".Status"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}group_definition\0\u{3}member_name\0")
 
@@ -1124,7 +1124,7 @@ extension Rv_Data_API_v1_Link_Response.Status: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Link_Response.AddMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Response.AddMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Response.protoMessageName + ".AddMember"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}group_definition\0\u{1}accept\0\u{1}decline\0")
 
@@ -1208,7 +1208,7 @@ extension Rv_Data_API_v1_Link_Response.AddMember: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineAccepts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineAccepts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Response.AddMember.protoMessageName + ".RemoteMachineAccepts"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1227,7 +1227,7 @@ extension Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineAccepts: SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineDecline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineDecline: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Response.AddMember.protoMessageName + ".RemoteMachineDecline"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}reason\0")
 
@@ -1257,11 +1257,11 @@ extension Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineDecline: SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineDecline.DeclineReason: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Response.AddMember.RemoteMachineDecline.DeclineReason: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ALREADY_IN_GROUP\0\u{1}USER_DECLINED\0")
 }
 
-extension Rv_Data_API_v1_Link_Response.RemoveMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Link_Response.RemoveMember: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Link_Response.protoMessageName + ".RemoveMember"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

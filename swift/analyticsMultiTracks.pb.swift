@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public enum Rv_Analytics_Multitracks_Status: SwiftProtobuf.Enum, Swift.CaseIterable {
+public nonisolated enum Rv_Analytics_Multitracks_Status: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case disabled // = 0
   case cancelled // = 1
@@ -58,7 +58,7 @@ public enum Rv_Analytics_Multitracks_Status: SwiftProtobuf.Enum, Swift.CaseItera
 
 }
 
-public struct Rv_Analytics_Multitracks_Startup: Sendable {
+public nonisolated struct Rv_Analytics_Multitracks_Startup: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -72,7 +72,7 @@ public struct Rv_Analytics_Multitracks_Startup: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Multitracks_Import: Sendable {
+public nonisolated struct Rv_Analytics_Multitracks_Import: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -92,13 +92,13 @@ public struct Rv_Analytics_Multitracks_Import: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.multitracks"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.multitracks"
 
-extension Rv_Analytics_Multitracks_Status: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Multitracks_Status: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DISABLED\0\u{1}CANCELLED\0\u{1}ACTIVE\0")
 }
 
-extension Rv_Analytics_Multitracks_Startup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Multitracks_Startup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Startup"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}chart_pro\0\u{3}propresenter_addon\0")
 
@@ -133,7 +133,7 @@ extension Rv_Analytics_Multitracks_Startup: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Multitracks_Import: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Multitracks_Import: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Import"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}chart_pro\0\u{3}propresenter_addon\0\u{3}charts_automation\0\u{1}lines\0")
 

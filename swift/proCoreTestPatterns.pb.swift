@@ -8,7 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -16,12 +20,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_TestPatternRequest: Sendable {
+public nonisolated struct Rv_Data_TestPatternRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -62,7 +66,7 @@ public struct Rv_Data_TestPatternRequest: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case getDefinitions(Rv_Data_TestPatternRequest.GetDefinitions)
     case setCurrentState(Rv_Data_TestPatternState)
     case getCurrentState(Rv_Data_TestPatternRequest.GetCurrentState)
@@ -70,7 +74,7 @@ public struct Rv_Data_TestPatternRequest: Sendable {
 
   }
 
-  public struct GetDefinitions: Sendable {
+  public nonisolated struct GetDefinitions: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -80,7 +84,7 @@ public struct Rv_Data_TestPatternRequest: Sendable {
     public init() {}
   }
 
-  public struct GetCurrentState: Sendable {
+  public nonisolated struct GetCurrentState: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -90,7 +94,7 @@ public struct Rv_Data_TestPatternRequest: Sendable {
     public init() {}
   }
 
-  public struct GetThumbnail: Sendable {
+  public nonisolated struct GetThumbnail: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -118,7 +122,7 @@ public struct Rv_Data_TestPatternRequest: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_TestPatternResponse: Sendable {
+public nonisolated struct Rv_Data_TestPatternResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -151,14 +155,14 @@ public struct Rv_Data_TestPatternResponse: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case getDefinitions(Rv_Data_TestPatternResponse.GetDefinitions)
     case getCurrentState(Rv_Data_TestPatternState)
     case getThumbnail(Rv_Data_TestPatternResponse.GetThumbnail)
 
   }
 
-  public struct GetDefinitions: Sendable {
+  public nonisolated struct GetDefinitions: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -170,7 +174,7 @@ public struct Rv_Data_TestPatternResponse: Sendable {
     public init() {}
   }
 
-  public struct GetThumbnail: Sendable {
+  public nonisolated struct GetThumbnail: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -198,9 +202,9 @@ public struct Rv_Data_TestPatternResponse: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_TestPatternRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TestPatternRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}get_definitions\0\u{3}set_current_state\0\u{3}get_current_state\0\u{3}get_thumbnail\0")
 
@@ -301,7 +305,7 @@ extension Rv_Data_TestPatternRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Rv_Data_TestPatternRequest.GetDefinitions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternRequest.GetDefinitions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternRequest.protoMessageName + ".GetDefinitions"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -320,7 +324,7 @@ extension Rv_Data_TestPatternRequest.GetDefinitions: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Rv_Data_TestPatternRequest.GetCurrentState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternRequest.GetCurrentState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternRequest.protoMessageName + ".GetCurrentState"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -339,7 +343,7 @@ extension Rv_Data_TestPatternRequest.GetCurrentState: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_TestPatternRequest.GetThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternRequest.GetThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternRequest.protoMessageName + ".GetThumbnail"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pattern\0\u{1}width\0\u{1}height\0")
 
@@ -383,7 +387,7 @@ extension Rv_Data_TestPatternRequest.GetThumbnail: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_TestPatternResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TestPatternResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}get_definitions\0\u{3}get_current_state\0\u{3}get_thumbnail\0")
 
@@ -467,7 +471,7 @@ extension Rv_Data_TestPatternResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Rv_Data_TestPatternResponse.GetDefinitions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternResponse.GetDefinitions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternResponse.protoMessageName + ".GetDefinitions"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}patterns\0")
 
@@ -497,7 +501,7 @@ extension Rv_Data_TestPatternResponse.GetDefinitions: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_TestPatternResponse.GetThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_TestPatternResponse.GetThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TestPatternResponse.protoMessageName + ".GetThumbnail"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pattern\0\u{1}image\0")
 

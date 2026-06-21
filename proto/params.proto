@@ -28,6 +28,7 @@ message ProductInformation {
 message ApplicationParams {
   application.ProductInformation product_info = 1;
   repeated string enabled_features = 2;
+  optional uint64 peer_id = 3;
 }
 
 message ApplicationStartParams {

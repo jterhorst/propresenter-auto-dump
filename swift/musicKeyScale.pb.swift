@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_MusicKeyScale: Sendable {
+public nonisolated struct Rv_Data_MusicKeyScale: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -31,7 +31,7 @@ public struct Rv_Data_MusicKeyScale: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum MusicKey: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum MusicKey: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case aFlat // = 0
     case a // = 1
@@ -141,7 +141,7 @@ public struct Rv_Data_MusicKeyScale: Sendable {
 
   }
 
-  public enum MusicScale: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum MusicScale: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case major // = 0
     case minor // = 1
@@ -180,9 +180,9 @@ public struct Rv_Data_MusicKeyScale: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_MusicKeyScale: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MusicKeyScale: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MusicKeyScale"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}music_key\0\u{3}music_scale\0")
 
@@ -217,10 +217,10 @@ extension Rv_Data_MusicKeyScale: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_MusicKeyScale.MusicKey: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MusicKeyScale.MusicKey: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MUSIC_KEY_A_FLAT\0\u{1}MUSIC_KEY_A\0\u{1}MUSIC_KEY_A_SHARP\0\u{1}MUSIC_KEY_B_FLAT\0\u{1}MUSIC_KEY_B\0\u{1}MUSIC_KEY_B_SHARP\0\u{1}MUSIC_KEY_C_FLAT\0\u{1}MUSIC_KEY_C\0\u{1}MUSIC_KEY_C_SHARP\0\u{1}MUSIC_KEY_D_FLAT\0\u{1}MUSIC_KEY_D\0\u{1}MUSIC_KEY_D_SHARP\0\u{1}MUSIC_KEY_E_FLAT\0\u{1}MUSIC_KEY_E\0\u{1}MUSIC_KEY_E_SHARP\0\u{1}MUSIC_KEY_F_FLAT\0\u{1}MUSIC_KEY_F\0\u{1}MUSIC_KEY_F_SHARP\0\u{1}MUSIC_KEY_G_FLAT\0\u{1}MUSIC_KEY_G\0\u{1}MUSIC_KEY_G_SHARP\0")
 }
 
-extension Rv_Data_MusicKeyScale.MusicScale: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MusicKeyScale.MusicScale: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MUSIC_SCALE_MAJOR\0\u{1}MUSIC_SCALE_MINOR\0")
 }

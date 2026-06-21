@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Look: Sendable {
+public nonisolated struct Rv_Data_API_v1_Look: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -43,7 +43,7 @@ public struct Rv_Data_API_v1_Look: Sendable {
   fileprivate var _id: Rv_Data_API_v1_Identifier? = nil
 }
 
-public struct Rv_Data_API_v1_Screen: Sendable {
+public nonisolated struct Rv_Data_API_v1_Screen: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -69,7 +69,7 @@ public struct Rv_Data_API_v1_Screen: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Looks_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Looks_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -142,7 +142,7 @@ public struct Rv_Data_API_v1_Looks_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case looks(Rv_Data_API_v1_Looks_Request.Looks)
     case createLook(Rv_Data_API_v1_Looks_Request.CreateLook)
     case getCurrentLook(Rv_Data_API_v1_Looks_Request.GetCurrentLook)
@@ -154,7 +154,7 @@ public struct Rv_Data_API_v1_Looks_Request: Sendable {
 
   }
 
-  public struct Looks: Sendable {
+  public nonisolated struct Looks: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -164,38 +164,7 @@ public struct Rv_Data_API_v1_Looks_Request: Sendable {
     public init() {}
   }
 
-  public struct CreateLook: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var look: Rv_Data_API_v1_Look {
-      get {_look ?? Rv_Data_API_v1_Look()}
-      set {_look = newValue}
-    }
-    /// Returns true if `look` has been explicitly set.
-    public var hasLook: Bool {self._look != nil}
-    /// Clears the value of `look`. Subsequent reads from it will return its default value.
-    public mutating func clearLook() {self._look = nil}
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-
-    fileprivate var _look: Rv_Data_API_v1_Look? = nil
-  }
-
-  public struct GetCurrentLook: Sendable {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public struct PutCurrentLook: Sendable {
+  public nonisolated struct CreateLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -216,7 +185,38 @@ public struct Rv_Data_API_v1_Looks_Request: Sendable {
     fileprivate var _look: Rv_Data_API_v1_Look? = nil
   }
 
-  public struct GetLook: Sendable {
+  public nonisolated struct GetCurrentLook: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct PutCurrentLook: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var look: Rv_Data_API_v1_Look {
+      get {_look ?? Rv_Data_API_v1_Look()}
+      set {_look = newValue}
+    }
+    /// Returns true if `look` has been explicitly set.
+    public var hasLook: Bool {self._look != nil}
+    /// Clears the value of `look`. Subsequent reads from it will return its default value.
+    public mutating func clearLook() {self._look = nil}
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _look: Rv_Data_API_v1_Look? = nil
+  }
+
+  public nonisolated struct GetLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -228,7 +228,7 @@ public struct Rv_Data_API_v1_Looks_Request: Sendable {
     public init() {}
   }
 
-  public struct PutLook: Sendable {
+  public nonisolated struct PutLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -251,7 +251,7 @@ public struct Rv_Data_API_v1_Looks_Request: Sendable {
     fileprivate var _look: Rv_Data_API_v1_Look? = nil
   }
 
-  public struct DeleteLook: Sendable {
+  public nonisolated struct DeleteLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -263,7 +263,7 @@ public struct Rv_Data_API_v1_Looks_Request: Sendable {
     public init() {}
   }
 
-  public struct TriggerLook: Sendable {
+  public nonisolated struct TriggerLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -278,7 +278,7 @@ public struct Rv_Data_API_v1_Looks_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Looks_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Looks_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -351,7 +351,7 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Response: Equatable, Sendable {
+  public nonisolated enum OneOf_Response: Equatable, Sendable {
     case looks(Rv_Data_API_v1_Looks_Response.Looks)
     case createLook(Rv_Data_API_v1_Looks_Response.CreateLook)
     case getCurrentLook(Rv_Data_API_v1_Looks_Response.GetCurrentLook)
@@ -363,7 +363,7 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
 
   }
 
-  public struct Looks: Sendable {
+  public nonisolated struct Looks: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -375,7 +375,7 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
     public init() {}
   }
 
-  public struct CreateLook: Sendable {
+  public nonisolated struct CreateLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -396,7 +396,7 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
     fileprivate var _look: Rv_Data_API_v1_Look? = nil
   }
 
-  public struct GetCurrentLook: Sendable {
+  public nonisolated struct GetCurrentLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -417,7 +417,7 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
     fileprivate var _look: Rv_Data_API_v1_Look? = nil
   }
 
-  public struct PutCurrentLook: Sendable {
+  public nonisolated struct PutCurrentLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -438,7 +438,7 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
     fileprivate var _look: Rv_Data_API_v1_Look? = nil
   }
 
-  public struct GetLook: Sendable {
+  public nonisolated struct GetLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -459,7 +459,7 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
     fileprivate var _look: Rv_Data_API_v1_Look? = nil
   }
 
-  public struct PutLook: Sendable {
+  public nonisolated struct PutLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -480,7 +480,7 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
     fileprivate var _look: Rv_Data_API_v1_Look? = nil
   }
 
-  public struct DeleteLook: Sendable {
+  public nonisolated struct DeleteLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -490,7 +490,7 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
     public init() {}
   }
 
-  public struct TriggerLook: Sendable {
+  public nonisolated struct TriggerLook: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -505,9 +505,9 @@ public struct Rv_Data_API_v1_Looks_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Look: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Look: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Look"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}screens\0")
 
@@ -546,7 +546,7 @@ extension Rv_Data_API_v1_Look: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Rv_Data_API_v1_Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Screen"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}video_input\0\u{1}media\0\u{1}slide\0\u{1}announcements\0\u{1}props\0\u{1}messages\0\u{1}presentation\0\u{1}mask\0")
 
@@ -611,7 +611,7 @@ extension Rv_Data_API_v1_Screen: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Rv_Data_API_v1_Looks_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Looks_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}looks\0\u{3}create_look\0\u{3}get_current_look\0\u{3}put_current_look\0\u{3}get_look\0\u{3}put_look\0\u{3}delete_look\0\u{3}trigger_look\0")
 
@@ -780,7 +780,7 @@ extension Rv_Data_API_v1_Looks_Request: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Data_API_v1_Looks_Request.Looks: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Request.Looks: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Request.protoMessageName + ".Looks"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -799,7 +799,7 @@ extension Rv_Data_API_v1_Looks_Request.Looks: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_API_v1_Looks_Request.CreateLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Request.CreateLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Request.protoMessageName + ".CreateLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}look\0")
 
@@ -833,7 +833,7 @@ extension Rv_Data_API_v1_Looks_Request.CreateLook: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Looks_Request.GetCurrentLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Request.GetCurrentLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Request.protoMessageName + ".GetCurrentLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -852,7 +852,7 @@ extension Rv_Data_API_v1_Looks_Request.GetCurrentLook: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Looks_Request.PutCurrentLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Request.PutCurrentLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Request.protoMessageName + ".PutCurrentLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}look\0")
 
@@ -886,7 +886,7 @@ extension Rv_Data_API_v1_Looks_Request.PutCurrentLook: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Looks_Request.GetLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Request.GetLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Request.protoMessageName + ".GetLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -916,7 +916,7 @@ extension Rv_Data_API_v1_Looks_Request.GetLook: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Looks_Request.PutLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Request.PutLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Request.protoMessageName + ".PutLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}look\0")
 
@@ -955,7 +955,7 @@ extension Rv_Data_API_v1_Looks_Request.PutLook: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Looks_Request.DeleteLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Request.DeleteLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Request.protoMessageName + ".DeleteLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -985,7 +985,7 @@ extension Rv_Data_API_v1_Looks_Request.DeleteLook: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Rv_Data_API_v1_Looks_Request.TriggerLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Request.TriggerLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Request.protoMessageName + ".TriggerLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
 
@@ -1015,7 +1015,7 @@ extension Rv_Data_API_v1_Looks_Request.TriggerLook: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Looks_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Looks_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}looks\0\u{3}create_look\0\u{3}get_current_look\0\u{3}put_current_look\0\u{3}get_look\0\u{3}put_look\0\u{3}delete_look\0\u{3}trigger_look\0")
 
@@ -1184,7 +1184,7 @@ extension Rv_Data_API_v1_Looks_Response: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Rv_Data_API_v1_Looks_Response.Looks: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Response.Looks: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Response.protoMessageName + ".Looks"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}looks\0")
 
@@ -1214,7 +1214,7 @@ extension Rv_Data_API_v1_Looks_Response.Looks: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Looks_Response.CreateLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Response.CreateLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Response.protoMessageName + ".CreateLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}look\0")
 
@@ -1248,7 +1248,7 @@ extension Rv_Data_API_v1_Looks_Response.CreateLook: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Looks_Response.GetCurrentLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Response.GetCurrentLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Response.protoMessageName + ".GetCurrentLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}look\0")
 
@@ -1282,7 +1282,7 @@ extension Rv_Data_API_v1_Looks_Response.GetCurrentLook: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Looks_Response.PutCurrentLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Response.PutCurrentLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Response.protoMessageName + ".PutCurrentLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}look\0")
 
@@ -1316,7 +1316,7 @@ extension Rv_Data_API_v1_Looks_Response.PutCurrentLook: SwiftProtobuf.Message, S
   }
 }
 
-extension Rv_Data_API_v1_Looks_Response.GetLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Response.GetLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Response.protoMessageName + ".GetLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}look\0")
 
@@ -1350,7 +1350,7 @@ extension Rv_Data_API_v1_Looks_Response.GetLook: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Looks_Response.PutLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Response.PutLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Response.protoMessageName + ".PutLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}look\0")
 
@@ -1384,7 +1384,7 @@ extension Rv_Data_API_v1_Looks_Response.PutLook: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Looks_Response.DeleteLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Response.DeleteLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Response.protoMessageName + ".DeleteLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1403,7 +1403,7 @@ extension Rv_Data_API_v1_Looks_Response.DeleteLook: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_API_v1_Looks_Response.TriggerLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Looks_Response.TriggerLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Looks_Response.protoMessageName + ".TriggerLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

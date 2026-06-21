@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_API_v1_Announcement_Request: Sendable {
+public nonisolated struct Rv_Data_API_v1_Announcement_Request: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -101,7 +101,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case activeTimelineOperation(Rv_Data_API_v1_Announcement_Request.ActiveTimelineOperation)
     case activeTimelineStatus(Rv_Data_API_v1_Announcement_Request.ActiveTimelineStatus)
     case active(Rv_Data_API_v1_Announcement_Request.Active)
@@ -114,7 +114,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
 
   }
 
-  public struct ActiveTimelineOperation: Sendable {
+  public nonisolated struct ActiveTimelineOperation: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -126,7 +126,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
     public init() {}
   }
 
-  public struct ActiveTimelineStatus: Sendable {
+  public nonisolated struct ActiveTimelineStatus: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -136,7 +136,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
     public init() {}
   }
 
-  public struct Active: Sendable {
+  public nonisolated struct Active: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -146,7 +146,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
     public init() {}
   }
 
-  public struct AnnouncementIndex: Sendable {
+  public nonisolated struct AnnouncementIndex: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -156,7 +156,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
     public init() {}
   }
 
-  public struct ActiveFocus: Sendable {
+  public nonisolated struct ActiveFocus: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -166,7 +166,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
     public init() {}
   }
 
-  public struct ActiveTrigger: Sendable {
+  public nonisolated struct ActiveTrigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -176,7 +176,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
     public init() {}
   }
 
-  public struct ActiveNextTrigger: Sendable {
+  public nonisolated struct ActiveNextTrigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -186,7 +186,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
     public init() {}
   }
 
-  public struct ActivePreviousTrigger: Sendable {
+  public nonisolated struct ActivePreviousTrigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -196,7 +196,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
     public init() {}
   }
 
-  public struct ActiveIndexTrigger: Sendable {
+  public nonisolated struct ActiveIndexTrigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -211,7 +211,7 @@ public struct Rv_Data_API_v1_Announcement_Request: Sendable {
   public init() {}
 }
 
-public struct Rv_Data_API_v1_Announcement_Response: Sendable {
+public nonisolated struct Rv_Data_API_v1_Announcement_Response: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -292,7 +292,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Request: Equatable, Sendable {
+  public nonisolated enum OneOf_Request: Equatable, Sendable {
     case activeTimelineOperation(Rv_Data_API_v1_Announcement_Response.ActiveTimelineOperation)
     case activeTimelineStatus(Rv_Data_API_v1_Announcement_Response.ActiveTimelineStatus)
     case active(Rv_Data_API_v1_Announcement_Response.Active)
@@ -305,7 +305,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
 
   }
 
-  public struct ActiveTimelineOperation: Sendable {
+  public nonisolated struct ActiveTimelineOperation: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -315,7 +315,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
     public init() {}
   }
 
-  public struct ActiveTimelineStatus: Sendable {
+  public nonisolated struct ActiveTimelineStatus: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -329,7 +329,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
     public init() {}
   }
 
-  public struct Active: Sendable {
+  public nonisolated struct Active: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -350,7 +350,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
     fileprivate var _announcement: Rv_Data_API_v1_Presentation? = nil
   }
 
-  public struct SlideIndex: Sendable {
+  public nonisolated struct SlideIndex: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -371,7 +371,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
     fileprivate var _announcementIndex: Rv_Data_API_v1_SlideIndex? = nil
   }
 
-  public struct ActiveFocus: Sendable {
+  public nonisolated struct ActiveFocus: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -381,7 +381,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
     public init() {}
   }
 
-  public struct ActiveTrigger: Sendable {
+  public nonisolated struct ActiveTrigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -391,7 +391,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
     public init() {}
   }
 
-  public struct ActiveNextTrigger: Sendable {
+  public nonisolated struct ActiveNextTrigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -401,7 +401,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
     public init() {}
   }
 
-  public struct ActivePreviousTrigger: Sendable {
+  public nonisolated struct ActivePreviousTrigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -411,7 +411,7 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
     public init() {}
   }
 
-  public struct ActiveIndexTrigger: Sendable {
+  public nonisolated struct ActiveIndexTrigger: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -426,9 +426,9 @@ public struct Rv_Data_API_v1_Announcement_Response: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_API_v1_Announcement_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Announcement_Request"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}active_timeline_operation\0\u{3}active_timeline_status\0\u{1}active\0\u{3}slide_index\0\u{3}active_focus\0\u{3}active_trigger\0\u{3}active_next_trigger\0\u{3}active_previous_trigger\0\u{3}active_index_trigger\0")
 
@@ -614,7 +614,7 @@ extension Rv_Data_API_v1_Announcement_Request: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Request.ActiveTimelineOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request.ActiveTimelineOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Request.protoMessageName + ".ActiveTimelineOperation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}operation\0")
 
@@ -644,7 +644,7 @@ extension Rv_Data_API_v1_Announcement_Request.ActiveTimelineOperation: SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Request.ActiveTimelineStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request.ActiveTimelineStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Request.protoMessageName + ".ActiveTimelineStatus"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -663,7 +663,7 @@ extension Rv_Data_API_v1_Announcement_Request.ActiveTimelineStatus: SwiftProtobu
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Request.Active: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request.Active: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Request.protoMessageName + ".Active"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -682,7 +682,7 @@ extension Rv_Data_API_v1_Announcement_Request.Active: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Request.AnnouncementIndex: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request.AnnouncementIndex: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Request.protoMessageName + ".AnnouncementIndex"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -701,7 +701,7 @@ extension Rv_Data_API_v1_Announcement_Request.AnnouncementIndex: SwiftProtobuf.M
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Request.ActiveFocus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request.ActiveFocus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Request.protoMessageName + ".ActiveFocus"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -720,7 +720,7 @@ extension Rv_Data_API_v1_Announcement_Request.ActiveFocus: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Request.ActiveTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request.ActiveTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Request.protoMessageName + ".ActiveTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -739,7 +739,7 @@ extension Rv_Data_API_v1_Announcement_Request.ActiveTrigger: SwiftProtobuf.Messa
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Request.ActiveNextTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request.ActiveNextTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Request.protoMessageName + ".ActiveNextTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -758,7 +758,7 @@ extension Rv_Data_API_v1_Announcement_Request.ActiveNextTrigger: SwiftProtobuf.M
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Request.ActivePreviousTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request.ActivePreviousTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Request.protoMessageName + ".ActivePreviousTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -777,7 +777,7 @@ extension Rv_Data_API_v1_Announcement_Request.ActivePreviousTrigger: SwiftProtob
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Request.ActiveIndexTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Request.ActiveIndexTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Request.protoMessageName + ".ActiveIndexTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}index\0")
 
@@ -807,7 +807,7 @@ extension Rv_Data_API_v1_Announcement_Request.ActiveIndexTrigger: SwiftProtobuf.
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".API_v1_Announcement_Response"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}active_timeline_operation\0\u{3}active_timeline_status\0\u{1}active\0\u{3}slide_index\0\u{3}active_focus\0\u{3}active_trigger\0\u{3}active_next_trigger\0\u{3}active_previous_trigger\0\u{3}active_index_trigger\0")
 
@@ -993,7 +993,7 @@ extension Rv_Data_API_v1_Announcement_Response: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response.ActiveTimelineOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response.ActiveTimelineOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Response.protoMessageName + ".ActiveTimelineOperation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1012,7 +1012,7 @@ extension Rv_Data_API_v1_Announcement_Response.ActiveTimelineOperation: SwiftPro
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response.ActiveTimelineStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response.ActiveTimelineStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Response.protoMessageName + ".ActiveTimelineStatus"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_running\0\u{3}current_time\0")
 
@@ -1047,7 +1047,7 @@ extension Rv_Data_API_v1_Announcement_Response.ActiveTimelineStatus: SwiftProtob
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response.Active: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response.Active: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Response.protoMessageName + ".Active"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}announcement\0")
 
@@ -1081,7 +1081,7 @@ extension Rv_Data_API_v1_Announcement_Response.Active: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response.SlideIndex: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response.SlideIndex: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Response.protoMessageName + ".SlideIndex"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}announcement_index\0")
 
@@ -1115,7 +1115,7 @@ extension Rv_Data_API_v1_Announcement_Response.SlideIndex: SwiftProtobuf.Message
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response.ActiveFocus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response.ActiveFocus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Response.protoMessageName + ".ActiveFocus"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1134,7 +1134,7 @@ extension Rv_Data_API_v1_Announcement_Response.ActiveFocus: SwiftProtobuf.Messag
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response.ActiveTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response.ActiveTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Response.protoMessageName + ".ActiveTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1153,7 +1153,7 @@ extension Rv_Data_API_v1_Announcement_Response.ActiveTrigger: SwiftProtobuf.Mess
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response.ActiveNextTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response.ActiveNextTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Response.protoMessageName + ".ActiveNextTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1172,7 +1172,7 @@ extension Rv_Data_API_v1_Announcement_Response.ActiveNextTrigger: SwiftProtobuf.
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response.ActivePreviousTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response.ActivePreviousTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Response.protoMessageName + ".ActivePreviousTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -1191,7 +1191,7 @@ extension Rv_Data_API_v1_Announcement_Response.ActivePreviousTrigger: SwiftProto
   }
 }
 
-extension Rv_Data_API_v1_Announcement_Response.ActiveIndexTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_API_v1_Announcement_Response.ActiveIndexTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Announcement_Response.protoMessageName + ".ActiveIndexTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 

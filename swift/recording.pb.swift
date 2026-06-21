@@ -15,19 +15,19 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_Recording: Sendable {
+public nonisolated struct Rv_Data_Recording: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct SettingsDocument: Sendable {
+  public nonisolated struct SettingsDocument: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -52,7 +52,7 @@ public struct Rv_Data_Recording: Sendable {
     fileprivate var _activePreset: Rv_Data_Recording.Preset? = nil
   }
 
-  public struct Preset: Sendable {
+  public nonisolated struct Preset: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -77,7 +77,7 @@ public struct Rv_Data_Recording: Sendable {
     fileprivate var _id: Rv_Data_UUID? = nil
   }
 
-  public struct Stream: Sendable {
+  public nonisolated struct Stream: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -118,12 +118,12 @@ public struct Rv_Data_Recording: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum OneOf_Source: Equatable, Sendable {
+    public nonisolated enum OneOf_Source: Equatable, Sendable {
       case outputScreen(Rv_Data_Recording.Stream.OutputScreenSource)
 
     }
 
-    public enum Container: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Container: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unknown // = 0
       case mov // = 1
@@ -161,7 +161,7 @@ public struct Rv_Data_Recording: Sendable {
 
     }
 
-    public enum Codec: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum Codec: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case automatic // = 0
       case h264 // = 1
@@ -251,7 +251,7 @@ public struct Rv_Data_Recording: Sendable {
 
     }
 
-    public enum FrameRate: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum FrameRate: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unknown // = 0
       case frameRate24 // = 1
@@ -309,7 +309,7 @@ public struct Rv_Data_Recording: Sendable {
 
     }
 
-    public struct Encoder: Sendable {
+    public nonisolated struct Encoder: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -333,7 +333,7 @@ public struct Rv_Data_Recording: Sendable {
       public init() {}
     }
 
-    public struct OutputScreenSource: Sendable {
+    public nonisolated struct OutputScreenSource: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -356,7 +356,7 @@ public struct Rv_Data_Recording: Sendable {
       fileprivate var _screenID: Rv_Data_UUID? = nil
     }
 
-    public struct DiskDestination: Sendable {
+    public nonisolated struct DiskDestination: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -379,7 +379,7 @@ public struct Rv_Data_Recording: Sendable {
       fileprivate var _location: Rv_Data_URL? = nil
     }
 
-    public struct RTMPDestination: Sendable {
+    public nonisolated struct RTMPDestination: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -393,7 +393,7 @@ public struct Rv_Data_Recording: Sendable {
       public init() {}
     }
 
-    public struct Destination: Sendable {
+    public nonisolated struct Destination: Sendable {
       // SwiftProtobuf.Message conformance is added in an extension below. See the
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
@@ -426,14 +426,14 @@ public struct Rv_Data_Recording: Sendable {
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-      public enum OneOf_Destination: Equatable, Sendable {
+      public nonisolated enum OneOf_Destination: Equatable, Sendable {
         case disk(Rv_Data_Recording.Stream.DiskDestination)
         case rtmp(Rv_Data_Recording.Stream.RTMPDestination)
         case resi(Rv_Data_Recording.Stream.Destination.Resi)
 
       }
 
-      public struct Resi: Sendable {
+      public nonisolated struct Resi: Sendable {
         // SwiftProtobuf.Message conformance is added in an extension below. See the
         // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
         // methods supported on all messages.
@@ -478,9 +478,9 @@ public struct Rv_Data_Recording: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_Recording: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Recording"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -499,7 +499,7 @@ extension Rv_Data_Recording: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension Rv_Data_Recording.SettingsDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.SettingsDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.protoMessageName + ".SettingsDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}streams\0\u{1}presets\0\u{3}active_preset\0")
 
@@ -543,7 +543,7 @@ extension Rv_Data_Recording.SettingsDocument: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension Rv_Data_Recording.Preset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Preset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.protoMessageName + ".Preset"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}name\0\u{1}streams\0")
 
@@ -587,7 +587,7 @@ extension Rv_Data_Recording.Preset: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_Recording.Stream: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.protoMessageName + ".Stream"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}output_screen\0\u{1}encoder\0\u{1}destinations\0\u{3}audio_map\0\u{1}isAudioCustomMapped\0")
 
@@ -658,19 +658,19 @@ extension Rv_Data_Recording.Stream: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Rv_Data_Recording.Stream.Container: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream.Container: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CONTAINER_UNKNOWN\0\u{1}CONTAINER_MOV\0\u{1}CONTAINER_MP4\0")
 }
 
-extension Rv_Data_Recording.Stream.Codec: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream.Codec: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CODEC_AUTOMATIC\0\u{1}CODEC_H264\0\u{1}CODEC_H265\0\u{1}CODEC_PRORES_422_PROXY\0\u{1}CODEC_PRORES_422_LT\0\u{1}CODEC_PRORES_422\0\u{1}CODEC_PRORES_422_HQ\0\u{1}CODEC_PRORES_4444\0\u{1}CODEC_PRORES_4444_XQ\0\u{1}CODEC_HAP\0\u{1}CODEC_HAP_ALPHA\0\u{1}CODEC_HAP_Q\0\u{1}CODEC_HAP_Q_ALPHA\0\u{1}CODEC_NOTCH\0\u{1}CODEC_H264_SOFTWARE\0\u{1}CODEC_H265_SOFTWARE\0")
 }
 
-extension Rv_Data_Recording.Stream.FrameRate: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream.FrameRate: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FRAME_RATE_UNKNOWN\0\u{1}FRAME_RATE_24\0\u{1}FRAME_RATE_25\0\u{1}FRAME_RATE_29_97\0\u{1}FRAME_RATE_30\0\u{1}FRAME_RATE_50\0\u{1}FRAME_RATE_59_94\0\u{1}FRAME_RATE_60\0")
 }
 
-extension Rv_Data_Recording.Stream.Encoder: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream.Encoder: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.Stream.protoMessageName + ".Encoder"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}codec\0\u{3}video_width\0\u{3}video_height\0\u{3}is_interlaced\0\u{1}frameRate\0\u{3}video_bitrate\0\u{3}audio_bitrate\0")
 
@@ -730,7 +730,7 @@ extension Rv_Data_Recording.Stream.Encoder: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_Recording.Stream.OutputScreenSource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream.OutputScreenSource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.Stream.protoMessageName + ".OutputScreenSource"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}screen_id\0\u{3}screen_name\0")
 
@@ -769,7 +769,7 @@ extension Rv_Data_Recording.Stream.OutputScreenSource: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Rv_Data_Recording.Stream.DiskDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream.DiskDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.Stream.protoMessageName + ".DiskDestination"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}location\0\u{1}container\0")
 
@@ -808,7 +808,7 @@ extension Rv_Data_Recording.Stream.DiskDestination: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_Recording.Stream.RTMPDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream.RTMPDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.Stream.protoMessageName + ".RTMPDestination"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}address\0\u{1}key\0")
 
@@ -843,7 +843,7 @@ extension Rv_Data_Recording.Stream.RTMPDestination: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Rv_Data_Recording.Stream.Destination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream.Destination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.Stream.protoMessageName + ".Destination"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}disk\0\u{1}rtmp\0\u{1}resi\0")
 
@@ -927,7 +927,7 @@ extension Rv_Data_Recording.Stream.Destination: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_Recording.Stream.Destination.Resi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_Recording.Stream.Destination.Resi: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.Stream.Destination.protoMessageName + ".Resi"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}destination_group_id\0\u{3}encoder_profile_id\0")
 

@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_ProAudienceLook: Sendable {
+public nonisolated struct Rv_Data_ProAudienceLook: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -51,7 +51,7 @@ public struct Rv_Data_ProAudienceLook: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct ProScreenLook: @unchecked Sendable {
+  public nonisolated struct ProScreenLook: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -140,7 +140,7 @@ public struct Rv_Data_ProAudienceLook: Sendable {
   fileprivate var _originalLookUuid: Rv_Data_UUID? = nil
 }
 
-public struct Rv_Data_AudienceLookCollection: Sendable {
+public nonisolated struct Rv_Data_AudienceLookCollection: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -154,9 +154,9 @@ public struct Rv_Data_AudienceLookCollection: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_ProAudienceLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ProAudienceLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProAudienceLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{3}screen_looks\0\u{3}original_look_uuid\0\u{3}transition_duration\0")
 
@@ -210,7 +210,7 @@ extension Rv_Data_ProAudienceLook: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Rv_Data_ProAudienceLook.ProScreenLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_ProAudienceLook.ProScreenLook: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ProAudienceLook.protoMessageName + ".ProScreenLook"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pro_screen_uuid\0\u{3}props_enabled\0\u{3}live_video_enabled\0\u{3}presentation_background_enabled\0\u{3}template_document_file_path\0\u{3}template_slide_uuid\0\u{3}presentation_foreground_enabled\0\u{3}mask_uuid\0\u{3}announcements_enabled\0\u{3}props_layer_enabled\0\u{3}messages_layer_enabled\0")
 
@@ -350,7 +350,7 @@ extension Rv_Data_ProAudienceLook.ProScreenLook: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Rv_Data_AudienceLookCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_AudienceLookCollection: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AudienceLookCollection"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}collection\0")
 

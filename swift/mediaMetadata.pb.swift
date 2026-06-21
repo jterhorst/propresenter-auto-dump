@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Data_MediaMetadataRequestInfo: Sendable {
+public nonisolated struct Rv_Data_MediaMetadataRequestInfo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -56,7 +56,7 @@ public struct Rv_Data_MediaMetadataRequestInfo: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum BufferFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum BufferFormat: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case raw // = 0
     case png // = 1
@@ -99,7 +99,7 @@ public struct Rv_Data_MediaMetadataRequestInfo: Sendable {
   fileprivate var _cropInsets: Rv_Data_Graphics.EdgeInsets? = nil
 }
 
-public struct Rv_Data_MediaMetadataRequestResponse: Sendable {
+public nonisolated struct Rv_Data_MediaMetadataRequestResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -124,7 +124,7 @@ public struct Rv_Data_MediaMetadataRequestResponse: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct Metadata: Sendable {
+  public nonisolated struct Metadata: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -153,7 +153,7 @@ public struct Rv_Data_MediaMetadataRequestResponse: Sendable {
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public enum ContentType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public nonisolated enum ContentType: SwiftProtobuf.Enum, Swift.CaseIterable {
       public typealias RawValue = Int
       case unknown // = 0
       case audio // = 1
@@ -198,7 +198,7 @@ public struct Rv_Data_MediaMetadataRequestResponse: Sendable {
     public init() {}
   }
 
-  public struct BitmapInfo: Sendable {
+  public nonisolated struct BitmapInfo: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
@@ -222,9 +222,9 @@ public struct Rv_Data_MediaMetadataRequestResponse: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.data"
+fileprivate nonisolated let _protobuf_package = "rv.data"
 
-extension Rv_Data_MediaMetadataRequestInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MediaMetadataRequestInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaMetadataRequestInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}file_path\0\u{1}time\0\u{1}width\0\u{1}height\0\u{1}effects\0\u{3}crop_insets\0\u{3}native_rotation\0\u{3}flipped_horizontally\0\u{3}flipped_vertically\0\u{3}alpha_type\0\u{3}buffer_format\0")
 
@@ -308,11 +308,11 @@ extension Rv_Data_MediaMetadataRequestInfo: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Data_MediaMetadataRequestInfo.BufferFormat: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MediaMetadataRequestInfo.BufferFormat: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0BUFFER_FORMAT_RAW\0\u{1}BUFFER_FORMAT_PNG\0\u{1}BUFFER_FORMAT_NONE\0")
 }
 
-extension Rv_Data_MediaMetadataRequestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MediaMetadataRequestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaMetadataRequestResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}generated_bitmap_info\0")
 
@@ -351,7 +351,7 @@ extension Rv_Data_MediaMetadataRequestResponse: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Rv_Data_MediaMetadataRequestResponse.Metadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MediaMetadataRequestResponse.Metadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_MediaMetadataRequestResponse.protoMessageName + ".Metadata"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}width\0\u{1}height\0\u{1}fps\0\u{1}duration\0\u{3}number_audio_channels\0\u{1}codec\0\u{1}artist\0\u{1}title\0\u{1}rotation\0\u{3}content_type\0\u{3}has_alpha_channel\0")
 
@@ -431,11 +431,11 @@ extension Rv_Data_MediaMetadataRequestResponse.Metadata: SwiftProtobuf.Message, 
   }
 }
 
-extension Rv_Data_MediaMetadataRequestResponse.Metadata.ContentType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MediaMetadataRequestResponse.Metadata.ContentType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CONTENT_TYPE_UNKNOWN\0\u{1}CONTENT_TYPE_AUDIO\0\u{1}CONTENT_TYPE_IMAGE\0\u{1}CONTENT_TYPE_VIDEO\0")
 }
 
-extension Rv_Data_MediaMetadataRequestResponse.BitmapInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Data_MediaMetadataRequestResponse.BitmapInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_MediaMetadataRequestResponse.protoMessageName + ".BitmapInfo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}width\0\u{1}height\0\u{1}size\0")
 

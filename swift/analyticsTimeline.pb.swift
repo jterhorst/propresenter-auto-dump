@@ -15,12 +15,12 @@ import SwiftProtobuf
 // incompatible with the version of SwiftProtobuf to which you are linking.
 // Please ensure that you are building against the same version of the API
 // that was used to generate this file.
-fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
+fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
 }
 
-public struct Rv_Analytics_Timeline_Action: Sendable {
+public nonisolated struct Rv_Analytics_Timeline_Action: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -29,7 +29,7 @@ public struct Rv_Analytics_Timeline_Action: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum ActionType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum ActionType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case play // = 0
     case stop // = 1
@@ -70,7 +70,7 @@ public struct Rv_Analytics_Timeline_Action: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Timeline_RecordCue: Sendable {
+public nonisolated struct Rv_Analytics_Timeline_RecordCue: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -80,7 +80,7 @@ public struct Rv_Analytics_Timeline_RecordCue: Sendable {
   public init() {}
 }
 
-public struct Rv_Analytics_Timeline_CueTrigger: Sendable {
+public nonisolated struct Rv_Analytics_Timeline_CueTrigger: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -91,7 +91,7 @@ public struct Rv_Analytics_Timeline_CueTrigger: Sendable {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TriggerType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TriggerType: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case slide // = 0
     case media // = 1
@@ -133,7 +133,7 @@ public struct Rv_Analytics_Timeline_CueTrigger: Sendable {
 
   }
 
-  public enum TimingSource: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum TimingSource: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case `internal` // = 0
     case smpte // = 1
@@ -172,9 +172,9 @@ public struct Rv_Analytics_Timeline_CueTrigger: Sendable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "rv.analytics.timeline"
+fileprivate nonisolated let _protobuf_package = "rv.analytics.timeline"
 
-extension Rv_Analytics_Timeline_Action: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Timeline_Action: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Action"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}action_type\0")
 
@@ -204,11 +204,11 @@ extension Rv_Analytics_Timeline_Action: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension Rv_Analytics_Timeline_Action.ActionType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Timeline_Action.ActionType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PLAY\0\u{1}STOP\0\u{1}RESET\0")
 }
 
-extension Rv_Analytics_Timeline_RecordCue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Timeline_RecordCue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RecordCue"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -227,7 +227,7 @@ extension Rv_Analytics_Timeline_RecordCue: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Rv_Analytics_Timeline_CueTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Timeline_CueTrigger: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CueTrigger"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}trigger_type\0\u{3}timing_source\0")
 
@@ -262,10 +262,10 @@ extension Rv_Analytics_Timeline_CueTrigger: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Rv_Analytics_Timeline_CueTrigger.TriggerType: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Timeline_CueTrigger.TriggerType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SLIDE\0\u{1}MEDIA\0\u{1}AUDIO\0\u{1}ACTION\0")
 }
 
-extension Rv_Analytics_Timeline_CueTrigger.TimingSource: SwiftProtobuf._ProtoNameProviding {
+nonisolated extension Rv_Analytics_Timeline_CueTrigger.TimingSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0INTERNAL\0\u{1}SMPTE\0")
 }
