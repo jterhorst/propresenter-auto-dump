@@ -2,7 +2,10 @@
 An attempt to automatically fetch and dump .proto files from new versions of ProPresenter on a regular cadence.
 
 Inspired by https://github.com/greyshirtguy/ProPresenter7-Proto, we wanted to have something that could automatically pull down the latest version of the app and automatically crack open the binary, extract the proto files, and dump useful code files.
-ProPresenter is being iterated upon so quickly now, it would be ideal to have this be an automatic process.
+ProPresenter is being iterated upon so quickly now, it would be ideal to have this be an automatic process. We use Github Actions to check for new versions and parse them each week.
+
+## Who are we?
+I'm Jason Terhorst, owner and main dev behind [WorshipKit](https://worshipkit.com) and we use a version of this repo for our library and converters. If you like this, come check out our tools. We even have an MCP, so you can automate how you use WorshipKit for your church's needs.
 
 ## Swift Package
 
