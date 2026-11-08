@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\x0fpptparams.proto\x12\tpptimport\"\x87\x01\n\x0fPPTImportParams\x12\x11\n\tpptx_path\x18\x01 \x01(\t\x12\x1a\n\x12result_folder_path\x18\x02 \x01(\t\x12\x13\n\x0bslide_width\x18\x03 \x01(\r\x12\x14\n\x0cslide_height\x18\x04 \x01(\r\x12\x1a\n\x12ignore_backgrounds\x18\x05 \x01(\x08\x62\x06proto3"
+descriptor_data = "\n\x0fpptparams.proto\x12\tpptimport\"\x9d\x01\n\x0fPPTImportParams\x12\x11\n\tpptx_path\x18\x01 \x01(\t\x12\x1a\n\x12result_folder_path\x18\x02 \x01(\t\x12\x13\n\x0bslide_width\x18\x03 \x01(\r\x12\x14\n\x0cslide_height\x18\x04 \x01(\r\x12\x1a\n\x12ignore_backgrounds\x18\x05 \x01(\x08\x12\x14\n\x0cinstall_path\x18\x06 \x01(\tb\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)

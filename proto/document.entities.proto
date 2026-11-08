@@ -4,11 +4,19 @@ syntax = "proto3";
 package document;
 
 
+enum Scope {
+  SHARED = 0;
+  DEVICE_LOCAL = 1;
+}
+
 message Ready {
   bytes data = 1;
 }
 
 message Remote {
+}
+
+message Stored {
 }
 
 message Local {
@@ -20,20 +28,22 @@ message Intrinsic {
     Calendar = 0;
     CCLI = 1;
     ClearGroups = 2;
-    Groups = 3;
-    KeyMappings = 4;
-    Labels = 5;
-    Macros = 6;
-    Messages = 7;
-    Props = 8;
-    Stage = 9;
-    Timers = 10;
-    Workspace = 11;
-    LibraryData = 12;
-    PlaylistAudio = 13;
-    PlaylistLibrary = 14;
-    PlaylistMedia = 15;
-    PlaylistTemplates = 16;
+    CommunicationDevices = 3;
+    Groups = 4;
+    KeyMappings = 5;
+    Labels = 6;
+    Macros = 7;
+    Messages = 8;
+    Props = 9;
+    Stage = 10;
+    Timers = 11;
+    Workspace = 12;
+    TestPatterns = 18;
+    LibraryData = 13;
+    PlaylistAudio = 14;
+    PlaylistLibrary = 15;
+    PlaylistMedia = 16;
+    PlaylistTemplates = 17;
   }
 
   string uuid = 1;
@@ -45,12 +55,15 @@ message Document {
   enum Kind {
     PRESENTATION = 0;
     THEME = 1;
+    EFFECT = 2;
+    TRANSITION = 3;
   }
 
   oneof body {
     document.Ready ready = 10;
     document.Local local = 11;
     document.Remote remote = 12;
+    document.Stored stored = 13;
   }
 
   string uuid = 1;
@@ -61,4 +74,11 @@ message DocumentSet {
   repeated document.Intrinsic intrinsics = 1;
   repeated document.Document presentations = 2;
   repeated document.Document themes = 3;
+  repeated document.Document effects = 4;
+  repeated document.Document transitions = 5;
+}
+
+message Workspace {
+  string path = 1;
+  optional string uuid = 2;
 }

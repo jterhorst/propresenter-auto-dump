@@ -231,6 +231,11 @@ public nonisolated struct Rv_Data_ProApiNetworkConfiguration: @unchecked Sendabl
     set {_uniqueStorage()._proremoteWebsocketPassword = newValue}
   }
 
+  public var autoReselectPortOnFailure: Bool {
+    get {_storage._autoReselectPortOnFailure}
+    set {_uniqueStorage()._autoReselectPortOnFailure = newValue}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -1260,9 +1265,51 @@ public nonisolated struct Rv_Data_ProLink: Sendable {
 
       public var tcpStreamPort: UInt32 = 0
 
-      public var tcpStreamSuccess: Bool = false
+      public var tcpStreamState: Rv_Data_ProLink.HandlerIn.ServerState.ListenerState = .notActive
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public nonisolated enum ListenerState: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public typealias RawValue = Int
+        case notActive // = 0
+        case pending // = 1
+        case bound // = 2
+        case failed // = 3
+        case UNRECOGNIZED(Int)
+
+        public init() {
+          self = .notActive
+        }
+
+        public init?(rawValue: Int) {
+          switch rawValue {
+          case 0: self = .notActive
+          case 1: self = .pending
+          case 2: self = .bound
+          case 3: self = .failed
+          default: self = .UNRECOGNIZED(rawValue)
+          }
+        }
+
+        public var rawValue: Int {
+          switch self {
+          case .notActive: return 0
+          case .pending: return 1
+          case .bound: return 2
+          case .failed: return 3
+          case .UNRECOGNIZED(let i): return i
+          }
+        }
+
+        // The compiler won't synthesize support with the UNRECOGNIZED case.
+        public static let allCases: [Rv_Data_ProLink.HandlerIn.ServerState.ListenerState] = [
+          .notActive,
+          .pending,
+          .bound,
+          .failed,
+        ]
+
+      }
 
       public init() {}
     }
@@ -3337,7 +3384,7 @@ nonisolated extension Rv_Data_AirplayConfiguration: SwiftProtobuf.Message, Swift
 
 nonisolated extension Rv_Data_ProApiNetworkConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProApiNetworkConfiguration"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}enable_network\0\u{1}port\0\u{3}network_name\0\u{3}remote_enable\0\u{3}remote_control_enable\0\u{3}remote_control_password\0\u{3}remote_observe_enable\0\u{3}remote_observe_password\0\u{3}stage_enable\0\u{3}stage_password\0\u{3}link_enable\0\u{3}web_resource_root\0\u{3}tcp_stream_port\0\u{3}tcp_stream_enable\0\u{1}airplay\0\u{3}proremote_websocket_enable\0\u{3}proremote_websocket_password\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}enable_network\0\u{1}port\0\u{3}network_name\0\u{3}remote_enable\0\u{3}remote_control_enable\0\u{3}remote_control_password\0\u{3}remote_observe_enable\0\u{3}remote_observe_password\0\u{3}stage_enable\0\u{3}stage_password\0\u{3}link_enable\0\u{3}web_resource_root\0\u{3}tcp_stream_port\0\u{3}tcp_stream_enable\0\u{1}airplay\0\u{3}proremote_websocket_enable\0\u{3}proremote_websocket_password\0\u{3}auto_reselect_port_on_failure\0")
 
   fileprivate class _StorageClass {
     var _enableNetwork: Bool = false
@@ -3357,6 +3404,7 @@ nonisolated extension Rv_Data_ProApiNetworkConfiguration: SwiftProtobuf.Message,
     var _airplay: Rv_Data_AirplayConfiguration? = nil
     var _proremoteWebsocketEnable: Bool = false
     var _proremoteWebsocketPassword: String = String()
+    var _autoReselectPortOnFailure: Bool = false
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -3384,6 +3432,7 @@ nonisolated extension Rv_Data_ProApiNetworkConfiguration: SwiftProtobuf.Message,
       _airplay = source._airplay
       _proremoteWebsocketEnable = source._proremoteWebsocketEnable
       _proremoteWebsocketPassword = source._proremoteWebsocketPassword
+      _autoReselectPortOnFailure = source._autoReselectPortOnFailure
     }
   }
 
@@ -3419,6 +3468,7 @@ nonisolated extension Rv_Data_ProApiNetworkConfiguration: SwiftProtobuf.Message,
         case 15: try { try decoder.decodeSingularMessageField(value: &_storage._airplay) }()
         case 16: try { try decoder.decodeSingularBoolField(value: &_storage._proremoteWebsocketEnable) }()
         case 17: try { try decoder.decodeSingularStringField(value: &_storage._proremoteWebsocketPassword) }()
+        case 18: try { try decoder.decodeSingularBoolField(value: &_storage._autoReselectPortOnFailure) }()
         default: break
         }
       }
@@ -3482,6 +3532,9 @@ nonisolated extension Rv_Data_ProApiNetworkConfiguration: SwiftProtobuf.Message,
       if !_storage._proremoteWebsocketPassword.isEmpty {
         try visitor.visitSingularStringField(value: _storage._proremoteWebsocketPassword, fieldNumber: 17)
       }
+      if _storage._autoReselectPortOnFailure != false {
+        try visitor.visitSingularBoolField(value: _storage._autoReselectPortOnFailure, fieldNumber: 18)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -3508,6 +3561,7 @@ nonisolated extension Rv_Data_ProApiNetworkConfiguration: SwiftProtobuf.Message,
         if _storage._airplay != rhs_storage._airplay {return false}
         if _storage._proremoteWebsocketEnable != rhs_storage._proremoteWebsocketEnable {return false}
         if _storage._proremoteWebsocketPassword != rhs_storage._proremoteWebsocketPassword {return false}
+        if _storage._autoReselectPortOnFailure != rhs_storage._autoReselectPortOnFailure {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -5382,7 +5436,7 @@ nonisolated extension Rv_Data_ProLink.HandlerIn.ProPresenterInfo: SwiftProtobuf.
 
 nonisolated extension Rv_Data_ProLink.HandlerIn.ServerState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_ProLink.HandlerIn.protoMessageName + ".ServerState"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}local_ip\0\u{3}public_ip\0\u{1}port\0\u{1}success\0\u{3}tcp_stream_port\0\u{3}tcp_stream_success\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}local_ip\0\u{3}public_ip\0\u{1}port\0\u{1}success\0\u{3}tcp_stream_port\0\u{4}\u{2}tcp_stream_state\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -5395,7 +5449,7 @@ nonisolated extension Rv_Data_ProLink.HandlerIn.ServerState: SwiftProtobuf.Messa
       case 3: try { try decoder.decodeSingularUInt32Field(value: &self.port) }()
       case 4: try { try decoder.decodeSingularBoolField(value: &self.success) }()
       case 5: try { try decoder.decodeSingularUInt32Field(value: &self.tcpStreamPort) }()
-      case 6: try { try decoder.decodeSingularBoolField(value: &self.tcpStreamSuccess) }()
+      case 7: try { try decoder.decodeSingularEnumField(value: &self.tcpStreamState) }()
       default: break
       }
     }
@@ -5417,8 +5471,8 @@ nonisolated extension Rv_Data_ProLink.HandlerIn.ServerState: SwiftProtobuf.Messa
     if self.tcpStreamPort != 0 {
       try visitor.visitSingularUInt32Field(value: self.tcpStreamPort, fieldNumber: 5)
     }
-    if self.tcpStreamSuccess != false {
-      try visitor.visitSingularBoolField(value: self.tcpStreamSuccess, fieldNumber: 6)
+    if self.tcpStreamState != .notActive {
+      try visitor.visitSingularEnumField(value: self.tcpStreamState, fieldNumber: 7)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -5429,10 +5483,14 @@ nonisolated extension Rv_Data_ProLink.HandlerIn.ServerState: SwiftProtobuf.Messa
     if lhs.port != rhs.port {return false}
     if lhs.success != rhs.success {return false}
     if lhs.tcpStreamPort != rhs.tcpStreamPort {return false}
-    if lhs.tcpStreamSuccess != rhs.tcpStreamSuccess {return false}
+    if lhs.tcpStreamState != rhs.tcpStreamState {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+nonisolated extension Rv_Data_ProLink.HandlerIn.ServerState.ListenerState: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LISTENER_STATE_NOT_ACTIVE\0\u{1}LISTENER_STATE_PENDING\0\u{1}LISTENER_STATE_BOUND\0\u{1}LISTENER_STATE_FAILED\0")
 }
 
 nonisolated extension Rv_Data_ProLink.HandlerIn.ConfigurationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {

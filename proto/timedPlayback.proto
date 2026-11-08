@@ -49,11 +49,12 @@ message TimedPlayback {
       rv.data.TriggerSource trigger_source = 3;
       rv.data.Action.ContentDestination content_destination = 4;
       double end_time = 7;
+      rv.data.UUID presentation_uuid = 8;
     }
 
     repeated rv.data.TimedPlayback.Sequence.SequenceItem sequence = 1;
     rv.data.Action.ContentDestination content_destination = 2;
-    rv.data.Presentation presentation = 3;
+    repeated rv.data.Presentation presentations = 3;
     rv.data.Playlist playlist = 4;
   }
 

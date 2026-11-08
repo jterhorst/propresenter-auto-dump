@@ -22,3 +22,19 @@ message FileProperties {
   rv.data.URL local_url = 1;
   rv.data.FileProperties.RemoteProperties remote_properties = 2;
 }
+
+message SourceInfo {
+  message FileProperties {
+    rv.data.URL url = 1;
+  }
+
+  message HLSProperties {
+    string url = 1;
+  }
+
+  oneof SourceType {
+    rv.data.SourceInfo.FileProperties file = 1;
+    rv.data.SourceInfo.HLSProperties hls = 2;
+  }
+
+}

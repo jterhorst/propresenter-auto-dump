@@ -692,7 +692,29 @@ public nonisolated struct Rv_Data_CommunicationDevice: Sendable {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
+    public var sources: [Rv_Data_CommunicationDevice.MIDIHardware.Port] = []
+
+    public var destinations: [Rv_Data_CommunicationDevice.MIDIHardware.Port] = []
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated struct Port: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var name: String = String()
+
+      public var manufacturerID: UInt32 = 0
+
+      public var productID: UInt32 = 0
+
+      public var driverVersion: UInt32 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
 
     public init() {}
   }
@@ -1300,18 +1322,79 @@ nonisolated extension Rv_Data_CommunicationDevice.ArtnetHardware: SwiftProtobuf.
 
 nonisolated extension Rv_Data_CommunicationDevice.MIDIHardware: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_CommunicationDevice.protoMessageName + ".MIDIHardware"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}sources\0\u{1}destinations\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    // Load everything into unknown fields
-    while try decoder.nextFieldNumber() != nil {}
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.sources) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.destinations) }()
+      default: break
+      }
+    }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.sources.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.sources, fieldNumber: 1)
+    }
+    if !self.destinations.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.destinations, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Rv_Data_CommunicationDevice.MIDIHardware, rhs: Rv_Data_CommunicationDevice.MIDIHardware) -> Bool {
+    if lhs.sources != rhs.sources {return false}
+    if lhs.destinations != rhs.destinations {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_CommunicationDevice.MIDIHardware.Port: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_CommunicationDevice.MIDIHardware.protoMessageName + ".Port"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{3}manufacturer_id\0\u{3}product_id\0\u{3}driver_version\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.manufacturerID) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.productID) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.driverVersion) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
+    }
+    if self.manufacturerID != 0 {
+      try visitor.visitSingularUInt32Field(value: self.manufacturerID, fieldNumber: 2)
+    }
+    if self.productID != 0 {
+      try visitor.visitSingularUInt32Field(value: self.productID, fieldNumber: 3)
+    }
+    if self.driverVersion != 0 {
+      try visitor.visitSingularUInt32Field(value: self.driverVersion, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_CommunicationDevice.MIDIHardware.Port, rhs: Rv_Data_CommunicationDevice.MIDIHardware.Port) -> Bool {
+    if lhs.name != rhs.name {return false}
+    if lhs.manufacturerID != rhs.manufacturerID {return false}
+    if lhs.productID != rhs.productID {return false}
+    if lhs.driverVersion != rhs.driverVersion {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

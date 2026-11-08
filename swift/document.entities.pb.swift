@@ -25,6 +25,40 @@ fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobu
   typealias Version = _2
 }
 
+public nonisolated enum Document_Scope: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public typealias RawValue = Int
+  case shared // = 0
+  case deviceLocal // = 1
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .shared
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .shared
+    case 1: self = .deviceLocal
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .shared: return 0
+    case .deviceLocal: return 1
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static let allCases: [Document_Scope] = [
+    .shared,
+    .deviceLocal,
+  ]
+
+}
+
 public nonisolated struct Document_Ready: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -38,6 +72,16 @@ public nonisolated struct Document_Ready: Sendable {
 }
 
 public nonisolated struct Document_Remote: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Document_Stored: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -77,20 +121,22 @@ public nonisolated struct Document_Intrinsic: Sendable {
     case calendar // = 0
     case ccli // = 1
     case clearGroups // = 2
-    case groups // = 3
-    case keyMappings // = 4
-    case labels // = 5
-    case macros // = 6
-    case messages // = 7
-    case props // = 8
-    case stage // = 9
-    case timers // = 10
-    case workspace // = 11
-    case libraryData // = 12
-    case playlistAudio // = 13
-    case playlistLibrary // = 14
-    case playlistMedia // = 15
-    case playlistTemplates // = 16
+    case communicationDevices // = 3
+    case groups // = 4
+    case keyMappings // = 5
+    case labels // = 6
+    case macros // = 7
+    case messages // = 8
+    case props // = 9
+    case stage // = 10
+    case timers // = 11
+    case workspace // = 12
+    case testPatterns // = 18
+    case libraryData // = 13
+    case playlistAudio // = 14
+    case playlistLibrary // = 15
+    case playlistMedia // = 16
+    case playlistTemplates // = 17
     case UNRECOGNIZED(Int)
 
     public init() {
@@ -102,20 +148,22 @@ public nonisolated struct Document_Intrinsic: Sendable {
       case 0: self = .calendar
       case 1: self = .ccli
       case 2: self = .clearGroups
-      case 3: self = .groups
-      case 4: self = .keyMappings
-      case 5: self = .labels
-      case 6: self = .macros
-      case 7: self = .messages
-      case 8: self = .props
-      case 9: self = .stage
-      case 10: self = .timers
-      case 11: self = .workspace
-      case 12: self = .libraryData
-      case 13: self = .playlistAudio
-      case 14: self = .playlistLibrary
-      case 15: self = .playlistMedia
-      case 16: self = .playlistTemplates
+      case 3: self = .communicationDevices
+      case 4: self = .groups
+      case 5: self = .keyMappings
+      case 6: self = .labels
+      case 7: self = .macros
+      case 8: self = .messages
+      case 9: self = .props
+      case 10: self = .stage
+      case 11: self = .timers
+      case 12: self = .workspace
+      case 13: self = .libraryData
+      case 14: self = .playlistAudio
+      case 15: self = .playlistLibrary
+      case 16: self = .playlistMedia
+      case 17: self = .playlistTemplates
+      case 18: self = .testPatterns
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
@@ -125,20 +173,22 @@ public nonisolated struct Document_Intrinsic: Sendable {
       case .calendar: return 0
       case .ccli: return 1
       case .clearGroups: return 2
-      case .groups: return 3
-      case .keyMappings: return 4
-      case .labels: return 5
-      case .macros: return 6
-      case .messages: return 7
-      case .props: return 8
-      case .stage: return 9
-      case .timers: return 10
-      case .workspace: return 11
-      case .libraryData: return 12
-      case .playlistAudio: return 13
-      case .playlistLibrary: return 14
-      case .playlistMedia: return 15
-      case .playlistTemplates: return 16
+      case .communicationDevices: return 3
+      case .groups: return 4
+      case .keyMappings: return 5
+      case .labels: return 6
+      case .macros: return 7
+      case .messages: return 8
+      case .props: return 9
+      case .stage: return 10
+      case .timers: return 11
+      case .workspace: return 12
+      case .libraryData: return 13
+      case .playlistAudio: return 14
+      case .playlistLibrary: return 15
+      case .playlistMedia: return 16
+      case .playlistTemplates: return 17
+      case .testPatterns: return 18
       case .UNRECOGNIZED(let i): return i
       }
     }
@@ -148,6 +198,7 @@ public nonisolated struct Document_Intrinsic: Sendable {
       .calendar,
       .ccli,
       .clearGroups,
+      .communicationDevices,
       .groups,
       .keyMappings,
       .labels,
@@ -157,6 +208,7 @@ public nonisolated struct Document_Intrinsic: Sendable {
       .stage,
       .timers,
       .workspace,
+      .testPatterns,
       .libraryData,
       .playlistAudio,
       .playlistLibrary,
@@ -200,6 +252,14 @@ public nonisolated struct Document_Document: Sendable {
     set {body = .remote(newValue)}
   }
 
+  public var stored: Document_Stored {
+    get {
+      if case .stored(let v)? = body {return v}
+      return Document_Stored()
+    }
+    set {body = .stored(newValue)}
+  }
+
   public var uuid: String = String()
 
   public var path: String = String()
@@ -210,6 +270,7 @@ public nonisolated struct Document_Document: Sendable {
     case ready(Document_Ready)
     case local(Document_Local)
     case remote(Document_Remote)
+    case stored(Document_Stored)
 
   }
 
@@ -217,6 +278,8 @@ public nonisolated struct Document_Document: Sendable {
     public typealias RawValue = Int
     case presentation // = 0
     case theme // = 1
+    case effect // = 2
+    case transition // = 3
     case UNRECOGNIZED(Int)
 
     public init() {
@@ -227,6 +290,8 @@ public nonisolated struct Document_Document: Sendable {
       switch rawValue {
       case 0: self = .presentation
       case 1: self = .theme
+      case 2: self = .effect
+      case 3: self = .transition
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
@@ -235,6 +300,8 @@ public nonisolated struct Document_Document: Sendable {
       switch self {
       case .presentation: return 0
       case .theme: return 1
+      case .effect: return 2
+      case .transition: return 3
       case .UNRECOGNIZED(let i): return i
       }
     }
@@ -243,6 +310,8 @@ public nonisolated struct Document_Document: Sendable {
     public static let allCases: [Document_Document.Kind] = [
       .presentation,
       .theme,
+      .effect,
+      .transition,
     ]
 
   }
@@ -261,14 +330,45 @@ public nonisolated struct Document_DocumentSet: Sendable {
 
   public var themes: [Document_Document] = []
 
+  public var effects: [Document_Document] = []
+
+  public var transitions: [Document_Document] = []
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
+public nonisolated struct Document_Workspace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var path: String = String()
+
+  public var uuid: String {
+    get {_uuid ?? String()}
+    set {_uuid = newValue}
+  }
+  /// Returns true if `uuid` has been explicitly set.
+  public var hasUuid: Bool {self._uuid != nil}
+  /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
+  public mutating func clearUuid() {self._uuid = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _uuid: String? = nil
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "document"
+
+nonisolated extension Document_Scope: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SHARED\0\u{1}DEVICE_LOCAL\0")
+}
 
 nonisolated extension Document_Ready: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Ready"
@@ -314,6 +414,25 @@ nonisolated extension Document_Remote: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 
   public static func ==(lhs: Document_Remote, rhs: Document_Remote) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Stored: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".Stored"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Stored, rhs: Document_Stored) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -390,12 +509,12 @@ nonisolated extension Document_Intrinsic: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 nonisolated extension Document_Intrinsic.Kind: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Calendar\0\u{1}CCLI\0\u{1}ClearGroups\0\u{1}Groups\0\u{1}KeyMappings\0\u{1}Labels\0\u{1}Macros\0\u{1}Messages\0\u{1}Props\0\u{1}Stage\0\u{1}Timers\0\u{1}Workspace\0\u{1}LibraryData\0\u{1}PlaylistAudio\0\u{1}PlaylistLibrary\0\u{1}PlaylistMedia\0\u{1}PlaylistTemplates\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Calendar\0\u{1}CCLI\0\u{1}ClearGroups\0\u{1}CommunicationDevices\0\u{1}Groups\0\u{1}KeyMappings\0\u{1}Labels\0\u{1}Macros\0\u{1}Messages\0\u{1}Props\0\u{1}Stage\0\u{1}Timers\0\u{1}Workspace\0\u{1}LibraryData\0\u{1}PlaylistAudio\0\u{1}PlaylistLibrary\0\u{1}PlaylistMedia\0\u{1}PlaylistTemplates\0\u{1}TestPatterns\0")
 }
 
 nonisolated extension Document_Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Document"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}path\0\u{2}\u{8}ready\0\u{1}local\0\u{1}remote\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}path\0\u{2}\u{8}ready\0\u{1}local\0\u{1}remote\0\u{1}stored\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -444,6 +563,19 @@ nonisolated extension Document_Document: SwiftProtobuf.Message, SwiftProtobuf._M
           self.body = .remote(v)
         }
       }()
+      case 13: try {
+        var v: Document_Stored?
+        var hadOneofValue = false
+        if let current = self.body {
+          hadOneofValue = true
+          if case .stored(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.body = .stored(v)
+        }
+      }()
       default: break
       }
     }
@@ -473,6 +605,10 @@ nonisolated extension Document_Document: SwiftProtobuf.Message, SwiftProtobuf._M
       guard case .remote(let v)? = self.body else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
     }()
+    case .stored?: try {
+      guard case .stored(let v)? = self.body else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
+    }()
     case nil: break
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -488,12 +624,12 @@ nonisolated extension Document_Document: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 nonisolated extension Document_Document.Kind: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PRESENTATION\0\u{1}THEME\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PRESENTATION\0\u{1}THEME\0\u{1}EFFECT\0\u{1}TRANSITION\0")
 }
 
 nonisolated extension Document_DocumentSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DocumentSet"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}intrinsics\0\u{1}presentations\0\u{1}themes\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}intrinsics\0\u{1}presentations\0\u{1}themes\0\u{1}effects\0\u{1}transitions\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -504,6 +640,8 @@ nonisolated extension Document_DocumentSet: SwiftProtobuf.Message, SwiftProtobuf
       case 1: try { try decoder.decodeRepeatedMessageField(value: &self.intrinsics) }()
       case 2: try { try decoder.decodeRepeatedMessageField(value: &self.presentations) }()
       case 3: try { try decoder.decodeRepeatedMessageField(value: &self.themes) }()
+      case 4: try { try decoder.decodeRepeatedMessageField(value: &self.effects) }()
+      case 5: try { try decoder.decodeRepeatedMessageField(value: &self.transitions) }()
       default: break
       }
     }
@@ -519,6 +657,12 @@ nonisolated extension Document_DocumentSet: SwiftProtobuf.Message, SwiftProtobuf
     if !self.themes.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.themes, fieldNumber: 3)
     }
+    if !self.effects.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.effects, fieldNumber: 4)
+    }
+    if !self.transitions.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.transitions, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -526,6 +670,47 @@ nonisolated extension Document_DocumentSet: SwiftProtobuf.Message, SwiftProtobuf
     if lhs.intrinsics != rhs.intrinsics {return false}
     if lhs.presentations != rhs.presentations {return false}
     if lhs.themes != rhs.themes {return false}
+    if lhs.effects != rhs.effects {return false}
+    if lhs.transitions != rhs.transitions {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Workspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".Workspace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{1}uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._uuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 1)
+    }
+    try { if let v = self._uuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Workspace, rhs: Document_Workspace) -> Bool {
+    if lhs.path != rhs.path {return false}
+    if lhs._uuid != rhs._uuid {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

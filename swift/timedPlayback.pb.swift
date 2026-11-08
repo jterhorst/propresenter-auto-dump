@@ -151,14 +151,7 @@ public nonisolated struct Rv_Data_TimedPlayback: Sendable {
 
     public var contentDestination: Rv_Data_Action.ContentDestination = .global
 
-    public var presentation: Rv_Data_Presentation {
-      get {_presentation ?? Rv_Data_Presentation()}
-      set {_presentation = newValue}
-    }
-    /// Returns true if `presentation` has been explicitly set.
-    public var hasPresentation: Bool {self._presentation != nil}
-    /// Clears the value of `presentation`. Subsequent reads from it will return its default value.
-    public mutating func clearPresentation() {self._presentation = nil}
+    public var presentations: [Rv_Data_Presentation] = []
 
     public var playlist: Rv_Data_Playlist {
       get {_playlist ?? Rv_Data_Playlist()}
@@ -230,6 +223,15 @@ public nonisolated struct Rv_Data_TimedPlayback: Sendable {
         set {_uniqueStorage()._endTime = newValue}
       }
 
+      public var presentationUuid: Rv_Data_UUID {
+        get {_storage._presentationUuid ?? Rv_Data_UUID()}
+        set {_uniqueStorage()._presentationUuid = newValue}
+      }
+      /// Returns true if `presentationUuid` has been explicitly set.
+      public var hasPresentationUuid: Bool {_storage._presentationUuid != nil}
+      /// Clears the value of `presentationUuid`. Subsequent reads from it will return its default value.
+      public mutating func clearPresentationUuid() {_uniqueStorage()._presentationUuid = nil}
+
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
       public nonisolated enum OneOf_Item: Equatable, Sendable {
@@ -245,7 +247,6 @@ public nonisolated struct Rv_Data_TimedPlayback: Sendable {
 
     public init() {}
 
-    fileprivate var _presentation: Rv_Data_Presentation? = nil
     fileprivate var _playlist: Rv_Data_Playlist? = nil
   }
 
@@ -833,7 +834,7 @@ nonisolated extension Rv_Data_TimedPlayback: SwiftProtobuf.Message, SwiftProtobu
 
 nonisolated extension Rv_Data_TimedPlayback.Sequence: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.protoMessageName + ".Sequence"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}sequence\0\u{3}content_destination\0\u{1}presentation\0\u{1}playlist\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}sequence\0\u{3}content_destination\0\u{1}presentations\0\u{1}playlist\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -843,7 +844,7 @@ nonisolated extension Rv_Data_TimedPlayback.Sequence: SwiftProtobuf.Message, Swi
       switch fieldNumber {
       case 1: try { try decoder.decodeRepeatedMessageField(value: &self.sequence) }()
       case 2: try { try decoder.decodeSingularEnumField(value: &self.contentDestination) }()
-      case 3: try { try decoder.decodeSingularMessageField(value: &self._presentation) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.presentations) }()
       case 4: try { try decoder.decodeSingularMessageField(value: &self._playlist) }()
       default: break
       }
@@ -861,9 +862,9 @@ nonisolated extension Rv_Data_TimedPlayback.Sequence: SwiftProtobuf.Message, Swi
     if self.contentDestination != .global {
       try visitor.visitSingularEnumField(value: self.contentDestination, fieldNumber: 2)
     }
-    try { if let v = self._presentation {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-    } }()
+    if !self.presentations.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.presentations, fieldNumber: 3)
+    }
     try { if let v = self._playlist {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
     } }()
@@ -873,7 +874,7 @@ nonisolated extension Rv_Data_TimedPlayback.Sequence: SwiftProtobuf.Message, Swi
   public static func ==(lhs: Rv_Data_TimedPlayback.Sequence, rhs: Rv_Data_TimedPlayback.Sequence) -> Bool {
     if lhs.sequence != rhs.sequence {return false}
     if lhs.contentDestination != rhs.contentDestination {return false}
-    if lhs._presentation != rhs._presentation {return false}
+    if lhs.presentations != rhs.presentations {return false}
     if lhs._playlist != rhs._playlist {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -882,7 +883,7 @@ nonisolated extension Rv_Data_TimedPlayback.Sequence: SwiftProtobuf.Message, Swi
 
 nonisolated extension Rv_Data_TimedPlayback.Sequence.SequenceItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_TimedPlayback.Sequence.protoMessageName + ".SequenceItem"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}identifier\0\u{1}time\0\u{3}trigger_source\0\u{3}content_destination\0\u{1}cue\0\u{1}action\0\u{3}end_time\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}identifier\0\u{1}time\0\u{3}trigger_source\0\u{3}content_destination\0\u{1}cue\0\u{1}action\0\u{3}end_time\0\u{3}presentation_uuid\0")
 
   fileprivate class _StorageClass {
     var _item: Rv_Data_TimedPlayback.Sequence.SequenceItem.OneOf_Item?
@@ -891,6 +892,7 @@ nonisolated extension Rv_Data_TimedPlayback.Sequence.SequenceItem: SwiftProtobuf
     var _triggerSource: Rv_Data_TriggerSource? = nil
     var _contentDestination: Rv_Data_Action.ContentDestination = .global
     var _endTime: Double = 0
+    var _presentationUuid: Rv_Data_UUID? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -907,6 +909,7 @@ nonisolated extension Rv_Data_TimedPlayback.Sequence.SequenceItem: SwiftProtobuf
       _triggerSource = source._triggerSource
       _contentDestination = source._contentDestination
       _endTime = source._endTime
+      _presentationUuid = source._presentationUuid
     }
   }
 
@@ -956,6 +959,7 @@ nonisolated extension Rv_Data_TimedPlayback.Sequence.SequenceItem: SwiftProtobuf
           }
         }()
         case 7: try { try decoder.decodeSingularDoubleField(value: &_storage._endTime) }()
+        case 8: try { try decoder.decodeSingularMessageField(value: &_storage._presentationUuid) }()
         default: break
         }
       }
@@ -994,6 +998,9 @@ nonisolated extension Rv_Data_TimedPlayback.Sequence.SequenceItem: SwiftProtobuf
       if _storage._endTime.bitPattern != 0 {
         try visitor.visitSingularDoubleField(value: _storage._endTime, fieldNumber: 7)
       }
+      try { if let v = _storage._presentationUuid {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -1009,6 +1016,7 @@ nonisolated extension Rv_Data_TimedPlayback.Sequence.SequenceItem: SwiftProtobuf
         if _storage._triggerSource != rhs_storage._triggerSource {return false}
         if _storage._contentDestination != rhs_storage._contentDestination {return false}
         if _storage._endTime != rhs_storage._endTime {return false}
+        if _storage._presentationUuid != rhs_storage._presentationUuid {return false}
         return true
       }
       if !storagesAreEqual {return false}

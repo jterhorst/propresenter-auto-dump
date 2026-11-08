@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+
+package registration;
+
+
+message CreationOption {
+  optional string name = 1;
+}

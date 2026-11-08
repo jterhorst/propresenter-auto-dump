@@ -33,6 +33,13 @@ enum SeatType {
   Advanced = 2;
 }
 
+enum NewSeatType {
+  NEW_SEAT_TYPE_UNSPECIFIED = 0;
+  NEW_SEAT_TYPE_LOCAL_EDITOR = 1;
+  NEW_SEAT_TYPE_CLOUD_EDITOR = 2;
+  NEW_SEAT_TYPE_PRESENTER = 3;
+}
+
 enum LicenseType {
   Trial = 0;
   Rental = 1;
@@ -78,11 +85,7 @@ enum PopupAlertMessage {
   FullySignedOut = 6;
   FirstLaunchSignedInNoSubscriptionNoLicense = 7;
   FirstLaunchSignedInNoSubscriptionLegacyLicense = 8;
-}
-
-enum BannerMessage {
-  NoBanner = 0;
-  ActivateProPresenter = 1;
+  CloudEditorSeatActivated = 9;
 }
 
 enum ClientAlertMessage {
@@ -107,6 +110,7 @@ enum ClientAlertMessage {
   UnsuccessfulActivation = 18;
   DeviceSignedOutSubscription = 19;
   UnknownAlert = 20;
+  NoSeatsForSeatChange = 21;
 }
 
 message Request {
@@ -168,6 +172,7 @@ message Register {
   string display_name = 3;
   registration.core.SeatType seat_type = 4;
   registration.core.UpdateChannel channel = 5;
+  registration.core.NewSeatType new_seat_type = 6;
 }
 
 message ActivateLink {
@@ -183,6 +188,7 @@ message Signout {
 message ChangeSeatType {
   registration.core.SeatType seat_type = 1;
   registration.core.UpdateChannel channel = 2;
+  registration.core.NewSeatType new_seat_type = 3;
 }
 
 message GetBibles {
@@ -261,6 +267,7 @@ message GetLicenseState {
 }
 
 message RefreshUserAuthTokens {
+  string failed_access_token = 1;
 }
 
 message RefreshAccessToken {
@@ -269,6 +276,7 @@ message RefreshAccessToken {
 message SetWatermark {
   bool is_registered = 1;
   bool active_seat = 2;
+  registration.core.NewSeatType new_seat_type = 3;
 }
 
 message ChangeSeatTypeComplete {
@@ -355,7 +363,6 @@ message VerificationComplete {
   registration.core.TokenMetadata token = 4;
   registration.core.SubscriptionInfo subscription_info = 5;
   registration.core.PopupAlertMessage alert = 6;
-  registration.core.BannerMessage banner = 7;
   registration.core.ClientAlertMessage client_alert = 8;
   bool fully_launched = 9;
 }
@@ -399,11 +406,12 @@ message LicenseState {
   string fingerprint = 2;
   bool is_registered = 3;
   bool active_seat = 4;
+  registration.core.NewSeatType new_seat_type = 5;
 }
 
 message Seats {
-  int32 basic = 1;
-  int32 advanced = 2;
+  int32 presenter = 1;
+  int32 cloud_editor = 4;
 }
 
 message SupplementalInformation {
@@ -464,6 +472,7 @@ message RegistrationInfo {
   int64 maintenance_expiration_date = 12;
   int64 non_extended_maintenance_expiration_date = 13;
   bool is_auto_renewal_active = 14;
+  registration.core.NewSeatType new_seat_type = 15;
 }
 
 message BuildInformation {

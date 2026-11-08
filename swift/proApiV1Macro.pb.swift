@@ -258,11 +258,33 @@ public nonisolated struct Rv_Data_API_v1_Macro_Request: Sendable {
 
     public var imageTypeChange: String = String()
 
+    public var actionsChange: Rv_Data_API_v1_Macro_Request.PutMacro.ActionsChange {
+      get {_actionsChange ?? Rv_Data_API_v1_Macro_Request.PutMacro.ActionsChange()}
+      set {_actionsChange = newValue}
+    }
+    /// Returns true if `actionsChange` has been explicitly set.
+    public var hasActionsChange: Bool {self._actionsChange != nil}
+    /// Clears the value of `actionsChange`. Subsequent reads from it will return its default value.
+    public mutating func clearActionsChange() {self._actionsChange = nil}
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated struct ActionsChange: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var actions: [Rv_Data_API_v1_MacroAction] = []
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
 
     public init() {}
 
     fileprivate var _colorChange: Rv_Data_API_v1_Color? = nil
+    fileprivate var _actionsChange: Rv_Data_API_v1_Macro_Request.PutMacro.ActionsChange? = nil
   }
 
   public nonisolated struct DeleteMacro: Sendable {
@@ -1129,7 +1151,7 @@ nonisolated extension Rv_Data_API_v1_Macro_Request.GetMacro: SwiftProtobuf.Messa
 
 nonisolated extension Rv_Data_API_v1_Macro_Request.PutMacro: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.protoMessageName + ".PutMacro"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}name_change\0\u{3}color_change\0\u{3}image_type_change\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}name_change\0\u{3}color_change\0\u{3}image_type_change\0\u{3}actions_change\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1141,6 +1163,7 @@ nonisolated extension Rv_Data_API_v1_Macro_Request.PutMacro: SwiftProtobuf.Messa
       case 2: try { try decoder.decodeSingularStringField(value: &self.nameChange) }()
       case 3: try { try decoder.decodeSingularMessageField(value: &self._colorChange) }()
       case 4: try { try decoder.decodeSingularStringField(value: &self.imageTypeChange) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._actionsChange) }()
       default: break
       }
     }
@@ -1163,6 +1186,9 @@ nonisolated extension Rv_Data_API_v1_Macro_Request.PutMacro: SwiftProtobuf.Messa
     if !self.imageTypeChange.isEmpty {
       try visitor.visitSingularStringField(value: self.imageTypeChange, fieldNumber: 4)
     }
+    try { if let v = self._actionsChange {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1171,6 +1197,37 @@ nonisolated extension Rv_Data_API_v1_Macro_Request.PutMacro: SwiftProtobuf.Messa
     if lhs.nameChange != rhs.nameChange {return false}
     if lhs._colorChange != rhs._colorChange {return false}
     if lhs.imageTypeChange != rhs.imageTypeChange {return false}
+    if lhs._actionsChange != rhs._actionsChange {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_API_v1_Macro_Request.PutMacro.ActionsChange: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_API_v1_Macro_Request.PutMacro.protoMessageName + ".ActionsChange"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}actions\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.actions) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.actions.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.actions, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_API_v1_Macro_Request.PutMacro.ActionsChange, rhs: Rv_Data_API_v1_Macro_Request.PutMacro.ActionsChange) -> Bool {
+    if lhs.actions != rhs.actions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

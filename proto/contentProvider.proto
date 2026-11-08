@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+
+package rv.data;
+
+
+import "customOptions.proto";
+
+
+
+message ProviderInfo {
+  string provider = 1;
+  string item_id = 2;
+  string rendition_id = 3;
+  string content_version = 4;
+  string parent_id = 5;
+}

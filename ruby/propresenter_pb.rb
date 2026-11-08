@@ -10,7 +10,7 @@ require 'customOptions_pb'
 require 'playlist_pb'
 
 
-descriptor_data = "\n\x12propresenter.proto\x12\x07rv.data\x1a\x0c\x61\x63tion.proto\x1a\x15\x61pplicationInfo.proto\x1a\x13\x63ustomOptions.proto\x1a\x0eplaylist.proto\"\xef\x02\n\x10PlaylistDocument\x12\x32\n\x10\x61pplication_info\x18\x01 \x01(\x0b\x32\x18.rv.data.ApplicationInfo\x12,\n\x04type\x18\x02 \x01(\x0e\x32\x1e.rv.data.PlaylistDocument.Type\x12$\n\troot_node\x18\x03 \x01(\x0b\x32\x11.rv.data.Playlist\x12#\n\x04tags\x18\x04 \x03(\x0b\x32\x15.rv.data.Playlist.Tag\x12.\n\x13live_video_playlist\x18\x05 \x01(\x0b\x32\x11.rv.data.Playlist\x12-\n\x12\x64ownloads_playlist\x18\x06 \x01(\x0b\x32\x11.rv.data.Playlist\"O\n\x04Type\x12\x10\n\x0cTYPE_UNKNOWN\x10\x00\x12\x15\n\x11TYPE_PRESENTATION\x10\x01\x12\x0e\n\nTYPE_MEDIA\x10\x02\x12\x0e\n\nTYPE_AUDIO\x10\x03\"9\n\x10SettingsDocument\x12%\n\x06labels\x18\x02 \x03(\x0b\x32\x15.rv.data.Action.Labelb\x06proto3"
+descriptor_data = "\n\x12propresenter.proto\x12\x07rv.data\x1a\x0c\x61\x63tion.proto\x1a\x15\x61pplicationInfo.proto\x1a\x13\x63ustomOptions.proto\x1a\x0eplaylist.proto\"\xd3\x03\n\x10PlaylistDocument\x12\x32\n\x10\x61pplication_info\x18\x01 \x01(\x0b\x32\x18.rv.data.ApplicationInfo\x12,\n\x04type\x18\x02 \x01(\x0e\x32\x1e.rv.data.PlaylistDocument.Type\x12$\n\troot_node\x18\x03 \x01(\x0b\x32\x11.rv.data.Playlist\x12#\n\x04tags\x18\x04 \x03(\x0b\x32\x15.rv.data.Playlist.Tag\x12.\n\x13live_video_playlist\x18\x05 \x01(\x0b\x32\x11.rv.data.Playlist\x12-\n\x12\x64ownloads_playlist\x18\x06 \x01(\x0b\x32\x11.rv.data.Playlist\x12(\n\tplaylists\x18\x07 \x03(\x0b\x32\x15.rv.data.PlaylistNode\x12\x38\n\x19live_video_playlist_nodes\x18\x08 \x03(\x0b\x32\x15.rv.data.PlaylistNode\"O\n\x04Type\x12\x10\n\x0cTYPE_UNKNOWN\x10\x00\x12\x15\n\x11TYPE_PRESENTATION\x10\x01\x12\x0e\n\nTYPE_MEDIA\x10\x02\x12\x0e\n\nTYPE_AUDIO\x10\x03\"\xd6\x01\n\x15PlaylistLocalDocument\x12,\n\x04type\x18\x01 \x01(\x0e\x32\x1e.rv.data.PlaylistDocument.Type\x12)\n\troot_node\x18\x02 \x01(\x0b\x32\x16.rv.data.PlaylistLocal\x12\x33\n\x13live_video_playlist\x18\x03 \x01(\x0b\x32\x16.rv.data.PlaylistLocal\x12/\n\x0bnode_states\x18\x04 \x03(\x0b\x32\x1a.rv.data.PlaylistNodeLocal\"9\n\x10SettingsDocument\x12%\n\x06labels\x18\x02 \x03(\x0b\x32\x15.rv.data.Action.Labelb\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
@@ -19,6 +19,7 @@ module Rv
   module Data
     PlaylistDocument = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.PlaylistDocument").msgclass
     PlaylistDocument::Type = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.PlaylistDocument.Type").enummodule
+    PlaylistLocalDocument = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.PlaylistLocalDocument").msgclass
     SettingsDocument = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.SettingsDocument").msgclass
   end
 end

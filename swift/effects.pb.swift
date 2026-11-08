@@ -95,6 +95,30 @@ public nonisolated struct Rv_Data_Effect: Sendable {
       set {type = .double(newValue)}
     }
 
+    public var grouping: Rv_Data_Effect.EffectVariable.EffectGrouping {
+      get {
+        if case .grouping(let v)? = type {return v}
+        return Rv_Data_Effect.EffectVariable.EffectGrouping()
+      }
+      set {type = .grouping(newValue)}
+    }
+
+    public var motion: Rv_Data_Effect.EffectVariable.EffectMotion {
+      get {
+        if case .motion(let v)? = type {return v}
+        return Rv_Data_Effect.EffectVariable.EffectMotion()
+      }
+      set {type = .motion(newValue)}
+    }
+
+    public var motionStyle: Rv_Data_Effect.EffectVariable.EffectMotionStyle {
+      get {
+        if case .motionStyle(let v)? = type {return v}
+        return Rv_Data_Effect.EffectVariable.EffectMotionStyle()
+      }
+      set {type = .motionStyle(newValue)}
+    }
+
     public var name: String = String()
 
     public var description_p: String = String()
@@ -107,6 +131,9 @@ public nonisolated struct Rv_Data_Effect: Sendable {
       case color(Rv_Data_Effect.EffectVariable.EffectColor)
       case direction(Rv_Data_Effect.EffectVariable.EffectDirection)
       case double(Rv_Data_Effect.EffectVariable.EffectDouble)
+      case grouping(Rv_Data_Effect.EffectVariable.EffectGrouping)
+      case motion(Rv_Data_Effect.EffectVariable.EffectMotion)
+      case motionStyle(Rv_Data_Effect.EffectVariable.EffectMotionStyle)
 
     }
 
@@ -277,6 +304,192 @@ public nonisolated struct Rv_Data_Effect: Sendable {
       public init() {}
     }
 
+    public nonisolated struct EffectGrouping: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var grouping: Rv_Data_Effect.EffectVariable.EffectGrouping.EffectGrouping = .invalid
+
+      public var defaultGrouping: Rv_Data_Effect.EffectVariable.EffectGrouping.EffectGrouping = .invalid
+
+      public var availableGroupings: UInt32 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public nonisolated enum EffectGrouping: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public typealias RawValue = Int
+        case invalid // = 0
+        case character // = 1
+        case word // = 2
+        case line // = 4
+        case all // = 8
+        case UNRECOGNIZED(Int)
+
+        public init() {
+          self = .invalid
+        }
+
+        public init?(rawValue: Int) {
+          switch rawValue {
+          case 0: self = .invalid
+          case 1: self = .character
+          case 2: self = .word
+          case 4: self = .line
+          case 8: self = .all
+          default: self = .UNRECOGNIZED(rawValue)
+          }
+        }
+
+        public var rawValue: Int {
+          switch self {
+          case .invalid: return 0
+          case .character: return 1
+          case .word: return 2
+          case .line: return 4
+          case .all: return 8
+          case .UNRECOGNIZED(let i): return i
+          }
+        }
+
+        // The compiler won't synthesize support with the UNRECOGNIZED case.
+        public static let allCases: [Rv_Data_Effect.EffectVariable.EffectGrouping.EffectGrouping] = [
+          .invalid,
+          .character,
+          .word,
+          .line,
+          .all,
+        ]
+
+      }
+
+      public init() {}
+    }
+
+    public nonisolated struct EffectMotion: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var motion: Rv_Data_Effect.EffectVariable.EffectMotion.EffectMotion = .invalid
+
+      public var defaultMotion: Rv_Data_Effect.EffectVariable.EffectMotion.EffectMotion = .invalid
+
+      public var availableMotions: UInt32 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public nonisolated enum EffectMotion: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public typealias RawValue = Int
+        case invalid // = 0
+        case none // = 1
+        case grow // = 2
+        case shrink // = 4
+        case up // = 8
+        case down // = 16
+        case UNRECOGNIZED(Int)
+
+        public init() {
+          self = .invalid
+        }
+
+        public init?(rawValue: Int) {
+          switch rawValue {
+          case 0: self = .invalid
+          case 1: self = .none
+          case 2: self = .grow
+          case 4: self = .shrink
+          case 8: self = .up
+          case 16: self = .down
+          default: self = .UNRECOGNIZED(rawValue)
+          }
+        }
+
+        public var rawValue: Int {
+          switch self {
+          case .invalid: return 0
+          case .none: return 1
+          case .grow: return 2
+          case .shrink: return 4
+          case .up: return 8
+          case .down: return 16
+          case .UNRECOGNIZED(let i): return i
+          }
+        }
+
+        // The compiler won't synthesize support with the UNRECOGNIZED case.
+        public static let allCases: [Rv_Data_Effect.EffectVariable.EffectMotion.EffectMotion] = [
+          .invalid,
+          .none,
+          .grow,
+          .shrink,
+          .up,
+          .down,
+        ]
+
+      }
+
+      public init() {}
+    }
+
+    public nonisolated struct EffectMotionStyle: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var motionStyle: Rv_Data_Effect.EffectVariable.EffectMotionStyle.EffectMotionStyle = .invalid
+
+      public var defaultMotionStyle: Rv_Data_Effect.EffectVariable.EffectMotionStyle.EffectMotionStyle = .invalid
+
+      public var availableMotionStyles: UInt32 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public nonisolated enum EffectMotionStyle: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public typealias RawValue = Int
+        case invalid // = 0
+        case subtle // = 1
+        case standard // = 2
+        case dramatic // = 4
+        case UNRECOGNIZED(Int)
+
+        public init() {
+          self = .invalid
+        }
+
+        public init?(rawValue: Int) {
+          switch rawValue {
+          case 0: self = .invalid
+          case 1: self = .subtle
+          case 2: self = .standard
+          case 4: self = .dramatic
+          default: self = .UNRECOGNIZED(rawValue)
+          }
+        }
+
+        public var rawValue: Int {
+          switch self {
+          case .invalid: return 0
+          case .subtle: return 1
+          case .standard: return 2
+          case .dramatic: return 4
+          case .UNRECOGNIZED(let i): return i
+          }
+        }
+
+        // The compiler won't synthesize support with the UNRECOGNIZED case.
+        public static let allCases: [Rv_Data_Effect.EffectVariable.EffectMotionStyle.EffectMotionStyle] = [
+          .invalid,
+          .subtle,
+          .standard,
+          .dramatic,
+        ]
+
+      }
+
+      public init() {}
+    }
+
     public init() {}
   }
 
@@ -310,32 +523,77 @@ public nonisolated struct Rv_Data_Effect: Sendable {
   fileprivate var _uuid: Rv_Data_UUID? = nil
 }
 
-public nonisolated struct Rv_Data_Transition: Sendable {
+public nonisolated struct Rv_Data_Transition: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var duration: Double = 0
+  public var duration: Double {
+    get {_storage._duration}
+    set {_uniqueStorage()._duration = newValue}
+  }
 
   public var favoriteUuid: Rv_Data_UUID {
-    get {_favoriteUuid ?? Rv_Data_UUID()}
-    set {_favoriteUuid = newValue}
+    get {_storage._favoriteUuid ?? Rv_Data_UUID()}
+    set {_uniqueStorage()._favoriteUuid = newValue}
   }
   /// Returns true if `favoriteUuid` has been explicitly set.
-  public var hasFavoriteUuid: Bool {self._favoriteUuid != nil}
+  public var hasFavoriteUuid: Bool {_storage._favoriteUuid != nil}
   /// Clears the value of `favoriteUuid`. Subsequent reads from it will return its default value.
-  public mutating func clearFavoriteUuid() {self._favoriteUuid = nil}
+  public mutating func clearFavoriteUuid() {_uniqueStorage()._favoriteUuid = nil}
 
   public var effect: Rv_Data_Effect {
-    get {_effect ?? Rv_Data_Effect()}
-    set {_effect = newValue}
+    get {_storage._effect ?? Rv_Data_Effect()}
+    set {_uniqueStorage()._effect = newValue}
   }
   /// Returns true if `effect` has been explicitly set.
-  public var hasEffect: Bool {self._effect != nil}
+  public var hasEffect: Bool {_storage._effect != nil}
   /// Clears the value of `effect`. Subsequent reads from it will return its default value.
-  public mutating func clearEffect() {self._effect = nil}
+  public mutating func clearEffect() {_uniqueStorage()._effect = nil}
+
+  public var textAnimation: Rv_Data_Transition.TextAnimation {
+    get {_storage._textAnimation ?? Rv_Data_Transition.TextAnimation()}
+    set {_uniqueStorage()._textAnimation = newValue}
+  }
+  /// Returns true if `textAnimation` has been explicitly set.
+  public var hasTextAnimation: Bool {_storage._textAnimation != nil}
+  /// Clears the value of `textAnimation`. Subsequent reads from it will return its default value.
+  public mutating func clearTextAnimation() {_uniqueStorage()._textAnimation = nil}
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct TextAnimation: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var duration: Double = 0
+
+    public var favoriteUuid: Rv_Data_UUID {
+      get {_favoriteUuid ?? Rv_Data_UUID()}
+      set {_favoriteUuid = newValue}
+    }
+    /// Returns true if `favoriteUuid` has been explicitly set.
+    public var hasFavoriteUuid: Bool {self._favoriteUuid != nil}
+    /// Clears the value of `favoriteUuid`. Subsequent reads from it will return its default value.
+    public mutating func clearFavoriteUuid() {self._favoriteUuid = nil}
+
+    public var effect: Rv_Data_Effect {
+      get {_effect ?? Rv_Data_Effect()}
+      set {_effect = newValue}
+    }
+    /// Returns true if `effect` has been explicitly set.
+    public var hasEffect: Bool {self._effect != nil}
+    /// Clears the value of `effect`. Subsequent reads from it will return its default value.
+    public mutating func clearEffect() {self._effect = nil}
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _favoriteUuid: Rv_Data_UUID? = nil
+    fileprivate var _effect: Rv_Data_Effect? = nil
+  }
 
   public nonisolated struct Preset: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -372,8 +630,7 @@ public nonisolated struct Rv_Data_Transition: Sendable {
 
   public init() {}
 
-  fileprivate var _favoriteUuid: Rv_Data_UUID? = nil
-  fileprivate var _effect: Rv_Data_Effect? = nil
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -446,7 +703,7 @@ nonisolated extension Rv_Data_Effect: SwiftProtobuf.Message, SwiftProtobuf._Mess
 
 nonisolated extension Rv_Data_Effect.EffectVariable: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Effect.protoMessageName + ".EffectVariable"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}description\0\u{1}int\0\u{1}float\0\u{1}color\0\u{1}direction\0\u{1}double\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}description\0\u{1}int\0\u{1}float\0\u{1}color\0\u{1}direction\0\u{1}double\0\u{1}grouping\0\u{1}motion\0\u{3}motion_style\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -521,6 +778,45 @@ nonisolated extension Rv_Data_Effect.EffectVariable: SwiftProtobuf.Message, Swif
           self.type = .double(v)
         }
       }()
+      case 8: try {
+        var v: Rv_Data_Effect.EffectVariable.EffectGrouping?
+        var hadOneofValue = false
+        if let current = self.type {
+          hadOneofValue = true
+          if case .grouping(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.type = .grouping(v)
+        }
+      }()
+      case 9: try {
+        var v: Rv_Data_Effect.EffectVariable.EffectMotion?
+        var hadOneofValue = false
+        if let current = self.type {
+          hadOneofValue = true
+          if case .motion(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.type = .motion(v)
+        }
+      }()
+      case 10: try {
+        var v: Rv_Data_Effect.EffectVariable.EffectMotionStyle?
+        var hadOneofValue = false
+        if let current = self.type {
+          hadOneofValue = true
+          if case .motionStyle(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.type = .motionStyle(v)
+        }
+      }()
       default: break
       }
     }
@@ -557,6 +853,18 @@ nonisolated extension Rv_Data_Effect.EffectVariable: SwiftProtobuf.Message, Swif
     case .double?: try {
       guard case .double(let v)? = self.type else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+    }()
+    case .grouping?: try {
+      guard case .grouping(let v)? = self.type else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+    }()
+    case .motion?: try {
+      guard case .motion(let v)? = self.type else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+    }()
+    case .motionStyle?: try {
+      guard case .motionStyle(let v)? = self.type else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
     }()
     case nil: break
     }
@@ -790,6 +1098,138 @@ nonisolated extension Rv_Data_Effect.EffectVariable.EffectDirection.EffectDirect
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EFFECT_DIRECTION_NONE\0\u{1}EFFECT_DIRECTION_TOP_LEFT\0\u{1}EFFECT_DIRECTION_TOP\0\u{2}\u{2}EFFECT_DIRECTION_TOP_RIGHT\0\u{2}\u{4}EFFECT_DIRECTION_LEFT\0\u{2}\u{8}EFFECT_DIRECTION_CENTER\0\u{2}\u{10}EFFECT_DIRECTION_RIGHT\0\u{2} EFFECT_DIRECTION_BOTTOM_LEFT\0\u{2}@\u{1}EFFECT_DIRECTION_BOTTOM\0\u{2}@\u{2}EFFECT_DIRECTION_BOTTOM_RIGHT\0")
 }
 
+nonisolated extension Rv_Data_Effect.EffectVariable.EffectGrouping: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Effect.EffectVariable.protoMessageName + ".EffectGrouping"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}grouping\0\u{3}default_grouping\0\u{3}available_groupings\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.grouping) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.defaultGrouping) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.availableGroupings) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.grouping != .invalid {
+      try visitor.visitSingularEnumField(value: self.grouping, fieldNumber: 1)
+    }
+    if self.defaultGrouping != .invalid {
+      try visitor.visitSingularEnumField(value: self.defaultGrouping, fieldNumber: 2)
+    }
+    if self.availableGroupings != 0 {
+      try visitor.visitSingularUInt32Field(value: self.availableGroupings, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Effect.EffectVariable.EffectGrouping, rhs: Rv_Data_Effect.EffectVariable.EffectGrouping) -> Bool {
+    if lhs.grouping != rhs.grouping {return false}
+    if lhs.defaultGrouping != rhs.defaultGrouping {return false}
+    if lhs.availableGroupings != rhs.availableGroupings {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Effect.EffectVariable.EffectGrouping.EffectGrouping: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EFFECT_GROUPING_INVALID\0\u{1}EFFECT_GROUPING_CHARACTER\0\u{1}EFFECT_GROUPING_WORD\0\u{2}\u{2}EFFECT_GROUPING_LINE\0\u{2}\u{4}EFFECT_GROUPING_ALL\0")
+}
+
+nonisolated extension Rv_Data_Effect.EffectVariable.EffectMotion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Effect.EffectVariable.protoMessageName + ".EffectMotion"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}motion\0\u{3}default_motion\0\u{3}available_motions\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.motion) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.defaultMotion) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.availableMotions) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.motion != .invalid {
+      try visitor.visitSingularEnumField(value: self.motion, fieldNumber: 1)
+    }
+    if self.defaultMotion != .invalid {
+      try visitor.visitSingularEnumField(value: self.defaultMotion, fieldNumber: 2)
+    }
+    if self.availableMotions != 0 {
+      try visitor.visitSingularUInt32Field(value: self.availableMotions, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Effect.EffectVariable.EffectMotion, rhs: Rv_Data_Effect.EffectVariable.EffectMotion) -> Bool {
+    if lhs.motion != rhs.motion {return false}
+    if lhs.defaultMotion != rhs.defaultMotion {return false}
+    if lhs.availableMotions != rhs.availableMotions {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Effect.EffectVariable.EffectMotion.EffectMotion: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EFFECT_MOTION_INVALID\0\u{1}EFFECT_MOTION_NONE\0\u{1}EFFECT_MOTION_GROW\0\u{2}\u{2}EFFECT_MOTION_SHRINK\0\u{2}\u{4}EFFECT_MOTION_UP\0\u{2}\u{8}EFFECT_MOTION_DOWN\0")
+}
+
+nonisolated extension Rv_Data_Effect.EffectVariable.EffectMotionStyle: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Effect.EffectVariable.protoMessageName + ".EffectMotionStyle"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}motion_style\0\u{3}default_motion_style\0\u{3}available_motion_styles\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.motionStyle) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.defaultMotionStyle) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.availableMotionStyles) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.motionStyle != .invalid {
+      try visitor.visitSingularEnumField(value: self.motionStyle, fieldNumber: 1)
+    }
+    if self.defaultMotionStyle != .invalid {
+      try visitor.visitSingularEnumField(value: self.defaultMotionStyle, fieldNumber: 2)
+    }
+    if self.availableMotionStyles != 0 {
+      try visitor.visitSingularUInt32Field(value: self.availableMotionStyles, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Effect.EffectVariable.EffectMotionStyle, rhs: Rv_Data_Effect.EffectVariable.EffectMotionStyle) -> Bool {
+    if lhs.motionStyle != rhs.motionStyle {return false}
+    if lhs.defaultMotionStyle != rhs.defaultMotionStyle {return false}
+    if lhs.availableMotionStyles != rhs.availableMotionStyles {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Effect.EffectVariable.EffectMotionStyle.EffectMotionStyle: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EFFECT_MOTION_STYLE_INVALID\0\u{1}EFFECT_MOTION_STYLE_SUBTLE\0\u{1}EFFECT_MOTION_STYLE_STANDARD\0\u{2}\u{2}EFFECT_MOTION_STYLE_DRAMATIC\0")
+}
+
 nonisolated extension Rv_Data_Effect.Preset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Effect.protoMessageName + ".Preset"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}effects\0")
@@ -836,6 +1276,97 @@ nonisolated extension Rv_Data_Effect.Preset: SwiftProtobuf.Message, SwiftProtobu
 
 nonisolated extension Rv_Data_Transition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Transition"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}duration\0\u{3}favorite_uuid\0\u{1}effect\0\u{3}text_animation\0")
+
+  fileprivate class _StorageClass {
+    var _duration: Double = 0
+    var _favoriteUuid: Rv_Data_UUID? = nil
+    var _effect: Rv_Data_Effect? = nil
+    var _textAnimation: Rv_Data_Transition.TextAnimation? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _duration = source._duration
+      _favoriteUuid = source._favoriteUuid
+      _effect = source._effect
+      _textAnimation = source._textAnimation
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularDoubleField(value: &_storage._duration) }()
+        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._favoriteUuid) }()
+        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._effect) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._textAnimation) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      if _storage._duration.bitPattern != 0 {
+        try visitor.visitSingularDoubleField(value: _storage._duration, fieldNumber: 1)
+      }
+      try { if let v = _storage._favoriteUuid {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      } }()
+      try { if let v = _storage._effect {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      } }()
+      try { if let v = _storage._textAnimation {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      } }()
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Transition, rhs: Rv_Data_Transition) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._duration != rhs_storage._duration {return false}
+        if _storage._favoriteUuid != rhs_storage._favoriteUuid {return false}
+        if _storage._effect != rhs_storage._effect {return false}
+        if _storage._textAnimation != rhs_storage._textAnimation {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Transition.TextAnimation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Transition.protoMessageName + ".TextAnimation"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}duration\0\u{3}favorite_uuid\0\u{1}effect\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -869,7 +1400,7 @@ nonisolated extension Rv_Data_Transition: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Rv_Data_Transition, rhs: Rv_Data_Transition) -> Bool {
+  public static func ==(lhs: Rv_Data_Transition.TextAnimation, rhs: Rv_Data_Transition.TextAnimation) -> Bool {
     if lhs.duration != rhs.duration {return false}
     if lhs._favoriteUuid != rhs._favoriteUuid {return false}
     if lhs._effect != rhs._effect {return false}

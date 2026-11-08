@@ -8,6 +8,8 @@ import "alphaType.proto";
 
 import "color.proto";
 
+import "contentProvider.proto";
+
 import "customOptions.proto";
 
 import "digitalAudio.proto";
@@ -636,11 +638,13 @@ message Media {
     rv.data.Media.AudioProperties audio = 1;
     rv.data.Media.TransportProperties transport = 2;
     rv.data.FileProperties file = 3;
+    rv.data.SourceInfo source = 4;
   }
 
   message ImageTypeProperties {
     rv.data.Media.DrawingProperties drawing = 1;
     rv.data.FileProperties file = 2;
+    rv.data.SourceInfo source = 3;
   }
 
   message VideoTypeProperties {
@@ -649,6 +653,7 @@ message Media {
     rv.data.Media.TransportProperties transport = 3;
     rv.data.Media.VideoProperties video = 4;
     rv.data.FileProperties file = 5;
+    rv.data.SourceInfo source = 6;
   }
 
   message LiveVideoTypeProperties {
@@ -662,15 +667,28 @@ message Media {
     rv.data.URL url = 2;
   }
 
+  message HlsStreamTypeProperties {
+    rv.data.Media.DrawingProperties drawing = 1;
+    rv.data.Media.AudioProperties audio = 2;
+    rv.data.Media.TransportProperties transport = 3;
+    rv.data.Media.VideoProperties video = 4;
+    string url = 5;
+  }
+
   oneof TypeProperties {
     rv.data.Media.AudioTypeProperties audio = 4;
     rv.data.Media.ImageTypeProperties image = 5;
     rv.data.Media.VideoTypeProperties video = 6;
     rv.data.Media.LiveVideoTypeProperties live_video = 7;
     rv.data.Media.WebContentTypeProperties web_content = 8;
+    rv.data.Media.HlsStreamTypeProperties hls_stream = 12;
   }
 
   rv.data.UUID uuid = 1;
+  rv.data.UUID asset_id = 10;
+  string identity_schema_version = 11;
+  string container_id = 9;
   rv.data.URL url = 2;
   rv.data.Media.Metadata metadata = 3;
+  rv.data.ProviderInfo provider = 13;
 }

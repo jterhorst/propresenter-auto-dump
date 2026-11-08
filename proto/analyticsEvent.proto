@@ -14,6 +14,8 @@ import "analyticsImport.proto";
 
 import "analyticsLogs.proto";
 
+import "analyticsMigration.proto";
+
 import "analyticsMediaManagement.proto";
 
 import "analyticsMultiTracks.proto";
@@ -151,6 +153,7 @@ message Event {
     rv.analytics.mediamanagement.ConnectionChanged media_management_connection_changed = 144;
     rv.analytics.mediamanagement.AddedMediaReference media_management_added_media_reference = 145;
     rv.analytics.mediamanagement.NotResponding media_management_not_responding = 146;
+    rv.analytics.mediamanagement.MediaStateResyncGaveUp media_management_media_state_resync_gave_up = 147;
     rv.analytics.ui.QuickSearchShown ui_quicksearch = 200;
     rv.analytics.ui.QuickSearchSearch ui_quicksearch_search = 201;
     rv.analytics.ui.QuickSearchOpenItems ui_quicksearch_openitems = 202;
@@ -263,9 +266,28 @@ message Event {
     rv.analytics.logs.LogWorkspaceResynchronized log_workspace_resynchronized = 311;
     rv.analytics.sync.WebSocketConnectionFailed log_ws_connection_failed = 312;
     rv.analytics.logs.LogError log_error = 313;
-    rv.analytics.trackedevents.UserWorkspaceTreeModification user_workspace_tree_modification = 314;
     rv.analytics.ui.ActivationFlowOpened ui_activation_flow_opened = 315;
     rv.analytics.logs.LogOpenedWorkspace log_opened_workspace = 316;
+    rv.analytics.logs.LogDiffBuffered log_diff_buffered = 317;
+    rv.analytics.procontent.StickersOpened ui_stickers_opened = 318;
+    rv.analytics.procontent.StickerApplied sticker_applied = 319;
+    rv.analytics.procontent.StickerModified sticker_modified = 320;
+    rv.analytics.ui.ProDisplayExportClicked ui_export_prodisplay = 321;
+    rv.analytics.ui.ProDisplayExport export_prodisplay = 322;
+    rv.analytics.trigger.media.MediaStream trigger_media_stream = 323;
+    rv.analytics.migration.ClassBCutover class_b_cutover = 324;
+    rv.analytics.migration.ClassBCutoverDocumentIssue class_b_cutover_document_issue = 325;
+    rv.analytics.trackedevents.MediaStreamUrlValidated media_stream_url_validated = 326;
+    rv.analytics.startup.APlay startup_aplay = 327;
+    rv.analytics.import.APlayServiceImport aplay_service_import = 328;
+    rv.analytics.import.APlayServiceRefresh aplay_service_refresh = 329;
+    rv.analytics.migration.LegacyWorkspaceMigration legacy_workspace_migration = 330;
+    rv.analytics.migration.LegacyWorkspaceMigrationLaunch legacy_workspace_migration_launch = 333;
+    rv.analytics.sync.DocumentSyncRateLimited document_sync_rate_limited = 331;
+    rv.analytics.migration.LegacyWorkspaceImport legacy_workspace_import = 332;
+    rv.analytics.trackedevents.CloudWorkspaceTransfer cloud_workspace_transfer = 334;
+    rv.analytics.sync.StoredVersionVectorRepaired stored_version_vector_repaired = 335;
+    rv.analytics.mediamanagement.UnreadableMediaHeld unreadable_media_held = 336;
   }
 
 }

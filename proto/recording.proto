@@ -21,10 +21,21 @@ message Recording {
     rv.data.Recording.Preset active_preset = 3;
   }
 
+  message SettingsLocalDocument {
+    repeated rv.data.Recording.LocalPreset presets = 1;
+    rv.data.Recording.Preset active_preset = 2;
+    rv.data.Recording.LocalPreset active_local_preset = 3;
+  }
+
   message Preset {
     rv.data.UUID id = 1;
     string name = 2;
     repeated rv.data.Recording.Stream streams = 3;
+  }
+
+  message LocalPreset {
+    rv.data.UUID id = 1;
+    repeated rv.data.Recording.LocalStream streams = 2;
   }
 
   message Stream {
@@ -112,6 +123,24 @@ message Recording {
     repeated rv.data.Recording.Stream.Destination destinations = 4;
     repeated rv.data.DigitalAudio.Device.Map audio_map = 5;
     bool isAudioCustomMapped = 6;
+  }
+
+  message LocalStream {
+    message LocalDiskDestination {
+      rv.data.URL location = 1;
+    }
+
+    message LocalDestination {
+      oneof Destination {
+        rv.data.Recording.LocalStream.LocalDiskDestination disk = 1;
+      }
+
+    }
+
+    rv.data.UUID id = 1;
+    repeated rv.data.Recording.LocalStream.LocalDestination destinations = 2;
+    repeated rv.data.DigitalAudio.Device.Map audio_map = 3;
+    bool isAudioCustomMapped = 4;
   }
 
 }

@@ -25,16 +25,16 @@ public nonisolated struct Workspace_Local_Metadata: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var uuid: String {
-    get {_uuid ?? String()}
-    set {_uuid = newValue}
+  public var cloudUuid: String {
+    get {_cloudUuid ?? String()}
+    set {_cloudUuid = newValue}
   }
-  /// Returns true if `uuid` has been explicitly set.
-  public var hasUuid: Bool {self._uuid != nil}
-  /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
-  public mutating func clearUuid() {self._uuid = nil}
+  /// Returns true if `cloudUuid` has been explicitly set.
+  public var hasCloudUuid: Bool {self._cloudUuid != nil}
+  /// Clears the value of `cloudUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearCloudUuid() {self._cloudUuid = nil}
 
-  public var proVersion: String = String()
+  public var schemaVersion: String = String()
 
   public var name: String = String()
 
@@ -44,7 +44,7 @@ public nonisolated struct Workspace_Local_Metadata: Sendable {
 
   public init() {}
 
-  fileprivate var _uuid: String? = nil
+  fileprivate var _cloudUuid: String? = nil
 }
 
 public nonisolated struct Workspace_Local_Workspace: Sendable {
@@ -84,7 +84,7 @@ fileprivate nonisolated let _protobuf_package = "workspace.local"
 
 nonisolated extension Workspace_Local_Metadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Metadata"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}pro_version\0\u{1}name\0\u{1}path\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}cloud_uuid\0\u{3}schema_version\0\u{1}name\0\u{1}path\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -92,8 +92,8 @@ nonisolated extension Workspace_Local_Metadata: SwiftProtobuf.Message, SwiftProt
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self._uuid) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self.proVersion) }()
+      case 1: try { try decoder.decodeSingularStringField(value: &self._cloudUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.schemaVersion) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.name) }()
       case 4: try { try decoder.decodeSingularStringField(value: &self.path) }()
       default: break
@@ -106,11 +106,11 @@ nonisolated extension Workspace_Local_Metadata: SwiftProtobuf.Message, SwiftProt
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
     // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._uuid {
+    try { if let v = self._cloudUuid {
       try visitor.visitSingularStringField(value: v, fieldNumber: 1)
     } }()
-    if !self.proVersion.isEmpty {
-      try visitor.visitSingularStringField(value: self.proVersion, fieldNumber: 2)
+    if !self.schemaVersion.isEmpty {
+      try visitor.visitSingularStringField(value: self.schemaVersion, fieldNumber: 2)
     }
     if !self.name.isEmpty {
       try visitor.visitSingularStringField(value: self.name, fieldNumber: 3)
@@ -122,8 +122,8 @@ nonisolated extension Workspace_Local_Metadata: SwiftProtobuf.Message, SwiftProt
   }
 
   public static func ==(lhs: Workspace_Local_Metadata, rhs: Workspace_Local_Metadata) -> Bool {
-    if lhs._uuid != rhs._uuid {return false}
-    if lhs.proVersion != rhs.proVersion {return false}
+    if lhs._cloudUuid != rhs._cloudUuid {return false}
+    if lhs.schemaVersion != rhs.schemaVersion {return false}
     if lhs.name != rhs.name {return false}
     if lhs.path != rhs.path {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

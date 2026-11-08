@@ -1,0 +1,312 @@
+syntax = "proto3";
+
+
+package rv.analytics.migration;
+
+
+enum ClassBCutoverScope {
+  CLASS_B_CUTOVER_SCOPE_UNSPECIFIED = 0;
+  CLASS_B_CUTOVER_SCOPE_PLAYLIST_TREE = 1;
+  CLASS_B_CUTOVER_SCOPE_PRESENTATION_PLACEMENT = 2;
+  CLASS_B_CUTOVER_SCOPE_WORKSPACE = 3;
+}
+
+enum ClassBCutoverPath {
+  CLASS_B_CUTOVER_PATH_UNSPECIFIED = 0;
+  CLASS_B_CUTOVER_PATH_ACTIVATION = 1;
+  CLASS_B_CUTOVER_PATH_LIVE_RETRY = 2;
+}
+
+enum ClassBCutoverOutcome {
+  CLASS_B_CUTOVER_OUTCOME_UNSPECIFIED = 0;
+  CLASS_B_CUTOVER_OUTCOME_WON = 1;
+  CLASS_B_CUTOVER_OUTCOME_ADOPTED_AFTER_LOSS = 2;
+  CLASS_B_CUTOVER_OUTCOME_ADOPTED_ALREADY_CANONICAL = 3;
+  CLASS_B_CUTOVER_OUTCOME_CONVERGED_NO_ELECTION = 4;
+  CLASS_B_CUTOVER_OUTCOME_WAITING_OTHER_ATTEMPT = 5;
+  CLASS_B_CUTOVER_OUTCOME_PREDECESSOR_PENDING = 6;
+  CLASS_B_CUTOVER_OUTCOME_WRONG_TARGET = 7;
+  CLASS_B_CUTOVER_OUTCOME_UNBASED = 8;
+  CLASS_B_CUTOVER_OUTCOME_FAILED = 9;
+}
+
+enum ClassBCutoverFailureStage {
+  CLASS_B_CUTOVER_FAILURE_STAGE_UNSPECIFIED = 0;
+  CLASS_B_CUTOVER_FAILURE_STAGE_INSPECTION = 1;
+  CLASS_B_CUTOVER_FAILURE_STAGE_RUN = 2;
+}
+
+enum ClassBCutoverFailureKind {
+  CLASS_B_CUTOVER_FAILURE_KIND_UNSPECIFIED = 0;
+  CLASS_B_CUTOVER_FAILURE_KIND_RELAY_UNAUTHENTICATED = 1;
+  CLASS_B_CUTOVER_FAILURE_KIND_RELAY_TRANSPORT = 2;
+  CLASS_B_CUTOVER_FAILURE_KIND_RELAY_REFUSED = 3;
+  CLASS_B_CUTOVER_FAILURE_KIND_RELAY_MALFORMED = 4;
+  CLASS_B_CUTOVER_FAILURE_KIND_SNAPSHOT = 5;
+  CLASS_B_CUTOVER_FAILURE_KIND_REPOSITORY = 6;
+  CLASS_B_CUTOVER_FAILURE_KIND_INCONSISTENCY = 7;
+  CLASS_B_CUTOVER_FAILURE_KIND_STORE_MOVED = 8;
+  CLASS_B_CUTOVER_FAILURE_KIND_TASK = 9;
+  CLASS_B_CUTOVER_FAILURE_KIND_OTHER = 10;
+}
+
+enum BoundaryAbsence {
+  BOUNDARY_ABSENCE_NONE = 0;
+  BOUNDARY_ABSENCE_NEVER_RECORDED = 1;
+  BOUNDARY_ABSENCE_CUTOVER_CLEARED = 2;
+  BOUNDARY_ABSENCE_NEVER_SHARED = 3;
+  BOUNDARY_ABSENCE_LOST = 4;
+}
+
+enum UnbasedReason {
+  UNBASED_REASON_NONE = 0;
+  UNBASED_REASON_NO_BOUNDARY_AND_BEHIND_HEAD = 1;
+  UNBASED_REASON_REPLICA_PRESENTED_NO_TREE = 2;
+}
+
+enum LegacyWorkspaceCopyMethod {
+  LEGACY_WORKSPACE_COPY_METHOD_UNSPECIFIED = 0;
+  LEGACY_WORKSPACE_COPY_METHOD_CLONE = 1;
+  LEGACY_WORKSPACE_COPY_METHOD_COPY = 2;
+  LEGACY_WORKSPACE_COPY_METHOD_LINK = 3;
+  LEGACY_WORKSPACE_COPY_METHOD_IN_PLACE = 4;
+}
+
+enum LegacyWorkspaceMigrationOutcome {
+  LEGACY_WORKSPACE_MIGRATION_OUTCOME_UNSPECIFIED = 0;
+  LEGACY_WORKSPACE_MIGRATION_OUTCOME_SUCCEEDED = 1;
+  LEGACY_WORKSPACE_MIGRATION_OUTCOME_SUCCEEDED_WITH_FAILURES = 2;
+  LEGACY_WORKSPACE_MIGRATION_OUTCOME_FAILED = 3;
+}
+
+enum LegacyWorkspaceMigrationStage {
+  LEGACY_WORKSPACE_MIGRATION_STAGE_UNSPECIFIED = 0;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_REGISTRY_IMPORT = 1;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_WORKSPACE_FOLDER_MISSING = 2;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_WORKSPACE_MOVE = 3;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_MEDIA_WORKSPACE_SELECTION = 4;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_DOCUMENT_CONVERSION = 5;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_DOCUMENT_STAGING = 6;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_CUTOVER_STATUS = 7;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_MEDIA_IDENTITY_MIGRATION = 8;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_MEDIA_REFERENCE_ACTIVATION = 9;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_SCHEMA_GATE = 10;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_SYNC_ACTIVATION = 11;
+  LEGACY_WORKSPACE_MIGRATION_STAGE_HYDRATION = 12;
+}
+
+enum LegacyWorkspaceMigrationFailedKind {
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_UNSPECIFIED = 0;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_PRESENTATIONS = 1;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_THEMES = 2;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_EFFECTS_AND_TRANSITIONS = 3;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_MEDIA_FILES = 4;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_LIBRARIES = 5;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_LIBRARY_ORDER = 6;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_PRESENTATION_PLAYLISTS = 7;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_MEDIA_PLAYLISTS = 8;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_AUDIO_PLAYLISTS = 9;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_PLAYLIST_TEMPLATES = 10;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_MACROS = 11;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_PROPS = 12;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_STAGE_LAYOUTS = 13;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_MESSAGES = 14;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_TIMERS = 15;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_CALENDAR = 16;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_KEYBOARD_SHORTCUTS = 17;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_COMMUNICATION_DEVICES = 18;
+  LEGACY_WORKSPACE_MIGRATION_FAILED_KIND_WORKSPACE_SETTINGS = 19;
+}
+
+enum LegacyWorkspaceImportOutcome {
+  LEGACY_WORKSPACE_IMPORT_OUTCOME_UNSPECIFIED = 0;
+  LEGACY_WORKSPACE_IMPORT_OUTCOME_SUCCEEDED = 1;
+  LEGACY_WORKSPACE_IMPORT_OUTCOME_FAILED = 2;
+}
+
+enum LegacyWorkspaceImportPhase {
+  LEGACY_WORKSPACE_IMPORT_PHASE_UNSPECIFIED = 0;
+  LEGACY_WORKSPACE_IMPORT_PHASE_INVENTORY = 1;
+  LEGACY_WORKSPACE_IMPORT_PHASE_DOCUMENTS = 2;
+  LEGACY_WORKSPACE_IMPORT_PHASE_MEDIA = 3;
+  LEGACY_WORKSPACE_IMPORT_PHASE_VALIDATION = 4;
+  LEGACY_WORKSPACE_IMPORT_PHASE_PUBLICATION = 5;
+}
+
+enum LegacyMigrationAnswer {
+  LEGACY_MIGRATION_ANSWER_UNSPECIFIED = 0;
+  LEGACY_MIGRATION_ANSWER_NOT_ASKED = 1;
+  LEGACY_MIGRATION_ANSWER_UPGRADE = 2;
+  LEGACY_MIGRATION_ANSWER_NEW_WORKSPACE = 3;
+}
+
+message DispositionCounts {
+  uint32 unbased = 1;
+  uint32 unapplied_missing_provenance = 2;
+  uint32 unapplied_container_conflict = 3;
+  uint32 resolved_move_placement_unavailable = 4;
+  uint32 resolved_list_order_arbitrated = 5;
+  uint32 resolved_paired_insert_arbitrated = 6;
+  uint32 resolved_preconversion_deletion_reconstructed = 7;
+  uint32 resolved_absent_item_materialized = 8;
+  uint32 provenance_failures = 9;
+  uint32 missing_provenance_no_index = 10;
+  uint32 missing_provenance_client_only = 11;
+  uint32 missing_provenance_target_only = 12;
+  uint32 missing_provenance_neither = 13;
+}
+
+message BoundaryCounts {
+  uint32 none = 1;
+  uint32 never_recorded = 2;
+  uint32 cutover_cleared = 3;
+  uint32 never_shared = 4;
+  uint32 lost = 5;
+}
+
+message UnbasedReasonCounts {
+  uint32 no_boundary_and_behind_head = 1;
+  uint32 replica_presented_no_tree = 2;
+}
+
+message PlaylistConversionCounts {
+  uint32 documents = 1;
+  uint32 groups = 2;
+  uint32 playlists = 3;
+  uint32 items = 4;
+}
+
+message PresentationProjectionIssueCounts {
+  uint32 malformed_value = 1;
+  uint32 missing_group_identity = 2;
+  uint32 duplicate_group_identity = 3;
+  uint32 within_group_duplicate = 4;
+  uint32 cross_group_claim = 5;
+  uint32 phantom_cue = 6;
+  uint32 orphan_cue = 7;
+  uint32 empty_group = 8;
+  uint32 stale_arrangement_group = 9;
+  uint32 recovered_arrangement_identity = 10;
+  uint32 residual_legacy_only_membership = 11;
+  uint32 uuid_spelling_conflict = 12;
+  uint32 cue_identity_collision = 13;
+  uint32 recovery_identity_collision = 14;
+}
+
+message PresentationConversionCounts {
+  uint32 documents = 1;
+  uint32 cue_group_placements = 2;
+  uint32 cue_placements = 3;
+  uint32 arrangements = 4;
+  uint32 recovery_groups = 5;
+  uint32 recovered_cue_bodies = 6;
+  uint32 projection_issues = 7;
+  rv.analytics.migration.PresentationProjectionIssueCounts issue_counts = 8;
+}
+
+message ClassBCutover {
+  string workspace_identifier = 1;
+  rv.analytics.migration.ClassBCutoverScope scope = 2;
+  string target_schema_version = 3;
+  rv.analytics.migration.ClassBCutoverPath path = 4;
+  rv.analytics.migration.ClassBCutoverOutcome outcome = 5;
+  rv.analytics.migration.ClassBCutoverFailureStage failure_stage = 6;
+  uint32 documents_considered = 7;
+  uint32 documents_installed = 8;
+  uint32 documents_already_target = 9;
+  uint32 documents_clean = 10;
+  uint32 issue_documents_total = 11;
+  uint32 issue_documents_emitted = 12;
+  uint32 issue_documents_suppressed = 13;
+  uint32 documents_with_reported_edits = 14;
+  uint32 documents_unbased = 15;
+  uint32 recovered_items = 16;
+  rv.analytics.migration.DispositionCounts dispositions = 20;
+  rv.analytics.migration.BoundaryCounts boundaries = 21;
+  rv.analytics.migration.UnbasedReasonCounts unbased_reasons = 22;
+  rv.analytics.migration.PlaylistConversionCounts playlist = 23;
+  rv.analytics.migration.PresentationConversionCounts presentation = 24;
+  uint32 documents_playlist = 25;
+  uint32 documents_presentation = 26;
+  rv.analytics.migration.ClassBCutoverFailureKind failure_kind = 27;
+}
+
+message ClassBCutoverDocumentIssue {
+  string workspace_identifier = 1;
+  string document_identifier = 2;
+  rv.analytics.migration.ClassBCutoverScope scope = 3;
+  string target_schema_version = 4;
+  rv.analytics.migration.ClassBCutoverPath path = 5;
+  rv.analytics.migration.ClassBCutoverOutcome outcome = 6;
+  rv.analytics.migration.BoundaryAbsence boundary_absence = 7;
+  rv.analytics.migration.UnbasedReason unbased_reason = 8;
+  uint32 recovered_items = 9;
+  rv.analytics.migration.DispositionCounts dispositions = 10;
+  rv.analytics.migration.PlaylistConversionCounts playlist = 11;
+  rv.analytics.migration.PresentationConversionCounts presentation = 12;
+}
+
+message LegacyWorkspaceMigrationCounts {
+  uint32 presentations = 1;
+  uint32 themes = 2;
+  uint32 presentation_playlists = 3;
+  uint32 media_playlists = 4;
+  uint32 audio_playlists = 5;
+  uint32 media_assets = 6;
+  uint32 other_documents = 7;
+}
+
+message LegacyWorkspaceMigration {
+  string workspace_identifier = 1;
+  rv.analytics.migration.LegacyWorkspaceMigrationOutcome outcome = 2;
+  rv.analytics.migration.LegacyWorkspaceMigrationStage failure_stage = 3;
+  string error = 4;
+  uint32 legacy_documents = 5;
+  rv.analytics.migration.LegacyWorkspaceMigrationCounts migrated = 6;
+  rv.analytics.migration.LegacyWorkspaceMigrationCounts failed = 7;
+  uint32 elapsed_millis = 8;
+  uint32 media_references = 9;
+  uint32 missing_media_in_workspace = 10;
+  uint32 already_converted = 11;
+  uint32 missing_media_elsewhere = 12;
+  string error_signature = 13;
+  uint32 failed_media_references = 14;
+  rv.analytics.migration.LegacyWorkspaceCopyMethod copy_method = 15;
+  uint64 bytes_copied = 16;
+  uint32 files_linked = 17;
+  uint32 copy_millis = 18;
+  string hardware_id = 19;
+  repeated rv.analytics.migration.LegacyWorkspaceMigrationFailedKind failed_kinds = 20;
+  bool media_counted = 21;
+  uint32 failed_media_without_location = 22;
+  uint32 failed_media_unresolvable_path = 23;
+  uint32 failed_media_document_relative = 24;
+  uint32 failed_media_in_legacy_folder = 25;
+  uint32 failed_media_uncopied = 26;
+  uint32 failed_media_ambiguous_binding = 27;
+}
+
+message LegacyWorkspaceImport {
+  string workspace_identifier = 1;
+  rv.analytics.migration.LegacyWorkspaceImportOutcome outcome = 2;
+  rv.analytics.migration.LegacyWorkspaceImportPhase phase = 3;
+  string error = 4;
+  string error_signature = 5;
+  uint64 required_bytes = 6;
+  uint64 available_bytes = 7;
+  uint32 abandoned_stages_removed = 8;
+  uint64 abandoned_stage_bytes_removed = 9;
+  uint32 abandoned_stages_skipped = 10;
+  uint32 abandoned_stages_failed = 11;
+  bool stage_left_behind = 12;
+  string hardware_id = 13;
+}
+
+message LegacyWorkspaceMigrationLaunch {
+  rv.analytics.migration.LegacyMigrationAnswer answer = 1;
+  bool handed_off = 2;
+  bool registry_migrated = 3;
+  uint32 offered_local_workspaces = 4;
+  bool offered_selection = 5;
+  string hardware_id = 6;
+}

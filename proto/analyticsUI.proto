@@ -641,3 +641,37 @@ message ActivationFlowOpened {
 
   rv.analytics.ui.ActivationFlowOpened.Source source = 1;
 }
+
+message ProDisplayExportClicked {
+  int32 presentation_count = 1;
+}
+
+message ProDisplayExport {
+  enum Result {
+    RESULT_UNKNOWN = 0;
+    SUCCESS = 1;
+    FAILURE = 2;
+    CANCELLED = 3;
+  }
+
+  enum FailureReason {
+    FAILURE_REASON_UNKNOWN = 0;
+    AUTH = 1;
+    OTHER = 2;
+  }
+
+  enum ContentType {
+    CONTENT_TYPE_UNKNOWN = 0;
+    STATIC_SLIDE = 1;
+    VIDEO = 2;
+    MIXED = 3;
+  }
+
+  rv.analytics.ui.ProDisplayExport.Result result = 1;
+  rv.analytics.ui.ProDisplayExport.FailureReason failure_reason = 2;
+  int32 presentation_count = 3;
+  rv.analytics.ui.ProDisplayExport.ContentType content_type = 4;
+  bool tag_applied = 5;
+  int32 duration_ms = 6;
+  int32 attempt = 7;
+}

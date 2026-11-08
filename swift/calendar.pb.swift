@@ -71,6 +71,8 @@ public nonisolated struct Rv_Data_Calendar: Sendable {
 
     public var recurrenceExcludedDates: [Rv_Data_Timestamp] = []
 
+    public var recurrenceExcludedDatesV2: [Rv_Data_Timestamp] = []
+
     public var action: Rv_Data_Calendar.Event.Action {
       get {_action ?? Rv_Data_Calendar.Event.Action()}
       set {_action = newValue}
@@ -293,7 +295,7 @@ nonisolated extension Rv_Data_Calendar: SwiftProtobuf.Message, SwiftProtobuf._Me
 
 nonisolated extension Rv_Data_Calendar.Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Calendar.protoMessageName + ".Event"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}description\0\u{1}date\0\u{3}recurrence_days\0\u{3}recurrence_limit_date\0\u{3}recurrence_excluded_dates\0\u{1}action\0\u{1}actions\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}description\0\u{1}date\0\u{3}recurrence_days\0\u{3}recurrence_limit_date\0\u{3}recurrence_excluded_dates\0\u{1}action\0\u{1}actions\0\u{3}recurrence_excluded_dates_v2\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -310,6 +312,7 @@ nonisolated extension Rv_Data_Calendar.Event: SwiftProtobuf.Message, SwiftProtob
       case 7: try { try decoder.decodeRepeatedMessageField(value: &self.recurrenceExcludedDates) }()
       case 8: try { try decoder.decodeSingularMessageField(value: &self._action) }()
       case 9: try { try decoder.decodeRepeatedMessageField(value: &self.actions) }()
+      case 10: try { try decoder.decodeRepeatedMessageField(value: &self.recurrenceExcludedDatesV2) }()
       default: break
       }
     }
@@ -347,6 +350,9 @@ nonisolated extension Rv_Data_Calendar.Event: SwiftProtobuf.Message, SwiftProtob
     if !self.actions.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.actions, fieldNumber: 9)
     }
+    if !self.recurrenceExcludedDatesV2.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.recurrenceExcludedDatesV2, fieldNumber: 10)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -358,6 +364,7 @@ nonisolated extension Rv_Data_Calendar.Event: SwiftProtobuf.Message, SwiftProtob
     if lhs.recurrenceDays != rhs.recurrenceDays {return false}
     if lhs._recurrenceLimitDate != rhs._recurrenceLimitDate {return false}
     if lhs.recurrenceExcludedDates != rhs.recurrenceExcludedDates {return false}
+    if lhs.recurrenceExcludedDatesV2 != rhs.recurrenceExcludedDatesV2 {return false}
     if lhs._action != rhs._action {return false}
     if lhs.actions != rhs.actions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

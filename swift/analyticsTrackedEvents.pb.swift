@@ -1660,117 +1660,323 @@ public nonisolated struct Rv_Analytics_Trackedevents_SyncingUnpaused: Sendable {
   public init() {}
 }
 
-public nonisolated struct Rv_Analytics_Trackedevents_UserWorkspaceTreeModification: Sendable {
+public nonisolated struct Rv_Analytics_Trackedevents_MediaStreamUrlValidated: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var bucket: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Bucket = .other
-
-  public var operation: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Operation = .modified
+  public var result: Rv_Analytics_Trackedevents_MediaStreamUrlValidated.Result = .unspecified
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public nonisolated enum Bucket: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public nonisolated enum Result: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
-    case other // = 0
-    case libraries // = 1
-    case themes // = 2
-    case playlists // = 3
-    case playlistTemplates // = 4
-    case configuration // = 5
-    case media // = 6
-    case presets // = 7
-    case downloads // = 8
+    case unspecified // = 0
+    case acceptedOnDemand // = 1
+    case acceptedLive // = 2
+    case rejected // = 3
     case UNRECOGNIZED(Int)
 
     public init() {
-      self = .other
+      self = .unspecified
     }
 
     public init?(rawValue: Int) {
       switch rawValue {
-      case 0: self = .other
-      case 1: self = .libraries
-      case 2: self = .themes
-      case 3: self = .playlists
-      case 4: self = .playlistTemplates
-      case 5: self = .configuration
-      case 6: self = .media
-      case 7: self = .presets
-      case 8: self = .downloads
+      case 0: self = .unspecified
+      case 1: self = .acceptedOnDemand
+      case 2: self = .acceptedLive
+      case 3: self = .rejected
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
 
     public var rawValue: Int {
       switch self {
-      case .other: return 0
-      case .libraries: return 1
-      case .themes: return 2
-      case .playlists: return 3
-      case .playlistTemplates: return 4
-      case .configuration: return 5
-      case .media: return 6
-      case .presets: return 7
-      case .downloads: return 8
+      case .unspecified: return 0
+      case .acceptedOnDemand: return 1
+      case .acceptedLive: return 2
+      case .rejected: return 3
       case .UNRECOGNIZED(let i): return i
       }
     }
 
     // The compiler won't synthesize support with the UNRECOGNIZED case.
-    public static let allCases: [Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Bucket] = [
-      .other,
-      .libraries,
-      .themes,
-      .playlists,
-      .playlistTemplates,
-      .configuration,
-      .media,
-      .presets,
-      .downloads,
+    public static let allCases: [Rv_Analytics_Trackedevents_MediaStreamUrlValidated.Result] = [
+      .unspecified,
+      .acceptedOnDemand,
+      .acceptedLive,
+      .rejected,
     ]
 
   }
 
-  public nonisolated enum Operation: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public init() {}
+}
+
+public nonisolated struct Rv_Analytics_Trackedevents_CloudWorkspaceTransfer: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var direction: Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.Direction = .unspecified
+
+  public var entryPoint: Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.EntryPoint = .unspecified
+
+  public var outcome: Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.Outcome = .unspecified
+
+  public var step: Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.Step = .unspecified
+
+  public var coreErrorCode: Int32 = 0
+
+  public var httpStatus: UInt32 = 0
+
+  public var durationMs: UInt64 = 0
+
+  public var clientReason: Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.ClientReason = .none
+
+  public var unavailableSmartPlaylistMedia: UInt32 = 0
+
+  public var missingSmartPlaylistMedia: UInt32 = 0
+
+  public var unavailableSmartPlaylists: UInt32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Direction: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
-    case modified // = 0
-    case created // = 1
-    case renamed // = 2
-    case removed // = 3
+    case unspecified // = 0
+    case publish // = 1
+    case download // = 2
     case UNRECOGNIZED(Int)
 
     public init() {
-      self = .modified
+      self = .unspecified
     }
 
     public init?(rawValue: Int) {
       switch rawValue {
-      case 0: self = .modified
-      case 1: self = .created
-      case 2: self = .renamed
-      case 3: self = .removed
+      case 0: self = .unspecified
+      case 1: self = .publish
+      case 2: self = .download
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
 
     public var rawValue: Int {
       switch self {
-      case .modified: return 0
-      case .created: return 1
-      case .renamed: return 2
-      case .removed: return 3
+      case .unspecified: return 0
+      case .publish: return 1
+      case .download: return 2
       case .UNRECOGNIZED(let i): return i
       }
     }
 
     // The compiler won't synthesize support with the UNRECOGNIZED case.
-    public static let allCases: [Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Operation] = [
-      .modified,
-      .created,
-      .renamed,
-      .removed,
+    public static let allCases: [Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.Direction] = [
+      .unspecified,
+      .publish,
+      .download,
+    ]
+
+  }
+
+  public nonisolated enum EntryPoint: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case cloudOnboarding // = 1
+    case welcome // = 2
+    case manageWorkspaces // = 3
+    case generalSettings // = 4
+    case statusToolbar // = 5
+    case newCloudWorkspace // = 6
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .cloudOnboarding
+      case 2: self = .welcome
+      case 3: self = .manageWorkspaces
+      case 4: self = .generalSettings
+      case 5: self = .statusToolbar
+      case 6: self = .newCloudWorkspace
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .cloudOnboarding: return 1
+      case .welcome: return 2
+      case .manageWorkspaces: return 3
+      case .generalSettings: return 4
+      case .statusToolbar: return 5
+      case .newCloudWorkspace: return 6
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.EntryPoint] = [
+      .unspecified,
+      .cloudOnboarding,
+      .welcome,
+      .manageWorkspaces,
+      .generalSettings,
+      .statusToolbar,
+      .newCloudWorkspace,
+    ]
+
+  }
+
+  public nonisolated enum Outcome: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case succeeded // = 1
+    case failed // = 2
+    case cancelled // = 3
+    case switchedToExistingCopy // = 4
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .succeeded
+      case 2: self = .failed
+      case 3: self = .cancelled
+      case 4: self = .switchedToExistingCopy
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .succeeded: return 1
+      case .failed: return 2
+      case .cancelled: return 3
+      case .switchedToExistingCopy: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.Outcome] = [
+      .unspecified,
+      .succeeded,
+      .failed,
+      .cancelled,
+      .switchedToExistingCopy,
+    ]
+
+  }
+
+  public nonisolated enum Step: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case preparation // = 1
+    case coreCall // = 2
+    case finalization // = 3
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .preparation
+      case 2: self = .coreCall
+      case 3: self = .finalization
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .preparation: return 1
+      case .coreCall: return 2
+      case .finalization: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.Step] = [
+      .unspecified,
+      .preparation,
+      .coreCall,
+      .finalization,
+    ]
+
+  }
+
+  public nonisolated enum ClientReason: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case none // = 0
+    case noCloudSeat // = 1
+    case seatDoesNotAllowCloud // = 2
+    case workspaceNotActive // = 3
+    case conversionRunning // = 4
+    case syncPaused // = 5
+    case userCancelled // = 6
+    case other // = 7
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .none
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .none
+      case 1: self = .noCloudSeat
+      case 2: self = .seatDoesNotAllowCloud
+      case 3: self = .workspaceNotActive
+      case 4: self = .conversionRunning
+      case 5: self = .syncPaused
+      case 6: self = .userCancelled
+      case 7: self = .other
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .none: return 0
+      case .noCloudSeat: return 1
+      case .seatDoesNotAllowCloud: return 2
+      case .workspaceNotActive: return 3
+      case .conversionRunning: return 4
+      case .syncPaused: return 5
+      case .userCancelled: return 6
+      case .other: return 7
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.ClientReason] = [
+      .none,
+      .noCloudSeat,
+      .seatDoesNotAllowCloud,
+      .workspaceNotActive,
+      .conversionRunning,
+      .syncPaused,
+      .userCancelled,
+      .other,
     ]
 
   }
@@ -3336,9 +3542,9 @@ nonisolated extension Rv_Analytics_Trackedevents_SyncingUnpaused: SwiftProtobuf.
   }
 }
 
-nonisolated extension Rv_Analytics_Trackedevents_UserWorkspaceTreeModification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".UserWorkspaceTreeModification"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}bucket\0\u{1}operation\0")
+nonisolated extension Rv_Analytics_Trackedevents_MediaStreamUrlValidated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MediaStreamUrlValidated"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}result\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3346,35 +3552,126 @@ nonisolated extension Rv_Analytics_Trackedevents_UserWorkspaceTreeModification: 
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularEnumField(value: &self.bucket) }()
-      case 2: try { try decoder.decodeSingularEnumField(value: &self.operation) }()
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.result) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.bucket != .other {
-      try visitor.visitSingularEnumField(value: self.bucket, fieldNumber: 1)
-    }
-    if self.operation != .modified {
-      try visitor.visitSingularEnumField(value: self.operation, fieldNumber: 2)
+    if self.result != .unspecified {
+      try visitor.visitSingularEnumField(value: self.result, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification, rhs: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification) -> Bool {
-    if lhs.bucket != rhs.bucket {return false}
-    if lhs.operation != rhs.operation {return false}
+  public static func ==(lhs: Rv_Analytics_Trackedevents_MediaStreamUrlValidated, rhs: Rv_Analytics_Trackedevents_MediaStreamUrlValidated) -> Bool {
+    if lhs.result != rhs.result {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-nonisolated extension Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Bucket: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0OTHER\0\u{1}LIBRARIES\0\u{1}THEMES\0\u{1}PLAYLISTS\0\u{1}PLAYLIST_TEMPLATES\0\u{1}CONFIGURATION\0\u{1}MEDIA\0\u{1}PRESETS\0\u{1}DOWNLOADS\0")
+nonisolated extension Rv_Analytics_Trackedevents_MediaStreamUrlValidated.Result: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0RESULT_UNSPECIFIED\0\u{1}ACCEPTED_ON_DEMAND\0\u{1}ACCEPTED_LIVE\0\u{1}REJECTED\0")
 }
 
-nonisolated extension Rv_Analytics_Trackedevents_UserWorkspaceTreeModification.Operation: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MODIFIED\0\u{1}CREATED\0\u{1}RENAMED\0\u{1}REMOVED\0")
+nonisolated extension Rv_Analytics_Trackedevents_CloudWorkspaceTransfer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CloudWorkspaceTransfer"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}direction\0\u{3}entry_point\0\u{1}outcome\0\u{1}step\0\u{3}core_error_code\0\u{3}http_status\0\u{3}duration_ms\0\u{3}client_reason\0\u{3}unavailable_smart_playlist_media\0\u{3}missing_smart_playlist_media\0\u{3}unavailable_smart_playlists\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.direction) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.entryPoint) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.outcome) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.step) }()
+      case 5: try { try decoder.decodeSingularInt32Field(value: &self.coreErrorCode) }()
+      case 6: try { try decoder.decodeSingularUInt32Field(value: &self.httpStatus) }()
+      case 7: try { try decoder.decodeSingularUInt64Field(value: &self.durationMs) }()
+      case 8: try { try decoder.decodeSingularEnumField(value: &self.clientReason) }()
+      case 9: try { try decoder.decodeSingularUInt32Field(value: &self.unavailableSmartPlaylistMedia) }()
+      case 10: try { try decoder.decodeSingularUInt32Field(value: &self.missingSmartPlaylistMedia) }()
+      case 11: try { try decoder.decodeSingularUInt32Field(value: &self.unavailableSmartPlaylists) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.direction != .unspecified {
+      try visitor.visitSingularEnumField(value: self.direction, fieldNumber: 1)
+    }
+    if self.entryPoint != .unspecified {
+      try visitor.visitSingularEnumField(value: self.entryPoint, fieldNumber: 2)
+    }
+    if self.outcome != .unspecified {
+      try visitor.visitSingularEnumField(value: self.outcome, fieldNumber: 3)
+    }
+    if self.step != .unspecified {
+      try visitor.visitSingularEnumField(value: self.step, fieldNumber: 4)
+    }
+    if self.coreErrorCode != 0 {
+      try visitor.visitSingularInt32Field(value: self.coreErrorCode, fieldNumber: 5)
+    }
+    if self.httpStatus != 0 {
+      try visitor.visitSingularUInt32Field(value: self.httpStatus, fieldNumber: 6)
+    }
+    if self.durationMs != 0 {
+      try visitor.visitSingularUInt64Field(value: self.durationMs, fieldNumber: 7)
+    }
+    if self.clientReason != .none {
+      try visitor.visitSingularEnumField(value: self.clientReason, fieldNumber: 8)
+    }
+    if self.unavailableSmartPlaylistMedia != 0 {
+      try visitor.visitSingularUInt32Field(value: self.unavailableSmartPlaylistMedia, fieldNumber: 9)
+    }
+    if self.missingSmartPlaylistMedia != 0 {
+      try visitor.visitSingularUInt32Field(value: self.missingSmartPlaylistMedia, fieldNumber: 10)
+    }
+    if self.unavailableSmartPlaylists != 0 {
+      try visitor.visitSingularUInt32Field(value: self.unavailableSmartPlaylists, fieldNumber: 11)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Trackedevents_CloudWorkspaceTransfer, rhs: Rv_Analytics_Trackedevents_CloudWorkspaceTransfer) -> Bool {
+    if lhs.direction != rhs.direction {return false}
+    if lhs.entryPoint != rhs.entryPoint {return false}
+    if lhs.outcome != rhs.outcome {return false}
+    if lhs.step != rhs.step {return false}
+    if lhs.coreErrorCode != rhs.coreErrorCode {return false}
+    if lhs.httpStatus != rhs.httpStatus {return false}
+    if lhs.durationMs != rhs.durationMs {return false}
+    if lhs.clientReason != rhs.clientReason {return false}
+    if lhs.unavailableSmartPlaylistMedia != rhs.unavailableSmartPlaylistMedia {return false}
+    if lhs.missingSmartPlaylistMedia != rhs.missingSmartPlaylistMedia {return false}
+    if lhs.unavailableSmartPlaylists != rhs.unavailableSmartPlaylists {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.Direction: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DIRECTION_UNSPECIFIED\0\u{1}PUBLISH\0\u{1}DOWNLOAD\0")
+}
+
+nonisolated extension Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.EntryPoint: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ENTRY_POINT_UNSPECIFIED\0\u{1}CLOUD_ONBOARDING\0\u{1}WELCOME\0\u{1}MANAGE_WORKSPACES\0\u{1}GENERAL_SETTINGS\0\u{1}STATUS_TOOLBAR\0\u{1}NEW_CLOUD_WORKSPACE\0")
+}
+
+nonisolated extension Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.Outcome: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0OUTCOME_UNSPECIFIED\0\u{1}SUCCEEDED\0\u{1}FAILED\0\u{1}CANCELLED\0\u{1}SWITCHED_TO_EXISTING_COPY\0")
+}
+
+nonisolated extension Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.Step: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STEP_UNSPECIFIED\0\u{1}PREPARATION\0\u{1}CORE_CALL\0\u{1}FINALIZATION\0")
+}
+
+nonisolated extension Rv_Analytics_Trackedevents_CloudWorkspaceTransfer.ClientReason: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CLIENT_REASON_NONE\0\u{1}NO_CLOUD_SEAT\0\u{1}SEAT_DOES_NOT_ALLOW_CLOUD\0\u{1}WORKSPACE_NOT_ACTIVE\0\u{1}CONVERSION_RUNNING\0\u{1}SYNC_PAUSED\0\u{1}USER_CANCELLED\0\u{1}OTHER\0")
 }

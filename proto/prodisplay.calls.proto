@@ -1,0 +1,119 @@
+syntax = "proto3";
+
+
+package prodisplay.call;
+
+
+import "presentation.proto";
+
+
+
+message Error {
+  enum Code {
+    UNKNOWN = 0;
+    CANCELLED = 1;
+    UNAUTHENTICATED = 2;
+    SUBSCRIPTION_REQUIRED = 3;
+  }
+
+  prodisplay.call.Error.Code code = 1;
+  string description = 2;
+}
+
+message GetExportOptions {
+  message Result {
+    message Context {
+      message Capabilities {
+        message Replacement {
+          bool supported = 1;
+          bool requires_target_version = 2;
+          bool preserves_presentation_folder = 3;
+        }
+
+        message Create {
+          bool batch_supported = 1;
+          int32 max_presentations = 2;
+          bool presentation_root_supported = 3;
+        }
+
+        repeated string manifest_versions = 1;
+        repeated string transitions = 2;
+        repeated string advance_modes = 3;
+        prodisplay.call.GetExportOptions.Result.Context.Capabilities.Replacement replacement = 4;
+        prodisplay.call.GetExportOptions.Result.Context.Capabilities.Create create = 5;
+      }
+
+      message Policies {
+        int32 max_assets_per_job = 1;
+        int32 max_items_per_presentation = 2;
+      }
+
+      prodisplay.call.GetExportOptions.Result.Context.Capabilities capabilities = 1;
+      prodisplay.call.GetExportOptions.Result.Context.Policies policies = 2;
+    }
+
+    message Folder {
+      string id = 1;
+      string name = 2;
+      optional string parent_id = 3;
+    }
+
+    message Tag {
+      string id = 1;
+      string name = 2;
+    }
+
+    message ExistingPresentation {
+      string id = 1;
+      string name = 2;
+      optional string folder_id = 3;
+      string version = 4;
+    }
+
+    message Ok {
+      prodisplay.call.GetExportOptions.Result.Context context = 1;
+      repeated prodisplay.call.GetExportOptions.Result.Folder folders = 2;
+      repeated prodisplay.call.GetExportOptions.Result.Tag tags = 3;
+      repeated prodisplay.call.GetExportOptions.Result.ExistingPresentation existing_presentations = 4;
+    }
+
+    oneof result {
+      prodisplay.call.GetExportOptions.Result.Ok ok = 1;
+      prodisplay.call.Error error = 2;
+    }
+
+  }
+
+}
+
+message Export {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      prodisplay.call.Export.Result.Ok ok = 1;
+      prodisplay.call.Error error = 2;
+    }
+
+  }
+
+  message Replace {
+    string presentation_id = 1;
+    repeated string tag_ids = 2;
+    rv.data.Presentation presentation = 3;
+    string targetVersion = 4;
+  }
+
+  message Create {
+    string destination_folder_id = 1;
+    repeated string tag_ids = 2;
+    repeated rv.data.Presentation presentations = 3;
+  }
+
+  oneof operation {
+    prodisplay.call.Export.Replace replace = 1;
+    prodisplay.call.Export.Create create = 2;
+  }
+
+}

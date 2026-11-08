@@ -744,99 +744,81 @@ public nonisolated struct Rv_Data_Action: @unchecked Sendable {
     public init() {}
   }
 
-  public nonisolated struct MediaType: @unchecked Sendable {
+  public nonisolated struct MediaType: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    public var mediaType: OneOf_MediaType? {
-      get {return _storage._mediaType}
-      set {_uniqueStorage()._mediaType = newValue}
-    }
+    public var mediaType: Rv_Data_Action.MediaType.OneOf_MediaType? = nil
 
     public var image: Rv_Data_Action.MediaType.Image {
       get {
-        if case .image(let v)? = _storage._mediaType {return v}
+        if case .image(let v)? = mediaType {return v}
         return Rv_Data_Action.MediaType.Image()
       }
-      set {_uniqueStorage()._mediaType = .image(newValue)}
+      set {mediaType = .image(newValue)}
     }
 
     public var video: Rv_Data_Action.MediaType.Video {
       get {
-        if case .video(let v)? = _storage._mediaType {return v}
+        if case .video(let v)? = mediaType {return v}
         return Rv_Data_Action.MediaType.Video()
       }
-      set {_uniqueStorage()._mediaType = .video(newValue)}
+      set {mediaType = .video(newValue)}
     }
 
     public var audio: Rv_Data_Action.MediaType.Audio {
       get {
-        if case .audio(let v)? = _storage._mediaType {return v}
+        if case .audio(let v)? = mediaType {return v}
         return Rv_Data_Action.MediaType.Audio()
       }
-      set {_uniqueStorage()._mediaType = .audio(newValue)}
+      set {mediaType = .audio(newValue)}
     }
 
     public var liveVideo: Rv_Data_Action.MediaType.LiveVideo {
       get {
-        if case .liveVideo(let v)? = _storage._mediaType {return v}
+        if case .liveVideo(let v)? = mediaType {return v}
         return Rv_Data_Action.MediaType.LiveVideo()
       }
-      set {_uniqueStorage()._mediaType = .liveVideo(newValue)}
+      set {mediaType = .liveVideo(newValue)}
     }
 
-    public var transitionDuration: Double {
-      get {_storage._transitionDuration}
-      set {_uniqueStorage()._transitionDuration = newValue}
-    }
+    public var transitionDuration: Double = 0
 
     public var selectedEffectPresetUuid: Rv_Data_UUID {
-      get {_storage._selectedEffectPresetUuid ?? Rv_Data_UUID()}
-      set {_uniqueStorage()._selectedEffectPresetUuid = newValue}
+      get {_selectedEffectPresetUuid ?? Rv_Data_UUID()}
+      set {_selectedEffectPresetUuid = newValue}
     }
     /// Returns true if `selectedEffectPresetUuid` has been explicitly set.
-    public var hasSelectedEffectPresetUuid: Bool {_storage._selectedEffectPresetUuid != nil}
+    public var hasSelectedEffectPresetUuid: Bool {self._selectedEffectPresetUuid != nil}
     /// Clears the value of `selectedEffectPresetUuid`. Subsequent reads from it will return its default value.
-    public mutating func clearSelectedEffectPresetUuid() {_uniqueStorage()._selectedEffectPresetUuid = nil}
+    public mutating func clearSelectedEffectPresetUuid() {self._selectedEffectPresetUuid = nil}
 
     public var transition: Rv_Data_Transition {
-      get {_storage._transition ?? Rv_Data_Transition()}
-      set {_uniqueStorage()._transition = newValue}
+      get {_transition ?? Rv_Data_Transition()}
+      set {_transition = newValue}
     }
     /// Returns true if `transition` has been explicitly set.
-    public var hasTransition: Bool {_storage._transition != nil}
+    public var hasTransition: Bool {self._transition != nil}
     /// Clears the value of `transition`. Subsequent reads from it will return its default value.
-    public mutating func clearTransition() {_uniqueStorage()._transition = nil}
+    public mutating func clearTransition() {self._transition = nil}
 
-    public var effects: [Rv_Data_Effect] {
-      get {_storage._effects}
-      set {_uniqueStorage()._effects = newValue}
-    }
+    public var effects: [Rv_Data_Effect] = []
 
     public var element: Rv_Data_Media {
-      get {_storage._element ?? Rv_Data_Media()}
-      set {_uniqueStorage()._element = newValue}
+      get {_element ?? Rv_Data_Media()}
+      set {_element = newValue}
     }
     /// Returns true if `element` has been explicitly set.
-    public var hasElement: Bool {_storage._element != nil}
+    public var hasElement: Bool {self._element != nil}
     /// Clears the value of `element`. Subsequent reads from it will return its default value.
-    public mutating func clearElement() {_uniqueStorage()._element = nil}
+    public mutating func clearElement() {self._element = nil}
 
-    public var layerType: Rv_Data_Action.LayerType {
-      get {_storage._layerType}
-      set {_uniqueStorage()._layerType = newValue}
-    }
+    public var layerType: Rv_Data_Action.LayerType = .background
 
-    public var alwaysRetrigger: Bool {
-      get {_storage._alwaysRetrigger}
-      set {_uniqueStorage()._alwaysRetrigger = newValue}
-    }
+    public var alwaysRetrigger: Bool = false
 
-    public var markers: [Rv_Data_Action.MediaType.PlaybackMarker] {
-      get {_storage._markers}
-      set {_uniqueStorage()._markers = newValue}
-    }
+    public var markers: [Rv_Data_Action.MediaType.PlaybackMarker] = []
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1069,7 +1051,9 @@ public nonisolated struct Rv_Data_Action: @unchecked Sendable {
 
     public init() {}
 
-    fileprivate var _storage = _StorageClass.defaultInstance
+    fileprivate var _selectedEffectPresetUuid: Rv_Data_UUID? = nil
+    fileprivate var _transition: Rv_Data_Transition? = nil
+    fileprivate var _element: Rv_Data_Media? = nil
   }
 
   public nonisolated struct SlideType: Sendable {
@@ -2999,190 +2983,138 @@ nonisolated extension Rv_Data_Action.MediaType: SwiftProtobuf.Message, SwiftProt
   public static let protoMessageName: String = Rv_Data_Action.protoMessageName + ".MediaType"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}transition_duration\0\u{3}selected_effect_preset_uuid\0\u{1}transition\0\u{1}effects\0\u{1}element\0\u{1}image\0\u{1}video\0\u{1}audio\0\u{3}live_video\0\u{3}layer_type\0\u{3}always_retrigger\0\u{1}markers\0")
 
-  fileprivate class _StorageClass {
-    var _mediaType: Rv_Data_Action.MediaType.OneOf_MediaType?
-    var _transitionDuration: Double = 0
-    var _selectedEffectPresetUuid: Rv_Data_UUID? = nil
-    var _transition: Rv_Data_Transition? = nil
-    var _effects: [Rv_Data_Effect] = []
-    var _element: Rv_Data_Media? = nil
-    var _layerType: Rv_Data_Action.LayerType = .background
-    var _alwaysRetrigger: Bool = false
-    var _markers: [Rv_Data_Action.MediaType.PlaybackMarker] = []
-
-      // This property is used as the initial default value for new instances of the type.
-      // The type itself is protecting the reference to its storage via CoW semantics.
-      // This will force a copy to be made of this reference when the first mutation occurs;
-      // hence, it is safe to mark this as `nonisolated(unsafe)`.
-      static nonisolated(unsafe) let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _mediaType = source._mediaType
-      _transitionDuration = source._transitionDuration
-      _selectedEffectPresetUuid = source._selectedEffectPresetUuid
-      _transition = source._transition
-      _effects = source._effects
-      _element = source._element
-      _layerType = source._layerType
-      _alwaysRetrigger = source._alwaysRetrigger
-      _markers = source._markers
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        // The use of inline closures is to circumvent an issue where the compiler
-        // allocates stack space for every case branch when no optimizations are
-        // enabled. https://github.com/apple/swift-protobuf/issues/1034
-        switch fieldNumber {
-        case 1: try { try decoder.decodeSingularDoubleField(value: &_storage._transitionDuration) }()
-        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._selectedEffectPresetUuid) }()
-        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._transition) }()
-        case 4: try { try decoder.decodeRepeatedMessageField(value: &_storage._effects) }()
-        case 5: try { try decoder.decodeSingularMessageField(value: &_storage._element) }()
-        case 6: try {
-          var v: Rv_Data_Action.MediaType.Image?
-          var hadOneofValue = false
-          if let current = _storage._mediaType {
-            hadOneofValue = true
-            if case .image(let m) = current {v = m}
-          }
-          try decoder.decodeSingularMessageField(value: &v)
-          if let v = v {
-            if hadOneofValue {try decoder.handleConflictingOneOf()}
-            _storage._mediaType = .image(v)
-          }
-        }()
-        case 7: try {
-          var v: Rv_Data_Action.MediaType.Video?
-          var hadOneofValue = false
-          if let current = _storage._mediaType {
-            hadOneofValue = true
-            if case .video(let m) = current {v = m}
-          }
-          try decoder.decodeSingularMessageField(value: &v)
-          if let v = v {
-            if hadOneofValue {try decoder.handleConflictingOneOf()}
-            _storage._mediaType = .video(v)
-          }
-        }()
-        case 8: try {
-          var v: Rv_Data_Action.MediaType.Audio?
-          var hadOneofValue = false
-          if let current = _storage._mediaType {
-            hadOneofValue = true
-            if case .audio(let m) = current {v = m}
-          }
-          try decoder.decodeSingularMessageField(value: &v)
-          if let v = v {
-            if hadOneofValue {try decoder.handleConflictingOneOf()}
-            _storage._mediaType = .audio(v)
-          }
-        }()
-        case 9: try {
-          var v: Rv_Data_Action.MediaType.LiveVideo?
-          var hadOneofValue = false
-          if let current = _storage._mediaType {
-            hadOneofValue = true
-            if case .liveVideo(let m) = current {v = m}
-          }
-          try decoder.decodeSingularMessageField(value: &v)
-          if let v = v {
-            if hadOneofValue {try decoder.handleConflictingOneOf()}
-            _storage._mediaType = .liveVideo(v)
-          }
-        }()
-        case 10: try { try decoder.decodeSingularEnumField(value: &_storage._layerType) }()
-        case 11: try { try decoder.decodeSingularBoolField(value: &_storage._alwaysRetrigger) }()
-        case 12: try { try decoder.decodeRepeatedMessageField(value: &_storage._markers) }()
-        default: break
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularDoubleField(value: &self.transitionDuration) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._selectedEffectPresetUuid) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._transition) }()
+      case 4: try { try decoder.decodeRepeatedMessageField(value: &self.effects) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._element) }()
+      case 6: try {
+        var v: Rv_Data_Action.MediaType.Image?
+        var hadOneofValue = false
+        if let current = self.mediaType {
+          hadOneofValue = true
+          if case .image(let m) = current {v = m}
         }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.mediaType = .image(v)
+        }
+      }()
+      case 7: try {
+        var v: Rv_Data_Action.MediaType.Video?
+        var hadOneofValue = false
+        if let current = self.mediaType {
+          hadOneofValue = true
+          if case .video(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.mediaType = .video(v)
+        }
+      }()
+      case 8: try {
+        var v: Rv_Data_Action.MediaType.Audio?
+        var hadOneofValue = false
+        if let current = self.mediaType {
+          hadOneofValue = true
+          if case .audio(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.mediaType = .audio(v)
+        }
+      }()
+      case 9: try {
+        var v: Rv_Data_Action.MediaType.LiveVideo?
+        var hadOneofValue = false
+        if let current = self.mediaType {
+          hadOneofValue = true
+          if case .liveVideo(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.mediaType = .liveVideo(v)
+        }
+      }()
+      case 10: try { try decoder.decodeSingularEnumField(value: &self.layerType) }()
+      case 11: try { try decoder.decodeSingularBoolField(value: &self.alwaysRetrigger) }()
+      case 12: try { try decoder.decodeRepeatedMessageField(value: &self.markers) }()
+      default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every if/case branch local when no optimizations
-      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-      // https://github.com/apple/swift-protobuf/issues/1182
-      if _storage._transitionDuration.bitPattern != 0 {
-        try visitor.visitSingularDoubleField(value: _storage._transitionDuration, fieldNumber: 1)
-      }
-      try { if let v = _storage._selectedEffectPresetUuid {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-      } }()
-      try { if let v = _storage._transition {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-      } }()
-      if !_storage._effects.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._effects, fieldNumber: 4)
-      }
-      try { if let v = _storage._element {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
-      } }()
-      switch _storage._mediaType {
-      case .image?: try {
-        guard case .image(let v)? = _storage._mediaType else { preconditionFailure() }
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
-      }()
-      case .video?: try {
-        guard case .video(let v)? = _storage._mediaType else { preconditionFailure() }
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
-      }()
-      case .audio?: try {
-        guard case .audio(let v)? = _storage._mediaType else { preconditionFailure() }
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
-      }()
-      case .liveVideo?: try {
-        guard case .liveVideo(let v)? = _storage._mediaType else { preconditionFailure() }
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
-      }()
-      case nil: break
-      }
-      if _storage._layerType != .background {
-        try visitor.visitSingularEnumField(value: _storage._layerType, fieldNumber: 10)
-      }
-      if _storage._alwaysRetrigger != false {
-        try visitor.visitSingularBoolField(value: _storage._alwaysRetrigger, fieldNumber: 11)
-      }
-      if !_storage._markers.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._markers, fieldNumber: 12)
-      }
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.transitionDuration.bitPattern != 0 {
+      try visitor.visitSingularDoubleField(value: self.transitionDuration, fieldNumber: 1)
+    }
+    try { if let v = self._selectedEffectPresetUuid {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._transition {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
+    if !self.effects.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.effects, fieldNumber: 4)
+    }
+    try { if let v = self._element {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    } }()
+    switch self.mediaType {
+    case .image?: try {
+      guard case .image(let v)? = self.mediaType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    }()
+    case .video?: try {
+      guard case .video(let v)? = self.mediaType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+    }()
+    case .audio?: try {
+      guard case .audio(let v)? = self.mediaType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+    }()
+    case .liveVideo?: try {
+      guard case .liveVideo(let v)? = self.mediaType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+    }()
+    case nil: break
+    }
+    if self.layerType != .background {
+      try visitor.visitSingularEnumField(value: self.layerType, fieldNumber: 10)
+    }
+    if self.alwaysRetrigger != false {
+      try visitor.visitSingularBoolField(value: self.alwaysRetrigger, fieldNumber: 11)
+    }
+    if !self.markers.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.markers, fieldNumber: 12)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Rv_Data_Action.MediaType, rhs: Rv_Data_Action.MediaType) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._mediaType != rhs_storage._mediaType {return false}
-        if _storage._transitionDuration != rhs_storage._transitionDuration {return false}
-        if _storage._selectedEffectPresetUuid != rhs_storage._selectedEffectPresetUuid {return false}
-        if _storage._transition != rhs_storage._transition {return false}
-        if _storage._effects != rhs_storage._effects {return false}
-        if _storage._element != rhs_storage._element {return false}
-        if _storage._layerType != rhs_storage._layerType {return false}
-        if _storage._alwaysRetrigger != rhs_storage._alwaysRetrigger {return false}
-        if _storage._markers != rhs_storage._markers {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
+    if lhs.mediaType != rhs.mediaType {return false}
+    if lhs.transitionDuration != rhs.transitionDuration {return false}
+    if lhs._selectedEffectPresetUuid != rhs._selectedEffectPresetUuid {return false}
+    if lhs._transition != rhs._transition {return false}
+    if lhs.effects != rhs.effects {return false}
+    if lhs._element != rhs._element {return false}
+    if lhs.layerType != rhs.layerType {return false}
+    if lhs.alwaysRetrigger != rhs.alwaysRetrigger {return false}
+    if lhs.markers != rhs.markers {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

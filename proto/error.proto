@@ -11,6 +11,9 @@ enum ServiceID {
   REGISTRATION = 3;
   DOCUMENT = 4;
   WORKSPACE = 5;
+  PROCORE = 6;
+  PRODISPLAY = 7;
+  CONTENT_PROVIDER = 8;
 }
 
 enum ErrorCode {
@@ -24,12 +27,17 @@ enum ErrorCode {
   REMOTE = 7;
   DEPENDENCY = 8;
   MEDIA_VERSION = 9;
+  PROCORE_RESULT = 10;
+  STORAGE_ROOT = 11;
+  WORKSPACE_TOO_NEW = 12;
 }
 
 message Error {
   application.ServiceID service = 1;
   int32 code = 2;
   string description = 3;
+  optional uint64 required_bytes = 4;
+  optional uint64 available_bytes = 5;
 }
 
 message ResultEnvelope {

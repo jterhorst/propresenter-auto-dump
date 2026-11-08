@@ -22,3 +22,25 @@ message SongSelect {
   bool did_open_edit_view = 5;
   rv.analytics.multitracks.Import multitracks = 6;
 }
+
+message APlayServiceImport {
+  enum Result {
+    RESULT_UNSPECIFIED = 0;
+    SUCCESS = 1;
+    PARTIAL = 2;
+    FAILED = 3;
+  }
+
+  rv.analytics.import.APlayServiceImport.Result result = 1;
+  uint32 item_count = 2;
+}
+
+message APlayServiceRefresh {
+  enum Result {
+    RESULT_UNSPECIFIED = 0;
+    SUCCESS = 1;
+    FAILED = 2;
+  }
+
+  rv.analytics.import.APlayServiceRefresh.Result result = 1;
+}

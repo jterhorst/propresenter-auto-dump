@@ -59,12 +59,57 @@ message Effect {
       uint32 available_directions = 3;
     }
 
+    message EffectGrouping {
+      enum EffectGrouping {
+        EFFECT_GROUPING_INVALID = 0;
+        EFFECT_GROUPING_CHARACTER = 1;
+        EFFECT_GROUPING_WORD = 2;
+        EFFECT_GROUPING_LINE = 4;
+        EFFECT_GROUPING_ALL = 8;
+      }
+
+      rv.data.Effect.EffectVariable.EffectGrouping.EffectGrouping grouping = 1;
+      rv.data.Effect.EffectVariable.EffectGrouping.EffectGrouping default_grouping = 2;
+      uint32 available_groupings = 3;
+    }
+
+    message EffectMotion {
+      enum EffectMotion {
+        EFFECT_MOTION_INVALID = 0;
+        EFFECT_MOTION_NONE = 1;
+        EFFECT_MOTION_GROW = 2;
+        EFFECT_MOTION_SHRINK = 4;
+        EFFECT_MOTION_UP = 8;
+        EFFECT_MOTION_DOWN = 16;
+      }
+
+      rv.data.Effect.EffectVariable.EffectMotion.EffectMotion motion = 1;
+      rv.data.Effect.EffectVariable.EffectMotion.EffectMotion default_motion = 2;
+      uint32 available_motions = 3;
+    }
+
+    message EffectMotionStyle {
+      enum EffectMotionStyle {
+        EFFECT_MOTION_STYLE_INVALID = 0;
+        EFFECT_MOTION_STYLE_SUBTLE = 1;
+        EFFECT_MOTION_STYLE_STANDARD = 2;
+        EFFECT_MOTION_STYLE_DRAMATIC = 4;
+      }
+
+      rv.data.Effect.EffectVariable.EffectMotionStyle.EffectMotionStyle motion_style = 1;
+      rv.data.Effect.EffectVariable.EffectMotionStyle.EffectMotionStyle default_motion_style = 2;
+      uint32 available_motion_styles = 3;
+    }
+
     oneof Type {
       rv.data.Effect.EffectVariable.EffectInt int = 3;
       rv.data.Effect.EffectVariable.EffectFloat float = 4;
       rv.data.Effect.EffectVariable.EffectColor color = 5;
       rv.data.Effect.EffectVariable.EffectDirection direction = 6;
       rv.data.Effect.EffectVariable.EffectDouble double = 7;
+      rv.data.Effect.EffectVariable.EffectGrouping grouping = 8;
+      rv.data.Effect.EffectVariable.EffectMotion motion = 9;
+      rv.data.Effect.EffectVariable.EffectMotionStyle motion_style = 10;
     }
 
     string name = 1;
@@ -87,6 +132,12 @@ message Effect {
 }
 
 message Transition {
+  message TextAnimation {
+    double duration = 1;
+    rv.data.UUID favorite_uuid = 2;
+    rv.data.Effect effect = 3;
+  }
+
   message Preset {
     rv.data.UUID uuid = 1;
     string name = 2;
@@ -96,4 +147,5 @@ message Transition {
   double duration = 1;
   rv.data.UUID favorite_uuid = 2;
   rv.data.Effect effect = 3;
+  rv.data.Transition.TextAnimation text_animation = 4;
 }

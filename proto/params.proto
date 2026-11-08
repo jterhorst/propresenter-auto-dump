@@ -4,6 +4,8 @@ syntax = "proto3";
 package application;
 
 
+import "error.proto";
+
 import "v1-helper-common.proto";
 
 import "v2-helper-common.proto";
@@ -13,6 +15,14 @@ import "feature-flags.proto";
 import "document.bootstrap.proto";
 
 import "workspace.bootstrap.proto";
+
+import "registration-service.proto";
+
+import "procore.params.proto";
+
+import "prodisplay.params.proto";
+
+import "content_provider.params.proto";
 
 
 
@@ -36,12 +46,102 @@ message ApplicationStartParams {
   helper.common.v1.CreationOption media_v1 = 2;
   helper.common.v2.CreationOption media = 3;
   feature_flags.CreationOption feature_flags = 4;
-  application.RegistrationCreationOption registration = 6;
+  registration.CreationOption registration = 6;
   document.CreationOption document = 7;
   workspace.CreationOption workspace = 8;
+  procore.CreationOption procore = 9;
+  prodisplay.CreationOption prodisplay = 10;
+  repeated content_provider.CreationOption content_providers = 11;
 }
 
-message RegistrationCreationOption {
+message StartProgress {
+  enum Phase {
+    PHASE_UNSPECIFIED = 0;
+    PHASE_PREPARING = 1;
+    PHASE_MIGRATING = 2;
+    PHASE_FINALIZING = 3;
+    PHASE_CONVERTING = 4;
+    PHASE_DOWNLOADING = 5;
+    PHASE_LOADING = 6;
+  }
+
+  application.StartProgress.Phase phase = 1;
+  uint64 completed_units = 2;
+  uint64 total_units = 3;
+}
+
+message StartComplete {
+  string local_uuid = 1;
+  string root_path = 2;
+  bool legacy_cleanup_may_begin = 3;
+  bool created_blank_workspace = 4;
+  workspace.LegacyMigrationShortfall legacy_migration_shortfall = 5;
+  application.LaunchFallback launch_fallback = 6;
+}
+
+message LaunchFallback {
+  string local_uuid = 1;
+  string root_path = 2;
+  string display_name = 3;
+}
+
+message TooNewWorkspace {
+  string local_uuid = 1;
+  string root_path = 2;
+  string required_schema_version = 3;
+  string display_name = 4;
+}
+
+message StartFailure {
+  application.Error error = 1;
+  application.TooNewWorkspace too_new_workspace = 2;
+  bool legacy_migration = 3;
+}
+
+message StartEvent {
+  oneof event {
+    application.StartProgress progress = 1;
+    application.StartComplete complete = 2;
+    application.StartFailure failure = 3;
+  }
+
+}
+
+message LegacyWorkspaceCloudFilesParams {
+  workspace.LegacyRegistrySnapshot legacy_registry_snapshot = 1;
+}
+
+message LegacyWorkspaceCloudFiles {
+  uint64 files = 1;
+  uint64 bytes = 2;
+  string approximate_size = 3;
+}
+
+message LegacyWorkspaceCloudFilesResult {
+  oneof result {
+    application.LegacyWorkspaceCloudFiles ok = 1;
+    application.Error error = 2;
+  }
+
+}
+
+message LaunchCloudWorkspace {
+  string cloud_id = 1;
+  string name = 2;
+  uint64 updated_at = 3;
+  uint64 size = 4;
+}
+
+message LaunchCloudWorkspaces {
+  repeated application.LaunchCloudWorkspace workspaces = 1;
+}
+
+message LaunchCloudWorkspacesResult {
+  oneof result {
+    application.LaunchCloudWorkspaces ok = 1;
+    application.Error error = 2;
+  }
+
 }
 
 message Shutdown {

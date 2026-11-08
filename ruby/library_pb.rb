@@ -7,7 +7,7 @@ require 'google/protobuf'
 require 'url_pb'
 
 
-descriptor_data = "\n\rlibrary.proto\x12\x07rv.data\x1a\turl.proto\"\x8c\x02\n\x07Library\x12\x38\n\x0flibraryChildren\x18\x02 \x01(\x0b\x32\x1d.rv.data.Library.LibraryArrayH\x00\x12\x35\n\x0clibraryItems\x18\x03 \x01(\x0b\x32\x1d.rv.data.Library.LibraryItemsH\x00\x12\x19\n\x03url\x18\x01 \x01(\x0b\x32\x0c.rv.data.URL\x1a\x33\n\x0cLibraryArray\x12#\n\tlibraries\x18\x01 \x03(\x0b\x32\x10.rv.data.Library\x1a\x33\n\x0cLibraryItems\x12#\n\x05items\x18\x01 \x03(\x0b\x32\x14.rv.data.LibraryItemB\x0b\n\tChildType\"(\n\x0bLibraryItem\x12\x19\n\x03url\x18\x01 \x01(\x0b\x32\x0c.rv.data.URLb\x06proto3"
+descriptor_data = "\n\rlibrary.proto\x12\x07rv.data\x1a\turl.proto\"\x8c\x02\n\x07Library\x12\x38\n\x0flibraryChildren\x18\x02 \x01(\x0b\x32\x1d.rv.data.Library.LibraryArrayH\x00\x12\x35\n\x0clibraryItems\x18\x03 \x01(\x0b\x32\x1d.rv.data.Library.LibraryItemsH\x00\x12\x19\n\x03url\x18\x01 \x01(\x0b\x32\x0c.rv.data.URL\x1a\x33\n\x0cLibraryArray\x12#\n\tlibraries\x18\x01 \x03(\x0b\x32\x10.rv.data.Library\x1a\x33\n\x0cLibraryItems\x12#\n\x05items\x18\x01 \x03(\x0b\x32\x14.rv.data.LibraryItemB\x0b\n\tChildType\"(\n\x0bLibraryItem\x12\x19\n\x03url\x18\x01 \x01(\x0b\x32\x0c.rv.data.URL\"<\n\x13LibraryTreeDocument\x12%\n\x0brootLibrary\x18\x01 \x01(\x0b\x32\x10.rv.data.Libraryb\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
@@ -18,5 +18,6 @@ module Rv
     Library::LibraryArray = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.Library.LibraryArray").msgclass
     Library::LibraryItems = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.Library.LibraryItems").msgclass
     LibraryItem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.LibraryItem").msgclass
+    LibraryTreeDocument = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.LibraryTreeDocument").msgclass
   end
 end

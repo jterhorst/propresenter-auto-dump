@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+
+package prodisplay;
+
+
+message Notification {
+  message UnsubscribeComplete {
+  }
+
+  message ExportProgress {
+    uint64 uploaded_bytes = 1;
+    uint64 total_upload_bytes = 2;
+  }
+
+  oneof notification {
+    prodisplay.Notification.UnsubscribeComplete unsubscribe = 1;
+    prodisplay.Notification.ExportProgress export_progress = 2;
+  }
+
+}

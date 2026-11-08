@@ -867,6 +867,14 @@ public nonisolated struct Rv_Analytics_Event: Sendable {
     set {interaction = .mediaManagementNotResponding(newValue)}
   }
 
+  public var mediaManagementMediaStateResyncGaveUp: Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp {
+    get {
+      if case .mediaManagementMediaStateResyncGaveUp(let v)? = interaction {return v}
+      return Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp()
+    }
+    set {interaction = .mediaManagementMediaStateResyncGaveUp(newValue)}
+  }
+
   public var uiQuicksearch: Rv_Analytics_Ui_QuickSearchShown {
     get {
       if case .uiQuicksearch(let v)? = interaction {return v}
@@ -1763,14 +1771,6 @@ public nonisolated struct Rv_Analytics_Event: Sendable {
     set {interaction = .logError(newValue)}
   }
 
-  public var userWorkspaceTreeModification: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification {
-    get {
-      if case .userWorkspaceTreeModification(let v)? = interaction {return v}
-      return Rv_Analytics_Trackedevents_UserWorkspaceTreeModification()
-    }
-    set {interaction = .userWorkspaceTreeModification(newValue)}
-  }
-
   public var uiActivationFlowOpened: Rv_Analytics_Ui_ActivationFlowOpened {
     get {
       if case .uiActivationFlowOpened(let v)? = interaction {return v}
@@ -1785,6 +1785,166 @@ public nonisolated struct Rv_Analytics_Event: Sendable {
       return Rv_Analytics_Logs_LogOpenedWorkspace()
     }
     set {interaction = .logOpenedWorkspace(newValue)}
+  }
+
+  public var logDiffBuffered: Rv_Analytics_Logs_LogDiffBuffered {
+    get {
+      if case .logDiffBuffered(let v)? = interaction {return v}
+      return Rv_Analytics_Logs_LogDiffBuffered()
+    }
+    set {interaction = .logDiffBuffered(newValue)}
+  }
+
+  public var uiStickersOpened: Rv_Analytics_Procontent_StickersOpened {
+    get {
+      if case .uiStickersOpened(let v)? = interaction {return v}
+      return Rv_Analytics_Procontent_StickersOpened()
+    }
+    set {interaction = .uiStickersOpened(newValue)}
+  }
+
+  public var stickerApplied: Rv_Analytics_Procontent_StickerApplied {
+    get {
+      if case .stickerApplied(let v)? = interaction {return v}
+      return Rv_Analytics_Procontent_StickerApplied()
+    }
+    set {interaction = .stickerApplied(newValue)}
+  }
+
+  public var stickerModified: Rv_Analytics_Procontent_StickerModified {
+    get {
+      if case .stickerModified(let v)? = interaction {return v}
+      return Rv_Analytics_Procontent_StickerModified()
+    }
+    set {interaction = .stickerModified(newValue)}
+  }
+
+  public var uiExportProdisplay: Rv_Analytics_Ui_ProDisplayExportClicked {
+    get {
+      if case .uiExportProdisplay(let v)? = interaction {return v}
+      return Rv_Analytics_Ui_ProDisplayExportClicked()
+    }
+    set {interaction = .uiExportProdisplay(newValue)}
+  }
+
+  public var exportProdisplay: Rv_Analytics_Ui_ProDisplayExport {
+    get {
+      if case .exportProdisplay(let v)? = interaction {return v}
+      return Rv_Analytics_Ui_ProDisplayExport()
+    }
+    set {interaction = .exportProdisplay(newValue)}
+  }
+
+  public var triggerMediaStream: Rv_Analytics_Trigger_Media_MediaStream {
+    get {
+      if case .triggerMediaStream(let v)? = interaction {return v}
+      return Rv_Analytics_Trigger_Media_MediaStream()
+    }
+    set {interaction = .triggerMediaStream(newValue)}
+  }
+
+  public var classBCutover: Rv_Analytics_Migration_ClassBCutover {
+    get {
+      if case .classBCutover(let v)? = interaction {return v}
+      return Rv_Analytics_Migration_ClassBCutover()
+    }
+    set {interaction = .classBCutover(newValue)}
+  }
+
+  public var classBCutoverDocumentIssue: Rv_Analytics_Migration_ClassBCutoverDocumentIssue {
+    get {
+      if case .classBCutoverDocumentIssue(let v)? = interaction {return v}
+      return Rv_Analytics_Migration_ClassBCutoverDocumentIssue()
+    }
+    set {interaction = .classBCutoverDocumentIssue(newValue)}
+  }
+
+  public var mediaStreamURLValidated: Rv_Analytics_Trackedevents_MediaStreamUrlValidated {
+    get {
+      if case .mediaStreamURLValidated(let v)? = interaction {return v}
+      return Rv_Analytics_Trackedevents_MediaStreamUrlValidated()
+    }
+    set {interaction = .mediaStreamURLValidated(newValue)}
+  }
+
+  public var startupAplay: Rv_Analytics_Startup_APlay {
+    get {
+      if case .startupAplay(let v)? = interaction {return v}
+      return Rv_Analytics_Startup_APlay()
+    }
+    set {interaction = .startupAplay(newValue)}
+  }
+
+  public var aplayServiceImport: Rv_Analytics_Import_APlayServiceImport {
+    get {
+      if case .aplayServiceImport(let v)? = interaction {return v}
+      return Rv_Analytics_Import_APlayServiceImport()
+    }
+    set {interaction = .aplayServiceImport(newValue)}
+  }
+
+  public var aplayServiceRefresh: Rv_Analytics_Import_APlayServiceRefresh {
+    get {
+      if case .aplayServiceRefresh(let v)? = interaction {return v}
+      return Rv_Analytics_Import_APlayServiceRefresh()
+    }
+    set {interaction = .aplayServiceRefresh(newValue)}
+  }
+
+  public var legacyWorkspaceMigration: Rv_Analytics_Migration_LegacyWorkspaceMigration {
+    get {
+      if case .legacyWorkspaceMigration(let v)? = interaction {return v}
+      return Rv_Analytics_Migration_LegacyWorkspaceMigration()
+    }
+    set {interaction = .legacyWorkspaceMigration(newValue)}
+  }
+
+  public var legacyWorkspaceMigrationLaunch: Rv_Analytics_Migration_LegacyWorkspaceMigrationLaunch {
+    get {
+      if case .legacyWorkspaceMigrationLaunch(let v)? = interaction {return v}
+      return Rv_Analytics_Migration_LegacyWorkspaceMigrationLaunch()
+    }
+    set {interaction = .legacyWorkspaceMigrationLaunch(newValue)}
+  }
+
+  public var documentSyncRateLimited: Rv_Analytics_Sync_DocumentSyncRateLimited {
+    get {
+      if case .documentSyncRateLimited(let v)? = interaction {return v}
+      return Rv_Analytics_Sync_DocumentSyncRateLimited()
+    }
+    set {interaction = .documentSyncRateLimited(newValue)}
+  }
+
+  public var legacyWorkspaceImport: Rv_Analytics_Migration_LegacyWorkspaceImport {
+    get {
+      if case .legacyWorkspaceImport(let v)? = interaction {return v}
+      return Rv_Analytics_Migration_LegacyWorkspaceImport()
+    }
+    set {interaction = .legacyWorkspaceImport(newValue)}
+  }
+
+  public var cloudWorkspaceTransfer: Rv_Analytics_Trackedevents_CloudWorkspaceTransfer {
+    get {
+      if case .cloudWorkspaceTransfer(let v)? = interaction {return v}
+      return Rv_Analytics_Trackedevents_CloudWorkspaceTransfer()
+    }
+    set {interaction = .cloudWorkspaceTransfer(newValue)}
+  }
+
+  public var storedVersionVectorRepaired: Rv_Analytics_Sync_StoredVersionVectorRepaired {
+    get {
+      if case .storedVersionVectorRepaired(let v)? = interaction {return v}
+      return Rv_Analytics_Sync_StoredVersionVectorRepaired()
+    }
+    set {interaction = .storedVersionVectorRepaired(newValue)}
+  }
+
+  public var unreadableMediaHeld: Rv_Analytics_Mediamanagement_UnreadableMediaHeld {
+    get {
+      if case .unreadableMediaHeld(let v)? = interaction {return v}
+      return Rv_Analytics_Mediamanagement_UnreadableMediaHeld()
+    }
+    set {interaction = .unreadableMediaHeld(newValue)}
   }
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -1895,6 +2055,7 @@ public nonisolated struct Rv_Analytics_Event: Sendable {
     case mediaManagementConnectionChanged(Rv_Analytics_Mediamanagement_ConnectionChanged)
     case mediaManagementAddedMediaReference(Rv_Analytics_Mediamanagement_AddedMediaReference)
     case mediaManagementNotResponding(Rv_Analytics_Mediamanagement_NotResponding)
+    case mediaManagementMediaStateResyncGaveUp(Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp)
     case uiQuicksearch(Rv_Analytics_Ui_QuickSearchShown)
     case uiQuicksearchSearch(Rv_Analytics_Ui_QuickSearchSearch)
     case uiQuicksearchOpenitems(Rv_Analytics_Ui_QuickSearchOpenItems)
@@ -2007,9 +2168,28 @@ public nonisolated struct Rv_Analytics_Event: Sendable {
     case logWorkspaceResynchronized(Rv_Analytics_Logs_LogWorkspaceResynchronized)
     case logWsConnectionFailed(Rv_Analytics_Sync_WebSocketConnectionFailed)
     case logError(Rv_Analytics_Logs_LogError)
-    case userWorkspaceTreeModification(Rv_Analytics_Trackedevents_UserWorkspaceTreeModification)
     case uiActivationFlowOpened(Rv_Analytics_Ui_ActivationFlowOpened)
     case logOpenedWorkspace(Rv_Analytics_Logs_LogOpenedWorkspace)
+    case logDiffBuffered(Rv_Analytics_Logs_LogDiffBuffered)
+    case uiStickersOpened(Rv_Analytics_Procontent_StickersOpened)
+    case stickerApplied(Rv_Analytics_Procontent_StickerApplied)
+    case stickerModified(Rv_Analytics_Procontent_StickerModified)
+    case uiExportProdisplay(Rv_Analytics_Ui_ProDisplayExportClicked)
+    case exportProdisplay(Rv_Analytics_Ui_ProDisplayExport)
+    case triggerMediaStream(Rv_Analytics_Trigger_Media_MediaStream)
+    case classBCutover(Rv_Analytics_Migration_ClassBCutover)
+    case classBCutoverDocumentIssue(Rv_Analytics_Migration_ClassBCutoverDocumentIssue)
+    case mediaStreamURLValidated(Rv_Analytics_Trackedevents_MediaStreamUrlValidated)
+    case startupAplay(Rv_Analytics_Startup_APlay)
+    case aplayServiceImport(Rv_Analytics_Import_APlayServiceImport)
+    case aplayServiceRefresh(Rv_Analytics_Import_APlayServiceRefresh)
+    case legacyWorkspaceMigration(Rv_Analytics_Migration_LegacyWorkspaceMigration)
+    case legacyWorkspaceMigrationLaunch(Rv_Analytics_Migration_LegacyWorkspaceMigrationLaunch)
+    case documentSyncRateLimited(Rv_Analytics_Sync_DocumentSyncRateLimited)
+    case legacyWorkspaceImport(Rv_Analytics_Migration_LegacyWorkspaceImport)
+    case cloudWorkspaceTransfer(Rv_Analytics_Trackedevents_CloudWorkspaceTransfer)
+    case storedVersionVectorRepaired(Rv_Analytics_Sync_StoredVersionVectorRepaired)
+    case unreadableMediaHeld(Rv_Analytics_Mediamanagement_UnreadableMediaHeld)
 
   }
 
@@ -2022,7 +2202,7 @@ fileprivate nonisolated let _protobuf_package = "rv.analytics"
 
 nonisolated extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Event"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}api_message_received\0\u{3}create_library\0\u{3}create_playlist\0\u{3}create_presentation\0\u{3}create_from_template_playlist\0\u{3}edit_presentation\0\u{3}import_songselect\0\u{3}import_multitracks\0\u{3}procontent_mediabin_view\0\u{3}procontent_download\0\u{3}procontent_download_retry\0\u{3}playback_marker\0\u{3}startup_looks\0\u{3}startup_screen_configuration\0\u{3}startup_screen_configuration_screen\0\u{3}startup_screen_configuration_single_screen\0\u{3}startup_screen_configuration_mirrored_screen\0\u{3}startup_screen_configuration_edge_blend_screen\0\u{3}startup_screen_configuration_grouped_screen\0\u{3}startup_preferences\0\u{3}startup_songselect\0\u{3}startup_content\0\u{3}startup_themes\0\u{3}startup_macro\0\u{3}startup_clear_group\0\u{3}startup_key_mapping\0\u{3}startup_multitracks\0\u{3}startup_network_link\0\u{3}startup_capture\0\u{3}startup_versioning\0\u{3}startup_disk_usage\0\u{3}startup_interface\0\u{3}sync_local\0\u{3}timecode_activate\0\u{3}timecode_startup\0\u{3}timeline_action\0\u{3}timeline_record_cue\0\u{3}timeline_cue_trigger\0\u{4}\u{c}application_launch\0\u{3}video_input_triggered\0\u{3}video_input_custom_map\0\u{3}video_input_start_up\0\u{3}video_input_thumbnail_update\0\u{3}audio_input_auto_on_change\0\u{3}audio_settings_sdi_ndi_active\0\u{3}audio_settings_custom_map\0\u{3}audio_input_mode_selection\0\u{3}audio_input_auto_on_startup\0\u{3}audio_settings_sdi_ndi_state\0\u{3}audio_input_start_up\0\u{3}cue_triggered\0\u{3}input_audio_monitoring\0\u{3}resi_start_up\0\u{3}resi_login_change\0\u{3}remote_stream_start\0\u{3}remote_stream_stop\0\u{3}start_capture_disk\0\u{3}start_capture_rtmp\0\u{3}start_capture_resi\0\u{3}stop_capture\0\u{3}analytic_reset\0\u{1}print\0\u{1}device\0\u{1}downgrade\0\u{3}ccli_report\0\u{3}transition_window\0\u{3}editor_object_added\0\u{3}data_id_duplicated\0\u{3}force_quit\0\u{3}media_cleanup_size\0\u{3}network_app\0\u{3}local_workspace_stats\0\u{3}syncing_unpaused\0\u{4}\u{10}trigger_action_capture_start\0\u{3}trigger_action_capture_stop\0\u{3}trigger_action_clear\0\u{3}trigger_action_clear_group\0\u{3}trigger_action_communications\0\u{3}trigger_action_look\0\u{3}trigger_action_macro\0\u{3}trigger_action_message\0\u{3}trigger_action_prop\0\u{3}trigger_action_slide_destination\0\u{3}trigger_action_stage\0\u{3}trigger_action_timer\0\u{3}trigger_media_audio\0\u{3}trigger_media_image\0\u{3}trigger_media_video_input\0\u{3}trigger_media_video\0\u{3}trigger_cue_slide\0\u{3}trigger_cue_slide_file_feed_element\0\u{3}trigger_cue_slide_rss_feed_element\0\u{3}trigger_cue_slide_scrolling_text_element\0\u{3}trigger_test_pattern\0\u{3}trigger_media_aircast_video\0\u{3}trigger_media_aircast_audio\0\u{3}aircast_video_input_configured\0\u{3}aircast_audio_input_configured\0\u{4}\u{10}media_management_installation_complete\0\u{3}media_management_bootstrapping_complete\0\u{3}media_management_message_failure\0\u{3}media_management_unexpectedly_not_running\0\u{3}media_management_connection_changed\0\u{3}media_management_added_media_reference\0\u{3}media_management_not_responding\0\u{4}6ui_quicksearch\0\u{3}ui_quicksearch_search\0\u{3}ui_quicksearch_openitems\0\u{3}ui_toolbar_theme\0\u{3}ui_toolbar_theme_application\0\u{3}ui_mainview_show\0\u{3}ui_mainview_presentation_editor\0\u{3}ui_mainview_reflow\0\u{3}ui_mainview_bible\0\u{3}bible_trigger\0\u{3}bible_generate_slides\0\u{3}bible_generate_next\0\u{3}bible_generate_previous\0\u{3}bible_save_slides\0\u{3}bible_lookup\0\u{3}bible_startup\0\u{3}bible_remove\0\u{3}bible_install\0\u{3}ui_mainview_mask_editor\0\u{3}ui_mainview_stage_editor\0\u{3}ui_mainview_theme_editor\0\u{3}ui_mainview_copyright_editor\0\u{3}ui_mainview_props_editor\0\u{3}ui_lowerright_timers\0\u{3}ui_lowerright_timers_collapse\0\u{3}ui_lowerright_timers_edit\0\u{3}ui_lowerright_timers_state\0\u{3}ui_lowerright_timers_create\0\u{3}ui_lowerright_timers_delete\0\u{3}ui_lowerright_messages\0\u{3}ui_lowerright_messages_edit\0\u{3}ui_lowerright_messages_state\0\u{3}ui_lowerright_messages_create\0\u{3}ui_lowerright_messages_delete\0\u{3}ui_lowerright_props\0\u{3}ui_lowerright_props_transition\0\u{3}ui_lowerright_props_create\0\u{3}ui_lowerright_props_delete\0\u{3}ui_lowerright_props_state\0\u{3}ui_lowerright_stage\0\u{3}ui_lowerright_stage_changelayout\0\u{3}ui_lowerright_stage_messagestate\0\u{3}ui_lowerright_stage_configurescreens\0\u{3}ui_lowerright_stage_editlayouts\0\u{3}ui_lowerright_macros\0\u{3}ui_lowerright_macros_trigger\0\u{3}ui_lowerright_macros_create\0\u{3}ui_lowerright_macros_delete\0\u{3}ui_textinspector\0\u{3}ui_textinspector_scrolling_text\0\u{3}ui_textinspector_foreground\0\u{3}ui_textinspector_underline_color\0\u{3}ui_textinspector_background_color\0\u{3}ui_textinspector_line_transform\0\u{3}ui_show_slide_label\0\u{3}ui_show_slide_label_change\0\u{4}\u{3}ui_editor_overlay_shown\0\u{3}ui_editor_overlay_closed\0\u{3}ui_whats_new_viewed\0\u{3}ui_clear_groups\0\u{3}ui_clear_groups_create\0\u{3}ui_clear_groups_delete\0\u{3}ui_clear_groups_change_visibility\0\u{3}ui_clear_groups_change_icon\0\u{3}ui_preview_area_clear_groups_trigger\0\u{3}ui_preview_area_clear_groups_changed\0\u{3}ui_placeholder_link\0\u{3}ui_placeholder_unlink\0\u{3}ui_planningCenterLive\0\u{3}ui_networkgroup_add\0\u{3}ui_networkgroup_remove\0\u{3}ui_ccli_report_reset\0\u{3}ui_ccli_report_shown\0\u{3}ui_capture_shown\0\u{3}ui_welcome\0\u{3}ui_welcome_screen_configuration_help\0\u{3}ui_welcome_download_sample_content\0\u{3}ui_welcome_user_group\0\u{3}ui_welcome_tutorials\0\u{3}ui_testPatterns\0\u{3}ui_settings_customLogo\0\u{3}ui_networkgroup_leave\0\u{3}ui_welcome_knowlegdeBase\0\u{3}ui_welcome_blog\0\u{3}ui_welcome_facebook\0\u{3}ui_welcome_instagram\0\u{3}ui_welcome_migration\0\u{3}ui_windowed_output_created\0\u{3}import_powerpoint\0\u{3}library_usage\0\u{3}font_replacement\0\u{3}log_document_uploaded\0\u{3}log_document_downloaded\0\u{3}log_diff_pushed\0\u{3}log_diff_received\0\u{3}trigger_external_presentation\0\u{3}workspace_creation\0\u{3}available_workspace\0\u{3}onboarding_flow_outcome\0\u{3}log_workspaces_published\0\u{3}log_collaborators_published\0\u{3}log_convert_to_cloud\0\u{3}log_convert_to_local\0\u{3}log_syncing_change\0\u{3}log_document_stored\0\u{3}log_document_created\0\u{3}log_document_updated\0\u{3}log_document_deleted\0\u{3}log_document_conflict\0\u{3}log_workspace_resynchronized\0\u{3}log_ws_connection_failed\0\u{3}log_error\0\u{3}user_workspace_tree_modification\0\u{3}ui_activation_flow_opened\0\u{3}log_opened_workspace\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}api_message_received\0\u{3}create_library\0\u{3}create_playlist\0\u{3}create_presentation\0\u{3}create_from_template_playlist\0\u{3}edit_presentation\0\u{3}import_songselect\0\u{3}import_multitracks\0\u{3}procontent_mediabin_view\0\u{3}procontent_download\0\u{3}procontent_download_retry\0\u{3}playback_marker\0\u{3}startup_looks\0\u{3}startup_screen_configuration\0\u{3}startup_screen_configuration_screen\0\u{3}startup_screen_configuration_single_screen\0\u{3}startup_screen_configuration_mirrored_screen\0\u{3}startup_screen_configuration_edge_blend_screen\0\u{3}startup_screen_configuration_grouped_screen\0\u{3}startup_preferences\0\u{3}startup_songselect\0\u{3}startup_content\0\u{3}startup_themes\0\u{3}startup_macro\0\u{3}startup_clear_group\0\u{3}startup_key_mapping\0\u{3}startup_multitracks\0\u{3}startup_network_link\0\u{3}startup_capture\0\u{3}startup_versioning\0\u{3}startup_disk_usage\0\u{3}startup_interface\0\u{3}sync_local\0\u{3}timecode_activate\0\u{3}timecode_startup\0\u{3}timeline_action\0\u{3}timeline_record_cue\0\u{3}timeline_cue_trigger\0\u{4}\u{c}application_launch\0\u{3}video_input_triggered\0\u{3}video_input_custom_map\0\u{3}video_input_start_up\0\u{3}video_input_thumbnail_update\0\u{3}audio_input_auto_on_change\0\u{3}audio_settings_sdi_ndi_active\0\u{3}audio_settings_custom_map\0\u{3}audio_input_mode_selection\0\u{3}audio_input_auto_on_startup\0\u{3}audio_settings_sdi_ndi_state\0\u{3}audio_input_start_up\0\u{3}cue_triggered\0\u{3}input_audio_monitoring\0\u{3}resi_start_up\0\u{3}resi_login_change\0\u{3}remote_stream_start\0\u{3}remote_stream_stop\0\u{3}start_capture_disk\0\u{3}start_capture_rtmp\0\u{3}start_capture_resi\0\u{3}stop_capture\0\u{3}analytic_reset\0\u{1}print\0\u{1}device\0\u{1}downgrade\0\u{3}ccli_report\0\u{3}transition_window\0\u{3}editor_object_added\0\u{3}data_id_duplicated\0\u{3}force_quit\0\u{3}media_cleanup_size\0\u{3}network_app\0\u{3}local_workspace_stats\0\u{3}syncing_unpaused\0\u{4}\u{10}trigger_action_capture_start\0\u{3}trigger_action_capture_stop\0\u{3}trigger_action_clear\0\u{3}trigger_action_clear_group\0\u{3}trigger_action_communications\0\u{3}trigger_action_look\0\u{3}trigger_action_macro\0\u{3}trigger_action_message\0\u{3}trigger_action_prop\0\u{3}trigger_action_slide_destination\0\u{3}trigger_action_stage\0\u{3}trigger_action_timer\0\u{3}trigger_media_audio\0\u{3}trigger_media_image\0\u{3}trigger_media_video_input\0\u{3}trigger_media_video\0\u{3}trigger_cue_slide\0\u{3}trigger_cue_slide_file_feed_element\0\u{3}trigger_cue_slide_rss_feed_element\0\u{3}trigger_cue_slide_scrolling_text_element\0\u{3}trigger_test_pattern\0\u{3}trigger_media_aircast_video\0\u{3}trigger_media_aircast_audio\0\u{3}aircast_video_input_configured\0\u{3}aircast_audio_input_configured\0\u{4}\u{10}media_management_installation_complete\0\u{3}media_management_bootstrapping_complete\0\u{3}media_management_message_failure\0\u{3}media_management_unexpectedly_not_running\0\u{3}media_management_connection_changed\0\u{3}media_management_added_media_reference\0\u{3}media_management_not_responding\0\u{3}media_management_media_state_resync_gave_up\0\u{4}5ui_quicksearch\0\u{3}ui_quicksearch_search\0\u{3}ui_quicksearch_openitems\0\u{3}ui_toolbar_theme\0\u{3}ui_toolbar_theme_application\0\u{3}ui_mainview_show\0\u{3}ui_mainview_presentation_editor\0\u{3}ui_mainview_reflow\0\u{3}ui_mainview_bible\0\u{3}bible_trigger\0\u{3}bible_generate_slides\0\u{3}bible_generate_next\0\u{3}bible_generate_previous\0\u{3}bible_save_slides\0\u{3}bible_lookup\0\u{3}bible_startup\0\u{3}bible_remove\0\u{3}bible_install\0\u{3}ui_mainview_mask_editor\0\u{3}ui_mainview_stage_editor\0\u{3}ui_mainview_theme_editor\0\u{3}ui_mainview_copyright_editor\0\u{3}ui_mainview_props_editor\0\u{3}ui_lowerright_timers\0\u{3}ui_lowerright_timers_collapse\0\u{3}ui_lowerright_timers_edit\0\u{3}ui_lowerright_timers_state\0\u{3}ui_lowerright_timers_create\0\u{3}ui_lowerright_timers_delete\0\u{3}ui_lowerright_messages\0\u{3}ui_lowerright_messages_edit\0\u{3}ui_lowerright_messages_state\0\u{3}ui_lowerright_messages_create\0\u{3}ui_lowerright_messages_delete\0\u{3}ui_lowerright_props\0\u{3}ui_lowerright_props_transition\0\u{3}ui_lowerright_props_create\0\u{3}ui_lowerright_props_delete\0\u{3}ui_lowerright_props_state\0\u{3}ui_lowerright_stage\0\u{3}ui_lowerright_stage_changelayout\0\u{3}ui_lowerright_stage_messagestate\0\u{3}ui_lowerright_stage_configurescreens\0\u{3}ui_lowerright_stage_editlayouts\0\u{3}ui_lowerright_macros\0\u{3}ui_lowerright_macros_trigger\0\u{3}ui_lowerright_macros_create\0\u{3}ui_lowerright_macros_delete\0\u{3}ui_textinspector\0\u{3}ui_textinspector_scrolling_text\0\u{3}ui_textinspector_foreground\0\u{3}ui_textinspector_underline_color\0\u{3}ui_textinspector_background_color\0\u{3}ui_textinspector_line_transform\0\u{3}ui_show_slide_label\0\u{3}ui_show_slide_label_change\0\u{4}\u{3}ui_editor_overlay_shown\0\u{3}ui_editor_overlay_closed\0\u{3}ui_whats_new_viewed\0\u{3}ui_clear_groups\0\u{3}ui_clear_groups_create\0\u{3}ui_clear_groups_delete\0\u{3}ui_clear_groups_change_visibility\0\u{3}ui_clear_groups_change_icon\0\u{3}ui_preview_area_clear_groups_trigger\0\u{3}ui_preview_area_clear_groups_changed\0\u{3}ui_placeholder_link\0\u{3}ui_placeholder_unlink\0\u{3}ui_planningCenterLive\0\u{3}ui_networkgroup_add\0\u{3}ui_networkgroup_remove\0\u{3}ui_ccli_report_reset\0\u{3}ui_ccli_report_shown\0\u{3}ui_capture_shown\0\u{3}ui_welcome\0\u{3}ui_welcome_screen_configuration_help\0\u{3}ui_welcome_download_sample_content\0\u{3}ui_welcome_user_group\0\u{3}ui_welcome_tutorials\0\u{3}ui_testPatterns\0\u{3}ui_settings_customLogo\0\u{3}ui_networkgroup_leave\0\u{3}ui_welcome_knowlegdeBase\0\u{3}ui_welcome_blog\0\u{3}ui_welcome_facebook\0\u{3}ui_welcome_instagram\0\u{3}ui_welcome_migration\0\u{3}ui_windowed_output_created\0\u{3}import_powerpoint\0\u{3}library_usage\0\u{3}font_replacement\0\u{3}log_document_uploaded\0\u{3}log_document_downloaded\0\u{3}log_diff_pushed\0\u{3}log_diff_received\0\u{3}trigger_external_presentation\0\u{3}workspace_creation\0\u{3}available_workspace\0\u{3}onboarding_flow_outcome\0\u{3}log_workspaces_published\0\u{3}log_collaborators_published\0\u{3}log_convert_to_cloud\0\u{3}log_convert_to_local\0\u{3}log_syncing_change\0\u{3}log_document_stored\0\u{3}log_document_created\0\u{3}log_document_updated\0\u{3}log_document_deleted\0\u{3}log_document_conflict\0\u{3}log_workspace_resynchronized\0\u{3}log_ws_connection_failed\0\u{3}log_error\0\u{4}\u{2}ui_activation_flow_opened\0\u{3}log_opened_workspace\0\u{3}log_diff_buffered\0\u{3}ui_stickers_opened\0\u{3}sticker_applied\0\u{3}sticker_modified\0\u{3}ui_export_prodisplay\0\u{3}export_prodisplay\0\u{3}trigger_media_stream\0\u{3}class_b_cutover\0\u{3}class_b_cutover_document_issue\0\u{3}media_stream_url_validated\0\u{3}startup_aplay\0\u{3}aplay_service_import\0\u{3}aplay_service_refresh\0\u{3}legacy_workspace_migration\0\u{3}document_sync_rate_limited\0\u{3}legacy_workspace_import\0\u{3}legacy_workspace_migration_launch\0\u{3}cloud_workspace_transfer\0\u{3}stored_version_vector_repaired\0\u{3}unreadable_media_held\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3393,6 +3573,19 @@ nonisolated extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._
         if let v = v {
           if hadOneofValue {try decoder.handleConflictingOneOf()}
           self.interaction = .mediaManagementNotResponding(v)
+        }
+      }()
+      case 147: try {
+        var v: Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .mediaManagementMediaStateResyncGaveUp(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .mediaManagementMediaStateResyncGaveUp(v)
         }
       }()
       case 200: try {
@@ -4851,19 +5044,6 @@ nonisolated extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._
           self.interaction = .logError(v)
         }
       }()
-      case 314: try {
-        var v: Rv_Analytics_Trackedevents_UserWorkspaceTreeModification?
-        var hadOneofValue = false
-        if let current = self.interaction {
-          hadOneofValue = true
-          if case .userWorkspaceTreeModification(let m) = current {v = m}
-        }
-        try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {
-          if hadOneofValue {try decoder.handleConflictingOneOf()}
-          self.interaction = .userWorkspaceTreeModification(v)
-        }
-      }()
       case 315: try {
         var v: Rv_Analytics_Ui_ActivationFlowOpened?
         var hadOneofValue = false
@@ -4888,6 +5068,266 @@ nonisolated extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._
         if let v = v {
           if hadOneofValue {try decoder.handleConflictingOneOf()}
           self.interaction = .logOpenedWorkspace(v)
+        }
+      }()
+      case 317: try {
+        var v: Rv_Analytics_Logs_LogDiffBuffered?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .logDiffBuffered(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .logDiffBuffered(v)
+        }
+      }()
+      case 318: try {
+        var v: Rv_Analytics_Procontent_StickersOpened?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .uiStickersOpened(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .uiStickersOpened(v)
+        }
+      }()
+      case 319: try {
+        var v: Rv_Analytics_Procontent_StickerApplied?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .stickerApplied(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .stickerApplied(v)
+        }
+      }()
+      case 320: try {
+        var v: Rv_Analytics_Procontent_StickerModified?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .stickerModified(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .stickerModified(v)
+        }
+      }()
+      case 321: try {
+        var v: Rv_Analytics_Ui_ProDisplayExportClicked?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .uiExportProdisplay(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .uiExportProdisplay(v)
+        }
+      }()
+      case 322: try {
+        var v: Rv_Analytics_Ui_ProDisplayExport?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .exportProdisplay(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .exportProdisplay(v)
+        }
+      }()
+      case 323: try {
+        var v: Rv_Analytics_Trigger_Media_MediaStream?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .triggerMediaStream(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .triggerMediaStream(v)
+        }
+      }()
+      case 324: try {
+        var v: Rv_Analytics_Migration_ClassBCutover?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .classBCutover(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .classBCutover(v)
+        }
+      }()
+      case 325: try {
+        var v: Rv_Analytics_Migration_ClassBCutoverDocumentIssue?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .classBCutoverDocumentIssue(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .classBCutoverDocumentIssue(v)
+        }
+      }()
+      case 326: try {
+        var v: Rv_Analytics_Trackedevents_MediaStreamUrlValidated?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .mediaStreamURLValidated(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .mediaStreamURLValidated(v)
+        }
+      }()
+      case 327: try {
+        var v: Rv_Analytics_Startup_APlay?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .startupAplay(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .startupAplay(v)
+        }
+      }()
+      case 328: try {
+        var v: Rv_Analytics_Import_APlayServiceImport?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .aplayServiceImport(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .aplayServiceImport(v)
+        }
+      }()
+      case 329: try {
+        var v: Rv_Analytics_Import_APlayServiceRefresh?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .aplayServiceRefresh(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .aplayServiceRefresh(v)
+        }
+      }()
+      case 330: try {
+        var v: Rv_Analytics_Migration_LegacyWorkspaceMigration?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .legacyWorkspaceMigration(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .legacyWorkspaceMigration(v)
+        }
+      }()
+      case 331: try {
+        var v: Rv_Analytics_Sync_DocumentSyncRateLimited?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .documentSyncRateLimited(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .documentSyncRateLimited(v)
+        }
+      }()
+      case 332: try {
+        var v: Rv_Analytics_Migration_LegacyWorkspaceImport?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .legacyWorkspaceImport(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .legacyWorkspaceImport(v)
+        }
+      }()
+      case 333: try {
+        var v: Rv_Analytics_Migration_LegacyWorkspaceMigrationLaunch?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .legacyWorkspaceMigrationLaunch(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .legacyWorkspaceMigrationLaunch(v)
+        }
+      }()
+      case 334: try {
+        var v: Rv_Analytics_Trackedevents_CloudWorkspaceTransfer?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .cloudWorkspaceTransfer(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .cloudWorkspaceTransfer(v)
+        }
+      }()
+      case 335: try {
+        var v: Rv_Analytics_Sync_StoredVersionVectorRepaired?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .storedVersionVectorRepaired(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .storedVersionVectorRepaired(v)
+        }
+      }()
+      case 336: try {
+        var v: Rv_Analytics_Mediamanagement_UnreadableMediaHeld?
+        var hadOneofValue = false
+        if let current = self.interaction {
+          hadOneofValue = true
+          if case .unreadableMediaHeld(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.interaction = .unreadableMediaHeld(v)
         }
       }()
       default: break
@@ -5320,6 +5760,10 @@ nonisolated extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._
     case .mediaManagementNotResponding?: try {
       guard case .mediaManagementNotResponding(let v)? = self.interaction else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 146)
+    }()
+    case .mediaManagementMediaStateResyncGaveUp?: try {
+      guard case .mediaManagementMediaStateResyncGaveUp(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 147)
     }()
     case .uiQuicksearch?: try {
       guard case .uiQuicksearch(let v)? = self.interaction else { preconditionFailure() }
@@ -5769,10 +6213,6 @@ nonisolated extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._
       guard case .logError(let v)? = self.interaction else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 313)
     }()
-    case .userWorkspaceTreeModification?: try {
-      guard case .userWorkspaceTreeModification(let v)? = self.interaction else { preconditionFailure() }
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 314)
-    }()
     case .uiActivationFlowOpened?: try {
       guard case .uiActivationFlowOpened(let v)? = self.interaction else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 315)
@@ -5780,6 +6220,86 @@ nonisolated extension Rv_Analytics_Event: SwiftProtobuf.Message, SwiftProtobuf._
     case .logOpenedWorkspace?: try {
       guard case .logOpenedWorkspace(let v)? = self.interaction else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 316)
+    }()
+    case .logDiffBuffered?: try {
+      guard case .logDiffBuffered(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 317)
+    }()
+    case .uiStickersOpened?: try {
+      guard case .uiStickersOpened(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 318)
+    }()
+    case .stickerApplied?: try {
+      guard case .stickerApplied(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 319)
+    }()
+    case .stickerModified?: try {
+      guard case .stickerModified(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 320)
+    }()
+    case .uiExportProdisplay?: try {
+      guard case .uiExportProdisplay(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 321)
+    }()
+    case .exportProdisplay?: try {
+      guard case .exportProdisplay(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 322)
+    }()
+    case .triggerMediaStream?: try {
+      guard case .triggerMediaStream(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 323)
+    }()
+    case .classBCutover?: try {
+      guard case .classBCutover(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 324)
+    }()
+    case .classBCutoverDocumentIssue?: try {
+      guard case .classBCutoverDocumentIssue(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 325)
+    }()
+    case .mediaStreamURLValidated?: try {
+      guard case .mediaStreamURLValidated(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 326)
+    }()
+    case .startupAplay?: try {
+      guard case .startupAplay(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 327)
+    }()
+    case .aplayServiceImport?: try {
+      guard case .aplayServiceImport(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 328)
+    }()
+    case .aplayServiceRefresh?: try {
+      guard case .aplayServiceRefresh(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 329)
+    }()
+    case .legacyWorkspaceMigration?: try {
+      guard case .legacyWorkspaceMigration(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 330)
+    }()
+    case .documentSyncRateLimited?: try {
+      guard case .documentSyncRateLimited(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 331)
+    }()
+    case .legacyWorkspaceImport?: try {
+      guard case .legacyWorkspaceImport(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 332)
+    }()
+    case .legacyWorkspaceMigrationLaunch?: try {
+      guard case .legacyWorkspaceMigrationLaunch(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 333)
+    }()
+    case .cloudWorkspaceTransfer?: try {
+      guard case .cloudWorkspaceTransfer(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 334)
+    }()
+    case .storedVersionVectorRepaired?: try {
+      guard case .storedVersionVectorRepaired(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 335)
+    }()
+    case .unreadableMediaHeld?: try {
+      guard case .unreadableMediaHeld(let v)? = self.interaction else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 336)
     }()
     case nil: break
     }

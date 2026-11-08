@@ -1,0 +1,421 @@
+syntax = "proto3";
+
+
+package content_provider;
+
+
+import "contentProvider.calls.proto";
+
+import "uuid.proto";
+
+import "playlist.proto";
+
+import "presentation.proto";
+
+
+
+enum LoginState {
+  LoggedOut = 0;
+  LoggedIn = 1;
+}
+
+enum ItemType {
+  ITEM_TYPE_UNSPECIFIED = 0;
+  MEDIA = 1;
+  PRESENTATION = 2;
+  RESOURCE = 3;
+}
+
+message Error {
+  enum Code {
+    UNKNOWN = 0;
+    CALL = 1;
+    INVALID_PROVIDER = 2;
+    PROVIDER_API = 3;
+    INVALID_HID = 4;
+    DATA_STORE = 5;
+    AUTHENTICATION = 6;
+    CANCELLED = 7;
+    FORBIDDEN = 8;
+    NOT_FOUND = 9;
+  }
+
+  content_provider.Error.Code code = 1;
+  string description = 2;
+}
+
+message OperationInProgress {
+  uint64 operation_id = 1;
+}
+
+message OperationOnHold {
+  message RateLimited {
+    uint64 retry_at_unix_ms = 1;
+  }
+
+  message LoginInProgress {
+  }
+
+  oneof reason {
+    content_provider.OperationOnHold.RateLimited rate_limited = 1;
+    content_provider.OperationOnHold.LoginInProgress login_in_progress = 2;
+  }
+
+}
+
+message LoginStateNotification {
+  content_provider.LoginState login_state = 1;
+  optional string name = 2;
+  optional string email = 3;
+  optional string org_name = 4;
+}
+
+message Notification {
+  oneof notification {
+    content_provider.LoginStateNotification login_state = 1;
+    content_provider.ItemsUpdated items_updated = 2;
+  }
+
+}
+
+message Login {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      content_provider.Login.Result.Ok ok = 1;
+      content_provider.Error error = 2;
+    }
+
+  }
+
+}
+
+message AuthorizationCode {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      content_provider.AuthorizationCode.Result.Ok ok = 1;
+      content_provider.Error error = 2;
+    }
+
+  }
+
+  oneof outcome {
+    string code = 2;
+    string error = 3;
+  }
+
+  string state = 1;
+}
+
+message Logout {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      content_provider.Logout.Result.Ok ok = 1;
+      content_provider.Error error = 2;
+    }
+
+  }
+
+}
+
+message GetLoginState {
+  message Result {
+    message Ok {
+      content_provider.LoginStateNotification login_state = 1;
+    }
+
+    oneof result {
+      content_provider.GetLoginState.Result.Ok ok = 1;
+      content_provider.Error error = 2;
+    }
+
+  }
+
+}
+
+message Folder {
+  string id = 1;
+  string name = 2;
+  optional string description = 3;
+  string content_version = 4;
+  string updated_at = 5;
+  optional bytes thumbnail = 6;
+  optional string thumbnail_content_type = 7;
+  optional string folder_id = 8;
+  bool contains_media = 9;
+  bool contains_presentations = 10;
+  repeated content_provider.Folder folders = 11;
+}
+
+message Item {
+  message Presentation {
+    int32 item_count = 1;
+  }
+
+  message Media {
+    enum MediaType {
+      IMAGE = 0;
+      VIDEO = 1;
+      AUDIO = 2;
+    }
+
+    message Rendition {
+      enum DeliveryMode {
+        FILE = 0;
+        HLS = 1;
+      }
+
+      string id = 1;
+      content_provider.Item.Media.Rendition.DeliveryMode delivery_mode = 2;
+      string mime_type = 3;
+      optional int32 width = 4;
+      optional int32 height = 5;
+      optional double duration = 6;
+    }
+
+    content_provider.Item.Media.MediaType media_type = 1;
+    repeated content_provider.Item.Media.Rendition renditions = 3;
+  }
+
+  message Resource {
+    message Attachment {
+      string id = 1;
+      string name = 2;
+      string mime_type = 3;
+    }
+
+    repeated content_provider.Item.Resource.Attachment attachments = 1;
+  }
+
+  oneof item {
+    content_provider.Item.Presentation presentation = 10;
+    content_provider.Item.Media media = 11;
+    content_provider.Item.Resource resource = 12;
+  }
+
+  string id = 1;
+  string name = 2;
+  optional string description = 3;
+  string content_version = 4;
+  string updated_at = 5;
+  optional bytes thumbnail = 6;
+  optional string thumbnail_content_type = 7;
+  optional string folder_id = 8;
+  content_provider.ItemType item_type = 9;
+}
+
+message ItemsUpdated {
+  repeated content_provider.Item updated = 1;
+  repeated string deleted_ids = 2;
+}
+
+message GetFolderTree {
+  message Result {
+    message Ok {
+      repeated content_provider.Folder items = 1;
+    }
+
+    oneof result {
+      content_provider.OperationInProgress in_progress = 1;
+      content_provider.GetFolderTree.Result.Ok ok = 2;
+      content_provider.Error error = 3;
+      content_provider.OperationOnHold on_hold = 4;
+    }
+
+  }
+
+  optional string folder_id = 1;
+  bool recursive = 2;
+  bool fetch_thumbnails = 3;
+}
+
+message GetItemList {
+  message Result {
+    message Ok {
+      repeated content_provider.Item items = 1;
+    }
+
+    message Partial {
+      content_provider.ItemType item_type = 1;
+      repeated content_provider.Item items = 2;
+      bool restart = 3;
+      bool has_more = 4;
+    }
+
+    oneof result {
+      content_provider.OperationInProgress in_progress = 1;
+      content_provider.GetItemList.Result.Ok ok = 2;
+      content_provider.Error error = 3;
+      content_provider.GetItemList.Result.Partial partial = 4;
+      content_provider.OperationOnHold on_hold = 5;
+    }
+
+  }
+
+  optional string folder_id = 1;
+  bool include_presentations = 2;
+  bool include_media = 3;
+  bool include_resources = 4;
+  bool fetch_thumbnails = 5;
+  optional string updated_since = 6;
+  optional string search = 7;
+  bool streamed = 8;
+  optional int32 limit = 9;
+}
+
+message ResolveUrl {
+  enum Purpose {
+    PURPOSE_UNSPECIFIED = 0;
+    PREVIEW = 1;
+    CACHE = 2;
+    PLAYBACK = 3;
+  }
+
+  message Result {
+    oneof result {
+      content_provider.OperationInProgress in_progress = 1;
+      rv.data.ResolvedUrl ok = 2;
+      content_provider.Error error = 3;
+      content_provider.OperationOnHold on_hold = 4;
+    }
+
+  }
+
+  string item_id = 1;
+  content_provider.ItemType item_type = 2;
+  optional string rendition_id = 3;
+  optional string attachment_id = 4;
+  string content_version = 5;
+  content_provider.ResolveUrl.Purpose purpose = 6;
+}
+
+message GetMediaThumbnail {
+  message Result {
+    message Ok {
+      bytes thumbnail = 1;
+      optional string thumbnail_content_type = 2;
+    }
+
+    oneof result {
+      content_provider.OperationInProgress in_progress = 1;
+      content_provider.GetMediaThumbnail.Result.Ok ok = 2;
+      content_provider.Error error = 3;
+      content_provider.OperationOnHold on_hold = 4;
+    }
+
+  }
+
+  string media_id = 1;
+  optional string rendition_id = 2;
+}
+
+message ImportPresentation {
+  message Result {
+    message Progress {
+      string item_name = 1;
+      uint32 processed = 2;
+      uint32 total = 3;
+    }
+
+    message Ok {
+      rv.data.UUID workspace_id = 1;
+      string workspace_path = 2;
+      repeated rv.data.UUID presentation_uuids = 3;
+      repeated rv.data.PlaylistNode playlist_items = 4;
+      repeated content_provider.ImportPresentation.Result.PresentationChange presentation_changes = 5;
+      string content_version = 6;
+      rv.data.PlaylistNode.Playlist playlist = 7;
+    }
+
+    message PresentationChange {
+      enum Action {
+        ACTION_UNSPECIFIED = 0;
+        CREATE = 1;
+        REPLACE = 2;
+      }
+
+      content_provider.ImportPresentation.Result.PresentationChange.Action action = 1;
+      rv.data.UUID document_id = 2;
+      rv.data.Presentation presentation = 3;
+    }
+
+    oneof result {
+      content_provider.OperationInProgress in_progress = 1;
+      content_provider.ImportPresentation.Result.Progress progress = 2;
+      content_provider.ImportPresentation.Result.Ok ok = 3;
+      content_provider.Error error = 4;
+      content_provider.OperationOnHold on_hold = 5;
+    }
+
+  }
+
+  message KnownItem {
+    string item_id = 1;
+    rv.data.UUID document_id = 2;
+  }
+
+  string id = 1;
+  rv.data.UUID workspace_id = 2;
+  string workspace_path = 3;
+  string known_content_version = 4;
+  repeated content_provider.ImportPresentation.KnownItem known_items = 5;
+  string import_library = 6;
+}
+
+message ImportMedia {
+  message Result {
+    message Ok {
+      rv.data.UUID workspace_id = 1;
+      string workspace_path = 2;
+      rv.data.UUID media_id = 3;
+    }
+
+    oneof result {
+      content_provider.ImportMedia.Result.Ok ok = 1;
+      content_provider.Error error = 2;
+    }
+
+  }
+
+  string id = 1;
+  rv.data.UUID workspace_id = 2;
+  string workspace_path = 3;
+}
+
+message CancelOperation {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      content_provider.CancelOperation.Result.Ok ok = 1;
+      content_provider.Error error = 2;
+    }
+
+  }
+
+  uint64 operation_id = 1;
+}
+
+message RemoveTrackedPresentations {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      content_provider.RemoveTrackedPresentations.Result.Ok ok = 1;
+      content_provider.Error error = 2;
+    }
+
+  }
+
+  repeated string ids = 1;
+}

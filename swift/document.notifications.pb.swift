@@ -88,6 +88,47 @@ public nonisolated struct Document_Notification: Sendable {
     set {notification = .removed(newValue)}
   }
 
+  public var mediaInventory: Document_Notification.MediaInventory {
+    get {
+      if case .mediaInventory(let v)? = notification {return v}
+      return Document_Notification.MediaInventory()
+    }
+    set {notification = .mediaInventory(newValue)}
+  }
+
+  public var mediaIdentityMigration: Document_Notification.MediaIdentityMigration {
+    get {
+      if case .mediaIdentityMigration(let v)? = notification {return v}
+      return Document_Notification.MediaIdentityMigration()
+    }
+    set {notification = .mediaIdentityMigration(newValue)}
+  }
+
+  public var deviceLocalState: Document_Notification.DeviceLocalState {
+    get {
+      if case .deviceLocalState(let v)? = notification {return v}
+      return Document_Notification.DeviceLocalState()
+    }
+    set {notification = .deviceLocalState(newValue)}
+  }
+
+  public var index: Document_Notification.Index {
+    get {
+      if case .index(let v)? = notification {return v}
+      return Document_Notification.Index()
+    }
+    set {notification = .index(newValue)}
+  }
+
+  public var workspace: Document_Workspace {
+    get {_workspace ?? Document_Workspace()}
+    set {_workspace = newValue}
+  }
+  /// Returns true if `workspace` has been explicitly set.
+  public var hasWorkspace: Bool {self._workspace != nil}
+  /// Clears the value of `workspace`. Subsequent reads from it will return its default value.
+  public mutating func clearWorkspace() {self._workspace = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public nonisolated enum OneOf_Notification: Equatable, Sendable {
@@ -98,6 +139,10 @@ public nonisolated struct Document_Notification: Sendable {
     case added(Document_Notification.Added)
     case moved(Document_Notification.Moved)
     case removed(Document_Notification.Removed)
+    case mediaInventory(Document_Notification.MediaInventory)
+    case mediaIdentityMigration(Document_Notification.MediaIdentityMigration)
+    case deviceLocalState(Document_Notification.DeviceLocalState)
+    case index(Document_Notification.Index)
 
   }
 
@@ -146,7 +191,83 @@ public nonisolated struct Document_Notification: Sendable {
 
     public var blob: Data = Data()
 
+    public var kind: Document_Document.Kind = .presentation
+
+    public var path: String = String()
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct DeviceLocalState: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var generation: UInt64 = 0
+
+    public var revision: UInt64 = 0
+
+    public var streams: [Document_Notification.DeviceLocalState.Stream] = []
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated struct CollectionLocation: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var kind: Document_Document.Kind = .presentation
+
+      public var path: String = String()
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public nonisolated struct Stream: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var location: Document_Notification.DeviceLocalState.Stream.OneOf_Location? = nil
+
+      public var intrinsicKind: Document_Intrinsic.Kind {
+        get {
+          if case .intrinsicKind(let v)? = location {return v}
+          return .calendar
+        }
+        set {location = .intrinsicKind(newValue)}
+      }
+
+      public var collection: Document_Notification.DeviceLocalState.CollectionLocation {
+        get {
+          if case .collection(let v)? = location {return v}
+          return Document_Notification.DeviceLocalState.CollectionLocation()
+        }
+        set {location = .collection(newValue)}
+      }
+
+      public var uuid: String = String()
+
+      public var scope: Document_Scope = .shared
+
+      public var snapshot: Data = Data()
+
+      public var versionVector: Data = Data()
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public nonisolated enum OneOf_Location: Equatable, Sendable {
+        case intrinsicKind(Document_Intrinsic.Kind)
+        case collection(Document_Notification.DeviceLocalState.CollectionLocation)
+
+      }
+
+      public init() {}
+    }
 
     public init() {}
   }
@@ -161,6 +282,8 @@ public nonisolated struct Document_Notification: Sendable {
     public var kind: Document_Document.Kind = .presentation
 
     public var path: String = String()
+
+    public var remote: Bool = false
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -178,6 +301,8 @@ public nonisolated struct Document_Notification: Sendable {
 
     public var path: String = String()
 
+    public var remote: Bool = false
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public init() {}
@@ -194,12 +319,278 @@ public nonisolated struct Document_Notification: Sendable {
 
     public var path: String = String()
 
+    public var remote: Bool = false
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct MediaInventory: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var generation: UInt64 = 0
+
+    public var revision: UInt64 = 0
+
+    public var initialized: Bool = false
+
+    public var complete: Bool = false
+
+    public var references: [Document_Notification.MediaInventory.Reference] = []
+
+    public var pendingDocumentUuids: [String] = []
+
+    public var issues: [Document_Notification.MediaInventory.Issue] = []
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum MediaType: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public typealias RawValue = Int
+      case unknown // = 0
+      case audio // = 1
+      case image // = 2
+      case video // = 3
+      case liveVideo // = 4
+      case webContent // = 5
+      case hls // = 6
+      case UNRECOGNIZED(Int)
+
+      public init() {
+        self = .unknown
+      }
+
+      public init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .unknown
+        case 1: self = .audio
+        case 2: self = .image
+        case 3: self = .video
+        case 4: self = .liveVideo
+        case 5: self = .webContent
+        case 6: self = .hls
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      public var rawValue: Int {
+        switch self {
+        case .unknown: return 0
+        case .audio: return 1
+        case .image: return 2
+        case .video: return 3
+        case .liveVideo: return 4
+        case .webContent: return 5
+        case .hls: return 6
+        case .UNRECOGNIZED(let i): return i
+        }
+      }
+
+      // The compiler won't synthesize support with the UNRECOGNIZED case.
+      public static let allCases: [Document_Notification.MediaInventory.MediaType] = [
+        .unknown,
+        .audio,
+        .image,
+        .video,
+        .liveVideo,
+        .webContent,
+        .hls,
+      ]
+
+    }
+
+    public nonisolated enum IssueKind: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public typealias RawValue = Int
+      case unknown // = 0
+      case documentUnreadable // = 1
+      case missingReferenceID // = 2
+      case invalidReferenceID // = 3
+      case invalidAssetID // = 4
+      case missingMediaType // = 5
+      case unknownMediaType // = 6
+      case duplicateReferenceID // = 7
+      case localSnapshotUnavailable // = 8
+      case UNRECOGNIZED(Int)
+
+      public init() {
+        self = .unknown
+      }
+
+      public init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .unknown
+        case 1: self = .documentUnreadable
+        case 2: self = .missingReferenceID
+        case 3: self = .invalidReferenceID
+        case 4: self = .invalidAssetID
+        case 5: self = .missingMediaType
+        case 6: self = .unknownMediaType
+        case 7: self = .duplicateReferenceID
+        case 8: self = .localSnapshotUnavailable
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      public var rawValue: Int {
+        switch self {
+        case .unknown: return 0
+        case .documentUnreadable: return 1
+        case .missingReferenceID: return 2
+        case .invalidReferenceID: return 3
+        case .invalidAssetID: return 4
+        case .missingMediaType: return 5
+        case .unknownMediaType: return 6
+        case .duplicateReferenceID: return 7
+        case .localSnapshotUnavailable: return 8
+        case .UNRECOGNIZED(let i): return i
+        }
+      }
+
+      // The compiler won't synthesize support with the UNRECOGNIZED case.
+      public static let allCases: [Document_Notification.MediaInventory.IssueKind] = [
+        .unknown,
+        .documentUnreadable,
+        .missingReferenceID,
+        .invalidReferenceID,
+        .invalidAssetID,
+        .missingMediaType,
+        .unknownMediaType,
+        .duplicateReferenceID,
+        .localSnapshotUnavailable,
+      ]
+
+    }
+
+    public nonisolated struct Reference: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var documentUuid: String = String()
+
+      public var occurrencePath: String = String()
+
+      public var referenceUuid: String = String()
+
+      public var assetUuid: String {
+        get {_assetUuid ?? String()}
+        set {_assetUuid = newValue}
+      }
+      /// Returns true if `assetUuid` has been explicitly set.
+      public var hasAssetUuid: Bool {self._assetUuid != nil}
+      /// Clears the value of `assetUuid`. Subsequent reads from it will return its default value.
+      public mutating func clearAssetUuid() {self._assetUuid = nil}
+
+      public var mediaType: Document_Notification.MediaInventory.MediaType = .unknown
+
+      public var sourceFingerprint: Data {
+        get {_sourceFingerprint ?? Data()}
+        set {_sourceFingerprint = newValue}
+      }
+      /// Returns true if `sourceFingerprint` has been explicitly set.
+      public var hasSourceFingerprint: Bool {self._sourceFingerprint != nil}
+      /// Clears the value of `sourceFingerprint`. Subsequent reads from it will return its default value.
+      public mutating func clearSourceFingerprint() {self._sourceFingerprint = nil}
+
+      public var descriptorFingerprint: Data = Data()
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _assetUuid: String? = nil
+      fileprivate var _sourceFingerprint: Data? = nil
+    }
+
+    public nonisolated struct Issue: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var documentUuid: String = String()
+
+      public var occurrencePath: String = String()
+
+      public var kind: Document_Notification.MediaInventory.IssueKind = .unknown
+
+      public var detail: String {
+        get {_detail ?? String()}
+        set {_detail = newValue}
+      }
+      /// Returns true if `detail` has been explicitly set.
+      public var hasDetail: Bool {self._detail != nil}
+      /// Clears the value of `detail`. Subsequent reads from it will return its default value.
+      public mutating func clearDetail() {self._detail = nil}
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _detail: String? = nil
+    }
+
+    public init() {}
+  }
+
+  public nonisolated struct MediaIdentityMigration: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var migrationUuid: String = String()
+
+    public var documents: [Document_Notification.MediaIdentityMigration.Document] = []
+
+    public var attemptUuid: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated struct Document: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var documentUuid: String = String()
+
+      public var patch: Data = Data()
+
+      public var migratedSnapshot: Data = Data()
+
+      public var migratedSha256: Data = Data()
+
+      public var baselineSnapshot: Data = Data()
+
+      public var referenceUuids: [String] = []
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public nonisolated struct Index: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var generation: UInt64 = 0
+
+    public var documents: [Document_Call_DocumentDescriptor] = []
+
+    public var catalogRevision: UInt64 = 0
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public init() {}
   }
 
   public init() {}
+
+  fileprivate var _workspace: Document_Workspace? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -208,7 +599,7 @@ fileprivate nonisolated let _protobuf_package = "document"
 
 nonisolated extension Document_Notification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Notification"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}unsubscribe\0\u{1}patch\0\u{1}required\0\u{1}available\0\u{1}added\0\u{1}moved\0\u{1}removed\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}unsubscribe\0\u{1}patch\0\u{1}required\0\u{1}available\0\u{1}added\0\u{1}moved\0\u{1}removed\0\u{1}workspace\0\u{3}media_inventory\0\u{3}media_identity_migration\0\u{3}device_local_state\0\u{1}index\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -307,6 +698,59 @@ nonisolated extension Document_Notification: SwiftProtobuf.Message, SwiftProtobu
           self.notification = .removed(v)
         }
       }()
+      case 8: try { try decoder.decodeSingularMessageField(value: &self._workspace) }()
+      case 9: try {
+        var v: Document_Notification.MediaInventory?
+        var hadOneofValue = false
+        if let current = self.notification {
+          hadOneofValue = true
+          if case .mediaInventory(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.notification = .mediaInventory(v)
+        }
+      }()
+      case 10: try {
+        var v: Document_Notification.MediaIdentityMigration?
+        var hadOneofValue = false
+        if let current = self.notification {
+          hadOneofValue = true
+          if case .mediaIdentityMigration(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.notification = .mediaIdentityMigration(v)
+        }
+      }()
+      case 11: try {
+        var v: Document_Notification.DeviceLocalState?
+        var hadOneofValue = false
+        if let current = self.notification {
+          hadOneofValue = true
+          if case .deviceLocalState(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.notification = .deviceLocalState(v)
+        }
+      }()
+      case 12: try {
+        var v: Document_Notification.Index?
+        var hadOneofValue = false
+        if let current = self.notification {
+          hadOneofValue = true
+          if case .index(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.notification = .index(v)
+        }
+      }()
       default: break
       }
     }
@@ -346,13 +790,36 @@ nonisolated extension Document_Notification: SwiftProtobuf.Message, SwiftProtobu
       guard case .removed(let v)? = self.notification else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
     }()
-    case nil: break
+    default: break
+    }
+    try { if let v = self._workspace {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+    } }()
+    switch self.notification {
+    case .mediaInventory?: try {
+      guard case .mediaInventory(let v)? = self.notification else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+    }()
+    case .mediaIdentityMigration?: try {
+      guard case .mediaIdentityMigration(let v)? = self.notification else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
+    }()
+    case .deviceLocalState?: try {
+      guard case .deviceLocalState(let v)? = self.notification else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
+    }()
+    case .index?: try {
+      guard case .index(let v)? = self.notification else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
+    }()
+    default: break
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Document_Notification, rhs: Document_Notification) -> Bool {
     if lhs.notification != rhs.notification {return false}
+    if lhs._workspace != rhs._workspace {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -444,7 +911,7 @@ nonisolated extension Document_Notification.Required: SwiftProtobuf.Message, Swi
 
 nonisolated extension Document_Notification.Available: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Available"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}blob\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}blob\0\u{1}kind\0\u{1}path\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -454,6 +921,8 @@ nonisolated extension Document_Notification.Available: SwiftProtobuf.Message, Sw
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
       case 2: try { try decoder.decodeSingularBytesField(value: &self.blob) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.path) }()
       default: break
       }
     }
@@ -466,12 +935,177 @@ nonisolated extension Document_Notification.Available: SwiftProtobuf.Message, Sw
     if !self.blob.isEmpty {
       try visitor.visitSingularBytesField(value: self.blob, fieldNumber: 2)
     }
+    if self.kind != .presentation {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 3)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Document_Notification.Available, rhs: Document_Notification.Available) -> Bool {
     if lhs.uuid != rhs.uuid {return false}
     if lhs.blob != rhs.blob {return false}
+    if lhs.kind != rhs.kind {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Notification.DeviceLocalState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.protoMessageName + ".DeviceLocalState"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}generation\0\u{1}revision\0\u{1}streams\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.revision) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.streams) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 1)
+    }
+    if self.revision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.revision, fieldNumber: 2)
+    }
+    if !self.streams.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.streams, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.DeviceLocalState, rhs: Document_Notification.DeviceLocalState) -> Bool {
+    if lhs.generation != rhs.generation {return false}
+    if lhs.revision != rhs.revision {return false}
+    if lhs.streams != rhs.streams {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Notification.DeviceLocalState.CollectionLocation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.DeviceLocalState.protoMessageName + ".CollectionLocation"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}kind\0\u{1}path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.kind != .presentation {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 1)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.DeviceLocalState.CollectionLocation, rhs: Document_Notification.DeviceLocalState.CollectionLocation) -> Bool {
+    if lhs.kind != rhs.kind {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Notification.DeviceLocalState.Stream: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.DeviceLocalState.protoMessageName + ".Stream"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}scope\0\u{3}intrinsic_kind\0\u{1}collection\0\u{1}snapshot\0\u{3}version_vector\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.scope) }()
+      case 3: try {
+        var v: Document_Intrinsic.Kind?
+        try decoder.decodeSingularEnumField(value: &v)
+        if let v = v {
+          if self.location != nil {try decoder.handleConflictingOneOf()}
+          self.location = .intrinsicKind(v)
+        }
+      }()
+      case 4: try {
+        var v: Document_Notification.DeviceLocalState.CollectionLocation?
+        var hadOneofValue = false
+        if let current = self.location {
+          hadOneofValue = true
+          if case .collection(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.location = .collection(v)
+        }
+      }()
+      case 5: try { try decoder.decodeSingularBytesField(value: &self.snapshot) }()
+      case 6: try { try decoder.decodeSingularBytesField(value: &self.versionVector) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.uuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
+    }
+    if self.scope != .shared {
+      try visitor.visitSingularEnumField(value: self.scope, fieldNumber: 2)
+    }
+    switch self.location {
+    case .intrinsicKind?: try {
+      guard case .intrinsicKind(let v)? = self.location else { preconditionFailure() }
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 3)
+    }()
+    case .collection?: try {
+      guard case .collection(let v)? = self.location else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    }()
+    case nil: break
+    }
+    if !self.snapshot.isEmpty {
+      try visitor.visitSingularBytesField(value: self.snapshot, fieldNumber: 5)
+    }
+    if !self.versionVector.isEmpty {
+      try visitor.visitSingularBytesField(value: self.versionVector, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.DeviceLocalState.Stream, rhs: Document_Notification.DeviceLocalState.Stream) -> Bool {
+    if lhs.location != rhs.location {return false}
+    if lhs.uuid != rhs.uuid {return false}
+    if lhs.scope != rhs.scope {return false}
+    if lhs.snapshot != rhs.snapshot {return false}
+    if lhs.versionVector != rhs.versionVector {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -479,7 +1113,7 @@ nonisolated extension Document_Notification.Available: SwiftProtobuf.Message, Sw
 
 nonisolated extension Document_Notification.Added: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Added"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0\u{1}remote\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -490,6 +1124,7 @@ nonisolated extension Document_Notification.Added: SwiftProtobuf.Message, SwiftP
       case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
       case 2: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.remote) }()
       default: break
       }
     }
@@ -504,6 +1139,9 @@ nonisolated extension Document_Notification.Added: SwiftProtobuf.Message, SwiftP
     }
     if !self.path.isEmpty {
       try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
+    }
+    if self.remote != false {
+      try visitor.visitSingularBoolField(value: self.remote, fieldNumber: 4)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -512,6 +1150,7 @@ nonisolated extension Document_Notification.Added: SwiftProtobuf.Message, SwiftP
     if lhs.uuid != rhs.uuid {return false}
     if lhs.kind != rhs.kind {return false}
     if lhs.path != rhs.path {return false}
+    if lhs.remote != rhs.remote {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -519,7 +1158,7 @@ nonisolated extension Document_Notification.Added: SwiftProtobuf.Message, SwiftP
 
 nonisolated extension Document_Notification.Moved: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Moved"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0\u{1}remote\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -530,6 +1169,7 @@ nonisolated extension Document_Notification.Moved: SwiftProtobuf.Message, SwiftP
       case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
       case 2: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.remote) }()
       default: break
       }
     }
@@ -544,6 +1184,9 @@ nonisolated extension Document_Notification.Moved: SwiftProtobuf.Message, SwiftP
     }
     if !self.path.isEmpty {
       try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
+    }
+    if self.remote != false {
+      try visitor.visitSingularBoolField(value: self.remote, fieldNumber: 4)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -552,6 +1195,7 @@ nonisolated extension Document_Notification.Moved: SwiftProtobuf.Message, SwiftP
     if lhs.uuid != rhs.uuid {return false}
     if lhs.kind != rhs.kind {return false}
     if lhs.path != rhs.path {return false}
+    if lhs.remote != rhs.remote {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -559,7 +1203,7 @@ nonisolated extension Document_Notification.Moved: SwiftProtobuf.Message, SwiftP
 
 nonisolated extension Document_Notification.Removed: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Document_Notification.protoMessageName + ".Removed"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}kind\0\u{1}path\0\u{1}remote\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -570,6 +1214,7 @@ nonisolated extension Document_Notification.Removed: SwiftProtobuf.Message, Swif
       case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
       case 2: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.remote) }()
       default: break
       }
     }
@@ -585,6 +1230,9 @@ nonisolated extension Document_Notification.Removed: SwiftProtobuf.Message, Swif
     if !self.path.isEmpty {
       try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
     }
+    if self.remote != false {
+      try visitor.visitSingularBoolField(value: self.remote, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -592,6 +1240,323 @@ nonisolated extension Document_Notification.Removed: SwiftProtobuf.Message, Swif
     if lhs.uuid != rhs.uuid {return false}
     if lhs.kind != rhs.kind {return false}
     if lhs.path != rhs.path {return false}
+    if lhs.remote != rhs.remote {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Notification.MediaInventory: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.protoMessageName + ".MediaInventory"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}generation\0\u{1}revision\0\u{1}initialized\0\u{1}complete\0\u{1}references\0\u{3}pending_document_uuids\0\u{1}issues\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.revision) }()
+      case 3: try { try decoder.decodeSingularBoolField(value: &self.initialized) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.complete) }()
+      case 5: try { try decoder.decodeRepeatedMessageField(value: &self.references) }()
+      case 6: try { try decoder.decodeRepeatedStringField(value: &self.pendingDocumentUuids) }()
+      case 7: try { try decoder.decodeRepeatedMessageField(value: &self.issues) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 1)
+    }
+    if self.revision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.revision, fieldNumber: 2)
+    }
+    if self.initialized != false {
+      try visitor.visitSingularBoolField(value: self.initialized, fieldNumber: 3)
+    }
+    if self.complete != false {
+      try visitor.visitSingularBoolField(value: self.complete, fieldNumber: 4)
+    }
+    if !self.references.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.references, fieldNumber: 5)
+    }
+    if !self.pendingDocumentUuids.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.pendingDocumentUuids, fieldNumber: 6)
+    }
+    if !self.issues.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.issues, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.MediaInventory, rhs: Document_Notification.MediaInventory) -> Bool {
+    if lhs.generation != rhs.generation {return false}
+    if lhs.revision != rhs.revision {return false}
+    if lhs.initialized != rhs.initialized {return false}
+    if lhs.complete != rhs.complete {return false}
+    if lhs.references != rhs.references {return false}
+    if lhs.pendingDocumentUuids != rhs.pendingDocumentUuids {return false}
+    if lhs.issues != rhs.issues {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Notification.MediaInventory.MediaType: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MEDIA_TYPE_UNKNOWN\0\u{1}MEDIA_TYPE_AUDIO\0\u{1}MEDIA_TYPE_IMAGE\0\u{1}MEDIA_TYPE_VIDEO\0\u{1}MEDIA_TYPE_LIVE_VIDEO\0\u{1}MEDIA_TYPE_WEB_CONTENT\0\u{1}MEDIA_TYPE_HLS\0")
+}
+
+nonisolated extension Document_Notification.MediaInventory.IssueKind: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ISSUE_KIND_UNKNOWN\0\u{1}ISSUE_KIND_DOCUMENT_UNREADABLE\0\u{1}ISSUE_KIND_MISSING_REFERENCE_ID\0\u{1}ISSUE_KIND_INVALID_REFERENCE_ID\0\u{1}ISSUE_KIND_INVALID_ASSET_ID\0\u{1}ISSUE_KIND_MISSING_MEDIA_TYPE\0\u{1}ISSUE_KIND_UNKNOWN_MEDIA_TYPE\0\u{1}ISSUE_KIND_DUPLICATE_REFERENCE_ID\0\u{1}ISSUE_KIND_LOCAL_SNAPSHOT_UNAVAILABLE\0")
+}
+
+nonisolated extension Document_Notification.MediaInventory.Reference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.MediaInventory.protoMessageName + ".Reference"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_uuid\0\u{3}occurrence_path\0\u{3}reference_uuid\0\u{3}asset_uuid\0\u{3}media_type\0\u{3}source_fingerprint\0\u{3}descriptor_fingerprint\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.documentUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.occurrencePath) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._assetUuid) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.mediaType) }()
+      case 6: try { try decoder.decodeSingularBytesField(value: &self._sourceFingerprint) }()
+      case 7: try { try decoder.decodeSingularBytesField(value: &self.descriptorFingerprint) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.documentUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentUuid, fieldNumber: 1)
+    }
+    if !self.occurrencePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.occurrencePath, fieldNumber: 2)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 3)
+    }
+    try { if let v = self._assetUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    } }()
+    if self.mediaType != .unknown {
+      try visitor.visitSingularEnumField(value: self.mediaType, fieldNumber: 5)
+    }
+    try { if let v = self._sourceFingerprint {
+      try visitor.visitSingularBytesField(value: v, fieldNumber: 6)
+    } }()
+    if !self.descriptorFingerprint.isEmpty {
+      try visitor.visitSingularBytesField(value: self.descriptorFingerprint, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.MediaInventory.Reference, rhs: Document_Notification.MediaInventory.Reference) -> Bool {
+    if lhs.documentUuid != rhs.documentUuid {return false}
+    if lhs.occurrencePath != rhs.occurrencePath {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs._assetUuid != rhs._assetUuid {return false}
+    if lhs.mediaType != rhs.mediaType {return false}
+    if lhs._sourceFingerprint != rhs._sourceFingerprint {return false}
+    if lhs.descriptorFingerprint != rhs.descriptorFingerprint {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Notification.MediaInventory.Issue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.MediaInventory.protoMessageName + ".Issue"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_uuid\0\u{3}occurrence_path\0\u{1}kind\0\u{1}detail\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.documentUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.occurrencePath) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._detail) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.documentUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentUuid, fieldNumber: 1)
+    }
+    if !self.occurrencePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.occurrencePath, fieldNumber: 2)
+    }
+    if self.kind != .unknown {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 3)
+    }
+    try { if let v = self._detail {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.MediaInventory.Issue, rhs: Document_Notification.MediaInventory.Issue) -> Bool {
+    if lhs.documentUuid != rhs.documentUuid {return false}
+    if lhs.occurrencePath != rhs.occurrencePath {return false}
+    if lhs.kind != rhs.kind {return false}
+    if lhs._detail != rhs._detail {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Notification.MediaIdentityMigration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.protoMessageName + ".MediaIdentityMigration"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}migration_uuid\0\u{1}documents\0\u{3}attempt_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.migrationUuid) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.documents) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.attemptUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.migrationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.migrationUuid, fieldNumber: 1)
+    }
+    if !self.documents.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.documents, fieldNumber: 2)
+    }
+    if !self.attemptUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.attemptUuid, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.MediaIdentityMigration, rhs: Document_Notification.MediaIdentityMigration) -> Bool {
+    if lhs.migrationUuid != rhs.migrationUuid {return false}
+    if lhs.documents != rhs.documents {return false}
+    if lhs.attemptUuid != rhs.attemptUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Notification.MediaIdentityMigration.Document: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.MediaIdentityMigration.protoMessageName + ".Document"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_uuid\0\u{1}patch\0\u{3}migrated_snapshot\0\u{3}migrated_sha256\0\u{3}baseline_snapshot\0\u{3}reference_uuids\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.documentUuid) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.patch) }()
+      case 3: try { try decoder.decodeSingularBytesField(value: &self.migratedSnapshot) }()
+      case 4: try { try decoder.decodeSingularBytesField(value: &self.migratedSha256) }()
+      case 5: try { try decoder.decodeSingularBytesField(value: &self.baselineSnapshot) }()
+      case 6: try { try decoder.decodeRepeatedStringField(value: &self.referenceUuids) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.documentUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentUuid, fieldNumber: 1)
+    }
+    if !self.patch.isEmpty {
+      try visitor.visitSingularBytesField(value: self.patch, fieldNumber: 2)
+    }
+    if !self.migratedSnapshot.isEmpty {
+      try visitor.visitSingularBytesField(value: self.migratedSnapshot, fieldNumber: 3)
+    }
+    if !self.migratedSha256.isEmpty {
+      try visitor.visitSingularBytesField(value: self.migratedSha256, fieldNumber: 4)
+    }
+    if !self.baselineSnapshot.isEmpty {
+      try visitor.visitSingularBytesField(value: self.baselineSnapshot, fieldNumber: 5)
+    }
+    if !self.referenceUuids.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.referenceUuids, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.MediaIdentityMigration.Document, rhs: Document_Notification.MediaIdentityMigration.Document) -> Bool {
+    if lhs.documentUuid != rhs.documentUuid {return false}
+    if lhs.patch != rhs.patch {return false}
+    if lhs.migratedSnapshot != rhs.migratedSnapshot {return false}
+    if lhs.migratedSha256 != rhs.migratedSha256 {return false}
+    if lhs.baselineSnapshot != rhs.baselineSnapshot {return false}
+    if lhs.referenceUuids != rhs.referenceUuids {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Document_Notification.Index: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Document_Notification.protoMessageName + ".Index"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}generation\0\u{1}documents\0\u{3}catalog_revision\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.documents) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.catalogRevision) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 1)
+    }
+    if !self.documents.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.documents, fieldNumber: 2)
+    }
+    if self.catalogRevision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.catalogRevision, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Document_Notification.Index, rhs: Document_Notification.Index) -> Bool {
+    if lhs.generation != rhs.generation {return false}
+    if lhs.documents != rhs.documents {return false}
+    if lhs.catalogRevision != rhs.catalogRevision {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

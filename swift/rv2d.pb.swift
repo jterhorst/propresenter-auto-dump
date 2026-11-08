@@ -210,6 +210,15 @@ public nonisolated struct Rv_Data_RenderLayer: Sendable {
 
   public var buildOutIndex: Int32 = 0
 
+  public var textAnimation: Rv_Data_RenderLayer.TextAnimation {
+    get {_textAnimation ?? Rv_Data_RenderLayer.TextAnimation()}
+    set {_textAnimation = newValue}
+  }
+  /// Returns true if `textAnimation` has been explicitly set.
+  public var hasTextAnimation: Bool {self._textAnimation != nil}
+  /// Clears the value of `textAnimation`. Subsequent reads from it will return its default value.
+  public mutating func clearTextAnimation() {self._textAnimation = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public nonisolated enum OneOf_LayerType: Equatable, Sendable {
@@ -246,9 +255,122 @@ public nonisolated struct Rv_Data_RenderLayer: Sendable {
     public init() {}
   }
 
+  public nonisolated struct TextAnimation: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var segments: [Rv_Data_RenderLayer.TextAnimation.SegmentBounds] = []
+
+    public var grouping: Rv_Data_RenderLayer.TextAnimation.Grouping = .character
+
+    public var textureAtlases: [Rv_Data_RenderLayer.TextAnimation.TextureAtlas] = []
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum Grouping: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public typealias RawValue = Int
+      case character // = 0
+      case word // = 1
+      case line // = 2
+      case all // = 3
+      case UNRECOGNIZED(Int)
+
+      public init() {
+        self = .character
+      }
+
+      public init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .character
+        case 1: self = .word
+        case 2: self = .line
+        case 3: self = .all
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      public var rawValue: Int {
+        switch self {
+        case .character: return 0
+        case .word: return 1
+        case .line: return 2
+        case .all: return 3
+        case .UNRECOGNIZED(let i): return i
+        }
+      }
+
+      // The compiler won't synthesize support with the UNRECOGNIZED case.
+      public static let allCases: [Rv_Data_RenderLayer.TextAnimation.Grouping] = [
+        .character,
+        .word,
+        .line,
+        .all,
+      ]
+
+    }
+
+    public nonisolated struct SegmentBounds: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var bounds: Rv_Data_Graphics.Rect {
+        get {_bounds ?? Rv_Data_Graphics.Rect()}
+        set {_bounds = newValue}
+      }
+      /// Returns true if `bounds` has been explicitly set.
+      public var hasBounds: Bool {self._bounds != nil}
+      /// Clears the value of `bounds`. Subsequent reads from it will return its default value.
+      public mutating func clearBounds() {self._bounds = nil}
+
+      public var offset: Rv_Data_Graphics.Point {
+        get {_offset ?? Rv_Data_Graphics.Point()}
+        set {_offset = newValue}
+      }
+      /// Returns true if `offset` has been explicitly set.
+      public var hasOffset: Bool {self._offset != nil}
+      /// Clears the value of `offset`. Subsequent reads from it will return its default value.
+      public mutating func clearOffset() {self._offset = nil}
+
+      public var textureAtlasIndex: UInt32 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _bounds: Rv_Data_Graphics.Rect? = nil
+      fileprivate var _offset: Rv_Data_Graphics.Point? = nil
+    }
+
+    public nonisolated struct TextureAtlas: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var bounds: Rv_Data_Graphics.Rect {
+        get {_bounds ?? Rv_Data_Graphics.Rect()}
+        set {_bounds = newValue}
+      }
+      /// Returns true if `bounds` has been explicitly set.
+      public var hasBounds: Bool {self._bounds != nil}
+      /// Clears the value of `bounds`. Subsequent reads from it will return its default value.
+      public mutating func clearBounds() {self._bounds = nil}
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _bounds: Rv_Data_Graphics.Rect? = nil
+    }
+
+    public init() {}
+  }
+
   public init() {}
 
   fileprivate var _bounds: Rv_Data_Graphics.Rect? = nil
+  fileprivate var _textAnimation: Rv_Data_RenderLayer.TextAnimation? = nil
 }
 
 public nonisolated struct Rv_Data_SlideElement: Sendable {
@@ -503,7 +625,7 @@ nonisolated extension Rv_Data_LayerIdentificationOverlay.Layer: SwiftProtobuf._P
 
 nonisolated extension Rv_Data_RenderLayer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RenderLayer"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}composite\0\u{1}media\0\u{3}cut_out\0\u{3}background_effect\0\u{3}output_screen\0\u{1}scrolling\0\u{3}slide_image\0\u{1}zone\0\u{1}bounds\0\u{3}flip_mode\0\u{1}rotation\0\u{3}build_index\0\u{3}build_out\0\u{3}build_out_index\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}composite\0\u{1}media\0\u{3}cut_out\0\u{3}background_effect\0\u{3}output_screen\0\u{1}scrolling\0\u{3}slide_image\0\u{1}zone\0\u{1}bounds\0\u{3}flip_mode\0\u{1}rotation\0\u{3}build_index\0\u{3}build_out\0\u{3}build_out_index\0\u{3}text_animation\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -621,6 +743,7 @@ nonisolated extension Rv_Data_RenderLayer: SwiftProtobuf.Message, SwiftProtobuf.
       case 12: try { try decoder.decodeSingularInt32Field(value: &self.buildIndex) }()
       case 13: try { try decoder.decodeSingularBoolField(value: &self.buildOut) }()
       case 14: try { try decoder.decodeSingularInt32Field(value: &self.buildOutIndex) }()
+      case 15: try { try decoder.decodeSingularMessageField(value: &self._textAnimation) }()
       default: break
       }
     }
@@ -684,6 +807,9 @@ nonisolated extension Rv_Data_RenderLayer: SwiftProtobuf.Message, SwiftProtobuf.
     if self.buildOutIndex != 0 {
       try visitor.visitSingularInt32Field(value: self.buildOutIndex, fieldNumber: 14)
     }
+    try { if let v = self._textAnimation {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -695,6 +821,7 @@ nonisolated extension Rv_Data_RenderLayer: SwiftProtobuf.Message, SwiftProtobuf.
     if lhs.buildIndex != rhs.buildIndex {return false}
     if lhs.buildOut != rhs.buildOut {return false}
     if lhs.buildOutIndex != rhs.buildOutIndex {return false}
+    if lhs._textAnimation != rhs._textAnimation {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -744,6 +871,128 @@ nonisolated extension Rv_Data_RenderLayer.Scrolling: SwiftProtobuf.Message, Swif
 
   public static func ==(lhs: Rv_Data_RenderLayer.Scrolling, rhs: Rv_Data_RenderLayer.Scrolling) -> Bool {
     if lhs.segmentSize != rhs.segmentSize {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_RenderLayer.TextAnimation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_RenderLayer.protoMessageName + ".TextAnimation"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}segments\0\u{1}grouping\0\u{3}texture_atlases\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.segments) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.grouping) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.textureAtlases) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.segments.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.segments, fieldNumber: 1)
+    }
+    if self.grouping != .character {
+      try visitor.visitSingularEnumField(value: self.grouping, fieldNumber: 2)
+    }
+    if !self.textureAtlases.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.textureAtlases, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_RenderLayer.TextAnimation, rhs: Rv_Data_RenderLayer.TextAnimation) -> Bool {
+    if lhs.segments != rhs.segments {return false}
+    if lhs.grouping != rhs.grouping {return false}
+    if lhs.textureAtlases != rhs.textureAtlases {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_RenderLayer.TextAnimation.Grouping: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CHARACTER\0\u{1}WORD\0\u{1}LINE\0\u{1}ALL\0")
+}
+
+nonisolated extension Rv_Data_RenderLayer.TextAnimation.SegmentBounds: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_RenderLayer.TextAnimation.protoMessageName + ".SegmentBounds"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}bounds\0\u{1}offset\0\u{3}texture_atlas_index\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._bounds) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._offset) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.textureAtlasIndex) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._bounds {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try { if let v = self._offset {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    if self.textureAtlasIndex != 0 {
+      try visitor.visitSingularUInt32Field(value: self.textureAtlasIndex, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_RenderLayer.TextAnimation.SegmentBounds, rhs: Rv_Data_RenderLayer.TextAnimation.SegmentBounds) -> Bool {
+    if lhs._bounds != rhs._bounds {return false}
+    if lhs._offset != rhs._offset {return false}
+    if lhs.textureAtlasIndex != rhs.textureAtlasIndex {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_RenderLayer.TextAnimation.TextureAtlas: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_RenderLayer.TextAnimation.protoMessageName + ".TextureAtlas"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}bounds\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._bounds) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._bounds {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_RenderLayer.TextAnimation.TextureAtlas, rhs: Rv_Data_RenderLayer.TextAnimation.TextureAtlas) -> Bool {
+    if lhs._bounds != rhs._bounds {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

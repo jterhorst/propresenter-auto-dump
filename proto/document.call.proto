@@ -11,15 +11,37 @@ import "document.entities.proto";
 message Error {
   enum Code {
     UNKNOWN = 0;
+    PATH_COLLISION = 1;
+    INVALID_NAME = 2;
+    CLOUD_TERMINATED = 3;
+  }
+
+  enum InvalidNameReason {
+    INVALID_NAME_REASON_UNSPECIFIED = 0;
+    INVALID_NAME_REASON_BLANK = 1;
+    INVALID_NAME_REASON_DOT_PATH_COMPONENT = 2;
+    INVALID_NAME_REASON_INVALID_CHARACTER = 3;
   }
 
   document.call.Error.Code code = 1;
   string description = 2;
+  optional string suggested_path = 3;
+  optional document.call.Error.InvalidNameReason invalid_name_reason = 4;
 }
 
 message Patch {
   message Result {
     message Ok {
+      enum Outcome {
+        OUTCOME_APPLIED = 0;
+        OUTCOME_ALREADY_APPLIED = 1;
+        OUTCOME_NO_CHANGE = 2;
+      }
+
+      string operation_uuid = 1;
+      uint64 accepted_generation = 2;
+      bytes durable_version_vector = 3;
+      document.call.Patch.Result.Ok.Outcome outcome = 4;
     }
 
     oneof result {
@@ -29,8 +51,189 @@ message Patch {
 
   }
 
+  document.Workspace workspace = 1;
+  string uuid = 2;
+  bytes patch = 3;
+  document.Scope scope = 4;
+  string operation_uuid = 5;
+  uint64 generation = 6;
+  bytes causal_base_version_vector = 7;
+  bytes patch_fingerprint = 8;
+}
+
+message InitializeDeviceLocal {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      document.call.InitializeDeviceLocal.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
   string uuid = 1;
-  bytes patch = 2;
+  bytes snapshot = 2;
+}
+
+message AttachMediaOccurrence {
+  message Result {
+    message Ok {
+      bool changed = 1;
+      bytes durable_version_vector = 2;
+    }
+
+    oneof result {
+      document.call.AttachMediaOccurrence.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
+  string operation_uuid = 1;
+  string document_uuid = 2;
+  string occurrence_path = 3;
+  string reference_uuid = 4;
+  string asset_uuid = 5;
+  string expected_reference_uuid = 6;
+  bytes expected_descriptor_fingerprint = 7;
+  string managed_relative_path = 8;
+}
+
+message ReadWorkspace {
+  message Result {
+    message Ok {
+      uint64 generation = 1;
+      repeated document.call.DocumentDescriptor documents = 2;
+      document.call.MediaPlaylistCatalog media_playlist_catalog = 3;
+    }
+
+    oneof result {
+      document.call.ReadWorkspace.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
+}
+
+message MediaPlaylistCatalog {
+  message Entry {
+    enum Kind {
+      KIND_GROUP = 0;
+      KIND_PLAYLIST = 1;
+      KIND_SMART = 2;
+      KIND_PLANNING_CENTER = 3;
+    }
+
+    string uuid = 1;
+    string name = 2;
+    document.call.MediaPlaylistCatalog.Entry.Kind kind = 3;
+    bool expanded = 4;
+    uint64 item_count = 5;
+    repeated document.call.MediaPlaylistCatalog.Entry children = 6;
+  }
+
+  string document_uuid = 1;
+  bytes version_vector = 2;
+  document.call.MediaPlaylistCatalog.Entry root = 3;
+  uint64 projection_elapsed_micros = 4;
+}
+
+message DocumentDescriptor {
+  oneof location {
+    document.Intrinsic.Kind intrinsic_kind = 2;
+    document.Document.Kind document_kind = 3;
+  }
+
+  string uuid = 1;
+  string path = 4;
+  bool shared_materialized = 5;
+  bool device_local_materialized = 6;
+  document.call.PresentationMetadata presentation_metadata = 7;
+}
+
+message PresentationMetadata {
+  message Arrangement {
+    string uuid = 1;
+    optional string name = 2;
+  }
+
+  message Timestamp {
+    int64 seconds = 1;
+    int32 nanos = 2;
+  }
+
+  message MultiTracksLicensing {
+    int64 song_identifier = 1;
+    string customer_identifier = 2;
+    document.call.PresentationMetadata.Timestamp expiration_date = 3;
+    document.call.PresentationMetadata.Timestamp license_expiration = 4;
+    int32 subscription = 5;
+  }
+
+  message MusicKeyScale {
+    int32 music_key = 1;
+    int32 music_scale = 2;
+  }
+
+  string selected_arrangement_uuid = 1;
+  repeated document.call.PresentationMetadata.Arrangement arrangements = 2;
+  int32 content_destination = 3;
+  document.call.PresentationMetadata.MultiTracksLicensing multi_tracks_licensing = 4;
+  document.call.PresentationMetadata.MusicKeyScale user_music_key = 5;
+}
+
+message ReadSnapshot {
+  message Result {
+    message Ok {
+      uint64 generation = 1;
+      bytes snapshot = 2;
+      bytes version_vector = 3;
+    }
+
+    oneof result {
+      document.call.ReadSnapshot.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
+  string uuid = 1;
+  document.Scope scope = 2;
+  uint64 generation = 3;
+}
+
+message SearchPresentations {
+  message Match {
+    string uuid = 1;
+    string path = 2;
+    float score = 3;
+  }
+
+  message Result {
+    message Ok {
+      uint64 generation = 1;
+      repeated document.call.SearchPresentations.Match matches = 2;
+    }
+
+    oneof result {
+      document.call.SearchPresentations.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
+  string query = 1;
+  uint64 generation = 2;
+  uint32 limit = 3;
+}
+
+message MatchPresentations {
+  repeated string fields = 1;
+  uint64 generation = 2;
+  uint32 limit = 3;
 }
 
 message Load {
@@ -45,13 +248,26 @@ message Load {
 
   }
 
-  string uuid = 1;
-  bytes blob = 2;
+  document.Workspace workspace = 1;
+  string uuid = 2;
+  bytes blob = 3;
 }
 
 message Add {
   message Result {
     message Ok {
+      enum Outcome {
+        OUTCOME_APPLIED = 0;
+        OUTCOME_ALREADY_APPLIED = 1;
+        OUTCOME_NO_CHANGE = 2;
+      }
+
+      string operation_uuid = 1;
+      string document_uuid = 2;
+      uint64 accepted_generation = 3;
+      bytes durable_version_vector = 4;
+      document.call.Add.Result.Ok.Outcome outcome = 5;
+      uint64 catalog_revision = 6;
     }
 
     oneof result {
@@ -61,15 +277,20 @@ message Add {
 
   }
 
-  string uuid = 1;
-  document.Document.Kind kind = 2;
-  string path = 3;
+  document.Workspace workspace = 1;
+  string uuid = 2;
+  document.Document.Kind kind = 3;
+  string path = 4;
   bytes data = 11;
+  string operation_uuid = 12;
+  uint64 generation = 13;
+  bytes payload_fingerprint = 14;
 }
 
 message Remove {
   message Result {
     message Ok {
+      uint64 catalog_revision = 1;
     }
 
     oneof result {
@@ -79,13 +300,61 @@ message Remove {
 
   }
 
-  string uuid = 1;
-  document.Document.Kind kind = 2;
+  document.Workspace workspace = 1;
+  string uuid = 2;
+  document.Document.Kind kind = 3;
+}
+
+message DeleteLibraries {
+  message IntrinsicPatch {
+    string document_uuid = 1;
+    document.Intrinsic.Kind kind = 2;
+    bytes patch = 3;
+    bytes causal_base_version_vector = 4;
+    bytes patch_fingerprint = 5;
+  }
+
+  message Result {
+    message DurableIntrinsic {
+      string document_uuid = 1;
+      document.Intrinsic.Kind kind = 2;
+      bytes durable_version_vector = 3;
+    }
+
+    message Ok {
+      enum Outcome {
+        OUTCOME_APPLIED = 0;
+        OUTCOME_ALREADY_APPLIED = 1;
+      }
+
+      string operation_uuid = 1;
+      uint64 accepted_generation = 2;
+      document.call.DeleteLibraries.Result.Ok.Outcome outcome = 3;
+      repeated string removed_presentation_uuids = 4;
+      repeated document.call.DeleteLibraries.Result.DurableIntrinsic durable_intrinsics = 5;
+      uint64 catalog_revision = 6;
+    }
+
+    oneof result {
+      document.call.DeleteLibraries.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
+  string operation_uuid = 1;
+  uint64 generation = 2;
+  repeated string library_paths = 3;
+  repeated string presentation_uuids = 4;
+  repeated document.call.DeleteLibraries.IntrinsicPatch intrinsic_patches = 5;
+  bytes payload_fingerprint = 6;
+  document.Workspace workspace = 7;
 }
 
 message Relocate {
   message Result {
     message Ok {
+      uint64 catalog_revision = 1;
     }
 
     oneof result {
@@ -95,7 +364,44 @@ message Relocate {
 
   }
 
-  string uuid = 1;
+  document.Workspace workspace = 1;
+  string uuid = 2;
+  document.Document.Kind kind = 3;
+  string path = 4;
+}
+
+message AvailablePath {
+  message Result {
+    message Ok {
+      string path = 1;
+    }
+
+    oneof result {
+      document.call.AvailablePath.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
+  document.Workspace workspace = 1;
   document.Document.Kind kind = 2;
   string path = 3;
+  repeated string reserved = 4;
+}
+
+message AcknowledgeMediaIdentityMigration {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      document.call.AcknowledgeMediaIdentityMigration.Result.Ok ok = 1;
+      document.call.Error error = 2;
+    }
+
+  }
+
+  string migration_uuid = 1;
+  optional string error = 2;
+  string attempt_uuid = 3;
 }

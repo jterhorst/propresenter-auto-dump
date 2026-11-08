@@ -12,3 +12,43 @@ message Download {
 
 message DownloadRetry {
 }
+
+message StickersOpened {
+}
+
+message StickerApplied {
+  enum DiscoveryMethod {
+    DISCOVERY_UNSPECIFIED = 0;
+    SEARCH = 1;
+    COLLECTION = 2;
+    BROWSE = 3;
+    FEATURED = 4;
+  }
+
+  enum ApplicationContext {
+    APPLICATION_CONTEXT_UNSPECIFIED = 0;
+    SLIDE = 1;
+    THEME = 2;
+    STAGE = 3;
+    PROP = 4;
+    MASK = 5;
+    CCLI = 6;
+  }
+
+  string sticker_id = 1;
+  string sticker_name = 2;
+  string collection = 3;
+  rv.analytics.procontent.StickerApplied.DiscoveryMethod discovery_method = 4;
+  string slide_id = 5;
+  optional rv.analytics.procontent.StickerApplied.ApplicationContext application_context = 6;
+}
+
+message StickerModified {
+  enum Modification {
+    MODIFICATION_UNSPECIFIED = 0;
+    PLAYBACK_MODE = 1;
+    SIZE = 2;
+  }
+
+  rv.analytics.procontent.StickerModified.Modification modification = 1;
+}

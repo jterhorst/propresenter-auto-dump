@@ -71,6 +71,15 @@ public nonisolated struct Rv_Data_PresentationSlide: @unchecked Sendable {
   /// Clears the value of `transition`. Subsequent reads from it will return its default value.
   public mutating func clearTransition() {_uniqueStorage()._transition = nil}
 
+  public var provider: Rv_Data_ProviderInfo {
+    get {_storage._provider ?? Rv_Data_ProviderInfo()}
+    set {_uniqueStorage()._provider = newValue}
+  }
+  /// Returns true if `provider` has been explicitly set.
+  public var hasProvider: Bool {_storage._provider != nil}
+  /// Clears the value of `provider`. Subsequent reads from it will return its default value.
+  public mutating func clearProvider() {_uniqueStorage()._provider = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public nonisolated struct Notes: Sendable {
@@ -107,7 +116,7 @@ fileprivate nonisolated let _protobuf_package = "rv.data"
 
 nonisolated extension Rv_Data_PresentationSlide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PresentationSlide"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}base_slide\0\u{1}notes\0\u{3}template_guidelines\0\u{3}chord_chart\0\u{1}transition\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}base_slide\0\u{1}notes\0\u{3}template_guidelines\0\u{3}chord_chart\0\u{1}transition\0\u{1}provider\0")
 
   fileprivate class _StorageClass {
     var _baseSlide: Rv_Data_Slide? = nil
@@ -115,6 +124,7 @@ nonisolated extension Rv_Data_PresentationSlide: SwiftProtobuf.Message, SwiftPro
     var _templateGuidelines: [Rv_Data_AlignmentGuide] = []
     var _chordChart: Rv_Data_URL? = nil
     var _transition: Rv_Data_Transition? = nil
+    var _provider: Rv_Data_ProviderInfo? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -130,6 +140,7 @@ nonisolated extension Rv_Data_PresentationSlide: SwiftProtobuf.Message, SwiftPro
       _templateGuidelines = source._templateGuidelines
       _chordChart = source._chordChart
       _transition = source._transition
+      _provider = source._provider
     }
   }
 
@@ -153,6 +164,7 @@ nonisolated extension Rv_Data_PresentationSlide: SwiftProtobuf.Message, SwiftPro
         case 3: try { try decoder.decodeRepeatedMessageField(value: &_storage._templateGuidelines) }()
         case 4: try { try decoder.decodeSingularMessageField(value: &_storage._chordChart) }()
         case 5: try { try decoder.decodeSingularMessageField(value: &_storage._transition) }()
+        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._provider) }()
         default: break
         }
       }
@@ -180,6 +192,9 @@ nonisolated extension Rv_Data_PresentationSlide: SwiftProtobuf.Message, SwiftPro
       try { if let v = _storage._transition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       } }()
+      try { if let v = _storage._provider {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -194,6 +209,7 @@ nonisolated extension Rv_Data_PresentationSlide: SwiftProtobuf.Message, SwiftPro
         if _storage._templateGuidelines != rhs_storage._templateGuidelines {return false}
         if _storage._chordChart != rhs_storage._chordChart {return false}
         if _storage._transition != rhs_storage._transition {return false}
+        if _storage._provider != rhs_storage._provider {return false}
         return true
       }
       if !storagesAreEqual {return false}

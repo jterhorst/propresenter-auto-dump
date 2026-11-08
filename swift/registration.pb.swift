@@ -169,6 +169,48 @@ public nonisolated enum Registration_Core_SeatType: SwiftProtobuf.Enum, Swift.Ca
 
 }
 
+public nonisolated enum Registration_Core_NewSeatType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public typealias RawValue = Int
+  case unspecified // = 0
+  case localEditor // = 1
+  case cloudEditor // = 2
+  case presenter // = 3
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .unspecified
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .unspecified
+    case 1: self = .localEditor
+    case 2: self = .cloudEditor
+    case 3: self = .presenter
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .unspecified: return 0
+    case .localEditor: return 1
+    case .cloudEditor: return 2
+    case .presenter: return 3
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static let allCases: [Registration_Core_NewSeatType] = [
+    .unspecified,
+    .localEditor,
+    .cloudEditor,
+    .presenter,
+  ]
+
+}
+
 public nonisolated enum Registration_Core_LicenseType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
   case trial // = 0
@@ -404,6 +446,7 @@ public nonisolated enum Registration_Core_PopupAlertMessage: SwiftProtobuf.Enum,
   case fullySignedOut // = 6
   case firstLaunchSignedInNoSubscriptionNoLicense // = 7
   case firstLaunchSignedInNoSubscriptionLegacyLicense // = 8
+  case cloudEditorSeatActivated // = 9
   case UNRECOGNIZED(Int)
 
   public init() {
@@ -421,6 +464,7 @@ public nonisolated enum Registration_Core_PopupAlertMessage: SwiftProtobuf.Enum,
     case 6: self = .fullySignedOut
     case 7: self = .firstLaunchSignedInNoSubscriptionNoLicense
     case 8: self = .firstLaunchSignedInNoSubscriptionLegacyLicense
+    case 9: self = .cloudEditorSeatActivated
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -436,6 +480,7 @@ public nonisolated enum Registration_Core_PopupAlertMessage: SwiftProtobuf.Enum,
     case .fullySignedOut: return 6
     case .firstLaunchSignedInNoSubscriptionNoLicense: return 7
     case .firstLaunchSignedInNoSubscriptionLegacyLicense: return 8
+    case .cloudEditorSeatActivated: return 9
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -451,40 +496,7 @@ public nonisolated enum Registration_Core_PopupAlertMessage: SwiftProtobuf.Enum,
     .fullySignedOut,
     .firstLaunchSignedInNoSubscriptionNoLicense,
     .firstLaunchSignedInNoSubscriptionLegacyLicense,
-  ]
-
-}
-
-public nonisolated enum Registration_Core_BannerMessage: SwiftProtobuf.Enum, Swift.CaseIterable {
-  public typealias RawValue = Int
-  case noBanner // = 0
-  case activateProPresenter // = 1
-  case UNRECOGNIZED(Int)
-
-  public init() {
-    self = .noBanner
-  }
-
-  public init?(rawValue: Int) {
-    switch rawValue {
-    case 0: self = .noBanner
-    case 1: self = .activateProPresenter
-    default: self = .UNRECOGNIZED(rawValue)
-    }
-  }
-
-  public var rawValue: Int {
-    switch self {
-    case .noBanner: return 0
-    case .activateProPresenter: return 1
-    case .UNRECOGNIZED(let i): return i
-    }
-  }
-
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Registration_Core_BannerMessage] = [
-    .noBanner,
-    .activateProPresenter,
+    .cloudEditorSeatActivated,
   ]
 
 }
@@ -512,6 +524,7 @@ public nonisolated enum Registration_Core_ClientAlertMessage: SwiftProtobuf.Enum
   case unsuccessfulActivation // = 18
   case deviceSignedOutSubscription // = 19
   case unknownAlert // = 20
+  case noSeatsForSeatChange // = 21
   case UNRECOGNIZED(Int)
 
   public init() {
@@ -541,6 +554,7 @@ public nonisolated enum Registration_Core_ClientAlertMessage: SwiftProtobuf.Enum
     case 18: self = .unsuccessfulActivation
     case 19: self = .deviceSignedOutSubscription
     case 20: self = .unknownAlert
+    case 21: self = .noSeatsForSeatChange
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -568,6 +582,7 @@ public nonisolated enum Registration_Core_ClientAlertMessage: SwiftProtobuf.Enum
     case .unsuccessfulActivation: return 18
     case .deviceSignedOutSubscription: return 19
     case .unknownAlert: return 20
+    case .noSeatsForSeatChange: return 21
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -595,6 +610,7 @@ public nonisolated enum Registration_Core_ClientAlertMessage: SwiftProtobuf.Enum
     .unsuccessfulActivation,
     .deviceSignedOutSubscription,
     .unknownAlert,
+    .noSeatsForSeatChange,
   ]
 
 }
@@ -1015,6 +1031,8 @@ public nonisolated struct Registration_Core_Register: Sendable {
 
   public var channel: Registration_Core_UpdateChannel = .beta
 
+  public var newSeatType: Registration_Core_NewSeatType = .unspecified
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -1060,6 +1078,8 @@ public nonisolated struct Registration_Core_ChangeSeatType: Sendable {
   public var seatType: Registration_Core_SeatType = .inactive
 
   public var channel: Registration_Core_UpdateChannel = .beta
+
+  public var newSeatType: Registration_Core_NewSeatType = .unspecified
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1312,6 +1332,8 @@ public nonisolated struct Registration_Core_RefreshUserAuthTokens: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  public var failedAccessToken: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -1335,6 +1357,8 @@ public nonisolated struct Registration_Core_SetWatermark: Sendable {
   public var isRegistered: Bool = false
 
   public var activeSeat: Bool = false
+
+  public var newSeatType: Registration_Core_NewSeatType = .unspecified
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1657,8 +1681,6 @@ public nonisolated struct Registration_Core_VerificationComplete: Sendable {
 
   public var alert: Registration_Core_PopupAlertMessage = .noPopupAlert
 
-  public var banner: Registration_Core_BannerMessage = .noBanner
-
   public var clientAlert: Registration_Core_ClientAlertMessage = .noAlert
 
   public var fullyLaunched: Bool = false
@@ -1796,6 +1818,8 @@ public nonisolated struct Registration_Core_LicenseState: Sendable {
 
   public var activeSeat: Bool = false
 
+  public var newSeatType: Registration_Core_NewSeatType = .unspecified
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -1806,9 +1830,9 @@ public nonisolated struct Registration_Core_Seats: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var basic: Int32 = 0
+  public var presenter: Int32 = 0
 
-  public var advanced: Int32 = 0
+  public var cloudEditor: Int32 = 0
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2008,6 +2032,8 @@ public nonisolated struct Registration_Core_RegistrationInfo: Sendable {
 
   public var isAutoRenewalActive: Bool = false
 
+  public var newSeatType: Registration_Core_NewSeatType = .unspecified
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -2185,6 +2211,10 @@ nonisolated extension Registration_Core_SeatType: SwiftProtobuf._ProtoNameProvid
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Inactive\0\u{1}Basic\0\u{1}Advanced\0")
 }
 
+nonisolated extension Registration_Core_NewSeatType: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NEW_SEAT_TYPE_UNSPECIFIED\0\u{1}NEW_SEAT_TYPE_LOCAL_EDITOR\0\u{1}NEW_SEAT_TYPE_CLOUD_EDITOR\0\u{1}NEW_SEAT_TYPE_PRESENTER\0")
+}
+
 nonisolated extension Registration_Core_LicenseType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Trial\0\u{1}Rental\0\u{1}Standard\0\u{1}Campus\0")
 }
@@ -2210,15 +2240,11 @@ nonisolated extension Registration_Core_ProContentLicenseType: SwiftProtobuf._Pr
 }
 
 nonisolated extension Registration_Core_PopupAlertMessage: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NoPopupAlert\0\u{1}SeatActivated\0\u{1}NoSeatActivated\0\u{1}NoLicenseActivated\0\u{1}LegacyLicenseProContentActivated\0\u{1}FirstLaunchLegacyLicense\0\u{1}FullySignedOut\0\u{1}FirstLaunchSignedInNoSubscriptionNoLicense\0\u{1}FirstLaunchSignedInNoSubscriptionLegacyLicense\0")
-}
-
-nonisolated extension Registration_Core_BannerMessage: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NoBanner\0\u{1}ActivateProPresenter\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NoPopupAlert\0\u{1}SeatActivated\0\u{1}NoSeatActivated\0\u{1}NoLicenseActivated\0\u{1}LegacyLicenseProContentActivated\0\u{1}FirstLaunchLegacyLicense\0\u{1}FullySignedOut\0\u{1}FirstLaunchSignedInNoSubscriptionNoLicense\0\u{1}FirstLaunchSignedInNoSubscriptionLegacyLicense\0\u{1}CloudEditorSeatActivated\0")
 }
 
 nonisolated extension Registration_Core_ClientAlertMessage: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NoAlert\0\u{1}ExpiredLicenseLegacy\0\u{1}ExpiredSubscription\0\u{1}InvalidLicense\0\u{1}NoSeatsLegacy\0\u{1}NoSeatsSubscription\0\u{1}SeatDeactivatedSubscription\0\u{1}TimeDiscrepancyAlert\0\u{1}NoNetwork\0\u{1}NoBibleCopies\0\u{1}BibleMissingAlert\0\u{1}BibleNotPurchasedLegacy\0\u{1}BibleNotPurchasedSubscription\0\u{1}UnsuccessfulBibleActivationLegacy\0\u{1}UnsuccessfulBibleActivationSubscription\0\u{1}IOErrorAlert\0\u{1}CodeExpiredAlert\0\u{1}CodeInvalidAlert\0\u{1}UnsuccessfulActivation\0\u{1}DeviceSignedOutSubscription\0\u{1}UnknownAlert\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0NoAlert\0\u{1}ExpiredLicenseLegacy\0\u{1}ExpiredSubscription\0\u{1}InvalidLicense\0\u{1}NoSeatsLegacy\0\u{1}NoSeatsSubscription\0\u{1}SeatDeactivatedSubscription\0\u{1}TimeDiscrepancyAlert\0\u{1}NoNetwork\0\u{1}NoBibleCopies\0\u{1}BibleMissingAlert\0\u{1}BibleNotPurchasedLegacy\0\u{1}BibleNotPurchasedSubscription\0\u{1}UnsuccessfulBibleActivationLegacy\0\u{1}UnsuccessfulBibleActivationSubscription\0\u{1}IOErrorAlert\0\u{1}CodeExpiredAlert\0\u{1}CodeInvalidAlert\0\u{1}UnsuccessfulActivation\0\u{1}DeviceSignedOutSubscription\0\u{1}UnknownAlert\0\u{1}NoSeatsForSeatChange\0")
 }
 
 nonisolated extension Registration_Core_Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
@@ -2986,7 +3012,7 @@ nonisolated extension Registration_Core_Callback: SwiftProtobuf.Message, SwiftPr
 
 nonisolated extension Registration_Core_Register: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Register"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}user_name\0\u{3}registration_key\0\u{3}display_name\0\u{3}seat_type\0\u{1}channel\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}user_name\0\u{3}registration_key\0\u{3}display_name\0\u{3}seat_type\0\u{1}channel\0\u{3}new_seat_type\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2999,6 +3025,7 @@ nonisolated extension Registration_Core_Register: SwiftProtobuf.Message, SwiftPr
       case 3: try { try decoder.decodeSingularStringField(value: &self.displayName) }()
       case 4: try { try decoder.decodeSingularEnumField(value: &self.seatType) }()
       case 5: try { try decoder.decodeSingularEnumField(value: &self.channel) }()
+      case 6: try { try decoder.decodeSingularEnumField(value: &self.newSeatType) }()
       default: break
       }
     }
@@ -3020,6 +3047,9 @@ nonisolated extension Registration_Core_Register: SwiftProtobuf.Message, SwiftPr
     if self.channel != .beta {
       try visitor.visitSingularEnumField(value: self.channel, fieldNumber: 5)
     }
+    if self.newSeatType != .unspecified {
+      try visitor.visitSingularEnumField(value: self.newSeatType, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -3029,6 +3059,7 @@ nonisolated extension Registration_Core_Register: SwiftProtobuf.Message, SwiftPr
     if lhs.displayName != rhs.displayName {return false}
     if lhs.seatType != rhs.seatType {return false}
     if lhs.channel != rhs.channel {return false}
+    if lhs.newSeatType != rhs.newSeatType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3104,7 +3135,7 @@ nonisolated extension Registration_Core_Signout: SwiftProtobuf.Message, SwiftPro
 
 nonisolated extension Registration_Core_ChangeSeatType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ChangeSeatType"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}seat_type\0\u{1}channel\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}seat_type\0\u{1}channel\0\u{3}new_seat_type\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3114,6 +3145,7 @@ nonisolated extension Registration_Core_ChangeSeatType: SwiftProtobuf.Message, S
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularEnumField(value: &self.seatType) }()
       case 2: try { try decoder.decodeSingularEnumField(value: &self.channel) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.newSeatType) }()
       default: break
       }
     }
@@ -3126,12 +3158,16 @@ nonisolated extension Registration_Core_ChangeSeatType: SwiftProtobuf.Message, S
     if self.channel != .beta {
       try visitor.visitSingularEnumField(value: self.channel, fieldNumber: 2)
     }
+    if self.newSeatType != .unspecified {
+      try visitor.visitSingularEnumField(value: self.newSeatType, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Registration_Core_ChangeSeatType, rhs: Registration_Core_ChangeSeatType) -> Bool {
     if lhs.seatType != rhs.seatType {return false}
     if lhs.channel != rhs.channel {return false}
+    if lhs.newSeatType != rhs.newSeatType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3674,18 +3710,29 @@ nonisolated extension Registration_Core_GetLicenseState: SwiftProtobuf.Message, 
 
 nonisolated extension Registration_Core_RefreshUserAuthTokens: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RefreshUserAuthTokens"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}failed_access_token\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    // Load everything into unknown fields
-    while try decoder.nextFieldNumber() != nil {}
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.failedAccessToken) }()
+      default: break
+      }
+    }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.failedAccessToken.isEmpty {
+      try visitor.visitSingularStringField(value: self.failedAccessToken, fieldNumber: 1)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Registration_Core_RefreshUserAuthTokens, rhs: Registration_Core_RefreshUserAuthTokens) -> Bool {
+    if lhs.failedAccessToken != rhs.failedAccessToken {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3712,7 +3759,7 @@ nonisolated extension Registration_Core_RefreshAccessToken: SwiftProtobuf.Messag
 
 nonisolated extension Registration_Core_SetWatermark: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SetWatermark"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_registered\0\u{3}active_seat\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_registered\0\u{3}active_seat\0\u{3}new_seat_type\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3722,6 +3769,7 @@ nonisolated extension Registration_Core_SetWatermark: SwiftProtobuf.Message, Swi
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularBoolField(value: &self.isRegistered) }()
       case 2: try { try decoder.decodeSingularBoolField(value: &self.activeSeat) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.newSeatType) }()
       default: break
       }
     }
@@ -3734,12 +3782,16 @@ nonisolated extension Registration_Core_SetWatermark: SwiftProtobuf.Message, Swi
     if self.activeSeat != false {
       try visitor.visitSingularBoolField(value: self.activeSeat, fieldNumber: 2)
     }
+    if self.newSeatType != .unspecified {
+      try visitor.visitSingularEnumField(value: self.newSeatType, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Registration_Core_SetWatermark, rhs: Registration_Core_SetWatermark) -> Bool {
     if lhs.isRegistered != rhs.isRegistered {return false}
     if lhs.activeSeat != rhs.activeSeat {return false}
+    if lhs.newSeatType != rhs.newSeatType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -4192,7 +4244,7 @@ nonisolated extension Registration_Core_ShowExpirationDialog: SwiftProtobuf.Mess
 
 nonisolated extension Registration_Core_VerificationComplete: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".VerificationComplete"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}result\0\u{1}license\0\u{1}bibles\0\u{1}token\0\u{3}subscription_info\0\u{1}alert\0\u{1}banner\0\u{3}client_alert\0\u{3}fully_launched\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}result\0\u{1}license\0\u{1}bibles\0\u{1}token\0\u{3}subscription_info\0\u{1}alert\0\u{4}\u{2}client_alert\0\u{3}fully_launched\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -4206,7 +4258,6 @@ nonisolated extension Registration_Core_VerificationComplete: SwiftProtobuf.Mess
       case 4: try { try decoder.decodeSingularMessageField(value: &self._token) }()
       case 5: try { try decoder.decodeSingularMessageField(value: &self._subscriptionInfo) }()
       case 6: try { try decoder.decodeSingularEnumField(value: &self.alert) }()
-      case 7: try { try decoder.decodeSingularEnumField(value: &self.banner) }()
       case 8: try { try decoder.decodeSingularEnumField(value: &self.clientAlert) }()
       case 9: try { try decoder.decodeSingularBoolField(value: &self.fullyLaunched) }()
       default: break
@@ -4237,9 +4288,6 @@ nonisolated extension Registration_Core_VerificationComplete: SwiftProtobuf.Mess
     if self.alert != .noPopupAlert {
       try visitor.visitSingularEnumField(value: self.alert, fieldNumber: 6)
     }
-    if self.banner != .noBanner {
-      try visitor.visitSingularEnumField(value: self.banner, fieldNumber: 7)
-    }
     if self.clientAlert != .noAlert {
       try visitor.visitSingularEnumField(value: self.clientAlert, fieldNumber: 8)
     }
@@ -4256,7 +4304,6 @@ nonisolated extension Registration_Core_VerificationComplete: SwiftProtobuf.Mess
     if lhs._token != rhs._token {return false}
     if lhs._subscriptionInfo != rhs._subscriptionInfo {return false}
     if lhs.alert != rhs.alert {return false}
-    if lhs.banner != rhs.banner {return false}
     if lhs.clientAlert != rhs.clientAlert {return false}
     if lhs.fullyLaunched != rhs.fullyLaunched {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -4517,7 +4564,7 @@ nonisolated extension Registration_Core_NotificationCallback: SwiftProtobuf.Mess
 
 nonisolated extension Registration_Core_LicenseState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".LicenseState"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}hardware_id\0\u{1}fingerprint\0\u{3}is_registered\0\u{3}active_seat\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}hardware_id\0\u{1}fingerprint\0\u{3}is_registered\0\u{3}active_seat\0\u{3}new_seat_type\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -4529,6 +4576,7 @@ nonisolated extension Registration_Core_LicenseState: SwiftProtobuf.Message, Swi
       case 2: try { try decoder.decodeSingularStringField(value: &self.fingerprint) }()
       case 3: try { try decoder.decodeSingularBoolField(value: &self.isRegistered) }()
       case 4: try { try decoder.decodeSingularBoolField(value: &self.activeSeat) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.newSeatType) }()
       default: break
       }
     }
@@ -4547,6 +4595,9 @@ nonisolated extension Registration_Core_LicenseState: SwiftProtobuf.Message, Swi
     if self.activeSeat != false {
       try visitor.visitSingularBoolField(value: self.activeSeat, fieldNumber: 4)
     }
+    if self.newSeatType != .unspecified {
+      try visitor.visitSingularEnumField(value: self.newSeatType, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -4555,6 +4606,7 @@ nonisolated extension Registration_Core_LicenseState: SwiftProtobuf.Message, Swi
     if lhs.fingerprint != rhs.fingerprint {return false}
     if lhs.isRegistered != rhs.isRegistered {return false}
     if lhs.activeSeat != rhs.activeSeat {return false}
+    if lhs.newSeatType != rhs.newSeatType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -4562,7 +4614,7 @@ nonisolated extension Registration_Core_LicenseState: SwiftProtobuf.Message, Swi
 
 nonisolated extension Registration_Core_Seats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Seats"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}basic\0\u{1}advanced\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}presenter\0\u{4}\u{3}cloud_editor\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -4570,26 +4622,26 @@ nonisolated extension Registration_Core_Seats: SwiftProtobuf.Message, SwiftProto
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularInt32Field(value: &self.basic) }()
-      case 2: try { try decoder.decodeSingularInt32Field(value: &self.advanced) }()
+      case 1: try { try decoder.decodeSingularInt32Field(value: &self.presenter) }()
+      case 4: try { try decoder.decodeSingularInt32Field(value: &self.cloudEditor) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.basic != 0 {
-      try visitor.visitSingularInt32Field(value: self.basic, fieldNumber: 1)
+    if self.presenter != 0 {
+      try visitor.visitSingularInt32Field(value: self.presenter, fieldNumber: 1)
     }
-    if self.advanced != 0 {
-      try visitor.visitSingularInt32Field(value: self.advanced, fieldNumber: 2)
+    if self.cloudEditor != 0 {
+      try visitor.visitSingularInt32Field(value: self.cloudEditor, fieldNumber: 4)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Registration_Core_Seats, rhs: Registration_Core_Seats) -> Bool {
-    if lhs.basic != rhs.basic {return false}
-    if lhs.advanced != rhs.advanced {return false}
+    if lhs.presenter != rhs.presenter {return false}
+    if lhs.cloudEditor != rhs.cloudEditor {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -4923,7 +4975,7 @@ nonisolated extension Registration_Core_ActiveCopy: SwiftProtobuf.Message, Swift
 
 nonisolated extension Registration_Core_RegistrationInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RegistrationInfo"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}user_name\0\u{3}display_key\0\u{3}display_name\0\u{3}expiration_date\0\u{3}activation_key\0\u{3}license_type\0\u{3}registration_date\0\u{3}seat_type\0\u{3}latest_available_build_number\0\u{3}latest_available_version\0\u{3}has_worship_house_media_subscription\0\u{3}maintenance_expiration_date\0\u{3}non_extended_maintenance_expiration_date\0\u{3}is_auto_renewal_active\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}user_name\0\u{3}display_key\0\u{3}display_name\0\u{3}expiration_date\0\u{3}activation_key\0\u{3}license_type\0\u{3}registration_date\0\u{3}seat_type\0\u{3}latest_available_build_number\0\u{3}latest_available_version\0\u{3}has_worship_house_media_subscription\0\u{3}maintenance_expiration_date\0\u{3}non_extended_maintenance_expiration_date\0\u{3}is_auto_renewal_active\0\u{3}new_seat_type\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -4945,6 +4997,7 @@ nonisolated extension Registration_Core_RegistrationInfo: SwiftProtobuf.Message,
       case 12: try { try decoder.decodeSingularInt64Field(value: &self.maintenanceExpirationDate) }()
       case 13: try { try decoder.decodeSingularInt64Field(value: &self.nonExtendedMaintenanceExpirationDate) }()
       case 14: try { try decoder.decodeSingularBoolField(value: &self.isAutoRenewalActive) }()
+      case 15: try { try decoder.decodeSingularEnumField(value: &self.newSeatType) }()
       default: break
       }
     }
@@ -4993,6 +5046,9 @@ nonisolated extension Registration_Core_RegistrationInfo: SwiftProtobuf.Message,
     if self.isAutoRenewalActive != false {
       try visitor.visitSingularBoolField(value: self.isAutoRenewalActive, fieldNumber: 14)
     }
+    if self.newSeatType != .unspecified {
+      try visitor.visitSingularEnumField(value: self.newSeatType, fieldNumber: 15)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -5011,6 +5067,7 @@ nonisolated extension Registration_Core_RegistrationInfo: SwiftProtobuf.Message,
     if lhs.maintenanceExpirationDate != rhs.maintenanceExpirationDate {return false}
     if lhs.nonExtendedMaintenanceExpirationDate != rhs.nonExtendedMaintenanceExpirationDate {return false}
     if lhs.isAutoRenewalActive != rhs.isAutoRenewalActive {return false}
+    if lhs.newSeatType != rhs.newSeatType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

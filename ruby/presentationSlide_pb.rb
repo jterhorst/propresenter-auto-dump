@@ -5,6 +5,7 @@
 require 'google/protobuf'
 
 require 'alignmentGuide_pb'
+require 'contentProvider_pb'
 require 'customOptions_pb'
 require 'effects_pb'
 require 'graphicsData_pb'
@@ -12,7 +13,7 @@ require 'slide_pb'
 require 'url_pb'
 
 
-descriptor_data = "\n\x17presentationSlide.proto\x12\x07rv.data\x1a\x14\x61lignmentGuide.proto\x1a\x13\x63ustomOptions.proto\x1a\reffects.proto\x1a\x12graphicsData.proto\x1a\x0bslide.proto\x1a\turl.proto\"\xbc\x02\n\x11PresentationSlide\x12\"\n\nbase_slide\x18\x01 \x01(\x0b\x32\x0e.rv.data.Slide\x12/\n\x05notes\x18\x02 \x01(\x0b\x32 .rv.data.PresentationSlide.Notes\x12\x34\n\x13template_guidelines\x18\x03 \x03(\x0b\x32\x17.rv.data.AlignmentGuide\x12!\n\x0b\x63hord_chart\x18\x04 \x01(\x0b\x32\x0c.rv.data.URL\x12\'\n\ntransition\x18\x05 \x01(\x0b\x32\x13.rv.data.Transition\x1aP\n\x05Notes\x12\x10\n\x08rtf_data\x18\x01 \x01(\x0c\x12\x35\n\nattributes\x18\x02 \x01(\x0b\x32!.rv.data.Graphics.Text.Attributesb\x06proto3"
+descriptor_data = "\n\x17presentationSlide.proto\x12\x07rv.data\x1a\x14\x61lignmentGuide.proto\x1a\x15\x63ontentProvider.proto\x1a\x13\x63ustomOptions.proto\x1a\reffects.proto\x1a\x12graphicsData.proto\x1a\x0bslide.proto\x1a\turl.proto\"\xe5\x02\n\x11PresentationSlide\x12\"\n\nbase_slide\x18\x01 \x01(\x0b\x32\x0e.rv.data.Slide\x12/\n\x05notes\x18\x02 \x01(\x0b\x32 .rv.data.PresentationSlide.Notes\x12\x34\n\x13template_guidelines\x18\x03 \x03(\x0b\x32\x17.rv.data.AlignmentGuide\x12!\n\x0b\x63hord_chart\x18\x04 \x01(\x0b\x32\x0c.rv.data.URL\x12\'\n\ntransition\x18\x05 \x01(\x0b\x32\x13.rv.data.Transition\x12\'\n\x08provider\x18\x06 \x01(\x0b\x32\x15.rv.data.ProviderInfo\x1aP\n\x05Notes\x12\x10\n\x08rtf_data\x18\x01 \x01(\x0c\x12\x35\n\nattributes\x18\x02 \x01(\x0b\x32!.rv.data.Graphics.Text.Attributesb\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)

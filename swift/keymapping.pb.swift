@@ -35,50 +35,50 @@ public nonisolated struct Rv_Data_KeyMapping: Sendable {
     set {targetIdentifier = .menuItem(newValue)}
   }
 
-  public var clearGroupIdentifier_p: Rv_Data_CollectionElementType {
+  public var clearGroupIdentifier_p: Rv_Data_KeyMapping.CollectionElementTypeKey {
     get {
       if case .clearGroupIdentifier_p(let v)? = targetIdentifier {return v}
-      return Rv_Data_CollectionElementType()
+      return Rv_Data_KeyMapping.CollectionElementTypeKey()
     }
     set {targetIdentifier = .clearGroupIdentifier_p(newValue)}
   }
 
-  public var cueIdentifier: Rv_Data_CollectionElementType {
+  public var cueIdentifier: Rv_Data_KeyMapping.CollectionElementTypeKey {
     get {
       if case .cueIdentifier(let v)? = targetIdentifier {return v}
-      return Rv_Data_CollectionElementType()
+      return Rv_Data_KeyMapping.CollectionElementTypeKey()
     }
     set {targetIdentifier = .cueIdentifier(newValue)}
   }
 
-  public var groupIdentifier: Rv_Data_CollectionElementType {
+  public var groupIdentifier: Rv_Data_KeyMapping.CollectionElementTypeKey {
     get {
       if case .groupIdentifier(let v)? = targetIdentifier {return v}
-      return Rv_Data_CollectionElementType()
+      return Rv_Data_KeyMapping.CollectionElementTypeKey()
     }
     set {targetIdentifier = .groupIdentifier(newValue)}
   }
 
-  public var macroIdentifier: Rv_Data_CollectionElementType {
+  public var macroIdentifier: Rv_Data_KeyMapping.CollectionElementTypeKey {
     get {
       if case .macroIdentifier(let v)? = targetIdentifier {return v}
-      return Rv_Data_CollectionElementType()
+      return Rv_Data_KeyMapping.CollectionElementTypeKey()
     }
     set {targetIdentifier = .macroIdentifier(newValue)}
   }
 
-  public var propIdentifier: Rv_Data_CollectionElementType {
+  public var propIdentifier: Rv_Data_KeyMapping.CollectionElementTypeKey {
     get {
       if case .propIdentifier(let v)? = targetIdentifier {return v}
-      return Rv_Data_CollectionElementType()
+      return Rv_Data_KeyMapping.CollectionElementTypeKey()
     }
     set {targetIdentifier = .propIdentifier(newValue)}
   }
 
-  public var timerIdentifier: Rv_Data_CollectionElementType {
+  public var timerIdentifier: Rv_Data_KeyMapping.CollectionElementTypeKey {
     get {
       if case .timerIdentifier(let v)? = targetIdentifier {return v}
-      return Rv_Data_CollectionElementType()
+      return Rv_Data_KeyMapping.CollectionElementTypeKey()
     }
     set {targetIdentifier = .timerIdentifier(newValue)}
   }
@@ -105,13 +105,36 @@ public nonisolated struct Rv_Data_KeyMapping: Sendable {
 
   public nonisolated enum OneOf_TargetIdentifier: Equatable, Sendable {
     case menuItem(String)
-    case clearGroupIdentifier_p(Rv_Data_CollectionElementType)
-    case cueIdentifier(Rv_Data_CollectionElementType)
-    case groupIdentifier(Rv_Data_CollectionElementType)
-    case macroIdentifier(Rv_Data_CollectionElementType)
-    case propIdentifier(Rv_Data_CollectionElementType)
-    case timerIdentifier(Rv_Data_CollectionElementType)
+    case clearGroupIdentifier_p(Rv_Data_KeyMapping.CollectionElementTypeKey)
+    case cueIdentifier(Rv_Data_KeyMapping.CollectionElementTypeKey)
+    case groupIdentifier(Rv_Data_KeyMapping.CollectionElementTypeKey)
+    case macroIdentifier(Rv_Data_KeyMapping.CollectionElementTypeKey)
+    case propIdentifier(Rv_Data_KeyMapping.CollectionElementTypeKey)
+    case timerIdentifier(Rv_Data_KeyMapping.CollectionElementTypeKey)
 
+  }
+
+  public nonisolated struct CollectionElementTypeKey: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var parameterUuid: Rv_Data_UUID {
+      get {_parameterUuid ?? Rv_Data_UUID()}
+      set {_parameterUuid = newValue}
+    }
+    /// Returns true if `parameterUuid` has been explicitly set.
+    public var hasParameterUuid: Bool {self._parameterUuid != nil}
+    /// Clears the value of `parameterUuid`. Subsequent reads from it will return its default value.
+    public mutating func clearParameterUuid() {self._parameterUuid = nil}
+
+    public var parameterName: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _parameterUuid: Rv_Data_UUID? = nil
   }
 
   public nonisolated struct ComputerKeyboard: Sendable {
@@ -248,7 +271,7 @@ nonisolated extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._
         }
       }()
       case 101: try {
-        var v: Rv_Data_CollectionElementType?
+        var v: Rv_Data_KeyMapping.CollectionElementTypeKey?
         var hadOneofValue = false
         if let current = self.targetIdentifier {
           hadOneofValue = true
@@ -261,7 +284,7 @@ nonisolated extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._
         }
       }()
       case 102: try {
-        var v: Rv_Data_CollectionElementType?
+        var v: Rv_Data_KeyMapping.CollectionElementTypeKey?
         var hadOneofValue = false
         if let current = self.targetIdentifier {
           hadOneofValue = true
@@ -274,7 +297,7 @@ nonisolated extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._
         }
       }()
       case 103: try {
-        var v: Rv_Data_CollectionElementType?
+        var v: Rv_Data_KeyMapping.CollectionElementTypeKey?
         var hadOneofValue = false
         if let current = self.targetIdentifier {
           hadOneofValue = true
@@ -287,7 +310,7 @@ nonisolated extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._
         }
       }()
       case 104: try {
-        var v: Rv_Data_CollectionElementType?
+        var v: Rv_Data_KeyMapping.CollectionElementTypeKey?
         var hadOneofValue = false
         if let current = self.targetIdentifier {
           hadOneofValue = true
@@ -300,7 +323,7 @@ nonisolated extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._
         }
       }()
       case 105: try {
-        var v: Rv_Data_CollectionElementType?
+        var v: Rv_Data_KeyMapping.CollectionElementTypeKey?
         var hadOneofValue = false
         if let current = self.targetIdentifier {
           hadOneofValue = true
@@ -313,7 +336,7 @@ nonisolated extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._
         }
       }()
       case 106: try {
-        var v: Rv_Data_CollectionElementType?
+        var v: Rv_Data_KeyMapping.CollectionElementTypeKey?
         var hadOneofValue = false
         if let current = self.targetIdentifier {
           hadOneofValue = true
@@ -379,6 +402,45 @@ nonisolated extension Rv_Data_KeyMapping: SwiftProtobuf.Message, SwiftProtobuf._
     if lhs.targetIdentifier != rhs.targetIdentifier {return false}
     if lhs._keyboard != rhs._keyboard {return false}
     if lhs._midi != rhs._midi {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_KeyMapping.CollectionElementTypeKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_KeyMapping.protoMessageName + ".CollectionElementTypeKey"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}parameter_uuid\0\u{3}parameter_name\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._parameterUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.parameterName) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._parameterUuid {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.parameterName.isEmpty {
+      try visitor.visitSingularStringField(value: self.parameterName, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_KeyMapping.CollectionElementTypeKey, rhs: Rv_Data_KeyMapping.CollectionElementTypeKey) -> Bool {
+    if lhs._parameterUuid != rhs._parameterUuid {return false}
+    if lhs.parameterName != rhs.parameterName {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

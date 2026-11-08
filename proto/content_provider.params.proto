@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+
+package content_provider;
+
+
+enum ContentProviderType {
+  CONTENT_PROVIDER_TYPE_UNSPECIFIED = 0;
+  APLAY = 1;
+  MOCK = 100;
+}
+
+message CreationOption {
+  content_provider.ContentProviderType provider = 1;
+}

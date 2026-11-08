@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+
+package helper.workspace.v1;
+
+
+import "v1-helper-common.proto";
+
+
+
+message Notification {
+  oneof notification {
+    helper.common.v1.MediaReference media_reference = 1;
+    helper.common.v1.GenerationStatus generation_status = 2;
+  }
+
+}
+
+message RequestEnvelope {
+  message Start {
+    helper.common.v1.ProductInformation product_info = 1;
+    string show_directory = 2;
+  }
+
+  message Header {
+    string id = 1;
+  }
+
+  message GetState {
+  }
+
+  oneof request {
+    helper.workspace.v1.RequestEnvelope.Start start = 2;
+    helper.common.v1.ChangeShowDirectory change_show_directory = 3;
+    helper.common.v1.AddMediaReference add = 4;
+    helper.common.v1.DuplicateMediaReference duplicate = 5;
+    helper.common.v1.ApplyTransformation apply = 6;
+    helper.common.v1.RemoveMediaReferences remove = 7;
+    helper.common.v1.TriggerMediaReference trigger = 8;
+    helper.common.v1.Ping ping = 9;
+    helper.common.v1.UpdateWorkspaces update_workspaces = 10;
+    helper.common.v1.PauseGeneration pause_generation = 11;
+    helper.common.v1.ResumeGeneration resume_generation = 12;
+    helper.workspace.v1.RequestEnvelope.GetState get_state = 13;
+  }
+
+  helper.workspace.v1.RequestEnvelope.Header header = 1;
+}
+
+message ResponseEnvelope {
+  message Header {
+    string id = 1;
+  }
+
+  message Response {
+    message StartResponse {
+      repeated helper.common.v1.MediaReference media_references = 1;
+    }
+
+    message ChangeShowDirectoryResponse {
+      repeated helper.common.v1.MediaReference media_references = 1;
+    }
+
+    message GetStateResponse {
+    }
+
+    oneof response {
+      helper.workspace.v1.ResponseEnvelope.Response.StartResponse start = 1;
+      helper.workspace.v1.ResponseEnvelope.Response.ChangeShowDirectoryResponse change_show_directory = 2;
+      helper.common.v1.AddMediaReferenceResponse add = 3;
+      helper.common.v1.DuplicateMediaReferenceResponse duplicate = 4;
+      helper.common.v1.ApplyTransformationResponse apply = 5;
+      helper.common.v1.RemoveMediaReferenceResponse remove = 6;
+      helper.common.v1.TriggerMediaReferenceResponse trigger = 7;
+      helper.common.v1.Pong pong = 8;
+      helper.common.v1.UpdateWorkspacesResponse update_workspaces = 9;
+      helper.common.v1.PauseGenerationResponse pause = 10;
+      helper.common.v1.ResumeGenerationResponse resume = 11;
+      helper.workspace.v1.ResponseEnvelope.Response.GetStateResponse get_state = 12;
+    }
+
+  }
+
+  oneof result {
+    helper.workspace.v1.ResponseEnvelope.Response ok = 2;
+    helper.common.v1.RequestError error = 3;
+  }
+
+  helper.workspace.v1.ResponseEnvelope.Header header = 1;
+}
+
+message ClientMessage {
+  oneof payload {
+    helper.workspace.v1.RequestEnvelope request = 1;
+  }
+
+}
+
+message ServerMessage {
+  oneof payload {
+    helper.workspace.v1.ResponseEnvelope response = 1;
+    helper.workspace.v1.Notification notification = 2;
+  }
+
+}

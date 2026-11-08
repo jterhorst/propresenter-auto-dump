@@ -5,12 +5,13 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\rrverror.proto\x12\x07rverror\"\xa5\x01\n\rReportedError\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04\x66ile\x18\x03 \x01(\t\x12\x0c\n\x04line\x18\x04 \x01(\r\x12\x31\n\x08severity\x18\x05 \x01(\x0e\x32\x1f.rverror.ReportedError.Severity\"\"\n\x08Severity\x12\x0b\n\x07HANDLED\x10\x00\x12\t\n\x05\x46\x41TAL\x10\x01\x62\x06proto3"
+descriptor_data = "\n\rrverror.proto\x12\x07rverror\"U\n\nStackFrame\x12\x0e\n\x06method\x18\x01 \x01(\t\x12\x0c\n\x04\x66ile\x18\x02 \x01(\t\x12\x0c\n\x04line\x18\x03 \x01(\r\x12\x1b\n\x13instruction_address\x18\x04 \x01(\x04\"\xd0\x01\n\rReportedError\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04\x66ile\x18\x03 \x01(\t\x12\x0c\n\x04line\x18\x04 \x01(\r\x12\x31\n\x08severity\x18\x05 \x01(\x0e\x32\x1f.rverror.ReportedError.Severity\x12)\n\x0cstack_frames\x18\x06 \x03(\x0b\x32\x13.rverror.StackFrame\"\"\n\x08Severity\x12\x0b\n\x07HANDLED\x10\x00\x12\t\n\x05\x46\x41TAL\x10\x01\x62\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Rverror
+  StackFrame = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rverror.StackFrame").msgclass
   ReportedError = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rverror.ReportedError").msgclass
   ReportedError::Severity = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rverror.ReportedError.Severity").enummodule
 end

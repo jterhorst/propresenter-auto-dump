@@ -15,6 +15,13 @@ enum Priority {
   UserInitiated = 1;
 }
 
+enum SeatType {
+  SEAT_TYPE_UNASSIGNED = 0;
+  SEAT_TYPE_LOCAL_EDITOR = 1;
+  SEAT_TYPE_CLOUD_EDITOR = 2;
+  SEAT_TYPE_PRESENTER = 3;
+}
+
 message ProductInformation {
   string product_name = 1;
   string major_version = 2;
@@ -42,6 +49,7 @@ message Version {
 message Preferences {
   bool manage_media = 1;
   bool share_analytics = 2;
+  bool share_crash_reports = 3;
 }
 
 message CreationOption {
@@ -178,6 +186,23 @@ message MediaReference {
   }
 
   helper.common.v2.ReferenceIdentifier id = 1;
+  bool projection_owned = 7;
+  optional string asset_uuid = 8;
+  optional string replaced_asset_uuid = 9;
+}
+
+message MediaStateSnapshot {
+  string session_uuid = 1;
+  uint64 revision = 2;
+  repeated helper.common.v2.MediaReference media_references = 3;
+  helper.common.v2.Workspace workspace = 4;
+}
+
+message GetMediaStateSnapshot {
+}
+
+message GetMediaStateSnapshotResponse {
+  helper.common.v2.MediaStateSnapshot snapshot = 1;
 }
 
 message AssetImported {
@@ -205,6 +230,50 @@ message AssetImported {
 message ChangeShowDirectory {
   string path = 1;
   optional string workspace_id = 2;
+  optional string organization_id = 3;
+}
+
+message ReleaseShowDirectory {
+  string path = 1;
+  bool forget_state = 2;
+}
+
+message ActivateReferenceIdentity {
+  repeated string reference_uuids = 1;
+  uint32 schema_version = 2;
+  optional string migration_id = 3;
+  bytes plan_sha256 = 4;
+  repeated helper.common.v2.ReferenceIdentityMigrationEntry migrations = 5;
+}
+
+message ReferenceIdentityMigrationEntry {
+  string document_id = 1;
+  string occurrence_path = 2;
+  string old_reference_uuid = 3;
+  string new_reference_uuid = 4;
+  optional string old_asset_uuid = 5;
+  optional string new_asset_uuid = 6;
+  repeated string legacy_container_hints = 7;
+  optional string resolved_source_path = 8;
+  optional helper.common.v2.Transformation transformation = 9;
+  bytes source_fingerprint = 10;
+  bytes transformation_fingerprint = 11;
+  bytes descriptor_fingerprint = 12;
+}
+
+message ActivateReferenceIdentityResponse {
+  uint32 schema_version = 1;
+  uint64 expected = 2;
+  uint64 found = 3;
+  uint64 normalized = 4;
+  uint64 deduplicated = 5;
+  uint64 missing = 6;
+  repeated helper.common.v2.MediaReference media_references = 7;
+  helper.common.v2.MediaStateSnapshot media_state_snapshot = 8;
+  uint64 rekeyed = 9;
+  uint64 reused = 10;
+  uint64 reimport_required = 11;
+  repeated string unresolved_reference_ids = 12;
 }
 
 message Workspace {
@@ -223,6 +292,34 @@ message PauseSync {
 message ResumeSync {
 }
 
+message SyncStats {
+  message Transfer {
+    enum FailureReason {
+      FAILURE_REASON_UNSPECIFIED = 0;
+      FAILURE_REASON_CONNECTION = 1;
+      FAILURE_REASON_FILE_ACCESS = 2;
+      FAILURE_REASON_SERVER = 3;
+    }
+
+    message FailedFile {
+      string file_name = 1;
+      helper.common.v2.SyncStats.Transfer.FailureReason reason = 2;
+    }
+
+    uint64 completed_files = 1;
+    uint64 total_files = 2;
+    uint64 completed_bytes = 3;
+    uint64 total_bytes = 4;
+    uint64 failed_files = 5;
+    uint64 missing_files = 6;
+    bool stalled = 7;
+    repeated helper.common.v2.SyncStats.Transfer.FailedFile failed = 8;
+  }
+
+  helper.common.v2.SyncStats.Transfer uploads = 1;
+  helper.common.v2.SyncStats.Transfer downloads = 2;
+}
+
 message AddMediaReference {
   helper.common.v2.ReferenceIdentifier id = 1;
   string url = 2;
@@ -230,6 +327,89 @@ message AddMediaReference {
   helper.common.v2.Transformation transformation = 4;
   optional bool manage_media = 5;
   optional bool user_initiated = 6;
+  optional string operation_uuid = 7;
+  optional string target_document_uuid = 8;
+  optional string occurrence_path = 9;
+  optional string expected_reference_uuid = 10;
+  optional bytes expected_descriptor_fingerprint = 11;
+  optional string authoritative_asset_uuid = 12;
+}
+
+message EnsureMediaReference {
+  helper.common.v2.ReferenceIdentifier id = 1;
+  string url = 2;
+  helper.common.v2.Priority priority = 3;
+  helper.common.v2.Transformation transformation = 4;
+  optional bool manage_media = 5;
+  optional string asset_uuid = 6;
+  optional string operation_context = 7;
+}
+
+message EnsureMediaReferenceResponse {
+}
+
+message EnsureProContentReference {
+  helper.common.v2.ReferenceIdentifier id = 1;
+  string asset_identifier = 2;
+  helper.common.v2.Priority priority = 3;
+  helper.common.v2.Transformation transformation = 4;
+  optional string asset_uuid = 5;
+  optional string operation_context = 6;
+  optional string local_path = 7;
+}
+
+message EnsureProContentReferenceResponse {
+}
+
+message EnsureMediaReferences {
+  repeated helper.common.v2.EnsureMediaReference file_references = 1;
+  repeated helper.common.v2.EnsureProContentReference pro_content_references = 2;
+}
+
+message EnsureMediaReferencesResponse {
+  message Failure {
+    string reference_uuid = 1;
+    helper.common.v2.RequestError error = 2;
+  }
+
+  repeated helper.common.v2.EnsureMediaReferencesResponse.Failure failures = 1;
+}
+
+message ApplyProjectedTransformation {
+  helper.common.v2.ReferenceIdentifier id = 1;
+  helper.common.v2.Transformation transformation = 2;
+  helper.common.v2.Priority priority = 3;
+  optional string operation_context = 4;
+}
+
+message ApplyProjectedTransformationResponse {
+}
+
+message TombstoneProjectedReferences {
+  repeated string reference_uuids = 1;
+}
+
+message TombstoneProjectedReferencesResponse {
+  uint64 requested = 1;
+  uint64 tombstoned = 2;
+  uint64 already_tombstoned = 3;
+  uint64 missing = 4;
+  uint64 unowned = 5;
+  repeated helper.common.v2.MediaReference media_references = 6;
+  helper.common.v2.MediaStateSnapshot media_state_snapshot = 7;
+}
+
+message ClaimProjectedReferences {
+  repeated string reference_uuids = 1;
+}
+
+message ClaimProjectedReferencesResponse {
+  uint64 requested = 1;
+  uint64 claimed = 2;
+  uint64 already_owned = 3;
+  uint64 missing = 4;
+  repeated helper.common.v2.MediaReference media_references = 5;
+  helper.common.v2.MediaStateSnapshot media_state_snapshot = 6;
 }
 
 message ProContentDownloadDetails {
@@ -241,6 +421,7 @@ message ProContentDownloadDetails {
     ASSET_TYPE_MOTION_TITLE = 4;
     ASSET_TYPE_PACK = 5;
     ASSET_TYPE_THEME = 6;
+    ASSET_TYPE_STICKER = 7;
   }
 
   string asset_identifier = 1;
@@ -296,27 +477,145 @@ message RemoveMediaReferences {
   optional bool user_initiated = 4;
 }
 
+message GetMediaUsage {
+}
+
+message GetMediaUsageResponse {
+  uint64 managed_file_count = 1;
+  uint64 managed_byte_count = 2;
+  uint64 unmanaged_byte_count = 3;
+}
+
+message PreviewMediaCleanup {
+}
+
+message MediaCleanupCandidate {
+  enum Kind {
+    KIND_UNSPECIFIED = 0;
+    CATALOGED_ASSET = 1;
+    UNTRACKED_FILE = 2;
+  }
+
+  string candidate_uuid = 1;
+  optional string asset_uuid = 2;
+  string path = 3;
+  uint64 byte_count = 4;
+  helper.common.v2.MediaCleanupCandidate.Kind kind = 5;
+}
+
+message MediaCleanupDeferral {
+  enum Reason {
+    REASON_UNSPECIFIED = 0;
+    WAITING = 1;
+    UPLOAD_PENDING = 2;
+    CHECKING_CLOUD = 3;
+    NOT_IN_CLOUD = 4;
+  }
+
+  string asset_uuid = 1;
+  string path = 2;
+  uint64 byte_count = 3;
+  helper.common.v2.MediaCleanupDeferral.Reason reason = 4;
+  optional uint64 eligible_at_unix_seconds = 5;
+}
+
+message PreviewMediaCleanupResponse {
+  string plan_uuid = 1;
+  bytes plan_digest = 2;
+  repeated helper.common.v2.MediaCleanupCandidate candidates = 3;
+  repeated string blocked_reasons = 4;
+  repeated helper.common.v2.MediaCleanupDeferral deferrals = 5;
+}
+
+message ExecuteMediaCleanup {
+  enum Action {
+    ACTION_UNSPECIFIED = 0;
+    MOVE_TO_TRASH = 1;
+    MOVE_TO_FOLDER = 2;
+  }
+
+  string operation_uuid = 1;
+  string plan_uuid = 2;
+  bytes plan_digest = 3;
+  repeated string candidate_uuids = 4;
+  helper.common.v2.ExecuteMediaCleanup.Action action = 5;
+  optional string destination_directory = 6;
+}
+
+message MediaCleanupItemResult {
+  enum Outcome {
+    OUTCOME_UNSPECIFIED = 0;
+    CLEANED = 1;
+    STALE = 2;
+    BLOCKED = 3;
+    FAILED = 4;
+    ALREADY_CLEANED = 5;
+  }
+
+  string candidate_uuid = 1;
+  optional string asset_uuid = 2;
+  string source_path = 3;
+  optional string destination_path = 4;
+  uint64 byte_count = 5;
+  helper.common.v2.MediaCleanupItemResult.Outcome outcome = 6;
+  optional string reason = 7;
+}
+
+message ExecuteMediaCleanupResponse {
+  string operation_uuid = 1;
+  repeated helper.common.v2.MediaCleanupItemResult results = 2;
+  uint64 cleaned_byte_count = 3;
+}
+
 message TriggerMediaReference {
   repeated helper.common.v2.ReferenceIdentifier id = 1;
 }
 
 message SmartPlaylist {
   string path = 1;
+  string playlist_uuid = 2;
+}
+
+message SmartPlaylistMembershipSnapshot {
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    MISSING = 1;
+    PERMISSION_DENIED = 2;
+    AVAILABLE = 3;
+    INACCESSIBLE = 4;
+    NOT_CONFIGURED = 5;
+  }
+
+  string playlist_uuid = 1;
+  string root_path = 2;
+  repeated string member_paths = 3;
+  uint64 workspace_generation = 4;
+  helper.common.v2.SmartPlaylistMembershipSnapshot.State state = 5;
+  uint64 registration_revision = 6;
+  uint64 membership_revision = 7;
 }
 
 message UpdateSmartPlaylists {
   repeated helper.common.v2.SmartPlaylist playlists = 1;
+  uint64 workspace_generation = 2;
+  uint64 registration_revision = 3;
 }
 
 message UpdatePrefs {
   helper.common.v2.Preferences preferences = 1;
 }
 
+message SetCloudTerminated {
+  bool cloud_terminated = 1;
+}
+
 message MarkWorkspaceAsCloud {
   string uuid = 1;
+  optional string organization_id = 2;
 }
 
 message MarkWorkspaceAsLocal {
+  optional string path = 1;
 }
 
 message RemoveContainer {
@@ -327,11 +626,144 @@ message RemoveContainer {
 message ImportUnmanagedMedia {
 }
 
+message GetUnmanagedMedia {
+}
+
+message GetUnmanagedMediaResponse {
+  repeated string paths = 1;
+  repeated helper.common.v2.DeviceLocalMedia device_local = 2;
+}
+
+message DeviceLocalMedia {
+  string asset_uuid = 1;
+  string path = 2;
+}
+
+message LeftBehindMedia {
+  enum Reason {
+    REASON_UNSPECIFIED = 0;
+    INSUFFICIENT_SPACE = 1;
+    COPY_FAILED = 2;
+    DESTINATION_UNAVAILABLE = 3;
+  }
+
+  string path = 1;
+  helper.common.v2.LeftBehindMedia.Reason reason = 2;
+}
+
+message PreMigrateWorkspace {
+  string path = 1;
+  optional string to_path = 2;
+  optional string workspace_id = 3;
+}
+
+message MigrateWorkspace {
+  string from_path = 1;
+  string to_path = 2;
+  optional string workspace_id = 3;
+}
+
 message Ping {
   int32 id = 1;
 }
 
 message AddMediaReferenceResponse {
+  optional string operation_uuid = 1;
+  optional string asset_uuid = 2;
+  helper.common.v2.AdvanceImportOperation.Phase operation_phase = 3;
+  optional string managed_url = 4;
+  bool import_in_progress = 5;
+}
+
+message AdvanceImportOperation {
+  enum Phase {
+    PHASE_UNKNOWN = 0;
+    PHASE_ATTACHING = 1;
+    PHASE_COMPLETE = 2;
+    PHASE_FAILED = 3;
+    PHASE_IMPORTED = 4;
+  }
+
+  string operation_uuid = 1;
+  helper.common.v2.AdvanceImportOperation.Phase phase = 2;
+  optional string error = 3;
+}
+
+message AdvanceImportOperationResponse {
+}
+
+message RelinkMediaAsset {
+  enum Phase {
+    PHASE_UNKNOWN = 0;
+    PHASE_QUEUED = 1;
+    PHASE_STAGING = 2;
+    PHASE_STAGED = 3;
+    PHASE_PUBLISHING = 4;
+    PHASE_COMPLETE = 5;
+    PHASE_FAILED = 6;
+  }
+
+  string operation_uuid = 1;
+  string reference_uuid = 2;
+  string expected_asset_uuid = 3;
+  string source_capability_path = 4;
+}
+
+message RelinkMediaAssetResponse {
+  string operation_uuid = 1;
+  string reference_uuid = 2;
+  string asset_uuid = 3;
+  helper.common.v2.RelinkMediaAsset.Phase phase = 4;
+  uint32 attempt = 5;
+  optional string failure_code = 6;
+  optional string failure_detail = 7;
+  optional string replaced_asset_uuid = 8;
+}
+
+message MaterializeMediaAsset {
+  enum Phase {
+    PHASE_UNKNOWN = 0;
+    PHASE_QUEUED = 1;
+    PHASE_RESOLVING = 2;
+    PHASE_DOWNLOADING = 3;
+    PHASE_DOWNLOADED = 4;
+    PHASE_VERIFYING = 5;
+    PHASE_PUBLISHING = 6;
+    PHASE_COMPLETE = 7;
+    PHASE_FAILED = 8;
+  }
+
+  string operation_uuid = 1;
+  string reference_uuid = 2;
+  string expected_asset_uuid = 3;
+}
+
+message MaterializeMediaAssetResponse {
+  string operation_uuid = 1;
+  string reference_uuid = 2;
+  string asset_uuid = 3;
+  helper.common.v2.MaterializeMediaAsset.Phase phase = 4;
+  uint32 attempt = 5;
+  optional string failure_code = 6;
+  optional string failure_detail = 7;
+  optional string replaced_asset_uuid = 8;
+}
+
+message RestoreMediaFromTrash {
+  string asset_uuid = 1;
+}
+
+message RestoreMediaFromTrashResponse {
+  enum Outcome {
+    OUTCOME_UNKNOWN = 0;
+    OUTCOME_RESTORED = 1;
+    OUTCOME_NOT_IN_TRASH = 2;
+    OUTCOME_ALREADY_PRESENT = 3;
+    OUTCOME_NOT_PURGED = 4;
+  }
+
+  string asset_uuid = 1;
+  helper.common.v2.RestoreMediaFromTrashResponse.Outcome outcome = 2;
 }
 
 message DuplicateMediaReferenceResponse {
@@ -356,9 +788,13 @@ message ResumeSyncResponse {
 }
 
 message UpdateSmartPlaylistsResponse {
+  repeated helper.common.v2.SmartPlaylistMembershipSnapshot snapshots = 1;
 }
 
 message UpdatePrefsResponse {
+}
+
+message SetCloudTerminatedResponse {
 }
 
 message MarkWorkspaceAsCloudResponse {
@@ -368,14 +804,105 @@ message MarkWorkspaceAsLocalResponse {
 }
 
 message AddProContentReferenceResponse {
+  string asset_uuid = 1;
 }
 
 message RemoveContainerResponse {
 }
 
 message ImportUnmanagedMediaResponse {
+  repeated helper.common.v2.LeftBehindMedia left_behind = 1;
+  optional helper.common.v2.InsufficientSpace insufficient_space = 2;
+}
+
+message InsufficientSpace {
+  uint64 required_bytes = 1;
+  uint64 available_bytes = 2;
+}
+
+message UnmanagedMediaImportProgress {
+  uint64 completed_files = 1;
+  uint64 total_files = 2;
+  uint64 completed_bytes = 3;
+  uint64 total_bytes = 4;
+}
+
+message PreMigrateWorkspaceResponse {
+}
+
+message ReleaseShowDirectoryResponse {
 }
 
 message Pong {
   int32 id = 1;
+}
+
+message GetThumbnail {
+  helper.common.v2.ReferenceIdentifier id = 1;
+  uint32 width = 2;
+  uint32 height = 3;
+}
+
+message GetThumbnailResponse {
+  message NotReady {
+    uint64 media_state_revision = 1;
+  }
+
+  message Unavailable {
+  }
+
+  oneof result {
+    bytes data = 1;
+    helper.common.v2.GetThumbnailResponse.NotReady not_ready = 2;
+    helper.common.v2.GetThumbnailResponse.Unavailable unavailable = 3;
+  }
+
+}
+
+message GenerateThumbnailForPath {
+  string path = 1;
+  uint32 width = 2;
+  uint32 height = 3;
+  helper.common.v2.Priority priority = 4;
+}
+
+message GenerateThumbnailForPathResponse {
+  message NoBitmap {
+  }
+
+  oneof result {
+    bytes data = 1;
+    helper.common.v2.GenerateThumbnailForPathResponse.NoBitmap no_bitmap = 2;
+  }
+
+}
+
+message CancelGenerateThumbnailForPath {
+}
+
+message TokenMetadata {
+  string access = 1;
+  uint64 expires_at = 2;
+}
+
+message Channel {
+  string name = 1;
+  string permission = 2;
+}
+
+message RemoteChannelInfo {
+  repeated helper.common.v2.Channel channels = 1;
+}
+
+message UserAuthInfo {
+  optional helper.common.v2.TokenMetadata token = 1;
+  string pubnub_token = 2;
+  optional string activation_key = 3;
+  helper.common.v2.RemoteChannelInfo channel_info = 4;
+  optional helper.common.v2.SeatType seat_type = 5;
+}
+
+message HardwareIdentifier {
+  string fingerprint = 1;
+  string identifier = 2;
 }

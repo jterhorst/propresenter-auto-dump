@@ -142,6 +142,10 @@ message SongSelect {
   bool auto_reporting_enabled = 2;
 }
 
+message APlay {
+  bool logged_in = 1;
+}
+
 message Content {
   int32 library_count = 1;
   int32 library_playlist_count = 2;
@@ -218,6 +222,11 @@ message DiskUsage {
   uint64 bytes_of_media_asset_files = 2;
   uint64 number_of_media_asset_files = 3;
   uint64 bytes_of_unmanaged_media_asset_files = 4;
+  uint64 bytes_of_largest_document = 5;
+  uint64 number_of_presentations_over_1_mib = 6;
+  uint64 number_of_presentations_over_10_mib = 7;
+  uint64 number_of_other_documents_over_1_mib = 8;
+  uint64 number_of_other_documents_over_10_mib = 9;
 }
 
 message LibraryUsage {

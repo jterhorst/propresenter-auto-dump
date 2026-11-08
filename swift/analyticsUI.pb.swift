@@ -2868,6 +2868,164 @@ public nonisolated struct Rv_Analytics_Ui_ActivationFlowOpened: Sendable {
   public init() {}
 }
 
+public nonisolated struct Rv_Analytics_Ui_ProDisplayExportClicked: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var presentationCount: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Rv_Analytics_Ui_ProDisplayExport: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var result: Rv_Analytics_Ui_ProDisplayExport.Result = .unknown
+
+  public var failureReason: Rv_Analytics_Ui_ProDisplayExport.FailureReason = .unknown
+
+  public var presentationCount: Int32 = 0
+
+  public var contentType: Rv_Analytics_Ui_ProDisplayExport.ContentType = .unknown
+
+  public var tagApplied: Bool = false
+
+  public var durationMs: Int32 = 0
+
+  public var attempt: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Result: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case success // = 1
+    case failure // = 2
+    case cancelled // = 3
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .success
+      case 2: self = .failure
+      case 3: self = .cancelled
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .success: return 1
+      case .failure: return 2
+      case .cancelled: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Ui_ProDisplayExport.Result] = [
+      .unknown,
+      .success,
+      .failure,
+      .cancelled,
+    ]
+
+  }
+
+  public nonisolated enum FailureReason: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case auth // = 1
+    case other // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .auth
+      case 2: self = .other
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .auth: return 1
+      case .other: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Ui_ProDisplayExport.FailureReason] = [
+      .unknown,
+      .auth,
+      .other,
+    ]
+
+  }
+
+  public nonisolated enum ContentType: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case staticSlide // = 1
+    case video // = 2
+    case mixed // = 3
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .staticSlide
+      case 2: self = .video
+      case 3: self = .mixed
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .staticSlide: return 1
+      case .video: return 2
+      case .mixed: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Ui_ProDisplayExport.ContentType] = [
+      .unknown,
+      .staticSlide,
+      .video,
+      .mixed,
+    ]
+
+  }
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "rv.analytics.ui"
@@ -5392,4 +5550,106 @@ nonisolated extension Rv_Analytics_Ui_ActivationFlowOpened: SwiftProtobuf.Messag
 
 nonisolated extension Rv_Analytics_Ui_ActivationFlowOpened.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_UNKNOWN\0\u{1}LAUNCH_ALERT\0\u{1}STATUS_TOOLBAR_POPOVER\0\u{1}PREFERENCES\0\u{1}CLOUD_ONBOARDING\0")
+}
+
+nonisolated extension Rv_Analytics_Ui_ProDisplayExportClicked: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ProDisplayExportClicked"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}presentation_count\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularInt32Field(value: &self.presentationCount) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.presentationCount != 0 {
+      try visitor.visitSingularInt32Field(value: self.presentationCount, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Ui_ProDisplayExportClicked, rhs: Rv_Analytics_Ui_ProDisplayExportClicked) -> Bool {
+    if lhs.presentationCount != rhs.presentationCount {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Ui_ProDisplayExport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ProDisplayExport"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}result\0\u{3}failure_reason\0\u{3}presentation_count\0\u{3}content_type\0\u{3}tag_applied\0\u{3}duration_ms\0\u{1}attempt\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.result) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.failureReason) }()
+      case 3: try { try decoder.decodeSingularInt32Field(value: &self.presentationCount) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.contentType) }()
+      case 5: try { try decoder.decodeSingularBoolField(value: &self.tagApplied) }()
+      case 6: try { try decoder.decodeSingularInt32Field(value: &self.durationMs) }()
+      case 7: try { try decoder.decodeSingularInt32Field(value: &self.attempt) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.result != .unknown {
+      try visitor.visitSingularEnumField(value: self.result, fieldNumber: 1)
+    }
+    if self.failureReason != .unknown {
+      try visitor.visitSingularEnumField(value: self.failureReason, fieldNumber: 2)
+    }
+    if self.presentationCount != 0 {
+      try visitor.visitSingularInt32Field(value: self.presentationCount, fieldNumber: 3)
+    }
+    if self.contentType != .unknown {
+      try visitor.visitSingularEnumField(value: self.contentType, fieldNumber: 4)
+    }
+    if self.tagApplied != false {
+      try visitor.visitSingularBoolField(value: self.tagApplied, fieldNumber: 5)
+    }
+    if self.durationMs != 0 {
+      try visitor.visitSingularInt32Field(value: self.durationMs, fieldNumber: 6)
+    }
+    if self.attempt != 0 {
+      try visitor.visitSingularInt32Field(value: self.attempt, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Ui_ProDisplayExport, rhs: Rv_Analytics_Ui_ProDisplayExport) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.failureReason != rhs.failureReason {return false}
+    if lhs.presentationCount != rhs.presentationCount {return false}
+    if lhs.contentType != rhs.contentType {return false}
+    if lhs.tagApplied != rhs.tagApplied {return false}
+    if lhs.durationMs != rhs.durationMs {return false}
+    if lhs.attempt != rhs.attempt {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Ui_ProDisplayExport.Result: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0RESULT_UNKNOWN\0\u{1}SUCCESS\0\u{1}FAILURE\0\u{1}CANCELLED\0")
+}
+
+nonisolated extension Rv_Analytics_Ui_ProDisplayExport.FailureReason: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FAILURE_REASON_UNKNOWN\0\u{1}AUTH\0\u{1}OTHER\0")
+}
+
+nonisolated extension Rv_Analytics_Ui_ProDisplayExport.ContentType: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CONTENT_TYPE_UNKNOWN\0\u{1}STATIC_SLIDE\0\u{1}VIDEO\0\u{1}MIXED\0")
 }

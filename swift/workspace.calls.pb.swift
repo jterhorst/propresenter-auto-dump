@@ -8,6 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
+import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -20,6 +25,40 @@ fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobu
   typealias Version = _2
 }
 
+public nonisolated enum Workspace_Call_PersistenceAuthority: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public typealias RawValue = Int
+  case client // = 0
+  case core // = 1
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .client
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .client
+    case 1: self = .core
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .client: return 0
+    case .core: return 1
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static let allCases: [Workspace_Call_PersistenceAuthority] = [
+    .client,
+    .core,
+  ]
+
+}
+
 public nonisolated struct Workspace_Call_Error: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -29,11 +68,64 @@ public nonisolated struct Workspace_Call_Error: Sendable {
 
   public var description_p: String = String()
 
+  public var requiredBytes: UInt64 {
+    get {_requiredBytes ?? 0}
+    set {_requiredBytes = newValue}
+  }
+  /// Returns true if `requiredBytes` has been explicitly set.
+  public var hasRequiredBytes: Bool {self._requiredBytes != nil}
+  /// Clears the value of `requiredBytes`. Subsequent reads from it will return its default value.
+  public mutating func clearRequiredBytes() {self._requiredBytes = nil}
+
+  public var availableBytes: UInt64 {
+    get {_availableBytes ?? 0}
+    set {_availableBytes = newValue}
+  }
+  /// Returns true if `availableBytes` has been explicitly set.
+  public var hasAvailableBytes: Bool {self._availableBytes != nil}
+  /// Clears the value of `availableBytes`. Subsequent reads from it will return its default value.
+  public mutating func clearAvailableBytes() {self._availableBytes = nil}
+
+  public var unmanagedMediaPaths: [String] = []
+
+  public var registeredLocalUuid: String {
+    get {_registeredLocalUuid ?? String()}
+    set {_registeredLocalUuid = newValue}
+  }
+  /// Returns true if `registeredLocalUuid` has been explicitly set.
+  public var hasRegisteredLocalUuid: Bool {self._registeredLocalUuid != nil}
+  /// Clears the value of `registeredLocalUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearRegisteredLocalUuid() {self._registeredLocalUuid = nil}
+
+  public var httpStatus: UInt32 {
+    get {_httpStatus ?? 0}
+    set {_httpStatus = newValue}
+  }
+  /// Returns true if `httpStatus` has been explicitly set.
+  public var hasHTTPStatus: Bool {self._httpStatus != nil}
+  /// Clears the value of `httpStatus`. Subsequent reads from it will return its default value.
+  public mutating func clearHTTPStatus() {self._httpStatus = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public nonisolated enum Code: SwiftProtobuf.Enum, Swift.CaseIterable {
     public typealias RawValue = Int
     case unknown // = 0
+    case cancelled // = 1
+    case restored // = 2
+    case insufficientDiskSpace // = 3
+    case registryUnreadable // = 4
+    case committedRepairRequired // = 5
+    case syncPaused // = 6
+    case mediaProjectionSuspended // = 7
+    case syncBlocked // = 8
+    case workspaceOrganizationMismatch // = 9
+    case workspaceAccessDenied // = 10
+    case workspaceSignedOut // = 11
+    case unmanagedMediaRemains // = 12
+    case alreadyDownloaded // = 13
+    case smartPlaylistsNotRestored // = 14
+    case cloudTerminated // = 15
     case UNRECOGNIZED(Int)
 
     public init() {
@@ -43,6 +135,21 @@ public nonisolated struct Workspace_Call_Error: Sendable {
     public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .unknown
+      case 1: self = .cancelled
+      case 2: self = .restored
+      case 3: self = .insufficientDiskSpace
+      case 4: self = .registryUnreadable
+      case 5: self = .committedRepairRequired
+      case 6: self = .syncPaused
+      case 7: self = .mediaProjectionSuspended
+      case 8: self = .syncBlocked
+      case 9: self = .workspaceOrganizationMismatch
+      case 10: self = .workspaceAccessDenied
+      case 11: self = .workspaceSignedOut
+      case 12: self = .unmanagedMediaRemains
+      case 13: self = .alreadyDownloaded
+      case 14: self = .smartPlaylistsNotRestored
+      case 15: self = .cloudTerminated
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
@@ -50,6 +157,21 @@ public nonisolated struct Workspace_Call_Error: Sendable {
     public var rawValue: Int {
       switch self {
       case .unknown: return 0
+      case .cancelled: return 1
+      case .restored: return 2
+      case .insufficientDiskSpace: return 3
+      case .registryUnreadable: return 4
+      case .committedRepairRequired: return 5
+      case .syncPaused: return 6
+      case .mediaProjectionSuspended: return 7
+      case .syncBlocked: return 8
+      case .workspaceOrganizationMismatch: return 9
+      case .workspaceAccessDenied: return 10
+      case .workspaceSignedOut: return 11
+      case .unmanagedMediaRemains: return 12
+      case .alreadyDownloaded: return 13
+      case .smartPlaylistsNotRestored: return 14
+      case .cloudTerminated: return 15
       case .UNRECOGNIZED(let i): return i
       }
     }
@@ -57,11 +179,31 @@ public nonisolated struct Workspace_Call_Error: Sendable {
     // The compiler won't synthesize support with the UNRECOGNIZED case.
     public static let allCases: [Workspace_Call_Error.Code] = [
       .unknown,
+      .cancelled,
+      .restored,
+      .insufficientDiskSpace,
+      .registryUnreadable,
+      .committedRepairRequired,
+      .syncPaused,
+      .mediaProjectionSuspended,
+      .syncBlocked,
+      .workspaceOrganizationMismatch,
+      .workspaceAccessDenied,
+      .workspaceSignedOut,
+      .unmanagedMediaRemains,
+      .alreadyDownloaded,
+      .smartPlaylistsNotRestored,
+      .cloudTerminated,
     ]
 
   }
 
   public init() {}
+
+  fileprivate var _requiredBytes: UInt64? = nil
+  fileprivate var _availableBytes: UInt64? = nil
+  fileprivate var _registeredLocalUuid: String? = nil
+  fileprivate var _httpStatus: UInt32? = nil
 }
 
 public nonisolated struct Workspace_Call_OpenLocal: Sendable {
@@ -77,6 +219,8 @@ public nonisolated struct Workspace_Call_OpenLocal: Sendable {
   public var hasWorkspace: Bool {self._workspace != nil}
   /// Clears the value of `workspace`. Subsequent reads from it will return its default value.
   public mutating func clearWorkspace() {self._workspace = nil}
+
+  public var persistenceAuthority: Workspace_Call_PersistenceAuthority = .client
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -116,6 +260,12 @@ public nonisolated struct Workspace_Call_OpenLocal: Sendable {
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
 
+      public var persistenceAuthority: Workspace_Call_PersistenceAuthority = .client
+
+      public var localUuid: String = String()
+
+      public var rootPath: String = String()
+
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
       public init() {}
@@ -134,9 +284,15 @@ public nonisolated struct Workspace_Call_OpenRemote: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var uuid: String = String()
+  public var cloudUuid: String = String()
 
   public var path: String = String()
+
+  public var persistenceAuthority: Workspace_Call_PersistenceAuthority = .client
+
+  public var operationUuid: String = String()
+
+  public var localUuid: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -185,11 +341,1803 @@ public nonisolated struct Workspace_Call_OpenRemote: Sendable {
       /// Clears the value of `workspace`. Subsequent reads from it will return its default value.
       public mutating func clearWorkspace() {self._workspace = nil}
 
+      public var persistenceAuthority: Workspace_Call_PersistenceAuthority = .client
+
+      public var localUuid: String = String()
+
+      public var rootPath: String = String()
+
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
       public init() {}
 
       fileprivate var _workspace: Workspace_Remote_Workspace? = nil
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_CancelOpenRemote: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_CancelImport: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_ArchiveDocumentData: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var destinationDirectory: String = String()
+
+  public var expectedLocalUuid: String = String()
+
+  public var expectedGeneration: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ArchiveDocumentData.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ArchiveDocumentData.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ArchiveDocumentData.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ArchiveDocumentData.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var databasePath: String = String()
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_ExportMigrationRecovery: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var destinationDirectory: String = String()
+
+  public var expectedLocalUuid: String = String()
+
+  public var expectedGeneration: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ExportMigrationRecovery.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ExportMigrationRecovery.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ExportMigrationRecovery.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ExportMigrationRecovery.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var directoryPath: String = String()
+
+      public var manifestPath: String = String()
+
+      public var itemCount: UInt64 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_ExportLegacyWorkspace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var targetPath: String = String()
+
+  public var documentUuids: [String] = []
+
+  public var bundleKind: Workspace_Call_ExportLegacyWorkspace.BundleKind = .unspecified
+
+  public var missingMediaPolicy: Workspace_Call_ExportLegacyWorkspace.MissingMediaPolicy = .preserveAndReport
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum MissingMediaPolicy: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case preserveAndReport // = 0
+    case refuse // = 1
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .preserveAndReport
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .preserveAndReport
+      case 1: self = .refuse
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .preserveAndReport: return 0
+      case .refuse: return 1
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Workspace_Call_ExportLegacyWorkspace.MissingMediaPolicy] = [
+      .preserveAndReport,
+      .refuse,
+    ]
+
+  }
+
+  public nonisolated enum BundleKind: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case presentation // = 1
+    case theme // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .presentation
+      case 2: self = .theme
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .presentation: return 1
+      case .theme: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Workspace_Call_ExportLegacyWorkspace.BundleKind] = [
+      .unspecified,
+      .presentation,
+      .theme,
+    ]
+
+  }
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ExportLegacyWorkspace.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ExportLegacyWorkspace.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ExportLegacyWorkspace.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ExportLegacyWorkspace.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var targetPath: String = String()
+
+      public var manifestPath: String = String()
+
+      public var documentCount: UInt64 = 0
+
+      public var mediaFileCount: UInt64 = 0
+
+      public var compatibilityWarningCount: UInt64 = 0
+
+      public var elapsedMillis: UInt64 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_ImportLegacyWorkspace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var sourcePath: String = String()
+
+  public var targetPath: String = String()
+
+  public var localUuid: String = String()
+
+  public var historicalHelperPath: String {
+    get {_historicalHelperPath ?? String()}
+    set {_historicalHelperPath = newValue}
+  }
+  /// Returns true if `historicalHelperPath` has been explicitly set.
+  public var hasHistoricalHelperPath: Bool {self._historicalHelperPath != nil}
+  /// Clears the value of `historicalHelperPath`. Subsequent reads from it will return its default value.
+  public mutating func clearHistoricalHelperPath() {self._historicalHelperPath = nil}
+
+  public var historicalSsapiResourcesPath: String {
+    get {_historicalSsapiResourcesPath ?? String()}
+    set {_historicalSsapiResourcesPath = newValue}
+  }
+  /// Returns true if `historicalSsapiResourcesPath` has been explicitly set.
+  public var hasHistoricalSsapiResourcesPath: Bool {self._historicalSsapiResourcesPath != nil}
+  /// Clears the value of `historicalSsapiResourcesPath`. Subsequent reads from it will return its default value.
+  public mutating func clearHistoricalSsapiResourcesPath() {self._historicalSsapiResourcesPath = nil}
+
+  public var historicalXslDirectoryPath: String {
+    get {_historicalXslDirectoryPath ?? String()}
+    set {_historicalXslDirectoryPath = newValue}
+  }
+  /// Returns true if `historicalXslDirectoryPath` has been explicitly set.
+  public var hasHistoricalXslDirectoryPath: Bool {self._historicalXslDirectoryPath != nil}
+  /// Clears the value of `historicalXslDirectoryPath`. Subsequent reads from it will return its default value.
+  public mutating func clearHistoricalXslDirectoryPath() {self._historicalXslDirectoryPath = nil}
+
+  public var historicalFrameworkDirectoryPath: String {
+    get {_historicalFrameworkDirectoryPath ?? String()}
+    set {_historicalFrameworkDirectoryPath = newValue}
+  }
+  /// Returns true if `historicalFrameworkDirectoryPath` has been explicitly set.
+  public var hasHistoricalFrameworkDirectoryPath: Bool {self._historicalFrameworkDirectoryPath != nil}
+  /// Clears the value of `historicalFrameworkDirectoryPath`. Subsequent reads from it will return its default value.
+  public mutating func clearHistoricalFrameworkDirectoryPath() {self._historicalFrameworkDirectoryPath = nil}
+
+  public var pcoThemeDark: Bool {
+    get {_pcoThemeDark ?? false}
+    set {_pcoThemeDark = newValue}
+  }
+  /// Returns true if `pcoThemeDark` has been explicitly set.
+  public var hasPcoThemeDark: Bool {self._pcoThemeDark != nil}
+  /// Clears the value of `pcoThemeDark`. Subsequent reads from it will return its default value.
+  public mutating func clearPcoThemeDark() {self._pcoThemeDark = nil}
+
+  public var displayName: String {
+    get {_displayName ?? String()}
+    set {_displayName = newValue}
+  }
+  /// Returns true if `displayName` has been explicitly set.
+  public var hasDisplayName: Bool {self._displayName != nil}
+  /// Clears the value of `displayName`. Subsequent reads from it will return its default value.
+  public mutating func clearDisplayName() {self._displayName = nil}
+
+  public var supersedesWorkspaceUuid: String {
+    get {_supersedesWorkspaceUuid ?? String()}
+    set {_supersedesWorkspaceUuid = newValue}
+  }
+  /// Returns true if `supersedesWorkspaceUuid` has been explicitly set.
+  public var hasSupersedesWorkspaceUuid: Bool {self._supersedesWorkspaceUuid != nil}
+  /// Clears the value of `supersedesWorkspaceUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearSupersedesWorkspaceUuid() {self._supersedesWorkspaceUuid = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: @unchecked Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: OneOf_Result? {
+      get {return _storage._result}
+      set {_uniqueStorage()._result = newValue}
+    }
+
+    public var ok: Workspace_Call_ImportLegacyWorkspace.Result.Ok {
+      get {
+        if case .ok(let v)? = _storage._result {return v}
+        return Workspace_Call_ImportLegacyWorkspace.Result.Ok()
+      }
+      set {_uniqueStorage()._result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = _storage._result {return v}
+        return Workspace_Call_Error()
+      }
+      set {_uniqueStorage()._result = .error(newValue)}
+    }
+
+    public var failure: Workspace_Call_ImportLegacyWorkspace.Result.Failure {
+      get {_storage._failure ?? Workspace_Call_ImportLegacyWorkspace.Result.Failure()}
+      set {_uniqueStorage()._failure = newValue}
+    }
+    /// Returns true if `failure` has been explicitly set.
+    public var hasFailure: Bool {_storage._failure != nil}
+    /// Clears the value of `failure`. Subsequent reads from it will return its default value.
+    public mutating func clearFailure() {_uniqueStorage()._failure = nil}
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ImportLegacyWorkspace.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Failure: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var summary: Workspace_Call_Error {
+        get {_summary ?? Workspace_Call_Error()}
+        set {_summary = newValue}
+      }
+      /// Returns true if `summary` has been explicitly set.
+      public var hasSummary: Bool {self._summary != nil}
+      /// Clears the value of `summary`. Subsequent reads from it will return its default value.
+      public mutating func clearSummary() {self._summary = nil}
+
+      public var diagnostics: [Workspace_Call_ImportLegacyWorkspace.Result.Failure.Diagnostic] = []
+
+      public var stagedDiagnosticsPath: String {
+        get {_stagedDiagnosticsPath ?? String()}
+        set {_stagedDiagnosticsPath = newValue}
+      }
+      /// Returns true if `stagedDiagnosticsPath` has been explicitly set.
+      public var hasStagedDiagnosticsPath: Bool {self._stagedDiagnosticsPath != nil}
+      /// Clears the value of `stagedDiagnosticsPath`. Subsequent reads from it will return its default value.
+      public mutating func clearStagedDiagnosticsPath() {self._stagedDiagnosticsPath = nil}
+
+      public var sourceUntouched: Bool = false
+
+      public var phase: Workspace_Call_ImportLegacyWorkspace.Result.Failure.Phase {
+        get {_phase ?? .unspecified}
+        set {_phase = newValue}
+      }
+      /// Returns true if `phase` has been explicitly set.
+      public var hasPhase: Bool {self._phase != nil}
+      /// Clears the value of `phase`. Subsequent reads from it will return its default value.
+      public mutating func clearPhase() {self._phase = nil}
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public nonisolated enum Severity: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public typealias RawValue = Int
+        case unspecified // = 0
+        case warning // = 1
+        case error // = 2
+        case UNRECOGNIZED(Int)
+
+        public init() {
+          self = .unspecified
+        }
+
+        public init?(rawValue: Int) {
+          switch rawValue {
+          case 0: self = .unspecified
+          case 1: self = .warning
+          case 2: self = .error
+          default: self = .UNRECOGNIZED(rawValue)
+          }
+        }
+
+        public var rawValue: Int {
+          switch self {
+          case .unspecified: return 0
+          case .warning: return 1
+          case .error: return 2
+          case .UNRECOGNIZED(let i): return i
+          }
+        }
+
+        // The compiler won't synthesize support with the UNRECOGNIZED case.
+        public static let allCases: [Workspace_Call_ImportLegacyWorkspace.Result.Failure.Severity] = [
+          .unspecified,
+          .warning,
+          .error,
+        ]
+
+      }
+
+      public nonisolated enum Kind: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public typealias RawValue = Int
+        case unspecified // = 0
+        case symbolicLink // = 1
+        case specialFile // = 2
+        case escapesWorkspace // = 3
+        case unsupportedFile // = 4
+        case hashFailed // = 5
+        case changedDuringHash // = 6
+        case abandonedPendingSnapshot // = 7
+        case abandonedDeletionTombstone // = 8
+        case invalidSnapshotPath // = 9
+        case invalidSnapshot // = 10
+        case emptyDeviceLocalSnapshot // = 11
+        case equivalentCompatibilityAlias // = 12
+        case conflictingDuplicateStream // = 13
+        case conflictingDocumentPath // = 14
+        case conflictingIntrinsicKind // = 15
+        case missingSharedCounterpart // = 16
+        case missingIntrinsic // = 17
+        case sourceChanged // = 18
+        case missingSourceDigest // = 19
+        case unsupported // = 20
+        case historicalMigration // = 21
+        case targetExists // = 22
+        case targetInsideSource // = 23
+        case activeTarget // = 24
+        case invalidTarget // = 25
+        case io // = 26
+        case caseInsensitivePathAmbiguity // = 27
+        case insufficientDiskSpace // = 28
+        case conversion // = 29
+        case UNRECOGNIZED(Int)
+
+        public init() {
+          self = .unspecified
+        }
+
+        public init?(rawValue: Int) {
+          switch rawValue {
+          case 0: self = .unspecified
+          case 1: self = .symbolicLink
+          case 2: self = .specialFile
+          case 3: self = .escapesWorkspace
+          case 4: self = .unsupportedFile
+          case 5: self = .hashFailed
+          case 6: self = .changedDuringHash
+          case 7: self = .abandonedPendingSnapshot
+          case 8: self = .abandonedDeletionTombstone
+          case 9: self = .invalidSnapshotPath
+          case 10: self = .invalidSnapshot
+          case 11: self = .emptyDeviceLocalSnapshot
+          case 12: self = .equivalentCompatibilityAlias
+          case 13: self = .conflictingDuplicateStream
+          case 14: self = .conflictingDocumentPath
+          case 15: self = .conflictingIntrinsicKind
+          case 16: self = .missingSharedCounterpart
+          case 17: self = .missingIntrinsic
+          case 18: self = .sourceChanged
+          case 19: self = .missingSourceDigest
+          case 20: self = .unsupported
+          case 21: self = .historicalMigration
+          case 22: self = .targetExists
+          case 23: self = .targetInsideSource
+          case 24: self = .activeTarget
+          case 25: self = .invalidTarget
+          case 26: self = .io
+          case 27: self = .caseInsensitivePathAmbiguity
+          case 28: self = .insufficientDiskSpace
+          case 29: self = .conversion
+          default: self = .UNRECOGNIZED(rawValue)
+          }
+        }
+
+        public var rawValue: Int {
+          switch self {
+          case .unspecified: return 0
+          case .symbolicLink: return 1
+          case .specialFile: return 2
+          case .escapesWorkspace: return 3
+          case .unsupportedFile: return 4
+          case .hashFailed: return 5
+          case .changedDuringHash: return 6
+          case .abandonedPendingSnapshot: return 7
+          case .abandonedDeletionTombstone: return 8
+          case .invalidSnapshotPath: return 9
+          case .invalidSnapshot: return 10
+          case .emptyDeviceLocalSnapshot: return 11
+          case .equivalentCompatibilityAlias: return 12
+          case .conflictingDuplicateStream: return 13
+          case .conflictingDocumentPath: return 14
+          case .conflictingIntrinsicKind: return 15
+          case .missingSharedCounterpart: return 16
+          case .missingIntrinsic: return 17
+          case .sourceChanged: return 18
+          case .missingSourceDigest: return 19
+          case .unsupported: return 20
+          case .historicalMigration: return 21
+          case .targetExists: return 22
+          case .targetInsideSource: return 23
+          case .activeTarget: return 24
+          case .invalidTarget: return 25
+          case .io: return 26
+          case .caseInsensitivePathAmbiguity: return 27
+          case .insufficientDiskSpace: return 28
+          case .conversion: return 29
+          case .UNRECOGNIZED(let i): return i
+          }
+        }
+
+        // The compiler won't synthesize support with the UNRECOGNIZED case.
+        public static let allCases: [Workspace_Call_ImportLegacyWorkspace.Result.Failure.Kind] = [
+          .unspecified,
+          .symbolicLink,
+          .specialFile,
+          .escapesWorkspace,
+          .unsupportedFile,
+          .hashFailed,
+          .changedDuringHash,
+          .abandonedPendingSnapshot,
+          .abandonedDeletionTombstone,
+          .invalidSnapshotPath,
+          .invalidSnapshot,
+          .emptyDeviceLocalSnapshot,
+          .equivalentCompatibilityAlias,
+          .conflictingDuplicateStream,
+          .conflictingDocumentPath,
+          .conflictingIntrinsicKind,
+          .missingSharedCounterpart,
+          .missingIntrinsic,
+          .sourceChanged,
+          .missingSourceDigest,
+          .unsupported,
+          .historicalMigration,
+          .targetExists,
+          .targetInsideSource,
+          .activeTarget,
+          .invalidTarget,
+          .io,
+          .caseInsensitivePathAmbiguity,
+          .insufficientDiskSpace,
+          .conversion,
+        ]
+
+      }
+
+      public nonisolated enum Phase: SwiftProtobuf.Enum, Swift.CaseIterable {
+        public typealias RawValue = Int
+        case unspecified // = 0
+        case inventory // = 1
+        case documents // = 2
+        case media // = 3
+        case validation // = 4
+        case publication // = 5
+        case UNRECOGNIZED(Int)
+
+        public init() {
+          self = .unspecified
+        }
+
+        public init?(rawValue: Int) {
+          switch rawValue {
+          case 0: self = .unspecified
+          case 1: self = .inventory
+          case 2: self = .documents
+          case 3: self = .media
+          case 4: self = .validation
+          case 5: self = .publication
+          default: self = .UNRECOGNIZED(rawValue)
+          }
+        }
+
+        public var rawValue: Int {
+          switch self {
+          case .unspecified: return 0
+          case .inventory: return 1
+          case .documents: return 2
+          case .media: return 3
+          case .validation: return 4
+          case .publication: return 5
+          case .UNRECOGNIZED(let i): return i
+          }
+        }
+
+        // The compiler won't synthesize support with the UNRECOGNIZED case.
+        public static let allCases: [Workspace_Call_ImportLegacyWorkspace.Result.Failure.Phase] = [
+          .unspecified,
+          .inventory,
+          .documents,
+          .media,
+          .validation,
+          .publication,
+        ]
+
+      }
+
+      public nonisolated struct Diagnostic: Sendable {
+        // SwiftProtobuf.Message conformance is added in an extension below. See the
+        // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+        // methods supported on all messages.
+
+        public var severity: Workspace_Call_ImportLegacyWorkspace.Result.Failure.Severity = .unspecified
+
+        public var kind: Workspace_Call_ImportLegacyWorkspace.Result.Failure.Kind = .unspecified
+
+        public var path: String {
+          get {_path ?? String()}
+          set {_path = newValue}
+        }
+        /// Returns true if `path` has been explicitly set.
+        public var hasPath: Bool {self._path != nil}
+        /// Clears the value of `path`. Subsequent reads from it will return its default value.
+        public mutating func clearPath() {self._path = nil}
+
+        public var description_p: String = String()
+
+        public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+        public init() {}
+
+        fileprivate var _path: String? = nil
+      }
+
+      public init() {}
+
+      fileprivate var _summary: Workspace_Call_Error? = nil
+      fileprivate var _stagedDiagnosticsPath: String? = nil
+      fileprivate var _phase: Workspace_Call_ImportLegacyWorkspace.Result.Failure.Phase? = nil
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var targetPath: String = String()
+
+      public var manifestPath: String = String()
+
+      public var documentStreamCount: UInt64 = 0
+
+      public var mediaFileCount: UInt64 = 0
+
+      public var elapsedMillis: UInt64 = 0
+
+      public var diagnostics: [Workspace_Call_ImportLegacyWorkspace.Result.Failure.Diagnostic] = []
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+
+    fileprivate var _storage = _StorageClass.defaultInstance
+  }
+
+  public init() {}
+
+  fileprivate var _historicalHelperPath: String? = nil
+  fileprivate var _historicalSsapiResourcesPath: String? = nil
+  fileprivate var _historicalXslDirectoryPath: String? = nil
+  fileprivate var _historicalFrameworkDirectoryPath: String? = nil
+  fileprivate var _pcoThemeDark: Bool? = nil
+  fileprivate var _displayName: String? = nil
+  fileprivate var _supersedesWorkspaceUuid: String? = nil
+}
+
+public nonisolated struct Workspace_Call_ImportLegacyDocument: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var sourcePath: String = String()
+
+  public var expectedUuid: String = String()
+
+  public var path: String = String()
+
+  public var generation: UInt64 = 0
+
+  public var operationUuid: String = String()
+
+  public var mediaSourceRoot: String {
+    get {_mediaSourceRoot ?? String()}
+    set {_mediaSourceRoot = newValue}
+  }
+  /// Returns true if `mediaSourceRoot` has been explicitly set.
+  public var hasMediaSourceRoot: Bool {self._mediaSourceRoot != nil}
+  /// Clears the value of `mediaSourceRoot`. Subsequent reads from it will return its default value.
+  public mutating func clearMediaSourceRoot() {self._mediaSourceRoot = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ImportLegacyDocument.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ImportLegacyDocument.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ImportLegacyDocument.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ImportLegacyDocument.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var uuid: String = String()
+
+      public var generation: UInt64 = 0
+
+      public var durableVersionVector: Data = Data()
+
+      public var importedMediaCount: UInt64 = 0
+
+      public var unresolvedMediaCount: UInt64 = 0
+
+      public var path: String = String()
+
+      public var catalogRevision: UInt64 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+
+  fileprivate var _mediaSourceRoot: String? = nil
+}
+
+public nonisolated struct Workspace_Call_ImportLegacyBundle: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var sourcePath: String = String()
+
+  public var destinationPath: String = String()
+
+  public var generation: UInt64 = 0
+
+  public var operationUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ImportLegacyBundle.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ImportLegacyBundle.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ImportLegacyBundle.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ImportLegacyBundle.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct ImportedDocument: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var uuid: String = String()
+
+      public var operationUuid: String = String()
+
+      public var path: String = String()
+
+      public var generation: UInt64 = 0
+
+      public var durableVersionVector: Data = Data()
+
+      public var importedMediaCount: UInt64 = 0
+
+      public var unresolvedMediaCount: UInt64 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var documents: [Workspace_Call_ImportLegacyBundle.Result.ImportedDocument] = []
+
+      public var eventsPublished: Bool = false
+
+      public var catalogRevision: UInt64 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_InstallBundledThemes: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var bundledThemesPath: String = String()
+
+  public var generation: UInt64 = 0
+
+  public var includeBaseline: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_InstallBundledThemes.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_InstallBundledThemes.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_InstallBundledThemes.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_InstallBundledThemes.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Failure: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var folder: String = String()
+
+      public var reason: String = String()
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var installed: [String] = []
+
+      public var alreadyPresent: [String] = []
+
+      public var failed: [Workspace_Call_InstallBundledThemes.Result.Failure] = []
+
+      public var rolloutSequence: UInt32 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_ConvertLegacyPlaylist: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var sourcePath: String = String()
+
+  public var targetPath: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ConvertLegacyPlaylist.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ConvertLegacyPlaylist.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ConvertLegacyPlaylist.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ConvertLegacyPlaylist.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_AttachLegacyPlaylistMedia: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var sourcePath: String = String()
+
+  public var generation: UInt64 = 0
+
+  public var operationUuid: String = String()
+
+  public var documentUuid: String = String()
+
+  public var referenceUuids: [String] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_AttachLegacyPlaylistMedia.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_AttachLegacyPlaylistMedia.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_AttachLegacyPlaylistMedia.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_AttachLegacyPlaylistMedia.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var generation: UInt64 = 0
+
+      public var durableVersionVector: Data = Data()
+
+      public var importedMediaCount: UInt64 = 0
+
+      public var unresolvedMediaCount: UInt64 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_DeleteLocalWorkspace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var targetPath: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_DeleteLocalWorkspace.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_DeleteLocalWorkspace.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_DeleteLocalWorkspace.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_DeleteLocalWorkspace.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var folderKept: Bool = false
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_ImportAndAttachMedia: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var documentUuid: String = String()
+
+  public var occurrencePath: String = String()
+
+  public var expectedReferenceUuid: String = String()
+
+  public var expectedDescriptorFingerprint: Data = Data()
+
+  public var sourcePath: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ImportAndAttachMedia.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ImportAndAttachMedia.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ImportAndAttachMedia.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ImportAndAttachMedia.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var operationUuid: String = String()
+
+      public var referenceUuid: String = String()
+
+      public var assetUuid: String = String()
+
+      public var managedRelativePath: String = String()
+
+      public var durableDocumentVersionVector: Data = Data()
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_ImportMediaAsset: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var referenceUuid: String = String()
+
+  public var sourcePath: String = String()
+
+  public var forceManageMedia: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ImportMediaAsset.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ImportMediaAsset.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ImportMediaAsset.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ImportMediaAsset.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var location: Workspace_Call_ImportMediaAsset.Result.Ok.OneOf_Location? = nil
+
+      public var managedRelativePath: String {
+        get {
+          if case .managedRelativePath(let v)? = location {return v}
+          return String()
+        }
+        set {location = .managedRelativePath(newValue)}
+      }
+
+      public var unmanagedAbsolutePath: String {
+        get {
+          if case .unmanagedAbsolutePath(let v)? = location {return v}
+          return String()
+        }
+        set {location = .unmanagedAbsolutePath(newValue)}
+      }
+
+      public var operationUuid: String = String()
+
+      public var referenceUuid: String = String()
+
+      public var assetUuid: String = String()
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public nonisolated enum OneOf_Location: Equatable, Sendable {
+        case managedRelativePath(String)
+        case unmanagedAbsolutePath(String)
+
+      }
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_RelinkMediaAsset: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var referenceUuid: String = String()
+
+  public var expectedAssetUuid: String = String()
+
+  public var sourcePath: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Phase: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case queued // = 1
+    case staging // = 2
+    case staged // = 3
+    case publishing // = 4
+    case complete // = 5
+    case failed // = 6
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .queued
+      case 2: self = .staging
+      case 3: self = .staged
+      case 4: self = .publishing
+      case 5: self = .complete
+      case 6: self = .failed
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .queued: return 1
+      case .staging: return 2
+      case .staged: return 3
+      case .publishing: return 4
+      case .complete: return 5
+      case .failed: return 6
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Workspace_Call_RelinkMediaAsset.Phase] = [
+      .unknown,
+      .queued,
+      .staging,
+      .staged,
+      .publishing,
+      .complete,
+      .failed,
+    ]
+
+  }
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_RelinkMediaAsset.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_RelinkMediaAsset.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_RelinkMediaAsset.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_RelinkMediaAsset.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var operationUuid: String = String()
+
+      public var referenceUuid: String = String()
+
+      public var assetUuid: String = String()
+
+      public var phase: Workspace_Call_RelinkMediaAsset.Phase = .unknown
+
+      public var attempt: UInt32 = 0
+
+      public var failureCode: String {
+        get {_failureCode ?? String()}
+        set {_failureCode = newValue}
+      }
+      /// Returns true if `failureCode` has been explicitly set.
+      public var hasFailureCode: Bool {self._failureCode != nil}
+      /// Clears the value of `failureCode`. Subsequent reads from it will return its default value.
+      public mutating func clearFailureCode() {self._failureCode = nil}
+
+      public var failureDetail: String {
+        get {_failureDetail ?? String()}
+        set {_failureDetail = newValue}
+      }
+      /// Returns true if `failureDetail` has been explicitly set.
+      public var hasFailureDetail: Bool {self._failureDetail != nil}
+      /// Clears the value of `failureDetail`. Subsequent reads from it will return its default value.
+      public mutating func clearFailureDetail() {self._failureDetail = nil}
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _failureCode: String? = nil
+      fileprivate var _failureDetail: String? = nil
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_MaterializeMediaAsset: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var referenceUuid: String = String()
+
+  public var expectedAssetUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Phase: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case queued // = 1
+    case resolving // = 2
+    case downloading // = 3
+    case downloaded // = 4
+    case verifying // = 5
+    case publishing // = 6
+    case complete // = 7
+    case failed // = 8
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .queued
+      case 2: self = .resolving
+      case 3: self = .downloading
+      case 4: self = .downloaded
+      case 5: self = .verifying
+      case 6: self = .publishing
+      case 7: self = .complete
+      case 8: self = .failed
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .queued: return 1
+      case .resolving: return 2
+      case .downloading: return 3
+      case .downloaded: return 4
+      case .verifying: return 5
+      case .publishing: return 6
+      case .complete: return 7
+      case .failed: return 8
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Workspace_Call_MaterializeMediaAsset.Phase] = [
+      .unknown,
+      .queued,
+      .resolving,
+      .downloading,
+      .downloaded,
+      .verifying,
+      .publishing,
+      .complete,
+      .failed,
+    ]
+
+  }
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_MaterializeMediaAsset.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_MaterializeMediaAsset.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_MaterializeMediaAsset.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_MaterializeMediaAsset.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var operationUuid: String = String()
+
+      public var referenceUuid: String = String()
+
+      public var assetUuid: String = String()
+
+      public var phase: Workspace_Call_MaterializeMediaAsset.Phase = .unknown
+
+      public var attempt: UInt32 = 0
+
+      public var failureCode: String {
+        get {_failureCode ?? String()}
+        set {_failureCode = newValue}
+      }
+      /// Returns true if `failureCode` has been explicitly set.
+      public var hasFailureCode: Bool {self._failureCode != nil}
+      /// Clears the value of `failureCode`. Subsequent reads from it will return its default value.
+      public mutating func clearFailureCode() {self._failureCode = nil}
+
+      public var failureDetail: String {
+        get {_failureDetail ?? String()}
+        set {_failureDetail = newValue}
+      }
+      /// Returns true if `failureDetail` has been explicitly set.
+      public var hasFailureDetail: Bool {self._failureDetail != nil}
+      /// Clears the value of `failureDetail`. Subsequent reads from it will return its default value.
+      public mutating func clearFailureDetail() {self._failureDetail = nil}
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _failureCode: String? = nil
+      fileprivate var _failureDetail: String? = nil
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_RestoreMediaFromTrash: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var assetUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Outcome: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case restored // = 1
+    case notInTrash // = 2
+    case alreadyPresent // = 3
+    case notPurged // = 4
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .restored
+      case 2: self = .notInTrash
+      case 3: self = .alreadyPresent
+      case 4: self = .notPurged
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .restored: return 1
+      case .notInTrash: return 2
+      case .alreadyPresent: return 3
+      case .notPurged: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Workspace_Call_RestoreMediaFromTrash.Outcome] = [
+      .unknown,
+      .restored,
+      .notInTrash,
+      .alreadyPresent,
+      .notPurged,
+    ]
+
+  }
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_RestoreMediaFromTrash.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_RestoreMediaFromTrash.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_RestoreMediaFromTrash.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_RestoreMediaFromTrash.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var assetUuid: String = String()
+
+      public var outcome: Workspace_Call_RestoreMediaFromTrash.Outcome = .unknown
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
     }
 
     public init() {}
@@ -241,7 +2189,13 @@ public nonisolated struct Workspace_Call_Publish: Sendable {
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
 
-      public var uuid: String = String()
+      public var cloudUuid: String = String()
+
+      public var unavailableSmartPlaylistMedia: UInt32 = 0
+
+      public var missingSmartPlaylistMedia: UInt32 = 0
+
+      public var unavailableSmartPlaylists: UInt32 = 0
 
       public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -258,6 +2212,15 @@ public nonisolated struct Workspace_Call_ConvertToLocal: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
+
+  public var localUuid: String {
+    get {_localUuid ?? String()}
+    set {_localUuid = newValue}
+  }
+  /// Returns true if `localUuid` has been explicitly set.
+  public var hasLocalUuid: Bool {self._localUuid != nil}
+  /// Clears the value of `localUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearLocalUuid() {self._localUuid = nil}
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -306,6 +2269,8 @@ public nonisolated struct Workspace_Call_ConvertToLocal: Sendable {
   }
 
   public init() {}
+
+  fileprivate var _localUuid: String? = nil
 }
 
 public nonisolated struct Workspace_Call_Rename: Sendable {
@@ -313,16 +2278,25 @@ public nonisolated struct Workspace_Call_Rename: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var uuid: String {
-    get {_uuid ?? String()}
-    set {_uuid = newValue}
+  public var cloudUuid: String {
+    get {_cloudUuid ?? String()}
+    set {_cloudUuid = newValue}
   }
-  /// Returns true if `uuid` has been explicitly set.
-  public var hasUuid: Bool {self._uuid != nil}
-  /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
-  public mutating func clearUuid() {self._uuid = nil}
+  /// Returns true if `cloudUuid` has been explicitly set.
+  public var hasCloudUuid: Bool {self._cloudUuid != nil}
+  /// Clears the value of `cloudUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearCloudUuid() {self._cloudUuid = nil}
 
   public var name: String = String()
+
+  public var localUuid: String {
+    get {_localUuid ?? String()}
+    set {_localUuid = newValue}
+  }
+  /// Returns true if `localUuid` has been explicitly set.
+  public var hasLocalUuid: Bool {self._localUuid != nil}
+  /// Clears the value of `localUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearLocalUuid() {self._localUuid = nil}
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -372,7 +2346,98 @@ public nonisolated struct Workspace_Call_Rename: Sendable {
 
   public init() {}
 
-  fileprivate var _uuid: String? = nil
+  fileprivate var _cloudUuid: String? = nil
+  fileprivate var _localUuid: String? = nil
+}
+
+public nonisolated struct Workspace_Call_ReadUsage: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Library: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var name: String = String()
+
+    public var presentationCount: UInt64 = 0
+
+    public var byteCount: UInt64 = 0
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ReadUsage.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ReadUsage.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ReadUsage.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ReadUsage.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var libraries: [Workspace_Call_ReadUsage.Library] = []
+
+      public var totalDocumentByteCount: UInt64 = 0
+
+      public var managedMediaFileCount: UInt64 = 0
+
+      public var managedMediaByteCount: UInt64 = 0
+
+      public var unmanagedMediaByteCount: UInt64 = 0
+
+      public var largestDocumentByteCount: UInt64 = 0
+
+      public var presentationsOver1MibCount: UInt64 = 0
+
+      public var presentationsOver10MibCount: UInt64 = 0
+
+      public var otherDocumentsOver1MibCount: UInt64 = 0
+
+      public var otherDocumentsOver10MibCount: UInt64 = 0
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
 }
 
 public nonisolated struct Workspace_Call_PauseSync: Sendable {
@@ -485,13 +2550,526 @@ public nonisolated struct Workspace_Call_ResumeSync: Sendable {
   public init() {}
 }
 
+public nonisolated struct Workspace_Call_SetSchemaVersion: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var schemaVersion: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_SetSchemaVersion.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_SetSchemaVersion.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_SetSchemaVersion.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_SetSchemaVersion.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_ChangeWorkspace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var localUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_ChangeWorkspace.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_ChangeWorkspace.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_ChangeWorkspace.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_ChangeWorkspace.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var rootPath: String {
+        get {_rootPath ?? String()}
+        set {_rootPath = newValue}
+      }
+      /// Returns true if `rootPath` has been explicitly set.
+      public var hasRootPath: Bool {self._rootPath != nil}
+      /// Clears the value of `rootPath`. Subsequent reads from it will return its default value.
+      public mutating func clearRootPath() {self._rootPath = nil}
+
+      public var legacyMigrationShortfall: Workspace_LegacyMigrationShortfall {
+        get {_legacyMigrationShortfall ?? Workspace_LegacyMigrationShortfall()}
+        set {_legacyMigrationShortfall = newValue}
+      }
+      /// Returns true if `legacyMigrationShortfall` has been explicitly set.
+      public var hasLegacyMigrationShortfall: Bool {self._legacyMigrationShortfall != nil}
+      /// Clears the value of `legacyMigrationShortfall`. Subsequent reads from it will return its default value.
+      public mutating func clearLegacyMigrationShortfall() {self._legacyMigrationShortfall = nil}
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _rootPath: String? = nil
+      fileprivate var _legacyMigrationShortfall: Workspace_LegacyMigrationShortfall? = nil
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_CheckWorkspaceAccess: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var localUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_CheckWorkspaceAccess.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_CheckWorkspaceAccess.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_CheckWorkspaceAccess.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_CheckWorkspaceAccess.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_OpenAsLocalCopy: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var sourceLocalUuid: String = String()
+
+  public var localUuid: String = String()
+
+  public var targetPath: String = String()
+
+  public var displayName: String {
+    get {_displayName ?? String()}
+    set {_displayName = newValue}
+  }
+  /// Returns true if `displayName` has been explicitly set.
+  public var hasDisplayName: Bool {self._displayName != nil}
+  /// Clears the value of `displayName`. Subsequent reads from it will return its default value.
+  public mutating func clearDisplayName() {self._displayName = nil}
+
+  public var pcoThemeDark: Bool {
+    get {_pcoThemeDark ?? false}
+    set {_pcoThemeDark = newValue}
+  }
+  /// Returns true if `pcoThemeDark` has been explicitly set.
+  public var hasPcoThemeDark: Bool {self._pcoThemeDark != nil}
+  /// Clears the value of `pcoThemeDark`. Subsequent reads from it will return its default value.
+  public mutating func clearPcoThemeDark() {self._pcoThemeDark = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_OpenAsLocalCopy.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_OpenAsLocalCopy.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_OpenAsLocalCopy.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_OpenAsLocalCopy.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var rootPath: String {
+        get {_rootPath ?? String()}
+        set {_rootPath = newValue}
+      }
+      /// Returns true if `rootPath` has been explicitly set.
+      public var hasRootPath: Bool {self._rootPath != nil}
+      /// Clears the value of `rootPath`. Subsequent reads from it will return its default value.
+      public mutating func clearRootPath() {self._rootPath = nil}
+
+      public var diagnostics: [Workspace_Call_ImportLegacyWorkspace.Result.Failure.Diagnostic] = []
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _rootPath: String? = nil
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+
+  fileprivate var _displayName: String? = nil
+  fileprivate var _pcoThemeDark: Bool? = nil
+}
+
+public nonisolated struct Workspace_Call_StartFresh: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var localUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_StartFresh.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_StartFresh.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_StartFresh.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_StartFresh.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated enum Discard: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public typealias RawValue = Int
+      case unspecified // = 0
+      case removed // = 1
+      case folderKept // = 2
+      case failed // = 3
+      case failedInPlace // = 4
+      case failedUnlisted // = 5
+      case UNRECOGNIZED(Int)
+
+      public init() {
+        self = .unspecified
+      }
+
+      public init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .unspecified
+        case 1: self = .removed
+        case 2: self = .folderKept
+        case 3: self = .failed
+        case 4: self = .failedInPlace
+        case 5: self = .failedUnlisted
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      public var rawValue: Int {
+        switch self {
+        case .unspecified: return 0
+        case .removed: return 1
+        case .folderKept: return 2
+        case .failed: return 3
+        case .failedInPlace: return 4
+        case .failedUnlisted: return 5
+        case .UNRECOGNIZED(let i): return i
+        }
+      }
+
+      // The compiler won't synthesize support with the UNRECOGNIZED case.
+      public static let allCases: [Workspace_Call_StartFresh.Result.Discard] = [
+        .unspecified,
+        .removed,
+        .folderKept,
+        .failed,
+        .failedInPlace,
+        .failedUnlisted,
+      ]
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var localUuid: String = String()
+
+      public var rootPath: String = String()
+
+      public var discard: Workspace_Call_StartFresh.Result.Discard = .unspecified
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_FindChangedLegacySource: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var localUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_FindChangedLegacySource.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_FindChangedLegacySource.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_FindChangedLegacySource.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_FindChangedLegacySource.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var sourcePath: String = String()
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Workspace_Call_KeepChangedLegacySource: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var localUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Result: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var result: Workspace_Call_KeepChangedLegacySource.Result.OneOf_Result? = nil
+
+    public var ok: Workspace_Call_KeepChangedLegacySource.Result.Ok {
+      get {
+        if case .ok(let v)? = result {return v}
+        return Workspace_Call_KeepChangedLegacySource.Result.Ok()
+      }
+      set {result = .ok(newValue)}
+    }
+
+    public var error: Workspace_Call_Error {
+      get {
+        if case .error(let v)? = result {return v}
+        return Workspace_Call_Error()
+      }
+      set {result = .error(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Result: Equatable, Sendable {
+      case ok(Workspace_Call_KeepChangedLegacySource.Result.Ok)
+      case error(Workspace_Call_Error)
+
+    }
+
+    public nonisolated struct Ok: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "workspace.call"
 
+nonisolated extension Workspace_Call_PersistenceAuthority: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CLIENT\0\u{1}CORE\0")
+}
+
 nonisolated extension Workspace_Call_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Error"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}code\0\u{1}description\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}code\0\u{1}description\0\u{3}required_bytes\0\u{3}available_bytes\0\u{3}unmanaged_media_paths\0\u{3}registered_local_uuid\0\u{3}http_status\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -501,36 +3079,65 @@ nonisolated extension Workspace_Call_Error: SwiftProtobuf.Message, SwiftProtobuf
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularEnumField(value: &self.code) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.description_p) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self._requiredBytes) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self._availableBytes) }()
+      case 5: try { try decoder.decodeRepeatedStringField(value: &self.unmanagedMediaPaths) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self._registeredLocalUuid) }()
+      case 7: try { try decoder.decodeSingularUInt32Field(value: &self._httpStatus) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if self.code != .unknown {
       try visitor.visitSingularEnumField(value: self.code, fieldNumber: 1)
     }
     if !self.description_p.isEmpty {
       try visitor.visitSingularStringField(value: self.description_p, fieldNumber: 2)
     }
+    try { if let v = self._requiredBytes {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 3)
+    } }()
+    try { if let v = self._availableBytes {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 4)
+    } }()
+    if !self.unmanagedMediaPaths.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.unmanagedMediaPaths, fieldNumber: 5)
+    }
+    try { if let v = self._registeredLocalUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+    } }()
+    try { if let v = self._httpStatus {
+      try visitor.visitSingularUInt32Field(value: v, fieldNumber: 7)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Workspace_Call_Error, rhs: Workspace_Call_Error) -> Bool {
     if lhs.code != rhs.code {return false}
     if lhs.description_p != rhs.description_p {return false}
+    if lhs._requiredBytes != rhs._requiredBytes {return false}
+    if lhs._availableBytes != rhs._availableBytes {return false}
+    if lhs.unmanagedMediaPaths != rhs.unmanagedMediaPaths {return false}
+    if lhs._registeredLocalUuid != rhs._registeredLocalUuid {return false}
+    if lhs._httpStatus != rhs._httpStatus {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 nonisolated extension Workspace_Call_Error.Code: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}CANCELLED\0\u{1}RESTORED\0\u{1}INSUFFICIENT_DISK_SPACE\0\u{1}REGISTRY_UNREADABLE\0\u{1}COMMITTED_REPAIR_REQUIRED\0\u{1}SYNC_PAUSED\0\u{1}MEDIA_PROJECTION_SUSPENDED\0\u{1}SYNC_BLOCKED\0\u{1}WORKSPACE_ORGANIZATION_MISMATCH\0\u{1}WORKSPACE_ACCESS_DENIED\0\u{1}WORKSPACE_SIGNED_OUT\0\u{1}UNMANAGED_MEDIA_REMAINS\0\u{1}ALREADY_DOWNLOADED\0\u{1}SMART_PLAYLISTS_NOT_RESTORED\0\u{1}CLOUD_TERMINATED\0")
 }
 
 nonisolated extension Workspace_Call_OpenLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".OpenLocal"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspace\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspace\0\u{3}persistence_authority\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -539,6 +3146,7 @@ nonisolated extension Workspace_Call_OpenLocal: SwiftProtobuf.Message, SwiftProt
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularMessageField(value: &self._workspace) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.persistenceAuthority) }()
       default: break
       }
     }
@@ -552,11 +3160,15 @@ nonisolated extension Workspace_Call_OpenLocal: SwiftProtobuf.Message, SwiftProt
     try { if let v = self._workspace {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     } }()
+    if self.persistenceAuthority != .client {
+      try visitor.visitSingularEnumField(value: self.persistenceAuthority, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Workspace_Call_OpenLocal, rhs: Workspace_Call_OpenLocal) -> Bool {
     if lhs._workspace != rhs._workspace {return false}
+    if lhs.persistenceAuthority != rhs.persistenceAuthority {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -631,26 +3243,7 @@ nonisolated extension Workspace_Call_OpenLocal.Result: SwiftProtobuf.Message, Sw
 
 nonisolated extension Workspace_Call_OpenLocal.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_OpenLocal.Result.protoMessageName + ".Ok"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    // Load everything into unknown fields
-    while try decoder.nextFieldNumber() != nil {}
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: Workspace_Call_OpenLocal.Result.Ok, rhs: Workspace_Call_OpenLocal.Result.Ok) -> Bool {
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-nonisolated extension Workspace_Call_OpenRemote: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".OpenRemote"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}path\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}persistence_authority\0\u{3}local_uuid\0\u{3}root_path\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -658,26 +3251,81 @@ nonisolated extension Workspace_Call_OpenRemote: SwiftProtobuf.Message, SwiftPro
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.persistenceAuthority) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.rootPath) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.uuid.isEmpty {
-      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
+    if self.persistenceAuthority != .client {
+      try visitor.visitSingularEnumField(value: self.persistenceAuthority, fieldNumber: 1)
+    }
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 2)
+    }
+    if !self.rootPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.rootPath, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_OpenLocal.Result.Ok, rhs: Workspace_Call_OpenLocal.Result.Ok) -> Bool {
+    if lhs.persistenceAuthority != rhs.persistenceAuthority {return false}
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs.rootPath != rhs.rootPath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_OpenRemote: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".OpenRemote"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}cloud_uuid\0\u{1}path\0\u{3}persistence_authority\0\u{3}operation_uuid\0\u{3}local_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.cloudUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.persistenceAuthority) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.cloudUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.cloudUuid, fieldNumber: 1)
     }
     if !self.path.isEmpty {
       try visitor.visitSingularStringField(value: self.path, fieldNumber: 2)
+    }
+    if self.persistenceAuthority != .client {
+      try visitor.visitSingularEnumField(value: self.persistenceAuthority, fieldNumber: 3)
+    }
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 4)
+    }
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 5)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Workspace_Call_OpenRemote, rhs: Workspace_Call_OpenRemote) -> Bool {
-    if lhs.uuid != rhs.uuid {return false}
+    if lhs.cloudUuid != rhs.cloudUuid {return false}
     if lhs.path != rhs.path {return false}
+    if lhs.persistenceAuthority != rhs.persistenceAuthority {return false}
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.localUuid != rhs.localUuid {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -752,7 +3400,7 @@ nonisolated extension Workspace_Call_OpenRemote.Result: SwiftProtobuf.Message, S
 
 nonisolated extension Workspace_Call_OpenRemote.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_OpenRemote.Result.protoMessageName + ".Ok"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspace\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspace\0\u{3}persistence_authority\0\u{3}local_uuid\0\u{3}root_path\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -761,6 +3409,9 @@ nonisolated extension Workspace_Call_OpenRemote.Result.Ok: SwiftProtobuf.Message
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularMessageField(value: &self._workspace) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.persistenceAuthority) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.rootPath) }()
       default: break
       }
     }
@@ -774,11 +3425,2743 @@ nonisolated extension Workspace_Call_OpenRemote.Result.Ok: SwiftProtobuf.Message
     try { if let v = self._workspace {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     } }()
+    if self.persistenceAuthority != .client {
+      try visitor.visitSingularEnumField(value: self.persistenceAuthority, fieldNumber: 2)
+    }
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 3)
+    }
+    if !self.rootPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.rootPath, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Workspace_Call_OpenRemote.Result.Ok, rhs: Workspace_Call_OpenRemote.Result.Ok) -> Bool {
     if lhs._workspace != rhs._workspace {return false}
+    if lhs.persistenceAuthority != rhs.persistenceAuthority {return false}
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs.rootPath != rhs.rootPath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_CancelOpenRemote: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CancelOpenRemote"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_CancelOpenRemote, rhs: Workspace_Call_CancelOpenRemote) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_CancelImport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CancelImport"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_CancelImport, rhs: Workspace_Call_CancelImport) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ArchiveDocumentData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ArchiveDocumentData"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}destination_directory\0\u{3}expected_local_uuid\0\u{3}expected_generation\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.destinationDirectory) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.expectedLocalUuid) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.expectedGeneration) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.destinationDirectory.isEmpty {
+      try visitor.visitSingularStringField(value: self.destinationDirectory, fieldNumber: 1)
+    }
+    if !self.expectedLocalUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.expectedLocalUuid, fieldNumber: 2)
+    }
+    if self.expectedGeneration != 0 {
+      try visitor.visitSingularUInt64Field(value: self.expectedGeneration, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ArchiveDocumentData, rhs: Workspace_Call_ArchiveDocumentData) -> Bool {
+    if lhs.destinationDirectory != rhs.destinationDirectory {return false}
+    if lhs.expectedLocalUuid != rhs.expectedLocalUuid {return false}
+    if lhs.expectedGeneration != rhs.expectedGeneration {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ArchiveDocumentData.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ArchiveDocumentData.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ArchiveDocumentData.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ArchiveDocumentData.Result, rhs: Workspace_Call_ArchiveDocumentData.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ArchiveDocumentData.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ArchiveDocumentData.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}database_path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.databasePath) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.databasePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.databasePath, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ArchiveDocumentData.Result.Ok, rhs: Workspace_Call_ArchiveDocumentData.Result.Ok) -> Bool {
+    if lhs.databasePath != rhs.databasePath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ExportMigrationRecovery: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ExportMigrationRecovery"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}destination_directory\0\u{3}expected_local_uuid\0\u{3}expected_generation\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.destinationDirectory) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.expectedLocalUuid) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.expectedGeneration) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.destinationDirectory.isEmpty {
+      try visitor.visitSingularStringField(value: self.destinationDirectory, fieldNumber: 1)
+    }
+    if !self.expectedLocalUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.expectedLocalUuid, fieldNumber: 2)
+    }
+    if self.expectedGeneration != 0 {
+      try visitor.visitSingularUInt64Field(value: self.expectedGeneration, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ExportMigrationRecovery, rhs: Workspace_Call_ExportMigrationRecovery) -> Bool {
+    if lhs.destinationDirectory != rhs.destinationDirectory {return false}
+    if lhs.expectedLocalUuid != rhs.expectedLocalUuid {return false}
+    if lhs.expectedGeneration != rhs.expectedGeneration {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ExportMigrationRecovery.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ExportMigrationRecovery.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ExportMigrationRecovery.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ExportMigrationRecovery.Result, rhs: Workspace_Call_ExportMigrationRecovery.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ExportMigrationRecovery.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ExportMigrationRecovery.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}directory_path\0\u{3}manifest_path\0\u{3}item_count\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.directoryPath) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.manifestPath) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.itemCount) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.directoryPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.directoryPath, fieldNumber: 1)
+    }
+    if !self.manifestPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.manifestPath, fieldNumber: 2)
+    }
+    if self.itemCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.itemCount, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ExportMigrationRecovery.Result.Ok, rhs: Workspace_Call_ExportMigrationRecovery.Result.Ok) -> Bool {
+    if lhs.directoryPath != rhs.directoryPath {return false}
+    if lhs.manifestPath != rhs.manifestPath {return false}
+    if lhs.itemCount != rhs.itemCount {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ExportLegacyWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ExportLegacyWorkspace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}target_path\0\u{3}document_uuids\0\u{3}bundle_kind\0\u{3}missing_media_policy\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.targetPath) }()
+      case 2: try { try decoder.decodeRepeatedStringField(value: &self.documentUuids) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.bundleKind) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.missingMediaPolicy) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.targetPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.targetPath, fieldNumber: 1)
+    }
+    if !self.documentUuids.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.documentUuids, fieldNumber: 2)
+    }
+    if self.bundleKind != .unspecified {
+      try visitor.visitSingularEnumField(value: self.bundleKind, fieldNumber: 3)
+    }
+    if self.missingMediaPolicy != .preserveAndReport {
+      try visitor.visitSingularEnumField(value: self.missingMediaPolicy, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ExportLegacyWorkspace, rhs: Workspace_Call_ExportLegacyWorkspace) -> Bool {
+    if lhs.targetPath != rhs.targetPath {return false}
+    if lhs.documentUuids != rhs.documentUuids {return false}
+    if lhs.bundleKind != rhs.bundleKind {return false}
+    if lhs.missingMediaPolicy != rhs.missingMediaPolicy {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ExportLegacyWorkspace.MissingMediaPolicy: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MISSING_MEDIA_POLICY_PRESERVE_AND_REPORT\0\u{1}MISSING_MEDIA_POLICY_REFUSE\0")
+}
+
+nonisolated extension Workspace_Call_ExportLegacyWorkspace.BundleKind: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0BUNDLE_KIND_UNSPECIFIED\0\u{1}BUNDLE_KIND_PRESENTATION\0\u{1}BUNDLE_KIND_THEME\0")
+}
+
+nonisolated extension Workspace_Call_ExportLegacyWorkspace.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ExportLegacyWorkspace.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ExportLegacyWorkspace.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ExportLegacyWorkspace.Result, rhs: Workspace_Call_ExportLegacyWorkspace.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ExportLegacyWorkspace.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ExportLegacyWorkspace.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}target_path\0\u{3}manifest_path\0\u{3}document_count\0\u{3}media_file_count\0\u{3}compatibility_warning_count\0\u{3}elapsed_millis\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.targetPath) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.manifestPath) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.documentCount) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.mediaFileCount) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.compatibilityWarningCount) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.elapsedMillis) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.targetPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.targetPath, fieldNumber: 1)
+    }
+    if !self.manifestPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.manifestPath, fieldNumber: 2)
+    }
+    if self.documentCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.documentCount, fieldNumber: 3)
+    }
+    if self.mediaFileCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.mediaFileCount, fieldNumber: 4)
+    }
+    if self.compatibilityWarningCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.compatibilityWarningCount, fieldNumber: 5)
+    }
+    if self.elapsedMillis != 0 {
+      try visitor.visitSingularUInt64Field(value: self.elapsedMillis, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ExportLegacyWorkspace.Result.Ok, rhs: Workspace_Call_ExportLegacyWorkspace.Result.Ok) -> Bool {
+    if lhs.targetPath != rhs.targetPath {return false}
+    if lhs.manifestPath != rhs.manifestPath {return false}
+    if lhs.documentCount != rhs.documentCount {return false}
+    if lhs.mediaFileCount != rhs.mediaFileCount {return false}
+    if lhs.compatibilityWarningCount != rhs.compatibilityWarningCount {return false}
+    if lhs.elapsedMillis != rhs.elapsedMillis {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ImportLegacyWorkspace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}source_path\0\u{3}target_path\0\u{3}local_uuid\0\u{3}historical_helper_path\0\u{3}historical_ssapi_resources_path\0\u{3}historical_xsl_directory_path\0\u{3}historical_framework_directory_path\0\u{3}pco_theme_dark\0\u{3}display_name\0\u{3}supersedes_workspace_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.targetPath) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._historicalHelperPath) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self._historicalSsapiResourcesPath) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self._historicalXslDirectoryPath) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self._historicalFrameworkDirectoryPath) }()
+      case 8: try { try decoder.decodeSingularBoolField(value: &self._pcoThemeDark) }()
+      case 9: try { try decoder.decodeSingularStringField(value: &self._displayName) }()
+      case 10: try { try decoder.decodeSingularStringField(value: &self._supersedesWorkspaceUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 1)
+    }
+    if !self.targetPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.targetPath, fieldNumber: 2)
+    }
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 3)
+    }
+    try { if let v = self._historicalHelperPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    } }()
+    try { if let v = self._historicalSsapiResourcesPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 5)
+    } }()
+    try { if let v = self._historicalXslDirectoryPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+    } }()
+    try { if let v = self._historicalFrameworkDirectoryPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+    } }()
+    try { if let v = self._pcoThemeDark {
+      try visitor.visitSingularBoolField(value: v, fieldNumber: 8)
+    } }()
+    try { if let v = self._displayName {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 9)
+    } }()
+    try { if let v = self._supersedesWorkspaceUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 10)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyWorkspace, rhs: Workspace_Call_ImportLegacyWorkspace) -> Bool {
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs.targetPath != rhs.targetPath {return false}
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs._historicalHelperPath != rhs._historicalHelperPath {return false}
+    if lhs._historicalSsapiResourcesPath != rhs._historicalSsapiResourcesPath {return false}
+    if lhs._historicalXslDirectoryPath != rhs._historicalXslDirectoryPath {return false}
+    if lhs._historicalFrameworkDirectoryPath != rhs._historicalFrameworkDirectoryPath {return false}
+    if lhs._pcoThemeDark != rhs._pcoThemeDark {return false}
+    if lhs._displayName != rhs._displayName {return false}
+    if lhs._supersedesWorkspaceUuid != rhs._supersedesWorkspaceUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyWorkspace.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportLegacyWorkspace.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0\u{1}failure\0")
+
+  fileprivate class _StorageClass {
+    var _result: Workspace_Call_ImportLegacyWorkspace.Result.OneOf_Result?
+    var _failure: Workspace_Call_ImportLegacyWorkspace.Result.Failure? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _result = source._result
+      _failure = source._failure
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try {
+          var v: Workspace_Call_ImportLegacyWorkspace.Result.Ok?
+          var hadOneofValue = false
+          if let current = _storage._result {
+            hadOneofValue = true
+            if case .ok(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {
+            if hadOneofValue {try decoder.handleConflictingOneOf()}
+            _storage._result = .ok(v)
+          }
+        }()
+        case 2: try {
+          var v: Workspace_Call_Error?
+          var hadOneofValue = false
+          if let current = _storage._result {
+            hadOneofValue = true
+            if case .error(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {
+            if hadOneofValue {try decoder.handleConflictingOneOf()}
+            _storage._result = .error(v)
+          }
+        }()
+        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._failure) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      switch _storage._result {
+      case .ok?: try {
+        guard case .ok(let v)? = _storage._result else { preconditionFailure() }
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }()
+      case .error?: try {
+        guard case .error(let v)? = _storage._result else { preconditionFailure() }
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      }()
+      case nil: break
+      }
+      try { if let v = _storage._failure {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      } }()
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyWorkspace.Result, rhs: Workspace_Call_ImportLegacyWorkspace.Result) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._result != rhs_storage._result {return false}
+        if _storage._failure != rhs_storage._failure {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyWorkspace.Result.Failure: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportLegacyWorkspace.Result.protoMessageName + ".Failure"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}summary\0\u{1}diagnostics\0\u{3}staged_diagnostics_path\0\u{3}source_untouched\0\u{1}phase\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._summary) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.diagnostics) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._stagedDiagnosticsPath) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.sourceUntouched) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self._phase) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._summary {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.diagnostics.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.diagnostics, fieldNumber: 2)
+    }
+    try { if let v = self._stagedDiagnosticsPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    if self.sourceUntouched != false {
+      try visitor.visitSingularBoolField(value: self.sourceUntouched, fieldNumber: 4)
+    }
+    try { if let v = self._phase {
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 5)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyWorkspace.Result.Failure, rhs: Workspace_Call_ImportLegacyWorkspace.Result.Failure) -> Bool {
+    if lhs._summary != rhs._summary {return false}
+    if lhs.diagnostics != rhs.diagnostics {return false}
+    if lhs._stagedDiagnosticsPath != rhs._stagedDiagnosticsPath {return false}
+    if lhs.sourceUntouched != rhs.sourceUntouched {return false}
+    if lhs._phase != rhs._phase {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyWorkspace.Result.Failure.Severity: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SEVERITY_UNSPECIFIED\0\u{1}SEVERITY_WARNING\0\u{1}SEVERITY_ERROR\0")
+}
+
+nonisolated extension Workspace_Call_ImportLegacyWorkspace.Result.Failure.Kind: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0KIND_UNSPECIFIED\0\u{1}KIND_SYMBOLIC_LINK\0\u{1}KIND_SPECIAL_FILE\0\u{1}KIND_ESCAPES_WORKSPACE\0\u{1}KIND_UNSUPPORTED_FILE\0\u{1}KIND_HASH_FAILED\0\u{1}KIND_CHANGED_DURING_HASH\0\u{1}KIND_ABANDONED_PENDING_SNAPSHOT\0\u{1}KIND_ABANDONED_DELETION_TOMBSTONE\0\u{1}KIND_INVALID_SNAPSHOT_PATH\0\u{1}KIND_INVALID_SNAPSHOT\0\u{1}KIND_EMPTY_DEVICE_LOCAL_SNAPSHOT\0\u{1}KIND_EQUIVALENT_COMPATIBILITY_ALIAS\0\u{1}KIND_CONFLICTING_DUPLICATE_STREAM\0\u{1}KIND_CONFLICTING_DOCUMENT_PATH\0\u{1}KIND_CONFLICTING_INTRINSIC_KIND\0\u{1}KIND_MISSING_SHARED_COUNTERPART\0\u{1}KIND_MISSING_INTRINSIC\0\u{1}KIND_SOURCE_CHANGED\0\u{1}KIND_MISSING_SOURCE_DIGEST\0\u{1}KIND_UNSUPPORTED\0\u{1}KIND_HISTORICAL_MIGRATION\0\u{1}KIND_TARGET_EXISTS\0\u{1}KIND_TARGET_INSIDE_SOURCE\0\u{1}KIND_ACTIVE_TARGET\0\u{1}KIND_INVALID_TARGET\0\u{1}KIND_IO\0\u{1}KIND_CASE_INSENSITIVE_PATH_AMBIGUITY\0\u{1}KIND_INSUFFICIENT_DISK_SPACE\0\u{1}KIND_CONVERSION\0")
+}
+
+nonisolated extension Workspace_Call_ImportLegacyWorkspace.Result.Failure.Phase: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PHASE_UNSPECIFIED\0\u{1}PHASE_INVENTORY\0\u{1}PHASE_DOCUMENTS\0\u{1}PHASE_MEDIA\0\u{1}PHASE_VALIDATION\0\u{1}PHASE_PUBLICATION\0")
+}
+
+nonisolated extension Workspace_Call_ImportLegacyWorkspace.Result.Failure.Diagnostic: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportLegacyWorkspace.Result.Failure.protoMessageName + ".Diagnostic"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}severity\0\u{1}kind\0\u{1}path\0\u{1}description\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.severity) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._path) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.description_p) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.severity != .unspecified {
+      try visitor.visitSingularEnumField(value: self.severity, fieldNumber: 1)
+    }
+    if self.kind != .unspecified {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 2)
+    }
+    try { if let v = self._path {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    if !self.description_p.isEmpty {
+      try visitor.visitSingularStringField(value: self.description_p, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyWorkspace.Result.Failure.Diagnostic, rhs: Workspace_Call_ImportLegacyWorkspace.Result.Failure.Diagnostic) -> Bool {
+    if lhs.severity != rhs.severity {return false}
+    if lhs.kind != rhs.kind {return false}
+    if lhs._path != rhs._path {return false}
+    if lhs.description_p != rhs.description_p {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyWorkspace.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportLegacyWorkspace.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}target_path\0\u{3}manifest_path\0\u{3}document_stream_count\0\u{3}media_file_count\0\u{3}elapsed_millis\0\u{1}diagnostics\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.targetPath) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.manifestPath) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.documentStreamCount) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.mediaFileCount) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.elapsedMillis) }()
+      case 6: try { try decoder.decodeRepeatedMessageField(value: &self.diagnostics) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.targetPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.targetPath, fieldNumber: 1)
+    }
+    if !self.manifestPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.manifestPath, fieldNumber: 2)
+    }
+    if self.documentStreamCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.documentStreamCount, fieldNumber: 3)
+    }
+    if self.mediaFileCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.mediaFileCount, fieldNumber: 4)
+    }
+    if self.elapsedMillis != 0 {
+      try visitor.visitSingularUInt64Field(value: self.elapsedMillis, fieldNumber: 5)
+    }
+    if !self.diagnostics.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.diagnostics, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyWorkspace.Result.Ok, rhs: Workspace_Call_ImportLegacyWorkspace.Result.Ok) -> Bool {
+    if lhs.targetPath != rhs.targetPath {return false}
+    if lhs.manifestPath != rhs.manifestPath {return false}
+    if lhs.documentStreamCount != rhs.documentStreamCount {return false}
+    if lhs.mediaFileCount != rhs.mediaFileCount {return false}
+    if lhs.elapsedMillis != rhs.elapsedMillis {return false}
+    if lhs.diagnostics != rhs.diagnostics {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ImportLegacyDocument"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}source_path\0\u{3}expected_uuid\0\u{1}path\0\u{1}generation\0\u{3}operation_uuid\0\u{3}media_source_root\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.expectedUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self._mediaSourceRoot) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 1)
+    }
+    if !self.expectedUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.expectedUuid, fieldNumber: 2)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
+    }
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 4)
+    }
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 5)
+    }
+    try { if let v = self._mediaSourceRoot {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyDocument, rhs: Workspace_Call_ImportLegacyDocument) -> Bool {
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs.expectedUuid != rhs.expectedUuid {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.generation != rhs.generation {return false}
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs._mediaSourceRoot != rhs._mediaSourceRoot {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyDocument.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportLegacyDocument.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ImportLegacyDocument.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyDocument.Result, rhs: Workspace_Call_ImportLegacyDocument.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyDocument.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportLegacyDocument.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}generation\0\u{3}durable_version_vector\0\u{3}imported_media_count\0\u{3}unresolved_media_count\0\u{1}path\0\u{3}catalog_revision\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 3: try { try decoder.decodeSingularBytesField(value: &self.durableVersionVector) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.importedMediaCount) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.unresolvedMediaCount) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 7: try { try decoder.decodeSingularUInt64Field(value: &self.catalogRevision) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.uuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
+    }
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 2)
+    }
+    if !self.durableVersionVector.isEmpty {
+      try visitor.visitSingularBytesField(value: self.durableVersionVector, fieldNumber: 3)
+    }
+    if self.importedMediaCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.importedMediaCount, fieldNumber: 4)
+    }
+    if self.unresolvedMediaCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.unresolvedMediaCount, fieldNumber: 5)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 6)
+    }
+    if self.catalogRevision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.catalogRevision, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyDocument.Result.Ok, rhs: Workspace_Call_ImportLegacyDocument.Result.Ok) -> Bool {
+    if lhs.uuid != rhs.uuid {return false}
+    if lhs.generation != rhs.generation {return false}
+    if lhs.durableVersionVector != rhs.durableVersionVector {return false}
+    if lhs.importedMediaCount != rhs.importedMediaCount {return false}
+    if lhs.unresolvedMediaCount != rhs.unresolvedMediaCount {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.catalogRevision != rhs.catalogRevision {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyBundle: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ImportLegacyBundle"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}source_path\0\u{3}destination_path\0\u{1}generation\0\u{3}operation_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.destinationPath) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 1)
+    }
+    if !self.destinationPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.destinationPath, fieldNumber: 2)
+    }
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 3)
+    }
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyBundle, rhs: Workspace_Call_ImportLegacyBundle) -> Bool {
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs.destinationPath != rhs.destinationPath {return false}
+    if lhs.generation != rhs.generation {return false}
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyBundle.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportLegacyBundle.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ImportLegacyBundle.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyBundle.Result, rhs: Workspace_Call_ImportLegacyBundle.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyBundle.Result.ImportedDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportLegacyBundle.Result.protoMessageName + ".ImportedDocument"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}operation_uuid\0\u{1}path\0\u{1}generation\0\u{3}durable_version_vector\0\u{3}imported_media_count\0\u{3}unresolved_media_count\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 5: try { try decoder.decodeSingularBytesField(value: &self.durableVersionVector) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.importedMediaCount) }()
+      case 7: try { try decoder.decodeSingularUInt64Field(value: &self.unresolvedMediaCount) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.uuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
+    }
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 2)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
+    }
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 4)
+    }
+    if !self.durableVersionVector.isEmpty {
+      try visitor.visitSingularBytesField(value: self.durableVersionVector, fieldNumber: 5)
+    }
+    if self.importedMediaCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.importedMediaCount, fieldNumber: 6)
+    }
+    if self.unresolvedMediaCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.unresolvedMediaCount, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyBundle.Result.ImportedDocument, rhs: Workspace_Call_ImportLegacyBundle.Result.ImportedDocument) -> Bool {
+    if lhs.uuid != rhs.uuid {return false}
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.generation != rhs.generation {return false}
+    if lhs.durableVersionVector != rhs.durableVersionVector {return false}
+    if lhs.importedMediaCount != rhs.importedMediaCount {return false}
+    if lhs.unresolvedMediaCount != rhs.unresolvedMediaCount {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportLegacyBundle.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportLegacyBundle.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}documents\0\u{3}events_published\0\u{3}catalog_revision\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.documents) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.eventsPublished) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.catalogRevision) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.documents.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.documents, fieldNumber: 1)
+    }
+    if self.eventsPublished != false {
+      try visitor.visitSingularBoolField(value: self.eventsPublished, fieldNumber: 2)
+    }
+    if self.catalogRevision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.catalogRevision, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportLegacyBundle.Result.Ok, rhs: Workspace_Call_ImportLegacyBundle.Result.Ok) -> Bool {
+    if lhs.documents != rhs.documents {return false}
+    if lhs.eventsPublished != rhs.eventsPublished {return false}
+    if lhs.catalogRevision != rhs.catalogRevision {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_InstallBundledThemes: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".InstallBundledThemes"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}bundled_themes_path\0\u{1}generation\0\u{3}include_baseline\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.bundledThemesPath) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 3: try { try decoder.decodeSingularBoolField(value: &self.includeBaseline) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.bundledThemesPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.bundledThemesPath, fieldNumber: 1)
+    }
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 2)
+    }
+    if self.includeBaseline != false {
+      try visitor.visitSingularBoolField(value: self.includeBaseline, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_InstallBundledThemes, rhs: Workspace_Call_InstallBundledThemes) -> Bool {
+    if lhs.bundledThemesPath != rhs.bundledThemesPath {return false}
+    if lhs.generation != rhs.generation {return false}
+    if lhs.includeBaseline != rhs.includeBaseline {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_InstallBundledThemes.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_InstallBundledThemes.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_InstallBundledThemes.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_InstallBundledThemes.Result, rhs: Workspace_Call_InstallBundledThemes.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_InstallBundledThemes.Result.Failure: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_InstallBundledThemes.Result.protoMessageName + ".Failure"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}folder\0\u{1}reason\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.folder) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.reason) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.folder.isEmpty {
+      try visitor.visitSingularStringField(value: self.folder, fieldNumber: 1)
+    }
+    if !self.reason.isEmpty {
+      try visitor.visitSingularStringField(value: self.reason, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_InstallBundledThemes.Result.Failure, rhs: Workspace_Call_InstallBundledThemes.Result.Failure) -> Bool {
+    if lhs.folder != rhs.folder {return false}
+    if lhs.reason != rhs.reason {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_InstallBundledThemes.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_InstallBundledThemes.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}installed\0\u{3}already_present\0\u{1}failed\0\u{3}rollout_sequence\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedStringField(value: &self.installed) }()
+      case 2: try { try decoder.decodeRepeatedStringField(value: &self.alreadyPresent) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.failed) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.rolloutSequence) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.installed.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.installed, fieldNumber: 1)
+    }
+    if !self.alreadyPresent.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.alreadyPresent, fieldNumber: 2)
+    }
+    if !self.failed.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.failed, fieldNumber: 3)
+    }
+    if self.rolloutSequence != 0 {
+      try visitor.visitSingularUInt32Field(value: self.rolloutSequence, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_InstallBundledThemes.Result.Ok, rhs: Workspace_Call_InstallBundledThemes.Result.Ok) -> Bool {
+    if lhs.installed != rhs.installed {return false}
+    if lhs.alreadyPresent != rhs.alreadyPresent {return false}
+    if lhs.failed != rhs.failed {return false}
+    if lhs.rolloutSequence != rhs.rolloutSequence {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ConvertLegacyPlaylist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ConvertLegacyPlaylist"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}source_path\0\u{3}target_path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.targetPath) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 1)
+    }
+    if !self.targetPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.targetPath, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ConvertLegacyPlaylist, rhs: Workspace_Call_ConvertLegacyPlaylist) -> Bool {
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs.targetPath != rhs.targetPath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ConvertLegacyPlaylist.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ConvertLegacyPlaylist.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ConvertLegacyPlaylist.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ConvertLegacyPlaylist.Result, rhs: Workspace_Call_ConvertLegacyPlaylist.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ConvertLegacyPlaylist.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ConvertLegacyPlaylist.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ConvertLegacyPlaylist.Result.Ok, rhs: Workspace_Call_ConvertLegacyPlaylist.Result.Ok) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_AttachLegacyPlaylistMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".AttachLegacyPlaylistMedia"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}source_path\0\u{1}generation\0\u{3}operation_uuid\0\u{3}document_uuid\0\u{3}reference_uuids\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.documentUuid) }()
+      case 5: try { try decoder.decodeRepeatedStringField(value: &self.referenceUuids) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 1)
+    }
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 2)
+    }
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 3)
+    }
+    if !self.documentUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentUuid, fieldNumber: 4)
+    }
+    if !self.referenceUuids.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.referenceUuids, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_AttachLegacyPlaylistMedia, rhs: Workspace_Call_AttachLegacyPlaylistMedia) -> Bool {
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs.generation != rhs.generation {return false}
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.documentUuid != rhs.documentUuid {return false}
+    if lhs.referenceUuids != rhs.referenceUuids {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_AttachLegacyPlaylistMedia.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_AttachLegacyPlaylistMedia.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_AttachLegacyPlaylistMedia.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_AttachLegacyPlaylistMedia.Result, rhs: Workspace_Call_AttachLegacyPlaylistMedia.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_AttachLegacyPlaylistMedia.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_AttachLegacyPlaylistMedia.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}generation\0\u{3}durable_version_vector\0\u{3}imported_media_count\0\u{3}unresolved_media_count\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.generation) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.durableVersionVector) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.importedMediaCount) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.unresolvedMediaCount) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.generation != 0 {
+      try visitor.visitSingularUInt64Field(value: self.generation, fieldNumber: 1)
+    }
+    if !self.durableVersionVector.isEmpty {
+      try visitor.visitSingularBytesField(value: self.durableVersionVector, fieldNumber: 2)
+    }
+    if self.importedMediaCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.importedMediaCount, fieldNumber: 3)
+    }
+    if self.unresolvedMediaCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.unresolvedMediaCount, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_AttachLegacyPlaylistMedia.Result.Ok, rhs: Workspace_Call_AttachLegacyPlaylistMedia.Result.Ok) -> Bool {
+    if lhs.generation != rhs.generation {return false}
+    if lhs.durableVersionVector != rhs.durableVersionVector {return false}
+    if lhs.importedMediaCount != rhs.importedMediaCount {return false}
+    if lhs.unresolvedMediaCount != rhs.unresolvedMediaCount {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_DeleteLocalWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".DeleteLocalWorkspace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}target_path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.targetPath) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.targetPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.targetPath, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_DeleteLocalWorkspace, rhs: Workspace_Call_DeleteLocalWorkspace) -> Bool {
+    if lhs.targetPath != rhs.targetPath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_DeleteLocalWorkspace.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_DeleteLocalWorkspace.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_DeleteLocalWorkspace.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_DeleteLocalWorkspace.Result, rhs: Workspace_Call_DeleteLocalWorkspace.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_DeleteLocalWorkspace.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_DeleteLocalWorkspace.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}folder_kept\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.folderKept) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.folderKept != false {
+      try visitor.visitSingularBoolField(value: self.folderKept, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_DeleteLocalWorkspace.Result.Ok, rhs: Workspace_Call_DeleteLocalWorkspace.Result.Ok) -> Bool {
+    if lhs.folderKept != rhs.folderKept {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportAndAttachMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ImportAndAttachMedia"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}document_uuid\0\u{3}occurrence_path\0\u{3}expected_reference_uuid\0\u{3}expected_descriptor_fingerprint\0\u{3}source_path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.occurrencePath) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.expectedReferenceUuid) }()
+      case 5: try { try decoder.decodeSingularBytesField(value: &self.expectedDescriptorFingerprint) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.documentUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentUuid, fieldNumber: 2)
+    }
+    if !self.occurrencePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.occurrencePath, fieldNumber: 3)
+    }
+    if !self.expectedReferenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.expectedReferenceUuid, fieldNumber: 4)
+    }
+    if !self.expectedDescriptorFingerprint.isEmpty {
+      try visitor.visitSingularBytesField(value: self.expectedDescriptorFingerprint, fieldNumber: 5)
+    }
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportAndAttachMedia, rhs: Workspace_Call_ImportAndAttachMedia) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.documentUuid != rhs.documentUuid {return false}
+    if lhs.occurrencePath != rhs.occurrencePath {return false}
+    if lhs.expectedReferenceUuid != rhs.expectedReferenceUuid {return false}
+    if lhs.expectedDescriptorFingerprint != rhs.expectedDescriptorFingerprint {return false}
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportAndAttachMedia.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportAndAttachMedia.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ImportAndAttachMedia.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportAndAttachMedia.Result, rhs: Workspace_Call_ImportAndAttachMedia.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportAndAttachMedia.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportAndAttachMedia.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}asset_uuid\0\u{3}managed_relative_path\0\u{3}durable_document_version_vector\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.managedRelativePath) }()
+      case 5: try { try decoder.decodeSingularBytesField(value: &self.durableDocumentVersionVector) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 3)
+    }
+    if !self.managedRelativePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.managedRelativePath, fieldNumber: 4)
+    }
+    if !self.durableDocumentVersionVector.isEmpty {
+      try visitor.visitSingularBytesField(value: self.durableDocumentVersionVector, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportAndAttachMedia.Result.Ok, rhs: Workspace_Call_ImportAndAttachMedia.Result.Ok) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.managedRelativePath != rhs.managedRelativePath {return false}
+    if lhs.durableDocumentVersionVector != rhs.durableDocumentVersionVector {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportMediaAsset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ImportMediaAsset"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}source_path\0\u{3}force_manage_media\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.forceManageMedia) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 3)
+    }
+    if self.forceManageMedia != false {
+      try visitor.visitSingularBoolField(value: self.forceManageMedia, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportMediaAsset, rhs: Workspace_Call_ImportMediaAsset) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs.forceManageMedia != rhs.forceManageMedia {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportMediaAsset.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportMediaAsset.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ImportMediaAsset.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportMediaAsset.Result, rhs: Workspace_Call_ImportMediaAsset.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ImportMediaAsset.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ImportMediaAsset.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}asset_uuid\0\u{3}managed_relative_path\0\u{3}unmanaged_absolute_path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 4: try {
+        var v: String?
+        try decoder.decodeSingularStringField(value: &v)
+        if let v = v {
+          if self.location != nil {try decoder.handleConflictingOneOf()}
+          self.location = .managedRelativePath(v)
+        }
+      }()
+      case 5: try {
+        var v: String?
+        try decoder.decodeSingularStringField(value: &v)
+        if let v = v {
+          if self.location != nil {try decoder.handleConflictingOneOf()}
+          self.location = .unmanagedAbsolutePath(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 3)
+    }
+    switch self.location {
+    case .managedRelativePath?: try {
+      guard case .managedRelativePath(let v)? = self.location else { preconditionFailure() }
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    }()
+    case .unmanagedAbsolutePath?: try {
+      guard case .unmanagedAbsolutePath(let v)? = self.location else { preconditionFailure() }
+      try visitor.visitSingularStringField(value: v, fieldNumber: 5)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ImportMediaAsset.Result.Ok, rhs: Workspace_Call_ImportMediaAsset.Result.Ok) -> Bool {
+    if lhs.location != rhs.location {return false}
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_RelinkMediaAsset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RelinkMediaAsset"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}expected_asset_uuid\0\u{3}source_path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.expectedAssetUuid) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.expectedAssetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.expectedAssetUuid, fieldNumber: 3)
+    }
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_RelinkMediaAsset, rhs: Workspace_Call_RelinkMediaAsset) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.expectedAssetUuid != rhs.expectedAssetUuid {return false}
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_RelinkMediaAsset.Phase: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PHASE_UNKNOWN\0\u{1}PHASE_QUEUED\0\u{1}PHASE_STAGING\0\u{1}PHASE_STAGED\0\u{1}PHASE_PUBLISHING\0\u{1}PHASE_COMPLETE\0\u{1}PHASE_FAILED\0")
+}
+
+nonisolated extension Workspace_Call_RelinkMediaAsset.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_RelinkMediaAsset.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_RelinkMediaAsset.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_RelinkMediaAsset.Result, rhs: Workspace_Call_RelinkMediaAsset.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_RelinkMediaAsset.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_RelinkMediaAsset.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}asset_uuid\0\u{1}phase\0\u{1}attempt\0\u{3}failure_code\0\u{3}failure_detail\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.phase) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.attempt) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self._failureCode) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self._failureDetail) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 3)
+    }
+    if self.phase != .unknown {
+      try visitor.visitSingularEnumField(value: self.phase, fieldNumber: 4)
+    }
+    if self.attempt != 0 {
+      try visitor.visitSingularUInt32Field(value: self.attempt, fieldNumber: 5)
+    }
+    try { if let v = self._failureCode {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+    } }()
+    try { if let v = self._failureDetail {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_RelinkMediaAsset.Result.Ok, rhs: Workspace_Call_RelinkMediaAsset.Result.Ok) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.phase != rhs.phase {return false}
+    if lhs.attempt != rhs.attempt {return false}
+    if lhs._failureCode != rhs._failureCode {return false}
+    if lhs._failureDetail != rhs._failureDetail {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_MaterializeMediaAsset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MaterializeMediaAsset"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}expected_asset_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.expectedAssetUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.expectedAssetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.expectedAssetUuid, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_MaterializeMediaAsset, rhs: Workspace_Call_MaterializeMediaAsset) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.expectedAssetUuid != rhs.expectedAssetUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_MaterializeMediaAsset.Phase: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PHASE_UNKNOWN\0\u{1}PHASE_QUEUED\0\u{1}PHASE_RESOLVING\0\u{1}PHASE_DOWNLOADING\0\u{1}PHASE_DOWNLOADED\0\u{1}PHASE_VERIFYING\0\u{1}PHASE_PUBLISHING\0\u{1}PHASE_COMPLETE\0\u{1}PHASE_FAILED\0")
+}
+
+nonisolated extension Workspace_Call_MaterializeMediaAsset.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_MaterializeMediaAsset.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_MaterializeMediaAsset.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_MaterializeMediaAsset.Result, rhs: Workspace_Call_MaterializeMediaAsset.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_MaterializeMediaAsset.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_MaterializeMediaAsset.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}asset_uuid\0\u{1}phase\0\u{1}attempt\0\u{3}failure_code\0\u{3}failure_detail\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.phase) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.attempt) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self._failureCode) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self._failureDetail) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 3)
+    }
+    if self.phase != .unknown {
+      try visitor.visitSingularEnumField(value: self.phase, fieldNumber: 4)
+    }
+    if self.attempt != 0 {
+      try visitor.visitSingularUInt32Field(value: self.attempt, fieldNumber: 5)
+    }
+    try { if let v = self._failureCode {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+    } }()
+    try { if let v = self._failureDetail {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_MaterializeMediaAsset.Result.Ok, rhs: Workspace_Call_MaterializeMediaAsset.Result.Ok) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.phase != rhs.phase {return false}
+    if lhs.attempt != rhs.attempt {return false}
+    if lhs._failureCode != rhs._failureCode {return false}
+    if lhs._failureDetail != rhs._failureDetail {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_RestoreMediaFromTrash: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RestoreMediaFromTrash"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}asset_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_RestoreMediaFromTrash, rhs: Workspace_Call_RestoreMediaFromTrash) -> Bool {
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_RestoreMediaFromTrash.Outcome: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0OUTCOME_UNKNOWN\0\u{1}OUTCOME_RESTORED\0\u{1}OUTCOME_NOT_IN_TRASH\0\u{1}OUTCOME_ALREADY_PRESENT\0\u{1}OUTCOME_NOT_PURGED\0")
+}
+
+nonisolated extension Workspace_Call_RestoreMediaFromTrash.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_RestoreMediaFromTrash.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_RestoreMediaFromTrash.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_RestoreMediaFromTrash.Result, rhs: Workspace_Call_RestoreMediaFromTrash.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_RestoreMediaFromTrash.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_RestoreMediaFromTrash.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}asset_uuid\0\u{1}outcome\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.outcome) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 1)
+    }
+    if self.outcome != .unknown {
+      try visitor.visitSingularEnumField(value: self.outcome, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_RestoreMediaFromTrash.Result.Ok, rhs: Workspace_Call_RestoreMediaFromTrash.Result.Ok) -> Bool {
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.outcome != rhs.outcome {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -872,7 +6255,7 @@ nonisolated extension Workspace_Call_Publish.Result: SwiftProtobuf.Message, Swif
 
 nonisolated extension Workspace_Call_Publish.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Workspace_Call_Publish.Result.protoMessageName + ".Ok"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}cloud_uuid\0\u{3}unavailable_smart_playlist_media\0\u{3}missing_smart_playlist_media\0\u{3}unavailable_smart_playlists\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -880,21 +6263,36 @@ nonisolated extension Workspace_Call_Publish.Result.Ok: SwiftProtobuf.Message, S
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 1: try { try decoder.decodeSingularStringField(value: &self.cloudUuid) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.unavailableSmartPlaylistMedia) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.missingSmartPlaylistMedia) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.unavailableSmartPlaylists) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.uuid.isEmpty {
-      try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
+    if !self.cloudUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.cloudUuid, fieldNumber: 1)
+    }
+    if self.unavailableSmartPlaylistMedia != 0 {
+      try visitor.visitSingularUInt32Field(value: self.unavailableSmartPlaylistMedia, fieldNumber: 2)
+    }
+    if self.missingSmartPlaylistMedia != 0 {
+      try visitor.visitSingularUInt32Field(value: self.missingSmartPlaylistMedia, fieldNumber: 3)
+    }
+    if self.unavailableSmartPlaylists != 0 {
+      try visitor.visitSingularUInt32Field(value: self.unavailableSmartPlaylists, fieldNumber: 4)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Workspace_Call_Publish.Result.Ok, rhs: Workspace_Call_Publish.Result.Ok) -> Bool {
-    if lhs.uuid != rhs.uuid {return false}
+    if lhs.cloudUuid != rhs.cloudUuid {return false}
+    if lhs.unavailableSmartPlaylistMedia != rhs.unavailableSmartPlaylistMedia {return false}
+    if lhs.missingSmartPlaylistMedia != rhs.missingSmartPlaylistMedia {return false}
+    if lhs.unavailableSmartPlaylists != rhs.unavailableSmartPlaylists {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -902,18 +6300,33 @@ nonisolated extension Workspace_Call_Publish.Result.Ok: SwiftProtobuf.Message, S
 
 nonisolated extension Workspace_Call_ConvertToLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ConvertToLocal"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}local_uuid\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    // Load everything into unknown fields
-    while try decoder.nextFieldNumber() != nil {}
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._localUuid) }()
+      default: break
+      }
+    }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._localUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Workspace_Call_ConvertToLocal, rhs: Workspace_Call_ConvertToLocal) -> Bool {
+    if lhs._localUuid != rhs._localUuid {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1007,7 +6420,7 @@ nonisolated extension Workspace_Call_ConvertToLocal.Result.Ok: SwiftProtobuf.Mes
 
 nonisolated extension Workspace_Call_Rename: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Rename"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}cloud_uuid\0\u{1}name\0\u{3}local_uuid\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1015,8 +6428,9 @@ nonisolated extension Workspace_Call_Rename: SwiftProtobuf.Message, SwiftProtobu
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self._uuid) }()
+      case 1: try { try decoder.decodeSingularStringField(value: &self._cloudUuid) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._localUuid) }()
       default: break
       }
     }
@@ -1027,18 +6441,22 @@ nonisolated extension Workspace_Call_Rename: SwiftProtobuf.Message, SwiftProtobu
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
     // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._uuid {
+    try { if let v = self._cloudUuid {
       try visitor.visitSingularStringField(value: v, fieldNumber: 1)
     } }()
     if !self.name.isEmpty {
       try visitor.visitSingularStringField(value: self.name, fieldNumber: 2)
     }
+    try { if let v = self._localUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Workspace_Call_Rename, rhs: Workspace_Call_Rename) -> Bool {
-    if lhs._uuid != rhs._uuid {return false}
+    if lhs._cloudUuid != rhs._cloudUuid {return false}
     if lhs.name != rhs.name {return false}
+    if lhs._localUuid != rhs._localUuid {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1125,6 +6543,207 @@ nonisolated extension Workspace_Call_Rename.Result.Ok: SwiftProtobuf.Message, Sw
   }
 
   public static func ==(lhs: Workspace_Call_Rename.Result.Ok, rhs: Workspace_Call_Rename.Result.Ok) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ReadUsage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ReadUsage"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ReadUsage, rhs: Workspace_Call_ReadUsage) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ReadUsage.Library: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ReadUsage.protoMessageName + ".Library"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{3}presentation_count\0\u{3}byte_count\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.presentationCount) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.byteCount) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
+    }
+    if self.presentationCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.presentationCount, fieldNumber: 2)
+    }
+    if self.byteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.byteCount, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ReadUsage.Library, rhs: Workspace_Call_ReadUsage.Library) -> Bool {
+    if lhs.name != rhs.name {return false}
+    if lhs.presentationCount != rhs.presentationCount {return false}
+    if lhs.byteCount != rhs.byteCount {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ReadUsage.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ReadUsage.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ReadUsage.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ReadUsage.Result, rhs: Workspace_Call_ReadUsage.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ReadUsage.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ReadUsage.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}libraries\0\u{3}total_document_byte_count\0\u{3}managed_media_file_count\0\u{3}managed_media_byte_count\0\u{3}unmanaged_media_byte_count\0\u{3}largest_document_byte_count\0\u{3}presentations_over_1_mib_count\0\u{3}presentations_over_10_mib_count\0\u{3}other_documents_over_1_mib_count\0\u{3}other_documents_over_10_mib_count\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.libraries) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.totalDocumentByteCount) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.managedMediaFileCount) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.managedMediaByteCount) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.unmanagedMediaByteCount) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.largestDocumentByteCount) }()
+      case 7: try { try decoder.decodeSingularUInt64Field(value: &self.presentationsOver1MibCount) }()
+      case 8: try { try decoder.decodeSingularUInt64Field(value: &self.presentationsOver10MibCount) }()
+      case 9: try { try decoder.decodeSingularUInt64Field(value: &self.otherDocumentsOver1MibCount) }()
+      case 10: try { try decoder.decodeSingularUInt64Field(value: &self.otherDocumentsOver10MibCount) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.libraries.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.libraries, fieldNumber: 1)
+    }
+    if self.totalDocumentByteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.totalDocumentByteCount, fieldNumber: 2)
+    }
+    if self.managedMediaFileCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.managedMediaFileCount, fieldNumber: 3)
+    }
+    if self.managedMediaByteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.managedMediaByteCount, fieldNumber: 4)
+    }
+    if self.unmanagedMediaByteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.unmanagedMediaByteCount, fieldNumber: 5)
+    }
+    if self.largestDocumentByteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.largestDocumentByteCount, fieldNumber: 6)
+    }
+    if self.presentationsOver1MibCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.presentationsOver1MibCount, fieldNumber: 7)
+    }
+    if self.presentationsOver10MibCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.presentationsOver10MibCount, fieldNumber: 8)
+    }
+    if self.otherDocumentsOver1MibCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.otherDocumentsOver1MibCount, fieldNumber: 9)
+    }
+    if self.otherDocumentsOver10MibCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.otherDocumentsOver10MibCount, fieldNumber: 10)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ReadUsage.Result.Ok, rhs: Workspace_Call_ReadUsage.Result.Ok) -> Bool {
+    if lhs.libraries != rhs.libraries {return false}
+    if lhs.totalDocumentByteCount != rhs.totalDocumentByteCount {return false}
+    if lhs.managedMediaFileCount != rhs.managedMediaFileCount {return false}
+    if lhs.managedMediaByteCount != rhs.managedMediaByteCount {return false}
+    if lhs.unmanagedMediaByteCount != rhs.unmanagedMediaByteCount {return false}
+    if lhs.largestDocumentByteCount != rhs.largestDocumentByteCount {return false}
+    if lhs.presentationsOver1MibCount != rhs.presentationsOver1MibCount {return false}
+    if lhs.presentationsOver10MibCount != rhs.presentationsOver10MibCount {return false}
+    if lhs.otherDocumentsOver1MibCount != rhs.otherDocumentsOver1MibCount {return false}
+    if lhs.otherDocumentsOver10MibCount != rhs.otherDocumentsOver10MibCount {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1346,6 +6965,918 @@ nonisolated extension Workspace_Call_ResumeSync.Result.Ok: SwiftProtobuf.Message
   }
 
   public static func ==(lhs: Workspace_Call_ResumeSync.Result.Ok, rhs: Workspace_Call_ResumeSync.Result.Ok) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_SetSchemaVersion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SetSchemaVersion"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}schema_version\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.schemaVersion) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.schemaVersion.isEmpty {
+      try visitor.visitSingularStringField(value: self.schemaVersion, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_SetSchemaVersion, rhs: Workspace_Call_SetSchemaVersion) -> Bool {
+    if lhs.schemaVersion != rhs.schemaVersion {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_SetSchemaVersion.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_SetSchemaVersion.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_SetSchemaVersion.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_SetSchemaVersion.Result, rhs: Workspace_Call_SetSchemaVersion.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_SetSchemaVersion.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_SetSchemaVersion.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_SetSchemaVersion.Result.Ok, rhs: Workspace_Call_SetSchemaVersion.Result.Ok) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ChangeWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ChangeWorkspace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}local_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ChangeWorkspace, rhs: Workspace_Call_ChangeWorkspace) -> Bool {
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ChangeWorkspace.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ChangeWorkspace.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_ChangeWorkspace.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ChangeWorkspace.Result, rhs: Workspace_Call_ChangeWorkspace.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_ChangeWorkspace.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_ChangeWorkspace.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}root_path\0\u{3}legacy_migration_shortfall\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._rootPath) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._legacyMigrationShortfall) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._rootPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    } }()
+    try { if let v = self._legacyMigrationShortfall {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_ChangeWorkspace.Result.Ok, rhs: Workspace_Call_ChangeWorkspace.Result.Ok) -> Bool {
+    if lhs._rootPath != rhs._rootPath {return false}
+    if lhs._legacyMigrationShortfall != rhs._legacyMigrationShortfall {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_CheckWorkspaceAccess: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CheckWorkspaceAccess"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}local_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_CheckWorkspaceAccess, rhs: Workspace_Call_CheckWorkspaceAccess) -> Bool {
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_CheckWorkspaceAccess.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_CheckWorkspaceAccess.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_CheckWorkspaceAccess.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_CheckWorkspaceAccess.Result, rhs: Workspace_Call_CheckWorkspaceAccess.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_CheckWorkspaceAccess.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_CheckWorkspaceAccess.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_CheckWorkspaceAccess.Result.Ok, rhs: Workspace_Call_CheckWorkspaceAccess.Result.Ok) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_OpenAsLocalCopy: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".OpenAsLocalCopy"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}source_local_uuid\0\u{3}local_uuid\0\u{3}target_path\0\u{3}display_name\0\u{3}pco_theme_dark\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sourceLocalUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.targetPath) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._displayName) }()
+      case 5: try { try decoder.decodeSingularBoolField(value: &self._pcoThemeDark) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.sourceLocalUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourceLocalUuid, fieldNumber: 1)
+    }
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 2)
+    }
+    if !self.targetPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.targetPath, fieldNumber: 3)
+    }
+    try { if let v = self._displayName {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    } }()
+    try { if let v = self._pcoThemeDark {
+      try visitor.visitSingularBoolField(value: v, fieldNumber: 5)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_OpenAsLocalCopy, rhs: Workspace_Call_OpenAsLocalCopy) -> Bool {
+    if lhs.sourceLocalUuid != rhs.sourceLocalUuid {return false}
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs.targetPath != rhs.targetPath {return false}
+    if lhs._displayName != rhs._displayName {return false}
+    if lhs._pcoThemeDark != rhs._pcoThemeDark {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_OpenAsLocalCopy.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_OpenAsLocalCopy.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_OpenAsLocalCopy.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_OpenAsLocalCopy.Result, rhs: Workspace_Call_OpenAsLocalCopy.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_OpenAsLocalCopy.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_OpenAsLocalCopy.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}root_path\0\u{1}diagnostics\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._rootPath) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.diagnostics) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._rootPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    } }()
+    if !self.diagnostics.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.diagnostics, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_OpenAsLocalCopy.Result.Ok, rhs: Workspace_Call_OpenAsLocalCopy.Result.Ok) -> Bool {
+    if lhs._rootPath != rhs._rootPath {return false}
+    if lhs.diagnostics != rhs.diagnostics {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_StartFresh: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".StartFresh"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}local_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_StartFresh, rhs: Workspace_Call_StartFresh) -> Bool {
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_StartFresh.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_StartFresh.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_StartFresh.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_StartFresh.Result, rhs: Workspace_Call_StartFresh.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_StartFresh.Result.Discard: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DISCARD_UNSPECIFIED\0\u{1}DISCARD_REMOVED\0\u{1}DISCARD_FOLDER_KEPT\0\u{1}DISCARD_FAILED\0\u{1}DISCARD_FAILED_IN_PLACE\0\u{1}DISCARD_FAILED_UNLISTED\0")
+}
+
+nonisolated extension Workspace_Call_StartFresh.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_StartFresh.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}local_uuid\0\u{3}root_path\0\u{1}discard\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.rootPath) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.discard) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 1)
+    }
+    if !self.rootPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.rootPath, fieldNumber: 2)
+    }
+    if self.discard != .unspecified {
+      try visitor.visitSingularEnumField(value: self.discard, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_StartFresh.Result.Ok, rhs: Workspace_Call_StartFresh.Result.Ok) -> Bool {
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs.rootPath != rhs.rootPath {return false}
+    if lhs.discard != rhs.discard {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_FindChangedLegacySource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".FindChangedLegacySource"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}local_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_FindChangedLegacySource, rhs: Workspace_Call_FindChangedLegacySource) -> Bool {
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_FindChangedLegacySource.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_FindChangedLegacySource.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_FindChangedLegacySource.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_FindChangedLegacySource.Result, rhs: Workspace_Call_FindChangedLegacySource.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_FindChangedLegacySource.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_FindChangedLegacySource.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}source_path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_FindChangedLegacySource.Result.Ok, rhs: Workspace_Call_FindChangedLegacySource.Result.Ok) -> Bool {
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_KeepChangedLegacySource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".KeepChangedLegacySource"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}local_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.localUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.localUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.localUuid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_KeepChangedLegacySource, rhs: Workspace_Call_KeepChangedLegacySource) -> Bool {
+    if lhs.localUuid != rhs.localUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_KeepChangedLegacySource.Result: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_KeepChangedLegacySource.protoMessageName + ".Result"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}ok\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Workspace_Call_KeepChangedLegacySource.Result.Ok?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .ok(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .ok(v)
+        }
+      }()
+      case 2: try {
+        var v: Workspace_Call_Error?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .error(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .error(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .ok?: try {
+      guard case .ok(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .error?: try {
+      guard case .error(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_KeepChangedLegacySource.Result, rhs: Workspace_Call_KeepChangedLegacySource.Result) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_Call_KeepChangedLegacySource.Result.Ok: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_Call_KeepChangedLegacySource.Result.protoMessageName + ".Ok"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_Call_KeepChangedLegacySource.Result.Ok, rhs: Workspace_Call_KeepChangedLegacySource.Result.Ok) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

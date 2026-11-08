@@ -28,3 +28,7 @@ message Library {
 message LibraryItem {
   rv.data.URL url = 1;
 }
+
+message LibraryTreeDocument {
+  rv.data.Library rootLibrary = 1;
+}

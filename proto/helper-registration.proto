@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+
+package helper.registration;
+
+
+import "v2-helper-common.proto";
+
+import "registration.proto";
+
+
+
+message RegistrationNotification {
+  oneof notification {
+    registration.core.Callback callback = 1;
+    helper.common.v2.UserAuthInfo user_auth_info = 2;
+    helper.common.v2.HardwareIdentifier hardware_identifier = 3;
+  }
+
+}
+
+message Request {
+  message CreateContext {
+    bytes resolved_feature_flags = 2;
+    helper.common.v2.ProductInformation product_info = 3;
+  }
+
+  oneof request {
+    helper.registration.Request.CreateContext create_context = 1;
+    registration.core.Request command = 2;
+  }
+
+}

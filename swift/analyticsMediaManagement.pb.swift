@@ -224,6 +224,80 @@ public nonisolated struct Rv_Analytics_Mediamanagement_NotResponding: Sendable {
   public init() {}
 }
 
+public nonisolated struct Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var source: Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp.Source = .resync
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Source: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case resync // = 0
+    case workspaceActivation // = 1
+    case reconnectRetry // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .resync
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .resync
+      case 1: self = .workspaceActivation
+      case 2: self = .reconnectRetry
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .resync: return 0
+      case .workspaceActivation: return 1
+      case .reconnectRetry: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp.Source] = [
+      .resync,
+      .workspaceActivation,
+      .reconnectRetry,
+    ]
+
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Rv_Analytics_Mediamanagement_UnreadableMediaHeld: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var workspaceIdentifier: String = String()
+
+  public var hardwareID: String = String()
+
+  public var unknownType: UInt32 = 0
+
+  public var missingType: UInt32 = 0
+
+  public var suffixedCase: UInt32 = 0
+
+  public var respelledCase: UInt32 = 0
+
+  public var documents: UInt32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "rv.analytics.mediamanagement"
@@ -592,6 +666,100 @@ nonisolated extension Rv_Analytics_Mediamanagement_NotResponding: SwiftProtobuf.
   }
 
   public static func ==(lhs: Rv_Analytics_Mediamanagement_NotResponding, rhs: Rv_Analytics_Mediamanagement_NotResponding) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MediaStateResyncGaveUp"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}source\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.source) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.source != .resync {
+      try visitor.visitSingularEnumField(value: self.source, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp, rhs: Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp) -> Bool {
+    if lhs.source != rhs.source {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_MediaStateResyncGaveUp.Source: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SOURCE_RESYNC\0\u{1}SOURCE_WORKSPACE_ACTIVATION\0\u{1}SOURCE_RECONNECT_RETRY\0")
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_UnreadableMediaHeld: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UnreadableMediaHeld"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}workspace_identifier\0\u{3}hardware_id\0\u{3}unknown_type\0\u{3}missing_type\0\u{3}suffixed_case\0\u{3}respelled_case\0\u{1}documents\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.workspaceIdentifier) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.hardwareID) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.unknownType) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.missingType) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.suffixedCase) }()
+      case 6: try { try decoder.decodeSingularUInt32Field(value: &self.respelledCase) }()
+      case 7: try { try decoder.decodeSingularUInt32Field(value: &self.documents) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.workspaceIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.workspaceIdentifier, fieldNumber: 1)
+    }
+    if !self.hardwareID.isEmpty {
+      try visitor.visitSingularStringField(value: self.hardwareID, fieldNumber: 2)
+    }
+    if self.unknownType != 0 {
+      try visitor.visitSingularUInt32Field(value: self.unknownType, fieldNumber: 3)
+    }
+    if self.missingType != 0 {
+      try visitor.visitSingularUInt32Field(value: self.missingType, fieldNumber: 4)
+    }
+    if self.suffixedCase != 0 {
+      try visitor.visitSingularUInt32Field(value: self.suffixedCase, fieldNumber: 5)
+    }
+    if self.respelledCase != 0 {
+      try visitor.visitSingularUInt32Field(value: self.respelledCase, fieldNumber: 6)
+    }
+    if self.documents != 0 {
+      try visitor.visitSingularUInt32Field(value: self.documents, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Mediamanagement_UnreadableMediaHeld, rhs: Rv_Analytics_Mediamanagement_UnreadableMediaHeld) -> Bool {
+    if lhs.workspaceIdentifier != rhs.workspaceIdentifier {return false}
+    if lhs.hardwareID != rhs.hardwareID {return false}
+    if lhs.unknownType != rhs.unknownType {return false}
+    if lhs.missingType != rhs.missingType {return false}
+    if lhs.suffixedCase != rhs.suffixedCase {return false}
+    if lhs.respelledCase != rhs.respelledCase {return false}
+    if lhs.documents != rhs.documents {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

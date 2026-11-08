@@ -2179,6 +2179,14 @@ public nonisolated struct Rv_Data_Media: @unchecked Sendable {
     set {_uniqueStorage()._typeProperties = .webContent(newValue)}
   }
 
+  public var hlsStream: Rv_Data_Media.HlsStreamTypeProperties {
+    get {
+      if case .hlsStream(let v)? = _storage._typeProperties {return v}
+      return Rv_Data_Media.HlsStreamTypeProperties()
+    }
+    set {_uniqueStorage()._typeProperties = .hlsStream(newValue)}
+  }
+
   public var uuid: Rv_Data_UUID {
     get {_storage._uuid ?? Rv_Data_UUID()}
     set {_uniqueStorage()._uuid = newValue}
@@ -2187,6 +2195,25 @@ public nonisolated struct Rv_Data_Media: @unchecked Sendable {
   public var hasUuid: Bool {_storage._uuid != nil}
   /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
   public mutating func clearUuid() {_uniqueStorage()._uuid = nil}
+
+  public var assetID: Rv_Data_UUID {
+    get {_storage._assetID ?? Rv_Data_UUID()}
+    set {_uniqueStorage()._assetID = newValue}
+  }
+  /// Returns true if `assetID` has been explicitly set.
+  public var hasAssetID: Bool {_storage._assetID != nil}
+  /// Clears the value of `assetID`. Subsequent reads from it will return its default value.
+  public mutating func clearAssetID() {_uniqueStorage()._assetID = nil}
+
+  public var identitySchemaVersion: String {
+    get {_storage._identitySchemaVersion}
+    set {_uniqueStorage()._identitySchemaVersion = newValue}
+  }
+
+  public var containerID: String {
+    get {_storage._containerID}
+    set {_uniqueStorage()._containerID = newValue}
+  }
 
   public var url: Rv_Data_URL {
     get {_storage._url ?? Rv_Data_URL()}
@@ -2206,6 +2233,15 @@ public nonisolated struct Rv_Data_Media: @unchecked Sendable {
   /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
   public mutating func clearMetadata() {_uniqueStorage()._metadata = nil}
 
+  public var provider: Rv_Data_ProviderInfo {
+    get {_storage._provider ?? Rv_Data_ProviderInfo()}
+    set {_uniqueStorage()._provider = newValue}
+  }
+  /// Returns true if `provider` has been explicitly set.
+  public var hasProvider: Bool {_storage._provider != nil}
+  /// Clears the value of `provider`. Subsequent reads from it will return its default value.
+  public mutating func clearProvider() {_uniqueStorage()._provider = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public nonisolated enum OneOf_TypeProperties: Equatable, Sendable {
@@ -2214,6 +2250,7 @@ public nonisolated struct Rv_Data_Media: @unchecked Sendable {
     case video(Rv_Data_Media.VideoTypeProperties)
     case liveVideo(Rv_Data_Media.LiveVideoTypeProperties)
     case webContent(Rv_Data_Media.WebContentTypeProperties)
+    case hlsStream(Rv_Data_Media.HlsStreamTypeProperties)
 
   }
 
@@ -3070,6 +3107,15 @@ public nonisolated struct Rv_Data_Media: @unchecked Sendable {
     /// Clears the value of `file`. Subsequent reads from it will return its default value.
     public mutating func clearFile() {_uniqueStorage()._file = nil}
 
+    public var source: Rv_Data_SourceInfo {
+      get {_storage._source ?? Rv_Data_SourceInfo()}
+      set {_uniqueStorage()._source = newValue}
+    }
+    /// Returns true if `source` has been explicitly set.
+    public var hasSource: Bool {_storage._source != nil}
+    /// Clears the value of `source`. Subsequent reads from it will return its default value.
+    public mutating func clearSource() {_uniqueStorage()._source = nil}
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public init() {}
@@ -3100,12 +3146,22 @@ public nonisolated struct Rv_Data_Media: @unchecked Sendable {
     /// Clears the value of `file`. Subsequent reads from it will return its default value.
     public mutating func clearFile() {self._file = nil}
 
+    public var source: Rv_Data_SourceInfo {
+      get {_source ?? Rv_Data_SourceInfo()}
+      set {_source = newValue}
+    }
+    /// Returns true if `source` has been explicitly set.
+    public var hasSource: Bool {self._source != nil}
+    /// Clears the value of `source`. Subsequent reads from it will return its default value.
+    public mutating func clearSource() {self._source = nil}
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public init() {}
 
     fileprivate var _drawing: Rv_Data_Media.DrawingProperties? = nil
     fileprivate var _file: Rv_Data_FileProperties? = nil
+    fileprivate var _source: Rv_Data_SourceInfo? = nil
   }
 
   public nonisolated struct VideoTypeProperties: @unchecked Sendable {
@@ -3157,6 +3213,15 @@ public nonisolated struct Rv_Data_Media: @unchecked Sendable {
     public var hasFile: Bool {_storage._file != nil}
     /// Clears the value of `file`. Subsequent reads from it will return its default value.
     public mutating func clearFile() {_uniqueStorage()._file = nil}
+
+    public var source: Rv_Data_SourceInfo {
+      get {_storage._source ?? Rv_Data_SourceInfo()}
+      set {_uniqueStorage()._source = newValue}
+    }
+    /// Returns true if `source` has been explicitly set.
+    public var hasSource: Bool {_storage._source != nil}
+    /// Clears the value of `source`. Subsequent reads from it will return its default value.
+    public mutating func clearSource() {_uniqueStorage()._source = nil}
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -3235,6 +3300,59 @@ public nonisolated struct Rv_Data_Media: @unchecked Sendable {
 
     fileprivate var _drawing: Rv_Data_Media.DrawingProperties? = nil
     fileprivate var _url: Rv_Data_URL? = nil
+  }
+
+  public nonisolated struct HlsStreamTypeProperties: @unchecked Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var drawing: Rv_Data_Media.DrawingProperties {
+      get {_storage._drawing ?? Rv_Data_Media.DrawingProperties()}
+      set {_uniqueStorage()._drawing = newValue}
+    }
+    /// Returns true if `drawing` has been explicitly set.
+    public var hasDrawing: Bool {_storage._drawing != nil}
+    /// Clears the value of `drawing`. Subsequent reads from it will return its default value.
+    public mutating func clearDrawing() {_uniqueStorage()._drawing = nil}
+
+    public var audio: Rv_Data_Media.AudioProperties {
+      get {_storage._audio ?? Rv_Data_Media.AudioProperties()}
+      set {_uniqueStorage()._audio = newValue}
+    }
+    /// Returns true if `audio` has been explicitly set.
+    public var hasAudio: Bool {_storage._audio != nil}
+    /// Clears the value of `audio`. Subsequent reads from it will return its default value.
+    public mutating func clearAudio() {_uniqueStorage()._audio = nil}
+
+    public var transport: Rv_Data_Media.TransportProperties {
+      get {_storage._transport ?? Rv_Data_Media.TransportProperties()}
+      set {_uniqueStorage()._transport = newValue}
+    }
+    /// Returns true if `transport` has been explicitly set.
+    public var hasTransport: Bool {_storage._transport != nil}
+    /// Clears the value of `transport`. Subsequent reads from it will return its default value.
+    public mutating func clearTransport() {_uniqueStorage()._transport = nil}
+
+    public var video: Rv_Data_Media.VideoProperties {
+      get {_storage._video ?? Rv_Data_Media.VideoProperties()}
+      set {_uniqueStorage()._video = newValue}
+    }
+    /// Returns true if `video` has been explicitly set.
+    public var hasVideo: Bool {_storage._video != nil}
+    /// Clears the value of `video`. Subsequent reads from it will return its default value.
+    public mutating func clearVideo() {_uniqueStorage()._video = nil}
+
+    public var url: String {
+      get {_storage._url}
+      set {_uniqueStorage()._url = newValue}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _storage = _StorageClass.defaultInstance
   }
 
   public init() {}
@@ -5633,13 +5751,17 @@ nonisolated extension Rv_Data_Graphics.PowerPointImport: SwiftProtobuf.Message, 
 
 nonisolated extension Rv_Data_Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Media"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}url\0\u{1}metadata\0\u{1}audio\0\u{1}image\0\u{1}video\0\u{3}live_video\0\u{3}web_content\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}url\0\u{1}metadata\0\u{1}audio\0\u{1}image\0\u{1}video\0\u{3}live_video\0\u{3}web_content\0\u{3}container_id\0\u{3}asset_id\0\u{3}identity_schema_version\0\u{3}hls_stream\0\u{1}provider\0")
 
   fileprivate class _StorageClass {
     var _typeProperties: Rv_Data_Media.OneOf_TypeProperties?
     var _uuid: Rv_Data_UUID? = nil
+    var _assetID: Rv_Data_UUID? = nil
+    var _identitySchemaVersion: String = String()
+    var _containerID: String = String()
     var _url: Rv_Data_URL? = nil
     var _metadata: Rv_Data_Media.Metadata? = nil
+    var _provider: Rv_Data_ProviderInfo? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -5652,8 +5774,12 @@ nonisolated extension Rv_Data_Media: SwiftProtobuf.Message, SwiftProtobuf._Messa
     init(copying source: _StorageClass) {
       _typeProperties = source._typeProperties
       _uuid = source._uuid
+      _assetID = source._assetID
+      _identitySchemaVersion = source._identitySchemaVersion
+      _containerID = source._containerID
       _url = source._url
       _metadata = source._metadata
+      _provider = source._provider
     }
   }
 
@@ -5740,6 +5866,23 @@ nonisolated extension Rv_Data_Media: SwiftProtobuf.Message, SwiftProtobuf._Messa
             _storage._typeProperties = .webContent(v)
           }
         }()
+        case 9: try { try decoder.decodeSingularStringField(value: &_storage._containerID) }()
+        case 10: try { try decoder.decodeSingularMessageField(value: &_storage._assetID) }()
+        case 11: try { try decoder.decodeSingularStringField(value: &_storage._identitySchemaVersion) }()
+        case 12: try {
+          var v: Rv_Data_Media.HlsStreamTypeProperties?
+          var hadOneofValue = false
+          if let current = _storage._typeProperties {
+            hadOneofValue = true
+            if case .hlsStream(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {
+            if hadOneofValue {try decoder.handleConflictingOneOf()}
+            _storage._typeProperties = .hlsStream(v)
+          }
+        }()
+        case 13: try { try decoder.decodeSingularMessageField(value: &_storage._provider) }()
         default: break
         }
       }
@@ -5782,8 +5925,23 @@ nonisolated extension Rv_Data_Media: SwiftProtobuf.Message, SwiftProtobuf._Messa
         guard case .webContent(let v)? = _storage._typeProperties else { preconditionFailure() }
         try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
       }()
-      case nil: break
+      default: break
       }
+      if !_storage._containerID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._containerID, fieldNumber: 9)
+      }
+      try { if let v = _storage._assetID {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
+      } }()
+      if !_storage._identitySchemaVersion.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._identitySchemaVersion, fieldNumber: 11)
+      }
+      try { if case .hlsStream(let v)? = _storage._typeProperties {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
+      } }()
+      try { if let v = _storage._provider {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -5795,8 +5953,12 @@ nonisolated extension Rv_Data_Media: SwiftProtobuf.Message, SwiftProtobuf._Messa
         let rhs_storage = _args.1
         if _storage._typeProperties != rhs_storage._typeProperties {return false}
         if _storage._uuid != rhs_storage._uuid {return false}
+        if _storage._assetID != rhs_storage._assetID {return false}
+        if _storage._identitySchemaVersion != rhs_storage._identitySchemaVersion {return false}
+        if _storage._containerID != rhs_storage._containerID {return false}
         if _storage._url != rhs_storage._url {return false}
         if _storage._metadata != rhs_storage._metadata {return false}
+        if _storage._provider != rhs_storage._provider {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -6599,12 +6761,13 @@ nonisolated extension Rv_Data_Media.LiveVideoProperties: SwiftProtobuf.Message, 
 
 nonisolated extension Rv_Data_Media.AudioTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".AudioTypeProperties"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}audio\0\u{1}transport\0\u{1}file\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}audio\0\u{1}transport\0\u{1}file\0\u{1}source\0")
 
   fileprivate class _StorageClass {
     var _audio: Rv_Data_Media.AudioProperties? = nil
     var _transport: Rv_Data_Media.TransportProperties? = nil
     var _file: Rv_Data_FileProperties? = nil
+    var _source: Rv_Data_SourceInfo? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -6618,6 +6781,7 @@ nonisolated extension Rv_Data_Media.AudioTypeProperties: SwiftProtobuf.Message, 
       _audio = source._audio
       _transport = source._transport
       _file = source._file
+      _source = source._source
     }
   }
 
@@ -6639,6 +6803,7 @@ nonisolated extension Rv_Data_Media.AudioTypeProperties: SwiftProtobuf.Message, 
         case 1: try { try decoder.decodeSingularMessageField(value: &_storage._audio) }()
         case 2: try { try decoder.decodeSingularMessageField(value: &_storage._transport) }()
         case 3: try { try decoder.decodeSingularMessageField(value: &_storage._file) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._source) }()
         default: break
         }
       }
@@ -6660,6 +6825,9 @@ nonisolated extension Rv_Data_Media.AudioTypeProperties: SwiftProtobuf.Message, 
       try { if let v = _storage._file {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       } }()
+      try { if let v = _storage._source {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -6672,6 +6840,7 @@ nonisolated extension Rv_Data_Media.AudioTypeProperties: SwiftProtobuf.Message, 
         if _storage._audio != rhs_storage._audio {return false}
         if _storage._transport != rhs_storage._transport {return false}
         if _storage._file != rhs_storage._file {return false}
+        if _storage._source != rhs_storage._source {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -6683,7 +6852,7 @@ nonisolated extension Rv_Data_Media.AudioTypeProperties: SwiftProtobuf.Message, 
 
 nonisolated extension Rv_Data_Media.ImageTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".ImageTypeProperties"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}drawing\0\u{1}file\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}drawing\0\u{1}file\0\u{1}source\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6693,6 +6862,7 @@ nonisolated extension Rv_Data_Media.ImageTypeProperties: SwiftProtobuf.Message, 
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularMessageField(value: &self._drawing) }()
       case 2: try { try decoder.decodeSingularMessageField(value: &self._file) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._source) }()
       default: break
       }
     }
@@ -6709,12 +6879,16 @@ nonisolated extension Rv_Data_Media.ImageTypeProperties: SwiftProtobuf.Message, 
     try { if let v = self._file {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
     } }()
+    try { if let v = self._source {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Rv_Data_Media.ImageTypeProperties, rhs: Rv_Data_Media.ImageTypeProperties) -> Bool {
     if lhs._drawing != rhs._drawing {return false}
     if lhs._file != rhs._file {return false}
+    if lhs._source != rhs._source {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -6722,7 +6896,7 @@ nonisolated extension Rv_Data_Media.ImageTypeProperties: SwiftProtobuf.Message, 
 
 nonisolated extension Rv_Data_Media.VideoTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".VideoTypeProperties"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}drawing\0\u{1}audio\0\u{1}transport\0\u{1}video\0\u{1}file\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}drawing\0\u{1}audio\0\u{1}transport\0\u{1}video\0\u{1}file\0\u{1}source\0")
 
   fileprivate class _StorageClass {
     var _drawing: Rv_Data_Media.DrawingProperties? = nil
@@ -6730,6 +6904,7 @@ nonisolated extension Rv_Data_Media.VideoTypeProperties: SwiftProtobuf.Message, 
     var _transport: Rv_Data_Media.TransportProperties? = nil
     var _video: Rv_Data_Media.VideoProperties? = nil
     var _file: Rv_Data_FileProperties? = nil
+    var _source: Rv_Data_SourceInfo? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -6745,6 +6920,7 @@ nonisolated extension Rv_Data_Media.VideoTypeProperties: SwiftProtobuf.Message, 
       _transport = source._transport
       _video = source._video
       _file = source._file
+      _source = source._source
     }
   }
 
@@ -6768,6 +6944,7 @@ nonisolated extension Rv_Data_Media.VideoTypeProperties: SwiftProtobuf.Message, 
         case 3: try { try decoder.decodeSingularMessageField(value: &_storage._transport) }()
         case 4: try { try decoder.decodeSingularMessageField(value: &_storage._video) }()
         case 5: try { try decoder.decodeSingularMessageField(value: &_storage._file) }()
+        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._source) }()
         default: break
         }
       }
@@ -6795,6 +6972,9 @@ nonisolated extension Rv_Data_Media.VideoTypeProperties: SwiftProtobuf.Message, 
       try { if let v = _storage._file {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       } }()
+      try { if let v = _storage._source {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -6809,6 +6989,7 @@ nonisolated extension Rv_Data_Media.VideoTypeProperties: SwiftProtobuf.Message, 
         if _storage._transport != rhs_storage._transport {return false}
         if _storage._video != rhs_storage._video {return false}
         if _storage._file != rhs_storage._file {return false}
+        if _storage._source != rhs_storage._source {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -6896,6 +7077,104 @@ nonisolated extension Rv_Data_Media.WebContentTypeProperties: SwiftProtobuf.Mess
   public static func ==(lhs: Rv_Data_Media.WebContentTypeProperties, rhs: Rv_Data_Media.WebContentTypeProperties) -> Bool {
     if lhs._drawing != rhs._drawing {return false}
     if lhs._url != rhs._url {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Media.HlsStreamTypeProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Media.protoMessageName + ".HlsStreamTypeProperties"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}drawing\0\u{1}audio\0\u{1}transport\0\u{1}video\0\u{1}url\0")
+
+  fileprivate class _StorageClass {
+    var _drawing: Rv_Data_Media.DrawingProperties? = nil
+    var _audio: Rv_Data_Media.AudioProperties? = nil
+    var _transport: Rv_Data_Media.TransportProperties? = nil
+    var _video: Rv_Data_Media.VideoProperties? = nil
+    var _url: String = String()
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _drawing = source._drawing
+      _audio = source._audio
+      _transport = source._transport
+      _video = source._video
+      _url = source._url
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._drawing) }()
+        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._audio) }()
+        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._transport) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._video) }()
+        case 5: try { try decoder.decodeSingularStringField(value: &_storage._url) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      try { if let v = _storage._drawing {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      } }()
+      try { if let v = _storage._audio {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      } }()
+      try { if let v = _storage._transport {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      } }()
+      try { if let v = _storage._video {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      } }()
+      if !_storage._url.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._url, fieldNumber: 5)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Media.HlsStreamTypeProperties, rhs: Rv_Data_Media.HlsStreamTypeProperties) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._drawing != rhs_storage._drawing {return false}
+        if _storage._audio != rhs_storage._audio {return false}
+        if _storage._transport != rhs_storage._transport {return false}
+        if _storage._video != rhs_storage._video {return false}
+        if _storage._url != rhs_storage._url {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

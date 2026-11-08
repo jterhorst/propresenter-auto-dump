@@ -594,6 +594,18 @@ public nonisolated struct Rv_Analytics_Startup_SongSelect: Sendable {
   public init() {}
 }
 
+public nonisolated struct Rv_Analytics_Startup_APlay: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var loggedIn: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 public nonisolated struct Rv_Analytics_Startup_Content: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -854,6 +866,16 @@ public nonisolated struct Rv_Analytics_Startup_DiskUsage: Sendable {
   public var numberOfMediaAssetFiles: UInt64 = 0
 
   public var bytesOfUnmanagedMediaAssetFiles: UInt64 = 0
+
+  public var bytesOfLargestDocument: UInt64 = 0
+
+  public var numberOfPresentationsOver1Mib: UInt64 = 0
+
+  public var numberOfPresentationsOver10Mib: UInt64 = 0
+
+  public var numberOfOtherDocumentsOver1Mib: UInt64 = 0
+
+  public var numberOfOtherDocumentsOver10Mib: UInt64 = 0
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1528,6 +1550,36 @@ nonisolated extension Rv_Analytics_Startup_SongSelect: SwiftProtobuf.Message, Sw
   }
 }
 
+nonisolated extension Rv_Analytics_Startup_APlay: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".APlay"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}logged_in\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.loggedIn) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.loggedIn != false {
+      try visitor.visitSingularBoolField(value: self.loggedIn, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Startup_APlay, rhs: Rv_Analytics_Startup_APlay) -> Bool {
+    if lhs.loggedIn != rhs.loggedIn {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 nonisolated extension Rv_Analytics_Startup_Content: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Content"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}library_count\0\u{3}library_playlist_count\0\u{3}library_playlist_folder_count\0\u{3}library_playlist_max_depth\0\u{3}media_bin_total_playlist_count\0\u{3}media_bin_playlist_folder_count\0\u{3}media_bin_playlist_max_depth\0\u{3}media_bin_normal_playlist_count\0\u{3}media_bin_smart_playlist_count\0\u{3}media_bin_video_input_count\0\u{3}audio_bin_playlist_count\0\u{3}audio_bin_playlist_folder_count\0\u{3}audio_bin_playlist_max_depth\0\u{3}timer_count\0\u{3}messages_count\0\u{3}props_count\0\u{3}props_auto_clear_count\0\u{3}prop_collections_count\0\u{3}prop_collections_single_prop_enabled_count\0\u{3}stage_layout_count\0\u{3}macros_count\0\u{3}macros_collections_count\0\u{3}macros_custom_icons\0\u{3}ubiquitous_show_directory\0")
@@ -2047,7 +2099,7 @@ nonisolated extension Rv_Analytics_Startup_Versioning: SwiftProtobuf.Message, Sw
 
 nonisolated extension Rv_Analytics_Startup_DiskUsage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".DiskUsage"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}bytes_of_show_files\0\u{3}bytes_of_media_asset_files\0\u{3}number_of_media_asset_files\0\u{3}bytes_of_unmanaged_media_asset_files\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}bytes_of_show_files\0\u{3}bytes_of_media_asset_files\0\u{3}number_of_media_asset_files\0\u{3}bytes_of_unmanaged_media_asset_files\0\u{3}bytes_of_largest_document\0\u{3}number_of_presentations_over_1_mib\0\u{3}number_of_presentations_over_10_mib\0\u{3}number_of_other_documents_over_1_mib\0\u{3}number_of_other_documents_over_10_mib\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2059,6 +2111,11 @@ nonisolated extension Rv_Analytics_Startup_DiskUsage: SwiftProtobuf.Message, Swi
       case 2: try { try decoder.decodeSingularUInt64Field(value: &self.bytesOfMediaAssetFiles) }()
       case 3: try { try decoder.decodeSingularUInt64Field(value: &self.numberOfMediaAssetFiles) }()
       case 4: try { try decoder.decodeSingularUInt64Field(value: &self.bytesOfUnmanagedMediaAssetFiles) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.bytesOfLargestDocument) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.numberOfPresentationsOver1Mib) }()
+      case 7: try { try decoder.decodeSingularUInt64Field(value: &self.numberOfPresentationsOver10Mib) }()
+      case 8: try { try decoder.decodeSingularUInt64Field(value: &self.numberOfOtherDocumentsOver1Mib) }()
+      case 9: try { try decoder.decodeSingularUInt64Field(value: &self.numberOfOtherDocumentsOver10Mib) }()
       default: break
       }
     }
@@ -2077,6 +2134,21 @@ nonisolated extension Rv_Analytics_Startup_DiskUsage: SwiftProtobuf.Message, Swi
     if self.bytesOfUnmanagedMediaAssetFiles != 0 {
       try visitor.visitSingularUInt64Field(value: self.bytesOfUnmanagedMediaAssetFiles, fieldNumber: 4)
     }
+    if self.bytesOfLargestDocument != 0 {
+      try visitor.visitSingularUInt64Field(value: self.bytesOfLargestDocument, fieldNumber: 5)
+    }
+    if self.numberOfPresentationsOver1Mib != 0 {
+      try visitor.visitSingularUInt64Field(value: self.numberOfPresentationsOver1Mib, fieldNumber: 6)
+    }
+    if self.numberOfPresentationsOver10Mib != 0 {
+      try visitor.visitSingularUInt64Field(value: self.numberOfPresentationsOver10Mib, fieldNumber: 7)
+    }
+    if self.numberOfOtherDocumentsOver1Mib != 0 {
+      try visitor.visitSingularUInt64Field(value: self.numberOfOtherDocumentsOver1Mib, fieldNumber: 8)
+    }
+    if self.numberOfOtherDocumentsOver10Mib != 0 {
+      try visitor.visitSingularUInt64Field(value: self.numberOfOtherDocumentsOver10Mib, fieldNumber: 9)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -2085,6 +2157,11 @@ nonisolated extension Rv_Analytics_Startup_DiskUsage: SwiftProtobuf.Message, Swi
     if lhs.bytesOfMediaAssetFiles != rhs.bytesOfMediaAssetFiles {return false}
     if lhs.numberOfMediaAssetFiles != rhs.numberOfMediaAssetFiles {return false}
     if lhs.bytesOfUnmanagedMediaAssetFiles != rhs.bytesOfUnmanagedMediaAssetFiles {return false}
+    if lhs.bytesOfLargestDocument != rhs.bytesOfLargestDocument {return false}
+    if lhs.numberOfPresentationsOver1Mib != rhs.numberOfPresentationsOver1Mib {return false}
+    if lhs.numberOfPresentationsOver10Mib != rhs.numberOfPresentationsOver10Mib {return false}
+    if lhs.numberOfOtherDocumentsOver1Mib != rhs.numberOfOtherDocumentsOver1Mib {return false}
+    if lhs.numberOfOtherDocumentsOver10Mib != rhs.numberOfOtherDocumentsOver10Mib {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

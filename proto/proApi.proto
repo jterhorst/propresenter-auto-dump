@@ -64,6 +64,7 @@ message ProApiNetworkConfiguration {
   rv.data.AirplayConfiguration airplay = 15;
   bool proremote_websocket_enable = 16;
   string proremote_websocket_password = 17;
+  bool auto_reselect_port_on_failure = 18;
 }
 
 message ProNetworkConfigurationMessage {
@@ -287,12 +288,19 @@ message ProLink {
     }
 
     message ServerState {
+      enum ListenerState {
+        LISTENER_STATE_NOT_ACTIVE = 0;
+        LISTENER_STATE_PENDING = 1;
+        LISTENER_STATE_BOUND = 2;
+        LISTENER_STATE_FAILED = 3;
+      }
+
       string local_ip = 1;
       string public_ip = 2;
       uint32 port = 3;
       bool success = 4;
       uint32 tcp_stream_port = 5;
-      bool tcp_stream_success = 6;
+      rv.data.ProLink.HandlerIn.ServerState.ListenerState tcp_stream_state = 7;
     }
 
     message ConfigurationRequest {

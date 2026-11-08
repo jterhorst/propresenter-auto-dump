@@ -71,6 +71,12 @@ message LogDiffPushed {
   string from_version_vector = 5;
 }
 
+message LogDiffBuffered {
+  rv.analytics.logs.LogMetadata metadata = 1;
+  string document_identifier = 2;
+  rv.analytics.logs.DiffMetadata diff_metadata = 3;
+}
+
 message LogDiffReceived {
   rv.analytics.logs.LogMetadata metadata = 1;
   string document_identifier = 2;

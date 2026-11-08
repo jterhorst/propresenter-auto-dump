@@ -56,6 +56,29 @@ message RenderLayer {
     int32 segment_size = 1;
   }
 
+  message TextAnimation {
+    enum Grouping {
+      CHARACTER = 0;
+      WORD = 1;
+      LINE = 2;
+      ALL = 3;
+    }
+
+    message SegmentBounds {
+      rv.data.Graphics.Rect bounds = 1;
+      rv.data.Graphics.Point offset = 2;
+      uint32 texture_atlas_index = 3;
+    }
+
+    message TextureAtlas {
+      rv.data.Graphics.Rect bounds = 1;
+    }
+
+    repeated rv.data.RenderLayer.TextAnimation.SegmentBounds segments = 1;
+    rv.data.RenderLayer.TextAnimation.Grouping grouping = 2;
+    repeated rv.data.RenderLayer.TextAnimation.TextureAtlas texture_atlases = 3;
+  }
+
   oneof LayerType {
     rv.data.RenderLayer.Composite composite = 1;
     rv.data.Media media = 2;
@@ -73,6 +96,7 @@ message RenderLayer {
   int32 build_index = 12;
   bool build_out = 13;
   int32 build_out_index = 14;
+  optional rv.data.RenderLayer.TextAnimation text_animation = 15;
 }
 
 message SlideElement {

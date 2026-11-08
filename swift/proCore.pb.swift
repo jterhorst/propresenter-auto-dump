@@ -1887,6 +1887,14 @@ public nonisolated struct Rv_Data_SendData: Sendable {
     set {messageType = .slideThumbnail(newValue)}
   }
 
+  public var workspaceGroups: Rv_Data_WorkspaceGroups {
+    get {
+      if case .workspaceGroups(let v)? = messageType {return v}
+      return Rv_Data_WorkspaceGroups()
+    }
+    set {messageType = .workspaceGroups(newValue)}
+  }
+
   public var messageID: Int32 = 0
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -1933,10 +1941,32 @@ public nonisolated struct Rv_Data_SendData: Sendable {
     case psbWorkspace(Rv_Data_ProScoreboardWorkspace)
     case inputStatusCallback(Rv_Data_InputStatusCallback)
     case slideThumbnail(Rv_Data_SlideThumbnailRequest)
+    case workspaceGroups(Rv_Data_WorkspaceGroups)
 
   }
 
   public init() {}
+}
+
+public nonisolated struct Rv_Data_WorkspaceGroups: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var groups: Rv_Data_Preferences.Groups {
+    get {_groups ?? Rv_Data_Preferences.Groups()}
+    set {_groups = newValue}
+  }
+  /// Returns true if `groups` has been explicitly set.
+  public var hasGroups: Bool {self._groups != nil}
+  /// Clears the value of `groups`. Subsequent reads from it will return its default value.
+  public mutating func clearGroups() {self._groups = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _groups: Rv_Data_Preferences.Groups? = nil
 }
 
 public nonisolated struct Rv_Data_TimerRuntimeState: Sendable {
@@ -2440,6 +2470,14 @@ public nonisolated struct Rv_Data_SendDataResponse: Sendable {
     set {messageType = .slideThumbnail(newValue)}
   }
 
+  public var mediaHlsURLResolution: Rv_Data_MediaHlsUrlResolution {
+    get {
+      if case .mediaHlsURLResolution(let v)? = messageType {return v}
+      return Rv_Data_MediaHlsUrlResolution()
+    }
+    set {messageType = .mediaHlsURLResolution(newValue)}
+  }
+
   public var messageID: Int32 = 0
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -2462,6 +2500,7 @@ public nonisolated struct Rv_Data_SendDataResponse: Sendable {
     case mediaAssetTriggered(Rv_Data_MediaAssetTriggered)
     case leaveBreadcrumb(Rv_Data_LeaveBreadcrumb)
     case slideThumbnail(Rv_Data_SlideThumbnailResponse)
+    case mediaHlsURLResolution(Rv_Data_MediaHlsUrlResolution)
 
   }
 
@@ -6001,7 +6040,7 @@ nonisolated extension Rv_Data_SlideThumbnailRequest: SwiftProtobuf.Message, Swif
 
 nonisolated extension Rv_Data_SendData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SendData"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}message_id\0\u{1}workspace\0\u{3}stage_document\0\u{3}timers_document\0\u{3}validate_encoder_request\0\u{3}trigger_cue\0\u{3}digital_audio_setup\0\u{3}macros_document\0\u{3}message_document\0\u{3}prop_document\0\u{3}ccli_document\0\u{3}audience_looks\0\u{3}live_audience_look\0\u{1}masks\0\u{3}recording_settings_document\0\u{3}capture_action_response\0\u{3}copyright_layout\0\u{3}global_background_transition\0\u{3}global_messages_transition\0\u{3}global_foreground_transition\0\u{3}global_props_transition\0\u{3}global_audio_transition\0\u{1}preferences\0\u{3}test_pattern\0\u{3}startup_complete\0\u{3}visual_playlist_doc\0\u{3}audio_playlist_doc\0\u{3}kill_watchdog\0\u{3}macro_icons\0\u{3}debug_trigger_data_dump\0\u{3}library_playlist_doc\0\u{3}audio_playlist_focus_uuid\0\u{3}media_playlist_focus_uuid\0\u{3}library_playlist_focus_uuid\0\u{3}library_playlist_item_focus_uuid\0\u{3}prop_pause\0\u{3}media_thumbnail\0\u{3}pco_data\0\u{3}webfill_token_and_cookies\0\u{3}psb_workspace\0\u{3}input_status_callback\0\u{3}slide_thumbnail\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}message_id\0\u{1}workspace\0\u{3}stage_document\0\u{3}timers_document\0\u{3}validate_encoder_request\0\u{3}trigger_cue\0\u{3}digital_audio_setup\0\u{3}macros_document\0\u{3}message_document\0\u{3}prop_document\0\u{3}ccli_document\0\u{3}audience_looks\0\u{3}live_audience_look\0\u{1}masks\0\u{3}recording_settings_document\0\u{3}capture_action_response\0\u{3}copyright_layout\0\u{3}global_background_transition\0\u{3}global_messages_transition\0\u{3}global_foreground_transition\0\u{3}global_props_transition\0\u{3}global_audio_transition\0\u{1}preferences\0\u{3}test_pattern\0\u{3}startup_complete\0\u{3}visual_playlist_doc\0\u{3}audio_playlist_doc\0\u{3}kill_watchdog\0\u{3}macro_icons\0\u{3}debug_trigger_data_dump\0\u{3}library_playlist_doc\0\u{3}audio_playlist_focus_uuid\0\u{3}media_playlist_focus_uuid\0\u{3}library_playlist_focus_uuid\0\u{3}library_playlist_item_focus_uuid\0\u{3}prop_pause\0\u{3}media_thumbnail\0\u{3}pco_data\0\u{3}webfill_token_and_cookies\0\u{3}psb_workspace\0\u{3}input_status_callback\0\u{3}slide_thumbnail\0\u{3}workspace_groups\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6543,6 +6582,19 @@ nonisolated extension Rv_Data_SendData: SwiftProtobuf.Message, SwiftProtobuf._Me
           self.messageType = .slideThumbnail(v)
         }
       }()
+      case 43: try {
+        var v: Rv_Data_WorkspaceGroups?
+        var hadOneofValue = false
+        if let current = self.messageType {
+          hadOneofValue = true
+          if case .workspaceGroups(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.messageType = .workspaceGroups(v)
+        }
+      }()
       default: break
       }
     }
@@ -6721,6 +6773,10 @@ nonisolated extension Rv_Data_SendData: SwiftProtobuf.Message, SwiftProtobuf._Me
       guard case .slideThumbnail(let v)? = self.messageType else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 42)
     }()
+    case .workspaceGroups?: try {
+      guard case .workspaceGroups(let v)? = self.messageType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 43)
+    }()
     case nil: break
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -6729,6 +6785,40 @@ nonisolated extension Rv_Data_SendData: SwiftProtobuf.Message, SwiftProtobuf._Me
   public static func ==(lhs: Rv_Data_SendData, rhs: Rv_Data_SendData) -> Bool {
     if lhs.messageType != rhs.messageType {return false}
     if lhs.messageID != rhs.messageID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_WorkspaceGroups: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".WorkspaceGroups"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}groups\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._groups) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._groups {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_WorkspaceGroups, rhs: Rv_Data_WorkspaceGroups) -> Bool {
+    if lhs._groups != rhs._groups {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -7267,7 +7357,7 @@ nonisolated extension Rv_Data_SlideThumbnailResponse: SwiftProtobuf.Message, Swi
 
 nonisolated extension Rv_Data_SendDataResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SendDataResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}message_id\0\u{3}validate_encoder_response\0\u{3}timer_state\0\u{3}capture_action_request\0\u{3}test_pattern\0\u{3}handled_exception\0\u{4}\u{2}audio_playlist_focus_uuid\0\u{3}media_playlist_focus_uuid\0\u{3}library_playlist_focus_uuid\0\u{3}library_playlist_item_focus_uuid\0\u{3}prop_pause\0\u{3}show_message\0\u{3}hide_message\0\u{3}get_media_thumbnail\0\u{3}request_webfill_token_and_cookies\0\u{3}media_asset_triggered\0\u{3}leave_breadcrumb\0\u{3}slide_thumbnail\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}message_id\0\u{3}validate_encoder_response\0\u{3}timer_state\0\u{3}capture_action_request\0\u{3}test_pattern\0\u{3}handled_exception\0\u{4}\u{2}audio_playlist_focus_uuid\0\u{3}media_playlist_focus_uuid\0\u{3}library_playlist_focus_uuid\0\u{3}library_playlist_item_focus_uuid\0\u{3}prop_pause\0\u{3}show_message\0\u{3}hide_message\0\u{3}get_media_thumbnail\0\u{3}request_webfill_token_and_cookies\0\u{3}media_asset_triggered\0\u{3}leave_breadcrumb\0\u{3}slide_thumbnail\0\u{3}media_hls_url_resolution\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7497,6 +7587,19 @@ nonisolated extension Rv_Data_SendDataResponse: SwiftProtobuf.Message, SwiftProt
           self.messageType = .slideThumbnail(v)
         }
       }()
+      case 20: try {
+        var v: Rv_Data_MediaHlsUrlResolution?
+        var hadOneofValue = false
+        if let current = self.messageType {
+          hadOneofValue = true
+          if case .mediaHlsURLResolution(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.messageType = .mediaHlsURLResolution(v)
+        }
+      }()
       default: break
       }
     }
@@ -7578,6 +7681,10 @@ nonisolated extension Rv_Data_SendDataResponse: SwiftProtobuf.Message, SwiftProt
     case .slideThumbnail?: try {
       guard case .slideThumbnail(let v)? = self.messageType else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
+    }()
+    case .mediaHlsURLResolution?: try {
+      guard case .mediaHlsURLResolution(let v)? = self.messageType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 20)
     }()
     case nil: break
     }

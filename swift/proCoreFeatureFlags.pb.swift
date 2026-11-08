@@ -37,9 +37,9 @@ public nonisolated struct Rv_Data_ResolvedFeatureFlags: Sendable {
 
   public var coreClientSync: Bool = false
 
-  public var hdrRenderingEnabled: Bool = false
+  public var textAnimationsEnabled: Bool = false
 
-  public var serverDrivenFeatureFlags: Bool = false
+  public var coreWorkspacePersistence: Bool = false
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -52,7 +52,7 @@ fileprivate nonisolated let _protobuf_package = "rv.data"
 
 nonisolated extension Rv_Data_ResolvedFeatureFlags: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ResolvedFeatureFlags"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}content_store_staging_enabled\0\u{4}\u{7}staging_api_endpoint_enabled\0\u{4}\u{2}pro_content_staging_enabled\0\u{3}core_networkapi_playlist\0\u{3}core_networkapi_presentation\0\u{4}\u{3}core_client_sync\0\u{4}\u{2}hdr_rendering_enabled\0\u{3}server_driven_feature_flags\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}content_store_staging_enabled\0\u{4}\u{7}staging_api_endpoint_enabled\0\u{4}\u{2}pro_content_staging_enabled\0\u{3}core_networkapi_playlist\0\u{3}core_networkapi_presentation\0\u{4}\u{3}core_client_sync\0\u{4}\u{4}text_animations_enabled\0\u{3}core_workspace_persistence\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -66,8 +66,8 @@ nonisolated extension Rv_Data_ResolvedFeatureFlags: SwiftProtobuf.Message, Swift
       case 11: try { try decoder.decodeSingularBoolField(value: &self.coreNetworkapiPlaylist) }()
       case 12: try { try decoder.decodeSingularBoolField(value: &self.coreNetworkapiPresentation) }()
       case 15: try { try decoder.decodeSingularBoolField(value: &self.coreClientSync) }()
-      case 17: try { try decoder.decodeSingularBoolField(value: &self.hdrRenderingEnabled) }()
-      case 18: try { try decoder.decodeSingularBoolField(value: &self.serverDrivenFeatureFlags) }()
+      case 19: try { try decoder.decodeSingularBoolField(value: &self.textAnimationsEnabled) }()
+      case 20: try { try decoder.decodeSingularBoolField(value: &self.coreWorkspacePersistence) }()
       default: break
       }
     }
@@ -92,11 +92,11 @@ nonisolated extension Rv_Data_ResolvedFeatureFlags: SwiftProtobuf.Message, Swift
     if self.coreClientSync != false {
       try visitor.visitSingularBoolField(value: self.coreClientSync, fieldNumber: 15)
     }
-    if self.hdrRenderingEnabled != false {
-      try visitor.visitSingularBoolField(value: self.hdrRenderingEnabled, fieldNumber: 17)
+    if self.textAnimationsEnabled != false {
+      try visitor.visitSingularBoolField(value: self.textAnimationsEnabled, fieldNumber: 19)
     }
-    if self.serverDrivenFeatureFlags != false {
-      try visitor.visitSingularBoolField(value: self.serverDrivenFeatureFlags, fieldNumber: 18)
+    if self.coreWorkspacePersistence != false {
+      try visitor.visitSingularBoolField(value: self.coreWorkspacePersistence, fieldNumber: 20)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -108,8 +108,8 @@ nonisolated extension Rv_Data_ResolvedFeatureFlags: SwiftProtobuf.Message, Swift
     if lhs.coreNetworkapiPlaylist != rhs.coreNetworkapiPlaylist {return false}
     if lhs.coreNetworkapiPresentation != rhs.coreNetworkapiPresentation {return false}
     if lhs.coreClientSync != rhs.coreClientSync {return false}
-    if lhs.hdrRenderingEnabled != rhs.hdrRenderingEnabled {return false}
-    if lhs.serverDrivenFeatureFlags != rhs.serverDrivenFeatureFlags {return false}
+    if lhs.textAnimationsEnabled != rhs.textAnimationsEnabled {return false}
+    if lhs.coreWorkspacePersistence != rhs.coreWorkspacePersistence {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

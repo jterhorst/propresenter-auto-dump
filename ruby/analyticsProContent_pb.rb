@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\x19\x61nalyticsProContent.proto\x12\x17rv.analytics.procontent\"\x0e\n\x0cMediaBinView\"\n\n\x08\x44ownload\"\x0f\n\rDownloadRetryb\x06proto3"
+descriptor_data = "\n\x19\x61nalyticsProContent.proto\x12\x17rv.analytics.procontent\"\x0e\n\x0cMediaBinView\"\n\n\x08\x44ownload\"\x0f\n\rDownloadRetry\"\x10\n\x0eStickersOpened\"\x87\x04\n\x0eStickerApplied\x12\x12\n\nsticker_id\x18\x01 \x01(\t\x12\x14\n\x0csticker_name\x18\x02 \x01(\t\x12\x12\n\ncollection\x18\x03 \x01(\t\x12Q\n\x10\x64iscovery_method\x18\x04 \x01(\x0e\x32\x37.rv.analytics.procontent.StickerApplied.DiscoveryMethod\x12\x10\n\x08slide_id\x18\x05 \x01(\t\x12\\\n\x13\x61pplication_context\x18\x06 \x01(\x0e\x32:.rv.analytics.procontent.StickerApplied.ApplicationContextH\x00\x88\x01\x01\"b\n\x0f\x44iscoveryMethod\x12\x19\n\x15\x44ISCOVERY_UNSPECIFIED\x10\x00\x12\n\n\x06SEARCH\x10\x01\x12\x0e\n\nCOLLECTION\x10\x02\x12\n\n\x06\x42ROWSE\x10\x03\x12\x0c\n\x08\x46\x45\x41TURED\x10\x04\"x\n\x12\x41pplicationContext\x12#\n\x1f\x41PPLICATION_CONTEXT_UNSPECIFIED\x10\x00\x12\t\n\x05SLIDE\x10\x01\x12\t\n\x05THEME\x10\x02\x12\t\n\x05STAGE\x10\x03\x12\x08\n\x04PROP\x10\x04\x12\x08\n\x04MASK\x10\x05\x12\x08\n\x04\x43\x43LI\x10\x06\x42\x16\n\x14_application_context\"\xa9\x01\n\x0fStickerModified\x12K\n\x0cmodification\x18\x01 \x01(\x0e\x32\x35.rv.analytics.procontent.StickerModified.Modification\"I\n\x0cModification\x12\x1c\n\x18MODIFICATION_UNSPECIFIED\x10\x00\x12\x11\n\rPLAYBACK_MODE\x10\x01\x12\x08\n\x04SIZE\x10\x02\x62\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
@@ -16,6 +16,12 @@ module Rv
       MediaBinView = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.procontent.MediaBinView").msgclass
       Download = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.procontent.Download").msgclass
       DownloadRetry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.procontent.DownloadRetry").msgclass
+      StickersOpened = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.procontent.StickersOpened").msgclass
+      StickerApplied = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.procontent.StickerApplied").msgclass
+      StickerApplied::DiscoveryMethod = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.procontent.StickerApplied.DiscoveryMethod").enummodule
+      StickerApplied::ApplicationContext = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.procontent.StickerApplied.ApplicationContext").enummodule
+      StickerModified = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.procontent.StickerModified").msgclass
+      StickerModified::Modification = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.procontent.StickerModified.Modification").enummodule
     end
   end
 end

@@ -12,6 +12,8 @@ import "ccli.proto";
 
 import "color.proto";
 
+import "contentProvider.calls.proto";
+
 import "cue.proto";
 
 import "effects.proto";
@@ -479,9 +481,14 @@ message SendData {
     rv.data.ProScoreboardWorkspace psb_workspace = 40;
     rv.data.InputStatusCallback input_status_callback = 41;
     rv.data.SlideThumbnailRequest slide_thumbnail = 42;
+    rv.data.WorkspaceGroups workspace_groups = 43;
   }
 
   int32 message_id = 1;
+}
+
+message WorkspaceGroups {
+  rv.data.Preferences.Groups groups = 1;
 }
 
 message TimerRuntimeState {
@@ -591,6 +598,7 @@ message SendDataResponse {
     rv.data.MediaAssetTriggered media_asset_triggered = 17;
     rv.data.LeaveBreadcrumb leave_breadcrumb = 18;
     rv.data.SlideThumbnailResponse slide_thumbnail = 19;
+    rv.data.MediaHlsUrlResolution media_hls_url_resolution = 20;
   }
 
   int32 message_id = 1;

@@ -29,6 +29,8 @@ public nonisolated struct Rv_Data_Slide: Sendable {
 
   public var elementBuildOrder: [Rv_Data_UUID] = []
 
+  public var elementBuildOrderV2: [Rv_Data_UUID] = []
+
   public var guidelines: [Rv_Data_AlignmentGuide] = []
 
   public var drawsBackgroundColor: Bool = false
@@ -2640,7 +2642,7 @@ fileprivate nonisolated let _protobuf_package = "rv.data"
 
 nonisolated extension Rv_Data_Slide: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Slide"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}elements\0\u{3}element_build_order\0\u{1}guidelines\0\u{3}draws_background_color\0\u{3}background_color\0\u{1}size\0\u{1}uuid\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}elements\0\u{3}element_build_order\0\u{1}guidelines\0\u{3}draws_background_color\0\u{3}background_color\0\u{1}size\0\u{1}uuid\0\u{3}element_build_order_v2\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2655,6 +2657,7 @@ nonisolated extension Rv_Data_Slide: SwiftProtobuf.Message, SwiftProtobuf._Messa
       case 5: try { try decoder.decodeSingularMessageField(value: &self._backgroundColor) }()
       case 6: try { try decoder.decodeSingularMessageField(value: &self._size) }()
       case 7: try { try decoder.decodeSingularMessageField(value: &self._uuid) }()
+      case 8: try { try decoder.decodeRepeatedMessageField(value: &self.elementBuildOrderV2) }()
       default: break
       }
     }
@@ -2686,12 +2689,16 @@ nonisolated extension Rv_Data_Slide: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try { if let v = self._uuid {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
     } }()
+    if !self.elementBuildOrderV2.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.elementBuildOrderV2, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Rv_Data_Slide, rhs: Rv_Data_Slide) -> Bool {
     if lhs.elements != rhs.elements {return false}
     if lhs.elementBuildOrder != rhs.elementBuildOrder {return false}
+    if lhs.elementBuildOrderV2 != rhs.elementBuildOrderV2 {return false}
     if lhs.guidelines != rhs.guidelines {return false}
     if lhs.drawsBackgroundColor != rhs.drawsBackgroundColor {return false}
     if lhs._backgroundColor != rhs._backgroundColor {return false}

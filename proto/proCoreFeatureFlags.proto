@@ -11,6 +11,6 @@ message ResolvedFeatureFlags {
   bool core_networkapi_playlist = 11;
   bool core_networkapi_presentation = 12;
   bool core_client_sync = 15;
-  bool hdr_rendering_enabled = 17;
-  bool server_driven_feature_flags = 18;
+  bool text_animations_enabled = 19;
+  bool core_workspace_persistence = 20;
 }

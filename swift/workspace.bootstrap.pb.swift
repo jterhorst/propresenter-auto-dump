@@ -20,34 +20,286 @@ fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobu
   typealias Version = _2
 }
 
-public nonisolated struct Workspace_CreationOption: Sendable {
+public nonisolated enum Workspace_LegacyMigrationAnswer: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public typealias RawValue = Int
+  case unspecified // = 0
+  case notAsked // = 1
+  case upgrade // = 2
+  case newWorkspace // = 3
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .unspecified
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .unspecified
+    case 1: self = .notAsked
+    case 2: self = .upgrade
+    case 3: self = .newWorkspace
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .unspecified: return 0
+    case .notAsked: return 1
+    case .upgrade: return 2
+    case .newWorkspace: return 3
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static let allCases: [Workspace_LegacyMigrationAnswer] = [
+    .unspecified,
+    .notAsked,
+    .upgrade,
+    .newWorkspace,
+  ]
+
+}
+
+public nonisolated struct Workspace_LegacyRegistryWorkspace: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var minProVersion: String {
-    get {_minProVersion ?? String()}
-    set {_minProVersion = newValue}
+  public var path: String = String()
+
+  public var name: String = String()
+
+  public var cloudUuid: String {
+    get {_cloudUuid ?? String()}
+    set {_cloudUuid = newValue}
   }
-  /// Returns true if `minProVersion` has been explicitly set.
-  public var hasMinProVersion: Bool {self._minProVersion != nil}
-  /// Clears the value of `minProVersion`. Subsequent reads from it will return its default value.
-  public mutating func clearMinProVersion() {self._minProVersion = nil}
+  /// Returns true if `cloudUuid` has been explicitly set.
+  public var hasCloudUuid: Bool {self._cloudUuid != nil}
+  /// Clears the value of `cloudUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearCloudUuid() {self._cloudUuid = nil}
+
+  public var schemaVersion: String {
+    get {_schemaVersion ?? String()}
+    set {_schemaVersion = newValue}
+  }
+  /// Returns true if `schemaVersion` has been explicitly set.
+  public var hasSchemaVersion: Bool {self._schemaVersion != nil}
+  /// Clears the value of `schemaVersion`. Subsequent reads from it will return its default value.
+  public mutating func clearSchemaVersion() {self._schemaVersion = nil}
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
-  fileprivate var _minProVersion: String? = nil
+  fileprivate var _cloudUuid: String? = nil
+  fileprivate var _schemaVersion: String? = nil
+}
+
+public nonisolated struct Workspace_LegacyRegistrySnapshot: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var workspaces: [Workspace_LegacyRegistryWorkspace] = []
+
+  public var selectedPath: String {
+    get {_selectedPath ?? String()}
+    set {_selectedPath = newValue}
+  }
+  /// Returns true if `selectedPath` has been explicitly set.
+  public var hasSelectedPath: Bool {self._selectedPath != nil}
+  /// Clears the value of `selectedPath`. Subsequent reads from it will return its default value.
+  public mutating func clearSelectedPath() {self._selectedPath = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _selectedPath: String? = nil
+}
+
+public nonisolated struct Workspace_CreationOption: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var minSchemaVersion: String {
+    get {_minSchemaVersion ?? String()}
+    set {_minSchemaVersion = newValue}
+  }
+  /// Returns true if `minSchemaVersion` has been explicitly set.
+  public var hasMinSchemaVersion: Bool {self._minSchemaVersion != nil}
+  /// Clears the value of `minSchemaVersion`. Subsequent reads from it will return its default value.
+  public mutating func clearMinSchemaVersion() {self._minSchemaVersion = nil}
+
+  public var legacyRegistrySnapshot: Workspace_LegacyRegistrySnapshot {
+    get {_legacyRegistrySnapshot ?? Workspace_LegacyRegistrySnapshot()}
+    set {_legacyRegistrySnapshot = newValue}
+  }
+  /// Returns true if `legacyRegistrySnapshot` has been explicitly set.
+  public var hasLegacyRegistrySnapshot: Bool {self._legacyRegistrySnapshot != nil}
+  /// Clears the value of `legacyRegistrySnapshot`. Subsequent reads from it will return its default value.
+  public mutating func clearLegacyRegistrySnapshot() {self._legacyRegistrySnapshot = nil}
+
+  public var legacyMigrationAnswer: Workspace_LegacyMigrationAnswer = .unspecified
+
+  public var openNewWorkspace: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _minSchemaVersion: String? = nil
+  fileprivate var _legacyRegistrySnapshot: Workspace_LegacyRegistrySnapshot? = nil
+}
+
+public nonisolated struct Workspace_LegacyMigrationShortfall: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var items: [Workspace_LegacyMigrationShortfall.Item] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Kind: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case presentations // = 1
+    case themes // = 2
+    case effectsAndTransitions // = 3
+    case mediaFiles // = 4
+    case libraries // = 5
+    case libraryOrder // = 6
+    case presentationPlaylists // = 7
+    case mediaPlaylists // = 8
+    case audioPlaylists // = 9
+    case playlistTemplates // = 10
+    case macros // = 11
+    case props // = 12
+    case stageLayouts // = 13
+    case messages // = 14
+    case timers // = 15
+    case calendar // = 16
+    case keyboardShortcuts // = 17
+    case communicationDevices // = 18
+    case workspaceSettings // = 19
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .presentations
+      case 2: self = .themes
+      case 3: self = .effectsAndTransitions
+      case 4: self = .mediaFiles
+      case 5: self = .libraries
+      case 6: self = .libraryOrder
+      case 7: self = .presentationPlaylists
+      case 8: self = .mediaPlaylists
+      case 9: self = .audioPlaylists
+      case 10: self = .playlistTemplates
+      case 11: self = .macros
+      case 12: self = .props
+      case 13: self = .stageLayouts
+      case 14: self = .messages
+      case 15: self = .timers
+      case 16: self = .calendar
+      case 17: self = .keyboardShortcuts
+      case 18: self = .communicationDevices
+      case 19: self = .workspaceSettings
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .presentations: return 1
+      case .themes: return 2
+      case .effectsAndTransitions: return 3
+      case .mediaFiles: return 4
+      case .libraries: return 5
+      case .libraryOrder: return 6
+      case .presentationPlaylists: return 7
+      case .mediaPlaylists: return 8
+      case .audioPlaylists: return 9
+      case .playlistTemplates: return 10
+      case .macros: return 11
+      case .props: return 12
+      case .stageLayouts: return 13
+      case .messages: return 14
+      case .timers: return 15
+      case .calendar: return 16
+      case .keyboardShortcuts: return 17
+      case .communicationDevices: return 18
+      case .workspaceSettings: return 19
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Workspace_LegacyMigrationShortfall.Kind] = [
+      .unspecified,
+      .presentations,
+      .themes,
+      .effectsAndTransitions,
+      .mediaFiles,
+      .libraries,
+      .libraryOrder,
+      .presentationPlaylists,
+      .mediaPlaylists,
+      .audioPlaylists,
+      .playlistTemplates,
+      .macros,
+      .props,
+      .stageLayouts,
+      .messages,
+      .timers,
+      .calendar,
+      .keyboardShortcuts,
+      .communicationDevices,
+      .workspaceSettings,
+    ]
+
+  }
+
+  public nonisolated struct Item: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var kind: Workspace_LegacyMigrationShortfall.Kind = .unspecified
+
+    public var count: UInt64 = 0
+
+    public var names: [String] = []
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "workspace"
 
-nonisolated extension Workspace_CreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".CreationOption"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}min_pro_version\0")
+nonisolated extension Workspace_LegacyMigrationAnswer: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LEGACY_MIGRATION_ANSWER_UNSPECIFIED\0\u{1}LEGACY_MIGRATION_ANSWER_NOT_ASKED\0\u{1}LEGACY_MIGRATION_ANSWER_UPGRADE\0\u{1}LEGACY_MIGRATION_ANSWER_NEW_WORKSPACE\0")
+}
+
+nonisolated extension Workspace_LegacyRegistryWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LegacyRegistryWorkspace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{1}name\0\u{3}cloud_uuid\0\u{3}schema_version\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -55,7 +307,10 @@ nonisolated extension Workspace_CreationOption: SwiftProtobuf.Message, SwiftProt
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self._minProVersion) }()
+      case 1: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._cloudUuid) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._schemaVersion) }()
       default: break
       }
     }
@@ -66,14 +321,188 @@ nonisolated extension Workspace_CreationOption: SwiftProtobuf.Message, SwiftProt
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
     // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._minProVersion {
-      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 1)
+    }
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 2)
+    }
+    try { if let v = self._cloudUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    try { if let v = self._schemaVersion {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
     } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
+  public static func ==(lhs: Workspace_LegacyRegistryWorkspace, rhs: Workspace_LegacyRegistryWorkspace) -> Bool {
+    if lhs.path != rhs.path {return false}
+    if lhs.name != rhs.name {return false}
+    if lhs._cloudUuid != rhs._cloudUuid {return false}
+    if lhs._schemaVersion != rhs._schemaVersion {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_LegacyRegistrySnapshot: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LegacyRegistrySnapshot"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}workspaces\0\u{3}selected_path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.workspaces) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._selectedPath) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.workspaces.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.workspaces, fieldNumber: 1)
+    }
+    try { if let v = self._selectedPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_LegacyRegistrySnapshot, rhs: Workspace_LegacyRegistrySnapshot) -> Bool {
+    if lhs.workspaces != rhs.workspaces {return false}
+    if lhs._selectedPath != rhs._selectedPath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_CreationOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CreationOption"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}min_schema_version\0\u{3}legacy_registry_snapshot\0\u{3}legacy_migration_answer\0\u{3}open_new_workspace\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._minSchemaVersion) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._legacyRegistrySnapshot) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.legacyMigrationAnswer) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.openNewWorkspace) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._minSchemaVersion {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    } }()
+    try { if let v = self._legacyRegistrySnapshot {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    if self.legacyMigrationAnswer != .unspecified {
+      try visitor.visitSingularEnumField(value: self.legacyMigrationAnswer, fieldNumber: 3)
+    }
+    if self.openNewWorkspace != false {
+      try visitor.visitSingularBoolField(value: self.openNewWorkspace, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
   public static func ==(lhs: Workspace_CreationOption, rhs: Workspace_CreationOption) -> Bool {
-    if lhs._minProVersion != rhs._minProVersion {return false}
+    if lhs._minSchemaVersion != rhs._minSchemaVersion {return false}
+    if lhs._legacyRegistrySnapshot != rhs._legacyRegistrySnapshot {return false}
+    if lhs.legacyMigrationAnswer != rhs.legacyMigrationAnswer {return false}
+    if lhs.openNewWorkspace != rhs.openNewWorkspace {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_LegacyMigrationShortfall: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LegacyMigrationShortfall"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}items\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.items) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.items.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.items, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_LegacyMigrationShortfall, rhs: Workspace_LegacyMigrationShortfall) -> Bool {
+    if lhs.items != rhs.items {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Workspace_LegacyMigrationShortfall.Kind: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0KIND_UNSPECIFIED\0\u{1}KIND_PRESENTATIONS\0\u{1}KIND_THEMES\0\u{1}KIND_EFFECTS_AND_TRANSITIONS\0\u{1}KIND_MEDIA_FILES\0\u{1}KIND_LIBRARIES\0\u{1}KIND_LIBRARY_ORDER\0\u{1}KIND_PRESENTATION_PLAYLISTS\0\u{1}KIND_MEDIA_PLAYLISTS\0\u{1}KIND_AUDIO_PLAYLISTS\0\u{1}KIND_PLAYLIST_TEMPLATES\0\u{1}KIND_MACROS\0\u{1}KIND_PROPS\0\u{1}KIND_STAGE_LAYOUTS\0\u{1}KIND_MESSAGES\0\u{1}KIND_TIMERS\0\u{1}KIND_CALENDAR\0\u{1}KIND_KEYBOARD_SHORTCUTS\0\u{1}KIND_COMMUNICATION_DEVICES\0\u{1}KIND_WORKSPACE_SETTINGS\0")
+}
+
+nonisolated extension Workspace_LegacyMigrationShortfall.Item: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Workspace_LegacyMigrationShortfall.protoMessageName + ".Item"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}kind\0\u{1}count\0\u{1}names\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.count) }()
+      case 3: try { try decoder.decodeRepeatedStringField(value: &self.names) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.kind != .unspecified {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 1)
+    }
+    if self.count != 0 {
+      try visitor.visitSingularUInt64Field(value: self.count, fieldNumber: 2)
+    }
+    if !self.names.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.names, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Workspace_LegacyMigrationShortfall.Item, rhs: Workspace_LegacyMigrationShortfall.Item) -> Bool {
+    if lhs.kind != rhs.kind {return false}
+    if lhs.count != rhs.count {return false}
+    if lhs.names != rhs.names {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

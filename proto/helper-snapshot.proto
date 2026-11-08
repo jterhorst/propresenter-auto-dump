@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+
+package helper.snapshot;
+
+
+import "effects.proto";
+
+import "alphaType.proto";
+
+
+
+message Request {
+  string input = 1;
+  string output = 2;
+  helper.snapshot.Transformation transformation = 3;
+}
+
+message ResponseEnvelope {
+  message Response {
+    helper.snapshot.MediaInfo metadata = 1;
+    bytes thumbnail_data = 2;
+  }
+
+  message Error {
+    string message = 1;
+  }
+
+  oneof result {
+    helper.snapshot.ResponseEnvelope.Response response = 1;
+    helper.snapshot.ResponseEnvelope.Error error = 2;
+  }
+
+}
+
+message MediaInfo {
+  enum ContentType {
+    CONTENT_TYPE_UNKNOWN = 0;
+    CONTENT_TYPE_AUDIO = 1;
+    CONTENT_TYPE_IMAGE = 2;
+    CONTENT_TYPE_VIDEO = 3;
+  }
+
+  enum ColorFormat {
+    SDR = 0;
+    HDR_REC2100_HLG = 1;
+    HDR_REC2100_PQ = 2;
+  }
+
+  string url = 1;
+  uint32 width = 2;
+  uint32 height = 3;
+  float fps = 4;
+  float duration = 5;
+  uint32 num_audio_channels = 6;
+  string codec = 7;
+  string artist = 8;
+  string title = 9;
+  int32 rotation = 10;
+  helper.snapshot.MediaInfo.ContentType content_type = 11;
+  bool has_alpha_channel = 12;
+  bool supports_hw_decode = 13;
+  helper.snapshot.MediaInfo.ColorFormat color_format = 14;
+}
+
+message Transformation {
+  repeated rv.data.Effect effects = 1;
+  float position = 2;
+  int32 rotation = 3;
+  uint32 width = 4;
+  uint32 height = 5;
+  float insets_top = 6;
+  float insets_left = 7;
+  float insets_right = 8;
+  float insets_bottom = 9;
+  bool flip_horizontally = 10;
+  bool flip_vertically = 11;
+  rv.data.AlphaType alpha_type = 12;
+  bool use_default_native_rotation = 13;
+}

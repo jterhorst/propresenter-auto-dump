@@ -50,6 +50,197 @@ public nonisolated struct Rv_Analytics_Procontent_DownloadRetry: Sendable {
   public init() {}
 }
 
+public nonisolated struct Rv_Analytics_Procontent_StickersOpened: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Rv_Analytics_Procontent_StickerApplied: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var stickerID: String = String()
+
+  public var stickerName: String = String()
+
+  public var collection: String = String()
+
+  public var discoveryMethod: Rv_Analytics_Procontent_StickerApplied.DiscoveryMethod = .discoveryUnspecified
+
+  public var slideID: String = String()
+
+  public var applicationContext: Rv_Analytics_Procontent_StickerApplied.ApplicationContext {
+    get {_applicationContext ?? .unspecified}
+    set {_applicationContext = newValue}
+  }
+  /// Returns true if `applicationContext` has been explicitly set.
+  public var hasApplicationContext: Bool {self._applicationContext != nil}
+  /// Clears the value of `applicationContext`. Subsequent reads from it will return its default value.
+  public mutating func clearApplicationContext() {self._applicationContext = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum DiscoveryMethod: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case discoveryUnspecified // = 0
+    case search // = 1
+    case collection // = 2
+    case browse // = 3
+    case featured // = 4
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .discoveryUnspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .discoveryUnspecified
+      case 1: self = .search
+      case 2: self = .collection
+      case 3: self = .browse
+      case 4: self = .featured
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .discoveryUnspecified: return 0
+      case .search: return 1
+      case .collection: return 2
+      case .browse: return 3
+      case .featured: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Procontent_StickerApplied.DiscoveryMethod] = [
+      .discoveryUnspecified,
+      .search,
+      .collection,
+      .browse,
+      .featured,
+    ]
+
+  }
+
+  public nonisolated enum ApplicationContext: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case slide // = 1
+    case theme // = 2
+    case stage // = 3
+    case prop // = 4
+    case mask // = 5
+    case ccli // = 6
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .slide
+      case 2: self = .theme
+      case 3: self = .stage
+      case 4: self = .prop
+      case 5: self = .mask
+      case 6: self = .ccli
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .slide: return 1
+      case .theme: return 2
+      case .stage: return 3
+      case .prop: return 4
+      case .mask: return 5
+      case .ccli: return 6
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Procontent_StickerApplied.ApplicationContext] = [
+      .unspecified,
+      .slide,
+      .theme,
+      .stage,
+      .prop,
+      .mask,
+      .ccli,
+    ]
+
+  }
+
+  public init() {}
+
+  fileprivate var _applicationContext: Rv_Analytics_Procontent_StickerApplied.ApplicationContext? = nil
+}
+
+public nonisolated struct Rv_Analytics_Procontent_StickerModified: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var modification: Rv_Analytics_Procontent_StickerModified.Modification = .unspecified
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Modification: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case playbackMode // = 1
+    case size // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .playbackMode
+      case 2: self = .size
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .playbackMode: return 1
+      case .size: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Procontent_StickerModified.Modification] = [
+      .unspecified,
+      .playbackMode,
+      .size,
+    ]
+
+  }
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "rv.analytics.procontent"
@@ -109,4 +300,124 @@ nonisolated extension Rv_Analytics_Procontent_DownloadRetry: SwiftProtobuf.Messa
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+nonisolated extension Rv_Analytics_Procontent_StickersOpened: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".StickersOpened"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Procontent_StickersOpened, rhs: Rv_Analytics_Procontent_StickersOpened) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Procontent_StickerApplied: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".StickerApplied"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}sticker_id\0\u{3}sticker_name\0\u{1}collection\0\u{3}discovery_method\0\u{3}slide_id\0\u{3}application_context\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.stickerID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.stickerName) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.collection) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.discoveryMethod) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.slideID) }()
+      case 6: try { try decoder.decodeSingularEnumField(value: &self._applicationContext) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.stickerID.isEmpty {
+      try visitor.visitSingularStringField(value: self.stickerID, fieldNumber: 1)
+    }
+    if !self.stickerName.isEmpty {
+      try visitor.visitSingularStringField(value: self.stickerName, fieldNumber: 2)
+    }
+    if !self.collection.isEmpty {
+      try visitor.visitSingularStringField(value: self.collection, fieldNumber: 3)
+    }
+    if self.discoveryMethod != .discoveryUnspecified {
+      try visitor.visitSingularEnumField(value: self.discoveryMethod, fieldNumber: 4)
+    }
+    if !self.slideID.isEmpty {
+      try visitor.visitSingularStringField(value: self.slideID, fieldNumber: 5)
+    }
+    try { if let v = self._applicationContext {
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 6)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Procontent_StickerApplied, rhs: Rv_Analytics_Procontent_StickerApplied) -> Bool {
+    if lhs.stickerID != rhs.stickerID {return false}
+    if lhs.stickerName != rhs.stickerName {return false}
+    if lhs.collection != rhs.collection {return false}
+    if lhs.discoveryMethod != rhs.discoveryMethod {return false}
+    if lhs.slideID != rhs.slideID {return false}
+    if lhs._applicationContext != rhs._applicationContext {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Procontent_StickerApplied.DiscoveryMethod: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0DISCOVERY_UNSPECIFIED\0\u{1}SEARCH\0\u{1}COLLECTION\0\u{1}BROWSE\0\u{1}FEATURED\0")
+}
+
+nonisolated extension Rv_Analytics_Procontent_StickerApplied.ApplicationContext: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0APPLICATION_CONTEXT_UNSPECIFIED\0\u{1}SLIDE\0\u{1}THEME\0\u{1}STAGE\0\u{1}PROP\0\u{1}MASK\0\u{1}CCLI\0")
+}
+
+nonisolated extension Rv_Analytics_Procontent_StickerModified: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".StickerModified"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}modification\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.modification) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.modification != .unspecified {
+      try visitor.visitSingularEnumField(value: self.modification, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Procontent_StickerModified, rhs: Rv_Analytics_Procontent_StickerModified) -> Bool {
+    if lhs.modification != rhs.modification {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Procontent_StickerModified.Modification: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MODIFICATION_UNSPECIFIED\0\u{1}PLAYBACK_MODE\0\u{1}SIZE\0")
 }

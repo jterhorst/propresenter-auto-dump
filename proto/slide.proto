@@ -534,6 +534,7 @@ message Slide {
 
   repeated rv.data.Slide.Element elements = 1;
   repeated rv.data.UUID element_build_order = 2;
+  repeated rv.data.UUID element_build_order_v2 = 8;
   repeated rv.data.AlignmentGuide guidelines = 3;
   bool draws_background_color = 4;
   rv.data.Color background_color = 5;

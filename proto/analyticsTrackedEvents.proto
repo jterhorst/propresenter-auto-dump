@@ -397,26 +397,69 @@ message SyncingUnpaused {
   uint64 duration = 1;
 }
 
-message UserWorkspaceTreeModification {
-  enum Bucket {
-    OTHER = 0;
-    LIBRARIES = 1;
-    THEMES = 2;
-    PLAYLISTS = 3;
-    PLAYLIST_TEMPLATES = 4;
-    CONFIGURATION = 5;
-    MEDIA = 6;
-    PRESETS = 7;
-    DOWNLOADS = 8;
+message MediaStreamUrlValidated {
+  enum Result {
+    RESULT_UNSPECIFIED = 0;
+    ACCEPTED_ON_DEMAND = 1;
+    ACCEPTED_LIVE = 2;
+    REJECTED = 3;
   }
 
-  enum Operation {
-    MODIFIED = 0;
-    CREATED = 1;
-    RENAMED = 2;
-    REMOVED = 3;
+  rv.analytics.trackedevents.MediaStreamUrlValidated.Result result = 1;
+}
+
+message CloudWorkspaceTransfer {
+  enum Direction {
+    DIRECTION_UNSPECIFIED = 0;
+    PUBLISH = 1;
+    DOWNLOAD = 2;
   }
 
-  rv.analytics.trackedevents.UserWorkspaceTreeModification.Bucket bucket = 1;
-  rv.analytics.trackedevents.UserWorkspaceTreeModification.Operation operation = 2;
+  enum EntryPoint {
+    ENTRY_POINT_UNSPECIFIED = 0;
+    CLOUD_ONBOARDING = 1;
+    WELCOME = 2;
+    MANAGE_WORKSPACES = 3;
+    GENERAL_SETTINGS = 4;
+    STATUS_TOOLBAR = 5;
+    NEW_CLOUD_WORKSPACE = 6;
+  }
+
+  enum Outcome {
+    OUTCOME_UNSPECIFIED = 0;
+    SUCCEEDED = 1;
+    FAILED = 2;
+    CANCELLED = 3;
+    SWITCHED_TO_EXISTING_COPY = 4;
+  }
+
+  enum Step {
+    STEP_UNSPECIFIED = 0;
+    PREPARATION = 1;
+    CORE_CALL = 2;
+    FINALIZATION = 3;
+  }
+
+  enum ClientReason {
+    CLIENT_REASON_NONE = 0;
+    NO_CLOUD_SEAT = 1;
+    SEAT_DOES_NOT_ALLOW_CLOUD = 2;
+    WORKSPACE_NOT_ACTIVE = 3;
+    CONVERSION_RUNNING = 4;
+    SYNC_PAUSED = 5;
+    USER_CANCELLED = 6;
+    OTHER = 7;
+  }
+
+  rv.analytics.trackedevents.CloudWorkspaceTransfer.Direction direction = 1;
+  rv.analytics.trackedevents.CloudWorkspaceTransfer.EntryPoint entry_point = 2;
+  rv.analytics.trackedevents.CloudWorkspaceTransfer.Outcome outcome = 3;
+  rv.analytics.trackedevents.CloudWorkspaceTransfer.Step step = 4;
+  int32 core_error_code = 5;
+  uint32 http_status = 6;
+  uint64 duration_ms = 7;
+  rv.analytics.trackedevents.CloudWorkspaceTransfer.ClientReason client_reason = 8;
+  uint32 unavailable_smart_playlist_media = 9;
+  uint32 missing_smart_playlist_media = 10;
+  uint32 unavailable_smart_playlists = 11;
 }

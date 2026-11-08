@@ -46,4 +46,5 @@ message CopyrightLayout {
   }
 
   repeated rv.data.CopyrightLayout.Token tokens = 2;
+  repeated rv.data.CopyrightLayout.Token tokens_v2 = 3;
 }

@@ -372,6 +372,39 @@ public nonisolated struct Rv_Analytics_Logs_LogDiffPushed: Sendable {
   fileprivate var _diffMetadata: Rv_Analytics_Logs_DiffMetadata? = nil
 }
 
+public nonisolated struct Rv_Analytics_Logs_LogDiffBuffered: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var metadata: Rv_Analytics_Logs_LogMetadata {
+    get {_metadata ?? Rv_Analytics_Logs_LogMetadata()}
+    set {_metadata = newValue}
+  }
+  /// Returns true if `metadata` has been explicitly set.
+  public var hasMetadata: Bool {self._metadata != nil}
+  /// Clears the value of `metadata`. Subsequent reads from it will return its default value.
+  public mutating func clearMetadata() {self._metadata = nil}
+
+  public var documentIdentifier: String = String()
+
+  public var diffMetadata: Rv_Analytics_Logs_DiffMetadata {
+    get {_diffMetadata ?? Rv_Analytics_Logs_DiffMetadata()}
+    set {_diffMetadata = newValue}
+  }
+  /// Returns true if `diffMetadata` has been explicitly set.
+  public var hasDiffMetadata: Bool {self._diffMetadata != nil}
+  /// Clears the value of `diffMetadata`. Subsequent reads from it will return its default value.
+  public mutating func clearDiffMetadata() {self._diffMetadata = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _metadata: Rv_Analytics_Logs_LogMetadata? = nil
+  fileprivate var _diffMetadata: Rv_Analytics_Logs_DiffMetadata? = nil
+}
+
 public nonisolated struct Rv_Analytics_Logs_LogDiffReceived: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -1021,6 +1054,50 @@ nonisolated extension Rv_Analytics_Logs_LogDiffPushed: SwiftProtobuf.Message, Sw
     if lhs.documentName != rhs.documentName {return false}
     if lhs._diffMetadata != rhs._diffMetadata {return false}
     if lhs.fromVersionVector != rhs.fromVersionVector {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Logs_LogDiffBuffered: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LogDiffBuffered"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}metadata\0\u{3}document_identifier\0\u{3}diff_metadata\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._metadata) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._diffMetadata) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._metadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.documentIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentIdentifier, fieldNumber: 2)
+    }
+    try { if let v = self._diffMetadata {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Logs_LogDiffBuffered, rhs: Rv_Analytics_Logs_LogDiffBuffered) -> Bool {
+    if lhs._metadata != rhs._metadata {return false}
+    if lhs.documentIdentifier != rhs.documentIdentifier {return false}
+    if lhs._diffMetadata != rhs._diffMetadata {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

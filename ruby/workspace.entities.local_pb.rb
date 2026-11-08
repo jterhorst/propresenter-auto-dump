@@ -7,7 +7,7 @@ require 'google/protobuf'
 require 'document.entities_pb'
 
 
-descriptor_data = "\n\x1eworkspace.entities.local.proto\x12\x0fworkspace.local\x1a\x17\x64ocument.entities.proto\"W\n\x08Metadata\x12\x11\n\x04uuid\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x0bpro_version\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0c\n\x04path\x18\x04 \x01(\tB\x07\n\x05_uuid\"b\n\tWorkspace\x12+\n\x08metadata\x18\x01 \x01(\x0b\x32\x19.workspace.local.Metadata\x12(\n\tdocuments\x18\x02 \x01(\x0b\x32\x15.document.DocumentSetb\x06proto3"
+descriptor_data = "\n\x1eworkspace.entities.local.proto\x12\x0fworkspace.local\x1a\x17\x64ocument.entities.proto\"f\n\x08Metadata\x12\x17\n\ncloud_uuid\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x16\n\x0eschema_version\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x0c\n\x04path\x18\x04 \x01(\tB\r\n\x0b_cloud_uuid\"b\n\tWorkspace\x12+\n\x08metadata\x18\x01 \x01(\x0b\x32\x19.workspace.local.Metadata\x12(\n\tdocuments\x18\x02 \x01(\x0b\x32\x15.document.DocumentSetb\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)

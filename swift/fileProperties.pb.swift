@@ -84,6 +84,73 @@ public nonisolated struct Rv_Data_FileProperties: Sendable {
   fileprivate var _remoteProperties: Rv_Data_FileProperties.RemoteProperties? = nil
 }
 
+public nonisolated struct Rv_Data_SourceInfo: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var sourceType: Rv_Data_SourceInfo.OneOf_SourceType? = nil
+
+  public var file: Rv_Data_SourceInfo.FileProperties {
+    get {
+      if case .file(let v)? = sourceType {return v}
+      return Rv_Data_SourceInfo.FileProperties()
+    }
+    set {sourceType = .file(newValue)}
+  }
+
+  public var hls: Rv_Data_SourceInfo.HLSProperties {
+    get {
+      if case .hls(let v)? = sourceType {return v}
+      return Rv_Data_SourceInfo.HLSProperties()
+    }
+    set {sourceType = .hls(newValue)}
+  }
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum OneOf_SourceType: Equatable, Sendable {
+    case file(Rv_Data_SourceInfo.FileProperties)
+    case hls(Rv_Data_SourceInfo.HLSProperties)
+
+  }
+
+  public nonisolated struct FileProperties: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var url: Rv_Data_URL {
+      get {_url ?? Rv_Data_URL()}
+      set {_url = newValue}
+    }
+    /// Returns true if `url` has been explicitly set.
+    public var hasURL: Bool {self._url != nil}
+    /// Clears the value of `url`. Subsequent reads from it will return its default value.
+    public mutating func clearURL() {self._url = nil}
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _url: Rv_Data_URL? = nil
+  }
+
+  public nonisolated struct HLSProperties: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var url: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "rv.data"
@@ -186,6 +253,137 @@ nonisolated extension Rv_Data_FileProperties.RemoteProperties.ProContent: SwiftP
 
   public static func ==(lhs: Rv_Data_FileProperties.RemoteProperties.ProContent, rhs: Rv_Data_FileProperties.RemoteProperties.ProContent) -> Bool {
     if lhs.downloadIdentifier != rhs.downloadIdentifier {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_SourceInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SourceInfo"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}file\0\u{1}hls\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Rv_Data_SourceInfo.FileProperties?
+        var hadOneofValue = false
+        if let current = self.sourceType {
+          hadOneofValue = true
+          if case .file(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.sourceType = .file(v)
+        }
+      }()
+      case 2: try {
+        var v: Rv_Data_SourceInfo.HLSProperties?
+        var hadOneofValue = false
+        if let current = self.sourceType {
+          hadOneofValue = true
+          if case .hls(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.sourceType = .hls(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.sourceType {
+    case .file?: try {
+      guard case .file(let v)? = self.sourceType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .hls?: try {
+      guard case .hls(let v)? = self.sourceType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_SourceInfo, rhs: Rv_Data_SourceInfo) -> Bool {
+    if lhs.sourceType != rhs.sourceType {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_SourceInfo.FileProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_SourceInfo.protoMessageName + ".FileProperties"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}url\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._url) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._url {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_SourceInfo.FileProperties, rhs: Rv_Data_SourceInfo.FileProperties) -> Bool {
+    if lhs._url != rhs._url {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_SourceInfo.HLSProperties: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_SourceInfo.protoMessageName + ".HLSProperties"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}url\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.url) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.url.isEmpty {
+      try visitor.visitSingularStringField(value: self.url, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_SourceInfo.HLSProperties, rhs: Rv_Data_SourceInfo.HLSProperties) -> Bool {
+    if lhs.url != rhs.url {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

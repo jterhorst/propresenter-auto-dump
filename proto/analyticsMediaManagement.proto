@@ -57,3 +57,23 @@ message AddedMediaReference {
 
 message NotResponding {
 }
+
+message MediaStateResyncGaveUp {
+  enum Source {
+    SOURCE_RESYNC = 0;
+    SOURCE_WORKSPACE_ACTIVATION = 1;
+    SOURCE_RECONNECT_RETRY = 2;
+  }
+
+  rv.analytics.mediamanagement.MediaStateResyncGaveUp.Source source = 1;
+}
+
+message UnreadableMediaHeld {
+  string workspace_identifier = 1;
+  string hardware_id = 2;
+  uint32 unknown_type = 3;
+  uint32 missing_type = 4;
+  uint32 suffixed_case = 5;
+  uint32 respelled_case = 6;
+  uint32 documents = 7;
+}

@@ -20,6 +20,24 @@ fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobu
   typealias Version = _2
 }
 
+public nonisolated struct Rverror_StackFrame: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var method: String = String()
+
+  public var file: String = String()
+
+  public var line: UInt32 = 0
+
+  public var instructionAddress: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 public nonisolated struct Rverror_ReportedError: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -34,6 +52,8 @@ public nonisolated struct Rverror_ReportedError: Sendable {
   public var line: UInt32 = 0
 
   public var severity: Rverror_ReportedError.Severity = .handled
+
+  public var stackFrames: [Rverror_StackFrame] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -78,9 +98,54 @@ public nonisolated struct Rverror_ReportedError: Sendable {
 
 fileprivate nonisolated let _protobuf_package = "rverror"
 
+nonisolated extension Rverror_StackFrame: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".StackFrame"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}method\0\u{1}file\0\u{1}line\0\u{3}instruction_address\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.method) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.file) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.line) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.instructionAddress) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.method.isEmpty {
+      try visitor.visitSingularStringField(value: self.method, fieldNumber: 1)
+    }
+    if !self.file.isEmpty {
+      try visitor.visitSingularStringField(value: self.file, fieldNumber: 2)
+    }
+    if self.line != 0 {
+      try visitor.visitSingularUInt32Field(value: self.line, fieldNumber: 3)
+    }
+    if self.instructionAddress != 0 {
+      try visitor.visitSingularUInt64Field(value: self.instructionAddress, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rverror_StackFrame, rhs: Rverror_StackFrame) -> Bool {
+    if lhs.method != rhs.method {return false}
+    if lhs.file != rhs.file {return false}
+    if lhs.line != rhs.line {return false}
+    if lhs.instructionAddress != rhs.instructionAddress {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 nonisolated extension Rverror_ReportedError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ReportedError"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}description\0\u{1}type\0\u{1}file\0\u{1}line\0\u{1}severity\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}description\0\u{1}type\0\u{1}file\0\u{1}line\0\u{1}severity\0\u{3}stack_frames\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -93,6 +158,7 @@ nonisolated extension Rverror_ReportedError: SwiftProtobuf.Message, SwiftProtobu
       case 3: try { try decoder.decodeSingularStringField(value: &self.file) }()
       case 4: try { try decoder.decodeSingularUInt32Field(value: &self.line) }()
       case 5: try { try decoder.decodeSingularEnumField(value: &self.severity) }()
+      case 6: try { try decoder.decodeRepeatedMessageField(value: &self.stackFrames) }()
       default: break
       }
     }
@@ -114,6 +180,9 @@ nonisolated extension Rverror_ReportedError: SwiftProtobuf.Message, SwiftProtobu
     if self.severity != .handled {
       try visitor.visitSingularEnumField(value: self.severity, fieldNumber: 5)
     }
+    if !self.stackFrames.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.stackFrames, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -123,6 +192,7 @@ nonisolated extension Rverror_ReportedError: SwiftProtobuf.Message, SwiftProtobu
     if lhs.file != rhs.file {return false}
     if lhs.line != rhs.line {return false}
     if lhs.severity != rhs.severity {return false}
+    if lhs.stackFrames != rhs.stackFrames {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

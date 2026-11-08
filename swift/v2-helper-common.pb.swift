@@ -8,6 +8,11 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
+import Foundation
+#endif
 import SwiftProtobuf
 
 // If the compiler emits an error on this type, it is because this file
@@ -50,6 +55,48 @@ public nonisolated enum Helper_Common_V2_Priority: SwiftProtobuf.Enum, Swift.Cas
   public static let allCases: [Helper_Common_V2_Priority] = [
     .background,
     .userInitiated,
+  ]
+
+}
+
+public nonisolated enum Helper_Common_V2_SeatType: SwiftProtobuf.Enum, Swift.CaseIterable {
+  public typealias RawValue = Int
+  case unassigned // = 0
+  case localEditor // = 1
+  case cloudEditor // = 2
+  case presenter // = 3
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .unassigned
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .unassigned
+    case 1: self = .localEditor
+    case 2: self = .cloudEditor
+    case 3: self = .presenter
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .unassigned: return 0
+    case .localEditor: return 1
+    case .cloudEditor: return 2
+    case .presenter: return 3
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static let allCases: [Helper_Common_V2_SeatType] = [
+    .unassigned,
+    .localEditor,
+    .cloudEditor,
+    .presenter,
   ]
 
 }
@@ -126,6 +173,8 @@ public nonisolated struct Helper_Common_V2_Preferences: Sendable {
   public var manageMedia: Bool = false
 
   public var shareAnalytics: Bool = false
+
+  public var shareCrashReports: Bool = false
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -646,6 +695,29 @@ public nonisolated struct Helper_Common_V2_MediaReference: @unchecked Sendable {
   /// Clears the value of `id`. Subsequent reads from it will return its default value.
   public mutating func clearID() {_uniqueStorage()._id = nil}
 
+  public var projectionOwned: Bool {
+    get {_storage._projectionOwned}
+    set {_uniqueStorage()._projectionOwned = newValue}
+  }
+
+  public var assetUuid: String {
+    get {_storage._assetUuid ?? String()}
+    set {_uniqueStorage()._assetUuid = newValue}
+  }
+  /// Returns true if `assetUuid` has been explicitly set.
+  public var hasAssetUuid: Bool {_storage._assetUuid != nil}
+  /// Clears the value of `assetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearAssetUuid() {_uniqueStorage()._assetUuid = nil}
+
+  public var replacedAssetUuid: String {
+    get {_storage._replacedAssetUuid ?? String()}
+    set {_uniqueStorage()._replacedAssetUuid = newValue}
+  }
+  /// Returns true if `replacedAssetUuid` has been explicitly set.
+  public var hasReplacedAssetUuid: Bool {_storage._replacedAssetUuid != nil}
+  /// Clears the value of `replacedAssetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearReplacedAssetUuid() {_uniqueStorage()._replacedAssetUuid = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public nonisolated enum OneOf_State: Equatable, Sendable {
@@ -738,6 +810,64 @@ public nonisolated struct Helper_Common_V2_MediaReference: @unchecked Sendable {
   public init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+public nonisolated struct Helper_Common_V2_MediaStateSnapshot: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var sessionUuid: String = String()
+
+  public var revision: UInt64 = 0
+
+  public var mediaReferences: [Helper_Common_V2_MediaReference] = []
+
+  public var workspace: Helper_Common_V2_Workspace {
+    get {_workspace ?? Helper_Common_V2_Workspace()}
+    set {_workspace = newValue}
+  }
+  /// Returns true if `workspace` has been explicitly set.
+  public var hasWorkspace: Bool {self._workspace != nil}
+  /// Clears the value of `workspace`. Subsequent reads from it will return its default value.
+  public mutating func clearWorkspace() {self._workspace = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _workspace: Helper_Common_V2_Workspace? = nil
+}
+
+public nonisolated struct Helper_Common_V2_GetMediaStateSnapshot: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_GetMediaStateSnapshotResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var snapshot: Helper_Common_V2_MediaStateSnapshot {
+    get {_snapshot ?? Helper_Common_V2_MediaStateSnapshot()}
+    set {_snapshot = newValue}
+  }
+  /// Returns true if `snapshot` has been explicitly set.
+  public var hasSnapshot: Bool {self._snapshot != nil}
+  /// Clears the value of `snapshot`. Subsequent reads from it will return its default value.
+  public mutating func clearSnapshot() {self._snapshot = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _snapshot: Helper_Common_V2_MediaStateSnapshot? = nil
 }
 
 public nonisolated struct Helper_Common_V2_AssetImported: Sendable {
@@ -863,11 +993,195 @@ public nonisolated struct Helper_Common_V2_ChangeShowDirectory: Sendable {
   /// Clears the value of `workspaceID`. Subsequent reads from it will return its default value.
   public mutating func clearWorkspaceID() {self._workspaceID = nil}
 
+  public var organizationID: String {
+    get {_organizationID ?? String()}
+    set {_organizationID = newValue}
+  }
+  /// Returns true if `organizationID` has been explicitly set.
+  public var hasOrganizationID: Bool {self._organizationID != nil}
+  /// Clears the value of `organizationID`. Subsequent reads from it will return its default value.
+  public mutating func clearOrganizationID() {self._organizationID = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _workspaceID: String? = nil
+  fileprivate var _organizationID: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_ReleaseShowDirectory: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var path: String = String()
+
+  public var forgetState: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_ActivateReferenceIdentity: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var referenceUuids: [String] = []
+
+  public var schemaVersion: UInt32 = 0
+
+  public var migrationID: String {
+    get {_migrationID ?? String()}
+    set {_migrationID = newValue}
+  }
+  /// Returns true if `migrationID` has been explicitly set.
+  public var hasMigrationID: Bool {self._migrationID != nil}
+  /// Clears the value of `migrationID`. Subsequent reads from it will return its default value.
+  public mutating func clearMigrationID() {self._migrationID = nil}
+
+  public var planSha256: Data = Data()
+
+  public var migrations: [Helper_Common_V2_ReferenceIdentityMigrationEntry] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _migrationID: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_ReferenceIdentityMigrationEntry: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var documentID: String {
+    get {_storage._documentID}
+    set {_uniqueStorage()._documentID = newValue}
+  }
+
+  public var occurrencePath: String {
+    get {_storage._occurrencePath}
+    set {_uniqueStorage()._occurrencePath = newValue}
+  }
+
+  public var oldReferenceUuid: String {
+    get {_storage._oldReferenceUuid}
+    set {_uniqueStorage()._oldReferenceUuid = newValue}
+  }
+
+  public var newReferenceUuid: String {
+    get {_storage._newReferenceUuid}
+    set {_uniqueStorage()._newReferenceUuid = newValue}
+  }
+
+  public var oldAssetUuid: String {
+    get {_storage._oldAssetUuid ?? String()}
+    set {_uniqueStorage()._oldAssetUuid = newValue}
+  }
+  /// Returns true if `oldAssetUuid` has been explicitly set.
+  public var hasOldAssetUuid: Bool {_storage._oldAssetUuid != nil}
+  /// Clears the value of `oldAssetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearOldAssetUuid() {_uniqueStorage()._oldAssetUuid = nil}
+
+  public var newAssetUuid: String {
+    get {_storage._newAssetUuid ?? String()}
+    set {_uniqueStorage()._newAssetUuid = newValue}
+  }
+  /// Returns true if `newAssetUuid` has been explicitly set.
+  public var hasNewAssetUuid: Bool {_storage._newAssetUuid != nil}
+  /// Clears the value of `newAssetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearNewAssetUuid() {_uniqueStorage()._newAssetUuid = nil}
+
+  public var legacyContainerHints: [String] {
+    get {_storage._legacyContainerHints}
+    set {_uniqueStorage()._legacyContainerHints = newValue}
+  }
+
+  public var resolvedSourcePath: String {
+    get {_storage._resolvedSourcePath ?? String()}
+    set {_uniqueStorage()._resolvedSourcePath = newValue}
+  }
+  /// Returns true if `resolvedSourcePath` has been explicitly set.
+  public var hasResolvedSourcePath: Bool {_storage._resolvedSourcePath != nil}
+  /// Clears the value of `resolvedSourcePath`. Subsequent reads from it will return its default value.
+  public mutating func clearResolvedSourcePath() {_uniqueStorage()._resolvedSourcePath = nil}
+
+  public var transformation: Helper_Common_V2_Transformation {
+    get {_storage._transformation ?? Helper_Common_V2_Transformation()}
+    set {_uniqueStorage()._transformation = newValue}
+  }
+  /// Returns true if `transformation` has been explicitly set.
+  public var hasTransformation: Bool {_storage._transformation != nil}
+  /// Clears the value of `transformation`. Subsequent reads from it will return its default value.
+  public mutating func clearTransformation() {_uniqueStorage()._transformation = nil}
+
+  public var sourceFingerprint: Data {
+    get {_storage._sourceFingerprint}
+    set {_uniqueStorage()._sourceFingerprint = newValue}
+  }
+
+  public var transformationFingerprint: Data {
+    get {_storage._transformationFingerprint}
+    set {_uniqueStorage()._transformationFingerprint = newValue}
+  }
+
+  public var descriptorFingerprint: Data {
+    get {_storage._descriptorFingerprint}
+    set {_uniqueStorage()._descriptorFingerprint = newValue}
+  }
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+public nonisolated struct Helper_Common_V2_ActivateReferenceIdentityResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var schemaVersion: UInt32 = 0
+
+  public var expected: UInt64 = 0
+
+  public var found: UInt64 = 0
+
+  public var normalized: UInt64 = 0
+
+  public var deduplicated: UInt64 = 0
+
+  public var missing: UInt64 = 0
+
+  public var mediaReferences: [Helper_Common_V2_MediaReference] = []
+
+  public var mediaStateSnapshot: Helper_Common_V2_MediaStateSnapshot {
+    get {_mediaStateSnapshot ?? Helper_Common_V2_MediaStateSnapshot()}
+    set {_mediaStateSnapshot = newValue}
+  }
+  /// Returns true if `mediaStateSnapshot` has been explicitly set.
+  public var hasMediaStateSnapshot: Bool {self._mediaStateSnapshot != nil}
+  /// Clears the value of `mediaStateSnapshot`. Subsequent reads from it will return its default value.
+  public mutating func clearMediaStateSnapshot() {self._mediaStateSnapshot = nil}
+
+  public var rekeyed: UInt64 = 0
+
+  public var reused: UInt64 = 0
+
+  public var reimportRequired: UInt64 = 0
+
+  public var unresolvedReferenceIds: [String] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _mediaStateSnapshot: Helper_Common_V2_MediaStateSnapshot? = nil
 }
 
 public nonisolated struct Helper_Common_V2_Workspace: Sendable {
@@ -927,6 +1241,119 @@ public nonisolated struct Helper_Common_V2_ResumeSync: Sendable {
   public init() {}
 }
 
+public nonisolated struct Helper_Common_V2_SyncStats: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var uploads: Helper_Common_V2_SyncStats.Transfer {
+    get {_uploads ?? Helper_Common_V2_SyncStats.Transfer()}
+    set {_uploads = newValue}
+  }
+  /// Returns true if `uploads` has been explicitly set.
+  public var hasUploads: Bool {self._uploads != nil}
+  /// Clears the value of `uploads`. Subsequent reads from it will return its default value.
+  public mutating func clearUploads() {self._uploads = nil}
+
+  public var downloads: Helper_Common_V2_SyncStats.Transfer {
+    get {_downloads ?? Helper_Common_V2_SyncStats.Transfer()}
+    set {_downloads = newValue}
+  }
+  /// Returns true if `downloads` has been explicitly set.
+  public var hasDownloads: Bool {self._downloads != nil}
+  /// Clears the value of `downloads`. Subsequent reads from it will return its default value.
+  public mutating func clearDownloads() {self._downloads = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Transfer: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var completedFiles: UInt64 = 0
+
+    public var totalFiles: UInt64 = 0
+
+    public var completedBytes: UInt64 = 0
+
+    public var totalBytes: UInt64 = 0
+
+    public var failedFiles: UInt64 = 0
+
+    public var missingFiles: UInt64 = 0
+
+    public var stalled: Bool = false
+
+    public var failed: [Helper_Common_V2_SyncStats.Transfer.FailedFile] = []
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum FailureReason: SwiftProtobuf.Enum, Swift.CaseIterable {
+      public typealias RawValue = Int
+      case unspecified // = 0
+      case connection // = 1
+      case fileAccess // = 2
+      case server // = 3
+      case UNRECOGNIZED(Int)
+
+      public init() {
+        self = .unspecified
+      }
+
+      public init?(rawValue: Int) {
+        switch rawValue {
+        case 0: self = .unspecified
+        case 1: self = .connection
+        case 2: self = .fileAccess
+        case 3: self = .server
+        default: self = .UNRECOGNIZED(rawValue)
+        }
+      }
+
+      public var rawValue: Int {
+        switch self {
+        case .unspecified: return 0
+        case .connection: return 1
+        case .fileAccess: return 2
+        case .server: return 3
+        case .UNRECOGNIZED(let i): return i
+        }
+      }
+
+      // The compiler won't synthesize support with the UNRECOGNIZED case.
+      public static let allCases: [Helper_Common_V2_SyncStats.Transfer.FailureReason] = [
+        .unspecified,
+        .connection,
+        .fileAccess,
+        .server,
+      ]
+
+    }
+
+    public nonisolated struct FailedFile: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var fileName: String = String()
+
+      public var reason: Helper_Common_V2_SyncStats.Transfer.FailureReason = .unspecified
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+
+  fileprivate var _uploads: Helper_Common_V2_SyncStats.Transfer? = nil
+  fileprivate var _downloads: Helper_Common_V2_SyncStats.Transfer? = nil
+}
+
 public nonisolated struct Helper_Common_V2_AddMediaReference: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -978,11 +1405,410 @@ public nonisolated struct Helper_Common_V2_AddMediaReference: @unchecked Sendabl
   /// Clears the value of `userInitiated`. Subsequent reads from it will return its default value.
   public mutating func clearUserInitiated() {_uniqueStorage()._userInitiated = nil}
 
+  public var operationUuid: String {
+    get {_storage._operationUuid ?? String()}
+    set {_uniqueStorage()._operationUuid = newValue}
+  }
+  /// Returns true if `operationUuid` has been explicitly set.
+  public var hasOperationUuid: Bool {_storage._operationUuid != nil}
+  /// Clears the value of `operationUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearOperationUuid() {_uniqueStorage()._operationUuid = nil}
+
+  public var targetDocumentUuid: String {
+    get {_storage._targetDocumentUuid ?? String()}
+    set {_uniqueStorage()._targetDocumentUuid = newValue}
+  }
+  /// Returns true if `targetDocumentUuid` has been explicitly set.
+  public var hasTargetDocumentUuid: Bool {_storage._targetDocumentUuid != nil}
+  /// Clears the value of `targetDocumentUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearTargetDocumentUuid() {_uniqueStorage()._targetDocumentUuid = nil}
+
+  public var occurrencePath: String {
+    get {_storage._occurrencePath ?? String()}
+    set {_uniqueStorage()._occurrencePath = newValue}
+  }
+  /// Returns true if `occurrencePath` has been explicitly set.
+  public var hasOccurrencePath: Bool {_storage._occurrencePath != nil}
+  /// Clears the value of `occurrencePath`. Subsequent reads from it will return its default value.
+  public mutating func clearOccurrencePath() {_uniqueStorage()._occurrencePath = nil}
+
+  public var expectedReferenceUuid: String {
+    get {_storage._expectedReferenceUuid ?? String()}
+    set {_uniqueStorage()._expectedReferenceUuid = newValue}
+  }
+  /// Returns true if `expectedReferenceUuid` has been explicitly set.
+  public var hasExpectedReferenceUuid: Bool {_storage._expectedReferenceUuid != nil}
+  /// Clears the value of `expectedReferenceUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearExpectedReferenceUuid() {_uniqueStorage()._expectedReferenceUuid = nil}
+
+  public var expectedDescriptorFingerprint: Data {
+    get {_storage._expectedDescriptorFingerprint ?? Data()}
+    set {_uniqueStorage()._expectedDescriptorFingerprint = newValue}
+  }
+  /// Returns true if `expectedDescriptorFingerprint` has been explicitly set.
+  public var hasExpectedDescriptorFingerprint: Bool {_storage._expectedDescriptorFingerprint != nil}
+  /// Clears the value of `expectedDescriptorFingerprint`. Subsequent reads from it will return its default value.
+  public mutating func clearExpectedDescriptorFingerprint() {_uniqueStorage()._expectedDescriptorFingerprint = nil}
+
+  public var authoritativeAssetUuid: String {
+    get {_storage._authoritativeAssetUuid ?? String()}
+    set {_uniqueStorage()._authoritativeAssetUuid = newValue}
+  }
+  /// Returns true if `authoritativeAssetUuid` has been explicitly set.
+  public var hasAuthoritativeAssetUuid: Bool {_storage._authoritativeAssetUuid != nil}
+  /// Clears the value of `authoritativeAssetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearAuthoritativeAssetUuid() {_uniqueStorage()._authoritativeAssetUuid = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+public nonisolated struct Helper_Common_V2_EnsureMediaReference: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var id: Helper_Common_V2_ReferenceIdentifier {
+    get {_storage._id ?? Helper_Common_V2_ReferenceIdentifier()}
+    set {_uniqueStorage()._id = newValue}
+  }
+  /// Returns true if `id` has been explicitly set.
+  public var hasID: Bool {_storage._id != nil}
+  /// Clears the value of `id`. Subsequent reads from it will return its default value.
+  public mutating func clearID() {_uniqueStorage()._id = nil}
+
+  public var url: String {
+    get {_storage._url}
+    set {_uniqueStorage()._url = newValue}
+  }
+
+  public var priority: Helper_Common_V2_Priority {
+    get {_storage._priority}
+    set {_uniqueStorage()._priority = newValue}
+  }
+
+  public var transformation: Helper_Common_V2_Transformation {
+    get {_storage._transformation ?? Helper_Common_V2_Transformation()}
+    set {_uniqueStorage()._transformation = newValue}
+  }
+  /// Returns true if `transformation` has been explicitly set.
+  public var hasTransformation: Bool {_storage._transformation != nil}
+  /// Clears the value of `transformation`. Subsequent reads from it will return its default value.
+  public mutating func clearTransformation() {_uniqueStorage()._transformation = nil}
+
+  public var manageMedia: Bool {
+    get {_storage._manageMedia ?? false}
+    set {_uniqueStorage()._manageMedia = newValue}
+  }
+  /// Returns true if `manageMedia` has been explicitly set.
+  public var hasManageMedia: Bool {_storage._manageMedia != nil}
+  /// Clears the value of `manageMedia`. Subsequent reads from it will return its default value.
+  public mutating func clearManageMedia() {_uniqueStorage()._manageMedia = nil}
+
+  public var assetUuid: String {
+    get {_storage._assetUuid ?? String()}
+    set {_uniqueStorage()._assetUuid = newValue}
+  }
+  /// Returns true if `assetUuid` has been explicitly set.
+  public var hasAssetUuid: Bool {_storage._assetUuid != nil}
+  /// Clears the value of `assetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearAssetUuid() {_uniqueStorage()._assetUuid = nil}
+
+  public var operationContext: String {
+    get {_storage._operationContext ?? String()}
+    set {_uniqueStorage()._operationContext = newValue}
+  }
+  /// Returns true if `operationContext` has been explicitly set.
+  public var hasOperationContext: Bool {_storage._operationContext != nil}
+  /// Clears the value of `operationContext`. Subsequent reads from it will return its default value.
+  public mutating func clearOperationContext() {_uniqueStorage()._operationContext = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+public nonisolated struct Helper_Common_V2_EnsureMediaReferenceResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_EnsureProContentReference: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var id: Helper_Common_V2_ReferenceIdentifier {
+    get {_storage._id ?? Helper_Common_V2_ReferenceIdentifier()}
+    set {_uniqueStorage()._id = newValue}
+  }
+  /// Returns true if `id` has been explicitly set.
+  public var hasID: Bool {_storage._id != nil}
+  /// Clears the value of `id`. Subsequent reads from it will return its default value.
+  public mutating func clearID() {_uniqueStorage()._id = nil}
+
+  public var assetIdentifier: String {
+    get {_storage._assetIdentifier}
+    set {_uniqueStorage()._assetIdentifier = newValue}
+  }
+
+  public var priority: Helper_Common_V2_Priority {
+    get {_storage._priority}
+    set {_uniqueStorage()._priority = newValue}
+  }
+
+  public var transformation: Helper_Common_V2_Transformation {
+    get {_storage._transformation ?? Helper_Common_V2_Transformation()}
+    set {_uniqueStorage()._transformation = newValue}
+  }
+  /// Returns true if `transformation` has been explicitly set.
+  public var hasTransformation: Bool {_storage._transformation != nil}
+  /// Clears the value of `transformation`. Subsequent reads from it will return its default value.
+  public mutating func clearTransformation() {_uniqueStorage()._transformation = nil}
+
+  public var assetUuid: String {
+    get {_storage._assetUuid ?? String()}
+    set {_uniqueStorage()._assetUuid = newValue}
+  }
+  /// Returns true if `assetUuid` has been explicitly set.
+  public var hasAssetUuid: Bool {_storage._assetUuid != nil}
+  /// Clears the value of `assetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearAssetUuid() {_uniqueStorage()._assetUuid = nil}
+
+  public var operationContext: String {
+    get {_storage._operationContext ?? String()}
+    set {_uniqueStorage()._operationContext = newValue}
+  }
+  /// Returns true if `operationContext` has been explicitly set.
+  public var hasOperationContext: Bool {_storage._operationContext != nil}
+  /// Clears the value of `operationContext`. Subsequent reads from it will return its default value.
+  public mutating func clearOperationContext() {_uniqueStorage()._operationContext = nil}
+
+  public var localPath: String {
+    get {_storage._localPath ?? String()}
+    set {_uniqueStorage()._localPath = newValue}
+  }
+  /// Returns true if `localPath` has been explicitly set.
+  public var hasLocalPath: Bool {_storage._localPath != nil}
+  /// Clears the value of `localPath`. Subsequent reads from it will return its default value.
+  public mutating func clearLocalPath() {_uniqueStorage()._localPath = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+public nonisolated struct Helper_Common_V2_EnsureProContentReferenceResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_EnsureMediaReferences: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var fileReferences: [Helper_Common_V2_EnsureMediaReference] = []
+
+  public var proContentReferences: [Helper_Common_V2_EnsureProContentReference] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_EnsureMediaReferencesResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var failures: [Helper_Common_V2_EnsureMediaReferencesResponse.Failure] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated struct Failure: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var referenceUuid: String = String()
+
+    public var error: Helper_Common_V2_RequestError {
+      get {_error ?? Helper_Common_V2_RequestError()}
+      set {_error = newValue}
+    }
+    /// Returns true if `error` has been explicitly set.
+    public var hasError: Bool {self._error != nil}
+    /// Clears the value of `error`. Subsequent reads from it will return its default value.
+    public mutating func clearError() {self._error = nil}
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _error: Helper_Common_V2_RequestError? = nil
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_ApplyProjectedTransformation: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var id: Helper_Common_V2_ReferenceIdentifier {
+    get {_storage._id ?? Helper_Common_V2_ReferenceIdentifier()}
+    set {_uniqueStorage()._id = newValue}
+  }
+  /// Returns true if `id` has been explicitly set.
+  public var hasID: Bool {_storage._id != nil}
+  /// Clears the value of `id`. Subsequent reads from it will return its default value.
+  public mutating func clearID() {_uniqueStorage()._id = nil}
+
+  public var transformation: Helper_Common_V2_Transformation {
+    get {_storage._transformation ?? Helper_Common_V2_Transformation()}
+    set {_uniqueStorage()._transformation = newValue}
+  }
+  /// Returns true if `transformation` has been explicitly set.
+  public var hasTransformation: Bool {_storage._transformation != nil}
+  /// Clears the value of `transformation`. Subsequent reads from it will return its default value.
+  public mutating func clearTransformation() {_uniqueStorage()._transformation = nil}
+
+  public var priority: Helper_Common_V2_Priority {
+    get {_storage._priority}
+    set {_uniqueStorage()._priority = newValue}
+  }
+
+  public var operationContext: String {
+    get {_storage._operationContext ?? String()}
+    set {_uniqueStorage()._operationContext = newValue}
+  }
+  /// Returns true if `operationContext` has been explicitly set.
+  public var hasOperationContext: Bool {_storage._operationContext != nil}
+  /// Clears the value of `operationContext`. Subsequent reads from it will return its default value.
+  public mutating func clearOperationContext() {_uniqueStorage()._operationContext = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+public nonisolated struct Helper_Common_V2_ApplyProjectedTransformationResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_TombstoneProjectedReferences: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var referenceUuids: [String] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_TombstoneProjectedReferencesResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var requested: UInt64 = 0
+
+  public var tombstoned: UInt64 = 0
+
+  public var alreadyTombstoned: UInt64 = 0
+
+  public var missing: UInt64 = 0
+
+  public var unowned: UInt64 = 0
+
+  public var mediaReferences: [Helper_Common_V2_MediaReference] = []
+
+  public var mediaStateSnapshot: Helper_Common_V2_MediaStateSnapshot {
+    get {_mediaStateSnapshot ?? Helper_Common_V2_MediaStateSnapshot()}
+    set {_mediaStateSnapshot = newValue}
+  }
+  /// Returns true if `mediaStateSnapshot` has been explicitly set.
+  public var hasMediaStateSnapshot: Bool {self._mediaStateSnapshot != nil}
+  /// Clears the value of `mediaStateSnapshot`. Subsequent reads from it will return its default value.
+  public mutating func clearMediaStateSnapshot() {self._mediaStateSnapshot = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _mediaStateSnapshot: Helper_Common_V2_MediaStateSnapshot? = nil
+}
+
+public nonisolated struct Helper_Common_V2_ClaimProjectedReferences: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var referenceUuids: [String] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_ClaimProjectedReferencesResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var requested: UInt64 = 0
+
+  public var claimed: UInt64 = 0
+
+  public var alreadyOwned: UInt64 = 0
+
+  public var missing: UInt64 = 0
+
+  public var mediaReferences: [Helper_Common_V2_MediaReference] = []
+
+  public var mediaStateSnapshot: Helper_Common_V2_MediaStateSnapshot {
+    get {_mediaStateSnapshot ?? Helper_Common_V2_MediaStateSnapshot()}
+    set {_mediaStateSnapshot = newValue}
+  }
+  /// Returns true if `mediaStateSnapshot` has been explicitly set.
+  public var hasMediaStateSnapshot: Bool {self._mediaStateSnapshot != nil}
+  /// Clears the value of `mediaStateSnapshot`. Subsequent reads from it will return its default value.
+  public mutating func clearMediaStateSnapshot() {self._mediaStateSnapshot = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _mediaStateSnapshot: Helper_Common_V2_MediaStateSnapshot? = nil
 }
 
 public nonisolated struct Helper_Common_V2_ProContentDownloadDetails: Sendable {
@@ -1013,6 +1839,7 @@ public nonisolated struct Helper_Common_V2_ProContentDownloadDetails: Sendable {
     case motionTitle // = 4
     case pack // = 5
     case theme // = 6
+    case sticker // = 7
     case UNRECOGNIZED(Int)
 
     public init() {
@@ -1028,6 +1855,7 @@ public nonisolated struct Helper_Common_V2_ProContentDownloadDetails: Sendable {
       case 4: self = .motionTitle
       case 5: self = .pack
       case 6: self = .theme
+      case 7: self = .sticker
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
@@ -1041,6 +1869,7 @@ public nonisolated struct Helper_Common_V2_ProContentDownloadDetails: Sendable {
       case .motionTitle: return 4
       case .pack: return 5
       case .theme: return 6
+      case .sticker: return 7
       case .UNRECOGNIZED(let i): return i
       }
     }
@@ -1054,6 +1883,7 @@ public nonisolated struct Helper_Common_V2_ProContentDownloadDetails: Sendable {
       .motionTitle,
       .pack,
       .theme,
+      .sticker,
     ]
 
   }
@@ -1264,6 +2094,388 @@ public nonisolated struct Helper_Common_V2_RemoveMediaReferences: Sendable {
   fileprivate var _userInitiated: Bool? = nil
 }
 
+public nonisolated struct Helper_Common_V2_GetMediaUsage: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_GetMediaUsageResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var managedFileCount: UInt64 = 0
+
+  public var managedByteCount: UInt64 = 0
+
+  public var unmanagedByteCount: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_PreviewMediaCleanup: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_MediaCleanupCandidate: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var candidateUuid: String = String()
+
+  public var assetUuid: String {
+    get {_assetUuid ?? String()}
+    set {_assetUuid = newValue}
+  }
+  /// Returns true if `assetUuid` has been explicitly set.
+  public var hasAssetUuid: Bool {self._assetUuid != nil}
+  /// Clears the value of `assetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearAssetUuid() {self._assetUuid = nil}
+
+  public var path: String = String()
+
+  public var byteCount: UInt64 = 0
+
+  public var kind: Helper_Common_V2_MediaCleanupCandidate.Kind = .unspecified
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Kind: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case catalogedAsset // = 1
+    case untrackedFile // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .catalogedAsset
+      case 2: self = .untrackedFile
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .catalogedAsset: return 1
+      case .untrackedFile: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_MediaCleanupCandidate.Kind] = [
+      .unspecified,
+      .catalogedAsset,
+      .untrackedFile,
+    ]
+
+  }
+
+  public init() {}
+
+  fileprivate var _assetUuid: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_MediaCleanupDeferral: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var assetUuid: String = String()
+
+  public var path: String = String()
+
+  public var byteCount: UInt64 = 0
+
+  public var reason: Helper_Common_V2_MediaCleanupDeferral.Reason = .unspecified
+
+  public var eligibleAtUnixSeconds: UInt64 {
+    get {_eligibleAtUnixSeconds ?? 0}
+    set {_eligibleAtUnixSeconds = newValue}
+  }
+  /// Returns true if `eligibleAtUnixSeconds` has been explicitly set.
+  public var hasEligibleAtUnixSeconds: Bool {self._eligibleAtUnixSeconds != nil}
+  /// Clears the value of `eligibleAtUnixSeconds`. Subsequent reads from it will return its default value.
+  public mutating func clearEligibleAtUnixSeconds() {self._eligibleAtUnixSeconds = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Reason: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case waiting // = 1
+    case uploadPending // = 2
+    case checkingCloud // = 3
+    case notInCloud // = 4
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .waiting
+      case 2: self = .uploadPending
+      case 3: self = .checkingCloud
+      case 4: self = .notInCloud
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .waiting: return 1
+      case .uploadPending: return 2
+      case .checkingCloud: return 3
+      case .notInCloud: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_MediaCleanupDeferral.Reason] = [
+      .unspecified,
+      .waiting,
+      .uploadPending,
+      .checkingCloud,
+      .notInCloud,
+    ]
+
+  }
+
+  public init() {}
+
+  fileprivate var _eligibleAtUnixSeconds: UInt64? = nil
+}
+
+public nonisolated struct Helper_Common_V2_PreviewMediaCleanupResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var planUuid: String = String()
+
+  public var planDigest: Data = Data()
+
+  public var candidates: [Helper_Common_V2_MediaCleanupCandidate] = []
+
+  public var blockedReasons: [String] = []
+
+  public var deferrals: [Helper_Common_V2_MediaCleanupDeferral] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_ExecuteMediaCleanup: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var planUuid: String = String()
+
+  public var planDigest: Data = Data()
+
+  public var candidateUuids: [String] = []
+
+  public var action: Helper_Common_V2_ExecuteMediaCleanup.Action = .unspecified
+
+  public var destinationDirectory: String {
+    get {_destinationDirectory ?? String()}
+    set {_destinationDirectory = newValue}
+  }
+  /// Returns true if `destinationDirectory` has been explicitly set.
+  public var hasDestinationDirectory: Bool {self._destinationDirectory != nil}
+  /// Clears the value of `destinationDirectory`. Subsequent reads from it will return its default value.
+  public mutating func clearDestinationDirectory() {self._destinationDirectory = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Action: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case moveToTrash // = 1
+    case moveToFolder // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .moveToTrash
+      case 2: self = .moveToFolder
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .moveToTrash: return 1
+      case .moveToFolder: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_ExecuteMediaCleanup.Action] = [
+      .unspecified,
+      .moveToTrash,
+      .moveToFolder,
+    ]
+
+  }
+
+  public init() {}
+
+  fileprivate var _destinationDirectory: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_MediaCleanupItemResult: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var candidateUuid: String = String()
+
+  public var assetUuid: String {
+    get {_assetUuid ?? String()}
+    set {_assetUuid = newValue}
+  }
+  /// Returns true if `assetUuid` has been explicitly set.
+  public var hasAssetUuid: Bool {self._assetUuid != nil}
+  /// Clears the value of `assetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearAssetUuid() {self._assetUuid = nil}
+
+  public var sourcePath: String = String()
+
+  public var destinationPath: String {
+    get {_destinationPath ?? String()}
+    set {_destinationPath = newValue}
+  }
+  /// Returns true if `destinationPath` has been explicitly set.
+  public var hasDestinationPath: Bool {self._destinationPath != nil}
+  /// Clears the value of `destinationPath`. Subsequent reads from it will return its default value.
+  public mutating func clearDestinationPath() {self._destinationPath = nil}
+
+  public var byteCount: UInt64 = 0
+
+  public var outcome: Helper_Common_V2_MediaCleanupItemResult.Outcome = .unspecified
+
+  public var reason: String {
+    get {_reason ?? String()}
+    set {_reason = newValue}
+  }
+  /// Returns true if `reason` has been explicitly set.
+  public var hasReason: Bool {self._reason != nil}
+  /// Clears the value of `reason`. Subsequent reads from it will return its default value.
+  public mutating func clearReason() {self._reason = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Outcome: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case cleaned // = 1
+    case stale // = 2
+    case blocked // = 3
+    case failed // = 4
+    case alreadyCleaned // = 5
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .cleaned
+      case 2: self = .stale
+      case 3: self = .blocked
+      case 4: self = .failed
+      case 5: self = .alreadyCleaned
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .cleaned: return 1
+      case .stale: return 2
+      case .blocked: return 3
+      case .failed: return 4
+      case .alreadyCleaned: return 5
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_MediaCleanupItemResult.Outcome] = [
+      .unspecified,
+      .cleaned,
+      .stale,
+      .blocked,
+      .failed,
+      .alreadyCleaned,
+    ]
+
+  }
+
+  public init() {}
+
+  fileprivate var _assetUuid: String? = nil
+  fileprivate var _destinationPath: String? = nil
+  fileprivate var _reason: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_ExecuteMediaCleanupResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var results: [Helper_Common_V2_MediaCleanupItemResult] = []
+
+  public var cleanedByteCount: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 public nonisolated struct Helper_Common_V2_TriggerMediaReference: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -1283,7 +2495,83 @@ public nonisolated struct Helper_Common_V2_SmartPlaylist: Sendable {
 
   public var path: String = String()
 
+  public var playlistUuid: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_SmartPlaylistMembershipSnapshot: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var playlistUuid: String = String()
+
+  public var rootPath: String = String()
+
+  public var memberPaths: [String] = []
+
+  public var workspaceGeneration: UInt64 = 0
+
+  public var state: Helper_Common_V2_SmartPlaylistMembershipSnapshot.State = .unspecified
+
+  public var registrationRevision: UInt64 = 0
+
+  public var membershipRevision: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case missing // = 1
+    case permissionDenied // = 2
+    case available // = 3
+    case inaccessible // = 4
+    case notConfigured // = 5
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .missing
+      case 2: self = .permissionDenied
+      case 3: self = .available
+      case 4: self = .inaccessible
+      case 5: self = .notConfigured
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .missing: return 1
+      case .permissionDenied: return 2
+      case .available: return 3
+      case .inaccessible: return 4
+      case .notConfigured: return 5
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_SmartPlaylistMembershipSnapshot.State] = [
+      .unspecified,
+      .missing,
+      .permissionDenied,
+      .available,
+      .inaccessible,
+      .notConfigured,
+    ]
+
+  }
 
   public init() {}
 }
@@ -1294,6 +2582,10 @@ public nonisolated struct Helper_Common_V2_UpdateSmartPlaylists: Sendable {
   // methods supported on all messages.
 
   public var playlists: [Helper_Common_V2_SmartPlaylist] = []
+
+  public var workspaceGeneration: UInt64 = 0
+
+  public var registrationRevision: UInt64 = 0
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1321,6 +2613,18 @@ public nonisolated struct Helper_Common_V2_UpdatePrefs: Sendable {
   fileprivate var _preferences: Helper_Common_V2_Preferences? = nil
 }
 
+public nonisolated struct Helper_Common_V2_SetCloudTerminated: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var cloudTerminated: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 public nonisolated struct Helper_Common_V2_MarkWorkspaceAsCloud: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -1328,9 +2632,20 @@ public nonisolated struct Helper_Common_V2_MarkWorkspaceAsCloud: Sendable {
 
   public var uuid: String = String()
 
+  public var organizationID: String {
+    get {_organizationID ?? String()}
+    set {_organizationID = newValue}
+  }
+  /// Returns true if `organizationID` has been explicitly set.
+  public var hasOrganizationID: Bool {self._organizationID != nil}
+  /// Clears the value of `organizationID`. Subsequent reads from it will return its default value.
+  public mutating func clearOrganizationID() {self._organizationID = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
+
+  fileprivate var _organizationID: String? = nil
 }
 
 public nonisolated struct Helper_Common_V2_MarkWorkspaceAsLocal: Sendable {
@@ -1338,9 +2653,20 @@ public nonisolated struct Helper_Common_V2_MarkWorkspaceAsLocal: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  public var path: String {
+    get {_path ?? String()}
+    set {_path = newValue}
+  }
+  /// Returns true if `path` has been explicitly set.
+  public var hasPath: Bool {self._path != nil}
+  /// Clears the value of `path`. Subsequent reads from it will return its default value.
+  public mutating func clearPath() {self._path = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
+
+  fileprivate var _path: String? = nil
 }
 
 public nonisolated struct Helper_Common_V2_RemoveContainer: Sendable {
@@ -1376,6 +2702,158 @@ public nonisolated struct Helper_Common_V2_ImportUnmanagedMedia: Sendable {
   public init() {}
 }
 
+public nonisolated struct Helper_Common_V2_GetUnmanagedMedia: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_GetUnmanagedMediaResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var paths: [String] = []
+
+  public var deviceLocal: [Helper_Common_V2_DeviceLocalMedia] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_DeviceLocalMedia: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var assetUuid: String = String()
+
+  public var path: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_LeftBehindMedia: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var path: String = String()
+
+  public var reason: Helper_Common_V2_LeftBehindMedia.Reason = .unspecified
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Reason: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case insufficientSpace // = 1
+    case copyFailed // = 2
+    case destinationUnavailable // = 3
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .insufficientSpace
+      case 2: self = .copyFailed
+      case 3: self = .destinationUnavailable
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .insufficientSpace: return 1
+      case .copyFailed: return 2
+      case .destinationUnavailable: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_LeftBehindMedia.Reason] = [
+      .unspecified,
+      .insufficientSpace,
+      .copyFailed,
+      .destinationUnavailable,
+    ]
+
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_PreMigrateWorkspace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var path: String = String()
+
+  public var toPath: String {
+    get {_toPath ?? String()}
+    set {_toPath = newValue}
+  }
+  /// Returns true if `toPath` has been explicitly set.
+  public var hasToPath: Bool {self._toPath != nil}
+  /// Clears the value of `toPath`. Subsequent reads from it will return its default value.
+  public mutating func clearToPath() {self._toPath = nil}
+
+  public var workspaceID: String {
+    get {_workspaceID ?? String()}
+    set {_workspaceID = newValue}
+  }
+  /// Returns true if `workspaceID` has been explicitly set.
+  public var hasWorkspaceID: Bool {self._workspaceID != nil}
+  /// Clears the value of `workspaceID`. Subsequent reads from it will return its default value.
+  public mutating func clearWorkspaceID() {self._workspaceID = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _toPath: String? = nil
+  fileprivate var _workspaceID: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_MigrateWorkspace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var fromPath: String = String()
+
+  public var toPath: String = String()
+
+  public var workspaceID: String {
+    get {_workspaceID ?? String()}
+    set {_workspaceID = newValue}
+  }
+  /// Returns true if `workspaceID` has been explicitly set.
+  public var hasWorkspaceID: Bool {self._workspaceID != nil}
+  /// Clears the value of `workspaceID`. Subsequent reads from it will return its default value.
+  public mutating func clearWorkspaceID() {self._workspaceID = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _workspaceID: String? = nil
+}
+
 public nonisolated struct Helper_Common_V2_Ping: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -1393,7 +2871,447 @@ public nonisolated struct Helper_Common_V2_AddMediaReferenceResponse: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  public var operationUuid: String {
+    get {_operationUuid ?? String()}
+    set {_operationUuid = newValue}
+  }
+  /// Returns true if `operationUuid` has been explicitly set.
+  public var hasOperationUuid: Bool {self._operationUuid != nil}
+  /// Clears the value of `operationUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearOperationUuid() {self._operationUuid = nil}
+
+  public var assetUuid: String {
+    get {_assetUuid ?? String()}
+    set {_assetUuid = newValue}
+  }
+  /// Returns true if `assetUuid` has been explicitly set.
+  public var hasAssetUuid: Bool {self._assetUuid != nil}
+  /// Clears the value of `assetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearAssetUuid() {self._assetUuid = nil}
+
+  public var operationPhase: Helper_Common_V2_AdvanceImportOperation.Phase = .unknown
+
+  public var managedURL: String {
+    get {_managedURL ?? String()}
+    set {_managedURL = newValue}
+  }
+  /// Returns true if `managedURL` has been explicitly set.
+  public var hasManagedURL: Bool {self._managedURL != nil}
+  /// Clears the value of `managedURL`. Subsequent reads from it will return its default value.
+  public mutating func clearManagedURL() {self._managedURL = nil}
+
+  public var importInProgress: Bool = false
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _operationUuid: String? = nil
+  fileprivate var _assetUuid: String? = nil
+  fileprivate var _managedURL: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_AdvanceImportOperation: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var phase: Helper_Common_V2_AdvanceImportOperation.Phase = .unknown
+
+  public var error: String {
+    get {_error ?? String()}
+    set {_error = newValue}
+  }
+  /// Returns true if `error` has been explicitly set.
+  public var hasError: Bool {self._error != nil}
+  /// Clears the value of `error`. Subsequent reads from it will return its default value.
+  public mutating func clearError() {self._error = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Phase: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case attaching // = 1
+    case complete // = 2
+    case failed // = 3
+    case imported // = 4
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .attaching
+      case 2: self = .complete
+      case 3: self = .failed
+      case 4: self = .imported
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .attaching: return 1
+      case .complete: return 2
+      case .failed: return 3
+      case .imported: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_AdvanceImportOperation.Phase] = [
+      .unknown,
+      .attaching,
+      .complete,
+      .failed,
+      .imported,
+    ]
+
+  }
+
+  public init() {}
+
+  fileprivate var _error: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_AdvanceImportOperationResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_RelinkMediaAsset: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var referenceUuid: String = String()
+
+  public var expectedAssetUuid: String = String()
+
+  public var sourceCapabilityPath: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Phase: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case queued // = 1
+    case staging // = 2
+    case staged // = 3
+    case publishing // = 4
+    case complete // = 5
+    case failed // = 6
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .queued
+      case 2: self = .staging
+      case 3: self = .staged
+      case 4: self = .publishing
+      case 5: self = .complete
+      case 6: self = .failed
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .queued: return 1
+      case .staging: return 2
+      case .staged: return 3
+      case .publishing: return 4
+      case .complete: return 5
+      case .failed: return 6
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_RelinkMediaAsset.Phase] = [
+      .unknown,
+      .queued,
+      .staging,
+      .staged,
+      .publishing,
+      .complete,
+      .failed,
+    ]
+
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_RelinkMediaAssetResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var referenceUuid: String = String()
+
+  public var assetUuid: String = String()
+
+  public var phase: Helper_Common_V2_RelinkMediaAsset.Phase = .unknown
+
+  public var attempt: UInt32 = 0
+
+  public var failureCode: String {
+    get {_failureCode ?? String()}
+    set {_failureCode = newValue}
+  }
+  /// Returns true if `failureCode` has been explicitly set.
+  public var hasFailureCode: Bool {self._failureCode != nil}
+  /// Clears the value of `failureCode`. Subsequent reads from it will return its default value.
+  public mutating func clearFailureCode() {self._failureCode = nil}
+
+  public var failureDetail: String {
+    get {_failureDetail ?? String()}
+    set {_failureDetail = newValue}
+  }
+  /// Returns true if `failureDetail` has been explicitly set.
+  public var hasFailureDetail: Bool {self._failureDetail != nil}
+  /// Clears the value of `failureDetail`. Subsequent reads from it will return its default value.
+  public mutating func clearFailureDetail() {self._failureDetail = nil}
+
+  public var replacedAssetUuid: String {
+    get {_replacedAssetUuid ?? String()}
+    set {_replacedAssetUuid = newValue}
+  }
+  /// Returns true if `replacedAssetUuid` has been explicitly set.
+  public var hasReplacedAssetUuid: Bool {self._replacedAssetUuid != nil}
+  /// Clears the value of `replacedAssetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearReplacedAssetUuid() {self._replacedAssetUuid = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _failureCode: String? = nil
+  fileprivate var _failureDetail: String? = nil
+  fileprivate var _replacedAssetUuid: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_MaterializeMediaAsset: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var referenceUuid: String = String()
+
+  public var expectedAssetUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Phase: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case queued // = 1
+    case resolving // = 2
+    case downloading // = 3
+    case downloaded // = 4
+    case verifying // = 5
+    case publishing // = 6
+    case complete // = 7
+    case failed // = 8
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .queued
+      case 2: self = .resolving
+      case 3: self = .downloading
+      case 4: self = .downloaded
+      case 5: self = .verifying
+      case 6: self = .publishing
+      case 7: self = .complete
+      case 8: self = .failed
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .queued: return 1
+      case .resolving: return 2
+      case .downloading: return 3
+      case .downloaded: return 4
+      case .verifying: return 5
+      case .publishing: return 6
+      case .complete: return 7
+      case .failed: return 8
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_MaterializeMediaAsset.Phase] = [
+      .unknown,
+      .queued,
+      .resolving,
+      .downloading,
+      .downloaded,
+      .verifying,
+      .publishing,
+      .complete,
+      .failed,
+    ]
+
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_MaterializeMediaAssetResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var operationUuid: String = String()
+
+  public var referenceUuid: String = String()
+
+  public var assetUuid: String = String()
+
+  public var phase: Helper_Common_V2_MaterializeMediaAsset.Phase = .unknown
+
+  public var attempt: UInt32 = 0
+
+  public var failureCode: String {
+    get {_failureCode ?? String()}
+    set {_failureCode = newValue}
+  }
+  /// Returns true if `failureCode` has been explicitly set.
+  public var hasFailureCode: Bool {self._failureCode != nil}
+  /// Clears the value of `failureCode`. Subsequent reads from it will return its default value.
+  public mutating func clearFailureCode() {self._failureCode = nil}
+
+  public var failureDetail: String {
+    get {_failureDetail ?? String()}
+    set {_failureDetail = newValue}
+  }
+  /// Returns true if `failureDetail` has been explicitly set.
+  public var hasFailureDetail: Bool {self._failureDetail != nil}
+  /// Clears the value of `failureDetail`. Subsequent reads from it will return its default value.
+  public mutating func clearFailureDetail() {self._failureDetail = nil}
+
+  public var replacedAssetUuid: String {
+    get {_replacedAssetUuid ?? String()}
+    set {_replacedAssetUuid = newValue}
+  }
+  /// Returns true if `replacedAssetUuid` has been explicitly set.
+  public var hasReplacedAssetUuid: Bool {self._replacedAssetUuid != nil}
+  /// Clears the value of `replacedAssetUuid`. Subsequent reads from it will return its default value.
+  public mutating func clearReplacedAssetUuid() {self._replacedAssetUuid = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _failureCode: String? = nil
+  fileprivate var _failureDetail: String? = nil
+  fileprivate var _replacedAssetUuid: String? = nil
+}
+
+public nonisolated struct Helper_Common_V2_RestoreMediaFromTrash: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var assetUuid: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_RestoreMediaFromTrashResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var assetUuid: String = String()
+
+  public var outcome: Helper_Common_V2_RestoreMediaFromTrashResponse.Outcome = .unknown
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Outcome: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case restored // = 1
+    case notInTrash // = 2
+    case alreadyPresent // = 3
+    case notPurged // = 4
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .restored
+      case 2: self = .notInTrash
+      case 3: self = .alreadyPresent
+      case 4: self = .notPurged
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .restored: return 1
+      case .notInTrash: return 2
+      case .alreadyPresent: return 3
+      case .notPurged: return 4
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Helper_Common_V2_RestoreMediaFromTrashResponse.Outcome] = [
+      .unknown,
+      .restored,
+      .notInTrash,
+      .alreadyPresent,
+      .notPurged,
+    ]
+
+  }
 
   public init() {}
 }
@@ -1473,12 +3391,24 @@ public nonisolated struct Helper_Common_V2_UpdateSmartPlaylistsResponse: Sendabl
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  public var snapshots: [Helper_Common_V2_SmartPlaylistMembershipSnapshot] = []
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
 public nonisolated struct Helper_Common_V2_UpdatePrefsResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_SetCloudTerminatedResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1513,6 +3443,8 @@ public nonisolated struct Helper_Common_V2_AddProContentReferenceResponse: Senda
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  public var assetUuid: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -1529,6 +3461,71 @@ public nonisolated struct Helper_Common_V2_RemoveContainerResponse: Sendable {
 }
 
 public nonisolated struct Helper_Common_V2_ImportUnmanagedMediaResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var leftBehind: [Helper_Common_V2_LeftBehindMedia] = []
+
+  public var insufficientSpace: Helper_Common_V2_InsufficientSpace {
+    get {_insufficientSpace ?? Helper_Common_V2_InsufficientSpace()}
+    set {_insufficientSpace = newValue}
+  }
+  /// Returns true if `insufficientSpace` has been explicitly set.
+  public var hasInsufficientSpace: Bool {self._insufficientSpace != nil}
+  /// Clears the value of `insufficientSpace`. Subsequent reads from it will return its default value.
+  public mutating func clearInsufficientSpace() {self._insufficientSpace = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _insufficientSpace: Helper_Common_V2_InsufficientSpace? = nil
+}
+
+public nonisolated struct Helper_Common_V2_InsufficientSpace: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var requiredBytes: UInt64 = 0
+
+  public var availableBytes: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_UnmanagedMediaImportProgress: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var completedFiles: UInt64 = 0
+
+  public var totalFiles: UInt64 = 0
+
+  public var completedBytes: UInt64 = 0
+
+  public var totalBytes: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_PreMigrateWorkspaceResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_ReleaseShowDirectoryResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1550,12 +3547,285 @@ public nonisolated struct Helper_Common_V2_Pong: Sendable {
   public init() {}
 }
 
+public nonisolated struct Helper_Common_V2_GetThumbnail: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var id: Helper_Common_V2_ReferenceIdentifier {
+    get {_id ?? Helper_Common_V2_ReferenceIdentifier()}
+    set {_id = newValue}
+  }
+  /// Returns true if `id` has been explicitly set.
+  public var hasID: Bool {self._id != nil}
+  /// Clears the value of `id`. Subsequent reads from it will return its default value.
+  public mutating func clearID() {self._id = nil}
+
+  public var width: UInt32 = 0
+
+  public var height: UInt32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _id: Helper_Common_V2_ReferenceIdentifier? = nil
+}
+
+public nonisolated struct Helper_Common_V2_GetThumbnailResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var result: Helper_Common_V2_GetThumbnailResponse.OneOf_Result? = nil
+
+  public var data: Data {
+    get {
+      if case .data(let v)? = result {return v}
+      return Data()
+    }
+    set {result = .data(newValue)}
+  }
+
+  public var notReady: Helper_Common_V2_GetThumbnailResponse.NotReady {
+    get {
+      if case .notReady(let v)? = result {return v}
+      return Helper_Common_V2_GetThumbnailResponse.NotReady()
+    }
+    set {result = .notReady(newValue)}
+  }
+
+  public var unavailable: Helper_Common_V2_GetThumbnailResponse.Unavailable {
+    get {
+      if case .unavailable(let v)? = result {return v}
+      return Helper_Common_V2_GetThumbnailResponse.Unavailable()
+    }
+    set {result = .unavailable(newValue)}
+  }
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum OneOf_Result: Equatable, Sendable {
+    case data(Data)
+    case notReady(Helper_Common_V2_GetThumbnailResponse.NotReady)
+    case unavailable(Helper_Common_V2_GetThumbnailResponse.Unavailable)
+
+  }
+
+  public nonisolated struct NotReady: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var mediaStateRevision: UInt64 = 0
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct Unavailable: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_GenerateThumbnailForPath: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var path: String = String()
+
+  public var width: UInt32 = 0
+
+  public var height: UInt32 = 0
+
+  public var priority: Helper_Common_V2_Priority = .background
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_GenerateThumbnailForPathResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var result: Helper_Common_V2_GenerateThumbnailForPathResponse.OneOf_Result? = nil
+
+  public var data: Data {
+    get {
+      if case .data(let v)? = result {return v}
+      return Data()
+    }
+    set {result = .data(newValue)}
+  }
+
+  public var noBitmap: Helper_Common_V2_GenerateThumbnailForPathResponse.NoBitmap {
+    get {
+      if case .noBitmap(let v)? = result {return v}
+      return Helper_Common_V2_GenerateThumbnailForPathResponse.NoBitmap()
+    }
+    set {result = .noBitmap(newValue)}
+  }
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum OneOf_Result: Equatable, Sendable {
+    case data(Data)
+    case noBitmap(Helper_Common_V2_GenerateThumbnailForPathResponse.NoBitmap)
+
+  }
+
+  public nonisolated struct NoBitmap: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_CancelGenerateThumbnailForPath: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_TokenMetadata: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var access: String = String()
+
+  public var expiresAt: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_Channel: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var name: String = String()
+
+  public var permission: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_RemoteChannelInfo: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var channels: [Helper_Common_V2_Channel] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Helper_Common_V2_UserAuthInfo: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var token: Helper_Common_V2_TokenMetadata {
+    get {_token ?? Helper_Common_V2_TokenMetadata()}
+    set {_token = newValue}
+  }
+  /// Returns true if `token` has been explicitly set.
+  public var hasToken: Bool {self._token != nil}
+  /// Clears the value of `token`. Subsequent reads from it will return its default value.
+  public mutating func clearToken() {self._token = nil}
+
+  public var pubnubToken: String = String()
+
+  public var activationKey: String {
+    get {_activationKey ?? String()}
+    set {_activationKey = newValue}
+  }
+  /// Returns true if `activationKey` has been explicitly set.
+  public var hasActivationKey: Bool {self._activationKey != nil}
+  /// Clears the value of `activationKey`. Subsequent reads from it will return its default value.
+  public mutating func clearActivationKey() {self._activationKey = nil}
+
+  public var channelInfo: Helper_Common_V2_RemoteChannelInfo {
+    get {_channelInfo ?? Helper_Common_V2_RemoteChannelInfo()}
+    set {_channelInfo = newValue}
+  }
+  /// Returns true if `channelInfo` has been explicitly set.
+  public var hasChannelInfo: Bool {self._channelInfo != nil}
+  /// Clears the value of `channelInfo`. Subsequent reads from it will return its default value.
+  public mutating func clearChannelInfo() {self._channelInfo = nil}
+
+  public var seatType: Helper_Common_V2_SeatType {
+    get {_seatType ?? .unassigned}
+    set {_seatType = newValue}
+  }
+  /// Returns true if `seatType` has been explicitly set.
+  public var hasSeatType: Bool {self._seatType != nil}
+  /// Clears the value of `seatType`. Subsequent reads from it will return its default value.
+  public mutating func clearSeatType() {self._seatType = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _token: Helper_Common_V2_TokenMetadata? = nil
+  fileprivate var _activationKey: String? = nil
+  fileprivate var _channelInfo: Helper_Common_V2_RemoteChannelInfo? = nil
+  fileprivate var _seatType: Helper_Common_V2_SeatType? = nil
+}
+
+public nonisolated struct Helper_Common_V2_HardwareIdentifier: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var fingerprint: String = String()
+
+  public var identifier: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "helper.common.v2"
 
 nonisolated extension Helper_Common_V2_Priority: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0Background\0\u{1}UserInitiated\0")
+}
+
+nonisolated extension Helper_Common_V2_SeatType: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SEAT_TYPE_UNASSIGNED\0\u{1}SEAT_TYPE_LOCAL_EDITOR\0\u{1}SEAT_TYPE_CLOUD_EDITOR\0\u{1}SEAT_TYPE_PRESENTER\0")
 }
 
 nonisolated extension Helper_Common_V2_ProductInformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
@@ -1720,7 +3990,7 @@ nonisolated extension Helper_Common_V2_Version: SwiftProtobuf.Message, SwiftProt
 
 nonisolated extension Helper_Common_V2_Preferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Preferences"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}manage_media\0\u{3}share_analytics\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}manage_media\0\u{3}share_analytics\0\u{3}share_crash_reports\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1730,6 +4000,7 @@ nonisolated extension Helper_Common_V2_Preferences: SwiftProtobuf.Message, Swift
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularBoolField(value: &self.manageMedia) }()
       case 2: try { try decoder.decodeSingularBoolField(value: &self.shareAnalytics) }()
+      case 3: try { try decoder.decodeSingularBoolField(value: &self.shareCrashReports) }()
       default: break
       }
     }
@@ -1742,12 +4013,16 @@ nonisolated extension Helper_Common_V2_Preferences: SwiftProtobuf.Message, Swift
     if self.shareAnalytics != false {
       try visitor.visitSingularBoolField(value: self.shareAnalytics, fieldNumber: 2)
     }
+    if self.shareCrashReports != false {
+      try visitor.visitSingularBoolField(value: self.shareCrashReports, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Helper_Common_V2_Preferences, rhs: Helper_Common_V2_Preferences) -> Bool {
     if lhs.manageMedia != rhs.manageMedia {return false}
     if lhs.shareAnalytics != rhs.shareAnalytics {return false}
+    if lhs.shareCrashReports != rhs.shareCrashReports {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -2233,11 +4508,14 @@ nonisolated extension Helper_Common_V2_ReferenceIdentifier: SwiftProtobuf.Messag
 
 nonisolated extension Helper_Common_V2_MediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaReference"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}success\0\u{1}error\0\u{1}progress\0\u{1}deleted\0\u{1}downloading\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}success\0\u{1}error\0\u{1}progress\0\u{1}deleted\0\u{1}downloading\0\u{3}projection_owned\0\u{3}asset_uuid\0\u{3}replaced_asset_uuid\0")
 
   fileprivate class _StorageClass {
     var _state: Helper_Common_V2_MediaReference.OneOf_State?
     var _id: Helper_Common_V2_ReferenceIdentifier? = nil
+    var _projectionOwned: Bool = false
+    var _assetUuid: String? = nil
+    var _replacedAssetUuid: String? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -2250,6 +4528,9 @@ nonisolated extension Helper_Common_V2_MediaReference: SwiftProtobuf.Message, Sw
     init(copying source: _StorageClass) {
       _state = source._state
       _id = source._id
+      _projectionOwned = source._projectionOwned
+      _assetUuid = source._assetUuid
+      _replacedAssetUuid = source._replacedAssetUuid
     }
   }
 
@@ -2334,6 +4615,9 @@ nonisolated extension Helper_Common_V2_MediaReference: SwiftProtobuf.Message, Sw
             _storage._state = .downloading(v)
           }
         }()
+        case 7: try { try decoder.decodeSingularBoolField(value: &_storage._projectionOwned) }()
+        case 8: try { try decoder.decodeSingularStringField(value: &_storage._assetUuid) }()
+        case 9: try { try decoder.decodeSingularStringField(value: &_storage._replacedAssetUuid) }()
         default: break
         }
       }
@@ -2372,6 +4656,15 @@ nonisolated extension Helper_Common_V2_MediaReference: SwiftProtobuf.Message, Sw
       }()
       case nil: break
       }
+      if _storage._projectionOwned != false {
+        try visitor.visitSingularBoolField(value: _storage._projectionOwned, fieldNumber: 7)
+      }
+      try { if let v = _storage._assetUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 8)
+      } }()
+      try { if let v = _storage._replacedAssetUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 9)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -2383,6 +4676,9 @@ nonisolated extension Helper_Common_V2_MediaReference: SwiftProtobuf.Message, Sw
         let rhs_storage = _args.1
         if _storage._state != rhs_storage._state {return false}
         if _storage._id != rhs_storage._id {return false}
+        if _storage._projectionOwned != rhs_storage._projectionOwned {return false}
+        if _storage._assetUuid != rhs_storage._assetUuid {return false}
+        if _storage._replacedAssetUuid != rhs_storage._replacedAssetUuid {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -2488,6 +4784,108 @@ nonisolated extension Helper_Common_V2_MediaReference.Error.ErrorCode: SwiftProt
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0INTERNAL_ERROR\0\u{1}SNAPSHOT_FAILED_ERROR\0")
 }
 
+nonisolated extension Helper_Common_V2_MediaStateSnapshot: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MediaStateSnapshot"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}session_uuid\0\u{1}revision\0\u{3}media_references\0\u{1}workspace\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.sessionUuid) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.revision) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.mediaReferences) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._workspace) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.sessionUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.sessionUuid, fieldNumber: 1)
+    }
+    if self.revision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.revision, fieldNumber: 2)
+    }
+    if !self.mediaReferences.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.mediaReferences, fieldNumber: 3)
+    }
+    try { if let v = self._workspace {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_MediaStateSnapshot, rhs: Helper_Common_V2_MediaStateSnapshot) -> Bool {
+    if lhs.sessionUuid != rhs.sessionUuid {return false}
+    if lhs.revision != rhs.revision {return false}
+    if lhs.mediaReferences != rhs.mediaReferences {return false}
+    if lhs._workspace != rhs._workspace {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GetMediaStateSnapshot: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetMediaStateSnapshot"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetMediaStateSnapshot, rhs: Helper_Common_V2_GetMediaStateSnapshot) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GetMediaStateSnapshotResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetMediaStateSnapshotResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}snapshot\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._snapshot) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._snapshot {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetMediaStateSnapshotResponse, rhs: Helper_Common_V2_GetMediaStateSnapshotResponse) -> Bool {
+    if lhs._snapshot != rhs._snapshot {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 nonisolated extension Helper_Common_V2_AssetImported: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AssetImported"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}success\0\u{1}error\0")
@@ -2591,7 +4989,7 @@ nonisolated extension Helper_Common_V2_AssetImported.Success: SwiftProtobuf.Mess
 
 nonisolated extension Helper_Common_V2_ChangeShowDirectory: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ChangeShowDirectory"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}workspace_id\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}workspace_id\0\u{3}organization_id\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -2601,6 +4999,7 @@ nonisolated extension Helper_Common_V2_ChangeShowDirectory: SwiftProtobuf.Messag
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.path) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self._workspaceID) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._organizationID) }()
       default: break
       }
     }
@@ -2617,12 +5016,341 @@ nonisolated extension Helper_Common_V2_ChangeShowDirectory: SwiftProtobuf.Messag
     try { if let v = self._workspaceID {
       try visitor.visitSingularStringField(value: v, fieldNumber: 2)
     } }()
+    try { if let v = self._organizationID {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Helper_Common_V2_ChangeShowDirectory, rhs: Helper_Common_V2_ChangeShowDirectory) -> Bool {
     if lhs.path != rhs.path {return false}
     if lhs._workspaceID != rhs._workspaceID {return false}
+    if lhs._organizationID != rhs._organizationID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ReleaseShowDirectory: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ReleaseShowDirectory"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}forget_state\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.forgetState) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 1)
+    }
+    if self.forgetState != false {
+      try visitor.visitSingularBoolField(value: self.forgetState, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ReleaseShowDirectory, rhs: Helper_Common_V2_ReleaseShowDirectory) -> Bool {
+    if lhs.path != rhs.path {return false}
+    if lhs.forgetState != rhs.forgetState {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ActivateReferenceIdentity: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ActivateReferenceIdentity"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}reference_uuids\0\u{3}schema_version\0\u{3}migration_id\0\u{3}plan_sha256\0\u{1}migrations\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedStringField(value: &self.referenceUuids) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.schemaVersion) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._migrationID) }()
+      case 4: try { try decoder.decodeSingularBytesField(value: &self.planSha256) }()
+      case 5: try { try decoder.decodeRepeatedMessageField(value: &self.migrations) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.referenceUuids.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.referenceUuids, fieldNumber: 1)
+    }
+    if self.schemaVersion != 0 {
+      try visitor.visitSingularUInt32Field(value: self.schemaVersion, fieldNumber: 2)
+    }
+    try { if let v = self._migrationID {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    if !self.planSha256.isEmpty {
+      try visitor.visitSingularBytesField(value: self.planSha256, fieldNumber: 4)
+    }
+    if !self.migrations.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.migrations, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ActivateReferenceIdentity, rhs: Helper_Common_V2_ActivateReferenceIdentity) -> Bool {
+    if lhs.referenceUuids != rhs.referenceUuids {return false}
+    if lhs.schemaVersion != rhs.schemaVersion {return false}
+    if lhs._migrationID != rhs._migrationID {return false}
+    if lhs.planSha256 != rhs.planSha256 {return false}
+    if lhs.migrations != rhs.migrations {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ReferenceIdentityMigrationEntry: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ReferenceIdentityMigrationEntry"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_id\0\u{3}occurrence_path\0\u{3}old_reference_uuid\0\u{3}new_reference_uuid\0\u{3}old_asset_uuid\0\u{3}new_asset_uuid\0\u{3}legacy_container_hints\0\u{3}resolved_source_path\0\u{1}transformation\0\u{3}source_fingerprint\0\u{3}transformation_fingerprint\0\u{3}descriptor_fingerprint\0")
+
+  fileprivate class _StorageClass {
+    var _documentID: String = String()
+    var _occurrencePath: String = String()
+    var _oldReferenceUuid: String = String()
+    var _newReferenceUuid: String = String()
+    var _oldAssetUuid: String? = nil
+    var _newAssetUuid: String? = nil
+    var _legacyContainerHints: [String] = []
+    var _resolvedSourcePath: String? = nil
+    var _transformation: Helper_Common_V2_Transformation? = nil
+    var _sourceFingerprint: Data = Data()
+    var _transformationFingerprint: Data = Data()
+    var _descriptorFingerprint: Data = Data()
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _documentID = source._documentID
+      _occurrencePath = source._occurrencePath
+      _oldReferenceUuid = source._oldReferenceUuid
+      _newReferenceUuid = source._newReferenceUuid
+      _oldAssetUuid = source._oldAssetUuid
+      _newAssetUuid = source._newAssetUuid
+      _legacyContainerHints = source._legacyContainerHints
+      _resolvedSourcePath = source._resolvedSourcePath
+      _transformation = source._transformation
+      _sourceFingerprint = source._sourceFingerprint
+      _transformationFingerprint = source._transformationFingerprint
+      _descriptorFingerprint = source._descriptorFingerprint
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularStringField(value: &_storage._documentID) }()
+        case 2: try { try decoder.decodeSingularStringField(value: &_storage._occurrencePath) }()
+        case 3: try { try decoder.decodeSingularStringField(value: &_storage._oldReferenceUuid) }()
+        case 4: try { try decoder.decodeSingularStringField(value: &_storage._newReferenceUuid) }()
+        case 5: try { try decoder.decodeSingularStringField(value: &_storage._oldAssetUuid) }()
+        case 6: try { try decoder.decodeSingularStringField(value: &_storage._newAssetUuid) }()
+        case 7: try { try decoder.decodeRepeatedStringField(value: &_storage._legacyContainerHints) }()
+        case 8: try { try decoder.decodeSingularStringField(value: &_storage._resolvedSourcePath) }()
+        case 9: try { try decoder.decodeSingularMessageField(value: &_storage._transformation) }()
+        case 10: try { try decoder.decodeSingularBytesField(value: &_storage._sourceFingerprint) }()
+        case 11: try { try decoder.decodeSingularBytesField(value: &_storage._transformationFingerprint) }()
+        case 12: try { try decoder.decodeSingularBytesField(value: &_storage._descriptorFingerprint) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      if !_storage._documentID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._documentID, fieldNumber: 1)
+      }
+      if !_storage._occurrencePath.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._occurrencePath, fieldNumber: 2)
+      }
+      if !_storage._oldReferenceUuid.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._oldReferenceUuid, fieldNumber: 3)
+      }
+      if !_storage._newReferenceUuid.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._newReferenceUuid, fieldNumber: 4)
+      }
+      try { if let v = _storage._oldAssetUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 5)
+      } }()
+      try { if let v = _storage._newAssetUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+      } }()
+      if !_storage._legacyContainerHints.isEmpty {
+        try visitor.visitRepeatedStringField(value: _storage._legacyContainerHints, fieldNumber: 7)
+      }
+      try { if let v = _storage._resolvedSourcePath {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 8)
+      } }()
+      try { if let v = _storage._transformation {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+      } }()
+      if !_storage._sourceFingerprint.isEmpty {
+        try visitor.visitSingularBytesField(value: _storage._sourceFingerprint, fieldNumber: 10)
+      }
+      if !_storage._transformationFingerprint.isEmpty {
+        try visitor.visitSingularBytesField(value: _storage._transformationFingerprint, fieldNumber: 11)
+      }
+      if !_storage._descriptorFingerprint.isEmpty {
+        try visitor.visitSingularBytesField(value: _storage._descriptorFingerprint, fieldNumber: 12)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ReferenceIdentityMigrationEntry, rhs: Helper_Common_V2_ReferenceIdentityMigrationEntry) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._documentID != rhs_storage._documentID {return false}
+        if _storage._occurrencePath != rhs_storage._occurrencePath {return false}
+        if _storage._oldReferenceUuid != rhs_storage._oldReferenceUuid {return false}
+        if _storage._newReferenceUuid != rhs_storage._newReferenceUuid {return false}
+        if _storage._oldAssetUuid != rhs_storage._oldAssetUuid {return false}
+        if _storage._newAssetUuid != rhs_storage._newAssetUuid {return false}
+        if _storage._legacyContainerHints != rhs_storage._legacyContainerHints {return false}
+        if _storage._resolvedSourcePath != rhs_storage._resolvedSourcePath {return false}
+        if _storage._transformation != rhs_storage._transformation {return false}
+        if _storage._sourceFingerprint != rhs_storage._sourceFingerprint {return false}
+        if _storage._transformationFingerprint != rhs_storage._transformationFingerprint {return false}
+        if _storage._descriptorFingerprint != rhs_storage._descriptorFingerprint {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ActivateReferenceIdentityResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ActivateReferenceIdentityResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}schema_version\0\u{1}expected\0\u{1}found\0\u{1}normalized\0\u{1}deduplicated\0\u{1}missing\0\u{3}media_references\0\u{3}media_state_snapshot\0\u{1}rekeyed\0\u{1}reused\0\u{3}reimport_required\0\u{3}unresolved_reference_ids\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.schemaVersion) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.expected) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.found) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.normalized) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.deduplicated) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.missing) }()
+      case 7: try { try decoder.decodeRepeatedMessageField(value: &self.mediaReferences) }()
+      case 8: try { try decoder.decodeSingularMessageField(value: &self._mediaStateSnapshot) }()
+      case 9: try { try decoder.decodeSingularUInt64Field(value: &self.rekeyed) }()
+      case 10: try { try decoder.decodeSingularUInt64Field(value: &self.reused) }()
+      case 11: try { try decoder.decodeSingularUInt64Field(value: &self.reimportRequired) }()
+      case 12: try { try decoder.decodeRepeatedStringField(value: &self.unresolvedReferenceIds) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.schemaVersion != 0 {
+      try visitor.visitSingularUInt32Field(value: self.schemaVersion, fieldNumber: 1)
+    }
+    if self.expected != 0 {
+      try visitor.visitSingularUInt64Field(value: self.expected, fieldNumber: 2)
+    }
+    if self.found != 0 {
+      try visitor.visitSingularUInt64Field(value: self.found, fieldNumber: 3)
+    }
+    if self.normalized != 0 {
+      try visitor.visitSingularUInt64Field(value: self.normalized, fieldNumber: 4)
+    }
+    if self.deduplicated != 0 {
+      try visitor.visitSingularUInt64Field(value: self.deduplicated, fieldNumber: 5)
+    }
+    if self.missing != 0 {
+      try visitor.visitSingularUInt64Field(value: self.missing, fieldNumber: 6)
+    }
+    if !self.mediaReferences.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.mediaReferences, fieldNumber: 7)
+    }
+    try { if let v = self._mediaStateSnapshot {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+    } }()
+    if self.rekeyed != 0 {
+      try visitor.visitSingularUInt64Field(value: self.rekeyed, fieldNumber: 9)
+    }
+    if self.reused != 0 {
+      try visitor.visitSingularUInt64Field(value: self.reused, fieldNumber: 10)
+    }
+    if self.reimportRequired != 0 {
+      try visitor.visitSingularUInt64Field(value: self.reimportRequired, fieldNumber: 11)
+    }
+    if !self.unresolvedReferenceIds.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.unresolvedReferenceIds, fieldNumber: 12)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ActivateReferenceIdentityResponse, rhs: Helper_Common_V2_ActivateReferenceIdentityResponse) -> Bool {
+    if lhs.schemaVersion != rhs.schemaVersion {return false}
+    if lhs.expected != rhs.expected {return false}
+    if lhs.found != rhs.found {return false}
+    if lhs.normalized != rhs.normalized {return false}
+    if lhs.deduplicated != rhs.deduplicated {return false}
+    if lhs.missing != rhs.missing {return false}
+    if lhs.mediaReferences != rhs.mediaReferences {return false}
+    if lhs._mediaStateSnapshot != rhs._mediaStateSnapshot {return false}
+    if lhs.rekeyed != rhs.rekeyed {return false}
+    if lhs.reused != rhs.reused {return false}
+    if lhs.reimportRequired != rhs.reimportRequired {return false}
+    if lhs.unresolvedReferenceIds != rhs.unresolvedReferenceIds {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -2746,9 +5474,152 @@ nonisolated extension Helper_Common_V2_ResumeSync: SwiftProtobuf.Message, SwiftP
   }
 }
 
+nonisolated extension Helper_Common_V2_SyncStats: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SyncStats"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uploads\0\u{1}downloads\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._uploads) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._downloads) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._uploads {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try { if let v = self._downloads {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_SyncStats, rhs: Helper_Common_V2_SyncStats) -> Bool {
+    if lhs._uploads != rhs._uploads {return false}
+    if lhs._downloads != rhs._downloads {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_SyncStats.Transfer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Helper_Common_V2_SyncStats.protoMessageName + ".Transfer"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}completed_files\0\u{3}total_files\0\u{3}completed_bytes\0\u{3}total_bytes\0\u{3}failed_files\0\u{3}missing_files\0\u{1}stalled\0\u{1}failed\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.completedFiles) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.totalFiles) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.completedBytes) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.totalBytes) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.failedFiles) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.missingFiles) }()
+      case 7: try { try decoder.decodeSingularBoolField(value: &self.stalled) }()
+      case 8: try { try decoder.decodeRepeatedMessageField(value: &self.failed) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.completedFiles != 0 {
+      try visitor.visitSingularUInt64Field(value: self.completedFiles, fieldNumber: 1)
+    }
+    if self.totalFiles != 0 {
+      try visitor.visitSingularUInt64Field(value: self.totalFiles, fieldNumber: 2)
+    }
+    if self.completedBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.completedBytes, fieldNumber: 3)
+    }
+    if self.totalBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.totalBytes, fieldNumber: 4)
+    }
+    if self.failedFiles != 0 {
+      try visitor.visitSingularUInt64Field(value: self.failedFiles, fieldNumber: 5)
+    }
+    if self.missingFiles != 0 {
+      try visitor.visitSingularUInt64Field(value: self.missingFiles, fieldNumber: 6)
+    }
+    if self.stalled != false {
+      try visitor.visitSingularBoolField(value: self.stalled, fieldNumber: 7)
+    }
+    if !self.failed.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.failed, fieldNumber: 8)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_SyncStats.Transfer, rhs: Helper_Common_V2_SyncStats.Transfer) -> Bool {
+    if lhs.completedFiles != rhs.completedFiles {return false}
+    if lhs.totalFiles != rhs.totalFiles {return false}
+    if lhs.completedBytes != rhs.completedBytes {return false}
+    if lhs.totalBytes != rhs.totalBytes {return false}
+    if lhs.failedFiles != rhs.failedFiles {return false}
+    if lhs.missingFiles != rhs.missingFiles {return false}
+    if lhs.stalled != rhs.stalled {return false}
+    if lhs.failed != rhs.failed {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_SyncStats.Transfer.FailureReason: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0FAILURE_REASON_UNSPECIFIED\0\u{1}FAILURE_REASON_CONNECTION\0\u{1}FAILURE_REASON_FILE_ACCESS\0\u{1}FAILURE_REASON_SERVER\0")
+}
+
+nonisolated extension Helper_Common_V2_SyncStats.Transfer.FailedFile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Helper_Common_V2_SyncStats.Transfer.protoMessageName + ".FailedFile"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}file_name\0\u{1}reason\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.fileName) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.reason) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.fileName.isEmpty {
+      try visitor.visitSingularStringField(value: self.fileName, fieldNumber: 1)
+    }
+    if self.reason != .unspecified {
+      try visitor.visitSingularEnumField(value: self.reason, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_SyncStats.Transfer.FailedFile, rhs: Helper_Common_V2_SyncStats.Transfer.FailedFile) -> Bool {
+    if lhs.fileName != rhs.fileName {return false}
+    if lhs.reason != rhs.reason {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 nonisolated extension Helper_Common_V2_AddMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AddMediaReference"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}url\0\u{1}priority\0\u{1}transformation\0\u{3}manage_media\0\u{3}user_initiated\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}url\0\u{1}priority\0\u{1}transformation\0\u{3}manage_media\0\u{3}user_initiated\0\u{3}operation_uuid\0\u{3}target_document_uuid\0\u{3}occurrence_path\0\u{3}expected_reference_uuid\0\u{3}expected_descriptor_fingerprint\0\u{3}authoritative_asset_uuid\0")
 
   fileprivate class _StorageClass {
     var _id: Helper_Common_V2_ReferenceIdentifier? = nil
@@ -2757,6 +5628,12 @@ nonisolated extension Helper_Common_V2_AddMediaReference: SwiftProtobuf.Message,
     var _transformation: Helper_Common_V2_Transformation? = nil
     var _manageMedia: Bool? = nil
     var _userInitiated: Bool? = nil
+    var _operationUuid: String? = nil
+    var _targetDocumentUuid: String? = nil
+    var _occurrencePath: String? = nil
+    var _expectedReferenceUuid: String? = nil
+    var _expectedDescriptorFingerprint: Data? = nil
+    var _authoritativeAssetUuid: String? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -2773,6 +5650,12 @@ nonisolated extension Helper_Common_V2_AddMediaReference: SwiftProtobuf.Message,
       _transformation = source._transformation
       _manageMedia = source._manageMedia
       _userInitiated = source._userInitiated
+      _operationUuid = source._operationUuid
+      _targetDocumentUuid = source._targetDocumentUuid
+      _occurrencePath = source._occurrencePath
+      _expectedReferenceUuid = source._expectedReferenceUuid
+      _expectedDescriptorFingerprint = source._expectedDescriptorFingerprint
+      _authoritativeAssetUuid = source._authoritativeAssetUuid
     }
   }
 
@@ -2797,6 +5680,12 @@ nonisolated extension Helper_Common_V2_AddMediaReference: SwiftProtobuf.Message,
         case 4: try { try decoder.decodeSingularMessageField(value: &_storage._transformation) }()
         case 5: try { try decoder.decodeSingularBoolField(value: &_storage._manageMedia) }()
         case 6: try { try decoder.decodeSingularBoolField(value: &_storage._userInitiated) }()
+        case 7: try { try decoder.decodeSingularStringField(value: &_storage._operationUuid) }()
+        case 8: try { try decoder.decodeSingularStringField(value: &_storage._targetDocumentUuid) }()
+        case 9: try { try decoder.decodeSingularStringField(value: &_storage._occurrencePath) }()
+        case 10: try { try decoder.decodeSingularStringField(value: &_storage._expectedReferenceUuid) }()
+        case 11: try { try decoder.decodeSingularBytesField(value: &_storage._expectedDescriptorFingerprint) }()
+        case 12: try { try decoder.decodeSingularStringField(value: &_storage._authoritativeAssetUuid) }()
         default: break
         }
       }
@@ -2827,6 +5716,24 @@ nonisolated extension Helper_Common_V2_AddMediaReference: SwiftProtobuf.Message,
       try { if let v = _storage._userInitiated {
         try visitor.visitSingularBoolField(value: v, fieldNumber: 6)
       } }()
+      try { if let v = _storage._operationUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+      } }()
+      try { if let v = _storage._targetDocumentUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 8)
+      } }()
+      try { if let v = _storage._occurrencePath {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 9)
+      } }()
+      try { if let v = _storage._expectedReferenceUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 10)
+      } }()
+      try { if let v = _storage._expectedDescriptorFingerprint {
+        try visitor.visitSingularBytesField(value: v, fieldNumber: 11)
+      } }()
+      try { if let v = _storage._authoritativeAssetUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 12)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -2842,10 +5749,675 @@ nonisolated extension Helper_Common_V2_AddMediaReference: SwiftProtobuf.Message,
         if _storage._transformation != rhs_storage._transformation {return false}
         if _storage._manageMedia != rhs_storage._manageMedia {return false}
         if _storage._userInitiated != rhs_storage._userInitiated {return false}
+        if _storage._operationUuid != rhs_storage._operationUuid {return false}
+        if _storage._targetDocumentUuid != rhs_storage._targetDocumentUuid {return false}
+        if _storage._occurrencePath != rhs_storage._occurrencePath {return false}
+        if _storage._expectedReferenceUuid != rhs_storage._expectedReferenceUuid {return false}
+        if _storage._expectedDescriptorFingerprint != rhs_storage._expectedDescriptorFingerprint {return false}
+        if _storage._authoritativeAssetUuid != rhs_storage._authoritativeAssetUuid {return false}
         return true
       }
       if !storagesAreEqual {return false}
     }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_EnsureMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EnsureMediaReference"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}url\0\u{1}priority\0\u{1}transformation\0\u{3}manage_media\0\u{3}asset_uuid\0\u{3}operation_context\0")
+
+  fileprivate class _StorageClass {
+    var _id: Helper_Common_V2_ReferenceIdentifier? = nil
+    var _url: String = String()
+    var _priority: Helper_Common_V2_Priority = .background
+    var _transformation: Helper_Common_V2_Transformation? = nil
+    var _manageMedia: Bool? = nil
+    var _assetUuid: String? = nil
+    var _operationContext: String? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _id = source._id
+      _url = source._url
+      _priority = source._priority
+      _transformation = source._transformation
+      _manageMedia = source._manageMedia
+      _assetUuid = source._assetUuid
+      _operationContext = source._operationContext
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._id) }()
+        case 2: try { try decoder.decodeSingularStringField(value: &_storage._url) }()
+        case 3: try { try decoder.decodeSingularEnumField(value: &_storage._priority) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._transformation) }()
+        case 5: try { try decoder.decodeSingularBoolField(value: &_storage._manageMedia) }()
+        case 6: try { try decoder.decodeSingularStringField(value: &_storage._assetUuid) }()
+        case 7: try { try decoder.decodeSingularStringField(value: &_storage._operationContext) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      try { if let v = _storage._id {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      } }()
+      if !_storage._url.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._url, fieldNumber: 2)
+      }
+      if _storage._priority != .background {
+        try visitor.visitSingularEnumField(value: _storage._priority, fieldNumber: 3)
+      }
+      try { if let v = _storage._transformation {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      } }()
+      try { if let v = _storage._manageMedia {
+        try visitor.visitSingularBoolField(value: v, fieldNumber: 5)
+      } }()
+      try { if let v = _storage._assetUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+      } }()
+      try { if let v = _storage._operationContext {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+      } }()
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_EnsureMediaReference, rhs: Helper_Common_V2_EnsureMediaReference) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._id != rhs_storage._id {return false}
+        if _storage._url != rhs_storage._url {return false}
+        if _storage._priority != rhs_storage._priority {return false}
+        if _storage._transformation != rhs_storage._transformation {return false}
+        if _storage._manageMedia != rhs_storage._manageMedia {return false}
+        if _storage._assetUuid != rhs_storage._assetUuid {return false}
+        if _storage._operationContext != rhs_storage._operationContext {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_EnsureMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EnsureMediaReferenceResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_EnsureMediaReferenceResponse, rhs: Helper_Common_V2_EnsureMediaReferenceResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_EnsureProContentReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EnsureProContentReference"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}asset_identifier\0\u{1}priority\0\u{1}transformation\0\u{3}asset_uuid\0\u{3}operation_context\0\u{3}local_path\0")
+
+  fileprivate class _StorageClass {
+    var _id: Helper_Common_V2_ReferenceIdentifier? = nil
+    var _assetIdentifier: String = String()
+    var _priority: Helper_Common_V2_Priority = .background
+    var _transformation: Helper_Common_V2_Transformation? = nil
+    var _assetUuid: String? = nil
+    var _operationContext: String? = nil
+    var _localPath: String? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _id = source._id
+      _assetIdentifier = source._assetIdentifier
+      _priority = source._priority
+      _transformation = source._transformation
+      _assetUuid = source._assetUuid
+      _operationContext = source._operationContext
+      _localPath = source._localPath
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._id) }()
+        case 2: try { try decoder.decodeSingularStringField(value: &_storage._assetIdentifier) }()
+        case 3: try { try decoder.decodeSingularEnumField(value: &_storage._priority) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._transformation) }()
+        case 5: try { try decoder.decodeSingularStringField(value: &_storage._assetUuid) }()
+        case 6: try { try decoder.decodeSingularStringField(value: &_storage._operationContext) }()
+        case 7: try { try decoder.decodeSingularStringField(value: &_storage._localPath) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      try { if let v = _storage._id {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      } }()
+      if !_storage._assetIdentifier.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._assetIdentifier, fieldNumber: 2)
+      }
+      if _storage._priority != .background {
+        try visitor.visitSingularEnumField(value: _storage._priority, fieldNumber: 3)
+      }
+      try { if let v = _storage._transformation {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      } }()
+      try { if let v = _storage._assetUuid {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 5)
+      } }()
+      try { if let v = _storage._operationContext {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+      } }()
+      try { if let v = _storage._localPath {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+      } }()
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_EnsureProContentReference, rhs: Helper_Common_V2_EnsureProContentReference) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._id != rhs_storage._id {return false}
+        if _storage._assetIdentifier != rhs_storage._assetIdentifier {return false}
+        if _storage._priority != rhs_storage._priority {return false}
+        if _storage._transformation != rhs_storage._transformation {return false}
+        if _storage._assetUuid != rhs_storage._assetUuid {return false}
+        if _storage._operationContext != rhs_storage._operationContext {return false}
+        if _storage._localPath != rhs_storage._localPath {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_EnsureProContentReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EnsureProContentReferenceResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_EnsureProContentReferenceResponse, rhs: Helper_Common_V2_EnsureProContentReferenceResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_EnsureMediaReferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EnsureMediaReferences"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}file_references\0\u{3}pro_content_references\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.fileReferences) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.proContentReferences) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.fileReferences.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.fileReferences, fieldNumber: 1)
+    }
+    if !self.proContentReferences.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.proContentReferences, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_EnsureMediaReferences, rhs: Helper_Common_V2_EnsureMediaReferences) -> Bool {
+    if lhs.fileReferences != rhs.fileReferences {return false}
+    if lhs.proContentReferences != rhs.proContentReferences {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_EnsureMediaReferencesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EnsureMediaReferencesResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}failures\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.failures) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.failures.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.failures, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_EnsureMediaReferencesResponse, rhs: Helper_Common_V2_EnsureMediaReferencesResponse) -> Bool {
+    if lhs.failures != rhs.failures {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_EnsureMediaReferencesResponse.Failure: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Helper_Common_V2_EnsureMediaReferencesResponse.protoMessageName + ".Failure"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}reference_uuid\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._error) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 1)
+    }
+    try { if let v = self._error {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_EnsureMediaReferencesResponse.Failure, rhs: Helper_Common_V2_EnsureMediaReferencesResponse.Failure) -> Bool {
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs._error != rhs._error {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ApplyProjectedTransformation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ApplyProjectedTransformation"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}transformation\0\u{1}priority\0\u{3}operation_context\0")
+
+  fileprivate class _StorageClass {
+    var _id: Helper_Common_V2_ReferenceIdentifier? = nil
+    var _transformation: Helper_Common_V2_Transformation? = nil
+    var _priority: Helper_Common_V2_Priority = .background
+    var _operationContext: String? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _id = source._id
+      _transformation = source._transformation
+      _priority = source._priority
+      _operationContext = source._operationContext
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._id) }()
+        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._transformation) }()
+        case 3: try { try decoder.decodeSingularEnumField(value: &_storage._priority) }()
+        case 4: try { try decoder.decodeSingularStringField(value: &_storage._operationContext) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      try { if let v = _storage._id {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      } }()
+      try { if let v = _storage._transformation {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      } }()
+      if _storage._priority != .background {
+        try visitor.visitSingularEnumField(value: _storage._priority, fieldNumber: 3)
+      }
+      try { if let v = _storage._operationContext {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+      } }()
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ApplyProjectedTransformation, rhs: Helper_Common_V2_ApplyProjectedTransformation) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._id != rhs_storage._id {return false}
+        if _storage._transformation != rhs_storage._transformation {return false}
+        if _storage._priority != rhs_storage._priority {return false}
+        if _storage._operationContext != rhs_storage._operationContext {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ApplyProjectedTransformationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ApplyProjectedTransformationResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ApplyProjectedTransformationResponse, rhs: Helper_Common_V2_ApplyProjectedTransformationResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_TombstoneProjectedReferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".TombstoneProjectedReferences"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}reference_uuids\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedStringField(value: &self.referenceUuids) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.referenceUuids.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.referenceUuids, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_TombstoneProjectedReferences, rhs: Helper_Common_V2_TombstoneProjectedReferences) -> Bool {
+    if lhs.referenceUuids != rhs.referenceUuids {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_TombstoneProjectedReferencesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".TombstoneProjectedReferencesResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}requested\0\u{1}tombstoned\0\u{3}already_tombstoned\0\u{1}missing\0\u{1}unowned\0\u{3}media_references\0\u{3}media_state_snapshot\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.requested) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.tombstoned) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.alreadyTombstoned) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.missing) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.unowned) }()
+      case 6: try { try decoder.decodeRepeatedMessageField(value: &self.mediaReferences) }()
+      case 7: try { try decoder.decodeSingularMessageField(value: &self._mediaStateSnapshot) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.requested != 0 {
+      try visitor.visitSingularUInt64Field(value: self.requested, fieldNumber: 1)
+    }
+    if self.tombstoned != 0 {
+      try visitor.visitSingularUInt64Field(value: self.tombstoned, fieldNumber: 2)
+    }
+    if self.alreadyTombstoned != 0 {
+      try visitor.visitSingularUInt64Field(value: self.alreadyTombstoned, fieldNumber: 3)
+    }
+    if self.missing != 0 {
+      try visitor.visitSingularUInt64Field(value: self.missing, fieldNumber: 4)
+    }
+    if self.unowned != 0 {
+      try visitor.visitSingularUInt64Field(value: self.unowned, fieldNumber: 5)
+    }
+    if !self.mediaReferences.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.mediaReferences, fieldNumber: 6)
+    }
+    try { if let v = self._mediaStateSnapshot {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_TombstoneProjectedReferencesResponse, rhs: Helper_Common_V2_TombstoneProjectedReferencesResponse) -> Bool {
+    if lhs.requested != rhs.requested {return false}
+    if lhs.tombstoned != rhs.tombstoned {return false}
+    if lhs.alreadyTombstoned != rhs.alreadyTombstoned {return false}
+    if lhs.missing != rhs.missing {return false}
+    if lhs.unowned != rhs.unowned {return false}
+    if lhs.mediaReferences != rhs.mediaReferences {return false}
+    if lhs._mediaStateSnapshot != rhs._mediaStateSnapshot {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ClaimProjectedReferences: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ClaimProjectedReferences"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}reference_uuids\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedStringField(value: &self.referenceUuids) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.referenceUuids.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.referenceUuids, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ClaimProjectedReferences, rhs: Helper_Common_V2_ClaimProjectedReferences) -> Bool {
+    if lhs.referenceUuids != rhs.referenceUuids {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ClaimProjectedReferencesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ClaimProjectedReferencesResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}requested\0\u{1}claimed\0\u{3}already_owned\0\u{1}missing\0\u{3}media_references\0\u{3}media_state_snapshot\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.requested) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.claimed) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.alreadyOwned) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.missing) }()
+      case 5: try { try decoder.decodeRepeatedMessageField(value: &self.mediaReferences) }()
+      case 6: try { try decoder.decodeSingularMessageField(value: &self._mediaStateSnapshot) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.requested != 0 {
+      try visitor.visitSingularUInt64Field(value: self.requested, fieldNumber: 1)
+    }
+    if self.claimed != 0 {
+      try visitor.visitSingularUInt64Field(value: self.claimed, fieldNumber: 2)
+    }
+    if self.alreadyOwned != 0 {
+      try visitor.visitSingularUInt64Field(value: self.alreadyOwned, fieldNumber: 3)
+    }
+    if self.missing != 0 {
+      try visitor.visitSingularUInt64Field(value: self.missing, fieldNumber: 4)
+    }
+    if !self.mediaReferences.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.mediaReferences, fieldNumber: 5)
+    }
+    try { if let v = self._mediaStateSnapshot {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ClaimProjectedReferencesResponse, rhs: Helper_Common_V2_ClaimProjectedReferencesResponse) -> Bool {
+    if lhs.requested != rhs.requested {return false}
+    if lhs.claimed != rhs.claimed {return false}
+    if lhs.alreadyOwned != rhs.alreadyOwned {return false}
+    if lhs.missing != rhs.missing {return false}
+    if lhs.mediaReferences != rhs.mediaReferences {return false}
+    if lhs._mediaStateSnapshot != rhs._mediaStateSnapshot {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -2907,7 +6479,7 @@ nonisolated extension Helper_Common_V2_ProContentDownloadDetails: SwiftProtobuf.
 }
 
 nonisolated extension Helper_Common_V2_ProContentDownloadDetails.AssetType: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ASSET_TYPE_UNSPECIFIED\0\u{1}ASSET_TYPE_LOOP\0\u{1}ASSET_TYPE_COUNTDOWN\0\u{1}ASSET_TYPE_IMAGE\0\u{1}ASSET_TYPE_MOTION_TITLE\0\u{1}ASSET_TYPE_PACK\0\u{1}ASSET_TYPE_THEME\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ASSET_TYPE_UNSPECIFIED\0\u{1}ASSET_TYPE_LOOP\0\u{1}ASSET_TYPE_COUNTDOWN\0\u{1}ASSET_TYPE_IMAGE\0\u{1}ASSET_TYPE_MOTION_TITLE\0\u{1}ASSET_TYPE_PACK\0\u{1}ASSET_TYPE_THEME\0\u{1}ASSET_TYPE_STICKER\0")
 }
 
 nonisolated extension Helper_Common_V2_AddProContentReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
@@ -3287,6 +6859,421 @@ nonisolated extension Helper_Common_V2_RemoveMediaReferences: SwiftProtobuf.Mess
   }
 }
 
+nonisolated extension Helper_Common_V2_GetMediaUsage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetMediaUsage"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetMediaUsage, rhs: Helper_Common_V2_GetMediaUsage) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GetMediaUsageResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetMediaUsageResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}managed_file_count\0\u{3}managed_byte_count\0\u{3}unmanaged_byte_count\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.managedFileCount) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.managedByteCount) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.unmanagedByteCount) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.managedFileCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.managedFileCount, fieldNumber: 1)
+    }
+    if self.managedByteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.managedByteCount, fieldNumber: 2)
+    }
+    if self.unmanagedByteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.unmanagedByteCount, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetMediaUsageResponse, rhs: Helper_Common_V2_GetMediaUsageResponse) -> Bool {
+    if lhs.managedFileCount != rhs.managedFileCount {return false}
+    if lhs.managedByteCount != rhs.managedByteCount {return false}
+    if lhs.unmanagedByteCount != rhs.unmanagedByteCount {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_PreviewMediaCleanup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".PreviewMediaCleanup"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_PreviewMediaCleanup, rhs: Helper_Common_V2_PreviewMediaCleanup) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_MediaCleanupCandidate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MediaCleanupCandidate"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}candidate_uuid\0\u{3}asset_uuid\0\u{1}path\0\u{3}byte_count\0\u{1}kind\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.candidateUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._assetUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.byteCount) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.candidateUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.candidateUuid, fieldNumber: 1)
+    }
+    try { if let v = self._assetUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 3)
+    }
+    if self.byteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.byteCount, fieldNumber: 4)
+    }
+    if self.kind != .unspecified {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_MediaCleanupCandidate, rhs: Helper_Common_V2_MediaCleanupCandidate) -> Bool {
+    if lhs.candidateUuid != rhs.candidateUuid {return false}
+    if lhs._assetUuid != rhs._assetUuid {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.byteCount != rhs.byteCount {return false}
+    if lhs.kind != rhs.kind {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_MediaCleanupCandidate.Kind: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0KIND_UNSPECIFIED\0\u{1}CATALOGED_ASSET\0\u{1}UNTRACKED_FILE\0")
+}
+
+nonisolated extension Helper_Common_V2_MediaCleanupDeferral: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MediaCleanupDeferral"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}asset_uuid\0\u{1}path\0\u{3}byte_count\0\u{1}reason\0\u{3}eligible_at_unix_seconds\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.byteCount) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.reason) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self._eligibleAtUnixSeconds) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 1)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 2)
+    }
+    if self.byteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.byteCount, fieldNumber: 3)
+    }
+    if self.reason != .unspecified {
+      try visitor.visitSingularEnumField(value: self.reason, fieldNumber: 4)
+    }
+    try { if let v = self._eligibleAtUnixSeconds {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 5)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_MediaCleanupDeferral, rhs: Helper_Common_V2_MediaCleanupDeferral) -> Bool {
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.byteCount != rhs.byteCount {return false}
+    if lhs.reason != rhs.reason {return false}
+    if lhs._eligibleAtUnixSeconds != rhs._eligibleAtUnixSeconds {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_MediaCleanupDeferral.Reason: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0REASON_UNSPECIFIED\0\u{1}WAITING\0\u{1}UPLOAD_PENDING\0\u{1}CHECKING_CLOUD\0\u{1}NOT_IN_CLOUD\0")
+}
+
+nonisolated extension Helper_Common_V2_PreviewMediaCleanupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".PreviewMediaCleanupResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}plan_uuid\0\u{3}plan_digest\0\u{1}candidates\0\u{3}blocked_reasons\0\u{1}deferrals\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.planUuid) }()
+      case 2: try { try decoder.decodeSingularBytesField(value: &self.planDigest) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.candidates) }()
+      case 4: try { try decoder.decodeRepeatedStringField(value: &self.blockedReasons) }()
+      case 5: try { try decoder.decodeRepeatedMessageField(value: &self.deferrals) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.planUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.planUuid, fieldNumber: 1)
+    }
+    if !self.planDigest.isEmpty {
+      try visitor.visitSingularBytesField(value: self.planDigest, fieldNumber: 2)
+    }
+    if !self.candidates.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.candidates, fieldNumber: 3)
+    }
+    if !self.blockedReasons.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.blockedReasons, fieldNumber: 4)
+    }
+    if !self.deferrals.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.deferrals, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_PreviewMediaCleanupResponse, rhs: Helper_Common_V2_PreviewMediaCleanupResponse) -> Bool {
+    if lhs.planUuid != rhs.planUuid {return false}
+    if lhs.planDigest != rhs.planDigest {return false}
+    if lhs.candidates != rhs.candidates {return false}
+    if lhs.blockedReasons != rhs.blockedReasons {return false}
+    if lhs.deferrals != rhs.deferrals {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ExecuteMediaCleanup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ExecuteMediaCleanup"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}plan_uuid\0\u{3}plan_digest\0\u{3}candidate_uuids\0\u{1}action\0\u{3}destination_directory\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.planUuid) }()
+      case 3: try { try decoder.decodeSingularBytesField(value: &self.planDigest) }()
+      case 4: try { try decoder.decodeRepeatedStringField(value: &self.candidateUuids) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.action) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self._destinationDirectory) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.planUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.planUuid, fieldNumber: 2)
+    }
+    if !self.planDigest.isEmpty {
+      try visitor.visitSingularBytesField(value: self.planDigest, fieldNumber: 3)
+    }
+    if !self.candidateUuids.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.candidateUuids, fieldNumber: 4)
+    }
+    if self.action != .unspecified {
+      try visitor.visitSingularEnumField(value: self.action, fieldNumber: 5)
+    }
+    try { if let v = self._destinationDirectory {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ExecuteMediaCleanup, rhs: Helper_Common_V2_ExecuteMediaCleanup) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.planUuid != rhs.planUuid {return false}
+    if lhs.planDigest != rhs.planDigest {return false}
+    if lhs.candidateUuids != rhs.candidateUuids {return false}
+    if lhs.action != rhs.action {return false}
+    if lhs._destinationDirectory != rhs._destinationDirectory {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ExecuteMediaCleanup.Action: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0ACTION_UNSPECIFIED\0\u{1}MOVE_TO_TRASH\0\u{1}MOVE_TO_FOLDER\0")
+}
+
+nonisolated extension Helper_Common_V2_MediaCleanupItemResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MediaCleanupItemResult"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}candidate_uuid\0\u{3}asset_uuid\0\u{3}source_path\0\u{3}destination_path\0\u{3}byte_count\0\u{1}outcome\0\u{1}reason\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.candidateUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._assetUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.sourcePath) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._destinationPath) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self.byteCount) }()
+      case 6: try { try decoder.decodeSingularEnumField(value: &self.outcome) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self._reason) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.candidateUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.candidateUuid, fieldNumber: 1)
+    }
+    try { if let v = self._assetUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
+    if !self.sourcePath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourcePath, fieldNumber: 3)
+    }
+    try { if let v = self._destinationPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    } }()
+    if self.byteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.byteCount, fieldNumber: 5)
+    }
+    if self.outcome != .unspecified {
+      try visitor.visitSingularEnumField(value: self.outcome, fieldNumber: 6)
+    }
+    try { if let v = self._reason {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_MediaCleanupItemResult, rhs: Helper_Common_V2_MediaCleanupItemResult) -> Bool {
+    if lhs.candidateUuid != rhs.candidateUuid {return false}
+    if lhs._assetUuid != rhs._assetUuid {return false}
+    if lhs.sourcePath != rhs.sourcePath {return false}
+    if lhs._destinationPath != rhs._destinationPath {return false}
+    if lhs.byteCount != rhs.byteCount {return false}
+    if lhs.outcome != rhs.outcome {return false}
+    if lhs._reason != rhs._reason {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_MediaCleanupItemResult.Outcome: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0OUTCOME_UNSPECIFIED\0\u{1}CLEANED\0\u{1}STALE\0\u{1}BLOCKED\0\u{1}FAILED\0\u{1}ALREADY_CLEANED\0")
+}
+
+nonisolated extension Helper_Common_V2_ExecuteMediaCleanupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ExecuteMediaCleanupResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{1}results\0\u{3}cleaned_byte_count\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.results) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.cleanedByteCount) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.results.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.results, fieldNumber: 2)
+    }
+    if self.cleanedByteCount != 0 {
+      try visitor.visitSingularUInt64Field(value: self.cleanedByteCount, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ExecuteMediaCleanupResponse, rhs: Helper_Common_V2_ExecuteMediaCleanupResponse) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.results != rhs.results {return false}
+    if lhs.cleanedByteCount != rhs.cleanedByteCount {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 nonisolated extension Helper_Common_V2_TriggerMediaReference: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TriggerMediaReference"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
@@ -3319,7 +7306,7 @@ nonisolated extension Helper_Common_V2_TriggerMediaReference: SwiftProtobuf.Mess
 
 nonisolated extension Helper_Common_V2_SmartPlaylist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SmartPlaylist"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}playlist_uuid\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3328,6 +7315,7 @@ nonisolated extension Helper_Common_V2_SmartPlaylist: SwiftProtobuf.Message, Swi
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.playlistUuid) }()
       default: break
       }
     }
@@ -3337,19 +7325,87 @@ nonisolated extension Helper_Common_V2_SmartPlaylist: SwiftProtobuf.Message, Swi
     if !self.path.isEmpty {
       try visitor.visitSingularStringField(value: self.path, fieldNumber: 1)
     }
+    if !self.playlistUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.playlistUuid, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Helper_Common_V2_SmartPlaylist, rhs: Helper_Common_V2_SmartPlaylist) -> Bool {
     if lhs.path != rhs.path {return false}
+    if lhs.playlistUuid != rhs.playlistUuid {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
+nonisolated extension Helper_Common_V2_SmartPlaylistMembershipSnapshot: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SmartPlaylistMembershipSnapshot"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}playlist_uuid\0\u{3}root_path\0\u{3}member_paths\0\u{3}workspace_generation\0\u{1}state\0\u{3}registration_revision\0\u{3}membership_revision\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.playlistUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.rootPath) }()
+      case 3: try { try decoder.decodeRepeatedStringField(value: &self.memberPaths) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.workspaceGeneration) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.state) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.registrationRevision) }()
+      case 7: try { try decoder.decodeSingularUInt64Field(value: &self.membershipRevision) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.playlistUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.playlistUuid, fieldNumber: 1)
+    }
+    if !self.rootPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.rootPath, fieldNumber: 2)
+    }
+    if !self.memberPaths.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.memberPaths, fieldNumber: 3)
+    }
+    if self.workspaceGeneration != 0 {
+      try visitor.visitSingularUInt64Field(value: self.workspaceGeneration, fieldNumber: 4)
+    }
+    if self.state != .unspecified {
+      try visitor.visitSingularEnumField(value: self.state, fieldNumber: 5)
+    }
+    if self.registrationRevision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.registrationRevision, fieldNumber: 6)
+    }
+    if self.membershipRevision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.membershipRevision, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_SmartPlaylistMembershipSnapshot, rhs: Helper_Common_V2_SmartPlaylistMembershipSnapshot) -> Bool {
+    if lhs.playlistUuid != rhs.playlistUuid {return false}
+    if lhs.rootPath != rhs.rootPath {return false}
+    if lhs.memberPaths != rhs.memberPaths {return false}
+    if lhs.workspaceGeneration != rhs.workspaceGeneration {return false}
+    if lhs.state != rhs.state {return false}
+    if lhs.registrationRevision != rhs.registrationRevision {return false}
+    if lhs.membershipRevision != rhs.membershipRevision {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_SmartPlaylistMembershipSnapshot.State: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STATE_UNSPECIFIED\0\u{1}MISSING\0\u{1}PERMISSION_DENIED\0\u{1}AVAILABLE\0\u{1}INACCESSIBLE\0\u{1}NOT_CONFIGURED\0")
+}
+
 nonisolated extension Helper_Common_V2_UpdateSmartPlaylists: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UpdateSmartPlaylists"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}playlists\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}playlists\0\u{3}workspace_generation\0\u{3}registration_revision\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3358,6 +7414,8 @@ nonisolated extension Helper_Common_V2_UpdateSmartPlaylists: SwiftProtobuf.Messa
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeRepeatedMessageField(value: &self.playlists) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.workspaceGeneration) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.registrationRevision) }()
       default: break
       }
     }
@@ -3367,11 +7425,19 @@ nonisolated extension Helper_Common_V2_UpdateSmartPlaylists: SwiftProtobuf.Messa
     if !self.playlists.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.playlists, fieldNumber: 1)
     }
+    if self.workspaceGeneration != 0 {
+      try visitor.visitSingularUInt64Field(value: self.workspaceGeneration, fieldNumber: 2)
+    }
+    if self.registrationRevision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.registrationRevision, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Helper_Common_V2_UpdateSmartPlaylists, rhs: Helper_Common_V2_UpdateSmartPlaylists) -> Bool {
     if lhs.playlists != rhs.playlists {return false}
+    if lhs.workspaceGeneration != rhs.workspaceGeneration {return false}
+    if lhs.registrationRevision != rhs.registrationRevision {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3411,9 +7477,39 @@ nonisolated extension Helper_Common_V2_UpdatePrefs: SwiftProtobuf.Message, Swift
   }
 }
 
+nonisolated extension Helper_Common_V2_SetCloudTerminated: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SetCloudTerminated"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}cloud_terminated\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.cloudTerminated) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.cloudTerminated != false {
+      try visitor.visitSingularBoolField(value: self.cloudTerminated, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_SetCloudTerminated, rhs: Helper_Common_V2_SetCloudTerminated) -> Bool {
+    if lhs.cloudTerminated != rhs.cloudTerminated {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 nonisolated extension Helper_Common_V2_MarkWorkspaceAsCloud: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MarkWorkspaceAsCloud"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}organization_id\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3422,20 +7518,29 @@ nonisolated extension Helper_Common_V2_MarkWorkspaceAsCloud: SwiftProtobuf.Messa
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._organizationID) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.uuid.isEmpty {
       try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
     }
+    try { if let v = self._organizationID {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Helper_Common_V2_MarkWorkspaceAsCloud, rhs: Helper_Common_V2_MarkWorkspaceAsCloud) -> Bool {
     if lhs.uuid != rhs.uuid {return false}
+    if lhs._organizationID != rhs._organizationID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3443,18 +7548,33 @@ nonisolated extension Helper_Common_V2_MarkWorkspaceAsCloud: SwiftProtobuf.Messa
 
 nonisolated extension Helper_Common_V2_MarkWorkspaceAsLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MarkWorkspaceAsLocal"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    // Load everything into unknown fields
-    while try decoder.nextFieldNumber() != nil {}
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._path) }()
+      default: break
+      }
+    }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._path {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Helper_Common_V2_MarkWorkspaceAsLocal, rhs: Helper_Common_V2_MarkWorkspaceAsLocal) -> Bool {
+    if lhs._path != rhs._path {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3518,6 +7638,222 @@ nonisolated extension Helper_Common_V2_ImportUnmanagedMedia: SwiftProtobuf.Messa
   }
 }
 
+nonisolated extension Helper_Common_V2_GetUnmanagedMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetUnmanagedMedia"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetUnmanagedMedia, rhs: Helper_Common_V2_GetUnmanagedMedia) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GetUnmanagedMediaResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetUnmanagedMediaResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}paths\0\u{3}device_local\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedStringField(value: &self.paths) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.deviceLocal) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.paths.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.paths, fieldNumber: 1)
+    }
+    if !self.deviceLocal.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.deviceLocal, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetUnmanagedMediaResponse, rhs: Helper_Common_V2_GetUnmanagedMediaResponse) -> Bool {
+    if lhs.paths != rhs.paths {return false}
+    if lhs.deviceLocal != rhs.deviceLocal {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_DeviceLocalMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".DeviceLocalMedia"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}asset_uuid\0\u{1}path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 1)
+    }
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_DeviceLocalMedia, rhs: Helper_Common_V2_DeviceLocalMedia) -> Bool {
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.path != rhs.path {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_LeftBehindMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".LeftBehindMedia"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{1}reason\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.reason) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 1)
+    }
+    if self.reason != .unspecified {
+      try visitor.visitSingularEnumField(value: self.reason, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_LeftBehindMedia, rhs: Helper_Common_V2_LeftBehindMedia) -> Bool {
+    if lhs.path != rhs.path {return false}
+    if lhs.reason != rhs.reason {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_LeftBehindMedia.Reason: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0REASON_UNSPECIFIED\0\u{1}INSUFFICIENT_SPACE\0\u{1}COPY_FAILED\0\u{1}DESTINATION_UNAVAILABLE\0")
+}
+
+nonisolated extension Helper_Common_V2_PreMigrateWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".PreMigrateWorkspace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{3}to_path\0\u{3}workspace_id\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._toPath) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._workspaceID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 1)
+    }
+    try { if let v = self._toPath {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._workspaceID {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_PreMigrateWorkspace, rhs: Helper_Common_V2_PreMigrateWorkspace) -> Bool {
+    if lhs.path != rhs.path {return false}
+    if lhs._toPath != rhs._toPath {return false}
+    if lhs._workspaceID != rhs._workspaceID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_MigrateWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MigrateWorkspace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}from_path\0\u{3}to_path\0\u{3}workspace_id\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.fromPath) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.toPath) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._workspaceID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.fromPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.fromPath, fieldNumber: 1)
+    }
+    if !self.toPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.toPath, fieldNumber: 2)
+    }
+    try { if let v = self._workspaceID {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_MigrateWorkspace, rhs: Helper_Common_V2_MigrateWorkspace) -> Bool {
+    if lhs.fromPath != rhs.fromPath {return false}
+    if lhs.toPath != rhs.toPath {return false}
+    if lhs._workspaceID != rhs._workspaceID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 nonisolated extension Helper_Common_V2_Ping: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Ping"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
@@ -3550,6 +7886,108 @@ nonisolated extension Helper_Common_V2_Ping: SwiftProtobuf.Message, SwiftProtobu
 
 nonisolated extension Helper_Common_V2_AddMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AddMediaReferenceResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}asset_uuid\0\u{3}operation_phase\0\u{3}managed_url\0\u{3}import_in_progress\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._assetUuid) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.operationPhase) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._managedURL) }()
+      case 5: try { try decoder.decodeSingularBoolField(value: &self.importInProgress) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._operationUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    } }()
+    try { if let v = self._assetUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
+    if self.operationPhase != .unknown {
+      try visitor.visitSingularEnumField(value: self.operationPhase, fieldNumber: 3)
+    }
+    try { if let v = self._managedURL {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    } }()
+    if self.importInProgress != false {
+      try visitor.visitSingularBoolField(value: self.importInProgress, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_AddMediaReferenceResponse, rhs: Helper_Common_V2_AddMediaReferenceResponse) -> Bool {
+    if lhs._operationUuid != rhs._operationUuid {return false}
+    if lhs._assetUuid != rhs._assetUuid {return false}
+    if lhs.operationPhase != rhs.operationPhase {return false}
+    if lhs._managedURL != rhs._managedURL {return false}
+    if lhs.importInProgress != rhs.importInProgress {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_AdvanceImportOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".AdvanceImportOperation"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{1}phase\0\u{1}error\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.phase) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._error) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if self.phase != .unknown {
+      try visitor.visitSingularEnumField(value: self.phase, fieldNumber: 2)
+    }
+    try { if let v = self._error {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_AdvanceImportOperation, rhs: Helper_Common_V2_AdvanceImportOperation) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.phase != rhs.phase {return false}
+    if lhs._error != rhs._error {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_AdvanceImportOperation.Phase: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PHASE_UNKNOWN\0\u{1}PHASE_ATTACHING\0\u{1}PHASE_COMPLETE\0\u{1}PHASE_FAILED\0\u{1}PHASE_IMPORTED\0")
+}
+
+nonisolated extension Helper_Common_V2_AdvanceImportOperationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".AdvanceImportOperationResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -3561,10 +7999,310 @@ nonisolated extension Helper_Common_V2_AddMediaReferenceResponse: SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Helper_Common_V2_AddMediaReferenceResponse, rhs: Helper_Common_V2_AddMediaReferenceResponse) -> Bool {
+  public static func ==(lhs: Helper_Common_V2_AdvanceImportOperationResponse, rhs: Helper_Common_V2_AdvanceImportOperationResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+nonisolated extension Helper_Common_V2_RelinkMediaAsset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RelinkMediaAsset"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}expected_asset_uuid\0\u{3}source_capability_path\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.expectedAssetUuid) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.sourceCapabilityPath) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.expectedAssetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.expectedAssetUuid, fieldNumber: 3)
+    }
+    if !self.sourceCapabilityPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.sourceCapabilityPath, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_RelinkMediaAsset, rhs: Helper_Common_V2_RelinkMediaAsset) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.expectedAssetUuid != rhs.expectedAssetUuid {return false}
+    if lhs.sourceCapabilityPath != rhs.sourceCapabilityPath {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_RelinkMediaAsset.Phase: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PHASE_UNKNOWN\0\u{1}PHASE_QUEUED\0\u{1}PHASE_STAGING\0\u{1}PHASE_STAGED\0\u{1}PHASE_PUBLISHING\0\u{1}PHASE_COMPLETE\0\u{1}PHASE_FAILED\0")
+}
+
+nonisolated extension Helper_Common_V2_RelinkMediaAssetResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RelinkMediaAssetResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}asset_uuid\0\u{1}phase\0\u{1}attempt\0\u{3}failure_code\0\u{3}failure_detail\0\u{3}replaced_asset_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.phase) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.attempt) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self._failureCode) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self._failureDetail) }()
+      case 8: try { try decoder.decodeSingularStringField(value: &self._replacedAssetUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 3)
+    }
+    if self.phase != .unknown {
+      try visitor.visitSingularEnumField(value: self.phase, fieldNumber: 4)
+    }
+    if self.attempt != 0 {
+      try visitor.visitSingularUInt32Field(value: self.attempt, fieldNumber: 5)
+    }
+    try { if let v = self._failureCode {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+    } }()
+    try { if let v = self._failureDetail {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+    } }()
+    try { if let v = self._replacedAssetUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 8)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_RelinkMediaAssetResponse, rhs: Helper_Common_V2_RelinkMediaAssetResponse) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.phase != rhs.phase {return false}
+    if lhs.attempt != rhs.attempt {return false}
+    if lhs._failureCode != rhs._failureCode {return false}
+    if lhs._failureDetail != rhs._failureDetail {return false}
+    if lhs._replacedAssetUuid != rhs._replacedAssetUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_MaterializeMediaAsset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MaterializeMediaAsset"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}expected_asset_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.expectedAssetUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.expectedAssetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.expectedAssetUuid, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_MaterializeMediaAsset, rhs: Helper_Common_V2_MaterializeMediaAsset) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.expectedAssetUuid != rhs.expectedAssetUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_MaterializeMediaAsset.Phase: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0PHASE_UNKNOWN\0\u{1}PHASE_QUEUED\0\u{1}PHASE_RESOLVING\0\u{1}PHASE_DOWNLOADING\0\u{1}PHASE_DOWNLOADED\0\u{1}PHASE_VERIFYING\0\u{1}PHASE_PUBLISHING\0\u{1}PHASE_COMPLETE\0\u{1}PHASE_FAILED\0")
+}
+
+nonisolated extension Helper_Common_V2_MaterializeMediaAssetResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MaterializeMediaAssetResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}operation_uuid\0\u{3}reference_uuid\0\u{3}asset_uuid\0\u{1}phase\0\u{1}attempt\0\u{3}failure_code\0\u{3}failure_detail\0\u{3}replaced_asset_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.operationUuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.referenceUuid) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.phase) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.attempt) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self._failureCode) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self._failureDetail) }()
+      case 8: try { try decoder.decodeSingularStringField(value: &self._replacedAssetUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.operationUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationUuid, fieldNumber: 1)
+    }
+    if !self.referenceUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.referenceUuid, fieldNumber: 2)
+    }
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 3)
+    }
+    if self.phase != .unknown {
+      try visitor.visitSingularEnumField(value: self.phase, fieldNumber: 4)
+    }
+    if self.attempt != 0 {
+      try visitor.visitSingularUInt32Field(value: self.attempt, fieldNumber: 5)
+    }
+    try { if let v = self._failureCode {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 6)
+    } }()
+    try { if let v = self._failureDetail {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 7)
+    } }()
+    try { if let v = self._replacedAssetUuid {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 8)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_MaterializeMediaAssetResponse, rhs: Helper_Common_V2_MaterializeMediaAssetResponse) -> Bool {
+    if lhs.operationUuid != rhs.operationUuid {return false}
+    if lhs.referenceUuid != rhs.referenceUuid {return false}
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.phase != rhs.phase {return false}
+    if lhs.attempt != rhs.attempt {return false}
+    if lhs._failureCode != rhs._failureCode {return false}
+    if lhs._failureDetail != rhs._failureDetail {return false}
+    if lhs._replacedAssetUuid != rhs._replacedAssetUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_RestoreMediaFromTrash: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RestoreMediaFromTrash"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}asset_uuid\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_RestoreMediaFromTrash, rhs: Helper_Common_V2_RestoreMediaFromTrash) -> Bool {
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_RestoreMediaFromTrashResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RestoreMediaFromTrashResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}asset_uuid\0\u{1}outcome\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.outcome) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 1)
+    }
+    if self.outcome != .unknown {
+      try visitor.visitSingularEnumField(value: self.outcome, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_RestoreMediaFromTrashResponse, rhs: Helper_Common_V2_RestoreMediaFromTrashResponse) -> Bool {
+    if lhs.assetUuid != rhs.assetUuid {return false}
+    if lhs.outcome != rhs.outcome {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_RestoreMediaFromTrashResponse.Outcome: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0OUTCOME_UNKNOWN\0\u{1}OUTCOME_RESTORED\0\u{1}OUTCOME_NOT_IN_TRASH\0\u{1}OUTCOME_ALREADY_PRESENT\0\u{1}OUTCOME_NOT_PURGED\0")
 }
 
 nonisolated extension Helper_Common_V2_DuplicateMediaReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
@@ -3702,18 +8440,29 @@ nonisolated extension Helper_Common_V2_ResumeSyncResponse: SwiftProtobuf.Message
 
 nonisolated extension Helper_Common_V2_UpdateSmartPlaylistsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UpdateSmartPlaylistsResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}snapshots\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    // Load everything into unknown fields
-    while try decoder.nextFieldNumber() != nil {}
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.snapshots) }()
+      default: break
+      }
+    }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.snapshots.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.snapshots, fieldNumber: 1)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Helper_Common_V2_UpdateSmartPlaylistsResponse, rhs: Helper_Common_V2_UpdateSmartPlaylistsResponse) -> Bool {
+    if lhs.snapshots != rhs.snapshots {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3733,6 +8482,25 @@ nonisolated extension Helper_Common_V2_UpdatePrefsResponse: SwiftProtobuf.Messag
   }
 
   public static func ==(lhs: Helper_Common_V2_UpdatePrefsResponse, rhs: Helper_Common_V2_UpdatePrefsResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_SetCloudTerminatedResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SetCloudTerminatedResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_SetCloudTerminatedResponse, rhs: Helper_Common_V2_SetCloudTerminatedResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3778,18 +8546,29 @@ nonisolated extension Helper_Common_V2_MarkWorkspaceAsLocalResponse: SwiftProtob
 
 nonisolated extension Helper_Common_V2_AddProContentReferenceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AddProContentReferenceResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}asset_uuid\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    // Load everything into unknown fields
-    while try decoder.nextFieldNumber() != nil {}
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.assetUuid) }()
+      default: break
+      }
+    }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.assetUuid.isEmpty {
+      try visitor.visitSingularStringField(value: self.assetUuid, fieldNumber: 1)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Helper_Common_V2_AddProContentReferenceResponse, rhs: Helper_Common_V2_AddProContentReferenceResponse) -> Bool {
+    if lhs.assetUuid != rhs.assetUuid {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3816,6 +8595,125 @@ nonisolated extension Helper_Common_V2_RemoveContainerResponse: SwiftProtobuf.Me
 
 nonisolated extension Helper_Common_V2_ImportUnmanagedMediaResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ImportUnmanagedMediaResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}left_behind\0\u{3}insufficient_space\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.leftBehind) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._insufficientSpace) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.leftBehind.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.leftBehind, fieldNumber: 1)
+    }
+    try { if let v = self._insufficientSpace {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ImportUnmanagedMediaResponse, rhs: Helper_Common_V2_ImportUnmanagedMediaResponse) -> Bool {
+    if lhs.leftBehind != rhs.leftBehind {return false}
+    if lhs._insufficientSpace != rhs._insufficientSpace {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_InsufficientSpace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".InsufficientSpace"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}required_bytes\0\u{3}available_bytes\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.requiredBytes) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.availableBytes) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.requiredBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.requiredBytes, fieldNumber: 1)
+    }
+    if self.availableBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.availableBytes, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_InsufficientSpace, rhs: Helper_Common_V2_InsufficientSpace) -> Bool {
+    if lhs.requiredBytes != rhs.requiredBytes {return false}
+    if lhs.availableBytes != rhs.availableBytes {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_UnmanagedMediaImportProgress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UnmanagedMediaImportProgress"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}completed_files\0\u{3}total_files\0\u{3}completed_bytes\0\u{3}total_bytes\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.completedFiles) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.totalFiles) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self.completedBytes) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self.totalBytes) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.completedFiles != 0 {
+      try visitor.visitSingularUInt64Field(value: self.completedFiles, fieldNumber: 1)
+    }
+    if self.totalFiles != 0 {
+      try visitor.visitSingularUInt64Field(value: self.totalFiles, fieldNumber: 2)
+    }
+    if self.completedBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.completedBytes, fieldNumber: 3)
+    }
+    if self.totalBytes != 0 {
+      try visitor.visitSingularUInt64Field(value: self.totalBytes, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_UnmanagedMediaImportProgress, rhs: Helper_Common_V2_UnmanagedMediaImportProgress) -> Bool {
+    if lhs.completedFiles != rhs.completedFiles {return false}
+    if lhs.totalFiles != rhs.totalFiles {return false}
+    if lhs.completedBytes != rhs.completedBytes {return false}
+    if lhs.totalBytes != rhs.totalBytes {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_PreMigrateWorkspaceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".PreMigrateWorkspaceResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -3827,7 +8725,26 @@ nonisolated extension Helper_Common_V2_ImportUnmanagedMediaResponse: SwiftProtob
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Helper_Common_V2_ImportUnmanagedMediaResponse, rhs: Helper_Common_V2_ImportUnmanagedMediaResponse) -> Bool {
+  public static func ==(lhs: Helper_Common_V2_PreMigrateWorkspaceResponse, rhs: Helper_Common_V2_PreMigrateWorkspaceResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_ReleaseShowDirectoryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ReleaseShowDirectoryResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_ReleaseShowDirectoryResponse, rhs: Helper_Common_V2_ReleaseShowDirectoryResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -3858,6 +8775,512 @@ nonisolated extension Helper_Common_V2_Pong: SwiftProtobuf.Message, SwiftProtobu
 
   public static func ==(lhs: Helper_Common_V2_Pong, rhs: Helper_Common_V2_Pong) -> Bool {
     if lhs.id != rhs.id {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GetThumbnail: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetThumbnail"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}width\0\u{1}height\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._id) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.width) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.height) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._id {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if self.width != 0 {
+      try visitor.visitSingularUInt32Field(value: self.width, fieldNumber: 2)
+    }
+    if self.height != 0 {
+      try visitor.visitSingularUInt32Field(value: self.height, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetThumbnail, rhs: Helper_Common_V2_GetThumbnail) -> Bool {
+    if lhs._id != rhs._id {return false}
+    if lhs.width != rhs.width {return false}
+    if lhs.height != rhs.height {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GetThumbnailResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetThumbnailResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}data\0\u{3}not_ready\0\u{1}unavailable\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Data?
+        try decoder.decodeSingularBytesField(value: &v)
+        if let v = v {
+          if self.result != nil {try decoder.handleConflictingOneOf()}
+          self.result = .data(v)
+        }
+      }()
+      case 2: try {
+        var v: Helper_Common_V2_GetThumbnailResponse.NotReady?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .notReady(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .notReady(v)
+        }
+      }()
+      case 3: try {
+        var v: Helper_Common_V2_GetThumbnailResponse.Unavailable?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .unavailable(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .unavailable(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .data?: try {
+      guard case .data(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularBytesField(value: v, fieldNumber: 1)
+    }()
+    case .notReady?: try {
+      guard case .notReady(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case .unavailable?: try {
+      guard case .unavailable(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetThumbnailResponse, rhs: Helper_Common_V2_GetThumbnailResponse) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GetThumbnailResponse.NotReady: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Helper_Common_V2_GetThumbnailResponse.protoMessageName + ".NotReady"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}media_state_revision\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt64Field(value: &self.mediaStateRevision) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.mediaStateRevision != 0 {
+      try visitor.visitSingularUInt64Field(value: self.mediaStateRevision, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetThumbnailResponse.NotReady, rhs: Helper_Common_V2_GetThumbnailResponse.NotReady) -> Bool {
+    if lhs.mediaStateRevision != rhs.mediaStateRevision {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GetThumbnailResponse.Unavailable: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Helper_Common_V2_GetThumbnailResponse.protoMessageName + ".Unavailable"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GetThumbnailResponse.Unavailable, rhs: Helper_Common_V2_GetThumbnailResponse.Unavailable) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GenerateThumbnailForPath: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GenerateThumbnailForPath"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}path\0\u{1}width\0\u{1}height\0\u{1}priority\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.path) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.width) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.height) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.priority) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.path.isEmpty {
+      try visitor.visitSingularStringField(value: self.path, fieldNumber: 1)
+    }
+    if self.width != 0 {
+      try visitor.visitSingularUInt32Field(value: self.width, fieldNumber: 2)
+    }
+    if self.height != 0 {
+      try visitor.visitSingularUInt32Field(value: self.height, fieldNumber: 3)
+    }
+    if self.priority != .background {
+      try visitor.visitSingularEnumField(value: self.priority, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GenerateThumbnailForPath, rhs: Helper_Common_V2_GenerateThumbnailForPath) -> Bool {
+    if lhs.path != rhs.path {return false}
+    if lhs.width != rhs.width {return false}
+    if lhs.height != rhs.height {return false}
+    if lhs.priority != rhs.priority {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GenerateThumbnailForPathResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GenerateThumbnailForPathResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}data\0\u{3}no_bitmap\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Data?
+        try decoder.decodeSingularBytesField(value: &v)
+        if let v = v {
+          if self.result != nil {try decoder.handleConflictingOneOf()}
+          self.result = .data(v)
+        }
+      }()
+      case 2: try {
+        var v: Helper_Common_V2_GenerateThumbnailForPathResponse.NoBitmap?
+        var hadOneofValue = false
+        if let current = self.result {
+          hadOneofValue = true
+          if case .noBitmap(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.result = .noBitmap(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.result {
+    case .data?: try {
+      guard case .data(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularBytesField(value: v, fieldNumber: 1)
+    }()
+    case .noBitmap?: try {
+      guard case .noBitmap(let v)? = self.result else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GenerateThumbnailForPathResponse, rhs: Helper_Common_V2_GenerateThumbnailForPathResponse) -> Bool {
+    if lhs.result != rhs.result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_GenerateThumbnailForPathResponse.NoBitmap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Helper_Common_V2_GenerateThumbnailForPathResponse.protoMessageName + ".NoBitmap"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_GenerateThumbnailForPathResponse.NoBitmap, rhs: Helper_Common_V2_GenerateThumbnailForPathResponse.NoBitmap) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_CancelGenerateThumbnailForPath: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CancelGenerateThumbnailForPath"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_CancelGenerateThumbnailForPath, rhs: Helper_Common_V2_CancelGenerateThumbnailForPath) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_TokenMetadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".TokenMetadata"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}access\0\u{3}expires_at\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.access) }()
+      case 2: try { try decoder.decodeSingularUInt64Field(value: &self.expiresAt) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.access.isEmpty {
+      try visitor.visitSingularStringField(value: self.access, fieldNumber: 1)
+    }
+    if self.expiresAt != 0 {
+      try visitor.visitSingularUInt64Field(value: self.expiresAt, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_TokenMetadata, rhs: Helper_Common_V2_TokenMetadata) -> Bool {
+    if lhs.access != rhs.access {return false}
+    if lhs.expiresAt != rhs.expiresAt {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_Channel: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".Channel"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}permission\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.permission) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
+    }
+    if !self.permission.isEmpty {
+      try visitor.visitSingularStringField(value: self.permission, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_Channel, rhs: Helper_Common_V2_Channel) -> Bool {
+    if lhs.name != rhs.name {return false}
+    if lhs.permission != rhs.permission {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_RemoteChannelInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RemoteChannelInfo"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}channels\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.channels) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.channels.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.channels, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_RemoteChannelInfo, rhs: Helper_Common_V2_RemoteChannelInfo) -> Bool {
+    if lhs.channels != rhs.channels {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_UserAuthInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UserAuthInfo"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}token\0\u{3}pubnub_token\0\u{3}activation_key\0\u{3}channel_info\0\u{3}seat_type\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._token) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.pubnubToken) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._activationKey) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._channelInfo) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self._seatType) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._token {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.pubnubToken.isEmpty {
+      try visitor.visitSingularStringField(value: self.pubnubToken, fieldNumber: 2)
+    }
+    try { if let v = self._activationKey {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    try { if let v = self._channelInfo {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    } }()
+    try { if let v = self._seatType {
+      try visitor.visitSingularEnumField(value: v, fieldNumber: 5)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_UserAuthInfo, rhs: Helper_Common_V2_UserAuthInfo) -> Bool {
+    if lhs._token != rhs._token {return false}
+    if lhs.pubnubToken != rhs.pubnubToken {return false}
+    if lhs._activationKey != rhs._activationKey {return false}
+    if lhs._channelInfo != rhs._channelInfo {return false}
+    if lhs._seatType != rhs._seatType {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Helper_Common_V2_HardwareIdentifier: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".HardwareIdentifier"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}fingerprint\0\u{1}identifier\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.fingerprint) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.identifier) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.fingerprint.isEmpty {
+      try visitor.visitSingularStringField(value: self.fingerprint, fieldNumber: 1)
+    }
+    if !self.identifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.identifier, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Helper_Common_V2_HardwareIdentifier, rhs: Helper_Common_V2_HardwareIdentifier) -> Bool {
+    if lhs.fingerprint != rhs.fingerprint {return false}
+    if lhs.identifier != rhs.identifier {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

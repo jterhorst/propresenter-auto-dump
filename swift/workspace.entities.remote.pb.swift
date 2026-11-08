@@ -27,7 +27,7 @@ public nonisolated struct Workspace_Remote_Metadata: Sendable {
 
   public var uuid: String = String()
 
-  public var proVersion: String = String()
+  public var schemaVersion: String = String()
 
   public var name: String = String()
 
@@ -79,7 +79,7 @@ fileprivate nonisolated let _protobuf_package = "workspace.remote"
 
 nonisolated extension Workspace_Remote_Metadata: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Metadata"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}pro_version\0\u{1}name\0\u{2}\u{7}size\0\u{1}created\0\u{1}updated\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{3}schema_version\0\u{1}name\0\u{2}\u{7}size\0\u{1}created\0\u{1}updated\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -88,7 +88,7 @@ nonisolated extension Workspace_Remote_Metadata: SwiftProtobuf.Message, SwiftPro
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.uuid) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self.proVersion) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.schemaVersion) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.name) }()
       case 10: try { try decoder.decodeSingularUInt64Field(value: &self.size) }()
       case 11: try { try decoder.decodeSingularUInt64Field(value: &self.created) }()
@@ -102,8 +102,8 @@ nonisolated extension Workspace_Remote_Metadata: SwiftProtobuf.Message, SwiftPro
     if !self.uuid.isEmpty {
       try visitor.visitSingularStringField(value: self.uuid, fieldNumber: 1)
     }
-    if !self.proVersion.isEmpty {
-      try visitor.visitSingularStringField(value: self.proVersion, fieldNumber: 2)
+    if !self.schemaVersion.isEmpty {
+      try visitor.visitSingularStringField(value: self.schemaVersion, fieldNumber: 2)
     }
     if !self.name.isEmpty {
       try visitor.visitSingularStringField(value: self.name, fieldNumber: 3)
@@ -122,7 +122,7 @@ nonisolated extension Workspace_Remote_Metadata: SwiftProtobuf.Message, SwiftPro
 
   public static func ==(lhs: Workspace_Remote_Metadata, rhs: Workspace_Remote_Metadata) -> Bool {
     if lhs.uuid != rhs.uuid {return false}
-    if lhs.proVersion != rhs.proVersion {return false}
+    if lhs.schemaVersion != rhs.schemaVersion {return false}
     if lhs.name != rhs.name {return false}
     if lhs.size != rhs.size {return false}
     if lhs.created != rhs.created {return false}

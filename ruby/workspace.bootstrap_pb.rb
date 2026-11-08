@@ -5,11 +5,17 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\x19workspace.bootstrap.proto\x12\tworkspace\"B\n\x0e\x43reationOption\x12\x1c\n\x0fmin_pro_version\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\x12\n\x10_min_pro_versionb\x06proto3"
+descriptor_data = "\n\x19workspace.bootstrap.proto\x12\tworkspace\"\x8d\x01\n\x17LegacyRegistryWorkspace\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x17\n\ncloud_uuid\x18\x03 \x01(\tH\x00\x88\x01\x01\x12\x1b\n\x0eschema_version\x18\x04 \x01(\tH\x01\x88\x01\x01\x42\r\n\x0b_cloud_uuidB\x11\n\x0f_schema_version\"~\n\x16LegacyRegistrySnapshot\x12\x36\n\nworkspaces\x18\x01 \x03(\x0b\x32\".workspace.LegacyRegistryWorkspace\x12\x1a\n\rselected_path\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x10\n\x0e_selected_path\"\x8e\x02\n\x0e\x43reationOption\x12\x1f\n\x12min_schema_version\x18\x01 \x01(\tH\x00\x88\x01\x01\x12H\n\x18legacy_registry_snapshot\x18\x02 \x01(\x0b\x32!.workspace.LegacyRegistrySnapshotH\x01\x88\x01\x01\x12\x41\n\x17legacy_migration_answer\x18\x03 \x01(\x0e\x32 .workspace.LegacyMigrationAnswer\x12\x1a\n\x12open_new_workspace\x18\x04 \x01(\x08\x42\x15\n\x13_min_schema_versionB\x1b\n\x19_legacy_registry_snapshot\"\x99\x05\n\x18LegacyMigrationShortfall\x12\x37\n\x05items\x18\x01 \x03(\x0b\x32(.workspace.LegacyMigrationShortfall.Item\x1a\\\n\x04Item\x12\x36\n\x04kind\x18\x01 \x01(\x0e\x32(.workspace.LegacyMigrationShortfall.Kind\x12\r\n\x05\x63ount\x18\x02 \x01(\x04\x12\r\n\x05names\x18\x03 \x03(\t\"\xe5\x03\n\x04Kind\x12\x14\n\x10KIND_UNSPECIFIED\x10\x00\x12\x16\n\x12KIND_PRESENTATIONS\x10\x01\x12\x0f\n\x0bKIND_THEMES\x10\x02\x12 \n\x1cKIND_EFFECTS_AND_TRANSITIONS\x10\x03\x12\x14\n\x10KIND_MEDIA_FILES\x10\x04\x12\x12\n\x0eKIND_LIBRARIES\x10\x05\x12\x16\n\x12KIND_LIBRARY_ORDER\x10\x06\x12\x1f\n\x1bKIND_PRESENTATION_PLAYLISTS\x10\x07\x12\x18\n\x14KIND_MEDIA_PLAYLISTS\x10\x08\x12\x18\n\x14KIND_AUDIO_PLAYLISTS\x10\t\x12\x1b\n\x17KIND_PLAYLIST_TEMPLATES\x10\n\x12\x0f\n\x0bKIND_MACROS\x10\x0b\x12\x0e\n\nKIND_PROPS\x10\x0c\x12\x16\n\x12KIND_STAGE_LAYOUTS\x10\r\x12\x11\n\rKIND_MESSAGES\x10\x0e\x12\x0f\n\x0bKIND_TIMERS\x10\x0f\x12\x11\n\rKIND_CALENDAR\x10\x10\x12\x1b\n\x17KIND_KEYBOARD_SHORTCUTS\x10\x11\x12\x1e\n\x1aKIND_COMMUNICATION_DEVICES\x10\x12\x12\x1b\n\x17KIND_WORKSPACE_SETTINGS\x10\x13*\xb7\x01\n\x15LegacyMigrationAnswer\x12\'\n#LEGACY_MIGRATION_ANSWER_UNSPECIFIED\x10\x00\x12%\n!LEGACY_MIGRATION_ANSWER_NOT_ASKED\x10\x01\x12#\n\x1fLEGACY_MIGRATION_ANSWER_UPGRADE\x10\x02\x12)\n%LEGACY_MIGRATION_ANSWER_NEW_WORKSPACE\x10\x03\x62\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
 
 module Workspace
+  LegacyRegistryWorkspace = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("workspace.LegacyRegistryWorkspace").msgclass
+  LegacyRegistrySnapshot = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("workspace.LegacyRegistrySnapshot").msgclass
   CreationOption = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("workspace.CreationOption").msgclass
+  LegacyMigrationShortfall = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("workspace.LegacyMigrationShortfall").msgclass
+  LegacyMigrationShortfall::Item = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("workspace.LegacyMigrationShortfall.Item").msgclass
+  LegacyMigrationShortfall::Kind = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("workspace.LegacyMigrationShortfall.Kind").enummodule
+  LegacyMigrationAnswer = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("workspace.LegacyMigrationAnswer").enummodule
 end

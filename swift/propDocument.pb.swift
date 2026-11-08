@@ -20,38 +20,32 @@ fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobu
   typealias Version = _2
 }
 
-public nonisolated struct Rv_Data_PropDocument: @unchecked Sendable {
+public nonisolated struct Rv_Data_PropDocument: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var applicationInfo: Rv_Data_ApplicationInfo {
-    get {_storage._applicationInfo ?? Rv_Data_ApplicationInfo()}
-    set {_uniqueStorage()._applicationInfo = newValue}
+    get {_applicationInfo ?? Rv_Data_ApplicationInfo()}
+    set {_applicationInfo = newValue}
   }
   /// Returns true if `applicationInfo` has been explicitly set.
-  public var hasApplicationInfo: Bool {_storage._applicationInfo != nil}
+  public var hasApplicationInfo: Bool {self._applicationInfo != nil}
   /// Clears the value of `applicationInfo`. Subsequent reads from it will return its default value.
-  public mutating func clearApplicationInfo() {_uniqueStorage()._applicationInfo = nil}
+  public mutating func clearApplicationInfo() {self._applicationInfo = nil}
 
-  public var cues: [Rv_Data_Cue] {
-    get {_storage._cues}
-    set {_uniqueStorage()._cues = newValue}
-  }
+  public var cues: [Rv_Data_Cue] = []
 
   public var transition: Rv_Data_Transition {
-    get {_storage._transition ?? Rv_Data_Transition()}
-    set {_uniqueStorage()._transition = newValue}
+    get {_transition ?? Rv_Data_Transition()}
+    set {_transition = newValue}
   }
   /// Returns true if `transition` has been explicitly set.
-  public var hasTransition: Bool {_storage._transition != nil}
+  public var hasTransition: Bool {self._transition != nil}
   /// Clears the value of `transition`. Subsequent reads from it will return its default value.
-  public mutating func clearTransition() {_uniqueStorage()._transition = nil}
+  public mutating func clearTransition() {self._transition = nil}
 
-  public var propCollections: [Rv_Data_PropDocument.PropCollection] {
-    get {_storage._propCollections}
-    set {_uniqueStorage()._propCollections = newValue}
-  }
+  public var propCollections: [Rv_Data_PropDocument.PropCollection] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -111,7 +105,8 @@ public nonisolated struct Rv_Data_PropDocument: @unchecked Sendable {
 
   public init() {}
 
-  fileprivate var _storage = _StorageClass.defaultInstance
+  fileprivate var _applicationInfo: Rv_Data_ApplicationInfo? = nil
+  fileprivate var _transition: Rv_Data_Transition? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -122,88 +117,46 @@ nonisolated extension Rv_Data_PropDocument: SwiftProtobuf.Message, SwiftProtobuf
   public static let protoMessageName: String = _protobuf_package + ".PropDocument"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}cues\0\u{1}transition\0\u{3}prop_collections\0")
 
-  fileprivate class _StorageClass {
-    var _applicationInfo: Rv_Data_ApplicationInfo? = nil
-    var _cues: [Rv_Data_Cue] = []
-    var _transition: Rv_Data_Transition? = nil
-    var _propCollections: [Rv_Data_PropDocument.PropCollection] = []
-
-      // This property is used as the initial default value for new instances of the type.
-      // The type itself is protecting the reference to its storage via CoW semantics.
-      // This will force a copy to be made of this reference when the first mutation occurs;
-      // hence, it is safe to mark this as `nonisolated(unsafe)`.
-      static nonisolated(unsafe) let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _applicationInfo = source._applicationInfo
-      _cues = source._cues
-      _transition = source._transition
-      _propCollections = source._propCollections
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        // The use of inline closures is to circumvent an issue where the compiler
-        // allocates stack space for every case branch when no optimizations are
-        // enabled. https://github.com/apple/swift-protobuf/issues/1034
-        switch fieldNumber {
-        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._applicationInfo) }()
-        case 2: try { try decoder.decodeRepeatedMessageField(value: &_storage._cues) }()
-        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._transition) }()
-        case 4: try { try decoder.decodeRepeatedMessageField(value: &_storage._propCollections) }()
-        default: break
-        }
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._applicationInfo) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.cues) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._transition) }()
+      case 4: try { try decoder.decodeRepeatedMessageField(value: &self.propCollections) }()
+      default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every if/case branch local when no optimizations
-      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-      // https://github.com/apple/swift-protobuf/issues/1182
-      try { if let v = _storage._applicationInfo {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-      } }()
-      if !_storage._cues.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._cues, fieldNumber: 2)
-      }
-      try { if let v = _storage._transition {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-      } }()
-      if !_storage._propCollections.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._propCollections, fieldNumber: 4)
-      }
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._applicationInfo {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.cues.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.cues, fieldNumber: 2)
+    }
+    try { if let v = self._transition {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
+    if !self.propCollections.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.propCollections, fieldNumber: 4)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Rv_Data_PropDocument, rhs: Rv_Data_PropDocument) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._applicationInfo != rhs_storage._applicationInfo {return false}
-        if _storage._cues != rhs_storage._cues {return false}
-        if _storage._transition != rhs_storage._transition {return false}
-        if _storage._propCollections != rhs_storage._propCollections {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
+    if lhs._applicationInfo != rhs._applicationInfo {return false}
+    if lhs.cues != rhs.cues {return false}
+    if lhs._transition != rhs._transition {return false}
+    if lhs.propCollections != rhs.propCollections {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

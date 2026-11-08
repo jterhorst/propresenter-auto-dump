@@ -35,6 +35,8 @@ public nonisolated struct Pptimport_PPTImportParams: Sendable {
 
   public var ignoreBackgrounds: Bool = false
 
+  public var installPath: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -46,7 +48,7 @@ fileprivate nonisolated let _protobuf_package = "pptimport"
 
 nonisolated extension Pptimport_PPTImportParams: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PPTImportParams"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pptx_path\0\u{3}result_folder_path\0\u{3}slide_width\0\u{3}slide_height\0\u{3}ignore_backgrounds\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pptx_path\0\u{3}result_folder_path\0\u{3}slide_width\0\u{3}slide_height\0\u{3}ignore_backgrounds\0\u{3}install_path\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -59,6 +61,7 @@ nonisolated extension Pptimport_PPTImportParams: SwiftProtobuf.Message, SwiftPro
       case 3: try { try decoder.decodeSingularUInt32Field(value: &self.slideWidth) }()
       case 4: try { try decoder.decodeSingularUInt32Field(value: &self.slideHeight) }()
       case 5: try { try decoder.decodeSingularBoolField(value: &self.ignoreBackgrounds) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self.installPath) }()
       default: break
       }
     }
@@ -80,6 +83,9 @@ nonisolated extension Pptimport_PPTImportParams: SwiftProtobuf.Message, SwiftPro
     if self.ignoreBackgrounds != false {
       try visitor.visitSingularBoolField(value: self.ignoreBackgrounds, fieldNumber: 5)
     }
+    if !self.installPath.isEmpty {
+      try visitor.visitSingularStringField(value: self.installPath, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -89,6 +95,7 @@ nonisolated extension Pptimport_PPTImportParams: SwiftProtobuf.Message, SwiftPro
     if lhs.slideWidth != rhs.slideWidth {return false}
     if lhs.slideHeight != rhs.slideHeight {return false}
     if lhs.ignoreBackgrounds != rhs.ignoreBackgrounds {return false}
+    if lhs.installPath != rhs.installPath {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

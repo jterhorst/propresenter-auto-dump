@@ -41,6 +41,8 @@ message ProPresenterWorkspace {
   repeated rv.data.CloudVideoInput cloud_video_inputs = 14;
   repeated rv.data.CloudAudioInput cloud_audio_inputs = 15;
   uint32 audio_channel_count = 16;
+  string media_identity_schema_version = 17;
+  uint32 bundled_theme_rollout_sequence = 18;
 }
 
 message ProPresenterLocalWorkspace {
@@ -50,4 +52,5 @@ message ProPresenterLocalWorkspace {
   repeated rv.data.AudioInput audio_inputs = 4;
   rv.data.ProAudienceLook live_audience_look = 5;
   repeated rv.data.Stage.ScreenAssignment stage_layout_mappings = 6;
+  rv.data.Recording.SettingsLocalDocument record_settings = 7;
 }

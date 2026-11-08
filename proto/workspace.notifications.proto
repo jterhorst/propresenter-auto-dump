@@ -23,10 +23,14 @@ message Notification {
     message Error {
     }
 
+    message Unauthenticated {
+    }
+
     oneof state {
       workspace.Notification.Workspaces.WorkspaceList initialized = 1;
       workspace.Notification.Workspaces.Uninitialized uninitialized = 2;
       workspace.Notification.Workspaces.Error error = 3;
+      workspace.Notification.Workspaces.Unauthenticated unauthenticated = 4;
     }
 
   }
@@ -35,13 +39,215 @@ message Notification {
     repeated string online = 1;
   }
 
+  message ImportProgress {
+    enum Phase {
+      PHASE_UNSPECIFIED = 0;
+      PHASE_INVENTORY = 1;
+      PHASE_DOCUMENTS = 2;
+      PHASE_MEDIA = 3;
+      PHASE_VALIDATION = 4;
+      PHASE_PUBLICATION = 5;
+      PHASE_ACTIVATION = 6;
+      PHASE_DERIVED_INDEX_HYDRATION = 7;
+      PHASE_COMPLETE = 8;
+      PHASE_FAILED = 9;
+    }
+
+    string local_uuid = 1;
+    workspace.Notification.ImportProgress.Phase phase = 2;
+    uint64 completed_units = 3;
+    uint64 total_units = 4;
+    uint64 completed_bytes = 5;
+    uint64 total_bytes = 6;
+  }
+
+  message OpenRemoteProgress {
+    enum Phase {
+      PHASE_UNSPECIFIED = 0;
+      PHASE_DOWNLOADING = 1;
+      PHASE_COMMITTING = 2;
+      PHASE_PREPARING = 3;
+      PHASE_CONVERTING = 4;
+      PHASE_UPLOADING = 5;
+      PHASE_FINALIZING = 6;
+    }
+
+    string operation_uuid = 1;
+    string cloud_uuid = 2;
+    workspace.Notification.OpenRemoteProgress.Phase phase = 3;
+    uint64 completed_files = 4;
+    uint64 total_files = 5;
+  }
+
+  message ActivationSession {
+    enum Phase {
+      PHASE_UNSPECIFIED = 0;
+      PHASE_PREPARING = 1;
+      PHASE_PERSISTENCE_COMMITTED = 2;
+      PHASE_WORKSPACE_READY = 3;
+      PHASE_WRITABLE = 4;
+      PHASE_BACKGROUND_HYDRATING = 5;
+      PHASE_BACKGROUND_COMPLETE = 6;
+      PHASE_FAILED = 7;
+      PHASE_ROLLED_BACK = 8;
+      PHASE_RESTORED = 9;
+    }
+
+    enum ErrorClass {
+      ERROR_CLASS_UNSPECIFIED = 0;
+      ERROR_CLASS_PERSISTENCE = 1;
+      ERROR_CLASS_HYDRATION = 2;
+      ERROR_CLASS_SUPERSEDED = 3;
+      ERROR_CLASS_BACKGROUND = 4;
+    }
+
+    string attempt_uuid = 1;
+    optional uint64 prior_generation = 2;
+    optional uint64 target_generation = 3;
+    workspace.Notification.ActivationSession.Phase phase = 4;
+    optional workspace.Notification.ActivationSession.ErrorClass error_class = 5;
+  }
+
+  message Registry {
+    message Workspace {
+      string local_uuid = 1;
+      string display_name = 2;
+      optional string cloud_uuid = 3;
+      string schema_version = 4;
+      string availability = 5;
+      string root_path = 6;
+    }
+
+    repeated workspace.Notification.Registry.Workspace workspaces = 1;
+    optional string active_local_uuid = 2;
+    uint32 migration_version = 3;
+    bool needs_import = 4;
+  }
+
+  message Catalog {
+    enum Presence {
+      PRESENCE_UNSPECIFIED = 0;
+      PRESENCE_ON_THIS_MACHINE = 1;
+      PRESENCE_NOT_DOWNLOADED = 2;
+      PRESENCE_DOWNLOADING = 3;
+    }
+
+    enum Remote {
+      REMOTE_UNSPECIFIED = 0;
+      REMOTE_READY = 1;
+      REMOTE_UNINITIALIZED = 2;
+      REMOTE_UNAUTHENTICATED = 3;
+      REMOTE_ERROR = 4;
+    }
+
+    message Workspace {
+      workspace.Notification.Catalog.Presence presence = 1;
+      optional string local_uuid = 2;
+      optional string cloud_uuid = 3;
+      string display_name = 4;
+      string schema_version = 5;
+      bool is_active = 6;
+      bool is_available = 7;
+      string root_path = 8;
+      optional uint64 size = 9;
+      optional uint64 updated = 10;
+    }
+
+    repeated workspace.Notification.Catalog.Workspace workspaces = 1;
+    workspace.Notification.Catalog.Remote remote = 2;
+    optional string active_local_uuid = 3;
+    uint32 migration_version = 4;
+    bool needs_import = 5;
+  }
+
+  message ForcedLocalConversion {
+    enum Reason {
+      REASON_UNSPECIFIED = 0;
+      UNBASED_PLAYLIST_CUTOVER = 1;
+      LOCALLY_REBUILT_PLAYLIST = 2;
+      LOCALLY_REBUILT_INTRINSIC = 3;
+      MISSING_CLOUD_LINK = 4;
+    }
+
+    string event_uuid = 1;
+    string local_uuid = 2;
+    string workspace_name = 3;
+    workspace.Notification.ForcedLocalConversion.Reason reason = 4;
+  }
+
   message Syncing {
     message Paused {
       uint64 until_time_utc = 1;
       uint64 at_time_utc = 2;
     }
 
+    message MediaSyncStats {
+      message Transfer {
+        enum FailureReason {
+          FAILURE_REASON_UNSPECIFIED = 0;
+          FAILURE_REASON_CONNECTION = 1;
+          FAILURE_REASON_FILE_ACCESS = 2;
+          FAILURE_REASON_SERVER = 3;
+        }
+
+        message FailedFile {
+          string file_name = 1;
+          workspace.Notification.Syncing.MediaSyncStats.Transfer.FailureReason reason = 2;
+        }
+
+        uint64 completed_files = 1;
+        uint64 total_files = 2;
+        uint64 completed_bytes = 3;
+        uint64 total_bytes = 4;
+        uint64 failed_files = 5;
+        uint64 missing_files = 6;
+        bool stalled = 7;
+        repeated workspace.Notification.Syncing.MediaSyncStats.Transfer.FailedFile failed = 8;
+        uint64 credited_bytes = 9;
+        bool total_bytes_partial = 10;
+      }
+
+      workspace.Notification.Syncing.MediaSyncStats.Transfer uploads = 1;
+      workspace.Notification.Syncing.MediaSyncStats.Transfer downloads = 2;
+    }
+
+    message DocumentSyncStats {
+      message Transfer {
+        uint64 completed_files = 1;
+        uint64 total_files = 2;
+      }
+
+      workspace.Notification.Syncing.DocumentSyncStats.Transfer uploads = 1;
+      workspace.Notification.Syncing.DocumentSyncStats.Transfer downloads = 2;
+    }
+
+    message Migrating {
+      string target_schema_version = 1;
+      uint64 staged_count = 2;
+      uint64 total_count = 3;
+      uint32 percent = 4;
+    }
+
+    message Blocked {
+      enum Reason {
+        REASON_UNSPECIFIED = 0;
+        REASON_SEAT = 1;
+        REASON_UPGRADE_REQUIRED = 2;
+        REASON_CONNECTION_REFUSED = 3;
+      }
+
+      workspace.Notification.Syncing.Blocked.Reason reason = 1;
+      string required_schema_version = 2;
+      string cloud_uuid = 3;
+    }
+
     optional workspace.Notification.Syncing.Paused paused = 1;
+    workspace.Notification.Syncing.MediaSyncStats media_stats = 2;
+    workspace.Notification.Syncing.DocumentSyncStats document_stats = 3;
+    optional workspace.Notification.Syncing.Migrating migrating = 4;
+    optional workspace.Notification.Syncing.Blocked blocked = 5;
+    bool media_list_stale = 6;
+    bool cloud_terminated = 7;
   }
 
   oneof notification {
@@ -49,6 +255,12 @@ message Notification {
     workspace.Notification.Workspaces workspaces = 2;
     workspace.Notification.Collaborators collaborators = 3;
     workspace.Notification.Syncing syncing = 4;
+    workspace.Notification.ImportProgress import_progress = 5;
+    workspace.Notification.OpenRemoteProgress open_remote_progress = 6;
+    workspace.Notification.ActivationSession activation_session = 7;
+    workspace.Notification.Registry registry = 8;
+    workspace.Notification.ForcedLocalConversion forced_local_conversion = 9;
+    workspace.Notification.Catalog catalog = 10;
   }
 
 }

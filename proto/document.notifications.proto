@@ -4,6 +4,8 @@ syntax = "proto3";
 package document;
 
 
+import "document.call.proto";
+
 import "document.entities.proto";
 
 
@@ -24,24 +26,122 @@ message Notification {
   message Available {
     string uuid = 1;
     bytes blob = 2;
+    document.Document.Kind kind = 3;
+    string path = 4;
+  }
+
+  message DeviceLocalState {
+    message CollectionLocation {
+      document.Document.Kind kind = 1;
+      string path = 2;
+    }
+
+    message Stream {
+      oneof location {
+        document.Intrinsic.Kind intrinsic_kind = 3;
+        document.Notification.DeviceLocalState.CollectionLocation collection = 4;
+      }
+
+      string uuid = 1;
+      document.Scope scope = 2;
+      bytes snapshot = 5;
+      bytes version_vector = 6;
+    }
+
+    uint64 generation = 1;
+    uint64 revision = 2;
+    repeated document.Notification.DeviceLocalState.Stream streams = 3;
   }
 
   message Added {
     string uuid = 1;
     document.Document.Kind kind = 2;
     string path = 3;
+    bool remote = 4;
   }
 
   message Moved {
     string uuid = 1;
     document.Document.Kind kind = 2;
     string path = 3;
+    bool remote = 4;
   }
 
   message Removed {
     string uuid = 1;
     document.Document.Kind kind = 2;
     string path = 3;
+    bool remote = 4;
+  }
+
+  message MediaInventory {
+    enum MediaType {
+      MEDIA_TYPE_UNKNOWN = 0;
+      MEDIA_TYPE_AUDIO = 1;
+      MEDIA_TYPE_IMAGE = 2;
+      MEDIA_TYPE_VIDEO = 3;
+      MEDIA_TYPE_LIVE_VIDEO = 4;
+      MEDIA_TYPE_WEB_CONTENT = 5;
+      MEDIA_TYPE_HLS = 6;
+    }
+
+    enum IssueKind {
+      ISSUE_KIND_UNKNOWN = 0;
+      ISSUE_KIND_DOCUMENT_UNREADABLE = 1;
+      ISSUE_KIND_MISSING_REFERENCE_ID = 2;
+      ISSUE_KIND_INVALID_REFERENCE_ID = 3;
+      ISSUE_KIND_INVALID_ASSET_ID = 4;
+      ISSUE_KIND_MISSING_MEDIA_TYPE = 5;
+      ISSUE_KIND_UNKNOWN_MEDIA_TYPE = 6;
+      ISSUE_KIND_DUPLICATE_REFERENCE_ID = 7;
+      ISSUE_KIND_LOCAL_SNAPSHOT_UNAVAILABLE = 8;
+    }
+
+    message Reference {
+      string document_uuid = 1;
+      string occurrence_path = 2;
+      string reference_uuid = 3;
+      optional string asset_uuid = 4;
+      document.Notification.MediaInventory.MediaType media_type = 5;
+      optional bytes source_fingerprint = 6;
+      bytes descriptor_fingerprint = 7;
+    }
+
+    message Issue {
+      string document_uuid = 1;
+      string occurrence_path = 2;
+      document.Notification.MediaInventory.IssueKind kind = 3;
+      optional string detail = 4;
+    }
+
+    uint64 generation = 1;
+    uint64 revision = 2;
+    bool initialized = 3;
+    bool complete = 4;
+    repeated document.Notification.MediaInventory.Reference references = 5;
+    repeated string pending_document_uuids = 6;
+    repeated document.Notification.MediaInventory.Issue issues = 7;
+  }
+
+  message MediaIdentityMigration {
+    message Document {
+      string document_uuid = 1;
+      bytes patch = 2;
+      bytes migrated_snapshot = 3;
+      bytes migrated_sha256 = 4;
+      bytes baseline_snapshot = 5;
+      repeated string reference_uuids = 6;
+    }
+
+    string migration_uuid = 1;
+    repeated document.Notification.MediaIdentityMigration.Document documents = 2;
+    string attempt_uuid = 3;
+  }
+
+  message Index {
+    uint64 generation = 1;
+    repeated document.call.DocumentDescriptor documents = 2;
+    uint64 catalog_revision = 3;
   }
 
   oneof notification {
@@ -52,6 +152,11 @@ message Notification {
     document.Notification.Added added = 5;
     document.Notification.Moved moved = 6;
     document.Notification.Removed removed = 7;
+    document.Notification.MediaInventory media_inventory = 9;
+    document.Notification.MediaIdentityMigration media_identity_migration = 10;
+    document.Notification.DeviceLocalState device_local_state = 11;
+    document.Notification.Index index = 12;
   }
 
+  document.Workspace workspace = 8;
 }

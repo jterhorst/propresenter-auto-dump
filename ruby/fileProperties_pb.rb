@@ -8,7 +8,7 @@ require 'customOptions_pb'
 require 'url_pb'
 
 
-descriptor_data = "\n\x14\x66ileProperties.proto\x12\x07rv.data\x1a\x13\x63ustomOptions.proto\x1a\turl.proto\"\xff\x01\n\x0e\x46ileProperties\x12\x1f\n\tlocal_url\x18\x01 \x01(\x0b\x32\x0c.rv.data.URL\x12\x43\n\x11remote_properties\x18\x02 \x01(\x0b\x32(.rv.data.FileProperties.RemoteProperties\x1a\x86\x01\n\x10RemoteProperties\x12G\n\nprocontent\x18\x01 \x01(\x0b\x32\x33.rv.data.FileProperties.RemoteProperties.ProContent\x1a)\n\nProContent\x12\x1b\n\x13\x64ownload_identifier\x18\x01 \x01(\tb\x06proto3"
+descriptor_data = "\n\x14\x66ileProperties.proto\x12\x07rv.data\x1a\x13\x63ustomOptions.proto\x1a\turl.proto\"\xff\x01\n\x0e\x46ileProperties\x12\x1f\n\tlocal_url\x18\x01 \x01(\x0b\x32\x0c.rv.data.URL\x12\x43\n\x11remote_properties\x18\x02 \x01(\x0b\x32(.rv.data.FileProperties.RemoteProperties\x1a\x86\x01\n\x10RemoteProperties\x12G\n\nprocontent\x18\x01 \x01(\x0b\x32\x33.rv.data.FileProperties.RemoteProperties.ProContent\x1a)\n\nProContent\x12\x1b\n\x13\x64ownload_identifier\x18\x01 \x01(\t\"\xcb\x01\n\nSourceInfo\x12\x32\n\x04\x66ile\x18\x01 \x01(\x0b\x32\".rv.data.SourceInfo.FilePropertiesH\x00\x12\x30\n\x03hls\x18\x02 \x01(\x0b\x32!.rv.data.SourceInfo.HLSPropertiesH\x00\x1a+\n\x0e\x46ileProperties\x12\x19\n\x03url\x18\x01 \x01(\x0b\x32\x0c.rv.data.URL\x1a\x1c\n\rHLSProperties\x12\x0b\n\x03url\x18\x01 \x01(\tB\x0c\n\nSourceTypeb\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
@@ -18,5 +18,8 @@ module Rv
     FileProperties = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.FileProperties").msgclass
     FileProperties::RemoteProperties = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.FileProperties.RemoteProperties").msgclass
     FileProperties::RemoteProperties::ProContent = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.FileProperties.RemoteProperties.ProContent").msgclass
+    SourceInfo = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.SourceInfo").msgclass
+    SourceInfo::FileProperties = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.SourceInfo.FileProperties").msgclass
+    SourceInfo::HLSProperties = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.data.SourceInfo.HLSProperties").msgclass
   end
 end

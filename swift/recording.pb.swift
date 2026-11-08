@@ -52,6 +52,39 @@ public nonisolated struct Rv_Data_Recording: Sendable {
     fileprivate var _activePreset: Rv_Data_Recording.Preset? = nil
   }
 
+  public nonisolated struct SettingsLocalDocument: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var presets: [Rv_Data_Recording.LocalPreset] = []
+
+    public var activePreset: Rv_Data_Recording.Preset {
+      get {_activePreset ?? Rv_Data_Recording.Preset()}
+      set {_activePreset = newValue}
+    }
+    /// Returns true if `activePreset` has been explicitly set.
+    public var hasActivePreset: Bool {self._activePreset != nil}
+    /// Clears the value of `activePreset`. Subsequent reads from it will return its default value.
+    public mutating func clearActivePreset() {self._activePreset = nil}
+
+    public var activeLocalPreset: Rv_Data_Recording.LocalPreset {
+      get {_activeLocalPreset ?? Rv_Data_Recording.LocalPreset()}
+      set {_activeLocalPreset = newValue}
+    }
+    /// Returns true if `activeLocalPreset` has been explicitly set.
+    public var hasActiveLocalPreset: Bool {self._activeLocalPreset != nil}
+    /// Clears the value of `activeLocalPreset`. Subsequent reads from it will return its default value.
+    public mutating func clearActiveLocalPreset() {self._activeLocalPreset = nil}
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _activePreset: Rv_Data_Recording.Preset? = nil
+    fileprivate var _activeLocalPreset: Rv_Data_Recording.LocalPreset? = nil
+  }
+
   public nonisolated struct Preset: Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -69,6 +102,29 @@ public nonisolated struct Rv_Data_Recording: Sendable {
     public var name: String = String()
 
     public var streams: [Rv_Data_Recording.Stream] = []
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+
+    fileprivate var _id: Rv_Data_UUID? = nil
+  }
+
+  public nonisolated struct LocalPreset: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var id: Rv_Data_UUID {
+      get {_id ?? Rv_Data_UUID()}
+      set {_id = newValue}
+    }
+    /// Returns true if `id` has been explicitly set.
+    public var hasID: Bool {self._id != nil}
+    /// Clears the value of `id`. Subsequent reads from it will return its default value.
+    public mutating func clearID() {self._id = nil}
+
+    public var streams: [Rv_Data_Recording.LocalStream] = []
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -473,6 +529,79 @@ public nonisolated struct Rv_Data_Recording: Sendable {
     fileprivate var _encoder: Rv_Data_Recording.Stream.Encoder? = nil
   }
 
+  public nonisolated struct LocalStream: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var id: Rv_Data_UUID {
+      get {_id ?? Rv_Data_UUID()}
+      set {_id = newValue}
+    }
+    /// Returns true if `id` has been explicitly set.
+    public var hasID: Bool {self._id != nil}
+    /// Clears the value of `id`. Subsequent reads from it will return its default value.
+    public mutating func clearID() {self._id = nil}
+
+    public var destinations: [Rv_Data_Recording.LocalStream.LocalDestination] = []
+
+    public var audioMap: [Rv_Data_DigitalAudio.Device.Map] = []
+
+    public var isAudioCustomMapped: Bool = false
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated struct LocalDiskDestination: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var location: Rv_Data_URL {
+        get {_location ?? Rv_Data_URL()}
+        set {_location = newValue}
+      }
+      /// Returns true if `location` has been explicitly set.
+      public var hasLocation: Bool {self._location != nil}
+      /// Clears the value of `location`. Subsequent reads from it will return its default value.
+      public mutating func clearLocation() {self._location = nil}
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _location: Rv_Data_URL? = nil
+    }
+
+    public nonisolated struct LocalDestination: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var destination: Rv_Data_Recording.LocalStream.LocalDestination.OneOf_Destination? = nil
+
+      public var disk: Rv_Data_Recording.LocalStream.LocalDiskDestination {
+        get {
+          if case .disk(let v)? = destination {return v}
+          return Rv_Data_Recording.LocalStream.LocalDiskDestination()
+        }
+        set {destination = .disk(newValue)}
+      }
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public nonisolated enum OneOf_Destination: Equatable, Sendable {
+        case disk(Rv_Data_Recording.LocalStream.LocalDiskDestination)
+
+      }
+
+      public init() {}
+    }
+
+    public init() {}
+
+    fileprivate var _id: Rv_Data_UUID? = nil
+  }
+
   public init() {}
 }
 
@@ -543,6 +672,50 @@ nonisolated extension Rv_Data_Recording.SettingsDocument: SwiftProtobuf.Message,
   }
 }
 
+nonisolated extension Rv_Data_Recording.SettingsLocalDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Recording.protoMessageName + ".SettingsLocalDocument"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}presets\0\u{3}active_preset\0\u{3}active_local_preset\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.presets) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._activePreset) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._activeLocalPreset) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.presets.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.presets, fieldNumber: 1)
+    }
+    try { if let v = self._activePreset {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._activeLocalPreset {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Recording.SettingsLocalDocument, rhs: Rv_Data_Recording.SettingsLocalDocument) -> Bool {
+    if lhs.presets != rhs.presets {return false}
+    if lhs._activePreset != rhs._activePreset {return false}
+    if lhs._activeLocalPreset != rhs._activeLocalPreset {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 nonisolated extension Rv_Data_Recording.Preset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Recording.protoMessageName + ".Preset"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}name\0\u{1}streams\0")
@@ -581,6 +754,45 @@ nonisolated extension Rv_Data_Recording.Preset: SwiftProtobuf.Message, SwiftProt
   public static func ==(lhs: Rv_Data_Recording.Preset, rhs: Rv_Data_Recording.Preset) -> Bool {
     if lhs._id != rhs._id {return false}
     if lhs.name != rhs.name {return false}
+    if lhs.streams != rhs.streams {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Recording.LocalPreset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Recording.protoMessageName + ".LocalPreset"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}streams\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._id) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.streams) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._id {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.streams.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.streams, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Recording.LocalPreset, rhs: Rv_Data_Recording.LocalPreset) -> Bool {
+    if lhs._id != rhs._id {return false}
     if lhs.streams != rhs.streams {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -961,6 +1173,135 @@ nonisolated extension Rv_Data_Recording.Stream.Destination.Resi: SwiftProtobuf.M
   public static func ==(lhs: Rv_Data_Recording.Stream.Destination.Resi, rhs: Rv_Data_Recording.Stream.Destination.Resi) -> Bool {
     if lhs._destinationGroupID != rhs._destinationGroupID {return false}
     if lhs._encoderProfileID != rhs._encoderProfileID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Recording.LocalStream: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Recording.protoMessageName + ".LocalStream"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}destinations\0\u{3}audio_map\0\u{1}isAudioCustomMapped\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._id) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.destinations) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.audioMap) }()
+      case 4: try { try decoder.decodeSingularBoolField(value: &self.isAudioCustomMapped) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._id {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.destinations.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.destinations, fieldNumber: 2)
+    }
+    if !self.audioMap.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.audioMap, fieldNumber: 3)
+    }
+    if self.isAudioCustomMapped != false {
+      try visitor.visitSingularBoolField(value: self.isAudioCustomMapped, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Recording.LocalStream, rhs: Rv_Data_Recording.LocalStream) -> Bool {
+    if lhs._id != rhs._id {return false}
+    if lhs.destinations != rhs.destinations {return false}
+    if lhs.audioMap != rhs.audioMap {return false}
+    if lhs.isAudioCustomMapped != rhs.isAudioCustomMapped {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Recording.LocalStream.LocalDiskDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Recording.LocalStream.protoMessageName + ".LocalDiskDestination"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}location\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._location) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._location {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Recording.LocalStream.LocalDiskDestination, rhs: Rv_Data_Recording.LocalStream.LocalDiskDestination) -> Bool {
+    if lhs._location != rhs._location {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Recording.LocalStream.LocalDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Recording.LocalStream.protoMessageName + ".LocalDestination"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}disk\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Rv_Data_Recording.LocalStream.LocalDiskDestination?
+        var hadOneofValue = false
+        if let current = self.destination {
+          hadOneofValue = true
+          if case .disk(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.destination = .disk(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if case .disk(let v)? = self.destination {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Recording.LocalStream.LocalDestination, rhs: Rv_Data_Recording.LocalStream.LocalDestination) -> Bool {
+    if lhs.destination != rhs.destination {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

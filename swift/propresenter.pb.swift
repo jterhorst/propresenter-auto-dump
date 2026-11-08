@@ -20,50 +20,66 @@ fileprivate nonisolated struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobu
   typealias Version = _2
 }
 
-public nonisolated struct Rv_Data_PlaylistDocument: Sendable {
+public nonisolated struct Rv_Data_PlaylistDocument: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var applicationInfo: Rv_Data_ApplicationInfo {
-    get {_applicationInfo ?? Rv_Data_ApplicationInfo()}
-    set {_applicationInfo = newValue}
+    get {_storage._applicationInfo ?? Rv_Data_ApplicationInfo()}
+    set {_uniqueStorage()._applicationInfo = newValue}
   }
   /// Returns true if `applicationInfo` has been explicitly set.
-  public var hasApplicationInfo: Bool {self._applicationInfo != nil}
+  public var hasApplicationInfo: Bool {_storage._applicationInfo != nil}
   /// Clears the value of `applicationInfo`. Subsequent reads from it will return its default value.
-  public mutating func clearApplicationInfo() {self._applicationInfo = nil}
+  public mutating func clearApplicationInfo() {_uniqueStorage()._applicationInfo = nil}
 
-  public var type: Rv_Data_PlaylistDocument.TypeEnum = .unknown
+  public var type: Rv_Data_PlaylistDocument.TypeEnum {
+    get {_storage._type}
+    set {_uniqueStorage()._type = newValue}
+  }
 
   public var rootNode: Rv_Data_Playlist {
-    get {_rootNode ?? Rv_Data_Playlist()}
-    set {_rootNode = newValue}
+    get {_storage._rootNode ?? Rv_Data_Playlist()}
+    set {_uniqueStorage()._rootNode = newValue}
   }
   /// Returns true if `rootNode` has been explicitly set.
-  public var hasRootNode: Bool {self._rootNode != nil}
+  public var hasRootNode: Bool {_storage._rootNode != nil}
   /// Clears the value of `rootNode`. Subsequent reads from it will return its default value.
-  public mutating func clearRootNode() {self._rootNode = nil}
+  public mutating func clearRootNode() {_uniqueStorage()._rootNode = nil}
 
-  public var tags: [Rv_Data_Playlist.Tag] = []
+  public var tags: [Rv_Data_Playlist.Tag] {
+    get {_storage._tags}
+    set {_uniqueStorage()._tags = newValue}
+  }
 
   public var liveVideoPlaylist: Rv_Data_Playlist {
-    get {_liveVideoPlaylist ?? Rv_Data_Playlist()}
-    set {_liveVideoPlaylist = newValue}
+    get {_storage._liveVideoPlaylist ?? Rv_Data_Playlist()}
+    set {_uniqueStorage()._liveVideoPlaylist = newValue}
   }
   /// Returns true if `liveVideoPlaylist` has been explicitly set.
-  public var hasLiveVideoPlaylist: Bool {self._liveVideoPlaylist != nil}
+  public var hasLiveVideoPlaylist: Bool {_storage._liveVideoPlaylist != nil}
   /// Clears the value of `liveVideoPlaylist`. Subsequent reads from it will return its default value.
-  public mutating func clearLiveVideoPlaylist() {self._liveVideoPlaylist = nil}
+  public mutating func clearLiveVideoPlaylist() {_uniqueStorage()._liveVideoPlaylist = nil}
 
   public var downloadsPlaylist: Rv_Data_Playlist {
-    get {_downloadsPlaylist ?? Rv_Data_Playlist()}
-    set {_downloadsPlaylist = newValue}
+    get {_storage._downloadsPlaylist ?? Rv_Data_Playlist()}
+    set {_uniqueStorage()._downloadsPlaylist = newValue}
   }
   /// Returns true if `downloadsPlaylist` has been explicitly set.
-  public var hasDownloadsPlaylist: Bool {self._downloadsPlaylist != nil}
+  public var hasDownloadsPlaylist: Bool {_storage._downloadsPlaylist != nil}
   /// Clears the value of `downloadsPlaylist`. Subsequent reads from it will return its default value.
-  public mutating func clearDownloadsPlaylist() {self._downloadsPlaylist = nil}
+  public mutating func clearDownloadsPlaylist() {_uniqueStorage()._downloadsPlaylist = nil}
+
+  public var playlists: [Rv_Data_PlaylistNode] {
+    get {_storage._playlists}
+    set {_uniqueStorage()._playlists = newValue}
+  }
+
+  public var liveVideoPlaylistNodes: [Rv_Data_PlaylistNode] {
+    get {_storage._liveVideoPlaylistNodes}
+    set {_uniqueStorage()._liveVideoPlaylistNodes = newValue}
+  }
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -111,10 +127,42 @@ public nonisolated struct Rv_Data_PlaylistDocument: Sendable {
 
   public init() {}
 
-  fileprivate var _applicationInfo: Rv_Data_ApplicationInfo? = nil
-  fileprivate var _rootNode: Rv_Data_Playlist? = nil
-  fileprivate var _liveVideoPlaylist: Rv_Data_Playlist? = nil
-  fileprivate var _downloadsPlaylist: Rv_Data_Playlist? = nil
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+public nonisolated struct Rv_Data_PlaylistLocalDocument: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var type: Rv_Data_PlaylistDocument.TypeEnum = .unknown
+
+  public var rootNode: Rv_Data_PlaylistLocal {
+    get {_rootNode ?? Rv_Data_PlaylistLocal()}
+    set {_rootNode = newValue}
+  }
+  /// Returns true if `rootNode` has been explicitly set.
+  public var hasRootNode: Bool {self._rootNode != nil}
+  /// Clears the value of `rootNode`. Subsequent reads from it will return its default value.
+  public mutating func clearRootNode() {self._rootNode = nil}
+
+  public var liveVideoPlaylist: Rv_Data_PlaylistLocal {
+    get {_liveVideoPlaylist ?? Rv_Data_PlaylistLocal()}
+    set {_liveVideoPlaylist = newValue}
+  }
+  /// Returns true if `liveVideoPlaylist` has been explicitly set.
+  public var hasLiveVideoPlaylist: Bool {self._liveVideoPlaylist != nil}
+  /// Clears the value of `liveVideoPlaylist`. Subsequent reads from it will return its default value.
+  public mutating func clearLiveVideoPlaylist() {self._liveVideoPlaylist = nil}
+
+  public var nodeStates: [Rv_Data_PlaylistNodeLocal] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _rootNode: Rv_Data_PlaylistLocal? = nil
+  fileprivate var _liveVideoPlaylist: Rv_Data_PlaylistLocal? = nil
 }
 
 public nonisolated struct Rv_Data_SettingsDocument: Sendable {
@@ -135,7 +183,130 @@ fileprivate nonisolated let _protobuf_package = "rv.data"
 
 nonisolated extension Rv_Data_PlaylistDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PlaylistDocument"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}type\0\u{3}root_node\0\u{1}tags\0\u{3}live_video_playlist\0\u{3}downloads_playlist\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}type\0\u{3}root_node\0\u{1}tags\0\u{3}live_video_playlist\0\u{3}downloads_playlist\0\u{1}playlists\0\u{3}live_video_playlist_nodes\0")
+
+  fileprivate class _StorageClass {
+    var _applicationInfo: Rv_Data_ApplicationInfo? = nil
+    var _type: Rv_Data_PlaylistDocument.TypeEnum = .unknown
+    var _rootNode: Rv_Data_Playlist? = nil
+    var _tags: [Rv_Data_Playlist.Tag] = []
+    var _liveVideoPlaylist: Rv_Data_Playlist? = nil
+    var _downloadsPlaylist: Rv_Data_Playlist? = nil
+    var _playlists: [Rv_Data_PlaylistNode] = []
+    var _liveVideoPlaylistNodes: [Rv_Data_PlaylistNode] = []
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _applicationInfo = source._applicationInfo
+      _type = source._type
+      _rootNode = source._rootNode
+      _tags = source._tags
+      _liveVideoPlaylist = source._liveVideoPlaylist
+      _downloadsPlaylist = source._downloadsPlaylist
+      _playlists = source._playlists
+      _liveVideoPlaylistNodes = source._liveVideoPlaylistNodes
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._applicationInfo) }()
+        case 2: try { try decoder.decodeSingularEnumField(value: &_storage._type) }()
+        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._rootNode) }()
+        case 4: try { try decoder.decodeRepeatedMessageField(value: &_storage._tags) }()
+        case 5: try { try decoder.decodeSingularMessageField(value: &_storage._liveVideoPlaylist) }()
+        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._downloadsPlaylist) }()
+        case 7: try { try decoder.decodeRepeatedMessageField(value: &_storage._playlists) }()
+        case 8: try { try decoder.decodeRepeatedMessageField(value: &_storage._liveVideoPlaylistNodes) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      try { if let v = _storage._applicationInfo {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      } }()
+      if _storage._type != .unknown {
+        try visitor.visitSingularEnumField(value: _storage._type, fieldNumber: 2)
+      }
+      try { if let v = _storage._rootNode {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      } }()
+      if !_storage._tags.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._tags, fieldNumber: 4)
+      }
+      try { if let v = _storage._liveVideoPlaylist {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      } }()
+      try { if let v = _storage._downloadsPlaylist {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      } }()
+      if !_storage._playlists.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._playlists, fieldNumber: 7)
+      }
+      if !_storage._liveVideoPlaylistNodes.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._liveVideoPlaylistNodes, fieldNumber: 8)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_PlaylistDocument, rhs: Rv_Data_PlaylistDocument) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._applicationInfo != rhs_storage._applicationInfo {return false}
+        if _storage._type != rhs_storage._type {return false}
+        if _storage._rootNode != rhs_storage._rootNode {return false}
+        if _storage._tags != rhs_storage._tags {return false}
+        if _storage._liveVideoPlaylist != rhs_storage._liveVideoPlaylist {return false}
+        if _storage._downloadsPlaylist != rhs_storage._downloadsPlaylist {return false}
+        if _storage._playlists != rhs_storage._playlists {return false}
+        if _storage._liveVideoPlaylistNodes != rhs_storage._liveVideoPlaylistNodes {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_PlaylistDocument.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_UNKNOWN\0\u{1}TYPE_PRESENTATION\0\u{1}TYPE_MEDIA\0\u{1}TYPE_AUDIO\0")
+}
+
+nonisolated extension Rv_Data_PlaylistLocalDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".PlaylistLocalDocument"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}type\0\u{3}root_node\0\u{3}live_video_playlist\0\u{3}node_states\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -143,12 +314,10 @@ nonisolated extension Rv_Data_PlaylistDocument: SwiftProtobuf.Message, SwiftProt
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._applicationInfo) }()
-      case 2: try { try decoder.decodeSingularEnumField(value: &self.type) }()
-      case 3: try { try decoder.decodeSingularMessageField(value: &self._rootNode) }()
-      case 4: try { try decoder.decodeRepeatedMessageField(value: &self.tags) }()
-      case 5: try { try decoder.decodeSingularMessageField(value: &self._liveVideoPlaylist) }()
-      case 6: try { try decoder.decodeSingularMessageField(value: &self._downloadsPlaylist) }()
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.type) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._rootNode) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._liveVideoPlaylist) }()
+      case 4: try { try decoder.decodeRepeatedMessageField(value: &self.nodeStates) }()
       default: break
       }
     }
@@ -159,41 +328,29 @@ nonisolated extension Rv_Data_PlaylistDocument: SwiftProtobuf.Message, SwiftProt
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
     // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._applicationInfo {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    } }()
     if self.type != .unknown {
-      try visitor.visitSingularEnumField(value: self.type, fieldNumber: 2)
+      try visitor.visitSingularEnumField(value: self.type, fieldNumber: 1)
     }
     try { if let v = self._rootNode {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._liveVideoPlaylist {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
     } }()
-    if !self.tags.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.tags, fieldNumber: 4)
+    if !self.nodeStates.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.nodeStates, fieldNumber: 4)
     }
-    try { if let v = self._liveVideoPlaylist {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
-    } }()
-    try { if let v = self._downloadsPlaylist {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
-    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Rv_Data_PlaylistDocument, rhs: Rv_Data_PlaylistDocument) -> Bool {
-    if lhs._applicationInfo != rhs._applicationInfo {return false}
+  public static func ==(lhs: Rv_Data_PlaylistLocalDocument, rhs: Rv_Data_PlaylistLocalDocument) -> Bool {
     if lhs.type != rhs.type {return false}
     if lhs._rootNode != rhs._rootNode {return false}
-    if lhs.tags != rhs.tags {return false}
     if lhs._liveVideoPlaylist != rhs._liveVideoPlaylist {return false}
-    if lhs._downloadsPlaylist != rhs._downloadsPlaylist {return false}
+    if lhs.nodeStates != rhs.nodeStates {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
-}
-
-nonisolated extension Rv_Data_PlaylistDocument.TypeEnum: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_UNKNOWN\0\u{1}TYPE_PRESENTATION\0\u{1}TYPE_MEDIA\0\u{1}TYPE_AUDIO\0")
 }
 
 nonisolated extension Rv_Data_SettingsDocument: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {

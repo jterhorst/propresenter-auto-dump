@@ -200,6 +200,20 @@ public nonisolated struct Rv_Data_Presentation: @unchecked Sendable {
   /// Clears the value of `music`. Subsequent reads from it will return its default value.
   public mutating func clearMusic() {_uniqueStorage()._music = nil}
 
+  public var cueGroupPlacements: [Rv_Data_Presentation.CueGroupPlacementNode] {
+    get {_storage._cueGroupPlacements}
+    set {_uniqueStorage()._cueGroupPlacements = newValue}
+  }
+
+  public var provider: Rv_Data_ProviderInfo {
+    get {_storage._provider ?? Rv_Data_ProviderInfo()}
+    set {_uniqueStorage()._provider = newValue}
+  }
+  /// Returns true if `provider` has been explicitly set.
+  public var hasProvider: Bool {_storage._provider != nil}
+  /// Clears the value of `provider`. Subsequent reads from it will return its default value.
+  public mutating func clearProvider() {_uniqueStorage()._provider = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public nonisolated enum OneOf_SlideShow: Equatable, Sendable {
@@ -367,6 +381,8 @@ public nonisolated struct Rv_Data_Presentation: @unchecked Sendable {
 
     public var groupIdentifiers: [Rv_Data_UUID] = []
 
+    public var groupIdentifiersV2: [Rv_Data_UUID] = []
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public init() {}
@@ -390,11 +406,111 @@ public nonisolated struct Rv_Data_Presentation: @unchecked Sendable {
 
     public var cueIdentifiers: [Rv_Data_UUID] = []
 
+    public var cueIdentifiersV2: [Rv_Data_UUID] = []
+
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public init() {}
 
     fileprivate var _group: Rv_Data_Group? = nil
+  }
+
+  public nonisolated struct CueGroupPlacementNode: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var kind: Rv_Data_Presentation.CueGroupPlacementNode.OneOf_Kind? = nil
+
+    public var group: Rv_Data_Presentation.CueGroupPlacementNode.GroupNode {
+      get {
+        if case .group(let v)? = kind {return v}
+        return Rv_Data_Presentation.CueGroupPlacementNode.GroupNode()
+      }
+      set {kind = .group(newValue)}
+    }
+
+    public var cue: Rv_Data_Presentation.CueGroupPlacementNode.CueNode {
+      get {
+        if case .cue(let v)? = kind {return v}
+        return Rv_Data_Presentation.CueGroupPlacementNode.CueNode()
+      }
+      set {kind = .cue(newValue)}
+    }
+
+    public var uuid: Rv_Data_UUID {
+      get {_uuid ?? Rv_Data_UUID()}
+      set {_uuid = newValue}
+    }
+    /// Returns true if `uuid` has been explicitly set.
+    public var hasUuid: Bool {self._uuid != nil}
+    /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
+    public mutating func clearUuid() {self._uuid = nil}
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_Kind: Equatable, Sendable {
+      case group(Rv_Data_Presentation.CueGroupPlacementNode.GroupNode)
+      case cue(Rv_Data_Presentation.CueGroupPlacementNode.CueNode)
+
+    }
+
+    public nonisolated struct GroupNode: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var name: String = String()
+
+      public var color: Rv_Data_Color {
+        get {_color ?? Rv_Data_Color()}
+        set {_color = newValue}
+      }
+      /// Returns true if `color` has been explicitly set.
+      public var hasColor: Bool {self._color != nil}
+      /// Clears the value of `color`. Subsequent reads from it will return its default value.
+      public mutating func clearColor() {self._color = nil}
+
+      public var hotKey: Rv_Data_HotKey {
+        get {_hotKey ?? Rv_Data_HotKey()}
+        set {_hotKey = newValue}
+      }
+      /// Returns true if `hotKey` has been explicitly set.
+      public var hasHotKey: Bool {self._hotKey != nil}
+      /// Clears the value of `hotKey`. Subsequent reads from it will return its default value.
+      public mutating func clearHotKey() {self._hotKey = nil}
+
+      public var applicationGroupIdentifier: Rv_Data_UUID {
+        get {_applicationGroupIdentifier ?? Rv_Data_UUID()}
+        set {_applicationGroupIdentifier = newValue}
+      }
+      /// Returns true if `applicationGroupIdentifier` has been explicitly set.
+      public var hasApplicationGroupIdentifier: Bool {self._applicationGroupIdentifier != nil}
+      /// Clears the value of `applicationGroupIdentifier`. Subsequent reads from it will return its default value.
+      public mutating func clearApplicationGroupIdentifier() {self._applicationGroupIdentifier = nil}
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+
+      fileprivate var _color: Rv_Data_Color? = nil
+      fileprivate var _hotKey: Rv_Data_HotKey? = nil
+      fileprivate var _applicationGroupIdentifier: Rv_Data_UUID? = nil
+    }
+
+    public nonisolated struct CueNode: Sendable {
+      // SwiftProtobuf.Message conformance is added in an extension below. See the
+      // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+      // methods supported on all messages.
+
+      public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+      public init() {}
+    }
+
+    public init() {}
+
+    fileprivate var _uuid: Rv_Data_UUID? = nil
   }
 
   public nonisolated struct MultiTracksLicensing: Sendable {
@@ -514,7 +630,7 @@ fileprivate nonisolated let _protobuf_package = "rv.data"
 
 nonisolated extension Rv_Data_Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Presentation"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}uuid\0\u{1}name\0\u{3}last_date_used\0\u{3}last_modified_date\0\u{1}category\0\u{1}notes\0\u{1}background\0\u{3}chord_chart\0\u{3}selected_arrangement\0\u{1}arrangements\0\u{3}cue_groups\0\u{1}cues\0\u{1}ccli\0\u{3}bible_reference\0\u{2}\u{2}timeline\0\u{1}transition\0\u{3}content_destination\0\u{3}slide_show_duration\0\u{3}multi_tracks_licensing\0\u{3}music_key\0\u{1}music\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}application_info\0\u{1}uuid\0\u{1}name\0\u{3}last_date_used\0\u{3}last_modified_date\0\u{1}category\0\u{1}notes\0\u{1}background\0\u{3}chord_chart\0\u{3}selected_arrangement\0\u{1}arrangements\0\u{3}cue_groups\0\u{1}cues\0\u{1}ccli\0\u{3}bible_reference\0\u{2}\u{2}timeline\0\u{1}transition\0\u{3}content_destination\0\u{3}slide_show_duration\0\u{3}multi_tracks_licensing\0\u{3}music_key\0\u{1}music\0\u{3}cue_group_placements\0\u{1}provider\0")
 
   fileprivate class _StorageClass {
     var _slideShow: Rv_Data_Presentation.OneOf_SlideShow?
@@ -539,6 +655,8 @@ nonisolated extension Rv_Data_Presentation: SwiftProtobuf.Message, SwiftProtobuf
     var _multiTracksLicensing: Rv_Data_Presentation.MultiTracksLicensing? = nil
     var _musicKey: String = String()
     var _music: Rv_Data_Presentation.Music? = nil
+    var _cueGroupPlacements: [Rv_Data_Presentation.CueGroupPlacementNode] = []
+    var _provider: Rv_Data_ProviderInfo? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -571,6 +689,8 @@ nonisolated extension Rv_Data_Presentation: SwiftProtobuf.Message, SwiftProtobuf
       _multiTracksLicensing = source._multiTracksLicensing
       _musicKey = source._musicKey
       _music = source._music
+      _cueGroupPlacements = source._cueGroupPlacements
+      _provider = source._provider
     }
   }
 
@@ -618,6 +738,8 @@ nonisolated extension Rv_Data_Presentation: SwiftProtobuf.Message, SwiftProtobuf
         case 21: try { try decoder.decodeSingularMessageField(value: &_storage._multiTracksLicensing) }()
         case 22: try { try decoder.decodeSingularStringField(value: &_storage._musicKey) }()
         case 23: try { try decoder.decodeSingularMessageField(value: &_storage._music) }()
+        case 24: try { try decoder.decodeRepeatedMessageField(value: &_storage._cueGroupPlacements) }()
+        case 25: try { try decoder.decodeSingularMessageField(value: &_storage._provider) }()
         default: break
         }
       }
@@ -696,6 +818,12 @@ nonisolated extension Rv_Data_Presentation: SwiftProtobuf.Message, SwiftProtobuf
       try { if let v = _storage._music {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 23)
       } }()
+      if !_storage._cueGroupPlacements.isEmpty {
+        try visitor.visitRepeatedMessageField(value: _storage._cueGroupPlacements, fieldNumber: 24)
+      }
+      try { if let v = _storage._provider {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 25)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -727,6 +855,8 @@ nonisolated extension Rv_Data_Presentation: SwiftProtobuf.Message, SwiftProtobuf
         if _storage._multiTracksLicensing != rhs_storage._multiTracksLicensing {return false}
         if _storage._musicKey != rhs_storage._musicKey {return false}
         if _storage._music != rhs_storage._music {return false}
+        if _storage._cueGroupPlacements != rhs_storage._cueGroupPlacements {return false}
+        if _storage._provider != rhs_storage._provider {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -1013,7 +1143,7 @@ nonisolated extension Rv_Data_Presentation.Timeline.Cue: SwiftProtobuf.Message, 
 
 nonisolated extension Rv_Data_Presentation.Arrangement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".Arrangement"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{3}group_identifiers\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{3}group_identifiers\0\u{3}group_identifiers_v2\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1024,6 +1154,7 @@ nonisolated extension Rv_Data_Presentation.Arrangement: SwiftProtobuf.Message, S
       case 1: try { try decoder.decodeSingularMessageField(value: &self._uuid) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.name) }()
       case 3: try { try decoder.decodeRepeatedMessageField(value: &self.groupIdentifiers) }()
+      case 4: try { try decoder.decodeRepeatedMessageField(value: &self.groupIdentifiersV2) }()
       default: break
       }
     }
@@ -1043,6 +1174,9 @@ nonisolated extension Rv_Data_Presentation.Arrangement: SwiftProtobuf.Message, S
     if !self.groupIdentifiers.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.groupIdentifiers, fieldNumber: 3)
     }
+    if !self.groupIdentifiersV2.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.groupIdentifiersV2, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1050,6 +1184,7 @@ nonisolated extension Rv_Data_Presentation.Arrangement: SwiftProtobuf.Message, S
     if lhs._uuid != rhs._uuid {return false}
     if lhs.name != rhs.name {return false}
     if lhs.groupIdentifiers != rhs.groupIdentifiers {return false}
+    if lhs.groupIdentifiersV2 != rhs.groupIdentifiersV2 {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1057,7 +1192,7 @@ nonisolated extension Rv_Data_Presentation.Arrangement: SwiftProtobuf.Message, S
 
 nonisolated extension Rv_Data_Presentation.CueGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".CueGroup"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}group\0\u{3}cue_identifiers\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}group\0\u{3}cue_identifiers\0\u{3}cue_identifiers_v2\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1067,6 +1202,7 @@ nonisolated extension Rv_Data_Presentation.CueGroup: SwiftProtobuf.Message, Swif
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularMessageField(value: &self._group) }()
       case 2: try { try decoder.decodeRepeatedMessageField(value: &self.cueIdentifiers) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.cueIdentifiersV2) }()
       default: break
       }
     }
@@ -1083,12 +1219,156 @@ nonisolated extension Rv_Data_Presentation.CueGroup: SwiftProtobuf.Message, Swif
     if !self.cueIdentifiers.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.cueIdentifiers, fieldNumber: 2)
     }
+    if !self.cueIdentifiersV2.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.cueIdentifiersV2, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Rv_Data_Presentation.CueGroup, rhs: Rv_Data_Presentation.CueGroup) -> Bool {
     if lhs._group != rhs._group {return false}
     if lhs.cueIdentifiers != rhs.cueIdentifiers {return false}
+    if lhs.cueIdentifiersV2 != rhs.cueIdentifiersV2 {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Presentation.CueGroupPlacementNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Presentation.protoMessageName + ".CueGroupPlacementNode"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}group\0\u{1}cue\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._uuid) }()
+      case 2: try {
+        var v: Rv_Data_Presentation.CueGroupPlacementNode.GroupNode?
+        var hadOneofValue = false
+        if let current = self.kind {
+          hadOneofValue = true
+          if case .group(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.kind = .group(v)
+        }
+      }()
+      case 3: try {
+        var v: Rv_Data_Presentation.CueGroupPlacementNode.CueNode?
+        var hadOneofValue = false
+        if let current = self.kind {
+          hadOneofValue = true
+          if case .cue(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.kind = .cue(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._uuid {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    switch self.kind {
+    case .group?: try {
+      guard case .group(let v)? = self.kind else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case .cue?: try {
+      guard case .cue(let v)? = self.kind else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Presentation.CueGroupPlacementNode, rhs: Rv_Data_Presentation.CueGroupPlacementNode) -> Bool {
+    if lhs.kind != rhs.kind {return false}
+    if lhs._uuid != rhs._uuid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Presentation.CueGroupPlacementNode.GroupNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Presentation.CueGroupPlacementNode.protoMessageName + ".GroupNode"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{1}color\0\u{3}hot_key\0\u{3}application_group_identifier\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._color) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._hotKey) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._applicationGroupIdentifier) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
+    }
+    try { if let v = self._color {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._hotKey {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
+    try { if let v = self._applicationGroupIdentifier {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Presentation.CueGroupPlacementNode.GroupNode, rhs: Rv_Data_Presentation.CueGroupPlacementNode.GroupNode) -> Bool {
+    if lhs.name != rhs.name {return false}
+    if lhs._color != rhs._color {return false}
+    if lhs._hotKey != rhs._hotKey {return false}
+    if lhs._applicationGroupIdentifier != rhs._applicationGroupIdentifier {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_Presentation.CueGroupPlacementNode.CueNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_Presentation.CueGroupPlacementNode.protoMessageName + ".CueNode"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_Presentation.CueGroupPlacementNode.CueNode, rhs: Rv_Data_Presentation.CueGroupPlacementNode.CueNode) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

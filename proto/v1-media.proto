@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+
+package media.v1;
+
+
+import "v1-helper-common.proto";
+
+
+
+message Notification {
+  message UnsubscribeComplete {
+  }
+
+  message Disconnected {
+  }
+
+  message Connected {
+    helper.common.v1.Version version = 1;
+  }
+
+  message Unresponsive {
+    media.v1.RequestEnvelope request = 1;
+    uint32 seconds = 2;
+  }
+
+  oneof notification {
+    helper.common.v1.MediaReference media_reference = 1;
+    media.v1.Notification.UnsubscribeComplete unsubscribe_complete = 2;
+    media.v1.Notification.Connected connected = 3;
+    media.v1.Notification.Disconnected disconnected = 4;
+    media.v1.Notification.Unresponsive unresponsive = 5;
+    helper.common.v1.GenerationStatus generation_status = 6;
+  }
+
+}
+
+message RequestEnvelope {
+  message GetMediaReference {
+    string uuid = 1;
+  }
+
+  oneof request {
+    helper.common.v1.ChangeShowDirectory change_show_directory = 1;
+    media.v1.RequestEnvelope.GetMediaReference get_media_reference = 2;
+    helper.common.v1.AddMediaReference add_media_reference = 3;
+    helper.common.v1.DuplicateMediaReference duplicate_media_reference = 4;
+    helper.common.v1.ApplyTransformation apply_transformation = 5;
+    helper.common.v1.RemoveMediaReferences remove_media_reference = 6;
+    helper.common.v1.TriggerMediaReference trigger_media_reference = 7;
+    helper.common.v1.Ping ping = 8;
+    helper.common.v1.UpdateWorkspaces update_workspaces = 9;
+    helper.common.v1.PauseGeneration pause_generation = 10;
+    helper.common.v1.ResumeGeneration resume_generation = 11;
+  }
+
+}
+
+message ResponseEnvelope {
+  message ChangeShowDirectoryResponse {
+  }
+
+  message GetMediaReferenceResponse {
+    helper.common.v1.MediaReference state = 1;
+  }
+
+  message Response {
+    oneof response {
+      media.v1.ResponseEnvelope.ChangeShowDirectoryResponse change = 1;
+      media.v1.ResponseEnvelope.GetMediaReferenceResponse get = 2;
+      helper.common.v1.AddMediaReferenceResponse add = 3;
+      helper.common.v1.DuplicateMediaReferenceResponse duplicate = 4;
+      helper.common.v1.ApplyTransformationResponse apply = 5;
+      helper.common.v1.RemoveMediaReferenceResponse remove = 6;
+      helper.common.v1.TriggerMediaReferenceResponse trigger = 7;
+      helper.common.v1.Pong pong = 8;
+      helper.common.v1.UpdateWorkspacesResponse update = 9;
+      helper.common.v1.PauseGenerationResponse pause = 10;
+      helper.common.v1.ResumeGenerationResponse resume = 11;
+    }
+
+  }
+
+  oneof result {
+    media.v1.ResponseEnvelope.Response ok = 1;
+    helper.common.v1.RequestError error = 2;
+  }
+
+}

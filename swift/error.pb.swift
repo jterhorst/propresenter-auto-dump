@@ -28,6 +28,9 @@ public nonisolated enum Application_ServiceID: SwiftProtobuf.Enum, Swift.CaseIte
   case registration // = 3
   case document // = 4
   case workspace // = 5
+  case procore // = 6
+  case prodisplay // = 7
+  case contentProvider // = 8
   case UNRECOGNIZED(Int)
 
   public init() {
@@ -42,6 +45,9 @@ public nonisolated enum Application_ServiceID: SwiftProtobuf.Enum, Swift.CaseIte
     case 3: self = .registration
     case 4: self = .document
     case 5: self = .workspace
+    case 6: self = .procore
+    case 7: self = .prodisplay
+    case 8: self = .contentProvider
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -54,6 +60,9 @@ public nonisolated enum Application_ServiceID: SwiftProtobuf.Enum, Swift.CaseIte
     case .registration: return 3
     case .document: return 4
     case .workspace: return 5
+    case .procore: return 6
+    case .prodisplay: return 7
+    case .contentProvider: return 8
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -66,6 +75,9 @@ public nonisolated enum Application_ServiceID: SwiftProtobuf.Enum, Swift.CaseIte
     .registration,
     .document,
     .workspace,
+    .procore,
+    .prodisplay,
+    .contentProvider,
   ]
 
 }
@@ -82,6 +94,9 @@ public nonisolated enum Application_ErrorCode: SwiftProtobuf.Enum, Swift.CaseIte
   case remote // = 7
   case dependency // = 8
   case mediaVersion // = 9
+  case procoreResult // = 10
+  case storageRoot // = 11
+  case workspaceTooNew // = 12
   case UNRECOGNIZED(Int)
 
   public init() {
@@ -100,6 +115,9 @@ public nonisolated enum Application_ErrorCode: SwiftProtobuf.Enum, Swift.CaseIte
     case 7: self = .remote
     case 8: self = .dependency
     case 9: self = .mediaVersion
+    case 10: self = .procoreResult
+    case 11: self = .storageRoot
+    case 12: self = .workspaceTooNew
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -116,6 +134,9 @@ public nonisolated enum Application_ErrorCode: SwiftProtobuf.Enum, Swift.CaseIte
     case .remote: return 7
     case .dependency: return 8
     case .mediaVersion: return 9
+    case .procoreResult: return 10
+    case .storageRoot: return 11
+    case .workspaceTooNew: return 12
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -132,6 +153,9 @@ public nonisolated enum Application_ErrorCode: SwiftProtobuf.Enum, Swift.CaseIte
     .remote,
     .dependency,
     .mediaVersion,
+    .procoreResult,
+    .storageRoot,
+    .workspaceTooNew,
   ]
 
 }
@@ -147,9 +171,30 @@ public nonisolated struct Application_Error: Sendable {
 
   public var description_p: String = String()
 
+  public var requiredBytes: UInt64 {
+    get {_requiredBytes ?? 0}
+    set {_requiredBytes = newValue}
+  }
+  /// Returns true if `requiredBytes` has been explicitly set.
+  public var hasRequiredBytes: Bool {self._requiredBytes != nil}
+  /// Clears the value of `requiredBytes`. Subsequent reads from it will return its default value.
+  public mutating func clearRequiredBytes() {self._requiredBytes = nil}
+
+  public var availableBytes: UInt64 {
+    get {_availableBytes ?? 0}
+    set {_availableBytes = newValue}
+  }
+  /// Returns true if `availableBytes` has been explicitly set.
+  public var hasAvailableBytes: Bool {self._availableBytes != nil}
+  /// Clears the value of `availableBytes`. Subsequent reads from it will return its default value.
+  public mutating func clearAvailableBytes() {self._availableBytes = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
+
+  fileprivate var _requiredBytes: UInt64? = nil
+  fileprivate var _availableBytes: UInt64? = nil
 }
 
 public nonisolated struct Application_ResultEnvelope: Sendable {
@@ -201,16 +246,16 @@ public nonisolated struct Application_ResultEnvelope: Sendable {
 fileprivate nonisolated let _protobuf_package = "application"
 
 nonisolated extension Application_ServiceID: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0APPLICATION\0\u{1}MEDIA\0\u{1}FEATURE_FLAGS\0\u{1}REGISTRATION\0\u{1}DOCUMENT\0\u{1}WORKSPACE\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0APPLICATION\0\u{1}MEDIA\0\u{1}FEATURE_FLAGS\0\u{1}REGISTRATION\0\u{1}DOCUMENT\0\u{1}WORKSPACE\0\u{1}PROCORE\0\u{1}PRODISPLAY\0\u{1}CONTENT_PROVIDER\0")
 }
 
 nonisolated extension Application_ErrorCode: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0RUNTIME\0\u{1}CALL\0\u{1}PARAMS\0\u{1}DATA\0\u{1}PANIC\0\u{1}JOIN\0\u{1}HID\0\u{1}REMOTE\0\u{1}DEPENDENCY\0\u{1}MEDIA_VERSION\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0RUNTIME\0\u{1}CALL\0\u{1}PARAMS\0\u{1}DATA\0\u{1}PANIC\0\u{1}JOIN\0\u{1}HID\0\u{1}REMOTE\0\u{1}DEPENDENCY\0\u{1}MEDIA_VERSION\0\u{1}PROCORE_RESULT\0\u{1}STORAGE_ROOT\0\u{1}WORKSPACE_TOO_NEW\0")
 }
 
 nonisolated extension Application_Error: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Error"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}service\0\u{1}code\0\u{1}description\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}service\0\u{1}code\0\u{1}description\0\u{3}required_bytes\0\u{3}available_bytes\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -221,12 +266,18 @@ nonisolated extension Application_Error: SwiftProtobuf.Message, SwiftProtobuf._M
       case 1: try { try decoder.decodeSingularEnumField(value: &self.service) }()
       case 2: try { try decoder.decodeSingularInt32Field(value: &self.code) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.description_p) }()
+      case 4: try { try decoder.decodeSingularUInt64Field(value: &self._requiredBytes) }()
+      case 5: try { try decoder.decodeSingularUInt64Field(value: &self._availableBytes) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if self.service != .application {
       try visitor.visitSingularEnumField(value: self.service, fieldNumber: 1)
     }
@@ -236,6 +287,12 @@ nonisolated extension Application_Error: SwiftProtobuf.Message, SwiftProtobuf._M
     if !self.description_p.isEmpty {
       try visitor.visitSingularStringField(value: self.description_p, fieldNumber: 3)
     }
+    try { if let v = self._requiredBytes {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 4)
+    } }()
+    try { if let v = self._availableBytes {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 5)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -243,6 +300,8 @@ nonisolated extension Application_Error: SwiftProtobuf.Message, SwiftProtobuf._M
     if lhs.service != rhs.service {return false}
     if lhs.code != rhs.code {return false}
     if lhs.description_p != rhs.description_p {return false}
+    if lhs._requiredBytes != rhs._requiredBytes {return false}
+    if lhs._availableBytes != rhs._availableBytes {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -10,7 +10,7 @@ import "document.entities.proto";
 
 message Metadata {
   string uuid = 1;
-  string pro_version = 2;
+  string schema_version = 2;
   string name = 3;
   uint64 size = 10;
   uint64 created = 11;

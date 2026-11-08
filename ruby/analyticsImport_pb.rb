@@ -7,7 +7,7 @@ require 'google/protobuf'
 require 'analyticsMultiTracks_pb'
 
 
-descriptor_data = "\n\x15\x61nalyticsImport.proto\x12\x13rv.analytics.import\x1a\x1a\x61nalyticsMultiTracks.proto\"\xd0\x02\n\nSongSelect\x12)\n!template_slide_text_element_count\x18\x01 \x01(\x05\x12\x1c\n\x14import_into_playlist\x18\x02 \x01(\x08\x12\x45\n\x0eline_delimiter\x18\x03 \x01(\x0e\x32-.rv.analytics.import.SongSelect.LineDelimiter\x12\x1c\n\x14line_delimiter_count\x18\x04 \x01(\x05\x12\x1a\n\x12\x64id_open_edit_view\x18\x05 \x01(\x08\x12\x35\n\x0bmultitracks\x18\x06 \x01(\x0b\x32 .rv.analytics.multitracks.Import\"A\n\rLineDelimiter\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0e\n\nLINE_BREAK\x10\x01\x12\x13\n\x0fPARAGRAPH_BREAK\x10\x02\x62\x06proto3"
+descriptor_data = "\n\x15\x61nalyticsImport.proto\x12\x13rv.analytics.import\x1a\x1a\x61nalyticsMultiTracks.proto\"\xd0\x02\n\nSongSelect\x12)\n!template_slide_text_element_count\x18\x01 \x01(\x05\x12\x1c\n\x14import_into_playlist\x18\x02 \x01(\x08\x12\x45\n\x0eline_delimiter\x18\x03 \x01(\x0e\x32-.rv.analytics.import.SongSelect.LineDelimiter\x12\x1c\n\x14line_delimiter_count\x18\x04 \x01(\x05\x12\x1a\n\x12\x64id_open_edit_view\x18\x05 \x01(\x08\x12\x35\n\x0bmultitracks\x18\x06 \x01(\x0b\x32 .rv.analytics.multitracks.Import\"A\n\rLineDelimiter\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0e\n\nLINE_BREAK\x10\x01\x12\x13\n\x0fPARAGRAPH_BREAK\x10\x02\"\xb0\x01\n\x12\x41PlayServiceImport\x12>\n\x06result\x18\x01 \x01(\x0e\x32..rv.analytics.import.APlayServiceImport.Result\x12\x12\n\nitem_count\x18\x02 \x01(\r\"F\n\x06Result\x12\x16\n\x12RESULT_UNSPECIFIED\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x0b\n\x07PARTIAL\x10\x02\x12\n\n\x06\x46\x41ILED\x10\x03\"\x91\x01\n\x13\x41PlayServiceRefresh\x12?\n\x06result\x18\x01 \x01(\x0e\x32/.rv.analytics.import.APlayServiceRefresh.Result\"9\n\x06Result\x12\x16\n\x12RESULT_UNSPECIFIED\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\n\n\x06\x46\x41ILED\x10\x02\x62\x06proto3"
 
 pool = ::Google::Protobuf::DescriptorPool.generated_pool
 pool.add_serialized_file(descriptor_data)
@@ -17,6 +17,10 @@ module Rv
     module Import
       SongSelect = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.import.SongSelect").msgclass
       SongSelect::LineDelimiter = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.import.SongSelect.LineDelimiter").enummodule
+      APlayServiceImport = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.import.APlayServiceImport").msgclass
+      APlayServiceImport::Result = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.import.APlayServiceImport.Result").enummodule
+      APlayServiceRefresh = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.import.APlayServiceRefresh").msgclass
+      APlayServiceRefresh::Result = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("rv.analytics.import.APlayServiceRefresh.Result").enummodule
     end
   end
 end

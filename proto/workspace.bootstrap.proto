@@ -4,6 +4,61 @@ syntax = "proto3";
 package workspace;
 
 
+enum LegacyMigrationAnswer {
+  LEGACY_MIGRATION_ANSWER_UNSPECIFIED = 0;
+  LEGACY_MIGRATION_ANSWER_NOT_ASKED = 1;
+  LEGACY_MIGRATION_ANSWER_UPGRADE = 2;
+  LEGACY_MIGRATION_ANSWER_NEW_WORKSPACE = 3;
+}
+
+message LegacyRegistryWorkspace {
+  string path = 1;
+  string name = 2;
+  optional string cloud_uuid = 3;
+  optional string schema_version = 4;
+}
+
+message LegacyRegistrySnapshot {
+  repeated workspace.LegacyRegistryWorkspace workspaces = 1;
+  optional string selected_path = 2;
+}
+
 message CreationOption {
-  optional string min_pro_version = 1;
+  optional string min_schema_version = 1;
+  optional workspace.LegacyRegistrySnapshot legacy_registry_snapshot = 2;
+  workspace.LegacyMigrationAnswer legacy_migration_answer = 3;
+  bool open_new_workspace = 4;
+}
+
+message LegacyMigrationShortfall {
+  enum Kind {
+    KIND_UNSPECIFIED = 0;
+    KIND_PRESENTATIONS = 1;
+    KIND_THEMES = 2;
+    KIND_EFFECTS_AND_TRANSITIONS = 3;
+    KIND_MEDIA_FILES = 4;
+    KIND_LIBRARIES = 5;
+    KIND_LIBRARY_ORDER = 6;
+    KIND_PRESENTATION_PLAYLISTS = 7;
+    KIND_MEDIA_PLAYLISTS = 8;
+    KIND_AUDIO_PLAYLISTS = 9;
+    KIND_PLAYLIST_TEMPLATES = 10;
+    KIND_MACROS = 11;
+    KIND_PROPS = 12;
+    KIND_STAGE_LAYOUTS = 13;
+    KIND_MESSAGES = 14;
+    KIND_TIMERS = 15;
+    KIND_CALENDAR = 16;
+    KIND_KEYBOARD_SHORTCUTS = 17;
+    KIND_COMMUNICATION_DEVICES = 18;
+    KIND_WORKSPACE_SETTINGS = 19;
+  }
+
+  message Item {
+    workspace.LegacyMigrationShortfall.Kind kind = 1;
+    uint64 count = 2;
+    repeated string names = 3;
+  }
+
+  repeated workspace.LegacyMigrationShortfall.Item items = 1;
 }

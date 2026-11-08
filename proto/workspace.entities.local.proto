@@ -9,8 +9,8 @@ import "document.entities.proto";
 
 
 message Metadata {
-  optional string uuid = 1;
-  string pro_version = 2;
+  optional string cloud_uuid = 1;
+  string schema_version = 2;
   string name = 3;
   string path = 4;
 }

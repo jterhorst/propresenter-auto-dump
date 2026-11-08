@@ -137,6 +137,15 @@ message CommunicationDevice {
   }
 
   message MIDIHardware {
+    message Port {
+      string name = 1;
+      uint32 manufacturer_id = 2;
+      uint32 product_id = 3;
+      uint32 driver_version = 4;
+    }
+
+    repeated rv.data.CommunicationDevice.MIDIHardware.Port sources = 1;
+    repeated rv.data.CommunicationDevice.MIDIHardware.Port destinations = 2;
   }
 
   oneof HardwareType {

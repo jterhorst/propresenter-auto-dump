@@ -140,6 +140,141 @@ public nonisolated struct Rv_Analytics_Sync_WebSocketConnectionFailed: Sendable 
   public init() {}
 }
 
+public nonisolated struct Rv_Analytics_Sync_DocumentSyncRateLimited: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var phase: Rv_Analytics_Sync_DocumentSyncRateLimited.Phase = .unknown
+
+  public var workspaceIdentifier: String = String()
+
+  public var retryAfterSeconds: UInt64 {
+    get {_retryAfterSeconds ?? 0}
+    set {_retryAfterSeconds = newValue}
+  }
+  /// Returns true if `retryAfterSeconds` has been explicitly set.
+  public var hasRetryAfterSeconds: Bool {self._retryAfterSeconds != nil}
+  /// Clears the value of `retryAfterSeconds`. Subsequent reads from it will return its default value.
+  public mutating func clearRetryAfterSeconds() {self._retryAfterSeconds = nil}
+
+  public var documentsHeld: UInt32 = 0
+
+  public var refusals: UInt32 = 0
+
+  public var durationMs: UInt64 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Phase: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case started // = 1
+    case ended // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .started
+      case 2: self = .ended
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .started: return 1
+      case .ended: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Sync_DocumentSyncRateLimited.Phase] = [
+      .unknown,
+      .started,
+      .ended,
+    ]
+
+  }
+
+  public init() {}
+
+  fileprivate var _retryAfterSeconds: UInt64? = nil
+}
+
+public nonisolated struct Rv_Analytics_Sync_StoredVersionVectorRepaired: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var kind: Rv_Analytics_Sync_StoredVersionVectorRepaired.Kind = .unknown
+
+  public var documentIdentifier: String = String()
+
+  public var storedPeerCount: UInt32 = 0
+
+  public var computedPeerCount: UInt32 = 0
+
+  public var architecture: String = String()
+
+  public var hardwareID: String = String()
+
+  public var repairsInOpen: UInt32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Kind: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case valueEqual // = 1
+    case valueDifferent // = 2
+    case undecodable // = 3
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .valueEqual
+      case 2: self = .valueDifferent
+      case 3: self = .undecodable
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .valueEqual: return 1
+      case .valueDifferent: return 2
+      case .undecodable: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Sync_StoredVersionVectorRepaired.Kind] = [
+      .unknown,
+      .valueEqual,
+      .valueDifferent,
+      .undecodable,
+    ]
+
+  }
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "rv.analytics.sync"
@@ -250,4 +385,131 @@ nonisolated extension Rv_Analytics_Sync_WebSocketConnectionFailed: SwiftProtobuf
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+nonisolated extension Rv_Analytics_Sync_DocumentSyncRateLimited: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".DocumentSyncRateLimited"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}phase\0\u{3}workspace_identifier\0\u{3}retry_after_seconds\0\u{3}documents_held\0\u{1}refusals\0\u{3}duration_ms\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.phase) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.workspaceIdentifier) }()
+      case 3: try { try decoder.decodeSingularUInt64Field(value: &self._retryAfterSeconds) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.documentsHeld) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.refusals) }()
+      case 6: try { try decoder.decodeSingularUInt64Field(value: &self.durationMs) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.phase != .unknown {
+      try visitor.visitSingularEnumField(value: self.phase, fieldNumber: 1)
+    }
+    if !self.workspaceIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.workspaceIdentifier, fieldNumber: 2)
+    }
+    try { if let v = self._retryAfterSeconds {
+      try visitor.visitSingularUInt64Field(value: v, fieldNumber: 3)
+    } }()
+    if self.documentsHeld != 0 {
+      try visitor.visitSingularUInt32Field(value: self.documentsHeld, fieldNumber: 4)
+    }
+    if self.refusals != 0 {
+      try visitor.visitSingularUInt32Field(value: self.refusals, fieldNumber: 5)
+    }
+    if self.durationMs != 0 {
+      try visitor.visitSingularUInt64Field(value: self.durationMs, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Sync_DocumentSyncRateLimited, rhs: Rv_Analytics_Sync_DocumentSyncRateLimited) -> Bool {
+    if lhs.phase != rhs.phase {return false}
+    if lhs.workspaceIdentifier != rhs.workspaceIdentifier {return false}
+    if lhs._retryAfterSeconds != rhs._retryAfterSeconds {return false}
+    if lhs.documentsHeld != rhs.documentsHeld {return false}
+    if lhs.refusals != rhs.refusals {return false}
+    if lhs.durationMs != rhs.durationMs {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Sync_DocumentSyncRateLimited.Phase: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}STARTED\0\u{1}ENDED\0")
+}
+
+nonisolated extension Rv_Analytics_Sync_StoredVersionVectorRepaired: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".StoredVersionVectorRepaired"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}kind\0\u{3}document_identifier\0\u{3}stored_peer_count\0\u{3}computed_peer_count\0\u{1}architecture\0\u{3}hardware_id\0\u{3}repairs_in_open\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.kind) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.documentIdentifier) }()
+      case 3: try { try decoder.decodeSingularUInt32Field(value: &self.storedPeerCount) }()
+      case 4: try { try decoder.decodeSingularUInt32Field(value: &self.computedPeerCount) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.architecture) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self.hardwareID) }()
+      case 7: try { try decoder.decodeSingularUInt32Field(value: &self.repairsInOpen) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.kind != .unknown {
+      try visitor.visitSingularEnumField(value: self.kind, fieldNumber: 1)
+    }
+    if !self.documentIdentifier.isEmpty {
+      try visitor.visitSingularStringField(value: self.documentIdentifier, fieldNumber: 2)
+    }
+    if self.storedPeerCount != 0 {
+      try visitor.visitSingularUInt32Field(value: self.storedPeerCount, fieldNumber: 3)
+    }
+    if self.computedPeerCount != 0 {
+      try visitor.visitSingularUInt32Field(value: self.computedPeerCount, fieldNumber: 4)
+    }
+    if !self.architecture.isEmpty {
+      try visitor.visitSingularStringField(value: self.architecture, fieldNumber: 5)
+    }
+    if !self.hardwareID.isEmpty {
+      try visitor.visitSingularStringField(value: self.hardwareID, fieldNumber: 6)
+    }
+    if self.repairsInOpen != 0 {
+      try visitor.visitSingularUInt32Field(value: self.repairsInOpen, fieldNumber: 7)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Sync_StoredVersionVectorRepaired, rhs: Rv_Analytics_Sync_StoredVersionVectorRepaired) -> Bool {
+    if lhs.kind != rhs.kind {return false}
+    if lhs.documentIdentifier != rhs.documentIdentifier {return false}
+    if lhs.storedPeerCount != rhs.storedPeerCount {return false}
+    if lhs.computedPeerCount != rhs.computedPeerCount {return false}
+    if lhs.architecture != rhs.architecture {return false}
+    if lhs.hardwareID != rhs.hardwareID {return false}
+    if lhs.repairsInOpen != rhs.repairsInOpen {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Sync_StoredVersionVectorRepaired.Kind: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0UNKNOWN\0\u{1}VALUE_EQUAL\0\u{1}VALUE_DIFFERENT\0\u{1}UNDECODABLE\0")
 }

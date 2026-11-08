@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+
+package rv.data;
+
+
+import "customOptions.proto";
+
+
+
+message ResolvedUrl {
+  string url = 1;
+  string expires_at = 2;
+  string refresh_after = 3;
+}
+
+message MediaHlsUrlResolution {
+  message Failure {
+    enum Reason {
+      REASON_UNSPECIFIED = 0;
+      UNKNOWN_PROVIDER = 1;
+      NOT_RESOLVED = 2;
+      PROVIDER_ERROR = 3;
+      INVALID_RESULT = 4;
+      EMPTY_URL = 5;
+      FORBIDDEN = 6;
+      NOT_FOUND = 7;
+    }
+
+    rv.data.MediaHlsUrlResolution.Failure.Reason reason = 1;
+    string description = 2;
+  }
+
+  oneof result {
+    rv.data.ResolvedUrl ok = 2;
+    rv.data.MediaHlsUrlResolution.Failure failure = 3;
+  }
+
+  string item_id = 1;
+}

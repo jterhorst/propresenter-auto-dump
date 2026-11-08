@@ -123,6 +123,8 @@ public nonisolated struct Rv_Data_CopyrightLayout: Sendable {
 
   public var tokens: [Rv_Data_CopyrightLayout.Token] = []
 
+  public var tokensV2: [Rv_Data_CopyrightLayout.Token] = []
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public nonisolated enum TokenType: SwiftProtobuf.Enum, Swift.CaseIterable {
@@ -315,7 +317,7 @@ nonisolated extension Rv_Data_CCLIDocument.DisplayType: SwiftProtobuf._ProtoName
 
 nonisolated extension Rv_Data_CopyrightLayout: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CopyrightLayout"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\u{2}tokens\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\u{2}tokens\0\u{3}tokens_v2\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -324,6 +326,7 @@ nonisolated extension Rv_Data_CopyrightLayout: SwiftProtobuf.Message, SwiftProto
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 2: try { try decoder.decodeRepeatedMessageField(value: &self.tokens) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.tokensV2) }()
       default: break
       }
     }
@@ -333,11 +336,15 @@ nonisolated extension Rv_Data_CopyrightLayout: SwiftProtobuf.Message, SwiftProto
     if !self.tokens.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.tokens, fieldNumber: 2)
     }
+    if !self.tokensV2.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.tokensV2, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Rv_Data_CopyrightLayout, rhs: Rv_Data_CopyrightLayout) -> Bool {
     if lhs.tokens != rhs.tokens {return false}
+    if lhs.tokensV2 != rhs.tokensV2 {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

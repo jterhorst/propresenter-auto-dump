@@ -67,6 +67,14 @@ public nonisolated struct Rv_Data_Playlist: @unchecked Sendable {
     set {_uniqueStorage()._linkData = .pcoPlan(newValue)}
   }
 
+  public var providerInfo: Rv_Data_ProviderInfo {
+    get {
+      if case .providerInfo(let v)? = _storage._linkData {return v}
+      return Rv_Data_ProviderInfo()
+    }
+    set {_uniqueStorage()._linkData = .providerInfo(newValue)}
+  }
+
   public var uuid: Rv_Data_UUID {
     get {_storage._uuid ?? Rv_Data_UUID()}
     set {_uniqueStorage()._uuid = newValue}
@@ -158,6 +166,7 @@ public nonisolated struct Rv_Data_Playlist: @unchecked Sendable {
   public nonisolated enum OneOf_LinkData: Equatable, Sendable {
     case smartDirectory(Rv_Data_Playlist.FolderDirectory)
     case pcoPlan(Rv_Data_PlanningCenterPlan)
+    case providerInfo(Rv_Data_ProviderInfo)
 
   }
 
@@ -376,6 +385,31 @@ public nonisolated struct Rv_Data_Playlist: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
+public nonisolated struct Rv_Data_PlaylistLocal: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var uuid: Rv_Data_UUID {
+    get {_uuid ?? Rv_Data_UUID()}
+    set {_uuid = newValue}
+  }
+  /// Returns true if `uuid` has been explicitly set.
+  public var hasUuid: Bool {self._uuid != nil}
+  /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
+  public mutating func clearUuid() {self._uuid = nil}
+
+  public var expanded: Bool = false
+
+  public var playlists: [Rv_Data_PlaylistLocal] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _uuid: Rv_Data_UUID? = nil
+}
+
 public nonisolated struct Rv_Data_PlaylistItem: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -484,49 +518,62 @@ public nonisolated struct Rv_Data_PlaylistItem: @unchecked Sendable {
     fileprivate var _color: Rv_Data_Color? = nil
   }
 
-  public nonisolated struct Presentation: Sendable {
+  public nonisolated struct Presentation: @unchecked Sendable {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
     public var documentPath: Rv_Data_URL {
-      get {_documentPath ?? Rv_Data_URL()}
-      set {_documentPath = newValue}
+      get {_storage._documentPath ?? Rv_Data_URL()}
+      set {_uniqueStorage()._documentPath = newValue}
     }
     /// Returns true if `documentPath` has been explicitly set.
-    public var hasDocumentPath: Bool {self._documentPath != nil}
+    public var hasDocumentPath: Bool {_storage._documentPath != nil}
     /// Clears the value of `documentPath`. Subsequent reads from it will return its default value.
-    public mutating func clearDocumentPath() {self._documentPath = nil}
+    public mutating func clearDocumentPath() {_uniqueStorage()._documentPath = nil}
 
     public var arrangement: Rv_Data_UUID {
-      get {_arrangement ?? Rv_Data_UUID()}
-      set {_arrangement = newValue}
+      get {_storage._arrangement ?? Rv_Data_UUID()}
+      set {_uniqueStorage()._arrangement = newValue}
     }
     /// Returns true if `arrangement` has been explicitly set.
-    public var hasArrangement: Bool {self._arrangement != nil}
+    public var hasArrangement: Bool {_storage._arrangement != nil}
     /// Clears the value of `arrangement`. Subsequent reads from it will return its default value.
-    public mutating func clearArrangement() {self._arrangement = nil}
+    public mutating func clearArrangement() {_uniqueStorage()._arrangement = nil}
 
-    public var contentDestination: Rv_Data_Action.ContentDestination = .global
+    public var contentDestination: Rv_Data_Action.ContentDestination {
+      get {_storage._contentDestination}
+      set {_uniqueStorage()._contentDestination = newValue}
+    }
 
     public var userMusicKey: Rv_Data_MusicKeyScale {
-      get {_userMusicKey ?? Rv_Data_MusicKeyScale()}
-      set {_userMusicKey = newValue}
+      get {_storage._userMusicKey ?? Rv_Data_MusicKeyScale()}
+      set {_uniqueStorage()._userMusicKey = newValue}
     }
     /// Returns true if `userMusicKey` has been explicitly set.
-    public var hasUserMusicKey: Bool {self._userMusicKey != nil}
+    public var hasUserMusicKey: Bool {_storage._userMusicKey != nil}
     /// Clears the value of `userMusicKey`. Subsequent reads from it will return its default value.
-    public mutating func clearUserMusicKey() {self._userMusicKey = nil}
+    public mutating func clearUserMusicKey() {_uniqueStorage()._userMusicKey = nil}
 
-    public var arrangementName: String = String()
+    public var arrangementName: String {
+      get {_storage._arrangementName}
+      set {_uniqueStorage()._arrangementName = newValue}
+    }
+
+    public var provider: Rv_Data_ProviderInfo {
+      get {_storage._provider ?? Rv_Data_ProviderInfo()}
+      set {_uniqueStorage()._provider = newValue}
+    }
+    /// Returns true if `provider` has been explicitly set.
+    public var hasProvider: Bool {_storage._provider != nil}
+    /// Clears the value of `provider`. Subsequent reads from it will return its default value.
+    public mutating func clearProvider() {_uniqueStorage()._provider = nil}
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public init() {}
 
-    fileprivate var _documentPath: Rv_Data_URL? = nil
-    fileprivate var _arrangement: Rv_Data_UUID? = nil
-    fileprivate var _userMusicKey: Rv_Data_MusicKeyScale? = nil
+    fileprivate var _storage = _StorageClass.defaultInstance
   }
 
   public nonisolated struct PlanningCenter: @unchecked Sendable {
@@ -585,13 +632,208 @@ public nonisolated struct Rv_Data_PlaylistItem: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
+public nonisolated struct Rv_Data_PlaylistNode: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var kind: Rv_Data_PlaylistNode.OneOf_Kind? = nil
+
+  public var group: Rv_Data_PlaylistNode.Group {
+    get {
+      if case .group(let v)? = kind {return v}
+      return Rv_Data_PlaylistNode.Group()
+    }
+    set {kind = .group(newValue)}
+  }
+
+  public var playlist: Rv_Data_PlaylistNode.Playlist {
+    get {
+      if case .playlist(let v)? = kind {return v}
+      return Rv_Data_PlaylistNode.Playlist()
+    }
+    set {kind = .playlist(newValue)}
+  }
+
+  public var item: Rv_Data_PlaylistNode.Item {
+    get {
+      if case .item(let v)? = kind {return v}
+      return Rv_Data_PlaylistNode.Item()
+    }
+    set {kind = .item(newValue)}
+  }
+
+  public var uuid: Rv_Data_UUID {
+    get {_uuid ?? Rv_Data_UUID()}
+    set {_uuid = newValue}
+  }
+  /// Returns true if `uuid` has been explicitly set.
+  public var hasUuid: Bool {self._uuid != nil}
+  /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
+  public mutating func clearUuid() {self._uuid = nil}
+
+  public var name: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum OneOf_Kind: Equatable, Sendable {
+    case group(Rv_Data_PlaylistNode.Group)
+    case playlist(Rv_Data_PlaylistNode.Playlist)
+    case item(Rv_Data_PlaylistNode.Item)
+
+  }
+
+  public nonisolated struct Group: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public nonisolated struct Playlist: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var linkData: Rv_Data_PlaylistNode.Playlist.OneOf_LinkData? = nil
+
+    public var smartDirectory: Rv_Data_Playlist.FolderDirectory {
+      get {
+        if case .smartDirectory(let v)? = linkData {return v}
+        return Rv_Data_Playlist.FolderDirectory()
+      }
+      set {linkData = .smartDirectory(newValue)}
+    }
+
+    public var pcoPlan: Rv_Data_PlanningCenterPlan {
+      get {
+        if case .pcoPlan(let v)? = linkData {return v}
+        return Rv_Data_PlanningCenterPlan()
+      }
+      set {linkData = .pcoPlan(newValue)}
+    }
+
+    public var providerInfo: Rv_Data_ProviderInfo {
+      get {
+        if case .providerInfo(let v)? = linkData {return v}
+        return Rv_Data_ProviderInfo()
+      }
+      set {linkData = .providerInfo(newValue)}
+    }
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_LinkData: Equatable, Sendable {
+      case smartDirectory(Rv_Data_Playlist.FolderDirectory)
+      case pcoPlan(Rv_Data_PlanningCenterPlan)
+      case providerInfo(Rv_Data_ProviderInfo)
+
+    }
+
+    public init() {}
+  }
+
+  public nonisolated struct Item: Sendable {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var itemType: Rv_Data_PlaylistNode.Item.OneOf_ItemType? = nil
+
+    public var header: Rv_Data_PlaylistItem.Header {
+      get {
+        if case .header(let v)? = itemType {return v}
+        return Rv_Data_PlaylistItem.Header()
+      }
+      set {itemType = .header(newValue)}
+    }
+
+    public var presentation: Rv_Data_PlaylistItem.Presentation {
+      get {
+        if case .presentation(let v)? = itemType {return v}
+        return Rv_Data_PlaylistItem.Presentation()
+      }
+      set {itemType = .presentation(newValue)}
+    }
+
+    public var cue: Rv_Data_Cue {
+      get {
+        if case .cue(let v)? = itemType {return v}
+        return Rv_Data_Cue()
+      }
+      set {itemType = .cue(newValue)}
+    }
+
+    public var planningCenter: Rv_Data_PlaylistItem.PlanningCenter {
+      get {
+        if case .planningCenter(let v)? = itemType {return v}
+        return Rv_Data_PlaylistItem.PlanningCenter()
+      }
+      set {itemType = .planningCenter(newValue)}
+    }
+
+    public var placeholder: Rv_Data_PlaylistItem.Placeholder {
+      get {
+        if case .placeholder(let v)? = itemType {return v}
+        return Rv_Data_PlaylistItem.Placeholder()
+      }
+      set {itemType = .placeholder(newValue)}
+    }
+
+    public var isHidden: Bool = false
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public nonisolated enum OneOf_ItemType: Equatable, Sendable {
+      case header(Rv_Data_PlaylistItem.Header)
+      case presentation(Rv_Data_PlaylistItem.Presentation)
+      case cue(Rv_Data_Cue)
+      case planningCenter(Rv_Data_PlaylistItem.PlanningCenter)
+      case placeholder(Rv_Data_PlaylistItem.Placeholder)
+
+    }
+
+    public init() {}
+  }
+
+  public init() {}
+
+  fileprivate var _uuid: Rv_Data_UUID? = nil
+}
+
+public nonisolated struct Rv_Data_PlaylistNodeLocal: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var uuid: Rv_Data_UUID {
+    get {_uuid ?? Rv_Data_UUID()}
+    set {_uuid = newValue}
+  }
+  /// Returns true if `uuid` has been explicitly set.
+  public var hasUuid: Bool {self._uuid != nil}
+  /// Clears the value of `uuid`. Subsequent reads from it will return its default value.
+  public mutating func clearUuid() {self._uuid = nil}
+
+  public var expanded: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _uuid: Rv_Data_UUID? = nil
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "rv.data"
 
 nonisolated extension Rv_Data_Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Playlist"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}type\0\u{1}expanded\0\u{3}targeted_layer_uuid\0\u{3}smart_directory_path\0\u{3}hot_key\0\u{1}cues\0\u{1}children\0\u{3}timecode_enabled\0\u{1}timing\0\u{1}playlists\0\u{1}items\0\u{3}smart_directory\0\u{3}pco_plan\0\u{3}startup_info\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}type\0\u{1}expanded\0\u{3}targeted_layer_uuid\0\u{3}smart_directory_path\0\u{3}hot_key\0\u{1}cues\0\u{1}children\0\u{3}timecode_enabled\0\u{1}timing\0\u{1}playlists\0\u{1}items\0\u{3}smart_directory\0\u{3}pco_plan\0\u{3}startup_info\0\u{3}provider_info\0")
 
   fileprivate class _StorageClass {
     var _childrenType: Rv_Data_Playlist.OneOf_ChildrenType?
@@ -714,6 +956,19 @@ nonisolated extension Rv_Data_Playlist: SwiftProtobuf.Message, SwiftProtobuf._Me
           }
         }()
         case 16: try { try decoder.decodeSingularMessageField(value: &_storage._startupInfo) }()
+        case 17: try {
+          var v: Rv_Data_ProviderInfo?
+          var hadOneofValue = false
+          if let current = _storage._linkData {
+            hadOneofValue = true
+            if case .providerInfo(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {
+            if hadOneofValue {try decoder.handleConflictingOneOf()}
+            _storage._linkData = .providerInfo(v)
+          }
+        }()
         default: break
         }
       }
@@ -779,10 +1034,13 @@ nonisolated extension Rv_Data_Playlist: SwiftProtobuf.Message, SwiftProtobuf._Me
         guard case .pcoPlan(let v)? = _storage._linkData else { preconditionFailure() }
         try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
       }()
-      case nil: break
+      default: break
       }
       try { if let v = _storage._startupInfo {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 16)
+      } }()
+      try { if case .providerInfo(let v)? = _storage._linkData {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
       } }()
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -996,6 +1254,50 @@ nonisolated extension Rv_Data_Playlist.StartupInfo: SwiftProtobuf.Message, Swift
 
   public static func ==(lhs: Rv_Data_Playlist.StartupInfo, rhs: Rv_Data_Playlist.StartupInfo) -> Bool {
     if lhs.triggerOnStartup != rhs.triggerOnStartup {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_PlaylistLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".PlaylistLocal"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}expanded\0\u{1}playlists\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._uuid) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.expanded) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.playlists) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._uuid {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if self.expanded != false {
+      try visitor.visitSingularBoolField(value: self.expanded, fieldNumber: 2)
+    }
+    if !self.playlists.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.playlists, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_PlaylistLocal, rhs: Rv_Data_PlaylistLocal) -> Bool {
+    if lhs._uuid != rhs._uuid {return false}
+    if lhs.expanded != rhs.expanded {return false}
+    if lhs.playlists != rhs.playlists {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1223,53 +1525,104 @@ nonisolated extension Rv_Data_PlaylistItem.Header: SwiftProtobuf.Message, SwiftP
 
 nonisolated extension Rv_Data_PlaylistItem.Presentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = Rv_Data_PlaylistItem.protoMessageName + ".Presentation"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_path\0\u{1}arrangement\0\u{3}content_destination\0\u{3}user_music_key\0\u{3}arrangement_name\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}document_path\0\u{1}arrangement\0\u{3}content_destination\0\u{3}user_music_key\0\u{3}arrangement_name\0\u{1}provider\0")
+
+  fileprivate class _StorageClass {
+    var _documentPath: Rv_Data_URL? = nil
+    var _arrangement: Rv_Data_UUID? = nil
+    var _contentDestination: Rv_Data_Action.ContentDestination = .global
+    var _userMusicKey: Rv_Data_MusicKeyScale? = nil
+    var _arrangementName: String = String()
+    var _provider: Rv_Data_ProviderInfo? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _documentPath = source._documentPath
+      _arrangement = source._arrangement
+      _contentDestination = source._contentDestination
+      _userMusicKey = source._userMusicKey
+      _arrangementName = source._arrangementName
+      _provider = source._provider
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._documentPath) }()
-      case 2: try { try decoder.decodeSingularMessageField(value: &self._arrangement) }()
-      case 3: try { try decoder.decodeSingularEnumField(value: &self.contentDestination) }()
-      case 4: try { try decoder.decodeSingularMessageField(value: &self._userMusicKey) }()
-      case 5: try { try decoder.decodeSingularStringField(value: &self.arrangementName) }()
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._documentPath) }()
+        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._arrangement) }()
+        case 3: try { try decoder.decodeSingularEnumField(value: &_storage._contentDestination) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._userMusicKey) }()
+        case 5: try { try decoder.decodeSingularStringField(value: &_storage._arrangementName) }()
+        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._provider) }()
+        default: break
+        }
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._documentPath {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    } }()
-    try { if let v = self._arrangement {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-    } }()
-    if self.contentDestination != .global {
-      try visitor.visitSingularEnumField(value: self.contentDestination, fieldNumber: 3)
-    }
-    try { if let v = self._userMusicKey {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
-    } }()
-    if !self.arrangementName.isEmpty {
-      try visitor.visitSingularStringField(value: self.arrangementName, fieldNumber: 5)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      try { if let v = _storage._documentPath {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      } }()
+      try { if let v = _storage._arrangement {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      } }()
+      if _storage._contentDestination != .global {
+        try visitor.visitSingularEnumField(value: _storage._contentDestination, fieldNumber: 3)
+      }
+      try { if let v = _storage._userMusicKey {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      } }()
+      if !_storage._arrangementName.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._arrangementName, fieldNumber: 5)
+      }
+      try { if let v = _storage._provider {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Rv_Data_PlaylistItem.Presentation, rhs: Rv_Data_PlaylistItem.Presentation) -> Bool {
-    if lhs._documentPath != rhs._documentPath {return false}
-    if lhs._arrangement != rhs._arrangement {return false}
-    if lhs.contentDestination != rhs.contentDestination {return false}
-    if lhs._userMusicKey != rhs._userMusicKey {return false}
-    if lhs.arrangementName != rhs.arrangementName {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._documentPath != rhs_storage._documentPath {return false}
+        if _storage._arrangement != rhs_storage._arrangement {return false}
+        if _storage._contentDestination != rhs_storage._contentDestination {return false}
+        if _storage._userMusicKey != rhs_storage._userMusicKey {return false}
+        if _storage._arrangementName != rhs_storage._arrangementName {return false}
+        if _storage._provider != rhs_storage._provider {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1417,6 +1770,365 @@ nonisolated extension Rv_Data_PlaylistItem.Placeholder: SwiftProtobuf.Message, S
       }
       if !storagesAreEqual {return false}
     }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_PlaylistNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".PlaylistNode"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}name\0\u{1}group\0\u{1}playlist\0\u{1}item\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._uuid) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 3: try {
+        var v: Rv_Data_PlaylistNode.Group?
+        var hadOneofValue = false
+        if let current = self.kind {
+          hadOneofValue = true
+          if case .group(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.kind = .group(v)
+        }
+      }()
+      case 4: try {
+        var v: Rv_Data_PlaylistNode.Playlist?
+        var hadOneofValue = false
+        if let current = self.kind {
+          hadOneofValue = true
+          if case .playlist(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.kind = .playlist(v)
+        }
+      }()
+      case 5: try {
+        var v: Rv_Data_PlaylistNode.Item?
+        var hadOneofValue = false
+        if let current = self.kind {
+          hadOneofValue = true
+          if case .item(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.kind = .item(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._uuid {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 2)
+    }
+    switch self.kind {
+    case .group?: try {
+      guard case .group(let v)? = self.kind else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    }()
+    case .playlist?: try {
+      guard case .playlist(let v)? = self.kind else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    }()
+    case .item?: try {
+      guard case .item(let v)? = self.kind else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_PlaylistNode, rhs: Rv_Data_PlaylistNode) -> Bool {
+    if lhs.kind != rhs.kind {return false}
+    if lhs._uuid != rhs._uuid {return false}
+    if lhs.name != rhs.name {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_PlaylistNode.Group: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_PlaylistNode.protoMessageName + ".Group"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_PlaylistNode.Group, rhs: Rv_Data_PlaylistNode.Group) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_PlaylistNode.Playlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_PlaylistNode.protoMessageName + ".Playlist"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}smart_directory\0\u{3}pco_plan\0\u{3}provider_info\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try {
+        var v: Rv_Data_Playlist.FolderDirectory?
+        var hadOneofValue = false
+        if let current = self.linkData {
+          hadOneofValue = true
+          if case .smartDirectory(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.linkData = .smartDirectory(v)
+        }
+      }()
+      case 2: try {
+        var v: Rv_Data_PlanningCenterPlan?
+        var hadOneofValue = false
+        if let current = self.linkData {
+          hadOneofValue = true
+          if case .pcoPlan(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.linkData = .pcoPlan(v)
+        }
+      }()
+      case 3: try {
+        var v: Rv_Data_ProviderInfo?
+        var hadOneofValue = false
+        if let current = self.linkData {
+          hadOneofValue = true
+          if case .providerInfo(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.linkData = .providerInfo(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    switch self.linkData {
+    case .smartDirectory?: try {
+      guard case .smartDirectory(let v)? = self.linkData else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }()
+    case .pcoPlan?: try {
+      guard case .pcoPlan(let v)? = self.linkData else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case .providerInfo?: try {
+      guard case .providerInfo(let v)? = self.linkData else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_PlaylistNode.Playlist, rhs: Rv_Data_PlaylistNode.Playlist) -> Bool {
+    if lhs.linkData != rhs.linkData {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_PlaylistNode.Item: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Rv_Data_PlaylistNode.protoMessageName + ".Item"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}is_hidden\0\u{1}header\0\u{1}presentation\0\u{1}cue\0\u{3}planning_center\0\u{1}placeholder\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.isHidden) }()
+      case 2: try {
+        var v: Rv_Data_PlaylistItem.Header?
+        var hadOneofValue = false
+        if let current = self.itemType {
+          hadOneofValue = true
+          if case .header(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.itemType = .header(v)
+        }
+      }()
+      case 3: try {
+        var v: Rv_Data_PlaylistItem.Presentation?
+        var hadOneofValue = false
+        if let current = self.itemType {
+          hadOneofValue = true
+          if case .presentation(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.itemType = .presentation(v)
+        }
+      }()
+      case 4: try {
+        var v: Rv_Data_Cue?
+        var hadOneofValue = false
+        if let current = self.itemType {
+          hadOneofValue = true
+          if case .cue(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.itemType = .cue(v)
+        }
+      }()
+      case 5: try {
+        var v: Rv_Data_PlaylistItem.PlanningCenter?
+        var hadOneofValue = false
+        if let current = self.itemType {
+          hadOneofValue = true
+          if case .planningCenter(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.itemType = .planningCenter(v)
+        }
+      }()
+      case 6: try {
+        var v: Rv_Data_PlaylistItem.Placeholder?
+        var hadOneofValue = false
+        if let current = self.itemType {
+          hadOneofValue = true
+          if case .placeholder(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.itemType = .placeholder(v)
+        }
+      }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.isHidden != false {
+      try visitor.visitSingularBoolField(value: self.isHidden, fieldNumber: 1)
+    }
+    switch self.itemType {
+    case .header?: try {
+      guard case .header(let v)? = self.itemType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    }()
+    case .presentation?: try {
+      guard case .presentation(let v)? = self.itemType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    }()
+    case .cue?: try {
+      guard case .cue(let v)? = self.itemType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    }()
+    case .planningCenter?: try {
+      guard case .planningCenter(let v)? = self.itemType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    }()
+    case .placeholder?: try {
+      guard case .placeholder(let v)? = self.itemType else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    }()
+    case nil: break
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_PlaylistNode.Item, rhs: Rv_Data_PlaylistNode.Item) -> Bool {
+    if lhs.itemType != rhs.itemType {return false}
+    if lhs.isHidden != rhs.isHidden {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Data_PlaylistNodeLocal: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".PlaylistNodeLocal"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}uuid\0\u{1}expanded\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._uuid) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.expanded) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._uuid {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if self.expanded != false {
+      try visitor.visitSingularBoolField(value: self.expanded, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Data_PlaylistNodeLocal, rhs: Rv_Data_PlaylistNodeLocal) -> Bool {
+    if lhs._uuid != rhs._uuid {return false}
+    if lhs.expanded != rhs.expanded {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

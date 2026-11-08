@@ -121,6 +121,16 @@ public nonisolated struct Rv_Data_ProPresenterWorkspace: @unchecked Sendable {
     set {_uniqueStorage()._audioChannelCount = newValue}
   }
 
+  public var mediaIdentitySchemaVersion: String {
+    get {_storage._mediaIdentitySchemaVersion}
+    set {_uniqueStorage()._mediaIdentitySchemaVersion = newValue}
+  }
+
+  public var bundledThemeRolloutSequence: UInt32 {
+    get {_storage._bundledThemeRolloutSequence}
+    set {_uniqueStorage()._bundledThemeRolloutSequence = newValue}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -159,12 +169,22 @@ public nonisolated struct Rv_Data_ProPresenterLocalWorkspace: Sendable {
 
   public var stageLayoutMappings: [Rv_Data_Stage.ScreenAssignment] = []
 
+  public var recordSettings: Rv_Data_Recording.SettingsLocalDocument {
+    get {_recordSettings ?? Rv_Data_Recording.SettingsLocalDocument()}
+    set {_recordSettings = newValue}
+  }
+  /// Returns true if `recordSettings` has been explicitly set.
+  public var hasRecordSettings: Bool {self._recordSettings != nil}
+  /// Clears the value of `recordSettings`. Subsequent reads from it will return its default value.
+  public mutating func clearRecordSettings() {self._recordSettings = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _digitalAudioSetup: Rv_Data_DigitalAudio.Setup? = nil
   fileprivate var _liveAudienceLook: Rv_Data_ProAudienceLook? = nil
+  fileprivate var _recordSettings: Rv_Data_Recording.SettingsLocalDocument? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -173,7 +193,7 @@ fileprivate nonisolated let _protobuf_package = "rv.data"
 
 nonisolated extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProPresenterWorkspace"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pro_screens\0\u{3}audience_looks\0\u{3}live_audience_look\0\u{1}masks\0\u{1}videoInputs\0\u{3}stage_layout_mappings\0\u{3}audio_settings\0\u{3}selected_library_name\0\u{3}record_settings\0\u{3}digital_audio_setup\0\u{3}audio_inputs\0\u{3}audio_input_transition_time\0\u{3}cloud_output_screens\0\u{3}cloud_video_inputs\0\u{3}cloud_audio_inputs\0\u{3}audio_channel_count\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}pro_screens\0\u{3}audience_looks\0\u{3}live_audience_look\0\u{1}masks\0\u{1}videoInputs\0\u{3}stage_layout_mappings\0\u{3}audio_settings\0\u{3}selected_library_name\0\u{3}record_settings\0\u{3}digital_audio_setup\0\u{3}audio_inputs\0\u{3}audio_input_transition_time\0\u{3}cloud_output_screens\0\u{3}cloud_video_inputs\0\u{3}cloud_audio_inputs\0\u{3}audio_channel_count\0\u{3}media_identity_schema_version\0\u{3}bundled_theme_rollout_sequence\0")
 
   fileprivate class _StorageClass {
     var _proScreens: [Rv_Data_ProPresenterScreen] = []
@@ -192,6 +212,8 @@ nonisolated extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, Swif
     var _cloudVideoInputs: [Rv_Data_CloudVideoInput] = []
     var _cloudAudioInputs: [Rv_Data_CloudAudioInput] = []
     var _audioChannelCount: UInt32 = 0
+    var _mediaIdentitySchemaVersion: String = String()
+    var _bundledThemeRolloutSequence: UInt32 = 0
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -218,6 +240,8 @@ nonisolated extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, Swif
       _cloudVideoInputs = source._cloudVideoInputs
       _cloudAudioInputs = source._cloudAudioInputs
       _audioChannelCount = source._audioChannelCount
+      _mediaIdentitySchemaVersion = source._mediaIdentitySchemaVersion
+      _bundledThemeRolloutSequence = source._bundledThemeRolloutSequence
     }
   }
 
@@ -252,6 +276,8 @@ nonisolated extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, Swif
         case 14: try { try decoder.decodeRepeatedMessageField(value: &_storage._cloudVideoInputs) }()
         case 15: try { try decoder.decodeRepeatedMessageField(value: &_storage._cloudAudioInputs) }()
         case 16: try { try decoder.decodeSingularUInt32Field(value: &_storage._audioChannelCount) }()
+        case 17: try { try decoder.decodeSingularStringField(value: &_storage._mediaIdentitySchemaVersion) }()
+        case 18: try { try decoder.decodeSingularUInt32Field(value: &_storage._bundledThemeRolloutSequence) }()
         default: break
         }
       }
@@ -312,6 +338,12 @@ nonisolated extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, Swif
       if _storage._audioChannelCount != 0 {
         try visitor.visitSingularUInt32Field(value: _storage._audioChannelCount, fieldNumber: 16)
       }
+      if !_storage._mediaIdentitySchemaVersion.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._mediaIdentitySchemaVersion, fieldNumber: 17)
+      }
+      if _storage._bundledThemeRolloutSequence != 0 {
+        try visitor.visitSingularUInt32Field(value: _storage._bundledThemeRolloutSequence, fieldNumber: 18)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -337,6 +369,8 @@ nonisolated extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, Swif
         if _storage._cloudVideoInputs != rhs_storage._cloudVideoInputs {return false}
         if _storage._cloudAudioInputs != rhs_storage._cloudAudioInputs {return false}
         if _storage._audioChannelCount != rhs_storage._audioChannelCount {return false}
+        if _storage._mediaIdentitySchemaVersion != rhs_storage._mediaIdentitySchemaVersion {return false}
+        if _storage._bundledThemeRolloutSequence != rhs_storage._bundledThemeRolloutSequence {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -348,7 +382,7 @@ nonisolated extension Rv_Data_ProPresenterWorkspace: SwiftProtobuf.Message, Swif
 
 nonisolated extension Rv_Data_ProPresenterLocalWorkspace: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProPresenterLocalWorkspace"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}digital_audio_setup\0\u{3}pro_screens\0\u{3}video_inputs\0\u{3}audio_inputs\0\u{3}live_audience_look\0\u{3}stage_layout_mappings\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}digital_audio_setup\0\u{3}pro_screens\0\u{3}video_inputs\0\u{3}audio_inputs\0\u{3}live_audience_look\0\u{3}stage_layout_mappings\0\u{3}record_settings\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -362,6 +396,7 @@ nonisolated extension Rv_Data_ProPresenterLocalWorkspace: SwiftProtobuf.Message,
       case 4: try { try decoder.decodeRepeatedMessageField(value: &self.audioInputs) }()
       case 5: try { try decoder.decodeSingularMessageField(value: &self._liveAudienceLook) }()
       case 6: try { try decoder.decodeRepeatedMessageField(value: &self.stageLayoutMappings) }()
+      case 7: try { try decoder.decodeSingularMessageField(value: &self._recordSettings) }()
       default: break
       }
     }
@@ -390,6 +425,9 @@ nonisolated extension Rv_Data_ProPresenterLocalWorkspace: SwiftProtobuf.Message,
     if !self.stageLayoutMappings.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.stageLayoutMappings, fieldNumber: 6)
     }
+    try { if let v = self._recordSettings {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -400,6 +438,7 @@ nonisolated extension Rv_Data_ProPresenterLocalWorkspace: SwiftProtobuf.Message,
     if lhs.audioInputs != rhs.audioInputs {return false}
     if lhs._liveAudienceLook != rhs._liveAudienceLook {return false}
     if lhs.stageLayoutMappings != rhs.stageLayoutMappings {return false}
+    if lhs._recordSettings != rhs._recordSettings {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

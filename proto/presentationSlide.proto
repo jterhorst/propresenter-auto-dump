@@ -6,6 +6,8 @@ package rv.data;
 
 import "alignmentGuide.proto";
 
+import "contentProvider.proto";
+
 import "customOptions.proto";
 
 import "effects.proto";
@@ -29,4 +31,5 @@ message PresentationSlide {
   repeated rv.data.AlignmentGuide template_guidelines = 3;
   rv.data.URL chord_chart = 4;
   rv.data.Transition transition = 5;
+  rv.data.ProviderInfo provider = 6;
 }

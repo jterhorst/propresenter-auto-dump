@@ -8,6 +8,8 @@ import "action.proto";
 
 import "color.proto";
 
+import "contentProvider.proto";
+
 import "cue.proto";
 
 import "customOptions.proto";
@@ -75,6 +77,7 @@ message Playlist {
   oneof LinkData {
     rv.data.Playlist.FolderDirectory smart_directory = 14;
     rv.data.PlanningCenterPlan pco_plan = 15;
+    rv.data.ProviderInfo provider_info = 17;
   }
 
   rv.data.UUID uuid = 1;
@@ -91,6 +94,12 @@ message Playlist {
   rv.data.Playlist.StartupInfo startup_info = 16;
 }
 
+message PlaylistLocal {
+  rv.data.UUID uuid = 1;
+  bool expanded = 2;
+  repeated rv.data.PlaylistLocal playlists = 3;
+}
+
 message PlaylistItem {
   message Header {
     rv.data.Color color = 1;
@@ -103,6 +112,7 @@ message PlaylistItem {
     rv.data.Action.ContentDestination content_destination = 3;
     rv.data.MusicKeyScale user_music_key = 4;
     string arrangement_name = 5;
+    rv.data.ProviderInfo provider = 6;
   }
 
   message PlanningCenter {
@@ -126,4 +136,44 @@ message PlaylistItem {
   string name = 2;
   repeated rv.data.UUID tags = 7;
   bool is_hidden = 9;
+}
+
+message PlaylistNode {
+  message Group {
+  }
+
+  message Playlist {
+    oneof LinkData {
+      rv.data.Playlist.FolderDirectory smart_directory = 1;
+      rv.data.PlanningCenterPlan pco_plan = 2;
+      rv.data.ProviderInfo provider_info = 3;
+    }
+
+  }
+
+  message Item {
+    oneof ItemType {
+      rv.data.PlaylistItem.Header header = 2;
+      rv.data.PlaylistItem.Presentation presentation = 3;
+      rv.data.Cue cue = 4;
+      rv.data.PlaylistItem.PlanningCenter planning_center = 5;
+      rv.data.PlaylistItem.Placeholder placeholder = 6;
+    }
+
+    bool is_hidden = 1;
+  }
+
+  oneof Kind {
+    rv.data.PlaylistNode.Group group = 3;
+    rv.data.PlaylistNode.Playlist playlist = 4;
+    rv.data.PlaylistNode.Item item = 5;
+  }
+
+  rv.data.UUID uuid = 1;
+  string name = 2;
+}
+
+message PlaylistNodeLocal {
+  rv.data.UUID uuid = 1;
+  bool expanded = 2;
 }

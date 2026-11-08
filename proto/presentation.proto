@@ -10,6 +10,10 @@ import "applicationInfo.proto";
 
 import "background.proto";
 
+import "color.proto";
+
+import "contentProvider.proto";
+
 import "cue.proto";
 
 import "customOptions.proto";
@@ -17,6 +21,8 @@ import "customOptions.proto";
 import "effects.proto";
 
 import "groups.proto";
+
+import "hotKey.proto";
 
 import "intRange.proto";
 
@@ -78,11 +84,32 @@ message Presentation {
     rv.data.UUID uuid = 1;
     string name = 2;
     repeated rv.data.UUID group_identifiers = 3;
+    repeated rv.data.UUID group_identifiers_v2 = 4;
   }
 
   message CueGroup {
     rv.data.Group group = 1;
     repeated rv.data.UUID cue_identifiers = 2;
+    repeated rv.data.UUID cue_identifiers_v2 = 3;
+  }
+
+  message CueGroupPlacementNode {
+    message GroupNode {
+      string name = 1;
+      rv.data.Color color = 2;
+      rv.data.HotKey hot_key = 3;
+      rv.data.UUID application_group_identifier = 4;
+    }
+
+    message CueNode {
+    }
+
+    oneof Kind {
+      rv.data.Presentation.CueGroupPlacementNode.GroupNode group = 2;
+      rv.data.Presentation.CueGroupPlacementNode.CueNode cue = 3;
+    }
+
+    rv.data.UUID uuid = 1;
   }
 
   message MultiTracksLicensing {
@@ -130,4 +157,6 @@ message Presentation {
   rv.data.Presentation.MultiTracksLicensing multi_tracks_licensing = 21;
   string music_key = 22;
   rv.data.Presentation.Music music = 23;
+  repeated rv.data.Presentation.CueGroupPlacementNode cue_group_placements = 24;
+  rv.data.ProviderInfo provider = 25;
 }

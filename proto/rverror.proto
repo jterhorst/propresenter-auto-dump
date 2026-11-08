@@ -4,6 +4,13 @@ syntax = "proto3";
 package rverror;
 
 
+message StackFrame {
+  string method = 1;
+  string file = 2;
+  uint32 line = 3;
+  uint64 instruction_address = 4;
+}
+
 message ReportedError {
   enum Severity {
     HANDLED = 0;
@@ -15,4 +22,5 @@ message ReportedError {
   string file = 3;
   uint32 line = 4;
   rverror.ReportedError.Severity severity = 5;
+  repeated rverror.StackFrame stack_frames = 6;
 }

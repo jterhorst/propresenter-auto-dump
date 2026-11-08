@@ -4,24 +4,54 @@ syntax = "proto3";
 package workspace.call;
 
 
+import "workspace.bootstrap.proto";
+
 import "workspace.entities.local.proto";
 
 import "workspace.entities.remote.proto";
 
 
 
+enum PersistenceAuthority {
+  CLIENT = 0;
+  CORE = 1;
+}
+
 message Error {
   enum Code {
     UNKNOWN = 0;
+    CANCELLED = 1;
+    RESTORED = 2;
+    INSUFFICIENT_DISK_SPACE = 3;
+    REGISTRY_UNREADABLE = 4;
+    COMMITTED_REPAIR_REQUIRED = 5;
+    SYNC_PAUSED = 6;
+    MEDIA_PROJECTION_SUSPENDED = 7;
+    SYNC_BLOCKED = 8;
+    WORKSPACE_ORGANIZATION_MISMATCH = 9;
+    WORKSPACE_ACCESS_DENIED = 10;
+    WORKSPACE_SIGNED_OUT = 11;
+    UNMANAGED_MEDIA_REMAINS = 12;
+    ALREADY_DOWNLOADED = 13;
+    SMART_PLAYLISTS_NOT_RESTORED = 14;
+    CLOUD_TERMINATED = 15;
   }
 
   workspace.call.Error.Code code = 1;
   string description = 2;
+  optional uint64 required_bytes = 3;
+  optional uint64 available_bytes = 4;
+  repeated string unmanaged_media_paths = 5;
+  optional string registered_local_uuid = 6;
+  optional uint32 http_status = 7;
 }
 
 message OpenLocal {
   message Result {
     message Ok {
+      workspace.call.PersistenceAuthority persistence_authority = 1;
+      string local_uuid = 2;
+      string root_path = 3;
     }
 
     oneof result {
@@ -32,12 +62,16 @@ message OpenLocal {
   }
 
   workspace.local.Workspace workspace = 1;
+  workspace.call.PersistenceAuthority persistence_authority = 2;
 }
 
 message OpenRemote {
   message Result {
     message Ok {
       workspace.remote.Workspace workspace = 1;
+      workspace.call.PersistenceAuthority persistence_authority = 2;
+      string local_uuid = 3;
+      string root_path = 4;
     }
 
     oneof result {
@@ -47,14 +81,481 @@ message OpenRemote {
 
   }
 
-  string uuid = 1;
+  string cloud_uuid = 1;
   string path = 2;
+  workspace.call.PersistenceAuthority persistence_authority = 3;
+  string operation_uuid = 4;
+  string local_uuid = 5;
+}
+
+message CancelOpenRemote {
+  string operation_uuid = 1;
+}
+
+message CancelImport {
+  string operation_uuid = 1;
+}
+
+message ArchiveDocumentData {
+  message Result {
+    message Ok {
+      string database_path = 1;
+    }
+
+    oneof result {
+      workspace.call.ArchiveDocumentData.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string destination_directory = 1;
+  string expected_local_uuid = 2;
+  uint64 expected_generation = 3;
+}
+
+message ExportMigrationRecovery {
+  message Result {
+    message Ok {
+      string directory_path = 1;
+      string manifest_path = 2;
+      uint64 item_count = 3;
+    }
+
+    oneof result {
+      workspace.call.ExportMigrationRecovery.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string destination_directory = 1;
+  string expected_local_uuid = 2;
+  uint64 expected_generation = 3;
+}
+
+message ExportLegacyWorkspace {
+  enum MissingMediaPolicy {
+    MISSING_MEDIA_POLICY_PRESERVE_AND_REPORT = 0;
+    MISSING_MEDIA_POLICY_REFUSE = 1;
+  }
+
+  enum BundleKind {
+    BUNDLE_KIND_UNSPECIFIED = 0;
+    BUNDLE_KIND_PRESENTATION = 1;
+    BUNDLE_KIND_THEME = 2;
+  }
+
+  message Result {
+    message Ok {
+      string target_path = 1;
+      string manifest_path = 2;
+      uint64 document_count = 3;
+      uint64 media_file_count = 4;
+      uint64 compatibility_warning_count = 5;
+      uint64 elapsed_millis = 6;
+    }
+
+    oneof result {
+      workspace.call.ExportLegacyWorkspace.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string target_path = 1;
+  repeated string document_uuids = 2;
+  workspace.call.ExportLegacyWorkspace.BundleKind bundle_kind = 3;
+  workspace.call.ExportLegacyWorkspace.MissingMediaPolicy missing_media_policy = 4;
+}
+
+message ImportLegacyWorkspace {
+  message Result {
+    message Failure {
+      enum Severity {
+        SEVERITY_UNSPECIFIED = 0;
+        SEVERITY_WARNING = 1;
+        SEVERITY_ERROR = 2;
+      }
+
+      enum Kind {
+        KIND_UNSPECIFIED = 0;
+        KIND_SYMBOLIC_LINK = 1;
+        KIND_SPECIAL_FILE = 2;
+        KIND_ESCAPES_WORKSPACE = 3;
+        KIND_UNSUPPORTED_FILE = 4;
+        KIND_HASH_FAILED = 5;
+        KIND_CHANGED_DURING_HASH = 6;
+        KIND_ABANDONED_PENDING_SNAPSHOT = 7;
+        KIND_ABANDONED_DELETION_TOMBSTONE = 8;
+        KIND_INVALID_SNAPSHOT_PATH = 9;
+        KIND_INVALID_SNAPSHOT = 10;
+        KIND_EMPTY_DEVICE_LOCAL_SNAPSHOT = 11;
+        KIND_EQUIVALENT_COMPATIBILITY_ALIAS = 12;
+        KIND_CONFLICTING_DUPLICATE_STREAM = 13;
+        KIND_CONFLICTING_DOCUMENT_PATH = 14;
+        KIND_CONFLICTING_INTRINSIC_KIND = 15;
+        KIND_MISSING_SHARED_COUNTERPART = 16;
+        KIND_MISSING_INTRINSIC = 17;
+        KIND_SOURCE_CHANGED = 18;
+        KIND_MISSING_SOURCE_DIGEST = 19;
+        KIND_UNSUPPORTED = 20;
+        KIND_HISTORICAL_MIGRATION = 21;
+        KIND_TARGET_EXISTS = 22;
+        KIND_TARGET_INSIDE_SOURCE = 23;
+        KIND_ACTIVE_TARGET = 24;
+        KIND_INVALID_TARGET = 25;
+        KIND_IO = 26;
+        KIND_CASE_INSENSITIVE_PATH_AMBIGUITY = 27;
+        KIND_INSUFFICIENT_DISK_SPACE = 28;
+        KIND_CONVERSION = 29;
+      }
+
+      enum Phase {
+        PHASE_UNSPECIFIED = 0;
+        PHASE_INVENTORY = 1;
+        PHASE_DOCUMENTS = 2;
+        PHASE_MEDIA = 3;
+        PHASE_VALIDATION = 4;
+        PHASE_PUBLICATION = 5;
+      }
+
+      message Diagnostic {
+        workspace.call.ImportLegacyWorkspace.Result.Failure.Severity severity = 1;
+        workspace.call.ImportLegacyWorkspace.Result.Failure.Kind kind = 2;
+        optional string path = 3;
+        string description = 4;
+      }
+
+      workspace.call.Error summary = 1;
+      repeated workspace.call.ImportLegacyWorkspace.Result.Failure.Diagnostic diagnostics = 2;
+      optional string staged_diagnostics_path = 3;
+      bool source_untouched = 4;
+      optional workspace.call.ImportLegacyWorkspace.Result.Failure.Phase phase = 5;
+    }
+
+    message Ok {
+      string target_path = 1;
+      string manifest_path = 2;
+      uint64 document_stream_count = 3;
+      uint64 media_file_count = 4;
+      uint64 elapsed_millis = 5;
+      repeated workspace.call.ImportLegacyWorkspace.Result.Failure.Diagnostic diagnostics = 6;
+    }
+
+    oneof result {
+      workspace.call.ImportLegacyWorkspace.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+    workspace.call.ImportLegacyWorkspace.Result.Failure failure = 3;
+  }
+
+  string source_path = 1;
+  string target_path = 2;
+  string local_uuid = 3;
+  optional string historical_helper_path = 4;
+  optional string historical_ssapi_resources_path = 5;
+  optional string historical_xsl_directory_path = 6;
+  optional string historical_framework_directory_path = 7;
+  optional bool pco_theme_dark = 8;
+  optional string display_name = 9;
+  optional string supersedes_workspace_uuid = 10;
+}
+
+message ImportLegacyDocument {
+  message Result {
+    message Ok {
+      string uuid = 1;
+      uint64 generation = 2;
+      bytes durable_version_vector = 3;
+      uint64 imported_media_count = 4;
+      uint64 unresolved_media_count = 5;
+      string path = 6;
+      uint64 catalog_revision = 7;
+    }
+
+    oneof result {
+      workspace.call.ImportLegacyDocument.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string source_path = 1;
+  string expected_uuid = 2;
+  string path = 3;
+  uint64 generation = 4;
+  string operation_uuid = 5;
+  optional string media_source_root = 6;
+}
+
+message ImportLegacyBundle {
+  message Result {
+    message ImportedDocument {
+      string uuid = 1;
+      string operation_uuid = 2;
+      string path = 3;
+      uint64 generation = 4;
+      bytes durable_version_vector = 5;
+      uint64 imported_media_count = 6;
+      uint64 unresolved_media_count = 7;
+    }
+
+    message Ok {
+      repeated workspace.call.ImportLegacyBundle.Result.ImportedDocument documents = 1;
+      bool events_published = 2;
+      uint64 catalog_revision = 3;
+    }
+
+    oneof result {
+      workspace.call.ImportLegacyBundle.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string source_path = 1;
+  string destination_path = 2;
+  uint64 generation = 3;
+  string operation_uuid = 4;
+}
+
+message InstallBundledThemes {
+  message Result {
+    message Failure {
+      string folder = 1;
+      string reason = 2;
+    }
+
+    message Ok {
+      repeated string installed = 1;
+      repeated string already_present = 2;
+      repeated workspace.call.InstallBundledThemes.Result.Failure failed = 3;
+      uint32 rollout_sequence = 4;
+    }
+
+    oneof result {
+      workspace.call.InstallBundledThemes.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string bundled_themes_path = 1;
+  uint64 generation = 2;
+  bool include_baseline = 3;
+}
+
+message ConvertLegacyPlaylist {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      workspace.call.ConvertLegacyPlaylist.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string source_path = 1;
+  string target_path = 2;
+}
+
+message AttachLegacyPlaylistMedia {
+  message Result {
+    message Ok {
+      uint64 generation = 1;
+      bytes durable_version_vector = 2;
+      uint64 imported_media_count = 3;
+      uint64 unresolved_media_count = 4;
+    }
+
+    oneof result {
+      workspace.call.AttachLegacyPlaylistMedia.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string source_path = 1;
+  uint64 generation = 2;
+  string operation_uuid = 3;
+  string document_uuid = 4;
+  repeated string reference_uuids = 5;
+}
+
+message DeleteLocalWorkspace {
+  message Result {
+    message Ok {
+      bool folder_kept = 1;
+    }
+
+    oneof result {
+      workspace.call.DeleteLocalWorkspace.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string target_path = 1;
+}
+
+message ImportAndAttachMedia {
+  message Result {
+    message Ok {
+      string operation_uuid = 1;
+      string reference_uuid = 2;
+      string asset_uuid = 3;
+      string managed_relative_path = 4;
+      bytes durable_document_version_vector = 5;
+    }
+
+    oneof result {
+      workspace.call.ImportAndAttachMedia.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string operation_uuid = 1;
+  string document_uuid = 2;
+  string occurrence_path = 3;
+  string expected_reference_uuid = 4;
+  bytes expected_descriptor_fingerprint = 5;
+  string source_path = 6;
+}
+
+message ImportMediaAsset {
+  message Result {
+    message Ok {
+      oneof location {
+        string managed_relative_path = 4;
+        string unmanaged_absolute_path = 5;
+      }
+
+      string operation_uuid = 1;
+      string reference_uuid = 2;
+      string asset_uuid = 3;
+    }
+
+    oneof result {
+      workspace.call.ImportMediaAsset.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string operation_uuid = 1;
+  string reference_uuid = 2;
+  string source_path = 3;
+  bool force_manage_media = 4;
+}
+
+message RelinkMediaAsset {
+  enum Phase {
+    PHASE_UNKNOWN = 0;
+    PHASE_QUEUED = 1;
+    PHASE_STAGING = 2;
+    PHASE_STAGED = 3;
+    PHASE_PUBLISHING = 4;
+    PHASE_COMPLETE = 5;
+    PHASE_FAILED = 6;
+  }
+
+  message Result {
+    message Ok {
+      string operation_uuid = 1;
+      string reference_uuid = 2;
+      string asset_uuid = 3;
+      workspace.call.RelinkMediaAsset.Phase phase = 4;
+      uint32 attempt = 5;
+      optional string failure_code = 6;
+      optional string failure_detail = 7;
+    }
+
+    oneof result {
+      workspace.call.RelinkMediaAsset.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string operation_uuid = 1;
+  string reference_uuid = 2;
+  string expected_asset_uuid = 3;
+  string source_path = 4;
+}
+
+message MaterializeMediaAsset {
+  enum Phase {
+    PHASE_UNKNOWN = 0;
+    PHASE_QUEUED = 1;
+    PHASE_RESOLVING = 2;
+    PHASE_DOWNLOADING = 3;
+    PHASE_DOWNLOADED = 4;
+    PHASE_VERIFYING = 5;
+    PHASE_PUBLISHING = 6;
+    PHASE_COMPLETE = 7;
+    PHASE_FAILED = 8;
+  }
+
+  message Result {
+    message Ok {
+      string operation_uuid = 1;
+      string reference_uuid = 2;
+      string asset_uuid = 3;
+      workspace.call.MaterializeMediaAsset.Phase phase = 4;
+      uint32 attempt = 5;
+      optional string failure_code = 6;
+      optional string failure_detail = 7;
+    }
+
+    oneof result {
+      workspace.call.MaterializeMediaAsset.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string operation_uuid = 1;
+  string reference_uuid = 2;
+  string expected_asset_uuid = 3;
+}
+
+message RestoreMediaFromTrash {
+  enum Outcome {
+    OUTCOME_UNKNOWN = 0;
+    OUTCOME_RESTORED = 1;
+    OUTCOME_NOT_IN_TRASH = 2;
+    OUTCOME_ALREADY_PRESENT = 3;
+    OUTCOME_NOT_PURGED = 4;
+  }
+
+  message Result {
+    message Ok {
+      string asset_uuid = 1;
+      workspace.call.RestoreMediaFromTrash.Outcome outcome = 2;
+    }
+
+    oneof result {
+      workspace.call.RestoreMediaFromTrash.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string asset_uuid = 1;
 }
 
 message Publish {
   message Result {
     message Ok {
-      string uuid = 1;
+      string cloud_uuid = 1;
+      uint32 unavailable_smart_playlist_media = 2;
+      uint32 missing_smart_playlist_media = 3;
+      uint32 unavailable_smart_playlists = 4;
     }
 
     oneof result {
@@ -78,6 +579,7 @@ message ConvertToLocal {
 
   }
 
+  optional string local_uuid = 1;
 }
 
 message Rename {
@@ -92,8 +594,39 @@ message Rename {
 
   }
 
-  optional string uuid = 1;
+  optional string cloud_uuid = 1;
   string name = 2;
+  optional string local_uuid = 3;
+}
+
+message ReadUsage {
+  message Library {
+    string name = 1;
+    uint64 presentation_count = 2;
+    uint64 byte_count = 3;
+  }
+
+  message Result {
+    message Ok {
+      repeated workspace.call.ReadUsage.Library libraries = 1;
+      uint64 total_document_byte_count = 2;
+      uint64 managed_media_file_count = 3;
+      uint64 managed_media_byte_count = 4;
+      uint64 unmanaged_media_byte_count = 5;
+      uint64 largest_document_byte_count = 6;
+      uint64 presentations_over_1_mib_count = 7;
+      uint64 presentations_over_10_mib_count = 8;
+      uint64 other_documents_over_1_mib_count = 9;
+      uint64 other_documents_over_10_mib_count = 10;
+    }
+
+    oneof result {
+      workspace.call.ReadUsage.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
 }
 
 message PauseSync {
@@ -123,4 +656,130 @@ message ResumeSync {
 
   }
 
+}
+
+message SetSchemaVersion {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      workspace.call.SetSchemaVersion.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string schema_version = 1;
+}
+
+message ChangeWorkspace {
+  message Result {
+    message Ok {
+      optional string root_path = 1;
+      workspace.LegacyMigrationShortfall legacy_migration_shortfall = 2;
+    }
+
+    oneof result {
+      workspace.call.ChangeWorkspace.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string local_uuid = 1;
+}
+
+message CheckWorkspaceAccess {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      workspace.call.CheckWorkspaceAccess.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string local_uuid = 1;
+}
+
+message OpenAsLocalCopy {
+  message Result {
+    message Ok {
+      optional string root_path = 1;
+      repeated workspace.call.ImportLegacyWorkspace.Result.Failure.Diagnostic diagnostics = 2;
+    }
+
+    oneof result {
+      workspace.call.OpenAsLocalCopy.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string source_local_uuid = 1;
+  string local_uuid = 2;
+  string target_path = 3;
+  optional string display_name = 4;
+  optional bool pco_theme_dark = 5;
+}
+
+message StartFresh {
+  message Result {
+    enum Discard {
+      DISCARD_UNSPECIFIED = 0;
+      DISCARD_REMOVED = 1;
+      DISCARD_FOLDER_KEPT = 2;
+      DISCARD_FAILED = 3;
+      DISCARD_FAILED_IN_PLACE = 4;
+      DISCARD_FAILED_UNLISTED = 5;
+    }
+
+    message Ok {
+      string local_uuid = 1;
+      string root_path = 2;
+      workspace.call.StartFresh.Result.Discard discard = 3;
+    }
+
+    oneof result {
+      workspace.call.StartFresh.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string local_uuid = 1;
+}
+
+message FindChangedLegacySource {
+  message Result {
+    message Ok {
+      string source_path = 1;
+    }
+
+    oneof result {
+      workspace.call.FindChangedLegacySource.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string local_uuid = 1;
+}
+
+message KeepChangedLegacySource {
+  message Result {
+    message Ok {
+    }
+
+    oneof result {
+      workspace.call.KeepChangedLegacySource.Result.Ok ok = 1;
+      workspace.call.Error error = 2;
+    }
+
+  }
+
+  string local_uuid = 1;
 }

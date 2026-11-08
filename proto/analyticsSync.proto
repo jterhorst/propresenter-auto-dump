@@ -32,3 +32,35 @@ message WebSocketConnectionFailed {
   string url = 2;
   string error_description = 3;
 }
+
+message DocumentSyncRateLimited {
+  enum Phase {
+    UNKNOWN = 0;
+    STARTED = 1;
+    ENDED = 2;
+  }
+
+  rv.analytics.sync.DocumentSyncRateLimited.Phase phase = 1;
+  string workspace_identifier = 2;
+  optional uint64 retry_after_seconds = 3;
+  uint32 documents_held = 4;
+  uint32 refusals = 5;
+  uint64 duration_ms = 6;
+}
+
+message StoredVersionVectorRepaired {
+  enum Kind {
+    UNKNOWN = 0;
+    VALUE_EQUAL = 1;
+    VALUE_DIFFERENT = 2;
+    UNDECODABLE = 3;
+  }
+
+  rv.analytics.sync.StoredVersionVectorRepaired.Kind kind = 1;
+  string document_identifier = 2;
+  uint32 stored_peer_count = 3;
+  uint32 computed_peer_count = 4;
+  string architecture = 5;
+  string hardware_id = 6;
+  uint32 repairs_in_open = 7;
+}

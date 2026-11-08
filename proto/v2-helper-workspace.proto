@@ -1,0 +1,198 @@
+syntax = "proto3";
+
+
+package helper.workspace.v2;
+
+
+import "v2-helper-common.proto";
+
+
+
+message SyncStatus {
+  enum ConnectionRefusal {
+    CONNECTION_REFUSAL_NONE = 0;
+    CONNECTION_REFUSAL_NOT_AUTHORIZED = 1;
+    CONNECTION_REFUSAL_ORGANIZATION_BLOCKED = 2;
+    CONNECTION_REFUSAL_WORKSPACE_DELETED = 3;
+  }
+
+  message Paused {
+    uint64 until_time_utc = 1;
+    uint64 at_time_utc = 2;
+  }
+
+  oneof status {
+    helper.workspace.v2.SyncStatus.Paused paused = 1;
+  }
+
+  helper.common.v2.SyncStats stats = 2;
+  bool media_list_stale = 3;
+  helper.workspace.v2.SyncStatus.ConnectionRefusal media_connection_refused = 4;
+}
+
+message Notification {
+  oneof notification {
+    helper.common.v2.MediaReference media_reference = 1;
+    helper.common.v2.AssetImported asset_imported = 2;
+    helper.workspace.v2.SyncStatus sync_status = 3;
+    helper.common.v2.SmartPlaylistMembershipSnapshot smart_playlist_membership = 7;
+    helper.common.v2.UnmanagedMediaImportProgress unmanaged_media_import_progress = 8;
+  }
+
+  helper.common.v2.Workspace workspace = 4;
+  string media_state_session_uuid = 5;
+  uint64 media_state_revision = 6;
+}
+
+message RequestEnvelope {
+  message Start {
+    helper.common.v2.ProductInformation product_info = 1;
+    optional string show_directory = 2;
+    helper.common.v2.Preferences preferences = 3;
+    helper.common.v2.FeatureFlags feature_flags = 4;
+    optional string workspace_id = 5;
+    optional uint64 peer_id = 6;
+    optional string organization_id = 7;
+    bool media_state_snapshot_only = 8;
+    optional bool cloud_terminated = 9;
+  }
+
+  message Header {
+    string id = 1;
+    helper.common.v2.Workspace workspace = 2;
+  }
+
+  oneof request {
+    helper.workspace.v2.RequestEnvelope.Start start = 2;
+    helper.common.v2.ChangeShowDirectory change_show_directory = 3;
+    helper.common.v2.AddMediaReference add = 4;
+    helper.common.v2.DuplicateMediaReference duplicate = 5;
+    helper.common.v2.ApplyTransformation apply = 6;
+    helper.common.v2.RemoveMediaReferences remove = 7;
+    helper.common.v2.TriggerMediaReference trigger = 8;
+    helper.common.v2.Ping ping = 9;
+    helper.common.v2.UpdateWorkspaces update_workspaces = 10;
+    helper.common.v2.PauseSync pause_sync = 12;
+    helper.common.v2.ResumeSync resume_sync = 13;
+    helper.common.v2.UpdatePrefs update_prefs = 14;
+    helper.common.v2.UpdateSmartPlaylists update_smart_playlists = 15;
+    helper.common.v2.AddProContentReference add_pro_content_reference = 16;
+    helper.common.v2.MarkWorkspaceAsCloud mark_as_cloud = 17;
+    helper.common.v2.MarkWorkspaceAsLocal mark_as_local = 18;
+    helper.common.v2.RemoveContainer remove_container = 19;
+    helper.common.v2.ImportUnmanagedMedia import_unmanaged_media = 21;
+    helper.common.v2.PreMigrateWorkspace pre_migrate = 22;
+    helper.common.v2.MigrateWorkspace migrate = 23;
+    helper.common.v2.GetThumbnail get_thumbnail = 24;
+    helper.common.v2.ActivateReferenceIdentity activate_reference_identity = 25;
+    helper.common.v2.EnsureMediaReference ensure_media_reference = 26;
+    helper.common.v2.EnsureProContentReference ensure_pro_content_reference = 27;
+    helper.common.v2.ApplyProjectedTransformation apply_projected_transformation = 28;
+    helper.common.v2.TombstoneProjectedReferences tombstone_projected_references = 29;
+    helper.common.v2.GetMediaStateSnapshot get_media_state_snapshot = 30;
+    helper.common.v2.AdvanceImportOperation advance_import_operation = 31;
+    helper.common.v2.RelinkMediaAsset relink_media_asset = 32;
+    helper.common.v2.MaterializeMediaAsset materialize_media_asset = 33;
+    helper.common.v2.PreviewMediaCleanup preview_media_cleanup = 34;
+    helper.common.v2.ExecuteMediaCleanup execute_media_cleanup = 35;
+    helper.common.v2.RestoreMediaFromTrash restore_media_from_trash = 36;
+    helper.common.v2.ReleaseShowDirectory release_show_directory = 37;
+    helper.common.v2.GenerateThumbnailForPath generate_thumbnail_for_path = 38;
+    helper.common.v2.CancelGenerateThumbnailForPath cancel_generate_thumbnail_for_path = 39;
+    helper.common.v2.GetMediaUsage get_media_usage = 40;
+    helper.common.v2.GetUnmanagedMedia get_unmanaged_media = 41;
+    helper.common.v2.ClaimProjectedReferences claim_projected_references = 42;
+    helper.common.v2.EnsureMediaReferences ensure_media_references = 43;
+    helper.common.v2.SetCloudTerminated set_cloud_terminated = 44;
+  }
+
+  helper.workspace.v2.RequestEnvelope.Header header = 1;
+}
+
+message ResponseEnvelope {
+  message Header {
+    string id = 1;
+  }
+
+  message Response {
+    message StartResponse {
+      repeated helper.common.v2.MediaReference media_references = 1;
+      helper.common.v2.MediaStateSnapshot media_state_snapshot = 2;
+    }
+
+    message ChangeShowDirectoryResponse {
+      repeated helper.common.v2.MediaReference media_references = 1;
+      helper.common.v2.MediaStateSnapshot media_state_snapshot = 2;
+    }
+
+    message MigrateWorkspaceResponse {
+      helper.workspace.v2.ResponseEnvelope.Response.ChangeShowDirectoryResponse response = 1;
+    }
+
+    oneof response {
+      helper.workspace.v2.ResponseEnvelope.Response.StartResponse start = 1;
+      helper.workspace.v2.ResponseEnvelope.Response.ChangeShowDirectoryResponse change_show_directory = 2;
+      helper.common.v2.AddMediaReferenceResponse add = 3;
+      helper.common.v2.DuplicateMediaReferenceResponse duplicate = 4;
+      helper.common.v2.ApplyTransformationResponse apply = 5;
+      helper.common.v2.RemoveMediaReferenceResponse remove = 6;
+      helper.common.v2.TriggerMediaReferenceResponse trigger = 7;
+      helper.common.v2.Pong pong = 8;
+      helper.common.v2.UpdateWorkspacesResponse update_workspaces = 9;
+      helper.common.v2.PauseSyncResponse pause_sync = 11;
+      helper.common.v2.ResumeSyncResponse resume_sync = 12;
+      helper.common.v2.UpdatePrefsResponse update_prefs = 13;
+      helper.common.v2.UpdateSmartPlaylistsResponse update_smart_playlists = 14;
+      helper.common.v2.AddProContentReferenceResponse add_pro_content_reference = 15;
+      helper.common.v2.MarkWorkspaceAsCloudResponse mark_as_cloud = 16;
+      helper.common.v2.MarkWorkspaceAsLocalResponse mark_as_local = 17;
+      helper.common.v2.AdvanceImportOperationResponse advance_import_operation = 30;
+      helper.common.v2.RemoveContainerResponse remove_container = 18;
+      helper.common.v2.ImportUnmanagedMediaResponse import_unmanaged_media = 20;
+      helper.common.v2.PreMigrateWorkspaceResponse pre_migrate = 21;
+      helper.workspace.v2.ResponseEnvelope.Response.MigrateWorkspaceResponse migrate = 22;
+      helper.common.v2.GetThumbnailResponse get_thumbnail = 23;
+      helper.common.v2.ActivateReferenceIdentityResponse activate_reference_identity = 24;
+      helper.common.v2.EnsureMediaReferenceResponse ensure_media_reference = 25;
+      helper.common.v2.EnsureProContentReferenceResponse ensure_pro_content_reference = 26;
+      helper.common.v2.ApplyProjectedTransformationResponse apply_projected_transformation = 27;
+      helper.common.v2.TombstoneProjectedReferencesResponse tombstone_projected_references = 28;
+      helper.common.v2.GetMediaStateSnapshotResponse get_media_state_snapshot = 29;
+      helper.common.v2.RelinkMediaAssetResponse relink_media_asset = 31;
+      helper.common.v2.MaterializeMediaAssetResponse materialize_media_asset = 32;
+      helper.common.v2.PreviewMediaCleanupResponse preview_media_cleanup = 33;
+      helper.common.v2.ExecuteMediaCleanupResponse execute_media_cleanup = 34;
+      helper.common.v2.RestoreMediaFromTrashResponse restore_media_from_trash = 35;
+      helper.common.v2.ReleaseShowDirectoryResponse release_show_directory = 36;
+      helper.common.v2.GenerateThumbnailForPathResponse generate_thumbnail_for_path = 37;
+      helper.common.v2.GetMediaUsageResponse get_media_usage = 38;
+      helper.common.v2.GetUnmanagedMediaResponse get_unmanaged_media = 39;
+      helper.common.v2.ClaimProjectedReferencesResponse claim_projected_references = 40;
+      helper.common.v2.EnsureMediaReferencesResponse ensure_media_references = 41;
+      helper.common.v2.SetCloudTerminatedResponse set_cloud_terminated = 42;
+    }
+
+  }
+
+  oneof result {
+    helper.workspace.v2.ResponseEnvelope.Response ok = 2;
+    helper.common.v2.RequestError error = 3;
+  }
+
+  helper.workspace.v2.ResponseEnvelope.Header header = 1;
+}
+
+message ClientMessage {
+  oneof payload {
+    helper.workspace.v2.RequestEnvelope request = 1;
+  }
+
+}
+
+message ServerMessage {
+  oneof payload {
+    helper.workspace.v2.ResponseEnvelope response = 1;
+    helper.workspace.v2.Notification notification = 2;
+  }
+
+}

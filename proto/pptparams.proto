@@ -10,4 +10,5 @@ message PPTImportParams {
   uint32 slide_width = 3;
   uint32 slide_height = 4;
   bool ignore_backgrounds = 5;
+  string install_path = 6;
 }

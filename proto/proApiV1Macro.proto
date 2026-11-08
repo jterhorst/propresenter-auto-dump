@@ -35,10 +35,15 @@ message API_v1_Macro_Request {
   }
 
   message PutMacro {
+    message ActionsChange {
+      repeated rv.data.API_v1_MacroAction actions = 1;
+    }
+
     string id = 1;
     string name_change = 2;
     rv.data.API_v1_Color color_change = 3;
     string image_type_change = 4;
+    rv.data.API_v1_Macro_Request.PutMacro.ActionsChange actions_change = 5;
   }
 
   message DeleteMacro {

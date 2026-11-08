@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+
+package procore;
+
+
+import "version.proto";
+
+import "proCoreFeatureFlags.proto";
+
+
+
+message CreationOption {
+  enum RenderMode {
+    GL = 0;
+    Metal = 1;
+    DirectX = 2;
+    Mock = 3;
+  }
+
+  enum RenderStatsLevel {
+    Normal = 0;
+    Advanced = 1;
+  }
+
+  enum RenderBitDepth {
+    Standard8Bit = 0;
+    Enhanced16Bit = 1;
+  }
+
+  message NDIFinderSettings {
+    bool show_local_sources = 1;
+    string groups = 2;
+    string extra_ips = 3;
+  }
+
+  string install_path = 1;
+  rv.data.Version version_information = 2;
+  procore.CreationOption.RenderMode render_mode = 3;
+  procore.CreationOption.RenderStatsLevel render_stats_level = 4;
+  procore.CreationOption.NDIFinderSettings ndi_finder_settings = 5;
+  procore.CreationOption.RenderBitDepth render_bit_depth = 6;
+  bool use_software_rendering = 7;
+  string apple_log_subsystem = 8;
+  string apple_log_category = 9;
+  rv.data.ResolvedFeatureFlags feature_flags = 10;
+  string advertisement_logs_location = 11;
+  bytes callbacks = 12;
+}
