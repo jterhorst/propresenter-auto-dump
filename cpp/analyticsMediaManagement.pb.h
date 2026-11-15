@@ -53,6 +53,16 @@ enum ConnectionChanged_State : int;
 extern const uint32_t ConnectionChanged_State_internal_data_[];
 enum MediaStateResyncGaveUp_Source : int;
 extern const uint32_t MediaStateResyncGaveUp_Source_internal_data_[];
+enum MediaThumbnailMissingOnScreen_Category : int;
+extern const uint32_t MediaThumbnailMissingOnScreen_Category_internal_data_[];
+enum MediaThumbnailMissingOnScreen_Cause : int;
+extern const uint32_t MediaThumbnailMissingOnScreen_Cause_internal_data_[];
+enum ThumbnailOnScreen_MediaKind : int;
+extern const uint32_t ThumbnailOnScreen_MediaKind_internal_data_[];
+enum ThumbnailOnScreen_State : int;
+extern const uint32_t ThumbnailOnScreen_State_internal_data_[];
+enum ThumbnailOnScreen_Surface : int;
+extern const uint32_t ThumbnailOnScreen_Surface_internal_data_[];
 class AddedMediaReference;
 struct AddedMediaReferenceGlobalsTypeInternal;
 #ifndef PROTOBUF_MESSAGE_GLOBALS
@@ -125,6 +135,14 @@ extern const ::google::protobuf::internal::ClassDataFull MediaStateResyncGaveUp_
 #else
 extern const MediaStateResyncGaveUpGlobalsTypeInternal MediaStateResyncGaveUp_globals_;
 #endif  // PROTOBUF_MESSAGE_GLOBALS
+class MediaThumbnailMissingOnScreen;
+struct MediaThumbnailMissingOnScreenGlobalsTypeInternal;
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+extern MediaThumbnailMissingOnScreenGlobalsTypeInternal MediaThumbnailMissingOnScreen_globals_;
+extern const ::google::protobuf::internal::ClassDataFull MediaThumbnailMissingOnScreen_class_data_;
+#else
+extern const MediaThumbnailMissingOnScreenGlobalsTypeInternal MediaThumbnailMissingOnScreen_globals_;
+#endif  // PROTOBUF_MESSAGE_GLOBALS
 class MessageFailure;
 struct MessageFailureGlobalsTypeInternal;
 #ifndef PROTOBUF_MESSAGE_GLOBALS
@@ -140,6 +158,22 @@ extern NotRespondingGlobalsTypeInternal NotResponding_globals_;
 extern const ::google::protobuf::internal::ClassDataFull NotResponding_class_data_;
 #else
 extern const NotRespondingGlobalsTypeInternal NotResponding_globals_;
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+class ThumbnailOnScreen;
+struct ThumbnailOnScreenGlobalsTypeInternal;
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+extern ThumbnailOnScreenGlobalsTypeInternal ThumbnailOnScreen_globals_;
+extern const ::google::protobuf::internal::ClassDataFull ThumbnailOnScreen_class_data_;
+#else
+extern const ThumbnailOnScreenGlobalsTypeInternal ThumbnailOnScreen_globals_;
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+class ThumbnailVisibilitySweep;
+struct ThumbnailVisibilitySweepGlobalsTypeInternal;
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+extern ThumbnailVisibilitySweepGlobalsTypeInternal ThumbnailVisibilitySweep_globals_;
+extern const ::google::protobuf::internal::ClassDataFull ThumbnailVisibilitySweep_class_data_;
+#else
+extern const ThumbnailVisibilitySweepGlobalsTypeInternal ThumbnailVisibilitySweep_globals_;
 #endif  // PROTOBUF_MESSAGE_GLOBALS
 class UnexpectedlyNotRunning;
 struct UnexpectedlyNotRunningGlobalsTypeInternal;
@@ -168,6 +202,21 @@ internal::EnumTraitsT<::rv::analytics::mediamanagement::ConnectionChanged_State_
 template <>
 internal::EnumTraitsT<::rv::analytics::mediamanagement::MediaStateResyncGaveUp_Source_internal_data_>
     internal::EnumTraitsImpl::value<::rv::analytics::mediamanagement::MediaStateResyncGaveUp_Source>;
+template <>
+internal::EnumTraitsT<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category_internal_data_>
+    internal::EnumTraitsImpl::value<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category>;
+template <>
+internal::EnumTraitsT<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause_internal_data_>
+    internal::EnumTraitsImpl::value<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause>;
+template <>
+internal::EnumTraitsT<::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind_internal_data_>
+    internal::EnumTraitsImpl::value<::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind>;
+template <>
+internal::EnumTraitsT<::rv::analytics::mediamanagement::ThumbnailOnScreen_State_internal_data_>
+    internal::EnumTraitsImpl::value<::rv::analytics::mediamanagement::ThumbnailOnScreen_State>;
+template <>
+internal::EnumTraitsT<::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface_internal_data_>
+    internal::EnumTraitsImpl::value<::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface>;
 }  // namespace protobuf
 }  // namespace google
 
@@ -253,6 +302,219 @@ template <>
 [[nodiscard]] inline bool MediaStateResyncGaveUp_Source_Parse(
     ::absl::string_view name, MediaStateResyncGaveUp_Source* PROTOBUF_NONNULL value) {
   return ::google::protobuf::internal::ParseNamedEnum<MediaStateResyncGaveUp_Source>(MediaStateResyncGaveUp_Source_descriptor(), name,
+                                           value);
+}
+enum ThumbnailOnScreen_Surface : int {
+  ThumbnailOnScreen_Surface_SURFACE_UNKNOWN = 0,
+  ThumbnailOnScreen_Surface_SURFACE_PRESENTATION = 1,
+  ThumbnailOnScreen_Surface_SURFACE_MEDIA_BIN = 2,
+  ThumbnailOnScreen_Surface_SURFACE_PLAYLIST_MEDIA = 3,
+  ThumbnailOnScreen_Surface_ThumbnailOnScreen_Surface_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  ThumbnailOnScreen_Surface_ThumbnailOnScreen_Surface_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t ThumbnailOnScreen_Surface_internal_data_[];
+inline constexpr ThumbnailOnScreen_Surface ThumbnailOnScreen_Surface_Surface_MIN =
+    static_cast<ThumbnailOnScreen_Surface>(0);
+inline constexpr ThumbnailOnScreen_Surface ThumbnailOnScreen_Surface_Surface_MAX =
+    static_cast<ThumbnailOnScreen_Surface>(3);
+[[nodiscard]] inline bool ThumbnailOnScreen_Surface_IsValid(int value) {
+  return 0 <= value && value <= 3;
+}
+inline constexpr int ThumbnailOnScreen_Surface_Surface_ARRAYSIZE = 3 + 1;
+[[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
+ThumbnailOnScreen_Surface_descriptor();
+[[nodiscard]] inline auto ProtobufInternalGetEnumDescriptor(ThumbnailOnScreen_Surface) {
+  return ThumbnailOnScreen_Surface_descriptor();
+}
+template <typename T>
+[[nodiscard]] const ::std::string& ThumbnailOnScreen_Surface_Name(T value) {
+  static_assert(::std::is_same<T, ThumbnailOnScreen_Surface>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to Surface_Name().");
+  return ThumbnailOnScreen_Surface_Name(static_cast<ThumbnailOnScreen_Surface>(value));
+}
+template <>
+[[nodiscard]] inline const ::std::string& ThumbnailOnScreen_Surface_Name(ThumbnailOnScreen_Surface value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<ThumbnailOnScreen_Surface_descriptor, 0, 3>(
+      static_cast<int>(value));
+}
+[[nodiscard]] inline bool ThumbnailOnScreen_Surface_Parse(
+    ::absl::string_view name, ThumbnailOnScreen_Surface* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ThumbnailOnScreen_Surface>(ThumbnailOnScreen_Surface_descriptor(), name,
+                                           value);
+}
+enum ThumbnailOnScreen_State : int {
+  ThumbnailOnScreen_State_STATE_UNKNOWN = 0,
+  ThumbnailOnScreen_State_STATE_MEDIA_MISSING = 1,
+  ThumbnailOnScreen_State_STATE_DOWNLOADING = 2,
+  ThumbnailOnScreen_State_STATE_LOADING = 3,
+  ThumbnailOnScreen_State_STATE_FAILED = 4,
+  ThumbnailOnScreen_State_STATE_AVAILABLE = 5,
+  ThumbnailOnScreen_State_ThumbnailOnScreen_State_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  ThumbnailOnScreen_State_ThumbnailOnScreen_State_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t ThumbnailOnScreen_State_internal_data_[];
+inline constexpr ThumbnailOnScreen_State ThumbnailOnScreen_State_State_MIN =
+    static_cast<ThumbnailOnScreen_State>(0);
+inline constexpr ThumbnailOnScreen_State ThumbnailOnScreen_State_State_MAX =
+    static_cast<ThumbnailOnScreen_State>(5);
+[[nodiscard]] inline bool ThumbnailOnScreen_State_IsValid(int value) {
+  return 0 <= value && value <= 5;
+}
+inline constexpr int ThumbnailOnScreen_State_State_ARRAYSIZE = 5 + 1;
+[[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
+ThumbnailOnScreen_State_descriptor();
+[[nodiscard]] inline auto ProtobufInternalGetEnumDescriptor(ThumbnailOnScreen_State) {
+  return ThumbnailOnScreen_State_descriptor();
+}
+template <typename T>
+[[nodiscard]] const ::std::string& ThumbnailOnScreen_State_Name(T value) {
+  static_assert(::std::is_same<T, ThumbnailOnScreen_State>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to State_Name().");
+  return ThumbnailOnScreen_State_Name(static_cast<ThumbnailOnScreen_State>(value));
+}
+template <>
+[[nodiscard]] inline const ::std::string& ThumbnailOnScreen_State_Name(ThumbnailOnScreen_State value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<ThumbnailOnScreen_State_descriptor, 0, 5>(
+      static_cast<int>(value));
+}
+[[nodiscard]] inline bool ThumbnailOnScreen_State_Parse(
+    ::absl::string_view name, ThumbnailOnScreen_State* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ThumbnailOnScreen_State>(ThumbnailOnScreen_State_descriptor(), name,
+                                           value);
+}
+enum ThumbnailOnScreen_MediaKind : int {
+  ThumbnailOnScreen_MediaKind_MEDIA_KIND_UNKNOWN = 0,
+  ThumbnailOnScreen_MediaKind_MEDIA_KIND_IMAGE = 1,
+  ThumbnailOnScreen_MediaKind_MEDIA_KIND_VIDEO = 2,
+  ThumbnailOnScreen_MediaKind_ThumbnailOnScreen_MediaKind_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  ThumbnailOnScreen_MediaKind_ThumbnailOnScreen_MediaKind_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t ThumbnailOnScreen_MediaKind_internal_data_[];
+inline constexpr ThumbnailOnScreen_MediaKind ThumbnailOnScreen_MediaKind_MediaKind_MIN =
+    static_cast<ThumbnailOnScreen_MediaKind>(0);
+inline constexpr ThumbnailOnScreen_MediaKind ThumbnailOnScreen_MediaKind_MediaKind_MAX =
+    static_cast<ThumbnailOnScreen_MediaKind>(2);
+[[nodiscard]] inline bool ThumbnailOnScreen_MediaKind_IsValid(int value) {
+  return 0 <= value && value <= 2;
+}
+inline constexpr int ThumbnailOnScreen_MediaKind_MediaKind_ARRAYSIZE = 2 + 1;
+[[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
+ThumbnailOnScreen_MediaKind_descriptor();
+[[nodiscard]] inline auto ProtobufInternalGetEnumDescriptor(ThumbnailOnScreen_MediaKind) {
+  return ThumbnailOnScreen_MediaKind_descriptor();
+}
+template <typename T>
+[[nodiscard]] const ::std::string& ThumbnailOnScreen_MediaKind_Name(T value) {
+  static_assert(::std::is_same<T, ThumbnailOnScreen_MediaKind>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to MediaKind_Name().");
+  return ThumbnailOnScreen_MediaKind_Name(static_cast<ThumbnailOnScreen_MediaKind>(value));
+}
+template <>
+[[nodiscard]] inline const ::std::string& ThumbnailOnScreen_MediaKind_Name(ThumbnailOnScreen_MediaKind value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<ThumbnailOnScreen_MediaKind_descriptor, 0, 2>(
+      static_cast<int>(value));
+}
+[[nodiscard]] inline bool ThumbnailOnScreen_MediaKind_Parse(
+    ::absl::string_view name, ThumbnailOnScreen_MediaKind* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ThumbnailOnScreen_MediaKind>(ThumbnailOnScreen_MediaKind_descriptor(), name,
+                                           value);
+}
+enum MediaThumbnailMissingOnScreen_Category : int {
+  MediaThumbnailMissingOnScreen_Category_CATEGORY_UNKNOWN = 0,
+  MediaThumbnailMissingOnScreen_Category_CATEGORY_BROKEN = 1,
+  MediaThumbnailMissingOnScreen_Category_CATEGORY_EXPECTED = 2,
+  MediaThumbnailMissingOnScreen_Category_MediaThumbnailMissingOnScreen_Category_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  MediaThumbnailMissingOnScreen_Category_MediaThumbnailMissingOnScreen_Category_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t MediaThumbnailMissingOnScreen_Category_internal_data_[];
+inline constexpr MediaThumbnailMissingOnScreen_Category MediaThumbnailMissingOnScreen_Category_Category_MIN =
+    static_cast<MediaThumbnailMissingOnScreen_Category>(0);
+inline constexpr MediaThumbnailMissingOnScreen_Category MediaThumbnailMissingOnScreen_Category_Category_MAX =
+    static_cast<MediaThumbnailMissingOnScreen_Category>(2);
+[[nodiscard]] inline bool MediaThumbnailMissingOnScreen_Category_IsValid(int value) {
+  return 0 <= value && value <= 2;
+}
+inline constexpr int MediaThumbnailMissingOnScreen_Category_Category_ARRAYSIZE = 2 + 1;
+[[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
+MediaThumbnailMissingOnScreen_Category_descriptor();
+[[nodiscard]] inline auto ProtobufInternalGetEnumDescriptor(MediaThumbnailMissingOnScreen_Category) {
+  return MediaThumbnailMissingOnScreen_Category_descriptor();
+}
+template <typename T>
+[[nodiscard]] const ::std::string& MediaThumbnailMissingOnScreen_Category_Name(T value) {
+  static_assert(::std::is_same<T, MediaThumbnailMissingOnScreen_Category>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to Category_Name().");
+  return MediaThumbnailMissingOnScreen_Category_Name(static_cast<MediaThumbnailMissingOnScreen_Category>(value));
+}
+template <>
+[[nodiscard]] inline const ::std::string& MediaThumbnailMissingOnScreen_Category_Name(MediaThumbnailMissingOnScreen_Category value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<MediaThumbnailMissingOnScreen_Category_descriptor, 0, 2>(
+      static_cast<int>(value));
+}
+[[nodiscard]] inline bool MediaThumbnailMissingOnScreen_Category_Parse(
+    ::absl::string_view name, MediaThumbnailMissingOnScreen_Category* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<MediaThumbnailMissingOnScreen_Category>(MediaThumbnailMissingOnScreen_Category_descriptor(), name,
+                                           value);
+}
+enum MediaThumbnailMissingOnScreen_Cause : int {
+  MediaThumbnailMissingOnScreen_Cause_CAUSE_NONE = 0,
+  MediaThumbnailMissingOnScreen_Cause_CAUSE_STUCK_LOADING = 1,
+  MediaThumbnailMissingOnScreen_Cause_CAUSE_STUCK_DOWNLOADING = 2,
+  MediaThumbnailMissingOnScreen_Cause_CAUSE_FAILED_TO_GENERATE = 3,
+  MediaThumbnailMissingOnScreen_Cause_CAUSE_AVAILABLE_NOT_SHOWN = 4,
+  MediaThumbnailMissingOnScreen_Cause_CAUSE_UNKNOWN = 5,
+  MediaThumbnailMissingOnScreen_Cause_CAUSE_STALE_MISSING_OVERLAY = 6,
+  MediaThumbnailMissingOnScreen_Cause_MediaThumbnailMissingOnScreen_Cause_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::min(),
+  MediaThumbnailMissingOnScreen_Cause_MediaThumbnailMissingOnScreen_Cause_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      ::std::numeric_limits<::int32_t>::max(),
+};
+
+extern const uint32_t MediaThumbnailMissingOnScreen_Cause_internal_data_[];
+inline constexpr MediaThumbnailMissingOnScreen_Cause MediaThumbnailMissingOnScreen_Cause_Cause_MIN =
+    static_cast<MediaThumbnailMissingOnScreen_Cause>(0);
+inline constexpr MediaThumbnailMissingOnScreen_Cause MediaThumbnailMissingOnScreen_Cause_Cause_MAX =
+    static_cast<MediaThumbnailMissingOnScreen_Cause>(6);
+[[nodiscard]] inline bool MediaThumbnailMissingOnScreen_Cause_IsValid(int value) {
+  return 0 <= value && value <= 6;
+}
+inline constexpr int MediaThumbnailMissingOnScreen_Cause_Cause_ARRAYSIZE = 6 + 1;
+[[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
+MediaThumbnailMissingOnScreen_Cause_descriptor();
+[[nodiscard]] inline auto ProtobufInternalGetEnumDescriptor(MediaThumbnailMissingOnScreen_Cause) {
+  return MediaThumbnailMissingOnScreen_Cause_descriptor();
+}
+template <typename T>
+[[nodiscard]] const ::std::string& MediaThumbnailMissingOnScreen_Cause_Name(T value) {
+  static_assert(::std::is_same<T, MediaThumbnailMissingOnScreen_Cause>::value ||
+                    ::std::is_integral<T>::value,
+                "Incorrect type passed to Cause_Name().");
+  return MediaThumbnailMissingOnScreen_Cause_Name(static_cast<MediaThumbnailMissingOnScreen_Cause>(value));
+}
+template <>
+[[nodiscard]] inline const ::std::string& MediaThumbnailMissingOnScreen_Cause_Name(MediaThumbnailMissingOnScreen_Cause value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<MediaThumbnailMissingOnScreen_Cause_descriptor, 0, 6>(
+      static_cast<int>(value));
+}
+[[nodiscard]] inline bool MediaThumbnailMissingOnScreen_Cause_Parse(
+    ::absl::string_view name, MediaThumbnailMissingOnScreen_Cause* PROTOBUF_NONNULL value) {
+  return ::google::protobuf::internal::ParseNamedEnum<MediaThumbnailMissingOnScreen_Cause>(MediaThumbnailMissingOnScreen_Cause_descriptor(), name,
                                            value);
 }
 using ::google::protobuf::internal::generated_enum::AbslParseFlag;
@@ -684,6 +946,339 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED UnexpectedlyNotRunning final : publ
 };
 // -------------------------------------------------------------------
 
+class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED ThumbnailOnScreen final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:rv.analytics.mediamanagement.ThumbnailOnScreen) */ {
+  using Super_ = ::google::protobuf::Message;
+
+ public:
+  inline ThumbnailOnScreen() : ThumbnailOnScreen(nullptr) {}
+  ~ThumbnailOnScreen() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ThumbnailOnScreen* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ThumbnailOnScreen));
+  }
+#endif
+
+  template <typename = void>
+  explicit constexpr ThumbnailOnScreen(::google::protobuf::internal::ConstantInitialized,
+                           const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+                               class_data);
+
+  inline ThumbnailOnScreen(const ThumbnailOnScreen& from) : ThumbnailOnScreen(nullptr, from) {}
+  inline ThumbnailOnScreen(ThumbnailOnScreen&& from) noexcept : ThumbnailOnScreen(nullptr, ::std::move(from)) {}
+  inline ThumbnailOnScreen& operator=(const ThumbnailOnScreen& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ThumbnailOnScreen& operator=(ThumbnailOnScreen&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  [[nodiscard]] inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  [[nodiscard]] inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL
+  mutable_unknown_fields() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL
+  GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  [[nodiscard]] static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  [[nodiscard]] static const ThumbnailOnScreen& default_instance() {
+    return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<ThumbnailOnScreen>(&ThumbnailOnScreen_globals_);
+  }
+  static constexpr int kIndexInFileMessages = 13;
+  friend void swap(ThumbnailOnScreen& a, ThumbnailOnScreen& b) { a.Swap(&b); }
+  inline void Swap(ThumbnailOnScreen* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ThumbnailOnScreen* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  [[nodiscard]] ThumbnailOnScreen* PROTOBUF_NONNULL
+  New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return Super_::DefaultConstruct<ThumbnailOnScreen>(arena);
+  }
+  using Super_::CopyFrom;
+  void CopyFrom(const ThumbnailOnScreen& from);
+  using Super_::MergeFrom;
+  void MergeFrom(const ThumbnailOnScreen& from) { ThumbnailOnScreen::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  [[nodiscard]] bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  [[nodiscard]] static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  [[nodiscard]] static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  [[nodiscard]] ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] ::size_t ByteSizeLong() const final;
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] int GetCachedSize() const {
+    return _impl_._cached_size_.Get();
+  }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ThumbnailOnScreen* PROTOBUF_NONNULL other);
+ private:
+  static ::absl::string_view FullMessageName() { return "rv.analytics.mediamanagement.ThumbnailOnScreen"; }
+
+  explicit ThumbnailOnScreen(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  ThumbnailOnScreen(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const ThumbnailOnScreen& from);
+  ThumbnailOnScreen(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, ThumbnailOnScreen&& from) noexcept
+      : ThumbnailOnScreen(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_(
+      const MessageLite& prototype,
+      const ::google::protobuf::internal::TcParseTableBase* PROTOBUF_NULLABLE tc_table = nullptr);
+
+  [[nodiscard]] ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+  using Surface = ThumbnailOnScreen_Surface;
+  static constexpr Surface SURFACE_UNKNOWN = ThumbnailOnScreen_Surface_SURFACE_UNKNOWN;
+  static constexpr Surface SURFACE_PRESENTATION = ThumbnailOnScreen_Surface_SURFACE_PRESENTATION;
+  static constexpr Surface SURFACE_MEDIA_BIN = ThumbnailOnScreen_Surface_SURFACE_MEDIA_BIN;
+  static constexpr Surface SURFACE_PLAYLIST_MEDIA = ThumbnailOnScreen_Surface_SURFACE_PLAYLIST_MEDIA;
+  [[nodiscard]] static inline bool Surface_IsValid(int value) {
+    return ThumbnailOnScreen_Surface_IsValid(value);
+  }
+  static constexpr Surface Surface_MIN = ThumbnailOnScreen_Surface_Surface_MIN;
+  static constexpr Surface Surface_MAX = ThumbnailOnScreen_Surface_Surface_MAX;
+  static constexpr int Surface_ARRAYSIZE = ThumbnailOnScreen_Surface_Surface_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL Surface_descriptor() {
+    return ThumbnailOnScreen_Surface_descriptor();
+  }
+  template <typename T>
+  [[nodiscard]] static inline const ::std::string& Surface_Name(T value) {
+    return ThumbnailOnScreen_Surface_Name(value);
+  }
+  [[nodiscard]] static inline bool Surface_Parse(
+      ::absl::string_view name, Surface* PROTOBUF_NONNULL value) {
+    return ThumbnailOnScreen_Surface_Parse(name, value);
+  }
+  using State = ThumbnailOnScreen_State;
+  static constexpr State STATE_UNKNOWN = ThumbnailOnScreen_State_STATE_UNKNOWN;
+  static constexpr State STATE_MEDIA_MISSING = ThumbnailOnScreen_State_STATE_MEDIA_MISSING;
+  static constexpr State STATE_DOWNLOADING = ThumbnailOnScreen_State_STATE_DOWNLOADING;
+  static constexpr State STATE_LOADING = ThumbnailOnScreen_State_STATE_LOADING;
+  static constexpr State STATE_FAILED = ThumbnailOnScreen_State_STATE_FAILED;
+  static constexpr State STATE_AVAILABLE = ThumbnailOnScreen_State_STATE_AVAILABLE;
+  [[nodiscard]] static inline bool State_IsValid(int value) {
+    return ThumbnailOnScreen_State_IsValid(value);
+  }
+  static constexpr State State_MIN = ThumbnailOnScreen_State_State_MIN;
+  static constexpr State State_MAX = ThumbnailOnScreen_State_State_MAX;
+  static constexpr int State_ARRAYSIZE = ThumbnailOnScreen_State_State_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL State_descriptor() {
+    return ThumbnailOnScreen_State_descriptor();
+  }
+  template <typename T>
+  [[nodiscard]] static inline const ::std::string& State_Name(T value) {
+    return ThumbnailOnScreen_State_Name(value);
+  }
+  [[nodiscard]] static inline bool State_Parse(
+      ::absl::string_view name, State* PROTOBUF_NONNULL value) {
+    return ThumbnailOnScreen_State_Parse(name, value);
+  }
+  using MediaKind = ThumbnailOnScreen_MediaKind;
+  static constexpr MediaKind MEDIA_KIND_UNKNOWN = ThumbnailOnScreen_MediaKind_MEDIA_KIND_UNKNOWN;
+  static constexpr MediaKind MEDIA_KIND_IMAGE = ThumbnailOnScreen_MediaKind_MEDIA_KIND_IMAGE;
+  static constexpr MediaKind MEDIA_KIND_VIDEO = ThumbnailOnScreen_MediaKind_MEDIA_KIND_VIDEO;
+  [[nodiscard]] static inline bool MediaKind_IsValid(int value) {
+    return ThumbnailOnScreen_MediaKind_IsValid(value);
+  }
+  static constexpr MediaKind MediaKind_MIN = ThumbnailOnScreen_MediaKind_MediaKind_MIN;
+  static constexpr MediaKind MediaKind_MAX = ThumbnailOnScreen_MediaKind_MediaKind_MAX;
+  static constexpr int MediaKind_ARRAYSIZE = ThumbnailOnScreen_MediaKind_MediaKind_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL MediaKind_descriptor() {
+    return ThumbnailOnScreen_MediaKind_descriptor();
+  }
+  template <typename T>
+  [[nodiscard]] static inline const ::std::string& MediaKind_Name(T value) {
+    return ThumbnailOnScreen_MediaKind_Name(value);
+  }
+  [[nodiscard]] static inline bool MediaKind_Parse(
+      ::absl::string_view name, MediaKind* PROTOBUF_NONNULL value) {
+    return ThumbnailOnScreen_MediaKind_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kMediaIdFieldNumber = 1,
+    kSurfaceFieldNumber = 2,
+    kStateFieldNumber = 4,
+    kShowsImageFieldNumber = 3,
+    kShowsMissingOverlayFieldNumber = 6,
+    kMediaKindFieldNumber = 5,
+  };
+  // string media_id = 1;
+  void clear_media_id() ;
+  [[nodiscard]] const ::std::string& media_id() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_media_id(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_media_id();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_media_id();
+  void set_allocated_media_id(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_media_id() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_media_id(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_media_id();
+
+  public:
+  // .rv.analytics.mediamanagement.ThumbnailOnScreen.Surface surface = 2;
+  void clear_surface() ;
+  [[nodiscard]] ::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface surface() const;
+  void set_surface(::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface value);
+
+  private:
+  ::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface _internal_surface() const;
+  void _internal_set_surface(::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface value);
+
+  public:
+  // .rv.analytics.mediamanagement.ThumbnailOnScreen.State state = 4;
+  void clear_state() ;
+  [[nodiscard]] ::rv::analytics::mediamanagement::ThumbnailOnScreen_State state() const;
+  void set_state(::rv::analytics::mediamanagement::ThumbnailOnScreen_State value);
+
+  private:
+  ::rv::analytics::mediamanagement::ThumbnailOnScreen_State _internal_state() const;
+  void _internal_set_state(::rv::analytics::mediamanagement::ThumbnailOnScreen_State value);
+
+  public:
+  // bool shows_image = 3;
+  void clear_shows_image() ;
+  [[nodiscard]] bool shows_image() const;
+  void set_shows_image(bool value);
+
+  private:
+  bool _internal_shows_image() const;
+  void _internal_set_shows_image(bool value);
+
+  public:
+  // bool shows_missing_overlay = 6;
+  void clear_shows_missing_overlay() ;
+  [[nodiscard]] bool shows_missing_overlay() const;
+  void set_shows_missing_overlay(bool value);
+
+  private:
+  bool _internal_shows_missing_overlay() const;
+  void _internal_set_shows_missing_overlay(bool value);
+
+  public:
+  // .rv.analytics.mediamanagement.ThumbnailOnScreen.MediaKind media_kind = 5;
+  void clear_media_kind() ;
+  [[nodiscard]] ::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind media_kind() const;
+  void set_media_kind(::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind value);
+
+  private:
+  ::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind _internal_media_kind() const;
+  void _internal_set_media_kind(::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:rv.analytics.mediamanagement.ThumbnailOnScreen)
+ private:
+  class _Internal;
+  using ParseTableT_ =
+      ::google::protobuf::internal::TcParseTable<3, 6,
+                          0, 63,
+                          2>;
+  static constexpr ParseTableT_ InternalGenerateParseTable_(
+      const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL class_data);
+  friend class ::google::protobuf::internal::TcParser;
+  #ifndef PROTOBUF_MESSAGE_GLOBALS
+  static const ParseTableT_ _table_;
+  #endif
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  friend ::google::protobuf::internal::PrivateAccess;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                                    ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const ThumbnailOnScreen& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr media_id_;
+    int surface_;
+    int state_;
+    bool shows_image_;
+    bool shows_missing_overlay_;
+    int media_kind_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_analyticsMediaManagement_2eproto;
+};
+// -------------------------------------------------------------------
+
 class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED NotResponding final : public ::google::protobuf::internal::ZeroFieldsBase
 /* @@protoc_insertion_point(class_definition:rv.analytics.mediamanagement.NotResponding) */ {
   using Super_ = ::google::protobuf::internal::ZeroFieldsBase;
@@ -1021,6 +1616,301 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED MessageFailure final : public ::goo
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr error_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_analyticsMediaManagement_2eproto;
+};
+// -------------------------------------------------------------------
+
+class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED MediaThumbnailMissingOnScreen final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen) */ {
+  using Super_ = ::google::protobuf::Message;
+
+ public:
+  inline MediaThumbnailMissingOnScreen() : MediaThumbnailMissingOnScreen(nullptr) {}
+  ~MediaThumbnailMissingOnScreen() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(MediaThumbnailMissingOnScreen* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(MediaThumbnailMissingOnScreen));
+  }
+#endif
+
+  template <typename = void>
+  explicit constexpr MediaThumbnailMissingOnScreen(::google::protobuf::internal::ConstantInitialized,
+                           const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+                               class_data);
+
+  inline MediaThumbnailMissingOnScreen(const MediaThumbnailMissingOnScreen& from) : MediaThumbnailMissingOnScreen(nullptr, from) {}
+  inline MediaThumbnailMissingOnScreen(MediaThumbnailMissingOnScreen&& from) noexcept : MediaThumbnailMissingOnScreen(nullptr, ::std::move(from)) {}
+  inline MediaThumbnailMissingOnScreen& operator=(const MediaThumbnailMissingOnScreen& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MediaThumbnailMissingOnScreen& operator=(MediaThumbnailMissingOnScreen&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  [[nodiscard]] inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  [[nodiscard]] inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL
+  mutable_unknown_fields() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL
+  GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  [[nodiscard]] static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  [[nodiscard]] static const MediaThumbnailMissingOnScreen& default_instance() {
+    return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<MediaThumbnailMissingOnScreen>(&MediaThumbnailMissingOnScreen_globals_);
+  }
+  static constexpr int kIndexInFileMessages = 15;
+  friend void swap(MediaThumbnailMissingOnScreen& a, MediaThumbnailMissingOnScreen& b) { a.Swap(&b); }
+  inline void Swap(MediaThumbnailMissingOnScreen* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MediaThumbnailMissingOnScreen* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  [[nodiscard]] MediaThumbnailMissingOnScreen* PROTOBUF_NONNULL
+  New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return Super_::DefaultConstruct<MediaThumbnailMissingOnScreen>(arena);
+  }
+  using Super_::CopyFrom;
+  void CopyFrom(const MediaThumbnailMissingOnScreen& from);
+  using Super_::MergeFrom;
+  void MergeFrom(const MediaThumbnailMissingOnScreen& from) { MediaThumbnailMissingOnScreen::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  [[nodiscard]] bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  [[nodiscard]] static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  [[nodiscard]] static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  [[nodiscard]] ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] ::size_t ByteSizeLong() const final;
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] int GetCachedSize() const {
+    return _impl_._cached_size_.Get();
+  }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(MediaThumbnailMissingOnScreen* PROTOBUF_NONNULL other);
+ private:
+  static ::absl::string_view FullMessageName() { return "rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen"; }
+
+  explicit MediaThumbnailMissingOnScreen(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  MediaThumbnailMissingOnScreen(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const MediaThumbnailMissingOnScreen& from);
+  MediaThumbnailMissingOnScreen(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, MediaThumbnailMissingOnScreen&& from) noexcept
+      : MediaThumbnailMissingOnScreen(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_(
+      const MessageLite& prototype,
+      const ::google::protobuf::internal::TcParseTableBase* PROTOBUF_NULLABLE tc_table = nullptr);
+
+  [[nodiscard]] ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+  using Category = MediaThumbnailMissingOnScreen_Category;
+  static constexpr Category CATEGORY_UNKNOWN = MediaThumbnailMissingOnScreen_Category_CATEGORY_UNKNOWN;
+  static constexpr Category CATEGORY_BROKEN = MediaThumbnailMissingOnScreen_Category_CATEGORY_BROKEN;
+  static constexpr Category CATEGORY_EXPECTED = MediaThumbnailMissingOnScreen_Category_CATEGORY_EXPECTED;
+  [[nodiscard]] static inline bool Category_IsValid(int value) {
+    return MediaThumbnailMissingOnScreen_Category_IsValid(value);
+  }
+  static constexpr Category Category_MIN = MediaThumbnailMissingOnScreen_Category_Category_MIN;
+  static constexpr Category Category_MAX = MediaThumbnailMissingOnScreen_Category_Category_MAX;
+  static constexpr int Category_ARRAYSIZE = MediaThumbnailMissingOnScreen_Category_Category_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL Category_descriptor() {
+    return MediaThumbnailMissingOnScreen_Category_descriptor();
+  }
+  template <typename T>
+  [[nodiscard]] static inline const ::std::string& Category_Name(T value) {
+    return MediaThumbnailMissingOnScreen_Category_Name(value);
+  }
+  [[nodiscard]] static inline bool Category_Parse(
+      ::absl::string_view name, Category* PROTOBUF_NONNULL value) {
+    return MediaThumbnailMissingOnScreen_Category_Parse(name, value);
+  }
+  using Cause = MediaThumbnailMissingOnScreen_Cause;
+  static constexpr Cause CAUSE_NONE = MediaThumbnailMissingOnScreen_Cause_CAUSE_NONE;
+  static constexpr Cause CAUSE_STUCK_LOADING = MediaThumbnailMissingOnScreen_Cause_CAUSE_STUCK_LOADING;
+  static constexpr Cause CAUSE_STUCK_DOWNLOADING = MediaThumbnailMissingOnScreen_Cause_CAUSE_STUCK_DOWNLOADING;
+  static constexpr Cause CAUSE_FAILED_TO_GENERATE = MediaThumbnailMissingOnScreen_Cause_CAUSE_FAILED_TO_GENERATE;
+  static constexpr Cause CAUSE_AVAILABLE_NOT_SHOWN = MediaThumbnailMissingOnScreen_Cause_CAUSE_AVAILABLE_NOT_SHOWN;
+  static constexpr Cause CAUSE_UNKNOWN = MediaThumbnailMissingOnScreen_Cause_CAUSE_UNKNOWN;
+  static constexpr Cause CAUSE_STALE_MISSING_OVERLAY = MediaThumbnailMissingOnScreen_Cause_CAUSE_STALE_MISSING_OVERLAY;
+  [[nodiscard]] static inline bool Cause_IsValid(int value) {
+    return MediaThumbnailMissingOnScreen_Cause_IsValid(value);
+  }
+  static constexpr Cause Cause_MIN = MediaThumbnailMissingOnScreen_Cause_Cause_MIN;
+  static constexpr Cause Cause_MAX = MediaThumbnailMissingOnScreen_Cause_Cause_MAX;
+  static constexpr int Cause_ARRAYSIZE = MediaThumbnailMissingOnScreen_Cause_Cause_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL Cause_descriptor() {
+    return MediaThumbnailMissingOnScreen_Cause_descriptor();
+  }
+  template <typename T>
+  [[nodiscard]] static inline const ::std::string& Cause_Name(T value) {
+    return MediaThumbnailMissingOnScreen_Cause_Name(value);
+  }
+  [[nodiscard]] static inline bool Cause_Parse(
+      ::absl::string_view name, Cause* PROTOBUF_NONNULL value) {
+    return MediaThumbnailMissingOnScreen_Cause_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kCategoryFieldNumber = 1,
+    kCauseFieldNumber = 2,
+    kSurfaceFieldNumber = 3,
+    kMediaKindFieldNumber = 4,
+    kGraceSecondsFieldNumber = 5,
+  };
+  // .rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.Category category = 1;
+  void clear_category() ;
+  [[nodiscard]] ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category category() const;
+  void set_category(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category value);
+
+  private:
+  ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category _internal_category() const;
+  void _internal_set_category(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category value);
+
+  public:
+  // .rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.Cause cause = 2;
+  void clear_cause() ;
+  [[nodiscard]] ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause cause() const;
+  void set_cause(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause value);
+
+  private:
+  ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause _internal_cause() const;
+  void _internal_set_cause(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause value);
+
+  public:
+  // .rv.analytics.mediamanagement.ThumbnailOnScreen.Surface surface = 3;
+  void clear_surface() ;
+  [[nodiscard]] ::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface surface() const;
+  void set_surface(::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface value);
+
+  private:
+  ::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface _internal_surface() const;
+  void _internal_set_surface(::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface value);
+
+  public:
+  // .rv.analytics.mediamanagement.ThumbnailOnScreen.MediaKind media_kind = 4;
+  void clear_media_kind() ;
+  [[nodiscard]] ::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind media_kind() const;
+  void set_media_kind(::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind value);
+
+  private:
+  ::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind _internal_media_kind() const;
+  void _internal_set_media_kind(::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind value);
+
+  public:
+  // uint32 grace_seconds = 5;
+  void clear_grace_seconds() ;
+  [[nodiscard]] ::uint32_t grace_seconds() const;
+  void set_grace_seconds(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_grace_seconds() const;
+  void _internal_set_grace_seconds(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen)
+ private:
+  class _Internal;
+  using ParseTableT_ =
+      ::google::protobuf::internal::TcParseTable<3, 5,
+                          0, 0,
+                          2>;
+  static constexpr ParseTableT_ InternalGenerateParseTable_(
+      const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL class_data);
+  friend class ::google::protobuf::internal::TcParser;
+  #ifndef PROTOBUF_MESSAGE_GLOBALS
+  static const ParseTableT_ _table_;
+  #endif
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  friend ::google::protobuf::internal::PrivateAccess;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                                    ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const MediaThumbnailMissingOnScreen& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    int category_;
+    int cause_;
+    int surface_;
+    int media_kind_;
+    ::uint32_t grace_seconds_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -2365,6 +3255,217 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED AddedMediaReference final : public 
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::int32_t width_;
     ::int32_t height_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_analyticsMediaManagement_2eproto;
+};
+// -------------------------------------------------------------------
+
+class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED ThumbnailVisibilitySweep final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:rv.analytics.mediamanagement.ThumbnailVisibilitySweep) */ {
+  using Super_ = ::google::protobuf::Message;
+
+ public:
+  inline ThumbnailVisibilitySweep() : ThumbnailVisibilitySweep(nullptr) {}
+  ~ThumbnailVisibilitySweep() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ThumbnailVisibilitySweep* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ThumbnailVisibilitySweep));
+  }
+#endif
+
+  template <typename = void>
+  explicit constexpr ThumbnailVisibilitySweep(::google::protobuf::internal::ConstantInitialized,
+                           const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+                               class_data);
+
+  inline ThumbnailVisibilitySweep(const ThumbnailVisibilitySweep& from) : ThumbnailVisibilitySweep(nullptr, from) {}
+  inline ThumbnailVisibilitySweep(ThumbnailVisibilitySweep&& from) noexcept : ThumbnailVisibilitySweep(nullptr, ::std::move(from)) {}
+  inline ThumbnailVisibilitySweep& operator=(const ThumbnailVisibilitySweep& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ThumbnailVisibilitySweep& operator=(ThumbnailVisibilitySweep&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  [[nodiscard]] inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  [[nodiscard]] inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL
+  mutable_unknown_fields() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL
+  GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  [[nodiscard]] static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  [[nodiscard]] static const ThumbnailVisibilitySweep& default_instance() {
+    return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<ThumbnailVisibilitySweep>(&ThumbnailVisibilitySweep_globals_);
+  }
+  static constexpr int kIndexInFileMessages = 14;
+  friend void swap(ThumbnailVisibilitySweep& a, ThumbnailVisibilitySweep& b) { a.Swap(&b); }
+  inline void Swap(ThumbnailVisibilitySweep* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ThumbnailVisibilitySweep* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  [[nodiscard]] ThumbnailVisibilitySweep* PROTOBUF_NONNULL
+  New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return Super_::DefaultConstruct<ThumbnailVisibilitySweep>(arena);
+  }
+  using Super_::CopyFrom;
+  void CopyFrom(const ThumbnailVisibilitySweep& from);
+  using Super_::MergeFrom;
+  void MergeFrom(const ThumbnailVisibilitySweep& from) { ThumbnailVisibilitySweep::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  [[nodiscard]] bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  [[nodiscard]] static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  [[nodiscard]] static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  [[nodiscard]] ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] ::size_t ByteSizeLong() const final;
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] int GetCachedSize() const {
+    return _impl_._cached_size_.Get();
+  }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ThumbnailVisibilitySweep* PROTOBUF_NONNULL other);
+ private:
+  static ::absl::string_view FullMessageName() { return "rv.analytics.mediamanagement.ThumbnailVisibilitySweep"; }
+
+  explicit ThumbnailVisibilitySweep(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  ThumbnailVisibilitySweep(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const ThumbnailVisibilitySweep& from);
+  ThumbnailVisibilitySweep(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, ThumbnailVisibilitySweep&& from) noexcept
+      : ThumbnailVisibilitySweep(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_(
+      const MessageLite& prototype,
+      const ::google::protobuf::internal::TcParseTableBase* PROTOBUF_NULLABLE tc_table = nullptr);
+
+  [[nodiscard]] ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kThumbnailsFieldNumber = 1,
+  };
+  // repeated .rv.analytics.mediamanagement.ThumbnailOnScreen thumbnails = 1;
+  [[nodiscard]] int thumbnails_size() const;
+  private:
+  int _internal_thumbnails_size() const;
+
+  public:
+  void clear_thumbnails() ;
+  [[nodiscard]] const ::rv::analytics::mediamanagement::ThumbnailOnScreen& thumbnails(int index) const;
+  [[nodiscard]] ::rv::analytics::mediamanagement::ThumbnailOnScreen* PROTOBUF_NONNULL mutable_thumbnails(int index);
+  ::rv::analytics::mediamanagement::ThumbnailOnScreen* PROTOBUF_NONNULL add_thumbnails();
+  [[nodiscard]] const ::google::protobuf::RepeatedPtrField<::rv::analytics::mediamanagement::ThumbnailOnScreen>&
+  thumbnails() const;
+  [[nodiscard]] ::google::protobuf::RepeatedPtrField<::rv::analytics::mediamanagement::ThumbnailOnScreen>* PROTOBUF_NONNULL
+  mutable_thumbnails();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::rv::analytics::mediamanagement::ThumbnailOnScreen>& _internal_thumbnails() const;
+  ::google::protobuf::RepeatedPtrField<::rv::analytics::mediamanagement::ThumbnailOnScreen>* PROTOBUF_NONNULL _internal_mutable_thumbnails();
+
+  public:
+  // @@protoc_insertion_point(class_scope:rv.analytics.mediamanagement.ThumbnailVisibilitySweep)
+ private:
+  class _Internal;
+  using ParseTableT_ =
+      ::google::protobuf::internal::TcParseTable<0, 1,
+                          1, 0,
+                          2>;
+  static constexpr ParseTableT_ InternalGenerateParseTable_(
+      const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL class_data);
+  friend class ::google::protobuf::internal::TcParser;
+  #ifndef PROTOBUF_MESSAGE_GLOBALS
+  static const ParseTableT_ _table_;
+  #endif
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  friend ::google::protobuf::internal::PrivateAccess;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                                    ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const ThumbnailVisibilitySweep& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField< ::rv::analytics::mediamanagement::ThumbnailOnScreen > thumbnails_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -3809,6 +4910,377 @@ inline void UnreadableMediaHeld::_internal_set_documents(::uint32_t value) {
   _impl_.documents_ = value;
 }
 
+// -------------------------------------------------------------------
+
+// ThumbnailOnScreen
+
+// string media_id = 1;
+inline void ThumbnailOnScreen::clear_media_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.media_id_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+}
+inline const ::std::string& ThumbnailOnScreen::media_id() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.ThumbnailOnScreen.media_id)
+  return _internal_media_id();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void ThumbnailOnScreen::set_media_id(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  _impl_.media_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.ThumbnailOnScreen.media_id)
+}
+inline ::std::string* PROTOBUF_NONNULL ThumbnailOnScreen::mutable_media_id()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  ::std::string* _s = _internal_mutable_media_id();
+  // @@protoc_insertion_point(field_mutable:rv.analytics.mediamanagement.ThumbnailOnScreen.media_id)
+  return _s;
+}
+inline const ::std::string& ThumbnailOnScreen::_internal_media_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.media_id_.Get();
+}
+inline void ThumbnailOnScreen::_internal_set_media_id(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.media_id_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL ThumbnailOnScreen::_internal_mutable_media_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.media_id_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE ThumbnailOnScreen::release_media_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:rv.analytics.mediamanagement.ThumbnailOnScreen.media_id)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  auto* released = _impl_.media_id_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.media_id_.Set("", GetArena());
+  }
+  return released;
+}
+inline void ThumbnailOnScreen::set_allocated_media_id(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  }
+  _impl_.media_id_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.media_id_.IsDefault()) {
+    _impl_.media_id_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:rv.analytics.mediamanagement.ThumbnailOnScreen.media_id)
+}
+
+// .rv.analytics.mediamanagement.ThumbnailOnScreen.Surface surface = 2;
+inline void ThumbnailOnScreen::clear_surface() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.surface_ = 0;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface ThumbnailOnScreen::surface() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.ThumbnailOnScreen.surface)
+  return _internal_surface();
+}
+inline void ThumbnailOnScreen::set_surface(::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface value) {
+  _internal_set_surface(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.ThumbnailOnScreen.surface)
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface ThumbnailOnScreen::_internal_surface() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface>(_impl_.surface_);
+}
+inline void ThumbnailOnScreen::_internal_set_surface(::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.surface_ = value;
+}
+
+// bool shows_image = 3;
+inline void ThumbnailOnScreen::clear_shows_image() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.shows_image_ = false;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+}
+inline bool ThumbnailOnScreen::shows_image() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.ThumbnailOnScreen.shows_image)
+  return _internal_shows_image();
+}
+inline void ThumbnailOnScreen::set_shows_image(bool value) {
+  _internal_set_shows_image(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.ThumbnailOnScreen.shows_image)
+}
+inline bool ThumbnailOnScreen::_internal_shows_image() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.shows_image_;
+}
+inline void ThumbnailOnScreen::_internal_set_shows_image(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.shows_image_ = value;
+}
+
+// .rv.analytics.mediamanagement.ThumbnailOnScreen.State state = 4;
+inline void ThumbnailOnScreen::clear_state() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.state_ = 0;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_State ThumbnailOnScreen::state() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.ThumbnailOnScreen.state)
+  return _internal_state();
+}
+inline void ThumbnailOnScreen::set_state(::rv::analytics::mediamanagement::ThumbnailOnScreen_State value) {
+  _internal_set_state(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.ThumbnailOnScreen.state)
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_State ThumbnailOnScreen::_internal_state() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::rv::analytics::mediamanagement::ThumbnailOnScreen_State>(_impl_.state_);
+}
+inline void ThumbnailOnScreen::_internal_set_state(::rv::analytics::mediamanagement::ThumbnailOnScreen_State value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.state_ = value;
+}
+
+// .rv.analytics.mediamanagement.ThumbnailOnScreen.MediaKind media_kind = 5;
+inline void ThumbnailOnScreen::clear_media_kind() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.media_kind_ = 0;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind ThumbnailOnScreen::media_kind() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.ThumbnailOnScreen.media_kind)
+  return _internal_media_kind();
+}
+inline void ThumbnailOnScreen::set_media_kind(::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind value) {
+  _internal_set_media_kind(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.ThumbnailOnScreen.media_kind)
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind ThumbnailOnScreen::_internal_media_kind() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind>(_impl_.media_kind_);
+}
+inline void ThumbnailOnScreen::_internal_set_media_kind(::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.media_kind_ = value;
+}
+
+// bool shows_missing_overlay = 6;
+inline void ThumbnailOnScreen::clear_shows_missing_overlay() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.shows_missing_overlay_ = false;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+}
+inline bool ThumbnailOnScreen::shows_missing_overlay() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.ThumbnailOnScreen.shows_missing_overlay)
+  return _internal_shows_missing_overlay();
+}
+inline void ThumbnailOnScreen::set_shows_missing_overlay(bool value) {
+  _internal_set_shows_missing_overlay(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.ThumbnailOnScreen.shows_missing_overlay)
+}
+inline bool ThumbnailOnScreen::_internal_shows_missing_overlay() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.shows_missing_overlay_;
+}
+inline void ThumbnailOnScreen::_internal_set_shows_missing_overlay(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.shows_missing_overlay_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ThumbnailVisibilitySweep
+
+// repeated .rv.analytics.mediamanagement.ThumbnailOnScreen thumbnails = 1;
+inline int ThumbnailVisibilitySweep::_internal_thumbnails_size() const {
+  return _internal_thumbnails().size();
+}
+inline int ThumbnailVisibilitySweep::thumbnails_size() const {
+  return _internal_thumbnails_size();
+}
+inline void ThumbnailVisibilitySweep::clear_thumbnails() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.thumbnails_.Clear();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+}
+inline const ::rv::analytics::mediamanagement::ThumbnailOnScreen& ThumbnailVisibilitySweep::thumbnails(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.ThumbnailVisibilitySweep.thumbnails)
+  return _internal_thumbnails().Get(index);
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen* PROTOBUF_NONNULL ThumbnailVisibilitySweep::mutable_thumbnails(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:rv.analytics.mediamanagement.ThumbnailVisibilitySweep.thumbnails)
+  return _internal_mutable_thumbnails()->Mutable(index);
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen* PROTOBUF_NONNULL ThumbnailVisibilitySweep::add_thumbnails()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::rv::analytics::mediamanagement::ThumbnailOnScreen* _add =
+      _internal_mutable_thumbnails()->InternalAddWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), GetArena());
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_add:rv.analytics.mediamanagement.ThumbnailVisibilitySweep.thumbnails)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::rv::analytics::mediamanagement::ThumbnailOnScreen>& ThumbnailVisibilitySweep::thumbnails() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:rv.analytics.mediamanagement.ThumbnailVisibilitySweep.thumbnails)
+  return _internal_thumbnails();
+}
+inline ::google::protobuf::RepeatedPtrField<::rv::analytics::mediamanagement::ThumbnailOnScreen>* PROTOBUF_NONNULL
+ThumbnailVisibilitySweep::mutable_thumbnails() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_mutable_list:rv.analytics.mediamanagement.ThumbnailVisibilitySweep.thumbnails)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_thumbnails();
+}
+inline const ::google::protobuf::RepeatedPtrField<::rv::analytics::mediamanagement::ThumbnailOnScreen>&
+ThumbnailVisibilitySweep::_internal_thumbnails() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.thumbnails_;
+}
+inline ::google::protobuf::RepeatedPtrField<::rv::analytics::mediamanagement::ThumbnailOnScreen>* PROTOBUF_NONNULL
+ThumbnailVisibilitySweep::_internal_mutable_thumbnails() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.thumbnails_;
+}
+
+// -------------------------------------------------------------------
+
+// MediaThumbnailMissingOnScreen
+
+// .rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.Category category = 1;
+inline void MediaThumbnailMissingOnScreen::clear_category() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.category_ = 0;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+}
+inline ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category MediaThumbnailMissingOnScreen::category() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.category)
+  return _internal_category();
+}
+inline void MediaThumbnailMissingOnScreen::set_category(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category value) {
+  _internal_set_category(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.category)
+}
+inline ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category MediaThumbnailMissingOnScreen::_internal_category() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category>(_impl_.category_);
+}
+inline void MediaThumbnailMissingOnScreen::_internal_set_category(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.category_ = value;
+}
+
+// .rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.Cause cause = 2;
+inline void MediaThumbnailMissingOnScreen::clear_cause() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.cause_ = 0;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+}
+inline ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause MediaThumbnailMissingOnScreen::cause() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.cause)
+  return _internal_cause();
+}
+inline void MediaThumbnailMissingOnScreen::set_cause(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause value) {
+  _internal_set_cause(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.cause)
+}
+inline ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause MediaThumbnailMissingOnScreen::_internal_cause() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause>(_impl_.cause_);
+}
+inline void MediaThumbnailMissingOnScreen::_internal_set_cause(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.cause_ = value;
+}
+
+// .rv.analytics.mediamanagement.ThumbnailOnScreen.Surface surface = 3;
+inline void MediaThumbnailMissingOnScreen::clear_surface() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.surface_ = 0;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface MediaThumbnailMissingOnScreen::surface() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.surface)
+  return _internal_surface();
+}
+inline void MediaThumbnailMissingOnScreen::set_surface(::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface value) {
+  _internal_set_surface(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.surface)
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface MediaThumbnailMissingOnScreen::_internal_surface() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface>(_impl_.surface_);
+}
+inline void MediaThumbnailMissingOnScreen::_internal_set_surface(::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.surface_ = value;
+}
+
+// .rv.analytics.mediamanagement.ThumbnailOnScreen.MediaKind media_kind = 4;
+inline void MediaThumbnailMissingOnScreen::clear_media_kind() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.media_kind_ = 0;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind MediaThumbnailMissingOnScreen::media_kind() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.media_kind)
+  return _internal_media_kind();
+}
+inline void MediaThumbnailMissingOnScreen::set_media_kind(::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind value) {
+  _internal_set_media_kind(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.media_kind)
+}
+inline ::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind MediaThumbnailMissingOnScreen::_internal_media_kind() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind>(_impl_.media_kind_);
+}
+inline void MediaThumbnailMissingOnScreen::_internal_set_media_kind(::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.media_kind_ = value;
+}
+
+// uint32 grace_seconds = 5;
+inline void MediaThumbnailMissingOnScreen::clear_grace_seconds() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.grace_seconds_ = 0u;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+}
+inline ::uint32_t MediaThumbnailMissingOnScreen::grace_seconds() const {
+  // @@protoc_insertion_point(field_get:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.grace_seconds)
+  return _internal_grace_seconds();
+}
+inline void MediaThumbnailMissingOnScreen::set_grace_seconds(::uint32_t value) {
+  _internal_set_grace_seconds(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  // @@protoc_insertion_point(field_set:rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.grace_seconds)
+}
+inline ::uint32_t MediaThumbnailMissingOnScreen::_internal_grace_seconds() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.grace_seconds_;
+}
+inline void MediaThumbnailMissingOnScreen::_internal_set_grace_seconds(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.grace_seconds_ = value;
+}
+
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -3833,6 +5305,36 @@ struct is_proto_enum<::rv::analytics::mediamanagement::MediaStateResyncGaveUp_So
 template <>
 inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::rv::analytics::mediamanagement::MediaStateResyncGaveUp_Source>() {
   return ::rv::analytics::mediamanagement::MediaStateResyncGaveUp_Source_descriptor();
+}
+template <>
+struct is_proto_enum<::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface>() {
+  return ::rv::analytics::mediamanagement::ThumbnailOnScreen_Surface_descriptor();
+}
+template <>
+struct is_proto_enum<::rv::analytics::mediamanagement::ThumbnailOnScreen_State> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::rv::analytics::mediamanagement::ThumbnailOnScreen_State>() {
+  return ::rv::analytics::mediamanagement::ThumbnailOnScreen_State_descriptor();
+}
+template <>
+struct is_proto_enum<::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind>() {
+  return ::rv::analytics::mediamanagement::ThumbnailOnScreen_MediaKind_descriptor();
+}
+template <>
+struct is_proto_enum<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category>() {
+  return ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Category_descriptor();
+}
+template <>
+struct is_proto_enum<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause> : std::true_type {};
+template <>
+inline const EnumDescriptor* PROTOBUF_NONNULL GetEnumDescriptor<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause>() {
+  return ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_Cause_descriptor();
 }
 
 }  // namespace protobuf

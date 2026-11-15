@@ -48,12 +48,12 @@ constexpr Event::ParseTableT_ Event::InternalGenerateParseTable_(const ::_pbi::C
       PROTOBUF_FIELD_OFFSET(Event,
                             _impl_._cached_size_),  // no hasbits
       0, // no _extensions_
-      336, 0,  // max_field_number, fast_idx_mask
+      338, 0,  // max_field_number, fast_idx_mask
       offsetof(ParseTableT_, field_lookup_table),
       0,  // skipmap
       offsetof(ParseTableT_, field_entries),
-      240,  // num_field_entries
-      240,  // num_aux_entries
+      241,  // num_field_entries
+      241,  // num_aux_entries
       offsetof(ParseTableT_, aux_entries),
       class_data,
       nullptr,  // post_loop_handler
@@ -69,7 +69,7 @@ constexpr Event::ParseTableT_ Event::InternalGenerateParseTable_(const ::_pbi::C
             PROTOBUF_FIELD_OFFSET(ParseTableT_, field_entries) +
             sizeof(_pbi::TcParseTableBase::FieldEntry) * 15}}},
     }}, {{
-      33, 0, 19,
+      33, 0, 20,
       65472, 32,
       1, 38,
       0, 53,
@@ -89,6 +89,7 @@ constexpr Event::ParseTableT_ Event::InternalGenerateParseTable_(const ::_pbi::C
       0, 193,
       512, 209,
       0, 224,
+      65533, 240,
       65535, 65535
     }}, {{
       // .rv.analytics.api.MessageReceived api_message_received = 1;
@@ -571,6 +572,8 @@ constexpr Event::ParseTableT_ Event::InternalGenerateParseTable_(const ::_pbi::C
       {PROTOBUF_FIELD_OFFSET(Event, _impl_.Interaction_.stored_version_vector_repaired_), _Internal::kOneofCaseOffset + 0, 238, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
       // .rv.analytics.mediamanagement.UnreadableMediaHeld unreadable_media_held = 336;
       {PROTOBUF_FIELD_OFFSET(Event, _impl_.Interaction_.unreadable_media_held_), _Internal::kOneofCaseOffset + 0, 239, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+      // .rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen media_thumbnail_missing_on_screen = 338;
+      {PROTOBUF_FIELD_OFFSET(Event, _impl_.Interaction_.media_thumbnail_missing_on_screen_), _Internal::kOneofCaseOffset + 0, 240, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
     }},
     {{
         #ifndef PROTOBUF_MESSAGE_GLOBALS
@@ -1773,6 +1776,11 @@ constexpr Event::ParseTableT_ Event::InternalGenerateParseTable_(const ::_pbi::C
         #else
         {::_pbi::FieldAuxMessageGlobals(), &::rv::analytics::mediamanagement::UnreadableMediaHeld_globals_},
         #endif
+        #ifndef PROTOBUF_MESSAGE_GLOBALS
+        {::_pbi::TcParser::GetTable<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen>()},
+        #else
+        {::_pbi::FieldAuxMessageGlobals(), &::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_globals_},
+        #endif
     }},
     {{
     }},
@@ -2130,6 +2138,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::rv::analytics::Event, _impl_.Interaction_),
         PROTOBUF_FIELD_OFFSET(::rv::analytics::Event, _impl_.Interaction_),
         PROTOBUF_FIELD_OFFSET(::rv::analytics::Event, _impl_.Interaction_),
+        PROTOBUF_FIELD_OFFSET(::rv::analytics::Event, _impl_.Interaction_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -2155,7 +2164,7 @@ const char descriptor_table_protodef_analyticsEvent_2eproto[] ABSL_ATTRIBUTE_SEC
     "r.proto\032\031analyticsTriggerCue.proto\032\033anal"
     "yticsTriggerMedia.proto\032\021analyticsUI.pro"
     "to\032\034analyticsTrackedEvents.proto\032\031analyt"
-    "icsPowerPoint.proto\"\277\214\001\n\005Event\022A\n\024api_me"
+    "icsPowerPoint.proto\"\252\215\001\n\005Event\022A\n\024api_me"
     "ssage_received\030\001 \001(\0132!.rv.analytics.api."
     "MessageReceivedH\000\0226\n\016create_library\030\002 \001("
     "\0132\034.rv.analytics.create.LibraryH\000\0228\n\017cre"
@@ -2604,8 +2613,11 @@ const char descriptor_table_protodef_analyticsEvent_2eproto[] ABSL_ATTRIBUTE_SEC
     "_repaired\030\317\002 \001(\0132..rv.analytics.sync.Sto"
     "redVersionVectorRepairedH\000\022S\n\025unreadable"
     "_media_held\030\320\002 \001(\01321.rv.analytics.mediam"
-    "anagement.UnreadableMediaHeldH\000B\r\n\013Inter"
-    "actionb\006proto3"
+    "anagement.UnreadableMediaHeldH\000\022i\n!media"
+    "_thumbnail_missing_on_screen\030\322\002 \001(\0132;.rv"
+    ".analytics.mediamanagement.MediaThumbnai"
+    "lMissingOnScreenH\000B\r\n\013Interactionb\006proto"
+    "3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_analyticsEvent_2eproto_deps[20] = {
@@ -2634,7 +2646,7 @@ static ::absl::once_flag descriptor_table_analyticsEvent_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_analyticsEvent_2eproto = {
     false,
     false,
-    18534,
+    18641,
     descriptor_table_protodef_analyticsEvent_2eproto,
     "analyticsEvent.proto",
     &descriptor_table_analyticsEvent_2eproto_once,
@@ -8411,6 +8423,30 @@ void Event::clear_unreadable_media_held() {
     clear_has_Interaction();
   }
 }
+void Event::set_allocated_media_thumbnail_missing_on_screen(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NULLABLE media_thumbnail_missing_on_screen) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_Interaction();
+  if (media_thumbnail_missing_on_screen) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::Message*>(media_thumbnail_missing_on_screen)->GetArena();
+    if (message_arena != submessage_arena) {
+      media_thumbnail_missing_on_screen = ::google::protobuf::internal::GetOwnedMessage(message_arena, media_thumbnail_missing_on_screen, submessage_arena);
+    }
+    set_has_media_thumbnail_missing_on_screen();
+    _impl_.Interaction_.media_thumbnail_missing_on_screen_ = media_thumbnail_missing_on_screen;
+  }
+  // @@protoc_insertion_point(field_set_allocated:rv.analytics.Event.media_thumbnail_missing_on_screen)
+}
+void Event::clear_media_thumbnail_missing_on_screen() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (Interaction_case() == kMediaThumbnailMissingOnScreen) {
+    if (GetArena() == nullptr) {
+      delete _impl_.Interaction_.media_thumbnail_missing_on_screen_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.Interaction_.media_thumbnail_missing_on_screen_);
+    }
+    clear_has_Interaction();
+  }
+}
 Event::Event(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : Super_(arena, Event_get_class_data()) {
@@ -9163,6 +9199,9 @@ Event::Event(
         break;
       case kUnreadableMediaHeld:
         _impl_.Interaction_.unreadable_media_held_ = Super_::CopyConstruct(arena, *from._impl_.Interaction_.unreadable_media_held_);
+        break;
+      case kMediaThumbnailMissingOnScreen:
+        _impl_.Interaction_.media_thumbnail_missing_on_screen_ = Super_::CopyConstruct(arena, *from._impl_.Interaction_.media_thumbnail_missing_on_screen_);
         break;
   }
 
@@ -11118,6 +11157,14 @@ void Event::clear_Interaction() {
       }
       break;
     }
+    case kMediaThumbnailMissingOnScreen: {
+      if (GetArena() == nullptr) {
+        delete _impl_.Interaction_.media_thumbnail_missing_on_screen_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.Interaction_.media_thumbnail_missing_on_screen_);
+      }
+      break;
+    }
     case INTERACTION_NOT_SET: {
       break;
     }
@@ -12621,6 +12668,12 @@ PROTOBUF_NOINLINE void Event::Clear() {
           stream);
       break;
     }
+    case kMediaThumbnailMissingOnScreen: {
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          338, *this_._impl_.Interaction_.media_thumbnail_missing_on_screen_, this_._impl_.Interaction_.media_thumbnail_missing_on_screen_->GetCachedSize(), target,
+          stream);
+      break;
+    }
     default:
       break;
   }
@@ -14084,6 +14137,12 @@ PROTOBUF_NOINLINE void Event::Clear() {
     case kUnreadableMediaHeld: {
       total_size += 2 +
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.Interaction_.unreadable_media_held_);
+      break;
+    }
+    // .rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen media_thumbnail_missing_on_screen = 338;
+    case kMediaThumbnailMissingOnScreen: {
+      total_size += 2 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.Interaction_.media_thumbnail_missing_on_screen_);
       break;
     }
     case INTERACTION_NOT_SET: {
@@ -16036,6 +16095,14 @@ void Event::MergeImpl(::google::protobuf::MessageLite& to_msg,
           _this->_impl_.Interaction_.unreadable_media_held_ = Super_::CopyConstruct(arena, *from._impl_.Interaction_.unreadable_media_held_);
         } else {
           _this->_impl_.Interaction_.unreadable_media_held_->MergeFrom(*from._impl_.Interaction_.unreadable_media_held_);
+        }
+        break;
+      }
+      case kMediaThumbnailMissingOnScreen: {
+        if (oneof_needs_init) {
+          _this->_impl_.Interaction_.media_thumbnail_missing_on_screen_ = Super_::CopyConstruct(arena, *from._impl_.Interaction_.media_thumbnail_missing_on_screen_);
+        } else {
+          _this->_impl_.Interaction_.media_thumbnail_missing_on_screen_->MergeFrom(*from._impl_.Interaction_.media_thumbnail_missing_on_screen_);
         }
         break;
       }

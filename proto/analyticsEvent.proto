@@ -288,6 +288,7 @@ message Event {
     rv.analytics.trackedevents.CloudWorkspaceTransfer cloud_workspace_transfer = 334;
     rv.analytics.sync.StoredVersionVectorRepaired stored_version_vector_repaired = 335;
     rv.analytics.mediamanagement.UnreadableMediaHeld unreadable_media_held = 336;
+    rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen media_thumbnail_missing_on_screen = 338;
   }
 
 }

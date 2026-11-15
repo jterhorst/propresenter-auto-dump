@@ -298,6 +298,282 @@ public nonisolated struct Rv_Analytics_Mediamanagement_UnreadableMediaHeld: Send
   public init() {}
 }
 
+public nonisolated struct Rv_Analytics_Mediamanagement_ThumbnailOnScreen: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var mediaID: String = String()
+
+  public var surface: Rv_Analytics_Mediamanagement_ThumbnailOnScreen.Surface = .unknown
+
+  public var showsImage: Bool = false
+
+  public var state: Rv_Analytics_Mediamanagement_ThumbnailOnScreen.State = .unknown
+
+  public var mediaKind: Rv_Analytics_Mediamanagement_ThumbnailOnScreen.MediaKind = .unknown
+
+  public var showsMissingOverlay: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Surface: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case presentation // = 1
+    case mediaBin // = 2
+    case playlistMedia // = 3
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .presentation
+      case 2: self = .mediaBin
+      case 3: self = .playlistMedia
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .presentation: return 1
+      case .mediaBin: return 2
+      case .playlistMedia: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Mediamanagement_ThumbnailOnScreen.Surface] = [
+      .unknown,
+      .presentation,
+      .mediaBin,
+      .playlistMedia,
+    ]
+
+  }
+
+  public nonisolated enum State: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case mediaMissing // = 1
+    case downloading // = 2
+    case loading // = 3
+    case failed // = 4
+    case available // = 5
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .mediaMissing
+      case 2: self = .downloading
+      case 3: self = .loading
+      case 4: self = .failed
+      case 5: self = .available
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .mediaMissing: return 1
+      case .downloading: return 2
+      case .loading: return 3
+      case .failed: return 4
+      case .available: return 5
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Mediamanagement_ThumbnailOnScreen.State] = [
+      .unknown,
+      .mediaMissing,
+      .downloading,
+      .loading,
+      .failed,
+      .available,
+    ]
+
+  }
+
+  public nonisolated enum MediaKind: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case image // = 1
+    case video // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .image
+      case 2: self = .video
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .image: return 1
+      case .video: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Mediamanagement_ThumbnailOnScreen.MediaKind] = [
+      .unknown,
+      .image,
+      .video,
+    ]
+
+  }
+
+  public init() {}
+}
+
+public nonisolated struct Rv_Analytics_Mediamanagement_ThumbnailVisibilitySweep: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var thumbnails: [Rv_Analytics_Mediamanagement_ThumbnailOnScreen] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public nonisolated struct Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var category: Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen.Category = .unknown
+
+  public var cause: Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen.Cause = .none
+
+  public var surface: Rv_Analytics_Mediamanagement_ThumbnailOnScreen.Surface = .unknown
+
+  public var mediaKind: Rv_Analytics_Mediamanagement_ThumbnailOnScreen.MediaKind = .unknown
+
+  public var graceSeconds: UInt32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public nonisolated enum Category: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case broken // = 1
+    case expected // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .broken
+      case 2: self = .expected
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .broken: return 1
+      case .expected: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen.Category] = [
+      .unknown,
+      .broken,
+      .expected,
+    ]
+
+  }
+
+  public nonisolated enum Cause: SwiftProtobuf.Enum, Swift.CaseIterable {
+    public typealias RawValue = Int
+    case none // = 0
+    case stuckLoading // = 1
+    case stuckDownloading // = 2
+    case failedToGenerate // = 3
+    case availableNotShown // = 4
+    case unknown // = 5
+    case staleMissingOverlay // = 6
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .none
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .none
+      case 1: self = .stuckLoading
+      case 2: self = .stuckDownloading
+      case 3: self = .failedToGenerate
+      case 4: self = .availableNotShown
+      case 5: self = .unknown
+      case 6: self = .staleMissingOverlay
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .none: return 0
+      case .stuckLoading: return 1
+      case .stuckDownloading: return 2
+      case .failedToGenerate: return 3
+      case .availableNotShown: return 4
+      case .unknown: return 5
+      case .staleMissingOverlay: return 6
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+    // The compiler won't synthesize support with the UNRECOGNIZED case.
+    public static let allCases: [Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen.Cause] = [
+      .none,
+      .stuckLoading,
+      .stuckDownloading,
+      .failedToGenerate,
+      .availableNotShown,
+      .unknown,
+      .staleMissingOverlay,
+    ]
+
+  }
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "rv.analytics.mediamanagement"
@@ -763,4 +1039,159 @@ nonisolated extension Rv_Analytics_Mediamanagement_UnreadableMediaHeld: SwiftPro
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_ThumbnailOnScreen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ThumbnailOnScreen"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}media_id\0\u{1}surface\0\u{3}shows_image\0\u{1}state\0\u{3}media_kind\0\u{3}shows_missing_overlay\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.mediaID) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.surface) }()
+      case 3: try { try decoder.decodeSingularBoolField(value: &self.showsImage) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.state) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.mediaKind) }()
+      case 6: try { try decoder.decodeSingularBoolField(value: &self.showsMissingOverlay) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.mediaID.isEmpty {
+      try visitor.visitSingularStringField(value: self.mediaID, fieldNumber: 1)
+    }
+    if self.surface != .unknown {
+      try visitor.visitSingularEnumField(value: self.surface, fieldNumber: 2)
+    }
+    if self.showsImage != false {
+      try visitor.visitSingularBoolField(value: self.showsImage, fieldNumber: 3)
+    }
+    if self.state != .unknown {
+      try visitor.visitSingularEnumField(value: self.state, fieldNumber: 4)
+    }
+    if self.mediaKind != .unknown {
+      try visitor.visitSingularEnumField(value: self.mediaKind, fieldNumber: 5)
+    }
+    if self.showsMissingOverlay != false {
+      try visitor.visitSingularBoolField(value: self.showsMissingOverlay, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Mediamanagement_ThumbnailOnScreen, rhs: Rv_Analytics_Mediamanagement_ThumbnailOnScreen) -> Bool {
+    if lhs.mediaID != rhs.mediaID {return false}
+    if lhs.surface != rhs.surface {return false}
+    if lhs.showsImage != rhs.showsImage {return false}
+    if lhs.state != rhs.state {return false}
+    if lhs.mediaKind != rhs.mediaKind {return false}
+    if lhs.showsMissingOverlay != rhs.showsMissingOverlay {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_ThumbnailOnScreen.Surface: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SURFACE_UNKNOWN\0\u{1}SURFACE_PRESENTATION\0\u{1}SURFACE_MEDIA_BIN\0\u{1}SURFACE_PLAYLIST_MEDIA\0")
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_ThumbnailOnScreen.State: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STATE_UNKNOWN\0\u{1}STATE_MEDIA_MISSING\0\u{1}STATE_DOWNLOADING\0\u{1}STATE_LOADING\0\u{1}STATE_FAILED\0\u{1}STATE_AVAILABLE\0")
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_ThumbnailOnScreen.MediaKind: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0MEDIA_KIND_UNKNOWN\0\u{1}MEDIA_KIND_IMAGE\0\u{1}MEDIA_KIND_VIDEO\0")
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_ThumbnailVisibilitySweep: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ThumbnailVisibilitySweep"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}thumbnails\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.thumbnails) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.thumbnails.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.thumbnails, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Mediamanagement_ThumbnailVisibilitySweep, rhs: Rv_Analytics_Mediamanagement_ThumbnailVisibilitySweep) -> Bool {
+    if lhs.thumbnails != rhs.thumbnails {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".MediaThumbnailMissingOnScreen"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}category\0\u{1}cause\0\u{1}surface\0\u{3}media_kind\0\u{3}grace_seconds\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.category) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.cause) }()
+      case 3: try { try decoder.decodeSingularEnumField(value: &self.surface) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.mediaKind) }()
+      case 5: try { try decoder.decodeSingularUInt32Field(value: &self.graceSeconds) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.category != .unknown {
+      try visitor.visitSingularEnumField(value: self.category, fieldNumber: 1)
+    }
+    if self.cause != .none {
+      try visitor.visitSingularEnumField(value: self.cause, fieldNumber: 2)
+    }
+    if self.surface != .unknown {
+      try visitor.visitSingularEnumField(value: self.surface, fieldNumber: 3)
+    }
+    if self.mediaKind != .unknown {
+      try visitor.visitSingularEnumField(value: self.mediaKind, fieldNumber: 4)
+    }
+    if self.graceSeconds != 0 {
+      try visitor.visitSingularUInt32Field(value: self.graceSeconds, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen, rhs: Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen) -> Bool {
+    if lhs.category != rhs.category {return false}
+    if lhs.cause != rhs.cause {return false}
+    if lhs.surface != rhs.surface {return false}
+    if lhs.mediaKind != rhs.mediaKind {return false}
+    if lhs.graceSeconds != rhs.graceSeconds {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen.Category: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CATEGORY_UNKNOWN\0\u{1}CATEGORY_BROKEN\0\u{1}CATEGORY_EXPECTED\0")
+}
+
+nonisolated extension Rv_Analytics_Mediamanagement_MediaThumbnailMissingOnScreen.Cause: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0CAUSE_NONE\0\u{1}CAUSE_STUCK_LOADING\0\u{1}CAUSE_STUCK_DOWNLOADING\0\u{1}CAUSE_FAILED_TO_GENERATE\0\u{1}CAUSE_AVAILABLE_NOT_SHOWN\0\u{1}CAUSE_UNKNOWN\0\u{1}CAUSE_STALE_MISSING_OVERLAY\0")
 }

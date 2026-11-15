@@ -77,3 +77,62 @@ message UnreadableMediaHeld {
   uint32 respelled_case = 6;
   uint32 documents = 7;
 }
+
+message ThumbnailOnScreen {
+  enum Surface {
+    SURFACE_UNKNOWN = 0;
+    SURFACE_PRESENTATION = 1;
+    SURFACE_MEDIA_BIN = 2;
+    SURFACE_PLAYLIST_MEDIA = 3;
+  }
+
+  enum State {
+    STATE_UNKNOWN = 0;
+    STATE_MEDIA_MISSING = 1;
+    STATE_DOWNLOADING = 2;
+    STATE_LOADING = 3;
+    STATE_FAILED = 4;
+    STATE_AVAILABLE = 5;
+  }
+
+  enum MediaKind {
+    MEDIA_KIND_UNKNOWN = 0;
+    MEDIA_KIND_IMAGE = 1;
+    MEDIA_KIND_VIDEO = 2;
+  }
+
+  string media_id = 1;
+  rv.analytics.mediamanagement.ThumbnailOnScreen.Surface surface = 2;
+  bool shows_image = 3;
+  rv.analytics.mediamanagement.ThumbnailOnScreen.State state = 4;
+  rv.analytics.mediamanagement.ThumbnailOnScreen.MediaKind media_kind = 5;
+  bool shows_missing_overlay = 6;
+}
+
+message ThumbnailVisibilitySweep {
+  repeated rv.analytics.mediamanagement.ThumbnailOnScreen thumbnails = 1;
+}
+
+message MediaThumbnailMissingOnScreen {
+  enum Category {
+    CATEGORY_UNKNOWN = 0;
+    CATEGORY_BROKEN = 1;
+    CATEGORY_EXPECTED = 2;
+  }
+
+  enum Cause {
+    CAUSE_NONE = 0;
+    CAUSE_STUCK_LOADING = 1;
+    CAUSE_STUCK_DOWNLOADING = 2;
+    CAUSE_FAILED_TO_GENERATE = 3;
+    CAUSE_AVAILABLE_NOT_SHOWN = 4;
+    CAUSE_UNKNOWN = 5;
+    CAUSE_STALE_MISSING_OVERLAY = 6;
+  }
+
+  rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.Category category = 1;
+  rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen.Cause cause = 2;
+  rv.analytics.mediamanagement.ThumbnailOnScreen.Surface surface = 3;
+  rv.analytics.mediamanagement.ThumbnailOnScreen.MediaKind media_kind = 4;
+  uint32 grace_seconds = 5;
+}

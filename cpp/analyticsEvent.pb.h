@@ -388,6 +388,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Event final : public ::google::prot
     kCloudWorkspaceTransfer = 334,
     kStoredVersionVectorRepaired = 335,
     kUnreadableMediaHeld = 336,
+    kMediaThumbnailMissingOnScreen = 338,
     INTERACTION_NOT_SET = 0,
   };
   static constexpr int kIndexInFileMessages = 0;
@@ -720,6 +721,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Event final : public ::google::prot
     kCloudWorkspaceTransferFieldNumber = 334,
     kStoredVersionVectorRepairedFieldNumber = 335,
     kUnreadableMediaHeldFieldNumber = 336,
+    kMediaThumbnailMissingOnScreenFieldNumber = 338,
   };
   // .rv.analytics.api.MessageReceived api_message_received = 1;
   [[nodiscard]] bool has_api_message_received() const;
@@ -5281,6 +5283,25 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Event final : public ::google::prot
   ::rv::analytics::mediamanagement::UnreadableMediaHeld* PROTOBUF_NONNULL _internal_mutable_unreadable_media_held();
 
   public:
+  // .rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen media_thumbnail_missing_on_screen = 338;
+  [[nodiscard]] bool has_media_thumbnail_missing_on_screen() const;
+  private:
+  bool _internal_has_media_thumbnail_missing_on_screen() const;
+
+  public:
+  void clear_media_thumbnail_missing_on_screen() ;
+  [[nodiscard]] const ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen& media_thumbnail_missing_on_screen() const;
+  [[nodiscard]] ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NULLABLE release_media_thumbnail_missing_on_screen();
+  ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NONNULL mutable_media_thumbnail_missing_on_screen();
+  void set_allocated_media_thumbnail_missing_on_screen(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_media_thumbnail_missing_on_screen(::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NULLABLE value);
+  ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NULLABLE unsafe_arena_release_media_thumbnail_missing_on_screen();
+
+  private:
+  const ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen& _internal_media_thumbnail_missing_on_screen() const;
+  ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NONNULL _internal_mutable_media_thumbnail_missing_on_screen();
+
+  public:
   void clear_Interaction();
   InteractionCase Interaction_case() const;
   // @@protoc_insertion_point(class_scope:rv.analytics.Event)
@@ -5526,12 +5547,13 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Event final : public ::google::prot
   void set_has_cloud_workspace_transfer();
   void set_has_stored_version_vector_repaired();
   void set_has_unreadable_media_held();
+  void set_has_media_thumbnail_missing_on_screen();
   [[nodiscard]] inline bool has_Interaction() const;
   inline void clear_has_Interaction();
   using ParseTableT_ =
-      ::google::protobuf::internal::TcParseTable<0, 240,
-                          240, 0,
-                          43>;
+      ::google::protobuf::internal::TcParseTable<0, 241,
+                          241, 0,
+                          45>;
   static constexpr ParseTableT_ InternalGenerateParseTable_(
       const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL class_data);
   friend class ::google::protobuf::internal::TcParser;
@@ -5799,6 +5821,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Event final : public ::google::prot
       ::google::protobuf::Message* PROTOBUF_NULLABLE cloud_workspace_transfer_;
       ::google::protobuf::Message* PROTOBUF_NULLABLE stored_version_vector_repaired_;
       ::google::protobuf::Message* PROTOBUF_NULLABLE unreadable_media_held_;
+      ::google::protobuf::Message* PROTOBUF_NULLABLE media_thumbnail_missing_on_screen_;
     } Interaction_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::uint32_t _oneof_case_[1];
@@ -22621,6 +22644,76 @@ inline ::rv::analytics::mediamanagement::UnreadableMediaHeld* PROTOBUF_NONNULL E
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   ::rv::analytics::mediamanagement::UnreadableMediaHeld* _msg = _internal_mutable_unreadable_media_held();
   // @@protoc_insertion_point(field_mutable:rv.analytics.Event.unreadable_media_held)
+  return _msg;
+}
+
+// .rv.analytics.mediamanagement.MediaThumbnailMissingOnScreen media_thumbnail_missing_on_screen = 338;
+inline bool Event::has_media_thumbnail_missing_on_screen() const {
+  return Interaction_case() == kMediaThumbnailMissingOnScreen;
+}
+inline bool Event::_internal_has_media_thumbnail_missing_on_screen() const {
+  return Interaction_case() == kMediaThumbnailMissingOnScreen;
+}
+inline void Event::set_has_media_thumbnail_missing_on_screen() {
+  _impl_._oneof_case_[0] = kMediaThumbnailMissingOnScreen;
+}
+inline ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NULLABLE Event::release_media_thumbnail_missing_on_screen() {
+  // @@protoc_insertion_point(field_release:rv.analytics.Event.media_thumbnail_missing_on_screen)
+  if (Interaction_case() == kMediaThumbnailMissingOnScreen) {
+    clear_has_Interaction();
+    auto* temp = reinterpret_cast<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen*>(_impl_.Interaction_.media_thumbnail_missing_on_screen_);
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.Interaction_.media_thumbnail_missing_on_screen_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen& Event::_internal_media_thumbnail_missing_on_screen() const {
+  return Interaction_case() == kMediaThumbnailMissingOnScreen ? static_cast<const ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen&>(*reinterpret_cast<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen*>(_impl_.Interaction_.media_thumbnail_missing_on_screen_))
+                     : *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen>(&::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen_globals_);
+}
+inline const ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen& Event::media_thumbnail_missing_on_screen() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:rv.analytics.Event.media_thumbnail_missing_on_screen)
+  return _internal_media_thumbnail_missing_on_screen();
+}
+inline ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NULLABLE Event::unsafe_arena_release_media_thumbnail_missing_on_screen() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:rv.analytics.Event.media_thumbnail_missing_on_screen)
+  if (Interaction_case() == kMediaThumbnailMissingOnScreen) {
+    clear_has_Interaction();
+    auto* temp = reinterpret_cast<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen*>(_impl_.Interaction_.media_thumbnail_missing_on_screen_);
+    _impl_.Interaction_.media_thumbnail_missing_on_screen_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Event::unsafe_arena_set_allocated_media_thumbnail_missing_on_screen(
+    ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NULLABLE value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_Interaction();
+  if (value) {
+    set_has_media_thumbnail_missing_on_screen();
+    _impl_.Interaction_.media_thumbnail_missing_on_screen_ = reinterpret_cast<::google::protobuf::Message*>(value);
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:rv.analytics.Event.media_thumbnail_missing_on_screen)
+}
+inline ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NONNULL Event::_internal_mutable_media_thumbnail_missing_on_screen() {
+  if (Interaction_case() != kMediaThumbnailMissingOnScreen) {
+    clear_Interaction();
+    set_has_media_thumbnail_missing_on_screen();
+    _impl_.Interaction_.media_thumbnail_missing_on_screen_ = reinterpret_cast<::google::protobuf::Message*>(Super_::DefaultConstruct<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen>(GetArena()));
+  }
+  return reinterpret_cast<::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen*>(_impl_.Interaction_.media_thumbnail_missing_on_screen_);
+}
+inline ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* PROTOBUF_NONNULL Event::mutable_media_thumbnail_missing_on_screen()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::rv::analytics::mediamanagement::MediaThumbnailMissingOnScreen* _msg = _internal_mutable_media_thumbnail_missing_on_screen();
+  // @@protoc_insertion_point(field_mutable:rv.analytics.Event.media_thumbnail_missing_on_screen)
   return _msg;
 }
 
